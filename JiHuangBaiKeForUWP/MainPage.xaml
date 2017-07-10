@@ -7,7 +7,109 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="VisualStatePhone">
+                    <VisualState.Setters>
+                        <Setter Target="RootSplit.DisplayMode" Value="Overlay"/>
+                        <Setter Target="RootSplit.IsPaneOpen" Value="False"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="VisualStateTablet">
+                    <VisualState.Setters>
+                        <Setter Target="RootSplit.DisplayMode" Value="CompactOverlay"/>
+                        <Setter Target="RootSplit.IsPaneOpen" Value="False"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="641"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="VisualStateDesktop">
+                    <VisualState.Setters>
+                        <Setter Target="RootSplit.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="RootSplit.IsPaneOpen" Value="True"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1008"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <RelativePanel>
+            <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="26" Click="HamburgerButton_Click" Foreground="White" Width="56" Height="48" Background="{x:Null}" />
+        </RelativePanel>
+        <SplitView x:Name="RootSplit" Grid.Row="1" DisplayMode="CompactOverlay" OpenPaneLength="200" CompactPaneLength="56" HorizontalAlignment="Left" IsPaneOpen="True">
+            <SplitView.Pane>
+                <ListBox Background="#CC000000" x:Name="IconsListBoxGameData" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single" SelectionChanged="IconsListBox_SelectionChanged">
+                    <ListBoxItem x:Name="CharacterListBoxItem" IsSelected="True" Height="48">
+                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                            <Image Source="Assets/HamburgerMenu/HamburgerMenuCharacter.png" Width="48" Height="48"/>
+                            <TextBlock Text="人物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="FoodListBoxItem" Height="48">
+                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                            <Image Source="Assets/HamburgerMenu/HamburgerMenuFood.png" Width="48" Height="48"/>
+                            <TextBlock Text="食物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="ScienceListBoxItem" Height="48">
+                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                            <Image Source="Assets/HamburgerMenu/HamburgerMenuScience.png" Width="48" Height="48"/>
+                            <TextBlock Text="科技" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="AnimalListBoxItem" Height="48">
+                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                            <Image Source="Assets/HamburgerMenu/HamburgerMenuAnimal.png" Width="48" Height="48"/>
+                            <TextBlock Text="生物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="NaturalListBoxItem" Height="48">
+                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                            <Image Source="Assets/HamburgerMenu/HamburgerMenuNatural.png" Width="48" Height="48"/>
+                            <TextBlock Text="自然" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="GoodListBoxItem" Height="48">
+                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                            <Image Source="Assets/HamburgerMenu/HamburgerMenuGood.png" Width="48" Height="48"/>
+                            <TextBlock Text="物品" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="PartingLine1" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
+                    <ListBoxItem x:Name="DedicatedServersListBoxItem" Height="48">
+                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                            <Image Source="Assets/HamburgerMenu/HamburgerMenuDedicatedServer.png" Width="48" Height="48"/>
+                            <TextBlock Text="独立服务器" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="PartingLine2" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
+                    <ListBoxItem x:Name="StrategyListBoxItem" Height="48">
+                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                            <Image Source="Assets/HamburgerMenu/HamburgerMenuStrategy.png" Width="48" Height="48"/>
+                            <TextBlock Text="攻略" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="PartingLine3" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
+                    <ListBoxItem x:Name="SocialIntercourseListBoxItem" Height="48">
+                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                            <Image Source="Assets/HamburgerMenu/HamburgerMenuDedicatedServer.png" Width="48" Height="48"/>
+                            <TextBlock Text="社交" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="PartingLine4" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
+                </ListBox>
+            </SplitView.Pane>
+            <Frame x:Name="RootFrame" />
+        </SplitView>
     </Grid>
 </Page>
