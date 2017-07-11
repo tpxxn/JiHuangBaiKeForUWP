@@ -2,7 +2,7 @@
 饥荒百科ForUWP
 
 ## 许可
-该应用使用 [__MIT License__](https://github.com/ZhangGaoxing/JiHuangBaike/blob/master/LICENSE)
+该应用使用 [__MIT License__](https://github.com/tpxxn/JiHuangBaiKeForUWP/blob/master/LICENSE)
 
 最新最全饥荒资料，就在饥荒百科全书！
 
