@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using JiHuangBaiKeForUWP.Manager;
 
 namespace JiHuangBaiKeForUWP
 {
@@ -39,6 +40,14 @@ namespace JiHuangBaiKeForUWP
         /// <param name="e">有关启动请求和过程的详细信息。</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            //帧计数器
+            //#if DEBUG
+            //    if (System.Diagnostics.Debugger.IsAttached)
+            //    {
+            //        this.DebugSettings.EnableFrameRateCounter = true;
+            //    }
+            //#endif 
+
             var rootFrame = Window.Current.Content as Frame;
 
             // 不要在窗口已包含内容时重复应用程序初始化，
@@ -66,6 +75,10 @@ namespace JiHuangBaiKeForUWP
                 // 确保当前窗口处于活动状态
                 Window.Current.Activate();
             }
+
+            ((Frame) Window.Current.Content).RequestedTheme =
+                SettingSet.ThemeSettingRead() ? ElementTheme.Dark : ElementTheme.Light;
+
         }
 
         /// <summary>

@@ -43,73 +43,100 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <RelativePanel>
-            <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="26" Click="HamburgerButton_Click" Foreground="White" Width="56" Height="48" Background="{x:Null}" />
+        <RelativePanel x:Name="RootRelativePanel">
+            <Button x:Name="HamburgerButton" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="26" Tapped="HamburgerButton_Tapped"  Foreground="White" Width="56" Height="48" Background="{x:Null}" />
+            <TextBlock x:Name="FrameTitle" RelativePanel.RightOf="HamburgerButton" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="26" Margin="10,0,0,0" Foreground="White" Text="人物"/>
+            <Button x:Name="BackButton" RelativePanel.LeftOf="ForwordButton" FontFamily="Segoe MDL2 Assets" Content="&#xE0A6;" FontSize="20" Tapped="BackButton_Tapped"  RelativePanel.AlignVerticalCenterWithPanel="True" Background="{x:Null}" Foreground="White" />
+            <Button x:Name="ForwordButton" RelativePanel.LeftOf="SearchAutoSuggestBox"  FontFamily="Segoe MDL2 Assets" Content="&#xE0AB;" FontSize="20" Tapped="ForwordButton_Tapped" RelativePanel.AlignVerticalCenterWithPanel="True" Background="{x:Null}" Foreground="White" Margin="0,0,10,0" />
+            <AutoSuggestBox x:Name="SearchAutoSuggestBox" PlaceholderText="输入搜索内容..." Width="250" QueryIcon="Find" TextChanged="SearchAutoSuggestBox_TextChanged" QuerySubmitted="SearchAutoSuggestBox_QuerySubmitted" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,0,10,0"/>
         </RelativePanel>
-        <SplitView x:Name="RootSplit" Grid.Row="1" DisplayMode="CompactOverlay" OpenPaneLength="200" CompactPaneLength="56" HorizontalAlignment="Left" IsPaneOpen="True">
+        <SplitView x:Name="RootSplit" Grid.Row="1" DisplayMode="CompactOverlay" OpenPaneLength="200" CompactPaneLength="56" IsPaneOpen="True">
             <SplitView.Pane>
-                <ListBox Background="#CC000000" x:Name="IconsListBoxGameData" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single" SelectionChanged="IconsListBox_SelectionChanged">
-                    <ListBoxItem x:Name="CharacterListBoxItem" IsSelected="True" Height="48">
-                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
-                            <Image Source="Assets/HamburgerMenu/HamburgerMenuCharacter.png" Width="48" Height="48"/>
-                            <TextBlock Text="人物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem x:Name="FoodListBoxItem" Height="48">
-                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
-                            <Image Source="Assets/HamburgerMenu/HamburgerMenuFood.png" Width="48" Height="48"/>
-                            <TextBlock Text="食物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem x:Name="ScienceListBoxItem" Height="48">
-                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
-                            <Image Source="Assets/HamburgerMenu/HamburgerMenuScience.png" Width="48" Height="48"/>
-                            <TextBlock Text="科技" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem x:Name="AnimalListBoxItem" Height="48">
-                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
-                            <Image Source="Assets/HamburgerMenu/HamburgerMenuAnimal.png" Width="48" Height="48"/>
-                            <TextBlock Text="生物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem x:Name="NaturalListBoxItem" Height="48">
-                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
-                            <Image Source="Assets/HamburgerMenu/HamburgerMenuNatural.png" Width="48" Height="48"/>
-                            <TextBlock Text="自然" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem x:Name="GoodListBoxItem" Height="48">
-                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
-                            <Image Source="Assets/HamburgerMenu/HamburgerMenuGood.png" Width="48" Height="48"/>
-                            <TextBlock Text="物品" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem x:Name="PartingLine1" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
-                    <ListBoxItem x:Name="DedicatedServersListBoxItem" Height="48">
-                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
-                            <Image Source="Assets/HamburgerMenu/HamburgerMenuDedicatedServer.png" Width="48" Height="48"/>
-                            <TextBlock Text="独立服务器" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem x:Name="PartingLine2" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
-                    <ListBoxItem x:Name="StrategyListBoxItem" Height="48">
-                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
-                            <Image Source="Assets/HamburgerMenu/HamburgerMenuStrategy.png" Width="48" Height="48"/>
-                            <TextBlock Text="攻略" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem x:Name="PartingLine3" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
-                    <ListBoxItem x:Name="SocialIntercourseListBoxItem" Height="48">
-                        <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
-                            <Image Source="Assets/HamburgerMenu/HamburgerMenuDedicatedServer.png" Width="48" Height="48"/>
-                            <TextBlock Text="社交" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem x:Name="PartingLine4" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
-                </ListBox>
+                <Grid x:Name="HamburgerGrid" BorderThickness="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="0" Background="#CC000000" x:Name="IconsListBoxGameData" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single" Tapped="IconsListBoxGameData_Tapped">
+                        <ListBoxItem x:Name="CharacterListBoxItem" IsSelected="True" Height="50">
+                            <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                                <Image Source="Assets/HamburgerMenu/HamburgerMenuCharacter.png" Width="48" Height="48"/>
+                                <TextBlock Text="人物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="FoodListBoxItem" Height="50">
+                            <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                                <Image Source="Assets/HamburgerMenu/HamburgerMenuFood.png" Width="48" Height="48"/>
+                                <TextBlock Text="食物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="ScienceListBoxItem" Height="50">
+                            <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                                <Image Source="Assets/HamburgerMenu/HamburgerMenuScience.png" Width="48" Height="48"/>
+                                <TextBlock Text="科技" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="AnimalListBoxItem" Height="50">
+                            <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                                <Image Source="Assets/HamburgerMenu/HamburgerMenuAnimal.png" Width="48" Height="48"/>
+                                <TextBlock Text="生物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="NaturalListBoxItem" Height="50">
+                            <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                                <Image Source="Assets/HamburgerMenu/HamburgerMenuNatural.png" Width="48" Height="48"/>
+                                <TextBlock Text="自然" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="GoodListBoxItem" Height="50">
+                            <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                                <Image Source="Assets/HamburgerMenu/HamburgerMenuGood.png" Width="48" Height="48"/>
+                                <TextBlock Text="物品" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="PartingLine1" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
+                        <ListBoxItem x:Name="DedicatedServersListBoxItem" Height="50">
+                            <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                                <Image Source="Assets/HamburgerMenu/HamburgerMenuDedicatedServer.png" Width="48" Height="48"/>
+                                <TextBlock Text="独立服务器" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="PartingLine2" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
+                        <ListBoxItem x:Name="StrategyListBoxItem" Height="50">
+                            <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                                <Image Source="Assets/HamburgerMenu/HamburgerMenuStrategy.png" Width="48" Height="48"/>
+                                <TextBlock Text="攻略" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="PartingLine3" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
+                        <ListBoxItem x:Name="SocialIntercourseListBoxItem" Height="50">
+                            <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                                <Image Source="Assets/HamburgerMenu/HamburgerMenuDedicatedServer.png" Width="48" Height="48"/>
+                                <TextBlock Text="社交" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                    </ListBox>
+                    <ListBox Grid.Row="1" Background="#CC000000" x:Name="IconsListBoxSettingAndAbout" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single"  Tapped="IconsListBoxGameData_Tapped">
+                        <ListBoxItem x:Name="PartingLine4" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
+                        <ListBoxItem x:Name="SettingListBoxItem" Height="50">
+                            <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                                <Image Source="Assets/HamburgerMenu/HamburgerMenuSetting.png" Width="48" Height="48"/>
+                                <TextBlock Text="设置" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="AboutListBoxItem" Height="50">
+                            <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                                <Image Source="Assets/HamburgerMenu/HamburgerMenuAbout.png" Width="48" Height="48"/>
+                                <TextBlock Text="关于" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                </Grid>
             </SplitView.Pane>
-            <Frame x:Name="RootFrame" />
+            <SplitView.Content>
+                <Frame x:Name="RootFrame" Margin="0,1,0,0"/>
+            </SplitView.Content>
         </SplitView>
     </Grid>
 </Page>

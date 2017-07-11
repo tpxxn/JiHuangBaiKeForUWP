@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="JiHuangBaiKeForUWP.View.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JiHuangBaiKeForUWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <StackPanel VerticalAlignment="Center" Background="{ThemeResource SystemControlBackgroundAccentBrush}">
+                <Ellipse Height="120" Width="120" StrokeThickness="4" Stroke="White" Margin="0,15,0,0">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="/Assets/Logo/LargeTile.scale-400.png" />
+                    </Ellipse.Fill>
+                </Ellipse>
+
+                <TextBlock x:Name="AppNameTextBlock" Text="饥荒百科" Foreground="White" FontSize="30" Margin="0,10,0,0" HorizontalAlignment="Center" />
+                <TextBlock x:Name="VersionTextBlock" HorizontalAlignment="Center" Foreground="White" Margin="0,5,0,0" />
+                <TextBlock x:Name="PublisherTextBlock" HorizontalAlignment="Center" Foreground="White" Margin="0,5,0,15" />
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock x:Uid="Feedback" Text="加入QQ群" FontSize="22" Margin="20,20,0,0" Foreground="Black" />
+                <Image Source="/Assets/Pic/QRCode_Qun.png" Height="128"  Margin="20,20,0,0" HorizontalAlignment="Left"/>
+                <TextBlock x:Uid="Feedback" Text="发送反馈" FontSize="22" Margin="20,20,0,0" Foreground="Black" />
+                <StackPanel Orientation="Horizontal" Margin="20,5,0,0">
+                    <TextBlock x:Uid="EMail" VerticalAlignment="Center" Foreground="Black">
+                    <Run Text="发送邮件至："/>
+                    </TextBlock>
+                    <HyperlinkButton NavigateUri="mailto:351765204@qq.com" Content="351765204@qq.com" />
+                </StackPanel>
+
+                <TextBlock Text="数据来源" FontSize="22" Margin="20,20,0,0" />
+                <StackPanel Orientation="Horizontal">
+                    <HyperlinkButton NavigateUri="http://dontstarve.wikia.com">
+                        <Image Source="/Assets/Pic/Wiki-wordmark.png" Height="30" />
+                    </HyperlinkButton>
+                    <TextBlock Text="以及" VerticalAlignment="Center" />
+                    <HyperlinkButton Margin="10,0,0,0" Content="张高兴" NavigateUri="https://github.com/ZhangGaoxing/JiHuangBaike/tree/master" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <TextBlock Text="其他" FontSize="22" Margin="20,20,0,0" />
+                <TextBlock FontSize="14" Margin="20,5,0,0">
+                <Run Text="本应用使用 MIT 许可开源"/>
+                </TextBlock>
+                <HyperlinkButton Margin="20,5,0,0" NavigateUri="https://github.com/tpxxn/JiHuangBaiKeForUWP">
+                    <Image Source="/Assets/Pic/github.png" Height="45" />
+                </HyperlinkButton>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

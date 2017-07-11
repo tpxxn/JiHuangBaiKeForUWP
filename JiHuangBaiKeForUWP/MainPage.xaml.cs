@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using JiHuangBaiKeForUWP.View;
 
 namespace JiHuangBaiKeForUWP
 {
@@ -22,11 +23,44 @@ namespace JiHuangBaiKeForUWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        #region 字段成员
+
+        private static readonly Color AccentColor = (Color)Application.Current.Resources["SystemAccentColor"];
+
+        private readonly List<ListBoxItem> _iconsListBoxGameDataList;
+        private readonly List<ListBoxItem> _iconsListBoxSettingAndAboutList;
+
+        #endregion
+
+        #region 构造事件
 
         public MainPage()
         {
             InitializeComponent();
+
+            _iconsListBoxGameDataList = new List<ListBoxItem>(
+                new[]
+                {
+                    CharacterListBoxItem, FoodListBoxItem, ScienceListBoxItem, AnimalListBoxItem,
+                    NaturalListBoxItem, GoodListBoxItem, DedicatedServersListBoxItem, StrategyListBoxItem,
+                    SocialIntercourseListBoxItem
+                }
+            );
+            _iconsListBoxSettingAndAboutList = new List<ListBoxItem>(
+                new[]
+                {
+                    SettingListBoxItem, AboutListBoxItem
+                }
+            );
+
+            SetFrameTitleMargin();
+
+            HamburgerGrid.BorderBrush = new SolidColorBrush(AccentColor);
+            // 默认页
+            // RootFrame.SourcePageType = typeof(CharacterPage);
         }
+
+        #endregion
 
         #region 设置背景色跟随系统背景色
 
@@ -64,28 +98,143 @@ namespace JiHuangBaiKeForUWP
         }
 
         #endregion
-        
+
+        #region 顶部按钮
+
         #region 汉堡菜单
 
-        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        private void HamburgerButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             RootSplit.IsPaneOpen = !RootSplit.IsPaneOpen;
+            SetFrameTitleMargin();
         }
 
-        //列表按钮
-        private void IconsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SetFrameTitleMargin()
         {
-            if (CharacterListBoxItem.IsSelected)
-            {
+            FrameTitle.Margin = RootSplit.IsPaneOpen ? new Thickness(154, 0, 0, 0) : new Thickness(10, 0, 0, 0);
+        }
 
-            }
-            else if ((FoodListBoxItem.IsSelected))
+        private  void IconsListBoxGameData_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (sender == IconsListBoxGameData)
             {
-
+                var listBoxItem = _iconsListBoxSettingAndAboutList;
+                if (listBoxItem != null)
+                {
+                    foreach (var x in listBoxItem)
+                    {
+                        x.IsSelected = false;
+                    }
+                }
             }
+            else if (sender == IconsListBoxSettingAndAbout)
+            {
+                var listBoxItem = _iconsListBoxGameDataList;
+                if (listBoxItem != null)
+                {
+                    foreach (var x in listBoxItem)
+                    {
+                        x.IsSelected = false;
+                    }
+                }
+            }
+
+            if (((ListBoxItem)((ListBox)sender).SelectedItem) != null)
+            {
+                var listBoxItemName = ((ListBoxItem)((ListBox)sender).SelectedItem).Name;
+
+                switch (listBoxItemName)
+                {
+                    case "CharacterListBoxItem":
+                        FrameTitle.Text = "人物";
+                        break;
+                    case "FoodListBoxItem":
+                        FrameTitle.Text = "食物";
+                        break;
+                    case "ScienceListBoxItem":
+                        FrameTitle.Text = "科技";
+                        break;
+                    case "AnimalListBoxItem":
+                        FrameTitle.Text = "生物";
+                        break;
+                    case "NaturalListBoxItem":
+                        FrameTitle.Text = "自然";
+                        break;
+                    case "GoodListBoxItem":
+                        FrameTitle.Text = "物品";
+                        break;
+                    case "DedicatedServersListBoxItem":
+                        FrameTitle.Text = "服务器";
+                        break;
+                    case "StrategyListBoxItem":
+                        FrameTitle.Text = "攻略";
+                        break;
+                    case "SocialIntercourseListBoxItem":
+                        FrameTitle.Text = "社交";
+                        break;
+                    case "SettingListBoxItem":
+                        FrameTitle.Text = "设置";
+                        RootFrame.Navigate(typeof(SettingPage), null);
+                        break;
+                    case "AboutListBoxItem":
+                        FrameTitle.Text = "关于";
+                        RootFrame.Navigate(typeof(AboutPage), null);
+                        break;
+                    default:
+                        FrameTitle.Text = "";
+                        break;
+                }
+                
+            }
+
+//
+//            var dialog = new ContentDialog()
+//            {
+//                Title = "测试",
+//                Content = ((ListBoxItem)((ListBox)sender).SelectedItem).Name,
+//                PrimaryButtonText = "确定",
+//                FullSizeDesired = false,
+//            };
+//            dialog.PrimaryButtonClick += (_s, _e) => { };
+//            await dialog.ShowAsync();
+
+            //            if (item.DestPage != null)
+            //            {
+            //                RootFrame.Navigate(item.DestPage);
+            //            }
+        }
+
+        #endregion
+
+        #region 导航按钮
+
+        private void BackButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void ForwordButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
 
         }
 
         #endregion
+
+        #region 搜索框
+
+        private void SearchAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+
+        }
+
+        private void SearchAutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+
+        }
+
+        #endregion
+
+        #endregion
+
     }
 }
