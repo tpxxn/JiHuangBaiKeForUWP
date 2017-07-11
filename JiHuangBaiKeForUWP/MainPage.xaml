@@ -14,6 +14,7 @@
                     <VisualState.Setters>
                         <Setter Target="RootSplit.DisplayMode" Value="Overlay"/>
                         <Setter Target="RootSplit.IsPaneOpen" Value="False"/>
+                        <Setter Target="FrameTitle.Margin" Value="10,0,0,0"/>
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0"/>
@@ -23,6 +24,7 @@
                     <VisualState.Setters>
                         <Setter Target="RootSplit.DisplayMode" Value="CompactOverlay"/>
                         <Setter Target="RootSplit.IsPaneOpen" Value="False"/>
+                        <Setter Target="FrameTitle.Margin" Value="10,0,0,0"/>
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="641"/>
@@ -32,6 +34,7 @@
                     <VisualState.Setters>
                         <Setter Target="RootSplit.DisplayMode" Value="CompactInline"/>
                         <Setter Target="RootSplit.IsPaneOpen" Value="True"/>
+                        <Setter Target="FrameTitle.Margin" Value="154,0,0,0"/>
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="1008"/>
@@ -46,8 +49,6 @@
         <RelativePanel x:Name="RootRelativePanel">
             <Button x:Name="HamburgerButton" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="26" Tapped="HamburgerButton_Tapped"  Foreground="White" Width="56" Height="48" Background="{x:Null}" />
             <TextBlock x:Name="FrameTitle" RelativePanel.RightOf="HamburgerButton" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="26" Margin="10,0,0,0" Foreground="White" Text="人物"/>
-            <Button x:Name="BackButton" RelativePanel.LeftOf="ForwordButton" FontFamily="Segoe MDL2 Assets" Content="&#xE0A6;" FontSize="20" Tapped="BackButton_Tapped"  RelativePanel.AlignVerticalCenterWithPanel="True" Background="{x:Null}" Foreground="White" />
-            <Button x:Name="ForwordButton" RelativePanel.LeftOf="SearchAutoSuggestBox"  FontFamily="Segoe MDL2 Assets" Content="&#xE0AB;" FontSize="20" Tapped="ForwordButton_Tapped" RelativePanel.AlignVerticalCenterWithPanel="True" Background="{x:Null}" Foreground="White" Margin="0,0,10,0" />
             <AutoSuggestBox x:Name="SearchAutoSuggestBox" PlaceholderText="输入搜索内容..." Width="250" QueryIcon="Find" TextChanged="SearchAutoSuggestBox_TextChanged" QuerySubmitted="SearchAutoSuggestBox_QuerySubmitted" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,0,10,0"/>
         </RelativePanel>
         <SplitView x:Name="RootSplit" Grid.Row="1" DisplayMode="CompactOverlay" OpenPaneLength="200" CompactPaneLength="56" IsPaneOpen="True">

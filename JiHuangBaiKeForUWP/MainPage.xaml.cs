@@ -26,7 +26,6 @@ namespace JiHuangBaiKeForUWP
         #region 字段成员
 
         private static readonly Color AccentColor = (Color)Application.Current.Resources["SystemAccentColor"];
-
         private readonly List<ListBoxItem> _iconsListBoxGameDataList;
         private readonly List<ListBoxItem> _iconsListBoxSettingAndAboutList;
 
@@ -56,8 +55,9 @@ namespace JiHuangBaiKeForUWP
             SetFrameTitleMargin();
 
             HamburgerGrid.BorderBrush = new SolidColorBrush(AccentColor);
+
             // 默认页
-            // RootFrame.SourcePageType = typeof(CharacterPage);
+            RootFrame.SourcePageType = typeof(CharacterPage);
         }
 
         #endregion
@@ -111,32 +111,25 @@ namespace JiHuangBaiKeForUWP
 
         private void SetFrameTitleMargin()
         {
-            FrameTitle.Margin = RootSplit.IsPaneOpen ? new Thickness(154, 0, 0, 0) : new Thickness(10, 0, 0, 0);
+            if (RootSplit.DisplayMode == SplitViewDisplayMode.CompactInline)
+            {
+                FrameTitle.Margin = RootSplit.IsPaneOpen ? new Thickness(154, 0, 0, 0) : new Thickness(10, 0, 0, 0);
+            }
+            else
+            {
+                FrameTitle.Margin = new Thickness(10, 0, 0, 0);
+            }
         }
 
-        private  void IconsListBoxGameData_Tapped(object sender, TappedRoutedEventArgs e)
+        private void IconsListBoxGameData_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (sender == IconsListBoxGameData)
             {
-                var listBoxItem = _iconsListBoxSettingAndAboutList;
-                if (listBoxItem != null)
-                {
-                    foreach (var x in listBoxItem)
-                    {
-                        x.IsSelected = false;
-                    }
-                }
+                IconsListBoxSettingAndAbout.SelectedItem = null;
             }
             else if (sender == IconsListBoxSettingAndAbout)
             {
-                var listBoxItem = _iconsListBoxGameDataList;
-                if (listBoxItem != null)
-                {
-                    foreach (var x in listBoxItem)
-                    {
-                        x.IsSelected = false;
-                    }
-                }
+                IconsListBoxGameData.SelectedItem = null;
             }
 
             if (((ListBoxItem)((ListBox)sender).SelectedItem) != null)
@@ -147,21 +140,27 @@ namespace JiHuangBaiKeForUWP
                 {
                     case "CharacterListBoxItem":
                         FrameTitle.Text = "人物";
+                        RootFrame.Navigate(typeof(CharacterPage), null);
                         break;
                     case "FoodListBoxItem":
                         FrameTitle.Text = "食物";
+                        RootFrame.Navigate(typeof(FoodPage), null);
                         break;
                     case "ScienceListBoxItem":
                         FrameTitle.Text = "科技";
+                        RootFrame.Navigate(typeof(SciencePage), null);
                         break;
                     case "AnimalListBoxItem":
                         FrameTitle.Text = "生物";
+                        RootFrame.Navigate(typeof(AnimalPage), null);
                         break;
                     case "NaturalListBoxItem":
                         FrameTitle.Text = "自然";
+                        RootFrame.Navigate(typeof(NaturalPage), null);
                         break;
                     case "GoodListBoxItem":
                         FrameTitle.Text = "物品";
+                        RootFrame.Navigate(typeof(GoodPage), null);
                         break;
                     case "DedicatedServersListBoxItem":
                         FrameTitle.Text = "服务器";
@@ -184,42 +183,27 @@ namespace JiHuangBaiKeForUWP
                         FrameTitle.Text = "";
                         break;
                 }
-                
             }
 
-//
-//            var dialog = new ContentDialog()
-//            {
-//                Title = "测试",
-//                Content = ((ListBoxItem)((ListBox)sender).SelectedItem).Name,
-//                PrimaryButtonText = "确定",
-//                FullSizeDesired = false,
-//            };
-//            dialog.PrimaryButtonClick += (_s, _e) => { };
-//            await dialog.ShowAsync();
+            if (RootSplit.ActualWidth < 1008)
+            {
+                RootSplit.IsPaneOpen = false;
+            }
 
-            //            if (item.DestPage != null)
+            //            var dialog = new ContentDialog()
             //            {
-            //                RootFrame.Navigate(item.DestPage);
-            //            }
+            //                Title = "测试",
+            //                Content = ((ListBoxItem)((ListBox)sender).SelectedItem).Name,
+            //                PrimaryButtonText = "确定",
+            //                FullSizeDesired = false,
+            //            };
+            //            dialog.PrimaryButtonClick += (_s, _e) => { };
+            //            await dialog.ShowAsync();
+            
         }
 
         #endregion
-
-        #region 导航按钮
-
-        private void BackButton_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void ForwordButton_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        #endregion
-
+        
         #region 搜索框
 
         private void SearchAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
