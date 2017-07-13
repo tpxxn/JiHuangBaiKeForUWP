@@ -10,6 +10,8 @@ namespace JiHuangBaiKeForUWP.Manager
 {
     internal class SettingSet
     {
+        #region 主题设置New region
+
         private const string SettingTheme = "Theme";
 
         public  static void ThemeSettingSet(bool isOn)
@@ -32,5 +34,34 @@ namespace JiHuangBaiKeForUWP.Manager
                 return true;
             }
         }
+
+        #endregion
+
+        #region 游戏版本设置
+
+        private const string SettingGameVersion = "GameVersionSelectedIndex";
+
+        public static void GameVersionSettingSet(int gameVersion)
+        {
+            var rootContainer = ApplicationData.Current.LocalSettings;
+            rootContainer.Values[SettingGameVersion] = gameVersion;
+        }
+
+        public static int GameVersionSettingRead()
+        {
+            var rootContainer = ApplicationData.Current.LocalSettings;
+
+            if (rootContainer.Values.TryGetValue(SettingGameVersion, out object gameVersion))
+            {
+                return (int)gameVersion;
+
+            }
+            else
+            {
+                return 3;
+            }
+        }
+
+        #endregion
     }
 }

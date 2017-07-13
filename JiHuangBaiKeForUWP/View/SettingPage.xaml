@@ -5,10 +5,29 @@
     xmlns:local="using:JiHuangBaiKeForUWP.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:JiHuangBaiKeForUWP.Model"
     mc:Ignorable="d">
 
-    <StackPanel Padding="10" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock FontSize="26" Text="深色主题"/>
-        <ToggleSwitch x:Name="ThemeToggleSwitch" Toggled="ThemeToggleSwitch_Toggled"/>
-    </StackPanel>
+    <Page.Resources>
+        <DataTemplate x:Key="VersionDataTemplate" x:DataType="model:GameVersion">
+            <TextBlock Text="{x:Bind Version}"/>
+        </DataTemplate>
+    </Page.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Margin="10">
+            <StackPanel>
+                <TextBlock FontSize="26" Text="深色主题"/>
+                <ToggleSwitch x:Name="ThemeToggleSwitch" Toggled="ThemeToggleSwitch_Toggled"/>
+            </StackPanel>
+            <StackPanel Margin="0,20,0,0" >
+                <TextBlock FontSize="26" Text="游戏版本"/>
+                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                    <ComboBox x:Name="GameVersionComboBox" HorizontalAlignment="Left" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" ItemsSource="{x:Bind _versionData}" ItemTemplate="{StaticResource VersionDataTemplate}" Height="72" Width="200" DataContextChanged="GameVersionComboBox_DataContextChanged" SelectionChanged="GameVersionComboBox_SelectionChanged"/>
+                    <Button FontSize="60" FontFamily="Segoe MDL2 Assets" Content="&#xE109;" Margin="15,0,0,0" ToolTipService.ToolTip="添加配置文件"/>
+                    <Button FontSize="60" FontFamily="Segoe MDL2 Assets" Content="&#xE108;" Margin="15,0,0,0" ToolTipService.ToolTip="删除配置文件"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
 </Page>
