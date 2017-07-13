@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<EventsNode>
+  <HallowedNights>
+    <Good>
+      <Picture>Cubic_Zirkonia_Ball</Picture>
+      <Name>方晶锆石球</Name>
+      <EnName>Cubic Zirkonia Ball</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>与猪王交易，可换取8个万圣节糖果。</Introduction>
+      <Console>trinket_32</Console>
+    </Good>
+    <Good>
+      <Picture>Spider_Ring</Picture>
+      <Name>蜘蛛戒指</Name>
+      <EnName>Spider Ring</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>与猪王交易，可换取8个万圣节糖果。</Introduction>
+      <Console>trinket_33</Console>
+    </Good>
+    <Good>
+      <Picture>Monkey_Paw</Picture>
+      <Name>猴爪</Name>
+      <EnName>Monkey Paw</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>与猪王交易，可换取8个万圣节糖果。</Introduction>
+      <Console>trinket_34</Console>
+    </Good>
+    <Good>
+      <Picture>Empty_Elixir</Picture>
+      <Name>空的万能药</Name>
+      <EnName>Empty Elixir</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>与猪王交易，可换取8个万圣节糖果。</Introduction>
+      <Console>trinket_35</Console>
+    </Good>
+    <Good>
+      <Picture>Faux_Fangs</Picture>
+      <Name>人造尖牙</Name>
+      <EnName>Faux Fangs</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>与猪王交易，可换取8个万圣节糖果。</Introduction>
+      <Console>trinket_36</Console>
+    </Good>
+    <Good>
+      <Picture>Broken_Stake</Picture>
+      <Name>折断的棍子</Name>
+      <EnName>Broken Stake</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>与猪王交易，可换取8个万圣节糖果。</Introduction>
+      <Console>trinket_37</Console>
+    </Good>
+    <Good>
+      <Picture>Candy_Apple</Picture>
+      <Name>苹果糖</Name>
+      <EnName>Candy Apple</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。</Introduction>
+      <Console>halloweencandy_1</Console>
+    </Good>
+    <Good>
+      <Picture>Candy_Corn</Picture>
+      <Name>玉米糖</Name>
+      <EnName>Candy Corn</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。</Introduction>
+      <Console>halloweencandy_2</Console>
+    </Good>
+    <Good>
+      <Picture>Not-So-Candy_Corn</Picture>
+      <Name>似糖非糖玉米</Name>
+      <EnName>Not-So-Candy Corn</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。</Introduction>
+      <Console>halloweencandy_3</Console>
+    </Good>
+    <Good>
+      <Picture>Gummy_Spider</Picture>
+      <Name>黏黏的蜘蛛</Name>
+      <EnName>Gummy Spider</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。</Introduction>
+      <Console>halloweencandy_4</Console>
+    </Good>
+    <Good>
+      <Picture>Catcoon_Candy</Picture>
+      <Name>卡通糖果</Name>
+      <EnName>Catcoon Candy</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。</Introduction>
+      <Console>halloweencandy_5</Console>
+    </Good>
+    <Good>
+      <Picture>--Raisins--</Picture>
+      <Name>“葡萄干”</Name>
+      <EnName>"Raisins"</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。</Introduction>
+      <Console>halloweencandy_6</Console>
+    </Good>
+    <Good>
+      <Picture>Raisins</Picture>
+      <Name>葡萄干</Name>
+      <EnName>Raisins</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。</Introduction>
+      <Console>halloweencandy_7</Console>
+    </Good>
+    <Good>
+      <Picture>Ghost_Pop</Picture>
+      <Name>幽灵糖</Name>
+      <EnName>Ghost Pop</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。</Introduction>
+      <Console>halloweencandy_8</Console>
+    </Good>
+    <Good>
+      <Picture>Jelly_Worm</Picture>
+      <Name>果冻虫</Name>
+      <EnName>Jelly Worm</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。</Introduction>
+      <Console>halloweencandy_9</Console>
+    </Good>
+    <Good>
+      <Picture>Tentacle_Lolli</Picture>
+      <Name>触须棒糖</Name>
+      <EnName>Tentacle Lolli</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。</Introduction>
+      <Console>halloweencandy_10</Console>
+    </Good>
+    <Good>
+      <Picture>Choco_Pigs</Picture>
+      <Name>巧克力猪</Name>
+      <EnName>Choco Pigs</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。</Introduction>
+      <Console>halloweencandy_11</Console>
+    </Good>
+    <Good>
+      <Picture>Candy_Bag</Picture>
+      <Name>糖袋</Name>
+      <EnName>Candy Bag</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>6个草合成，拥有14个物品格，只用于存储万圣节物品。</Introduction>
+      <Console>candybag</Console>
+    </Good>
+  </HallowedNights>
+  <WintersFeast>
+    <Good>
+      <Picture>Gingerbread_Cookie</Picture>
+      <Name>姜饼人曲奇饼</Name>
+      <EnName>Gingerbread Cookie</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>打怪随机掉落。食用时可恢复精神1点，饥饿3点。</Introduction>
+      <Console>winter_food1</Console>
+    </Good>
+    <Good>
+      <Picture>Sugar_Cookie</Picture>
+      <Name>糖屑曲奇饼</Name>
+      <EnName>Sugar Cookie</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>打怪随机掉落。食用时可恢复精神2点，饥饿2点。</Introduction>
+      <Console>winter_food2</Console>
+    </Good>
+    <Good>
+      <Picture>Candy_Cane</Picture>
+      <Name>拐杖糖</Name>
+      <EnName>Candy Cane</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>打怪随机掉落。食用时可恢复生命2点，精神2点。</Introduction>
+      <Console>winter_food3</Console>
+    </Good>
+    <Good>
+      <Picture>Eternal_Fruitcake</Picture>
+      <Name>永恒水果蛋糕</Name>
+      <EnName>Eternal Fruitcake</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>打怪随机掉落。食用时可恢复饥饿6点，但精神、生命-2。还是留着喂猪吧……</Introduction>
+      <Console>winter_food4</Console>
+    </Good>
+    <Good>
+      <Picture>Chocolate_Log_Cake</Picture>
+      <Name>巧克力木头蛋糕</Name>
+      <EnName>Chocolate Log Cake</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>打怪随机掉落。食用时可恢复生命1点，精神1点，饥饿2点。</Introduction>
+      <Console>winter_food5</Console>
+    </Good>
+    <Good>
+      <Picture>Plum_Pudding</Picture>
+      <Name>李子布丁</Name>
+      <EnName>Plum Pudding</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>打怪随机掉落。食用时可恢复饥饿4点。</Introduction>
+      <Console>winter_food6</Console>
+    </Good>
+    <Good>
+      <Picture>Apple_Cider</Picture>
+      <Name>苹果酒</Name>
+      <EnName>Apple Cider</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>打怪随机掉落。食用时可恢复生命2点，精神1点。</Introduction>
+      <Console>winter_food7</Console>
+    </Good>
+    <Good>
+      <Picture>Hot_Cocoa</Picture>
+      <Name>热可可</Name>
+      <EnName>Hot Cocoa</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>打怪随机掉落。食用时可恢复生命1点，精神2点。</Introduction>
+      <Console>winter_food8</Console>
+    </Good>  
+    <Good>
+      <Picture>Heavenly_Eggnog</Picture>
+      <Name>天堂蛋酒</Name>
+      <EnName>Heavenly Eggnog</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>打怪随机掉落。食用时可恢复饥饿3点。</Introduction>
+      <Console>winter_food9</Console>
+    </Good>
+    <Good>
+      <Picture>Gift_Wrap</Picture>
+      <Name>礼物包装纸</Name>
+      <EnName>Gift Wrap</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>用起来和捆绑包装纸差不多。生存里用莎草纸*1，花瓣*1制作。</Introduction>
+      <Console>giftwrap</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Tree_Planter_Build</Picture>
+      <Name>节日树花盆</Name>
+      <EnName>Festive Tree Planter</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>在建筑里用粪便*2、木板*1制造。在其中种植任意树种可长成圣诞树。</Introduction>
+      <Console>winter_treestand</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Bauble</Picture>
+      <Name>节日小饰品</Name>
+      <EnName>Red Festive Bauble</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树。</Introduction>
+      <Console>winter_ornament_plain1</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Bauble_2</Picture>
+      <Name>节日小饰品</Name>
+      <EnName>Green Festive Bauble</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树。</Introduction>
+      <Console>winter_ornament_plain2</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Bauble_3</Picture>
+      <Name>节日小饰品</Name>
+      <EnName>Yellow Festive Bauble</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树。</Introduction>
+      <Console>winter_ornament_plain3</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Bauble_4</Picture>
+      <Name>节日小饰品</Name>
+      <EnName>Blue Festive Bauble</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树。</Introduction>
+      <Console>winter_ornament_plain4</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Bauble_5</Picture>
+      <Name>节日小饰品</Name>
+      <EnName>Cyan Festive Bauble</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树。</Introduction>
+      <Console>winter_ornament_plain5</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Bauble_6</Picture>
+      <Name>节日小饰品</Name>
+      <EnName>Pink Festive Bauble</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树。</Introduction>
+      <Console>winter_ornament_plain6</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Bauble_7</Picture>
+      <Name>节日小饰品</Name>
+      <EnName>Golden Festive Bauble</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树。</Introduction>
+      <Console>winter_ornament_plain7</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Bauble_8</Picture>
+      <Name>节日小饰品</Name>
+      <EnName>White Festive Bauble</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树。</Introduction>
+      <Console>winter_ornament_plain8</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Bauble_Fancy</Picture>
+      <Name>节日小饰品</Name>
+      <EnName>Red/Yellow Festive Bauble</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树。</Introduction>
+      <Console>winter_ornament_fancy1</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Bauble_Fancy_2</Picture>
+      <Name>节日小饰品</Name>
+      <EnName>Red/Green Festive Bauble</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树。</Introduction>
+      <Console>winter_ornament_fancy2</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Bauble_Fancy_3</Picture>
+      <Name>节日小饰品</Name>
+      <EnName>Orange/Yellow Festive Bauble</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树。</Introduction>
+      <Console>winter_ornament_fancy3</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Bauble_Fancy_4</Picture>
+      <Name>节日小饰品</Name>
+      <EnName>Blue/Yellow Festive Bauble</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树。</Introduction>
+      <Console>winter_ornament_fancy4</Console>
+    </Good>
+    <Good>
+      <Picture>Magnificent_Adornment_Bearger</Picture>
+      <Name>华丽的装饰物</Name>
+      <EnName>Magnificent Adornment Bearger</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>Boss掉落，装饰圣诞树。</Introduction>
+      <Console>winter_ornament_boss_berger</Console>
+    </Good>
+    <Good>
+      <Picture>Magnificent_Adornment_Deerclops</Picture>
+      <Name>华丽的装饰物</Name>
+      <EnName>Magnificent Adornment Deerclops</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>Boss掉落，装饰圣诞树。</Introduction>
+      <Console>winter_ornament_boss_deerclops</Console>
+    </Good>
+    <Good>
+      <Picture>Magnificent_Adornment_Gmoose</Picture>
+      <Name>华丽的装饰物</Name>
+      <EnName>Magnificent Adornment Moose/Goose</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>Boss掉落，装饰圣诞树。</Introduction>
+      <Console>winter_ornament_boss_moose</Console>
+    </Good>
+    <Good>
+      <Picture>Magnificent_Adornment_Dragonfly</Picture>
+      <Name>华丽的装饰物</Name>
+      <EnName>Magnificent Adornment Dragonfly</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>Boss掉落，装饰圣诞树。</Introduction>
+      <Console>winter_ornament_boss_dragonfly</Console>
+    </Good>
+    <Good>
+      <Picture>Magnificent_Adornment_BeeQueen</Picture>
+      <Name>华丽的装饰物</Name>
+      <EnName>Magnificent Adornment BeeQueen</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>Boss掉落，装饰圣诞树。</Introduction>
+      <Console>winter_ornament_boss_beequeen</Console>
+    </Good>
+    <Good>
+      <Picture>Magnificent_Adornment_Toadstool</Picture>
+      <Name>华丽的装饰物</Name>
+      <EnName>Magnificent Adornment Toadstool</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>Boss掉落，装饰圣诞树。</Introduction>
+      <Console>winter_ornament_boss_toadstool</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Light</Picture>
+      <Name>节日灯光</Name>
+      <EnName>Red Festive Light</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树或者填充蘑菇灯，矿工帽，哈奇等发光设备。</Introduction>
+      <Console>winter_ornament_light1</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Light_2</Picture>
+      <Name>节日灯光</Name>
+      <EnName>Green Festive Light</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树或者填充蘑菇灯，矿工帽，哈奇等发光设备。</Introduction>
+      <Console>winter_ornament_light2</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Light_3</Picture>
+      <Name>节日灯光</Name>
+      <EnName>Blue Festive Light</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树或者填充蘑菇灯，矿工帽，哈奇等发光设备。</Introduction>
+      <Console>winter_ornament_light3</Console>
+    </Good>
+    <Good>
+      <Picture>Festive_Light_4</Picture>
+      <Name>节日灯光</Name>
+      <EnName>White Festive Light</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>装饰圣诞树或者填充蘑菇灯，矿工帽，哈奇等发光设备。</Introduction>
+      <Console>winter_ornament_light4</Console>
+    </Good>
+  </WintersFeast>
+  <YearOfTheGobbler>
+    <Good>
+      <Picture>Gobbler_Shrine_Build</Picture>
+      <Name>火鸡神坛</Name>
+      <EnName>Gobbler Shrine</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>在建筑里，使用金子*8、木板*2制造。用来打开贡品标签。</Introduction>
+      <Console>perdshrine</Console>
+    </Good>
+    <Good>
+      <Picture>Red_Pouch</Picture>
+      <Name>红包</Name>
+      <EnName>Red Pouch</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>击杀火鸡掉落，打开获得招财金元宝。</Introduction>
+      <Console>redpouch</Console>
+    </Good>
+    <Good>
+      <Picture>Lucky_Gold_Nugget</Picture>
+      <Name>招财金元宝</Name>
+      <EnName>Lucky Gold Nugget</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>建造贡品标签里的物品的材料。</Introduction>
+      <Console>lucky_goldnugget</Console>
+    </Good>
+    <Good>
+      <Picture>Red_Firecrackers</Picture>
+      <Name>红色爆竹</Name>
+      <EnName>Red Firecrackers</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>1个招财金元宝建造。点燃后可以惊吓附近的怪物。</Introduction>
+      <Console>firecrackers</Console>
+    </Good>
+    <Good>
+      <Picture>Red_Lantern</Picture>
+      <Name>红灯笼</Name>
+      <EnName>Red Lantern</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>3个招财金元宝建造。提供光照。</Introduction>
+      <Console>redlantern</Console>
+    </Good>
+    <Good>
+      <Picture>Lucky_Fan</Picture>
+      <Name>幸运风扇</Name>
+      <EnName>Lucky Fan</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>3个招财金元宝建造。可对附近的怪物，建筑造成伤害，也可降温。</Introduction>
+      <Console>perdfan</Console>
+    </Good>
+    <Good>
+      <Picture>Lucky_Beast_Head</Picture>
+      <Name>幸运野兽头部</Name>
+      <EnName>Lucky Beast Head</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>8个招财金元宝建造。恢复精神值，跳舞恢复的更多（输入"/dance"）。</Introduction>
+      <Console>dragonheadhat</Console>
+    </Good>
+    <Good>
+      <Picture>Lucky_Beast_Body</Picture>
+      <Name>幸运野兽身体</Name>
+      <EnName>Lucky Beast Body</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>8个招财金元宝建造。恢复精神值，跳舞恢复的更多（输入"/dance"）。</Introduction>
+      <Console>dragonbodyhat</Console>
+    </Good>
+    <Good>
+      <Picture>Lucky_Beast_Tail</Picture>
+      <Name>幸运野兽尾巴</Name>
+      <EnName>Lucky Beast Tail</EnName>
+      <IsROG>0</IsROG>
+      <IsSW>0</IsSW>
+      <IsDST>1</IsDST>
+      <Introduction>8个招财金元宝建造。恢复精神值，跳舞恢复的更多（输入"/dance"）。</Introduction>
+      <Console>dragontailhat</Console>
+    </Good>
+  </YearOfTheGobbler>
+</EventsNode>
