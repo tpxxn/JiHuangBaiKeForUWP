@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using JiHuangBaiKeForUWP.Manager;
 using JiHuangBaiKeForUWP.View;
 
 namespace JiHuangBaiKeForUWP
@@ -26,6 +27,7 @@ namespace JiHuangBaiKeForUWP
         #region 字段成员
 
         private static readonly Color AccentColor = (Color)Application.Current.Resources["SystemAccentColor"];
+        private readonly int _gameVersionSelectIndex;
         private readonly List<ListBoxItem> _iconsListBoxGameDataList;
         private readonly List<ListBoxItem> _iconsListBoxSettingAndAboutList;
 
@@ -36,7 +38,7 @@ namespace JiHuangBaiKeForUWP
         public MainPage()
         {
             InitializeComponent();
-
+            _gameVersionSelectIndex = SettingSet.GameVersionSettingRead();
             _iconsListBoxGameDataList = new List<ListBoxItem>(
                 new[]
                 {
@@ -103,12 +105,18 @@ namespace JiHuangBaiKeForUWP
 
         #region 汉堡菜单
 
+        /// <summary>
+        /// 汉堡菜单按钮触摸事件
+        /// </summary>
         private void HamburgerButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             RootSplit.IsPaneOpen = !RootSplit.IsPaneOpen;
             SetFrameTitleMargin();
         }
 
+        /// <summary>
+        /// 设置Frame框架标题Margin属性
+        /// </summary>
         private void SetFrameTitleMargin()
         {
             if (RootSplit.DisplayMode == SplitViewDisplayMode.CompactInline)
@@ -121,6 +129,9 @@ namespace JiHuangBaiKeForUWP
             }
         }
 
+        /// <summary>
+        /// 汉堡菜单列表按钮触摸事件
+        /// </summary>
         private void IconsListBoxGameData_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (sender == IconsListBoxGameData)
@@ -205,12 +216,17 @@ namespace JiHuangBaiKeForUWP
         #endregion
         
         #region 搜索框
-
+        /// <summary>
+        /// 搜索框内容改变事件
+        /// </summary>
         private void SearchAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
 
         }
 
+        /// <summary>
+        /// 搜索框查询提交事件
+        /// </summary>
         private void SearchAutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
 

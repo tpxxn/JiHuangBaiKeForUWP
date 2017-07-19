@@ -12,16 +12,11 @@ using Windows.Storage.Streams;
 
 namespace JiHuangBaiKeForUWP.Model
 {
-    public class GameVersion
+    [XmlRoot(ElementName = "GameVersionRootNode")]
+    public class Version
     {
-        public string Version { get; set; }
+        [XmlElement(ElementName = "GameVersion")]
+        public List<string> GameVersion { get; set; }
     }
-
-//    [XmlRoot(ElementName = "Version")]
-//    public class Version
-//    {
-//        [XmlElement(ElementName = "GameVersion")]
-//        public string GameVersion { get; set; }
-//    }
 
 }

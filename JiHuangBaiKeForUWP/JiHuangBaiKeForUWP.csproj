@@ -99,7 +99,10 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager\SettingSet.cs" />
-    <Compile Include="Model\GameVersion.cs" />
+    <Compile Include="Model\Version.cs" />
+    <Compile Include="UserControls\SettingPage\GameVersionAddUserControl.xaml.cs">
+      <DependentUpon>GameVersionAddUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
@@ -1499,7 +1502,9 @@
     <Content Include="Xml\Tencent\Natures.xml" />
     <Content Include="Xml\Tencent\Sciences.xml" />
     <Content Include="Xml\Tencent\TencentXml.xml" />
-    <Content Include="Xml\GameVersion.xml" />
+    <Content Include="Xml\GameVersion.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -1509,6 +1514,15 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ComboBoxDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="UserControls\SettingPage\GameVersionAddUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AboutPage.xaml">
       <SubType>Designer</SubType>
