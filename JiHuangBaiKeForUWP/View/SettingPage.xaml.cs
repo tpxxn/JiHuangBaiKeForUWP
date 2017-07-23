@@ -42,10 +42,10 @@ namespace JiHuangBaiKeForUWP.View
 
         public SettingPage()
         {
+            GameVersionDeserialize();
             this.InitializeComponent();
             ThemeToggleSwitch.IsOn = SettingSet.ThemeSettingRead();
             _gameVersionSelectIndex = SettingSet.GameVersionSettingRead();
-            GameVersionDeserialize();
         }
 
         #endregion
@@ -94,8 +94,7 @@ namespace JiHuangBaiKeForUWP.View
             using (var stream = accessStream.AsStreamForWrite((int)accessStream.Size))
             {
                 var version = new Model.Version();
-                //TODO System.NullReferenceException错误 原因未知
-                version.GameVersion.AddRange(_versionData);
+                version.GameVersion.AddRange(_versionData);//TODO System.NullReferenceException错误 原因未知
                 serializer.Serialize(stream, version);
             }
         }
@@ -141,11 +140,10 @@ namespace JiHuangBaiKeForUWP.View
                             AddErrorDialog("FileNameSame");
                         }
                     }
-                    if (fileNameSameFlag == false)//判断配置文件名没问题
+                    if (fileNameSameFlag == false) //判断配置文件名没问题
                     {
                         _versionData.Add(gameVersionString);
-                        //TODO 该函数含有错误
-                        GameVersionSerialize();
+                        GameVersionSerialize(); //TODO 该函数含有错误
                     }
                 }
             }
