@@ -99,7 +99,8 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager\SettingSet.cs" />
-    <Compile Include="Model\Version.cs" />
+    <Compile Include="Model\CharactersJson.cs" />
+    <Compile Include="Model\VersionJson.cs" />
     <Compile Include="UserControls\SettingPage\GameVersionAddUserControl.xaml.cs">
       <DependentUpon>GameVersionAddUserControl.xaml</DependentUpon>
     </Compile>
@@ -134,6 +135,8 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="JiHuangBaiKeForUWP_TemporaryKey.pfx" />
+    <None Include="Xml\DST\Characters.json" />
+    <Content Include="Xml\GameVersion.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GameResources\Creatures\A_ancient_guardian.png" />
@@ -1502,9 +1505,6 @@
     <Content Include="Xml\Tencent\Natures.xml" />
     <Content Include="Xml\Tencent\Sciences.xml" />
     <Content Include="Xml\Tencent\TencentXml.xml" />
-    <Content Include="Xml\GameVersion.xml">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

@@ -6,12 +6,9 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
-using Windows.Data.Xml.Dom;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
-using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,6 +20,7 @@ using JiHuangBaiKeForUWP.Manager;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls.SettingPage;
 using Microsoft.Win32.SafeHandles;
+using Newtonsoft.Json;
 
 namespace JiHuangBaiKeForUWP.View
 {
@@ -43,9 +41,9 @@ namespace JiHuangBaiKeForUWP.View
         public SettingPage()
         {
             GameVersionDeserialize();
+            _gameVersionSelectIndex = SettingSet.GameVersionSettingRead();
             this.InitializeComponent();
             ThemeToggleSwitch.IsOn = SettingSet.ThemeSettingRead();
-            _gameVersionSelectIndex = SettingSet.GameVersionSettingRead();
         }
 
         #endregion
@@ -68,35 +66,39 @@ namespace JiHuangBaiKeForUWP.View
         /// </summary>
         public async void GameVersionDeserialize()
         {
-            var xmlUri = new Uri("ms-appx:///Xml/GameVersion.xml");
-            var xmlFile = await StorageFile.GetFileFromApplicationUriAsync(xmlUri);
-            var serializer = new XmlSerializer(typeof(Model.Version));
-            var accessStream = await xmlFile.OpenReadAsync();
-            using (var stream = accessStream.AsStreamForRead((int)accessStream.Size))
+            const string name = "GameVersion";
+            var uri = new Uri("ms-appx:///Xml/GameVersion.json");
+            StorageFile file;
+            var applicationFolder = ApplicationData.Current.LocalFolder;
+            try
             {
-                var xml = (Model.Version)serializer.Deserialize(stream);
-                foreach (var str in xml.GameVersion)
-                {
-                    _versionData.Add(str);
-                }
+                file = await applicationFolder.GetFileAsync(name);
+            }
+            catch
+            {
+                file = await StorageFile.GetFileFromApplicationUriAsync(uri);
+            }
+            var str = await FileIO.ReadTextAsync(file);
+            var version = JsonConvert.DeserializeObject<VersionJson.RootObject>(str);
+            foreach (var gameVersion in version.GameVersionRootNode.GameVersion)
+            {
+                _versionData.Add(gameVersion);
             }
         }
-
+        
         /// <summary>
         /// 序列化游戏版本
         /// </summary>
         public async void GameVersionSerialize()
         {
-            var xmlUri = new Uri("ms-appx:///Xml/GameVersion.xml");
-            var xmlFile = await StorageFile.GetFileFromApplicationUriAsync(xmlUri);
-            var serializer = new XmlSerializer(typeof(Model.Version));
-            var accessStream = await xmlFile.OpenReadAsync();
-            using (var stream = accessStream.AsStreamForWrite((int)accessStream.Size))
-            {
-                var version = new Model.Version();
-                version.GameVersion.AddRange(_versionData);//TODO System.NullReferenceException错误 原因未知
-                serializer.Serialize(stream, version);
-            }
+            const string name = "GameVersion";
+            var folder = ApplicationData.Current.LocalFolder;
+            var file = await folder.CreateFileAsync("temp", CreationCollisionOption.ReplaceExisting);
+            var version = new VersionJson.RootObject();
+            version.GameVersionRootNode.GameVersion.AddRange(_versionData);
+            var str = JsonConvert.SerializeObject(version);
+            await FileIO.WriteTextAsync(file, str);
+            await file.MoveAsync(folder, name, NameCollisionOption.ReplaceExisting);
         }
 
         /// <summary>
@@ -104,9 +106,12 @@ namespace JiHuangBaiKeForUWP.View
         /// </summary>
         private void GameVersionComboBox_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
-            GameVersionComboBox.SelectedIndex = _gameVersionSelectIndex < _versionData.Count
-                ? _gameVersionSelectIndex
-                : 3;
+            if (GameVersionComboBox.Items != null && GameVersionComboBox.Items.Count >= 5)
+            {
+                GameVersionComboBox.SelectedIndex = _gameVersionSelectIndex < _versionData.Count
+                    ? _gameVersionSelectIndex
+                    : 3;
+            }
         }
 
         /// <summary>
@@ -143,7 +148,8 @@ namespace JiHuangBaiKeForUWP.View
                     if (fileNameSameFlag == false) //判断配置文件名没问题
                     {
                         _versionData.Add(gameVersionString);
-                        GameVersionSerialize(); //TODO 该函数含有错误
+                        GameVersionComboBox.SelectedIndex = _versionData.Count - 1;
+                        GameVersionSerialize();
                     }
                 }
             }
@@ -209,7 +215,7 @@ namespace JiHuangBaiKeForUWP.View
         /// <summary>
         /// 删除游戏配置文件
         /// </summary>
-        private void GameVersionDeleteButton_Tapped(object sender, TappedRoutedEventArgs e)
+        private async void GameVersionDeleteButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (GameVersionComboBox.SelectedIndex <= 4)
             {
@@ -217,9 +223,31 @@ namespace JiHuangBaiKeForUWP.View
             }
             else
             {
-                _versionData.RemoveAt(GameVersionComboBox.SelectedIndex);
-                GameVersionComboBox.SelectedIndex = 3;
-                //TODO 删除配置文件
+                var dialog = new ContentDialog()
+                {
+                    Title = "删除配置文件",
+                    Content = "确认删除" + GameVersionComboBox.SelectedItem +"配置文件？",
+                    PrimaryButtonText = "确定",
+                    SecondaryButtonText = "取消",
+                    FullSizeDesired = false,
+                };
+                dialog.PrimaryButtonClick += (_s, _e) => { };
+                var result = await dialog.ShowAsync();
+
+                if (result == ContentDialogResult.Primary)
+                {
+                    _versionData.RemoveAt(GameVersionComboBox.SelectedIndex);
+                    GameVersionComboBox.SelectedIndex = 3;
+                    const string name = "GameVersion";
+                    var folder = ApplicationData.Current.LocalFolder;
+                    var file = await folder.CreateFileAsync("temp", CreationCollisionOption.ReplaceExisting);
+                    var version = new VersionJson.RootObject();
+                    version.GameVersionRootNode.GameVersion.AddRange(_versionData);
+                    var str = JsonConvert.SerializeObject(version);
+                    await FileIO.WriteTextAsync(file, str);
+                    await file.MoveAsync(folder, name, NameCollisionOption.ReplaceExisting);
+                    //TODO 删除配置文件
+                }
             }
         }
 

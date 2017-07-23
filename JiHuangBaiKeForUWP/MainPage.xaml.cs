@@ -201,16 +201,17 @@ namespace JiHuangBaiKeForUWP
                 RootSplit.IsPaneOpen = false;
             }
 
-            //            var dialog = new ContentDialog()
-            //            {
-            //                Title = "测试",
-            //                Content = ((ListBoxItem)((ListBox)sender).SelectedItem).Name,
-            //                PrimaryButtonText = "确定",
-            //                FullSizeDesired = false,
-            //            };
-            //            dialog.PrimaryButtonClick += (_s, _e) => { };
-            //            await dialog.ShowAsync();
-            
+
+//            var dialog = new ContentDialog()
+//            {
+//                Title = "当前目录",
+//                Content = ApplicationData.Current.LocalFolder.Path,
+//                PrimaryButtonText = "确定",
+//                FullSizeDesired = false,
+//            };
+//            dialog.PrimaryButtonClick += (s, e) => { };
+//            await dialog.ShowAsync();
+
         }
 
         #endregion
