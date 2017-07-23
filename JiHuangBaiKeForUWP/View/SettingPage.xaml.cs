@@ -80,7 +80,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             var str = await FileIO.ReadTextAsync(file);
             var version = JsonConvert.DeserializeObject<VersionJson.RootObject>(str);
-            foreach (var gameVersion in version.GameVersionRootNode.GameVersion)
+            foreach (var gameVersion in version.GameVersion)
             {
                 _versionData.Add(gameVersion);
             }
@@ -95,7 +95,7 @@ namespace JiHuangBaiKeForUWP.View
             var folder = ApplicationData.Current.LocalFolder;
             var file = await folder.CreateFileAsync("temp", CreationCollisionOption.ReplaceExisting);
             var version = new VersionJson.RootObject();
-            version.GameVersionRootNode.GameVersion.AddRange(_versionData);
+            version.GameVersion.AddRange(_versionData);
             var str = JsonConvert.SerializeObject(version);
             await FileIO.WriteTextAsync(file, str);
             await file.MoveAsync(folder, name, NameCollisionOption.ReplaceExisting);
@@ -150,6 +150,7 @@ namespace JiHuangBaiKeForUWP.View
                         _versionData.Add(gameVersionString);
                         GameVersionComboBox.SelectedIndex = _versionData.Count - 1;
                         GameVersionSerialize();
+                        //TODO 添加游戏配置文件
                     }
                 }
             }

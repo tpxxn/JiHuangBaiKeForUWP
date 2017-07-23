@@ -1,11 +1,9 @@
 ﻿{
-  "GameVersionRootNode": {
-    "GameVersion": [
-      "DS(饥荒单机)",
-      "RoG(巨兽统治)",
-      "SW(失落之船)",
-      "DST(饥荒联机)",
-      "TGP/QQGame"
-    ]
-  }
+  "GameVersion": [
+    "DS(饥荒单机)",
+    "RoG(巨兽统治)",
+    "SW(失落之船)",
+    "DST(饥荒联机)",
+    "TGP/QQGame"
+  ]
 }
