@@ -138,6 +138,10 @@
     <None Include="JiHuangBaiKeForUWP_TemporaryKey.pfx" />
     <None Include="Xml\DST\Characters.json" />
     <Content Include="Xml\GameVersion.json" />
+    <None Include="Xml\DS\Characters.json" />
+    <None Include="Xml\ROG\Characters.json" />
+    <None Include="Xml\SW\Characters.json" />
+    <None Include="Xml\Tencent\Characters.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GameResources\Creatures\A_ancient_guardian.png" />
@@ -1466,7 +1470,6 @@
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Xml\Characters.xml" />
     <Content Include="Xml\Creatures.xml" />
-    <Content Include="Xml\DST\Characters.xml" />
     <Content Include="Xml\DST\Creatures.xml" />
     <Content Include="Xml\DST\DSTXml.xml" />
     <Content Include="Xml\DST\Foods.xml" />
@@ -1478,13 +1481,11 @@
     <Content Include="Xml\DS\Sciences.xml" />
     <Content Include="Xml\DS\Goods.xml" />
     <Content Include="Xml\DS\Creatures.xml" />
-    <Content Include="Xml\DS\Characters.xml" />
     <Content Include="Xml\DS\DSXml.xml" />
     <Content Include="Xml\Events.xml" />
     <Content Include="Xml\Foods.xml" />
     <Content Include="Xml\Goods.xml" />
     <Content Include="Xml\Natures.xml" />
-    <Content Include="Xml\ROG\Characters.xml" />
     <Content Include="Xml\ROG\Creatures.xml" />
     <Content Include="Xml\ROG\Foods.xml" />
     <Content Include="Xml\ROG\Goods.xml" />
@@ -1492,14 +1493,12 @@
     <Content Include="Xml\ROG\RoGXml.xml" />
     <Content Include="Xml\ROG\Sciences.xml" />
     <Content Include="Xml\Science.xml" />
-    <Content Include="Xml\SW\Characters.xml" />
     <Content Include="Xml\SW\Creatures.xml" />
     <Content Include="Xml\SW\Foods.xml" />
     <Content Include="Xml\SW\Goods.xml" />
     <Content Include="Xml\SW\Natures.xml" />
     <Content Include="Xml\SW\Sciences.xml" />
     <Content Include="Xml\SW\SWXml.xml" />
-    <Content Include="Xml\Tencent\Characters.xml" />
     <Content Include="Xml\Tencent\Creatures.xml" />
     <Content Include="Xml\Tencent\Foods.xml" />
     <Content Include="Xml\Tencent\Goods.xml" />

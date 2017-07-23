@@ -11,10 +11,10 @@ namespace JiHuangBaiKeForUWP.Model
             public string EnName { get; set; }
             public string Motto { get; set; }
             public List<string> Descriptions { get; set; }
-            public int Health { get; set; }
-            public int Hunger { get; set; }
-            public int Sanity { get; set; }
-            public double Damage { get; set; }
+            public object Health { get; set; }
+            public object Hunger { get; set; }
+            public object Sanity { get; set; }
+            public object Damage { get; set; }
             public string Introduce { get; set; }
             public string Console { get; set; }
             public int? LogMeter { get; set; }
