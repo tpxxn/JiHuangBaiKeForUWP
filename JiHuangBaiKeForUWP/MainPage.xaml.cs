@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Manager;
+using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View;
 
 namespace JiHuangBaiKeForUWP
@@ -27,7 +28,6 @@ namespace JiHuangBaiKeForUWP
         #region 字段成员
 
         private static readonly Color AccentColor = (Color)Application.Current.Resources["SystemAccentColor"];
-        private readonly int _gameVersionSelectIndex;
         private readonly List<ListBoxItem> _iconsListBoxGameDataList;
         private readonly List<ListBoxItem> _iconsListBoxSettingAndAboutList;
 
@@ -38,7 +38,8 @@ namespace JiHuangBaiKeForUWP
         public MainPage()
         {
             InitializeComponent();
-            _gameVersionSelectIndex = SettingSet.GameVersionSettingRead();
+            //读取游戏版本
+            Global.GlobalGameVersion = SettingSet.GameVersionSettingRead();
             _iconsListBoxGameDataList = new List<ListBoxItem>(
                 new[]
                 {

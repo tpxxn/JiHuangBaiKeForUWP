@@ -33,11 +33,6 @@
                               ItemContainerStyle="{StaticResource ComboBoxItemStyle}" 
                               DataContextChanged="GameVersionComboBox_DataContextChanged" 
                               SelectionChanged="GameVersionComboBox_SelectionChanged" Width="200" />
-                    <Button x:Name="GameVersionAddButton" Margin="15,0,0,0" ToolTipService.ToolTip="添加配置文件" Tapped="GameVersionAddButton_Tapped" VerticalAlignment="Stretch">
-                        <Button.Content>
-                            <SymbolIcon Symbol="Add"/>
-                        </Button.Content>
-                    </Button>
                     <Button x:Name="GameVersionCopyButton" Margin="15,0,0,0" ToolTipService.ToolTip="复制配置文件" Tapped="GameVersionCopyButton_Tapped">
                         <Button.Content>
                             <SymbolIcon Symbol="Copy"/>

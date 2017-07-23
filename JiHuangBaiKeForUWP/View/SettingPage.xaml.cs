@@ -41,7 +41,7 @@ namespace JiHuangBaiKeForUWP.View
         public SettingPage()
         {
             GameVersionDeserialize();
-            _gameVersionSelectIndex = SettingSet.GameVersionSettingRead();
+            _gameVersionSelectIndex = Global.GlobalGameVersion;
             this.InitializeComponent();
             ThemeToggleSwitch.IsOn = SettingSet.ThemeSettingRead();
         }
@@ -121,19 +121,20 @@ namespace JiHuangBaiKeForUWP.View
         {
             SettingSet.GameVersionSettingSet(GameVersionComboBox.SelectedIndex);
         }
-
+        
         /// <summary>
-        /// 添加游戏配置文件
+        /// 复制游戏配置文件
         /// </summary>
-        private async void GameVersionAddButton_Tapped(object sender, TappedRoutedEventArgs e)
+        private async void GameVersionCopyButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            var gameVersionString = await DisplayGameVersionAddDialog();
+
+            var gameVersionString = await DisplayGameVersionCopyDialog();
             var fileNameSameFlag = false;
             if (gameVersionString != null)
             {
                 if (gameVersionString == "")
                 {
-                    AddErrorDialog("Null");
+                    CopyErrorDialog("Null");
                 }
                 else
                 {
@@ -142,7 +143,7 @@ namespace JiHuangBaiKeForUWP.View
                         if (gameVersionString == versionData)
                         {
                             fileNameSameFlag = true;
-                            AddErrorDialog("FileNameSame");
+                            CopyErrorDialog("FileNameSame");
                         }
                     }
                     if (fileNameSameFlag == false) //判断配置文件名没问题
@@ -150,38 +151,38 @@ namespace JiHuangBaiKeForUWP.View
                         _versionData.Add(gameVersionString);
                         GameVersionComboBox.SelectedIndex = _versionData.Count - 1;
                         GameVersionSerialize();
-                        //TODO 添加游戏配置文件
+                        //TODO 复制配置文件
                     }
                 }
             }
         }
 
         /// <summary>
-        /// 显示游戏版本添加对话框
+        /// 显示游戏版本复制对话框
         /// </summary>
         /// <returns>文本框字符串</returns>
-        private static async Task<string> DisplayGameVersionAddDialog()
+        private static async Task<string> DisplayGameVersionCopyDialog()
         {
             var getText = "";
             var gameVersionAddDialog = new ContentDialog()
             {
-                Title = "添加配置文件",
+                Title = "复制配置文件",
                 Content = new GameVersionAddUserControl(),
                 PrimaryButtonText = "确定",
                 SecondaryButtonText = "取消"
             };
             var result = await gameVersionAddDialog.ShowAsync();
             getText = result == ContentDialogResult.Primary
-                ? ((GameVersionAddUserControl) gameVersionAddDialog.Content).GetText()
+                ? ((GameVersionAddUserControl)gameVersionAddDialog.Content).GetText()
                 : null;
             return getText;
         }
 
         /// <summary>
-        /// 添加错误对话框
+        /// 复制错误对话框
         /// </summary>
         /// <param name="errorType">错误类型</param>
-        private static async void AddErrorDialog(string errorType)
+        private static async void CopyErrorDialog(string errorType)
         {
             var errorTypeContent = "";
             switch (errorType)
@@ -203,14 +204,6 @@ namespace JiHuangBaiKeForUWP.View
                 PrimaryButtonText = "确定",
             };
             await errorDialog.ShowAsync();
-        }
-
-        /// <summary>
-        /// 复制游戏配置文件
-        /// </summary>
-        private void GameVersionCopyButton_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            //TODO 复制配置文件
         }
 
         /// <summary>
@@ -243,7 +236,7 @@ namespace JiHuangBaiKeForUWP.View
                     var folder = ApplicationData.Current.LocalFolder;
                     var file = await folder.CreateFileAsync("temp", CreationCollisionOption.ReplaceExisting);
                     var version = new VersionJson.RootObject();
-                    version.GameVersionRootNode.GameVersion.AddRange(_versionData);
+                    version.GameVersion.AddRange(_versionData);
                     var str = JsonConvert.SerializeObject(version);
                     await FileIO.WriteTextAsync(file, str);
                     await file.MoveAsync(folder, name, NameCollisionOption.ReplaceExisting);
