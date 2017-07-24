@@ -5,9 +5,40 @@
     xmlns:local="using:JiHuangBaiKeForUWP.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:liveCharts="using:LiveCharts.Uwp"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Tapped="Grid_Tapped">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-    </Grid>
+            <Image x:Name="CharacterImage" Stretch="Uniform" Height="220" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="1" x:Name="CharacterName" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="2" x:Name="CharacterEnName" FontSize="25" FontFamily="/Assets/Font/belisa_plumilla.ttf#Belisa plumilla manual" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="3" x:Name="CharacterMotto" FontSize="20" HorizontalAlignment="Center" />
+            <liveCharts:CartesianChart Margin="5" Grid.Row="4" Width="180" Height="90">
+                <liveCharts:CartesianChart.Series>
+                    <liveCharts:RowSeries x:Name="Hunger" Title="饥饿" DataLabels="True" LabelPosition="Merged" />
+                    <liveCharts:RowSeries x:Name="Health" Title="血量" DataLabels="True" LabelPosition="Merged" />
+                    <liveCharts:RowSeries x:Name="Sanity" Title="精神" DataLabels="True" LabelPosition="Merged" />
+                </liveCharts:CartesianChart.Series>
+            </liveCharts:CartesianChart>
+            <TextBlock Grid.Row="5" x:Name="CharacterDamage" HorizontalAlignment="Center" Margin="10" />
+            <TextBlock Grid.Row="6" x:Name="CharacterDescription1" HorizontalAlignment="Left" Margin="50,5,10,5" Visibility="Collapsed"/>
+            <TextBlock Grid.Row="7" x:Name="CharacterDescription2" HorizontalAlignment="Left" Margin="50,5,10,5" Visibility="Collapsed"/>
+            <TextBlock Grid.Row="8" x:Name="CharacterDescription3" HorizontalAlignment="Left" Margin="50,5,10,5" Visibility="Collapsed"/>
+            <TextBlock Grid.Row="9" x:Name="CharacterIntroduction" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="10" />
+        </Grid>
+    </ScrollViewer>
 </Page>

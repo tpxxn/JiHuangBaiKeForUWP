@@ -19,8 +19,8 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel x:Name="CharacterStackPanel"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <GridView Name="CharacterGridView" 
                   Margin="10"
                   ItemsSource="{x:Bind _characterData}" 

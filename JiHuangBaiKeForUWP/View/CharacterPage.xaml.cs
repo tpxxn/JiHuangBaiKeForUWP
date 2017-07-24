@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
+using Microsoft.Toolkit.Uwp.UI.Animations;
 using Newtonsoft.Json;
 
 namespace JiHuangBaiKeForUWP.View
@@ -25,7 +26,7 @@ namespace JiHuangBaiKeForUWP.View
     public sealed partial class CharacterPage : Page
     {
         private readonly ObservableCollection<Character> _characterData = new ObservableCollection<Character>();
-//        private readonly Style _transparent = (Style)Application.Current.Resources["TransparentDialog"];
+        private readonly Style _transparent = (Style)Application.Current.Resources["TransparentDialog"];
 
         public CharacterPage()
         {
@@ -72,31 +73,30 @@ namespace JiHuangBaiKeForUWP.View
 
         private async void CharacterGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-//            var c = e.ClickedItem as CharactersJson.Character;
-//
-//            var contentDialog = new ContentDialog()
-//            {
-//                Content = new CharacterDialog(c),
-//                PrimaryButtonText = "确定",
-//                FullSizeDesired = false
-//            };
-//
-//            contentDialog.Style = _transparent;
-//
-//            contentDialog.Closed += async (_s, _e) =>
-//            {
-//                await CharacterGrid.Blur(value: 0, duration: 0, delay: 0).StartAsync();
-//                contentDialog.Hide();
-//            };
-//
-//            contentDialog.PrimaryButtonClick += async (_s, _e) =>
-//            {
-//                await CharacterGrid.Blur(value: 0, duration: 0, delay: 0).StartAsync();
-//                contentDialog.Hide();
-//            };
-//            await CharacterGrid.Blur(value: 7, duration: 100, delay: 0).StartAsync();
-//
-//            await contentDialog.ShowAsync();
+            var c = e.ClickedItem as Character;
+
+            var contentDialog = new ContentDialog
+            {
+                Content = new CharacterDialog(c),
+                PrimaryButtonText = "确定",
+                FullSizeDesired = false,
+                Style = _transparent
+            };
+
+            contentDialog.Closed += async (_s, _e) =>
+            {
+                await CharacterStackPanel.Blur(value: 0, duration: 0, delay: 0).StartAsync();
+                contentDialog.Hide();
+            };
+
+            contentDialog.PrimaryButtonClick += async (_s, _e) =>
+            {
+                await CharacterStackPanel.Blur(value: 0, duration: 0, delay: 0).StartAsync();
+                contentDialog.Hide();
+            };
+            await CharacterStackPanel.Blur(value: 7, duration: 100, delay: 0).StartAsync();
+
+            await contentDialog.ShowAsync();
         }
     }
 }

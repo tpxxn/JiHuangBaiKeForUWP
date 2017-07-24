@@ -138,6 +138,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\Font\belisa_plumilla.ttf" />
+    <Content Include="Assets\Font\holomdl2.ttf" />
+    <Content Include="Assets\Font\segmdl2.ttf" />
     <None Include="JiHuangBaiKeForUWP_TemporaryKey.pfx" />
     <Content Include="Xml\DST\Characters.json" />
     <Content Include="Xml\GameVersion.json" />
@@ -1519,6 +1522,11 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\ComboBoxDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Styles\TransparentDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
