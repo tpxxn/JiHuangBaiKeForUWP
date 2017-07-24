@@ -1,18 +1,30 @@
-﻿using JiHuangBaiKeForUWP.DateType;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace JiHuangBaiKeForUWP.Model
 {
-    public class CharactersJson
+    public class CharacterRootObject
     {
-        public class RootObject
-        {
-            public List<Character> Characters { get; set; }
-
-            public RootObject()
-            {
-                Characters = new List<Character>();
-            }
-        }
+        public List<Character> Character { get; set; }
     }
+
+    public class Character
+    {
+        public string Picture { get; set; }
+        public string Name { get; set; }
+        public string EnName { get; set; }
+        public string Motto { get; set; }
+        public List<string> Descriptions { get; set; }
+        public double Health { get; set; }
+        public double Hunger { get; set; }
+        public double Sanity { get; set; }
+        public double Damage { get; set; }
+        public string Introduce { get; set; }
+        public string Console { get; set; }
+        public int? LogMeter { get; set; }
+        public int? DamageDay { get; set; }
+        public int? DamageDusk { get; set; }
+        public int? DamageNight { get; set; }
+    }
+
 }

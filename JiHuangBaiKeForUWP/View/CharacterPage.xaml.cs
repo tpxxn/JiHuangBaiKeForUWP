@@ -14,16 +14,13 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using JiHuangBaiKeForUWP.DateType;
 using JiHuangBaiKeForUWP.Model;
 using Newtonsoft.Json;
-
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
 namespace JiHuangBaiKeForUWP.View
 {
     /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
+    /// Character页面
     /// </summary>
     public sealed partial class CharacterPage : Page
     {
@@ -33,7 +30,10 @@ namespace JiHuangBaiKeForUWP.View
         public CharacterPage()
         {
             this.InitializeComponent();
-            Deserialize();
+            if (Global.GameVersionChanged)
+            {
+                Deserialize();
+            }
         }
 
         public async void Deserialize()
@@ -59,10 +59,14 @@ namespace JiHuangBaiKeForUWP.View
             }
             var storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
             var str = await FileIO.ReadTextAsync(storageFile);
-            var character = JsonConvert.DeserializeObject<CharactersJson.RootObject>(str);
-            foreach (var characterItems in character.Characters)
+            var character = JsonConvert.DeserializeObject<CharacterRootObject>(str);
+            foreach (var characterItems in character.Character)
             {
                 _characterData.Add(characterItems);
+            }
+            foreach (var characterItems in _characterData)
+            {
+                characterItems.Picture = $"ms-appx:///Assets/GameResources/Charcters/{characterItems.Picture}.png";
             }
         }
 

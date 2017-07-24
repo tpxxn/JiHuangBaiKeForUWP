@@ -5,10 +5,10 @@
     xmlns:local="using:JiHuangBaiKeForUWP.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:dateType="using:JiHuangBaiKeForUWP.DateType"
+    xmlns:model="using:JiHuangBaiKeForUWP.Model"
     mc:Ignorable="d">
     <Page.Resources>
-        <DataTemplate x:Key="CharacterDataTemplate" x:DataType="dateType:Character">
+        <DataTemplate x:Key="CharacterDataTemplate" x:DataType="model:Character">
             <Grid Margin="5" Width="135" Height="210">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />

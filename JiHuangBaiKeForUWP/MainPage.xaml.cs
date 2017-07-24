@@ -71,7 +71,7 @@ namespace JiHuangBaiKeForUWP
         public void GlobalInitializeComponent()
         {
             Global.GameVersion = SettingSet.GameVersionSettingRead();
-            Global.GameVersionChanged = false;
+            Global.GameVersionChanged = true;
             GameVersionDeserialize();
         }
         /// <summary>
