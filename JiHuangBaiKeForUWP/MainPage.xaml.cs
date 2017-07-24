@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -17,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Manager;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View;
+using Newtonsoft.Json;
 
 namespace JiHuangBaiKeForUWP
 {
@@ -38,8 +40,8 @@ namespace JiHuangBaiKeForUWP
         public MainPage()
         {
             InitializeComponent();
+            GlobalInitializeComponent();
             //读取游戏版本
-            Global.GlobalGameVersion = SettingSet.GameVersionSettingRead();
             _iconsListBoxGameDataList = new List<ListBoxItem>(
                 new[]
                 {
@@ -63,6 +65,38 @@ namespace JiHuangBaiKeForUWP
             RootFrame.SourcePageType = typeof(CharacterPage);
         }
 
+        /// <summary>
+        /// 全局变量初始化
+        /// </summary>
+        public void GlobalInitializeComponent()
+        {
+            Global.GameVersion = SettingSet.GameVersionSettingRead();
+            Global.GameVersionChanged = false;
+            GameVersionDeserialize();
+        }
+        /// <summary>
+        /// 反序列化游戏版本
+        /// </summary>
+        public async void GameVersionDeserialize()
+        {
+            const string filaName = "GameVersion";
+            var uri = new Uri("ms-appx:///Xml/GameVersion.json");
+            StorageFile storageFile;
+            try
+            {
+                storageFile = await Global.ApplicationFolder.GetFileAsync(filaName);
+            }
+            catch
+            {
+                storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
+            }
+            var str = await FileIO.ReadTextAsync(storageFile);
+            var version = JsonConvert.DeserializeObject<VersionJson.RootObject>(str);
+            foreach (var gameVersion in version.GameVersion)
+            {
+                Global.VersionData.Add(gameVersion);
+            }
+        }
         #endregion
 
         #region 设置背景色跟随系统背景色

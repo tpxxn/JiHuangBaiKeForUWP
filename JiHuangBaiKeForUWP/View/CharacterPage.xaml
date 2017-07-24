@@ -5,9 +5,28 @@
     xmlns:local="using:JiHuangBaiKeForUWP.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dateType="using:JiHuangBaiKeForUWP.DateType"
     mc:Ignorable="d">
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    </Grid>
+    <Page.Resources>
+        <DataTemplate x:Key="CharacterDataTemplate" x:DataType="dateType:Character">
+            <Grid Margin="5" Width="135" Height="210">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <GridView Name="CharacterGridView" 
+                  Margin="10"
+                  ItemsSource="{x:Bind _characterData}" 
+                  ItemTemplate="{StaticResource CharacterDataTemplate}" 
+                  SelectionMode="None" 
+                  IsItemClickEnabled="True" 
+                  ItemClick="CharacterGridView_ItemClick" />
+    </StackPanel>
 </Page>

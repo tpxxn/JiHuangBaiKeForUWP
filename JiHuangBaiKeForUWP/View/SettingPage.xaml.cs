@@ -41,7 +41,7 @@ namespace JiHuangBaiKeForUWP.View
         public SettingPage()
         {
             GameVersionDeserialize();
-            _gameVersionSelectIndex = Global.GlobalGameVersion;
+            _gameVersionSelectIndex = Global.GameVersion;
             this.InitializeComponent();
             ThemeToggleSwitch.IsOn = SettingSet.ThemeSettingRead();
         }
@@ -64,23 +64,9 @@ namespace JiHuangBaiKeForUWP.View
         /// <summary>
         /// 反序列化游戏版本
         /// </summary>
-        public async void GameVersionDeserialize()
+        public void GameVersionDeserialize()
         {
-            const string name = "GameVersion";
-            var uri = new Uri("ms-appx:///Xml/GameVersion.json");
-            StorageFile file;
-            var applicationFolder = ApplicationData.Current.LocalFolder;
-            try
-            {
-                file = await applicationFolder.GetFileAsync(name);
-            }
-            catch
-            {
-                file = await StorageFile.GetFileFromApplicationUriAsync(uri);
-            }
-            var str = await FileIO.ReadTextAsync(file);
-            var version = JsonConvert.DeserializeObject<VersionJson.RootObject>(str);
-            foreach (var gameVersion in version.GameVersion)
+            foreach (var gameVersion in Global.VersionData)
             {
                 _versionData.Add(gameVersion);
             }
@@ -91,14 +77,13 @@ namespace JiHuangBaiKeForUWP.View
         /// </summary>
         public async void GameVersionSerialize()
         {
-            const string name = "GameVersion";
-            var folder = ApplicationData.Current.LocalFolder;
-            var file = await folder.CreateFileAsync("temp", CreationCollisionOption.ReplaceExisting);
+            const string filaName = "GameVersion";
+            var storageFile = await Global.ApplicationFolder.CreateFileAsync("temp", CreationCollisionOption.ReplaceExisting);
             var version = new VersionJson.RootObject();
             version.GameVersion.AddRange(_versionData);
             var str = JsonConvert.SerializeObject(version);
-            await FileIO.WriteTextAsync(file, str);
-            await file.MoveAsync(folder, name, NameCollisionOption.ReplaceExisting);
+            await FileIO.WriteTextAsync(storageFile, str);
+            await storageFile.MoveAsync(Global.ApplicationFolder, filaName, NameCollisionOption.ReplaceExisting);
         }
 
         /// <summary>
@@ -120,6 +105,8 @@ namespace JiHuangBaiKeForUWP.View
         private void GameVersionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SettingSet.GameVersionSettingSet(GameVersionComboBox.SelectedIndex);
+            Global.GameVersion = GameVersionComboBox.SelectedIndex;
+            Global.GameVersionChanged = true;
         }
         
         /// <summary>
@@ -163,7 +150,7 @@ namespace JiHuangBaiKeForUWP.View
         /// <returns>文本框字符串</returns>
         private static async Task<string> DisplayGameVersionCopyDialog()
         {
-            var getText = "";
+            string getText;
             var gameVersionAddDialog = new ContentDialog()
             {
                 Title = "复制配置文件",
@@ -184,7 +171,7 @@ namespace JiHuangBaiKeForUWP.View
         /// <param name="errorType">错误类型</param>
         private static async void CopyErrorDialog(string errorType)
         {
-            var errorTypeContent = "";
+            string errorTypeContent;
             switch (errorType)
             {
                 case "Null":
