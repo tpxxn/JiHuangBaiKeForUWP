@@ -7,6 +7,8 @@
 ## 简介
 最新最全饥荒资料，就在饥荒百科全书！
 
+![image](https://github.com/tpxxn/JiHuangBaiKeForUWP/blob/master/SoftwarePrintScreen.png)
+
 网站http://www.jihuangbaike.com/ 
 
 开发环境：Visual Studio 2017、Windows 10
