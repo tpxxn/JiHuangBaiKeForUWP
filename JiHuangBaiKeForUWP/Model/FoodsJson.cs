@@ -26,12 +26,12 @@ namespace JiHuangBaiKeForUWP.Model
         public string Name { get; set; }
         public string EnName { get; set; }
         public bool PortableCrockPot { get; set; }
-        public string Health { get; set; }
-        public string Hunger { get; set; }
-        public string Sanity { get; set; }
-        public string Perish { get; set; }
-        public string Cooktime { get; set; }
-        public string Priority { get; set; }
+        public double Health { get; set; }
+        public double Hunger { get; set; }
+        public double Sanity { get; set; }
+        public double Perish { get; set; }
+        public double Cooktime { get; set; }
+        public double Priority { get; set; }
         public string NeedPicture1 { get; set; }
         public string Need1 { get; set; }
         public string NeedPicture2 { get; set; }
@@ -56,10 +56,10 @@ namespace JiHuangBaiKeForUWP.Model
         public string Picture { get; set; }
         public string Name { get; set; }
         public string EnName { get; set; }
-        public string Health { get; set; }
-        public string Hunger { get; set; }
-        public string Sanity { get; set; }
-        public string Perish { get; set; }
+        public double Health { get; set; }
+        public double Hunger { get; set; }
+        public double Sanity { get; set; }
+        public double Perish { get; set; }
         public string Attribute { get; set; }
         public string AttributeValue { get; set; }
         public string Introduce { get; set; }
@@ -73,10 +73,10 @@ namespace JiHuangBaiKeForUWP.Model
         public string Picture { get; set; }
         public string Name { get; set; }
         public string EnName { get; set; }
-        public string Health { get; set; }
-        public string Hunger { get; set; }
-        public string Sanity { get; set; }
-        public string Perish { get; set; }
+        public double Health { get; set; }
+        public double Hunger { get; set; }
+        public double Sanity { get; set; }
+        public double Perish { get; set; }
         public string Attribute { get; set; }
         public string AttributeValue { get; set; }
         public string Introduce { get; set; }
@@ -88,10 +88,10 @@ namespace JiHuangBaiKeForUWP.Model
         public string Picture { get; set; }
         public string Name { get; set; }
         public string EnName { get; set; }
-        public string Health { get; set; }
-        public string Hunger { get; set; }
-        public string Sanity { get; set; }
-        public string Perish { get; set; }
+        public double Health { get; set; }
+        public double Hunger { get; set; }
+        public double Sanity { get; set; }
+        public double Perish { get; set; }
         public string Attribute { get; set; }
         public string AttributeValue { get; set; }
         public string Introduce { get; set; }
@@ -105,10 +105,10 @@ namespace JiHuangBaiKeForUWP.Model
         public string Picture { get; set; }
         public string Name { get; set; }
         public string EnName { get; set; }
-        public string Health { get; set; }
-        public string Hunger { get; set; }
-        public string Sanity { get; set; }
-        public string Perish { get; set; }
+        public double Health { get; set; }
+        public double Hunger { get; set; }
+        public double Sanity { get; set; }
+        public double Perish { get; set; }
         public string Attribute { get; set; }
         public string AttributeValue { get; set; }
         public string Introduce { get; set; }
@@ -120,10 +120,10 @@ namespace JiHuangBaiKeForUWP.Model
         public string Picture { get; set; }
         public string Name { get; set; }
         public string EnName { get; set; }
-        public string Health { get; set; }
-        public string Hunger { get; set; }
-        public string Sanity { get; set; }
-        public string Perish { get; set; }
+        public double Health { get; set; }
+        public double Hunger { get; set; }
+        public double Sanity { get; set; }
+        public double Perish { get; set; }
         public string Attribute { get; set; }
         public string AttributeValue { get; set; }
         public string Introduce { get; set; }
@@ -135,10 +135,10 @@ namespace JiHuangBaiKeForUWP.Model
         public string Picture { get; set; }
         public string Name { get; set; }
         public string EnName { get; set; }
-        public string Health { get; set; }
-        public string Hunger { get; set; }
-        public string Sanity { get; set; }
-        public string Perish { get; set; }
+        public double Health { get; set; }
+        public double Hunger { get; set; }
+        public double Sanity { get; set; }
+        public double Perish { get; set; }
         public string Attribute { get; set; }
         public string Introduce { get; set; }
         public string Console { get; set; }
