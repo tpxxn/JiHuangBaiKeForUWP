@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -15,6 +16,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using LiveCharts;
+using LiveCharts.Uwp;
 
 namespace JiHuangBaiKeForUWP.View
 {
@@ -26,6 +28,7 @@ namespace JiHuangBaiKeForUWP.View
         public CharacterDialog(Character c)
         {
             this.InitializeComponent();
+
             CharacterImage.Source = new BitmapImage(new Uri(c.Picture));
             CharacterName.Text = c.Name;
             CharacterEnName.Text = c.EnName;
@@ -33,10 +36,27 @@ namespace JiHuangBaiKeForUWP.View
             {
                 CharacterMotto.Text = c.Motto;
             }
-            Hunger.Values = new ChartValues<double>(new[] { c.Hunger });
-            Health.Values = new ChartValues<double>(new[] { c.Health });
-            Sanity.Values = new ChartValues<double>(new[] { c.Sanity });
-            CharacterDamage.Text = $"伤害：{c.Damage} 倍";
+            else
+            {
+                CharacterMotto.Visibility = Visibility.Collapsed;
+            }
+            CharacterHunger.Value = c.Hunger;
+            CharacterHunger.BarColor = new SolidColorBrush(Colors.Blue);
+            CharacterHealth.Value = c.Health;
+            CharacterHealth.BarColor = new SolidColorBrush(Colors.Red);
+            CharacterSanity.Value = c.Sanity;
+            CharacterSanity.BarColor = new SolidColorBrush(Colors.Yellow);
+            //            Hunger.Values = new ChartValues<double>(new[] { c.Hunger });
+            //            Health.Values = new ChartValues<double>(new[] { c.Health });
+            //            Sanity.Values = new ChartValues<double>(new[] { c.Sanity });
+            if (c.Name == "海獭伍迪" || c.Name == "阿比盖尔")
+            {
+                CharacterDamage.Text = $"伤害：{c.Damage} 点";
+            }
+            else
+            {
+                CharacterDamage.Text = $"伤害：{c.Damage} 倍";
+            }
             if (c.Descriptions != null)
             {
                 CharacterDescription1.Text = c.Descriptions[0];

@@ -1,13 +1,7 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace JiHuangBaiKeForUWP.Model
 {
-    public class CharacterRootObject
-    {
-        public List<Character> Character { get; set; }
-    }
-
     public class Character
     {
         public string Picture { get; set; }
@@ -27,4 +21,8 @@ namespace JiHuangBaiKeForUWP.Model
         public int? DamageNight { get; set; }
     }
 
+    public class CharacterRootObject
+    {
+        public List<Character> Character { get; set; }
+    }
 }
