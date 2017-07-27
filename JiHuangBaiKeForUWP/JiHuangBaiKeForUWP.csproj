@@ -109,6 +109,11 @@
     <Compile Include="UserControls\Charts\BarChart.xaml.cs">
       <DependentUpon>BarChart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Expander\Expander.xaml.cs">
+      <DependentUpon>Expander.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Expander\ValueConvert\BoolToVisibility.cs" />
+    <Compile Include="UserControls\Expander\ValueConvert\BoolToVisibility_Reverse.cs" />
     <Compile Include="UserControls\SettingPage\GameVersionAddUserControl.xaml.cs">
       <DependentUpon>GameVersionAddUserControl.xaml</DependentUpon>
     </Compile>
@@ -1538,6 +1543,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="UserControls\Charts\BarChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Expander\Expander.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

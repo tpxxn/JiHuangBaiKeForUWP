@@ -5,9 +5,25 @@
     xmlns:local="using:JiHuangBaiKeForUWP.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="using:JiHuangBaiKeForUWP.UserControls.Expander"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <uc:Expander Margin="263,90,275,132">
+            <uc:Expander.Header>
+                <StackPanel>
+                    <TextBlock Text="213"/>
+                    <TextBlock Text="234"/>
+                </StackPanel>
+            </uc:Expander.Header>
+            <StackPanel>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+            </StackPanel>
+        </uc:Expander>
     </Grid>
 </Page>
+
+
+
