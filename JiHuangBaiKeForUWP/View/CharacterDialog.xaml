@@ -10,7 +10,7 @@
     mc:Ignorable="d">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid Tapped="Grid_Tapped">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -32,13 +32,6 @@
                 <charts:BarChart x:Name="CharacterHealth" Label="生命"/>
                 <charts:BarChart x:Name="CharacterSanity" Label="精神"/>
             </StackPanel>
-            <!--            <liveCharts:CartesianChart Grid.Row="4" Margin="5" Width="180" Height="90">-->
-            <!--                <liveCharts:CartesianChart.Series>-->
-            <!--                    <liveCharts:ColumnSeries x:Name="Hunger" Title="饥饿" DataLabels="True" LabelsPosition="Merged"/>-->
-            <!--                    <liveCharts:ColumnSeries x:Name="Health" Title="血量" DataLabels="True" LabelsPosition="Merged"/>-->
-            <!--                    <liveCharts:ColumnSeries x:Name="Sanity" Title="精神" DataLabels="True" LabelsPosition="Merged"/>-->
-            <!--                </liveCharts:CartesianChart.Series>-->
-            <!--            </liveCharts:CartesianChart>-->
             <TextBlock Grid.Row="5" x:Name="CharacterDamage" HorizontalAlignment="Center" Margin="10" />
             <TextBlock Grid.Row="6" x:Name="CharacterDescription1" HorizontalAlignment="Left" Margin="50,5,10,5" Visibility="Collapsed"/>
             <TextBlock Grid.Row="7" x:Name="CharacterDescription2" HorizontalAlignment="Left" Margin="50,5,10,5" Visibility="Collapsed"/>

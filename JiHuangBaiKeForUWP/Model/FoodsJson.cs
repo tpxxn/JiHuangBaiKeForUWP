@@ -153,5 +153,16 @@ namespace JiHuangBaiKeForUWP.Model
         public List<FoodEgg> FoodEggs { get; set; }
         public List<FoodOther> FoodOthers { get; set; }
         public List<FoodNoFc> FoodNoFc { get; set; }
+
+        public FoodRootObject()
+        {
+            FoodRecipe = new List<FoodRecipe>();
+            FoodMeats = new List<FoodMeat>();
+            FoodVegetables = new List<FoodVegetable>();
+            FoodFruit = new List<FoodFruit>();
+            FoodEggs = new List<FoodEgg>();
+            FoodOthers = new List<FoodOther>();
+            FoodNoFc = new List<FoodNoFc>();
+        }
     }
 }

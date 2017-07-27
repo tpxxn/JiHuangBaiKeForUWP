@@ -163,11 +163,11 @@
     <Content Include="Xml\ROG\Characters.json" />
     <Content Include="Xml\SW\Characters.json" />
     <Content Include="Xml\Tencent\Characters.json" />
-    <None Include="Xml\DST\Foods.json" />
-    <None Include="Xml\DS\Foods.json" />
-    <None Include="Xml\ROG\Foods.json" />
-    <None Include="Xml\SW\Foods.json" />
-    <None Include="Xml\Tencent\Foods.json" />
+    <Content Include="Xml\DST\Foods.json" />
+    <Content Include="Xml\DS\Foods.json" />
+    <Content Include="Xml\ROG\Foods.json" />
+    <Content Include="Xml\SW\Foods.json" />
+    <Content Include="Xml\Tencent\Foods.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GameResources\Creatures\A_ancient_guardian.png" />

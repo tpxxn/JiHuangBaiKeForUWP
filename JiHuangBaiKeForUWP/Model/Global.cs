@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.UI.Xaml;
 
 namespace JiHuangBaiKeForUWP.Model
 {
@@ -12,6 +13,9 @@ namespace JiHuangBaiKeForUWP.Model
     public static class Global
     {
         public static readonly StorageFolder ApplicationFolder = ApplicationData.Current.LocalFolder;
+
+        #region 游戏版本
+
         public static int GameVersion { get; set; }
         public static bool GameVersionChanged { get; set; }
         public static string[] BuiltInGameVersion = 
@@ -22,7 +26,12 @@ namespace JiHuangBaiKeForUWP.Model
         {
             "DS", "ROG", "SW", "DST", "Tencent",
         };
-
+        
         public static ObservableCollection<string> VersionData = new ObservableCollection<string>();
+
+        #endregion
+
+        public static readonly Style Transparent = (Style)Application.Current.Resources["TransparentDialog"];
+
     }
 }

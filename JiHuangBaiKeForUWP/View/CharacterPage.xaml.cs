@@ -26,7 +26,6 @@ namespace JiHuangBaiKeForUWP.View
     public sealed partial class CharacterPage : Page
     {
         private readonly ObservableCollection<Character> _characterData = new ObservableCollection<Character>();
-        private readonly Style _transparent = (Style)Application.Current.Resources["TransparentDialog"];
 
         public CharacterPage()
         {
@@ -80,21 +79,21 @@ namespace JiHuangBaiKeForUWP.View
                 Content = new CharacterDialog(c),
                 PrimaryButtonText = "确定",
                 FullSizeDesired = false,
-                Style = _transparent
+                Style = Global.Transparent
             };
 
-            contentDialog.Closed += async (_s, _e) =>
+            contentDialog.Closed += async delegate
             {
-                await CharacterStackPanel.Blur(value: 0, duration: 0, delay: 0).StartAsync();
+                await CharacterStackPanel.Blur(0, 0).StartAsync();
                 contentDialog.Hide();
             };
 
-            contentDialog.PrimaryButtonClick += async (_s, _e) =>
+            contentDialog.PrimaryButtonClick += async delegate
             {
-                await CharacterStackPanel.Blur(value: 0, duration: 0, delay: 0).StartAsync();
+                await CharacterStackPanel.Blur(0, 0).StartAsync();
                 contentDialog.Hide();
             };
-            await CharacterStackPanel.Blur(value: 7, duration: 100, delay: 0).StartAsync();
+            await CharacterStackPanel.Blur(7, 100).StartAsync();
 
             await contentDialog.ShowAsync();
         }

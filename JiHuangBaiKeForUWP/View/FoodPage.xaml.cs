@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -14,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
+using Newtonsoft.Json;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -24,16 +26,103 @@ namespace JiHuangBaiKeForUWP.View
     /// </summary>
     public sealed partial class FoodPage : Page
     {
-        private readonly ObservableCollection<Character> _foodRecipeData = new ObservableCollection<Character>();
-        private readonly ObservableCollection<Character> _foodMeatData = new ObservableCollection<Character>();
-        private readonly ObservableCollection<Character> _foodVegetableData = new ObservableCollection<Character>();
-        private readonly ObservableCollection<Character> _foodFruitData = new ObservableCollection<Character>();
-        private readonly ObservableCollection<Character> _foodEggData = new ObservableCollection<Character>();
-        private readonly ObservableCollection<Character> _foodOtherData = new ObservableCollection<Character>();
-        private readonly ObservableCollection<Character> _foodNoFcData = new ObservableCollection<Character>();
+        private readonly ObservableCollection<FoodRecipe> _foodRecipeData = new ObservableCollection<FoodRecipe>();
+        private readonly ObservableCollection<FoodMeat> _foodMeatData = new ObservableCollection<FoodMeat>();
+        private readonly ObservableCollection<FoodVegetable> _foodVegetableData = new ObservableCollection<FoodVegetable>();
+        private readonly ObservableCollection<FoodFruit> _foodFruitData = new ObservableCollection<FoodFruit>();
+        private readonly ObservableCollection<FoodEgg> _foodEggData = new ObservableCollection<FoodEgg>();
+        private readonly ObservableCollection<FoodOther> _foodOtherData = new ObservableCollection<FoodOther>();
+        private readonly ObservableCollection<FoodNoFc> _foodNoFcData = new ObservableCollection<FoodNoFc>();
         public FoodPage()
         {
             this.InitializeComponent();
+            if (Global.GameVersionChanged)
+            {
+                Deserialize();
+            }
+        }
+
+        public async void Deserialize()
+        {
+            Uri uri;
+            const string fileName = "Foods.json";
+            if (Global.GameVersion < 5) //内置配置文件
+            {
+                var folderExists = await Global.ApplicationFolder.TryGetItemAsync(Global.BuiltInGameVersion[Global.GameVersion]);
+                if (folderExists == null)
+                {
+                    uri = new Uri("ms-appx:///Xml/" + Global.BuiltInGameVersionXmlFolder[Global.GameVersion] + "/" +
+                                  fileName);
+                }
+                else
+                {
+                    uri = new Uri(Global.ApplicationFolder.Path + "/" + Global.BuiltInGameVersion[Global.GameVersion] + "/" + fileName);
+                }
+            }
+            else //用户自建配置文件
+            {
+                uri = new Uri(Global.ApplicationFolder.Path + "/" + Global.VersionData[Global.GameVersion] + "/" + fileName);
+            }
+            var storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
+            //TODO System.ArgumentOutOfRangeException:“在多字节的目标代码页中，没有此 Unicode 字符可以映射到的字符。
+            var str = await FileIO.ReadTextAsync(storageFile);
+            var food = JsonConvert.DeserializeObject<FoodRootObject>(str);
+            foreach (var foodRecipeItems in food.FoodRecipe)
+            {
+                _foodRecipeData.Add(foodRecipeItems);
+            }
+            foreach (var foodRecipeItems in _foodRecipeData)
+            {
+                foodRecipeItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodRecipeItems.Picture}.png";
+            }
+            foreach (var foodMeatsItems in food.FoodMeats)
+            {
+                _foodMeatData.Add(foodMeatsItems);
+            }
+            foreach (var foodMeatsItems in _foodMeatData)
+            {
+                foodMeatsItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodMeatsItems.Picture}.png";
+            }
+            foreach (var foodVegetablesItems in food.FoodVegetables)
+            {
+                _foodVegetableData.Add(foodVegetablesItems);
+            }
+            foreach (var foodVegetablesItems in _foodVegetableData)
+            {
+                foodVegetablesItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodVegetablesItems.Picture}.png";
+            }
+            foreach (var foodFruitItems in food.FoodFruit)
+            {
+                _foodFruitData.Add(foodFruitItems);
+            }
+            foreach (var foodFruitItems in _foodFruitData)
+            {
+                foodFruitItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodFruitItems.Picture}.png";
+            }
+            foreach (var foodEggsItems in food.FoodEggs)
+            {
+                _foodEggData.Add(foodEggsItems);
+            }
+            foreach (var foodEggsItems in _foodEggData)
+            {
+                foodEggsItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodEggsItems.Picture}.png";
+            }
+            foreach (var foodOthersItems in food.FoodOthers)
+            {
+                _foodOtherData.Add(foodOthersItems);
+            }
+            foreach (var foodOthersItems in _foodOtherData)
+            {
+                foodOthersItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodOthersItems.Picture}.png";
+            }
+            foreach (var foodNoFcItems in food.FoodNoFc)
+            {
+                _foodNoFcData.Add(foodNoFcItems);
+            }
+            foreach (var foodNoFcItems in _foodNoFcData)
+            {
+                foodNoFcItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodNoFcItems.Picture}.png";
+            }
         }
 
         private void FoodRecipeGridView_ItemClick(object sender, ItemClickEventArgs e)

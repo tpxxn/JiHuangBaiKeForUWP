@@ -74,10 +74,5 @@ namespace JiHuangBaiKeForUWP.View
             }
             CharacterIntroduction.Text = c.Introduce;
         }
-
-        private void Grid_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
     }
 }
