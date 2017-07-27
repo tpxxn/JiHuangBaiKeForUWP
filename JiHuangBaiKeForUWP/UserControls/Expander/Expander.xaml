@@ -22,9 +22,9 @@
         </Grid.RowDefinitions>
         <ToggleButton x:Name="ExpandToggleButton" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="{x:Bind Padding,Mode=OneWay}" Click="Expand_Button_Click">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="&#xE0AB;" FontFamily="Segoe MDL2 Assets" FontSize="{x:Bind FontSize,Mode=OneWay}" FontWeight="{x:Bind FontWeight,Mode=OneWay}" VerticalAlignment="Center" Visibility="{x:Bind IsExPanded,Mode=OneWay,Converter={StaticResource BoolToVisibilityReverse}}"/>
-                <TextBlock Text="&#xE1FD;" FontFamily="Segoe MDL2 Assets" FontSize="{x:Bind FontSize,Mode=OneWay}" FontWeight="{x:Bind FontWeight,Mode=OneWay}" VerticalAlignment="Center" Visibility="{x:Bind IsExPanded,Mode=OneWay,Converter={StaticResource BoolToVisibility}}"/>
-                <ContentPresenter Content="{x:Bind Header,Mode=OneWay}" Margin="20,0"/>
+                <TextBlock Margin="5,0" Text="&#xEDDA;" FontFamily="Segoe MDL2 Assets" FontSize="{x:Bind FontSize,Mode=OneWay}" FontWeight="{x:Bind FontWeight,Mode=OneWay}" VerticalAlignment="Center" Visibility="{x:Bind IsExPanded,Mode=OneWay,Converter={StaticResource BoolToVisibilityReverse}}"/>
+                <TextBlock Margin="5,0" Text="&#xEDDC;" FontFamily="Segoe MDL2 Assets" FontSize="{x:Bind FontSize,Mode=OneWay}" FontWeight="{x:Bind FontWeight,Mode=OneWay}" VerticalAlignment="Center" Visibility="{x:Bind IsExPanded,Mode=OneWay,Converter={StaticResource BoolToVisibility}}"/>
+                <ContentPresenter Content="{x:Bind Header,Mode=OneWay}" Margin="10,0"/>
             </StackPanel>
         </ToggleButton>
         <ContentPresenter Grid.Row="1" Content="{x:Bind ExpandContent,Mode=OneWay}" Visibility="{x:Bind IsExPanded,Mode=OneWay,Converter={StaticResource BoolToVisibility}}"/>

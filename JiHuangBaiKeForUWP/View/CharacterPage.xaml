@@ -5,10 +5,11 @@
     xmlns:local="using:JiHuangBaiKeForUWP.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:model="using:JiHuangBaiKeForUWP.Model"
+    xmlns:datetype="using:JiHuangBaiKeForUWP.Model"
     mc:Ignorable="d">
+    
     <Page.Resources>
-        <DataTemplate x:Key="CharacterDataTemplate" x:DataType="model:Character">
+        <DataTemplate x:Key="CharacterDataTemplate" x:DataType="datetype:Character">
             <Grid Margin="5" Width="135" Height="210">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -20,13 +21,15 @@
         </DataTemplate>
     </Page.Resources>
 
-    <StackPanel x:Name="CharacterStackPanel"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <GridView Name="CharacterGridView" 
-                  Margin="10"
-                  ItemsSource="{x:Bind _characterData}" 
-                  ItemTemplate="{StaticResource CharacterDataTemplate}" 
-                  SelectionMode="None" 
-                  IsItemClickEnabled="True" 
-                  ItemClick="CharacterGridView_ItemClick" />
-    </StackPanel>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="CharacterStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <GridView Name="CharacterGridView" 
+                      Margin="10"
+                      ItemsSource="{x:Bind _characterData}" 
+                      ItemTemplate="{StaticResource CharacterDataTemplate}" 
+                      SelectionMode="None" 
+                      IsItemClickEnabled="True" 
+                      ItemClick="CharacterGridView_ItemClick" />
+        </StackPanel>
+    </ScrollViewer>
 </Page>

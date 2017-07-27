@@ -67,7 +67,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Expander
         private void Expand_Button_Click(object sender, RoutedEventArgs e)
         {
             IsExPanded = !IsExPanded;
-            (sender as ToggleButton).IsChecked = IsExPanded;
+            if (sender is ToggleButton toggleButton) toggleButton.IsChecked = IsExPanded;
         }
     }
 }

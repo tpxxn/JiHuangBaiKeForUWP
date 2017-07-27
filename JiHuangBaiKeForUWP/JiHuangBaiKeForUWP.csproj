@@ -155,6 +155,8 @@
     <Content Include="Assets\Font\segmdl2.ttf" />
     <None Include="ClassDiagram1.cd" />
     <None Include="JiHuangBaiKeForUWP_TemporaryKey.pfx" />
+    <Content Include="Assets\GameResources\CP_CrockPot.png" />
+    <Content Include="Assets\GameResources\CP_PortableCrockPot.png" />
     <Content Include="Xml\DST\Characters.json" />
     <Content Include="Xml\GameVersion.json" />
     <Content Include="Xml\DS\Characters.json" />
