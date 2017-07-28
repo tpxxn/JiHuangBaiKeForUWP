@@ -45,7 +45,7 @@ namespace JiHuangBaiKeForUWP.View
                 var folderExists = await Global.ApplicationFolder.TryGetItemAsync(Global.BuiltInGameVersion[Global.GameVersion]);
                 if (folderExists == null)
                 {
-                    uri = new Uri("ms-appx:///Json/" + Global.BuiltInGameVersionXmlFolder[Global.GameVersion] + "/" +
+                    uri = new Uri("ms-appx:///Json/" + Global.BuiltInGameVersionJsonFolder[Global.GameVersion] + "/" +
                                   fileName);
                 }
                 else
@@ -70,10 +70,9 @@ namespace JiHuangBaiKeForUWP.View
             }
         }
 
-        private async void CharacterGridView_ItemClick(object sender, ItemClickEventArgs e)
+        private void CharacterGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var c = e.ClickedItem as Character;
-
             var contentDialog = new ContentDialog
             {
                 Content = new CharacterDialog(c),
@@ -81,21 +80,7 @@ namespace JiHuangBaiKeForUWP.View
                 FullSizeDesired = false,
                 Style = Global.Transparent
             };
-
-            contentDialog.Closed += async delegate
-            {
-                await CharacterStackPanel.Blur(0, 0).StartAsync();
-                contentDialog.Hide();
-            };
-
-            contentDialog.PrimaryButtonClick += async delegate
-            {
-                await CharacterStackPanel.Blur(0, 0).StartAsync();
-                contentDialog.Hide();
-            };
-            await CharacterStackPanel.Blur(7, 100).StartAsync();
-
-            await contentDialog.ShowAsync();
+            Global.ShowDialog(contentDialog, CharacterStackPanel);
         }
     }
 }

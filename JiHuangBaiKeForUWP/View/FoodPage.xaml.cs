@@ -49,7 +49,7 @@ namespace JiHuangBaiKeForUWP.View
                 var folderExists = await Global.ApplicationFolder.TryGetItemAsync(Global.BuiltInGameVersion[Global.GameVersion]);
                 if (folderExists == null)
                 {
-                    uri = new Uri("ms-appx:///Json/" + Global.BuiltInGameVersionXmlFolder[Global.GameVersion] + "/" +
+                    uri = new Uri("ms-appx:///Json/" + Global.BuiltInGameVersionJsonFolder[Global.GameVersion] + "/" +
                                   fileName);
                 }
                 else

@@ -89,7 +89,7 @@
     </Page.Resources>
     
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel x:Name="FoodStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <uc:Expander VerticalAlignment="Top" FontSize="17" IsExPanded="True">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
