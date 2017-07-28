@@ -1,15 +1,27 @@
-﻿using JiHuangBaiKeForUWP.Model;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Navigation;
+using JiHuangBaiKeForUWP.Model;
 
-namespace JiHuangBaiKeForUWP.View
+// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
+
+namespace JiHuangBaiKeForUWP.View.Dialog
 {
     /// <summary>
-    /// Character对话框
+    /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
     public sealed partial class CharacterDialog : Page
     {
@@ -28,15 +40,12 @@ namespace JiHuangBaiKeForUWP.View
             {
                 CharacterMotto.Visibility = Visibility.Collapsed;
             }
-            CharacterHunger.Value = c.Hunger;
-            CharacterHunger.BarColor = new SolidColorBrush(Colors.Blue);
             CharacterHealth.Value = c.Health;
-            CharacterHealth.BarColor = new SolidColorBrush(Colors.Red);
+            CharacterHealth.BarColor = Global.ColorGreen;
+            CharacterHunger.Value = c.Hunger;
+            CharacterHunger.BarColor = Global.ColorKhaki;
             CharacterSanity.Value = c.Sanity;
-            CharacterSanity.BarColor = new SolidColorBrush(Colors.Yellow);
-            //            Hunger.Values = new ChartValues<double>(new[] { c.Hunger });
-            //            Health.Values = new ChartValues<double>(new[] { c.Health });
-            //            Sanity.Values = new ChartValues<double>(new[] { c.Sanity });
+            CharacterSanity.BarColor = Global.ColorRed;
             if (c.Name == "海獭伍迪" || c.Name == "阿比盖尔")
             {
                 CharacterDamage.Text = $"伤害：{c.Damage} 点";

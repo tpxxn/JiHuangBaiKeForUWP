@@ -23,8 +23,8 @@ namespace JiHuangBaiKeForUWP.UserControls.Expander
 
         public bool IsExPanded
         {
-            get { return (bool)GetValue(IsExPandedProperty); }
-            set { SetValue(IsExPandedProperty, value); }
+            get => (bool)GetValue(IsExPandedProperty);
+            set => SetValue(IsExPandedProperty, value);
         }
 
         public static readonly DependencyProperty IsExPandedProperty =
@@ -36,8 +36,8 @@ namespace JiHuangBaiKeForUWP.UserControls.Expander
 
         public object Header
         {
-            get { return (object)GetValue(HeaderProperty); }
-            set { SetValue(HeaderProperty, value); }
+            get => (object)GetValue(HeaderProperty);
+            set => SetValue(HeaderProperty, value);
         }
 
         public static readonly DependencyProperty HeaderProperty =
@@ -49,8 +49,8 @@ namespace JiHuangBaiKeForUWP.UserControls.Expander
 
         public object ExpandContent
         {
-            get { return (object)GetValue(ExpandContentProperty); }
-            set { SetValue(ExpandContentProperty, value); }
+            get => (object)GetValue(ExpandContentProperty);
+            set => SetValue(ExpandContentProperty, value);
         }
 
         public static readonly DependencyProperty ExpandContentProperty =

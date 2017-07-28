@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
+using JiHuangBaiKeForUWP.View.Dialog;
 using Newtonsoft.Json;
 
 namespace JiHuangBaiKeForUWP.View
@@ -124,7 +125,15 @@ namespace JiHuangBaiKeForUWP.View
 
         private void FoodRecipeGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            var c = e.ClickedItem as FoodRecipe;
+            var contentDialog = new ContentDialog
+            {
+                Content = new FoodRecipeDialog(c),
+                PrimaryButtonText = "确定",
+                FullSizeDesired = false,
+                Style = Global.Transparent
+            };
+            Global.ShowDialog(contentDialog, FoodStackPanel);
         }
 
         private void FoodMeatGridView_ItemClick(object sender, ItemClickEventArgs e)

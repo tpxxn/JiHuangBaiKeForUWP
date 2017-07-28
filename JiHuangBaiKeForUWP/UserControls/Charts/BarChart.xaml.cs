@@ -13,18 +13,26 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
             this.InitializeComponent();
         }
 
+        public double MaxValue
+        {
+            get => (double)GetValue(MaxValueProperty);
+            set => SetValue(MaxValueProperty, value);
+        }
+
+        public static readonly DependencyProperty MaxValueProperty =
+            DependencyProperty.Register("MaxValue", typeof(double), typeof(BarChart), new PropertyMetadata(1));
         #region 依赖属性：值
 
         public double Value
         {
-            get { return (double)GetValue(ValueProperty); }
-            set { SetValue(ValueProperty, value); }
+            get => (double)GetValue(ValueProperty);
+            set => SetValue(ValueProperty, value);
         }
 
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(BarChart), new PropertyMetadata(false, OnValueChang));
+            DependencyProperty.Register("Value", typeof(double), typeof(BarChart), new PropertyMetadata(false, OnValueChanged));
 
-        private static void OnValueChang(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue != null)
             {
@@ -37,7 +45,15 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
                 {
                     barChart.Visibility = Visibility.Collapsed;
                 }
-                barChart.ValueRectangle.Width = (double)e.NewValue / 2;
+                if ((double)e.NewValue < 0)
+                {
+                    barChart.ValueTextBlock.Foreground = new SolidColorBrush(Colors.White);
+                    barChart.ValueRectangle.Width = -(double)e.NewValue / barChart.MaxValue * 300;
+                }
+                else
+                {
+                    barChart.ValueRectangle.Width = (double)e.NewValue / barChart.MaxValue * 300;
+                }
             }
         }
         #endregion
@@ -46,14 +62,14 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
 
         public string Label
         {
-            get { return (string)GetValue(LabelProperty); }
-            set { SetValue(LabelProperty, value); }
+            get => (string)GetValue(LabelProperty);
+            set => SetValue(LabelProperty, value);
         }
 
         public static readonly DependencyProperty LabelProperty =
-            DependencyProperty.Register("Label", typeof(string), typeof(BarChart), new PropertyMetadata(false, OnLabelChang));
+            DependencyProperty.Register("Label", typeof(string), typeof(BarChart), new PropertyMetadata(false, OnLabelChanged));
 
-        private static void OnLabelChang(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnLabelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue != null)
             {
@@ -68,14 +84,14 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
 
         public SolidColorBrush BarColor
         {
-            get { return (SolidColorBrush)GetValue(BarColorProperty); }
-            set { SetValue(BarColorProperty, value); }
+            get => (SolidColorBrush)GetValue(BarColorProperty);
+            set => SetValue(BarColorProperty, value);
         }
 
         public static readonly DependencyProperty BarColorProperty =
-            DependencyProperty.Register("BarColor", typeof(SolidColorBrush), typeof(BarChart), new PropertyMetadata(false, OnBarColorChang));
+            DependencyProperty.Register("BarColor", typeof(SolidColorBrush), typeof(BarChart), new PropertyMetadata(false, OnBarColorChanged));
 
-        private static void OnBarColorChang(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnBarColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue != null)
             {

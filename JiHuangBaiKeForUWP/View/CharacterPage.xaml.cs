@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using Microsoft.Toolkit.Uwp.UI.Animations;
 using Newtonsoft.Json;
+using JiHuangBaiKeForUWP.View.Dialog;
 
 namespace JiHuangBaiKeForUWP.View
 {

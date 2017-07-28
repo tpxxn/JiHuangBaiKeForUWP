@@ -19,7 +19,7 @@
             </TransformGroup>
         </RelativePanel.RenderTransform>
         <TextBlock x:Name="LabelTextBlock" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0"/>
-        <Rectangle x:Name="ValueRectangle" Fill="#FFF4F4F5" Height="20" Width="300" RelativePanel.LeftOf="" RelativePanel.RightOf="LabelTextBlock"/>
+        <Rectangle x:Name="ValueRectangle" Fill="#FFF4F4F5" Height="20" Width="300" MinWidth="32" RelativePanel.RightOf="LabelTextBlock"/>
         <TextBlock x:Name="ValueTextBlock" FontSize="12" RelativePanel.AlignHorizontalCenterWith="ValueRectangle" TextWrapping="Wrap" RelativePanel.AlignVerticalCenterWith="ValueRectangle" Foreground="Black" FontWeight="Bold"/>
     </RelativePanel>
 </UserControl>

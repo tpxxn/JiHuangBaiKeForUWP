@@ -20,6 +20,16 @@ namespace JiHuangBaiKeForUWP.Model
         public string Text { get; set; }
     }
 
+    public class Restrictions4
+    {
+        public string Pre { get; set; }
+        public string Text { get; set; }
+    }
+    public class Restrictions5
+    {
+        public string Pre { get; set; }
+        public string Text { get; set; }
+    }
     public class FoodRecipe
     {
         public string Picture { get; set; }
@@ -43,12 +53,23 @@ namespace JiHuangBaiKeForUWP.Model
         public Restrictions1 Restrictions1 { get; set; }
         public Restrictions2 Restrictions2 { get; set; }
         public Restrictions3 Restrictions3 { get; set; }
+        public Restrictions4 Restrictions4 { get; set; }
+        public Restrictions5 Restrictions5 { get; set; }
         public string Recommend1 { get; set; }
         public string Recommend2 { get; set; }
         public string Recommend3 { get; set; }
         public string Recommend4 { get; set; }
         public string Introduce { get; set; }
         public string Console { get; set; }
+
+        public FoodRecipe()
+        {
+            Restrictions1 = new Restrictions1();
+            Restrictions2 = new Restrictions2();
+            Restrictions3 = new Restrictions3();
+            Restrictions4 = new Restrictions4();
+            Restrictions5 = new Restrictions5();
+        } 
     }
 
     public class FoodMeat

@@ -114,6 +114,9 @@
     </Compile>
     <Compile Include="UserControls\Expander\ValueConvert\BoolToVisibility.cs" />
     <Compile Include="UserControls\Expander\ValueConvert\BoolToVisibility_Reverse.cs" />
+    <Compile Include="UserControls\PicButton.xaml.cs">
+      <DependentUpon>PicButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SettingPage\GameVersionAddUserControl.xaml.cs">
       <DependentUpon>GameVersionAddUserControl.xaml</DependentUpon>
     </Compile>
@@ -124,11 +127,14 @@
     <Compile Include="View\AnimalPage.xaml.cs">
       <DependentUpon>AnimalPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CharacterDialog.xaml.cs">
-      <DependentUpon>CharacterDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\CharacterPage.xaml.cs">
       <DependentUpon>CharacterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\CharacterDialog.xaml.cs">
+      <DependentUpon>CharacterDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\FoodRecipeDialog.xaml.cs">
+      <DependentUpon>FoodRecipeDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FoodPage.xaml.cs">
       <DependentUpon>FoodPage.xaml</DependentUpon>
@@ -1552,6 +1558,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\PicButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\SettingPage\GameVersionAddUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1564,11 +1574,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CharacterDialog.xaml">
+    <Page Include="View\CharacterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CharacterPage.xaml">
+    <Page Include="View\Dialog\CharacterDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\FoodRecipeDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
