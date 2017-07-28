@@ -80,7 +80,7 @@ namespace JiHuangBaiKeForUWP
         public async void GameVersionDeserialize()
         {
             const string filaName = "GameVersion";
-            var uri = new Uri("ms-appx:///Xml/GameVersion.json");
+            var uri = new Uri("ms-appx:///Json/GameVersion.json");
             StorageFile storageFile;
             try
             {

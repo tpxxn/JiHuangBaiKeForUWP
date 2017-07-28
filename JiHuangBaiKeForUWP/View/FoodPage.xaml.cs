@@ -51,7 +51,7 @@ namespace JiHuangBaiKeForUWP.View
                 var folderExists = await Global.ApplicationFolder.TryGetItemAsync(Global.BuiltInGameVersion[Global.GameVersion]);
                 if (folderExists == null)
                 {
-                    uri = new Uri("ms-appx:///Xml/" + Global.BuiltInGameVersionXmlFolder[Global.GameVersion] + "/" +
+                    uri = new Uri("ms-appx:///Json/" + Global.BuiltInGameVersionXmlFolder[Global.GameVersion] + "/" +
                                   fileName);
                 }
                 else
@@ -64,7 +64,7 @@ namespace JiHuangBaiKeForUWP.View
                 uri = new Uri(Global.ApplicationFolder.Path + "/" + Global.VersionData[Global.GameVersion] + "/" + fileName);
             }
             var storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
-            //TODO System.ArgumentOutOfRangeException:“在多字节的目标代码页中，没有此 Unicode 字符可以映射到的字符。
+            //TODO System.ArgumentOutOfRangeException:在多字节的目标代码页中，没有此 Unicode 字符可以映射到的字符。
             var str = await FileIO.ReadTextAsync(storageFile);
             var food = JsonConvert.DeserializeObject<FoodRootObject>(str);
             foreach (var foodRecipeItems in food.FoodRecipe)
