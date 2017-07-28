@@ -11,86 +11,86 @@
     
     <Page.Resources>
         <DataTemplate x:Key="FoodRecipeDataTemplate" x:DataType="datetype:FoodRecipe">
-            <Grid Margin="5" Width="135" Height="210">
+            <Grid Margin="5" Width="80" Height="80">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="FoodMeatDataTemplate" x:DataType="datetype:FoodMeat">
-            <Grid Margin="5" Width="135" Height="210">
+            <Grid Margin="5" Width="80" Height="80">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="FoodVegetableDataTemplate" x:DataType="datetype:FoodVegetable">
-            <Grid Margin="5" Width="135" Height="210">
+            <Grid Margin="5" Width="80" Height="80">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="FoodFruitDataTemplate" x:DataType="datetype:FoodFruit">
-            <Grid Margin="5" Width="135" Height="210">
+            <Grid Margin="5" Width="80" Height="80">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="FoodEggDataTemplate" x:DataType="datetype:FoodEgg">
-            <Grid Margin="5" Width="135" Height="210">
+            <Grid Margin="5" Width="80" Height="80">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="FoodOtherDataTemplate" x:DataType="datetype:FoodOther">
-            <Grid Margin="5" Width="135" Height="210">
+            <Grid Margin="5" Width="80" Height="80">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="FoodNoFcDataTemplate" x:DataType="datetype:FoodNoFc">
-            <Grid Margin="5" Width="135" Height="210">
+            <Grid Margin="5" Width="80" Height="80">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
     </Page.Resources>
     
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander VerticalAlignment="Top" FontSize="17" IsExPanded="True">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/CP_CrockPot.png" Width="40" Height="40" />

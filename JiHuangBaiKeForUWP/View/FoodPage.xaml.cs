@@ -17,8 +17,6 @@ using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using Newtonsoft.Json;
 
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
-
 namespace JiHuangBaiKeForUWP.View
 {
     /// <summary>
@@ -64,7 +62,6 @@ namespace JiHuangBaiKeForUWP.View
                 uri = new Uri(Global.ApplicationFolder.Path + "/" + Global.VersionData[Global.GameVersion] + "/" + fileName);
             }
             var storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
-            //TODO System.ArgumentOutOfRangeException:在多字节的目标代码页中，没有此 Unicode 字符可以映射到的字符。
             var str = await FileIO.ReadTextAsync(storageFile);
             var food = JsonConvert.DeserializeObject<FoodRootObject>(str);
             foreach (var foodRecipeItems in food.FoodRecipe)
