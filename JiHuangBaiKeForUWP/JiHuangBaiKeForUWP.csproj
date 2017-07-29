@@ -133,6 +133,9 @@
     <Compile Include="View\Dialog\CharacterDialog.xaml.cs">
       <DependentUpon>CharacterDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Dialog\FoodDialog.xaml.cs">
+      <DependentUpon>FoodDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialog\FoodRecipeDialog.xaml.cs">
       <DependentUpon>FoodRecipeDialog.xaml</DependentUpon>
     </Compile>
@@ -159,7 +162,6 @@
     <Content Include="Assets\Font\belisa_plumilla.ttf" />
     <Content Include="Assets\Font\holomdl2.ttf" />
     <Content Include="Assets\Font\segmdl2.ttf" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="JiHuangBaiKeForUWP_TemporaryKey.pfx" />
     <Content Include="Assets\GameResources\CP_CrockPot.png" />
     <Content Include="Assets\GameResources\CP_PortableCrockPot.png" />
@@ -1579,6 +1581,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Dialog\CharacterDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\FoodDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -138,32 +138,80 @@ namespace JiHuangBaiKeForUWP.View
 
         private void FoodMeatGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            var c = e.ClickedItem as FoodMeat;
+            var contentDialog = new ContentDialog
+            {
+                Content = new FoodDialog(c),
+                PrimaryButtonText = "确定",
+                FullSizeDesired = false,
+                Style = Global.Transparent
+            };
+            Global.ShowDialog(contentDialog, FoodStackPanel);
         }
 
         private void FoodVegetableGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            var c = e.ClickedItem as FoodVegetable;
+            var contentDialog = new ContentDialog
+            {
+                Content = new FoodDialog(c),
+                PrimaryButtonText = "确定",
+                FullSizeDesired = false,
+                Style = Global.Transparent
+            };
+            Global.ShowDialog(contentDialog, FoodStackPanel);
         }
 
         private void FoodFruitGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            var c = e.ClickedItem as FoodFruit;
+            var contentDialog = new ContentDialog
+            {
+                Content = new FoodDialog(c),
+                PrimaryButtonText = "确定",
+                FullSizeDesired = false,
+                Style = Global.Transparent
+            };
+            Global.ShowDialog(contentDialog, FoodStackPanel);
         }
 
         private void FoodEggGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            var c = e.ClickedItem as FoodEgg;
+            var contentDialog = new ContentDialog
+            {
+                Content = new FoodDialog(c),
+                PrimaryButtonText = "确定",
+                FullSizeDesired = false,
+                Style = Global.Transparent
+            };
+            Global.ShowDialog(contentDialog, FoodStackPanel);
         }
 
         private void FoodOtherGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            var c = e.ClickedItem as FoodOther;
+            var contentDialog = new ContentDialog
+            {
+                Content = new FoodDialog(c),
+                PrimaryButtonText = "确定",
+                FullSizeDesired = false,
+                Style = Global.Transparent
+            };
+            Global.ShowDialog(contentDialog, FoodStackPanel);
         }
 
         private void FoodNoFcGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            var c = e.ClickedItem as FoodNoFc;
+            var contentDialog = new ContentDialog
+            {
+                Content = new FoodDialog(c),
+                PrimaryButtonText = "确定",
+                FullSizeDesired = false,
+                Style = Global.Transparent
+            };
+            Global.ShowDialog(contentDialog, FoodStackPanel);
         }
     }
 }

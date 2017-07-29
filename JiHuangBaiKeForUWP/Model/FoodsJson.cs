@@ -83,10 +83,10 @@ namespace JiHuangBaiKeForUWP.Model
         public double Perish { get; set; }
         public string Attribute { get; set; }
         public string AttributeValue { get; set; }
-        public string Introduce { get; set; }
-        public string Console { get; set; }
         public string Attribute2 { get; set; }
         public string AttributeValue2 { get; set; }
+        public string Introduce { get; set; }
+        public string Console { get; set; }
     }
 
     public class FoodVegetable
@@ -115,10 +115,10 @@ namespace JiHuangBaiKeForUWP.Model
         public double Perish { get; set; }
         public string Attribute { get; set; }
         public string AttributeValue { get; set; }
-        public string Introduce { get; set; }
-        public string Console { get; set; }
         public string Attribute2 { get; set; }
         public string AttributeValue2 { get; set; }
+        public string Introduce { get; set; }
+        public string Console { get; set; }
     }
 
     public class FoodEgg

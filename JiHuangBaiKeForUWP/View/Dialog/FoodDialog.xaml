@@ -1,0 +1,65 @@
+﻿<Page
+    x:Class="JiHuangBaiKeForUWP.View.Dialog.FoodDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JiHuangBaiKeForUWP.View.Dialog"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:charts="using:JiHuangBaiKeForUWP.UserControls.Charts"
+    xmlns:userControls="using:JiHuangBaiKeForUWP.UserControls"
+    mc:Ignorable="d">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" x:Name="FoodImage" Stretch="Uniform" Height="85" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="1" x:Name="FoodName" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="2" x:Name="FoodEnName" FontSize="25" FontFamily="/Assets/Font/belisa_plumilla.ttf#Belisa plumilla manual" HorizontalAlignment="Center" Margin="0,5,0,0" />
+            <Grid Grid.Row="3" HorizontalAlignment="Center" Width="600" Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Width="200" HorizontalAlignment="Right">
+                    <charts:BarChart x:Name="FoodHealth" Label="生命" MaxValue="100"/>
+                    <charts:BarChart x:Name="FoodHunger" Label="饥饿" MaxValue="150"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Width="200" HorizontalAlignment="Left">
+                    <charts:BarChart x:Name="FoodSanity" Label="精神" MaxValue="50"/>
+                    <charts:BarChart x:Name="FoodPerish" Label="保鲜" MaxValue="20"/>
+                </StackPanel>
+            </Grid>
+            <StackPanel x:Name="FoodAttributeStackPanel" Grid.Row="4" Margin="0,5,0,0">
+                <TextBlock Text="食物属性：" />
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <userControls:PicButton x:Name="Attribute1PicButton" Tapped="Food_Jump_Tapped"/>
+                    <userControls:PicButton x:Name="Attribute2PicButton" Visibility="Collapsed" Tapped="Food_Jump_Tapped"/>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Grid.Row="5" x:Name="FoodIntroduction" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="10" />
+            <Grid Grid.Row="6" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="Console" Margin="0,5,15,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <Button Grid.Column="1" HorizontalAlignment="Left" Tapped="Copy_Tapped">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Copy" />
+                            <TextBlock Text="复制" Margin="8,0,0,0" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

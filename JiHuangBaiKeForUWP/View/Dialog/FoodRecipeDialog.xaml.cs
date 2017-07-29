@@ -75,44 +75,44 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             #region restrictions
             var restrictions1 = new List<string>();
             var restrictions2 = new List<string>();
-            var pre = new[] { c.Restrictions1.Text, c.Restrictions2.Text, c.Restrictions3.Text, c.Restrictions4.Text, c.Restrictions5.Text };
-            var preAtt = new[] { c.Restrictions1.Pre, c.Restrictions2.Pre, c.Restrictions3.Pre, c.Restrictions4.Pre, c.Restrictions5.Pre };
-            var restrictionsAttributes = Global.StringDelRepeatData(preAtt);
-            if (preAtt[0] == restrictionsAttributes[0] && pre[0] != null)
+            var prePicture = new[] { c.Restrictions1.Text, c.Restrictions2.Text, c.Restrictions3.Text, c.Restrictions4.Text, c.Restrictions5.Text };
+            var pre = new[] { c.Restrictions1.Pre, c.Restrictions2.Pre, c.Restrictions3.Pre, c.Restrictions4.Pre, c.Restrictions5.Pre };
+            var restrictionsAttributes = Global.StringDelRepeatData(pre);
+            if (pre[0] == restrictionsAttributes[0] && prePicture[0] != null)
             {
-                restrictions1.Add(pre[0]);
+                restrictions1.Add(prePicture[0]);
             }
-            if (preAtt[1] == restrictionsAttributes[0] && pre[1] != null)
+            if (pre[1] == restrictionsAttributes[0] && prePicture[1] != null)
             {
-                restrictions1.Add(pre[1]);
+                restrictions1.Add(prePicture[1]);
             }
-            if (preAtt[1] == restrictionsAttributes[1] && pre[1] != null)
+            if (pre[1] == restrictionsAttributes[1] && prePicture[1] != null)
             {
-                restrictions2.Add(pre[1]);
+                restrictions2.Add(prePicture[1]);
             }
-            if (preAtt[2] == restrictionsAttributes[0] && pre[2] != null)
+            if (pre[2] == restrictionsAttributes[0] && prePicture[2] != null)
             {
-                restrictions1.Add(pre[2]);
+                restrictions1.Add(prePicture[2]);
             }
-            if (preAtt[2] == restrictionsAttributes[1] && pre[2] != null)
+            if (pre[2] == restrictionsAttributes[1] && prePicture[2] != null)
             {
-                restrictions2.Add(pre[2]);
+                restrictions2.Add(prePicture[2]);
             }
-            if (preAtt[3] == restrictionsAttributes[0] && pre[3] != null)
+            if (pre[3] == restrictionsAttributes[0] && prePicture[3] != null)
             {
-                restrictions1.Add(pre[3]);
+                restrictions1.Add(prePicture[3]);
             }
-            if (preAtt[3] == restrictionsAttributes[1] && pre[3] != null)
+            if (pre[3] == restrictionsAttributes[1] && prePicture[3] != null)
             {
-                restrictions2.Add(pre[3]);
+                restrictions2.Add(prePicture[3]);
             }
-            if (preAtt[4] == restrictionsAttributes[0] && pre[4] != null)
+            if (pre[4] == restrictionsAttributes[0] && prePicture[4] != null)
             {
-                restrictions1.Add(pre[4]);
+                restrictions1.Add(prePicture[4]);
             }
-            if (preAtt[4] == restrictionsAttributes[1] && pre[4] != null)
+            if (pre[4] == restrictionsAttributes[1] && prePicture[4] != null)
             {
-                restrictions2.Add(pre[4]);
+                restrictions2.Add(prePicture[4]);
             }
             if (c.Restrictions1.Pre != null)
             {

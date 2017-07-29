@@ -23,7 +23,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Image x:Name="FoodRecipeImage" Stretch="Uniform" Height="85" HorizontalAlignment="Center" />
+            <Image Grid.Row="0" x:Name="FoodRecipeImage" Stretch="Uniform" Height="85" HorizontalAlignment="Center" />
             <TextBlock Grid.Row="1" x:Name="FoodRecipeName" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" />
             <TextBlock Grid.Row="2" x:Name="FoodRecipeEnName" FontSize="25" FontFamily="/Assets/Font/belisa_plumilla.ttf#Belisa plumilla manual" HorizontalAlignment="Center" Margin="0,5,0,0" />
             <Image Grid.Row="3" x:Name="FoodRecipePortableCrockPot" Height="40" HorizontalAlignment="Center" Margin="0,5,0,0" Visibility="Collapsed"/>
