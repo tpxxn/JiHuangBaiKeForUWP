@@ -7,8 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uc="using:JiHuangBaiKeForUWP.UserControls.Expander"
     xmlns:datetype="using:JiHuangBaiKeForUWP.Model"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     mc:Ignorable="d">
-    
+
     <Page.Resources>
         <DataTemplate x:Key="FoodRecipeDataTemplate" x:DataType="datetype:FoodRecipe">
             <Grid Margin="5" Width="80" Height="80">
@@ -87,10 +88,10 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    
+
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel x:Name="FoodStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <uc:Expander VerticalAlignment="Top" FontSize="17" IsExPanded="True">
+            <uc:Expander VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/CP_CrockPot.png" Width="40" Height="40" />
@@ -98,12 +99,13 @@
                     </StackPanel>
                 </uc:Expander.Header>
                 <GridView Name="FoodRecipeGridView" 
-                          Margin="10"
-                          ItemsSource="{x:Bind _foodRecipeData}" 
-                          ItemTemplate="{StaticResource FoodRecipeDataTemplate}" 
-                          SelectionMode="None" 
-                          IsItemClickEnabled="True" 
-                          ItemClick="FoodRecipeGridView_ItemClick" />
+                              Margin="10"
+                              ItemsSource="{x:Bind _foodRecipeData}" 
+                              ItemTemplate="{StaticResource FoodRecipeDataTemplate}" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="True" 
+                              ItemClick="FoodRecipeGridView_ItemClick" 
+                              animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
             <uc:Expander VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -113,12 +115,13 @@
                     </StackPanel>
                 </uc:Expander.Header>
                 <GridView Name="FoodMeatGridView" 
-                          Margin="10"
-                          ItemsSource="{x:Bind _foodMeatData}" 
-                          ItemTemplate="{StaticResource FoodMeatDataTemplate}" 
-                          SelectionMode="None" 
-                          IsItemClickEnabled="True" 
-                          ItemClick="FoodMeatGridView_ItemClick" />
+                              Margin="10"
+                              ItemsSource="{x:Bind _foodMeatData}" 
+                              ItemTemplate="{StaticResource FoodMeatDataTemplate}" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="True" 
+                              ItemClick="FoodMeatGridView_ItemClick" 
+                              animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
             <uc:Expander VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -128,12 +131,13 @@
                     </StackPanel>
                 </uc:Expander.Header>
                 <GridView Name="FoodVegetableGridView" 
-                          Margin="10"
-                          ItemsSource="{x:Bind _foodVegetableData}" 
-                          ItemTemplate="{StaticResource FoodVegetableDataTemplate}" 
-                          SelectionMode="None" 
-                          IsItemClickEnabled="True" 
-                          ItemClick="FoodVegetableGridView_ItemClick" />
+                              Margin="10"
+                              ItemsSource="{x:Bind _foodVegetableData}" 
+                              ItemTemplate="{StaticResource FoodVegetableDataTemplate}" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="True" 
+                              ItemClick="FoodVegetableGridView_ItemClick" 
+                              animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
             <uc:Expander VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -143,12 +147,13 @@
                     </StackPanel>
                 </uc:Expander.Header>
                 <GridView Name="FoodFruitGridView" 
-                          Margin="10"
-                          ItemsSource="{x:Bind _foodFruitData}" 
-                          ItemTemplate="{StaticResource FoodFruitDataTemplate}" 
-                          SelectionMode="None" 
-                          IsItemClickEnabled="True" 
-                          ItemClick="FoodFruitGridView_ItemClick" />
+                              Margin="10"
+                              ItemsSource="{x:Bind _foodFruitData}" 
+                              ItemTemplate="{StaticResource FoodFruitDataTemplate}" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="True" 
+                              ItemClick="FoodFruitGridView_ItemClick" 
+                              animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
             <uc:Expander VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -158,12 +163,13 @@
                     </StackPanel>
                 </uc:Expander.Header>
                 <GridView Name="FoodEggGridView" 
-                          Margin="10"
-                          ItemsSource="{x:Bind _foodEggData}" 
-                          ItemTemplate="{StaticResource FoodEggDataTemplate}" 
-                          SelectionMode="None" 
-                          IsItemClickEnabled="True" 
-                          ItemClick="FoodEggGridView_ItemClick" />
+                              Margin="10"
+                              ItemsSource="{x:Bind _foodEggData}" 
+                              ItemTemplate="{StaticResource FoodEggDataTemplate}" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="True" 
+                              ItemClick="FoodEggGridView_ItemClick" 
+                              animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
             <uc:Expander VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -173,12 +179,13 @@
                     </StackPanel>
                 </uc:Expander.Header>
                 <GridView Name="FoodOtherGridView" 
-                          Margin="10"
-                          ItemsSource="{x:Bind _foodOtherData}" 
-                          ItemTemplate="{StaticResource FoodOtherDataTemplate}" 
-                          SelectionMode="None" 
-                          IsItemClickEnabled="True" 
-                          ItemClick="FoodOtherGridView_ItemClick" />
+                              Margin="10"
+                              ItemsSource="{x:Bind _foodOtherData}" 
+                              ItemTemplate="{StaticResource FoodOtherDataTemplate}" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="True" 
+                              ItemClick="FoodOtherGridView_ItemClick" 
+                              animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
             <uc:Expander VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -188,12 +195,13 @@
                     </StackPanel>
                 </uc:Expander.Header>
                 <GridView Name="FoodNoFcGridView" 
-                          Margin="10"
-                          ItemsSource="{x:Bind _foodNoFcData}" 
-                          ItemTemplate="{StaticResource FoodNoFcDataTemplate}" 
-                          SelectionMode="None" 
-                          IsItemClickEnabled="True" 
-                          ItemClick="FoodNoFcGridView_ItemClick" />
+                              Margin="10"
+                              ItemsSource="{x:Bind _foodNoFcData}" 
+                              ItemTemplate="{StaticResource FoodNoFcDataTemplate}" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="True" 
+                              ItemClick="FoodNoFcGridView_ItemClick" 
+                              animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
         </StackPanel>
     </ScrollViewer>

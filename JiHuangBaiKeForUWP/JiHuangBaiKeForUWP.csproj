@@ -130,6 +130,9 @@
     <Compile Include="View\CharacterPage.xaml.cs">
       <DependentUpon>CharacterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CookingSimulatorPage.xaml.cs">
+      <DependentUpon>CookingSimulatorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialog\CharacterDialog.xaml.cs">
       <DependentUpon>CharacterDialog.xaml</DependentUpon>
     </Compile>
@@ -1580,6 +1583,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\CookingSimulatorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Dialog\CharacterDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1627,6 +1634,9 @@
       <Version>1.5.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
+      <Version>1.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
       <Version>1.5.1</Version>
     </PackageReference>
   </ItemGroup>

@@ -71,6 +71,12 @@
                                 <TextBlock Text="食物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
+                        <ListBoxItem x:Name="CookListBoxItem" Height="50">
+                            <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
+                                <Image Source="Assets/HamburgerMenu/HamburgerMenuCookingSimulator.png" Width="48" Height="48"/>
+                                <TextBlock Text="模拟" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
                         <ListBoxItem x:Name="ScienceListBoxItem" Height="50">
                             <StackPanel Orientation="Horizontal" Margin="-10,-10,0,0" Height="48">
                                 <Image Source="Assets/HamburgerMenu/HamburgerMenuScience.png" Width="48" Height="48"/>

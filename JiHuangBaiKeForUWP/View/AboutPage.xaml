@@ -47,7 +47,7 @@
                 <TextBlock FontSize="14" Margin="20,5,0,0">
                 <Run Text="本应用使用 MIT 许可开源"/>
                 </TextBlock>
-                <HyperlinkButton Margin="20,5,0,0" NavigateUri="https://github.com/tpxxn/JiHuangBaiKeForUWP">
+                <HyperlinkButton Margin="20,5,0,0" NavigateUri="https://github.com/tpxxn/JiHuangBaiKeForUWP/blob/master/LICENSE">
                     <Image Source="/Assets/Pic/github.png" Height="45" />
                 </HyperlinkButton>
             </StackPanel>

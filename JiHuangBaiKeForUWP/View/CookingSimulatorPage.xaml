@@ -1,0 +1,219 @@
+﻿<Page
+    x:Class="JiHuangBaiKeForUWP.View.CookingSimulatorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JiHuangBaiKeForUWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="using:JiHuangBaiKeForUWP.UserControls.Expander"
+    xmlns:datetype="using:JiHuangBaiKeForUWP.Model"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="FoodMeatDataTemplate" x:DataType="datetype:FoodMeat">
+            <Grid Margin="5" Width="80" Height="80">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="FoodVegetableDataTemplate" x:DataType="datetype:FoodVegetable">
+            <Grid Margin="5" Width="80" Height="80">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="FoodFruitDataTemplate" x:DataType="datetype:FoodFruit">
+            <Grid Margin="5" Width="80" Height="80">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="FoodEggDataTemplate" x:DataType="datetype:FoodEgg">
+            <Grid Margin="5" Width="80" Height="80">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="FoodOtherDataTemplate" x:DataType="datetype:FoodOther">
+            <Grid Margin="5" Width="80" Height="80">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <RelativePanel Grid.Row="0" Height="230" Margin="10" HorizontalAlignment="Center">
+            <StackPanel x:Name="SettingStackPanel" HorizontalAlignment="Left">
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <TextBlock FontSize="26" Text="烹煮锅"/>
+                    <ToggleSwitch x:Name="ToggleSwitch" OffContent="烹煮锅" OnContent="便携式烹饪锅"/>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <TextBlock FontSize="26" Text="自动清空材料" Margin="0,20,0,0"/>
+                    <ToggleSwitch x:Name="AutoCleanToggleSwitch" IsOn="True"/>
+                </StackPanel>
+                <Button x:Name="ResetButton" Content="重置" Tapped="ResetButton_Tapped" Margin="0,20,0,0"/>
+            </StackPanel>
+            <StackPanel RelativePanel.RightOf="SettingStackPanel">
+                <StackPanel x:Name="FoodButtonStackPanel" RelativePanel.RightOf="SettingStackPanel" Width="256" Orientation="Horizontal">
+                    <Button x:Name="Food1Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food1Button_Tapped" BorderBrush="#FF707070">
+                        <Image x:Name="Food1Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
+                    </Button>
+                    <Button x:Name="Food2Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food2Button_Tapped" BorderBrush="#FF707070">
+                        <Image x:Name="Food2Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
+                    </Button>
+                    <Button x:Name="Food3Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food3Button_Tapped" BorderBrush="#FF707070">
+                        <Image x:Name="Food3Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
+                    </Button>
+                    <Button x:Name="Food4Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food4Button_Tapped" BorderBrush="#FF707070">
+                        <Image x:Name="Food4Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
+                    </Button>
+                </StackPanel>
+                <SymbolIcon x:Name="CalculationSymbolIcon" Symbol="Up" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Margin="0,20">
+                    <SymbolIcon.RenderTransform>
+                        <CompositeTransform ScaleY="-2" ScaleX="2"/>
+                    </SymbolIcon.RenderTransform>
+                </SymbolIcon>
+                <Grid HorizontalAlignment="Center" Width="144">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="64"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" x:Name="SwitchLeftButton" Background="{x:Null}" Visibility="Collapsed" Tapped="SwitchLeftButton_Tapped">
+                        <SymbolIcon Symbol="Up" RenderTransformOrigin="0.5,0.5">
+                            <SymbolIcon.RenderTransform>
+                                <CompositeTransform Rotation="270"/>
+                            </SymbolIcon.RenderTransform>
+                        </SymbolIcon>
+                    </Button>
+                    <Button Grid.Column="1" x:Name="ResultButton" Width="64" Height="64" Background="{x:Null}" Tapped="ResultButton_Tapped" BorderBrush="#FF707070">
+                        <Image x:Name="FoodResultImage" Height="52" Width="52" Margin="-4,0,-3,0"/>
+                    </Button>
+                    <Button Grid.Column="2" x:Name="SwitchRightButton" Background="{x:Null}" Visibility="Collapsed" Tapped="SwitchRightButton_Tapped">
+                        <SymbolIcon Symbol="Up" RenderTransformOrigin="0.5,0.5">
+                            <SymbolIcon.RenderTransform>
+                                <CompositeTransform Rotation="90"/>
+                            </SymbolIcon.RenderTransform>
+                        </SymbolIcon>
+                    </Button>
+                </Grid>
+                <TextBlock x:Name="FoodResultTextBlock" RelativePanel.Below="ResultButton" RelativePanel.AlignHorizontalCenterWith="ResultButton" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </RelativePanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <uc:Expander VerticalAlignment="Top" FontSize="17">
+                    <uc:Expander.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="ms-appx:///Assets/GameResources/Foods/FC_Meats.png" Width="40" Height="40" />
+                            <TextBlock Text="肉类" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </uc:Expander.Header>
+                    <GridView x:Name="FoodMeatGridView" 
+                              Margin="10"
+                              ItemsSource="{x:Bind _foodMeatData}" 
+                              ItemTemplate="{StaticResource FoodMeatDataTemplate}" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="True" 
+                              ItemClick="FoodMeatGridView_ItemClick" 
+                              animations:ReorderGridAnimation.Duration="250"/>
+                </uc:Expander>
+                <uc:Expander VerticalAlignment="Top" FontSize="17">
+                    <uc:Expander.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="ms-appx:///Assets/GameResources/Foods/FC_Vegetables.png" Width="40" Height="40" />
+                            <TextBlock Text="蔬菜" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </uc:Expander.Header>
+                    <GridView x:Name="FoodVegetableGridView" 
+                              Margin="10"
+                              ItemsSource="{x:Bind _foodVegetableData}" 
+                              ItemTemplate="{StaticResource FoodVegetableDataTemplate}" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="True" 
+                              ItemClick="FoodVegetableGridView_ItemClick" 
+                              animations:ReorderGridAnimation.Duration="250"/>
+                </uc:Expander>
+                <uc:Expander VerticalAlignment="Top" FontSize="17">
+                    <uc:Expander.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="ms-appx:///Assets/GameResources/Foods/FC_Fruit.png" Width="40" Height="40" />
+                            <TextBlock Text="水果" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </uc:Expander.Header>
+                    <GridView x:Name="FoodFruitGridView" 
+                              Margin="10"
+                              ItemsSource="{x:Bind _foodFruitData}" 
+                              ItemTemplate="{StaticResource FoodFruitDataTemplate}" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="True" 
+                              ItemClick="FoodFruitGridView_ItemClick" 
+                              animations:ReorderGridAnimation.Duration="250"/>
+                </uc:Expander>
+                <uc:Expander VerticalAlignment="Top" FontSize="17">
+                    <uc:Expander.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="ms-appx:///Assets/GameResources/Foods/FC_Eggs.png" Width="40" Height="40" />
+                            <TextBlock Text="蛋类" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </uc:Expander.Header>
+                    <GridView x:Name="FoodEggGridView" 
+                              Margin="10"
+                              ItemsSource="{x:Bind _foodEggData}" 
+                              ItemTemplate="{StaticResource FoodEggDataTemplate}" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="True" 
+                              ItemClick="FoodEggGridView_ItemClick" 
+                              animations:ReorderGridAnimation.Duration="250"/>
+                </uc:Expander>
+                <uc:Expander VerticalAlignment="Top" FontSize="17">
+                    <uc:Expander.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="ms-appx:///Assets/GameResources/Goods/G_twigs.png" Width="40" Height="40" />
+                            <TextBlock Text="其他" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </uc:Expander.Header>
+                    <GridView x:Name="FoodOtherGridView" 
+                              Margin="10"
+                              ItemsSource="{x:Bind _foodOtherData}" 
+                              ItemTemplate="{StaticResource FoodOtherDataTemplate}" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="True" 
+                              ItemClick="FoodOtherGridView_ItemClick" 
+                              animations:ReorderGridAnimation.Duration="250"/>
+                </uc:Expander>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

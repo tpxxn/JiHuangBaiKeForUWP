@@ -71,7 +71,6 @@ namespace JiHuangBaiKeForUWP
         public void GlobalInitializeComponent()
         {
             Global.GameVersion = SettingSet.GameVersionSettingRead();
-            Global.GameVersionChanged = true;
             GameVersionDeserialize();
         }
         /// <summary>
@@ -191,6 +190,10 @@ namespace JiHuangBaiKeForUWP
                     case "FoodListBoxItem":
                         FrameTitle.Text = "食物";
                         RootFrame.Navigate(typeof(FoodPage), null);
+                        break;
+                    case "CookListBoxItem":
+                        FrameTitle.Text = "模拟";
+                        RootFrame.Navigate(typeof(CookingSimulatorPage), null);
                         break;
                     case "ScienceListBoxItem":
                         FrameTitle.Text = "科技";

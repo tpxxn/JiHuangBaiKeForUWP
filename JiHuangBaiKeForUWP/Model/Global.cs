@@ -43,11 +43,6 @@ namespace JiHuangBaiKeForUWP.Model
         public static int GameVersion { get; set; }
 
         /// <summary>
-        /// 游戏版本已改变
-        /// </summary>
-        public static bool GameVersionChanged { get; set; }
-
-        /// <summary>
         /// 内置游戏版本
         /// </summary>
         public static string[] BuiltInGameVersion =

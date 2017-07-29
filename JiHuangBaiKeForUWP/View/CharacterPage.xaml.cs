@@ -31,10 +31,7 @@ namespace JiHuangBaiKeForUWP.View
         public CharacterPage()
         {
             this.InitializeComponent();
-            if (Global.GameVersionChanged)
-            {
-                Deserialize();
-            }
+            Deserialize();
         }
 
         public async void Deserialize()

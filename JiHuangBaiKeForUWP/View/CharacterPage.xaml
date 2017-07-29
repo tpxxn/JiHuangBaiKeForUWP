@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:datetype="using:JiHuangBaiKeForUWP.Model"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     mc:Ignorable="d">
     
     <Page.Resources>
@@ -29,7 +30,8 @@
                       ItemTemplate="{StaticResource CharacterDataTemplate}" 
                       SelectionMode="None" 
                       IsItemClickEnabled="True" 
-                      ItemClick="CharacterGridView_ItemClick" />
+                      ItemClick="CharacterGridView_ItemClick" 
+                      animations:ReorderGridAnimation.Duration="250"/>
         </StackPanel>
     </ScrollViewer>
 </Page>

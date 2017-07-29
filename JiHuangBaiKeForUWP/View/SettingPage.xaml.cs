@@ -106,9 +106,8 @@ namespace JiHuangBaiKeForUWP.View
         {
             SettingSet.GameVersionSettingSet(GameVersionComboBox.SelectedIndex);
             Global.GameVersion = GameVersionComboBox.SelectedIndex;
-            Global.GameVersionChanged = true;
         }
-        
+
         /// <summary>
         /// 复制游戏配置文件
         /// </summary>

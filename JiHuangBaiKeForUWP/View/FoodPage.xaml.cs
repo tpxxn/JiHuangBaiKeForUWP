@@ -35,10 +35,7 @@ namespace JiHuangBaiKeForUWP.View
         public FoodPage()
         {
             this.InitializeComponent();
-            if (Global.GameVersionChanged)
-            {
-                Deserialize();
-            }
+            Deserialize();
         }
 
         public async void Deserialize()
