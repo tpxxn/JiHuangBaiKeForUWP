@@ -16,7 +16,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
-using Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel;
 using Newtonsoft.Json;
 
 namespace JiHuangBaiKeForUWP.View

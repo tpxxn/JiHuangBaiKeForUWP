@@ -1621,9 +1621,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Edi.UWP.Helpers">
-      <Version>1.0.12</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.Net.Http">
       <Version>2.2.29</Version>
     </PackageReference>
@@ -1634,9 +1631,6 @@
       <Version>1.5.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
-      <Version>1.5.1</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
       <Version>1.5.1</Version>
     </PackageReference>
   </ItemGroup>

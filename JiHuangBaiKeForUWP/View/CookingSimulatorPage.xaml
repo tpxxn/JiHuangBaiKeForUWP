@@ -72,20 +72,22 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <RelativePanel Grid.Row="0" Height="230" Margin="10" HorizontalAlignment="Center">
-            <StackPanel x:Name="SettingStackPanel" HorizontalAlignment="Left">
+        <RelativePanel Grid.Row="0" Height="385" Margin="10" HorizontalAlignment="Center">
+            <StackPanel x:Name="SettingStackPanel" HorizontalAlignment="Left" RelativePanel.AlignHorizontalCenterWithPanel="True">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <TextBlock FontSize="26" Text="自动清空材料" Margin="0,20,0,0"/>
+                        <ToggleSwitch x:Name="AutoCleanToggleSwitch" IsOn="True"/>
+                    </StackPanel>
+                    <Button x:Name="ResetButton" Content="重置" Tapped="ResetButton_Tapped" Margin="20,0,0,0"/>
+                </StackPanel>
                 <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
                     <TextBlock FontSize="26" Text="烹煮锅"/>
                     <ToggleSwitch x:Name="ToggleSwitch" OffContent="烹煮锅" OnContent="便携式烹饪锅"/>
                 </StackPanel>
-                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <TextBlock FontSize="26" Text="自动清空材料" Margin="0,20,0,0"/>
-                    <ToggleSwitch x:Name="AutoCleanToggleSwitch" IsOn="True"/>
-                </StackPanel>
-                <Button x:Name="ResetButton" Content="重置" Tapped="ResetButton_Tapped" Margin="0,20,0,0"/>
             </StackPanel>
-            <StackPanel RelativePanel.RightOf="SettingStackPanel">
-                <StackPanel x:Name="FoodButtonStackPanel" RelativePanel.RightOf="SettingStackPanel" Width="256" Orientation="Horizontal">
+            <StackPanel RelativePanel.Below="SettingStackPanel">
+                <StackPanel x:Name="FoodButtonStackPanel" Width="256" Orientation="Horizontal">
                     <Button x:Name="Food1Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food1Button_Tapped" BorderBrush="#FF707070">
                         <Image x:Name="Food1Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
                     </Button>
