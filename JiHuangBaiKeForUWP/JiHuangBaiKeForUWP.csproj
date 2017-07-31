@@ -255,7 +255,6 @@
     <Content Include="Assets\GameResources\Sciences\S_wood_fence.png" />
     <Content Include="Assets\GameResources\Sciences\S_wood_gate.png" />
     <Content Include="Json\DST\Characters.json" />
-    <Content Include="Json\GameVersion.json" />
     <Content Include="Json\DS\Characters.json" />
     <Content Include="Json\ROG\Characters.json" />
     <Content Include="Json\SW\Characters.json" />
@@ -1609,9 +1608,6 @@
     <Content Include="Json\ROG\Creatures.xml" />
     <Content Include="Json\ROG\Goods.xml" />
     <Content Include="Json\ROG\Natures.xml" />
-    <Content Include="Json\Science.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Json\SW\Creatures.xml" />
     <Content Include="Json\SW\Goods.xml" />
     <Content Include="Json\SW\Natures.xml" />

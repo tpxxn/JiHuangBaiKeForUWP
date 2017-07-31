@@ -71,30 +71,6 @@ namespace JiHuangBaiKeForUWP
         public void GlobalInitializeComponent()
         {
             Global.GameVersion = SettingSet.GameVersionSettingRead();
-            GameVersionDeserialize();
-        }
-        /// <summary>
-        /// 反序列化游戏版本
-        /// </summary>
-        public async void GameVersionDeserialize()
-        {
-            const string filaName = "GameVersion";
-            var uri = new Uri("ms-appx:///Json/GameVersion.json");
-            StorageFile storageFile;
-            try
-            {
-                storageFile = await Global.ApplicationFolder.GetFileAsync(filaName);
-            }
-            catch
-            {
-                storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
-            }
-            var str = await FileIO.ReadTextAsync(storageFile);
-            var version = JsonConvert.DeserializeObject<VersionJson.RootObject>(str);
-            foreach (var gameVersion in version.GameVersion)
-            {
-                Global.VersionData.Add(gameVersion);
-            }
         }
         #endregion
 

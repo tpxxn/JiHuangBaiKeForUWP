@@ -42,22 +42,15 @@ namespace JiHuangBaiKeForUWP.View
         {
             Uri uri;
             const string fileName = "Foods.json";
-            if (Global.GameVersion < 5) //内置配置文件
+            var folderExists = await Global.ApplicationFolder.TryGetItemAsync(Global.BuiltInGameVersionJsonFolder[Global.GameVersion]);
+            if (folderExists == null)
             {
-                var folderExists = await Global.ApplicationFolder.TryGetItemAsync(Global.BuiltInGameVersion[Global.GameVersion]);
-                if (folderExists == null)
-                {
-                    uri = new Uri("ms-appx:///Json/" + Global.BuiltInGameVersionJsonFolder[Global.GameVersion] + "/" +
-                                  fileName);
-                }
-                else
-                {
-                    uri = new Uri(Global.ApplicationFolder.Path + "/" + Global.BuiltInGameVersion[Global.GameVersion] + "/" + fileName);
-                }
+                uri = new Uri("ms-appx:///Json/" + Global.BuiltInGameVersionJsonFolder[Global.GameVersion] + "/" +
+                              fileName);
             }
-            else //用户自建配置文件
+            else
             {
-                uri = new Uri(Global.ApplicationFolder.Path + "/" + Global.VersionData[Global.GameVersion] + "/" + fileName);
+                uri = new Uri(Global.ApplicationFolder.Path + "/" + Global.BuiltInGameVersionJsonFolder[Global.GameVersion] + "/" + fileName);
             }
             var storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
             var str = await FileIO.ReadTextAsync(storageFile);

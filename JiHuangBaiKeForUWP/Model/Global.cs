@@ -41,21 +41,13 @@ namespace JiHuangBaiKeForUWP.Model
         /// 游戏版本
         /// </summary>
         public static int GameVersion { get; set; }
-
-        /// <summary>
-        /// 内置游戏版本
-        /// </summary>
-        public static string[] BuiltInGameVersion =
-        {
-            "DS(饥荒单机)", "RoG(巨兽统治)", "SW(失落之船)", "DST(饥荒联机)", "TGP及QQGame",
-        };
-
+        
         /// <summary>
         /// 内置游戏版本Json文件夹名
         /// </summary>
         public static string[] BuiltInGameVersionJsonFolder =
         {
-            "DS", "ROG", "SW", "DST", "Tencent",
+            "DST", "Tencent", "DS", "ROG", "SW"
         };
 
         /// <summary>

@@ -9,12 +9,6 @@
     xmlns:system="using:System"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <DataTemplate x:Key="VersionDataTemplate" x:DataType="system:String">
-            <TextBlock Text="{x:Bind Mode=TwoWay}"/>
-        </DataTemplate>
-    </Page.Resources>
-
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Margin="10">
             <StackPanel>
@@ -28,21 +22,25 @@
                               HorizontalAlignment="Left" 
                               VerticalAlignment="Stretch" 
                               HorizontalContentAlignment="Stretch" 
-                              ItemsSource="{x:Bind _versionData}" 
-                              ItemTemplate="{StaticResource VersionDataTemplate}"
                               ItemContainerStyle="{StaticResource ComboBoxItemStyle}" 
                               DataContextChanged="GameVersionComboBox_DataContextChanged" 
-                              SelectionChanged="GameVersionComboBox_SelectionChanged" Width="200" />
-                    <Button x:Name="GameVersionCopyButton" Margin="15,0,0,0" ToolTipService.ToolTip="复制配置文件" Tapped="GameVersionCopyButton_Tapped">
-                        <Button.Content>
-                            <SymbolIcon Symbol="Copy"/>
-                        </Button.Content>
-                    </Button>
-                    <Button x:Name="GameVersionDeleteButton" Margin="15,0,0,0" ToolTipService.ToolTip="删除配置文件" Tapped="GameVersionDeleteButton_Tapped">
-                        <Button.Content>
-                            <SymbolIcon Symbol="Delete"/>
-                        </Button.Content>
-                    </Button>
+                              SelectionChanged="GameVersionComboBox_SelectionChanged" Width="200" >
+                        <ComboBoxItem>
+                            <TextBlock Text="DST(steam饥荒联机)"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="DST(TGP及QQGame)"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="DS(饥荒单机)"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="RoG(巨兽统治)"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="SW(失落之船)"/>
+                        </ComboBoxItem>
+                    </ComboBox>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
