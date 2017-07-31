@@ -143,6 +143,9 @@
     <Compile Include="View\Dialog\FoodRecipeDialog.xaml.cs">
       <DependentUpon>FoodRecipeDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Dialog\ScienceDialog.xaml.cs">
+      <DependentUpon>ScienceDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FoodPage.xaml.cs">
       <DependentUpon>FoodPage.xaml</DependentUpon>
     </Compile>
@@ -182,6 +185,7 @@
     <Content Include="Assets\GameResources\Goods\G_sketch.png" />
     <Content Include="Assets\GameResources\Goods\G_succulent.png" />
     <Content Include="Assets\GameResources\Goods\G_yellow_moonlens.png" />
+    <Content Include="Assets\GameResources\Natures\N_rock_den.png" />
     <Content Include="Assets\GameResources\Sciences\S_bearger_figure_marble.png" />
     <Content Include="Assets\GameResources\Sciences\S_bearger_figure_stone.png" />
     <Content Include="Assets\GameResources\Sciences\S_beeswax.png" />
@@ -199,11 +203,13 @@
     <Content Include="Assets\GameResources\Sciences\S_cratered_moonrock.png" />
     <Content Include="Assets\GameResources\Sciences\S_deerclops_figure_marble.png" />
     <Content Include="Assets\GameResources\Sciences\S_deerclops_figure_stone.png" />
+    <Content Include="Assets\GameResources\Sciences\S_desert_goggles.png" />
     <Content Include="Assets\GameResources\Sciences\S_dragonfly_figure_marble.png" />
     <Content Include="Assets\GameResources\Sciences\S_dragonfly_figure_stone.png" />
     <Content Include="Assets\GameResources\Sciences\S_electric_dart.png" />
     <Content Include="Assets\GameResources\Sciences\S_end_table.png" />
     <Content Include="Assets\GameResources\Sciences\S_ewelet.png" />
+    <Content Include="Assets\GameResources\Sciences\S_fashion_goggles.png" />
     <Content Include="Assets\GameResources\Sciences\S_festive_tree_planter.png" />
     <Content Include="Assets\GameResources\Sciences\S_friendly_scarecrow.png" />
     <Content Include="Assets\GameResources\Sciences\S_giblet.png" />
@@ -212,6 +218,10 @@
     <Content Include="Assets\GameResources\Sciences\S_glowcap.png" />
     <Content Include="Assets\GameResources\Sciences\S_gobbler_shrine.png" />
     <Content Include="Assets\GameResources\Sciences\S_green_funcap.png" />
+    <Content Include="Assets\GameResources\Sciences\S_ico_cartography.png" />
+    <Content Include="Assets\GameResources\Sciences\S_ico_critter.png" />
+    <Content Include="Assets\GameResources\Sciences\S_ico_offerings.png" />
+    <Content Include="Assets\GameResources\Sciences\S_ico_sculpt.png" />
     <Content Include="Assets\GameResources\Sciences\S_kingly_figure_marble.png" />
     <Content Include="Assets\GameResources\Sciences\S_kingly_figure_stone.png" />
     <Content Include="Assets\GameResources\Sciences\S_kittykit.png" />
@@ -224,6 +234,7 @@
     <Content Include="Assets\GameResources\Sciences\S_map_scroll.png" />
     <Content Include="Assets\GameResources\Sciences\S_marble_bean.png" />
     <Content Include="Assets\GameResources\Sciences\S_mini_sign.png" />
+    <Content Include="Assets\GameResources\Sciences\S_moon_dial.png" />
     <Content Include="Assets\GameResources\Sciences\S_moose_figure_marble.png" />
     <Content Include="Assets\GameResources\Sciences\S_moose_figure_stone.png" />
     <Content Include="Assets\GameResources\Sciences\S_mushroom_lights.png" />
@@ -232,6 +243,7 @@
     <Content Include="Assets\GameResources\CP_PortableCrockPot.png" />
     <Content Include="Assets\GameResources\Sciences\S_feather_pencil.png" />
     <Content Include="Assets\GameResources\Sciences\S_napsack.png" />
+    <Content Include="Assets\GameResources\Sciences\S_ocuvigil.png" />
     <Content Include="Assets\GameResources\Sciences\S_pawn_figure_marble.png" />
     <Content Include="Assets\GameResources\Sciences\S_pawn_figure_stone.png" />
     <Content Include="Assets\GameResources\Sciences\S_potted_succulent.png" />
@@ -250,6 +262,7 @@
     <Content Include="Assets\GameResources\Sciences\S_rook_figure_marble.png" />
     <Content Include="Assets\GameResources\Sciences\S_rook_figure_stone.png" />
     <Content Include="Assets\GameResources\Sciences\S_scaled_furnace.png" />
+    <Content Include="Assets\GameResources\Sciences\S_the_lazy_deserter.png" />
     <Content Include="Assets\GameResources\Sciences\S_vargling.png" />
     <Content Include="Assets\GameResources\Sciences\S_wax_paper.png" />
     <Content Include="Assets\GameResources\Sciences\S_wood_fence.png" />
@@ -264,11 +277,11 @@
     <Content Include="Json\ROG\Foods.json" />
     <Content Include="Json\Tencent\Foods.json" />
     <Content Include="Json\SW\Foods.json" />
-    <None Include="Json\DST\Sciences.json" />
-    <None Include="Json\DS\Sciences.json" />
-    <None Include="Json\ROG\Sciences.json" />
-    <None Include="Json\SW\Sciences.json" />
-    <None Include="Json\Tencent\Sciences.json" />
+    <Content Include="Json\DST\Sciences.json" />
+    <Content Include="Json\DS\Sciences.json" />
+    <Content Include="Json\ROG\Sciences.json" />
+    <Content Include="Json\SW\Sciences.json" />
+    <Content Include="Json\Tencent\Sciences.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GameResources\Creatures\A_ancient_guardian.png" />
@@ -1365,12 +1378,12 @@
     <Content Include="Assets\GameResources\Sciences\S_ico_magic.png" />
     <Content Include="Assets\GameResources\Sciences\S_ico_nautical.png" />
     <Content Include="Assets\GameResources\Sciences\S_ico_refine.png" />
-    <Content Include="Assets\GameResources\Sciences\S_ico_science.png" />
+    <Content Include="Assets\GameResources\Sciences\S_ico_technology.png" />
     <Content Include="Assets\GameResources\Sciences\S_ico_shadow.png" />
     <Content Include="Assets\GameResources\Sciences\S_ico_structures.png" />
     <Content Include="Assets\GameResources\Sciences\S_ico_survival.png" />
     <Content Include="Assets\GameResources\Sciences\S_ico_tools.png" />
-    <Content Include="Assets\GameResources\Sciences\S_ico_volcanic.png" />
+    <Content Include="Assets\GameResources\Sciences\S_ico_volcano.png" />
     <Content Include="Assets\GameResources\Sciences\S_improved_farm.png" />
     <Content Include="Assets\GameResources\Sciences\S_insulated_pack.png" />
     <Content Include="Assets\GameResources\Sciences\S_iron_wind.png" />
@@ -1675,6 +1688,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Dialog\FoodRecipeDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\ScienceDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

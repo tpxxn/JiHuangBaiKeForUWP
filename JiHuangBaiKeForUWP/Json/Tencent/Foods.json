@@ -1370,12 +1370,10 @@
       "Hunger": 25,
       "Sanity": -5,
       "Perish": 6,
-      "Attribute": [
-        "FC_Fruit", "FC_Monster_Meats"
-      ],
-      "AttributeValue": [
-        "×1", "×1"
-      ],
+      "Attribute": "FC_Fruit",
+      "AttributeValue": "×1",
+      "Attribute2": "FC_Monster_Meats",
+      "AttributeValue2": "×1",
       "Introduce": "把榴莲放在篝火上烤制。",
       "Console": "durian_cooked"
     }, {

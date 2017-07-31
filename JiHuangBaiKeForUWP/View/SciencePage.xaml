@@ -5,9 +5,330 @@
     xmlns:local="using:JiHuangBaiKeForUWP.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="using:JiHuangBaiKeForUWP.UserControls.Expander"
+    xmlns:datetype="using:JiHuangBaiKeForUWP.Model"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <DataTemplate x:Key="ScienceDataTemplate" x:DataType="datetype:Science">
+            <Grid Margin="5" Width="80" Height="80">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
 
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="ScienceStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <uc:Expander VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_tools.png" Width="40" Height="40" />
+                        <TextBlock Text="工具" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="ScienceToolGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _scienceToolData}" 
+                          ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="ScienceGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_light.png" Width="40" Height="40" />
+                        <TextBlock x:Name="LightExpanderTextBolck" Text="照明" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceLightGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceLightData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="NauticalExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_nautical.png" Width="40" Height="40" />
+                        <TextBlock Text="航海" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceNauticalGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceNauticalData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_survival.png" Width="40" Height="40" />
+                        <TextBlock Text="生存" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceSurvivalGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceSurvivalData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_food.png" Width="40" Height="40" />
+                        <TextBlock Text="食物" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceFoodGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceFoodData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_technology.png" Width="40" Height="40" />
+                        <TextBlock Text="科学" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceTechnologyGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceTechnologyData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_fight.png" Width="40" Height="40" />
+                        <TextBlock Text="战斗" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceFightGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceFightData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_structures.png" Width="40" Height="40" />
+                        <TextBlock Text="建筑" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceStructureGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceStructureData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_refine.png" Width="40" Height="40" />
+                        <TextBlock Text="合成" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceRefineGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceRefineData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_magic.png" Width="40" Height="40" />
+                        <TextBlock Text="魔法" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceMagicGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceMagicData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_dress.png" Width="40" Height="40" />
+                        <TextBlock x:Name="DressExpanderTextBolck" Text="衣物" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceDressGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceDressData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="AncientExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_ancient.png" Width="40" Height="40" />
+                        <TextBlock Text="远古" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceAncientGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceAncientData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_books.png" Width="40" Height="40" />
+                        <TextBlock Text="书" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceBookGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceBookData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="ShadowExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_shadow.png" Width="40" Height="40" />
+                        <TextBlock x:Name="ShadowExpanderTextBolck" Text="暗影巫术" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceShadowGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceShadowData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="CritterExpaner" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_critter.png" Width="40" Height="40" />
+                        <TextBlock x:Name="CritterExpanderTextBolck" Text="宠物" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceCritterGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceCritterData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="SculptExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_sculpt.png" Width="40" Height="40" />
+                        <TextBlock Text="雕塑" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceSculptGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceSculptData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="CartographyExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_cartography.png" Width="40" Height="40" />
+                        <TextBlock x:Name="CartographyExpanderTextBolck" Text="制图" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceCartographyGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceCartographyData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="OfferingsExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_offerings.png" Width="40" Height="40" />
+                        <TextBlock x:Name="OfferingsExpanderTextBolck" Text="年货" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceOfferingsGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceOfferingsData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="VolcanoExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_volcano.png" Width="40" Height="40" />
+                        <TextBlock Text="火山" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView x:Name="ScienceVolcanoGridView" 
+                    Margin="10"
+                    ItemsSource="{x:Bind _scienceVolcanoData}" 
+                    ItemTemplate="{StaticResource ScienceDataTemplate}" 
+                    SelectionMode="None" 
+                    IsItemClickEnabled="True" 
+                    ItemClick="ScienceGridView_ItemClick" 
+                    animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

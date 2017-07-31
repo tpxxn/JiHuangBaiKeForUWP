@@ -17,8 +17,6 @@ using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls;
 
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
-
 namespace JiHuangBaiKeForUWP.View.Dialog
 {
     /// <summary>
@@ -169,13 +167,13 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             FoodIntroduction.Text = c.Introduce;
             Console.Text = $"c_give(\"{c.Console}\",10)";
         }
+
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var dataPackage = new DataPackage();
             dataPackage.SetText(Console.Text);
             Clipboard.SetContent(dataPackage);
         }
-
 
         private void Food_Jump_Tapped(object sender, TappedRoutedEventArgs e)
         {

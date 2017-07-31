@@ -196,6 +196,17 @@ namespace JiHuangBaiKeForUWP.Model
         }
     }
 
+    public class Offerings
+    {
+        public List<Science> Science { get; set; }
+
+        public Offerings()
+        {
+            Science = new List<Science>();
+        }
+    }
+
+    
     public class Volcano
     {
         public List<Science> Science { get; set; }
@@ -206,7 +217,7 @@ namespace JiHuangBaiKeForUWP.Model
         }
     }
 
-    public class RootObject
+    public class ScienceRootObject
     {
         public Tool Tool { get; set; }
         public Light Light { get; set; }
@@ -225,9 +236,10 @@ namespace JiHuangBaiKeForUWP.Model
         public Critter Critter { get; set; }
         public Sculpt Sculpt { get; set; }
         public Cartography Cartography { get; set; }
+        public Offerings Offerings { get; set; }
         public Volcano Volcano { get; set; }
 
-        public RootObject()
+        public ScienceRootObject()
         {
             Tool = new Tool();
             Light = new Light();
@@ -246,6 +258,7 @@ namespace JiHuangBaiKeForUWP.Model
             Critter = new Critter();
             Sculpt = new Sculpt();
             Cartography = new Cartography();
+            Offerings = new Offerings();
             Volcano = new Volcano();
         }
     }
