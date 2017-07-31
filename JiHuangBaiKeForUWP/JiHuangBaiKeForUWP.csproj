@@ -172,10 +172,12 @@
     <Content Include="Assets\GameResources\Goods\G_chilled_lavae.png" />
     <Content Include="Assets\GameResources\Goods\G_desert_stone.png" />
     <Content Include="Assets\GameResources\Goods\G_green_moonlens.png" />
+    <Content Include="Assets\GameResources\Goods\G_lucky_gold_nugget.png" />
     <Content Include="Assets\GameResources\Goods\G_orange_moonlens.png" />
     <Content Include="Assets\GameResources\Goods\G_purple_moonlens.png" />
     <Content Include="Assets\GameResources\Goods\G_rare_blueprint.png" />
     <Content Include="Assets\GameResources\Goods\G_red_moonlens.png" />
+    <Content Include="Assets\GameResources\Goods\G_red_pouch.png" />
     <Content Include="Assets\GameResources\Goods\G_shroom_skin.png" />
     <Content Include="Assets\GameResources\Goods\G_sketch.png" />
     <Content Include="Assets\GameResources\Goods\G_succulent.png" />
@@ -215,6 +217,10 @@
     <Content Include="Assets\GameResources\Sciences\S_kittykit.png" />
     <Content Include="Assets\GameResources\Sciences\S_knight_figure_marble.png" />
     <Content Include="Assets\GameResources\Sciences\S_knight_figure_stone.png" />
+    <Content Include="Assets\GameResources\Sciences\S_lucky_beast_body.png" />
+    <Content Include="Assets\GameResources\Sciences\S_lucky_beast_head.png" />
+    <Content Include="Assets\GameResources\Sciences\S_lucky_beast_tail.png" />
+    <Content Include="Assets\GameResources\Sciences\S_lucky_fan.png" />
     <Content Include="Assets\GameResources\Sciences\S_map_scroll.png" />
     <Content Include="Assets\GameResources\Sciences\S_marble_bean.png" />
     <Content Include="Assets\GameResources\Sciences\S_mini_sign.png" />
@@ -232,7 +238,15 @@
     <Content Include="Assets\GameResources\Sciences\S_potter%27s_wheel.png" />
     <Content Include="Assets\GameResources\Sciences\S_queenly_figure_marble.png" />
     <Content Include="Assets\GameResources\Sciences\S_queenly_figure_stone.png" />
+    <Content Include="Assets\GameResources\Sciences\S_red_firecrackers.png" />
     <Content Include="Assets\GameResources\Sciences\S_red_funcap.png" />
+    <Content Include="Assets\GameResources\Sciences\S_red_lanterns.png" />
+    <Content Include="Assets\GameResources\Sciences\S_replica_relic_bowl.png" />
+    <Content Include="Assets\GameResources\Sciences\S_replica_relic_chair.png" />
+    <Content Include="Assets\GameResources\Sciences\S_replica_relic_dish.png" />
+    <Content Include="Assets\GameResources\Sciences\S_replica_relic_plate.png" />
+    <Content Include="Assets\GameResources\Sciences\S_replica_relic_table.png" />
+    <Content Include="Assets\GameResources\Sciences\S_replica_relic_vase.png" />
     <Content Include="Assets\GameResources\Sciences\S_rook_figure_marble.png" />
     <Content Include="Assets\GameResources\Sciences\S_rook_figure_stone.png" />
     <Content Include="Assets\GameResources\Sciences\S_scaled_furnace.png" />
@@ -251,6 +265,11 @@
     <Content Include="Json\ROG\Foods.json" />
     <Content Include="Json\Tencent\Foods.json" />
     <Content Include="Json\SW\Foods.json" />
+    <None Include="Json\DST\Sciences.json" />
+    <None Include="Json\DS\Sciences.json" />
+    <None Include="Json\ROG\Sciences.json" />
+    <None Include="Json\SW\Sciences.json" />
+    <None Include="Json\Tencent\Sciences.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GameResources\Creatures\A_ancient_guardian.png" />
@@ -1581,9 +1600,7 @@
     <Content Include="Json\DST\Creatures.xml" />
     <Content Include="Json\DST\Goods.xml" />
     <Content Include="Json\DST\Natures.xml" />
-    <Content Include="Json\DST\Sciences.xml" />
     <Content Include="Json\DS\Natures.xml" />
-    <Content Include="Json\DS\Sciences.xml" />
     <Content Include="Json\DS\Goods.xml" />
     <Content Include="Json\DS\Creatures.xml" />
     <Content Include="Json\Events.xml" />
@@ -1592,21 +1609,15 @@
     <Content Include="Json\ROG\Creatures.xml" />
     <Content Include="Json\ROG\Goods.xml" />
     <Content Include="Json\ROG\Natures.xml" />
-    <Content Include="Json\ROG\RoGXml.xml" />
-    <Content Include="Json\ROG\Sciences.xml" />
     <Content Include="Json\Science.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Json\SW\Creatures.xml" />
     <Content Include="Json\SW\Goods.xml" />
     <Content Include="Json\SW\Natures.xml" />
-    <Content Include="Json\SW\Sciences.xml" />
-    <Content Include="Json\SW\SWXml.xml" />
     <Content Include="Json\Tencent\Creatures.xml" />
     <Content Include="Json\Tencent\Goods.xml" />
     <Content Include="Json\Tencent\Natures.xml" />
-    <Content Include="Json\Tencent\Sciences.xml" />
-    <Content Include="Json\Tencent\TencentXml.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
