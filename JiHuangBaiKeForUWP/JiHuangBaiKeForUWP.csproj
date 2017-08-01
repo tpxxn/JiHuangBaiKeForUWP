@@ -103,6 +103,7 @@
     </Compile>
     <Compile Include="Manager\SettingSet.cs" />
     <Compile Include="Model\CharactersJson.cs" />
+    <Compile Include="Model\CreaturesJson.cs" />
     <Compile Include="Model\FoodsJson.cs" />
     <Compile Include="Model\Global.cs" />
     <Compile Include="Model\SciencesJson.cs" />
@@ -170,6 +171,17 @@
     <Content Include="Assets\Font\holomdl2.ttf" />
     <Content Include="Assets\Font\segmdl2.ttf" />
     <None Include="JiHuangBaiKeForUWP_TemporaryKey.pfx" />
+    <Content Include="Assets\GameResources\Creatures\A_antlion.png" />
+    <Content Include="Assets\GameResources\Creatures\A_bee_queen.png" />
+    <Content Include="Assets\GameResources\Creatures\A_canary.png" />
+    <Content Include="Assets\GameResources\Creatures\A_klaus.png" />
+    <Content Include="Assets\GameResources\Creatures\A_klaus2.png" />
+    <Content Include="Assets\GameResources\Creatures\A_misery_toadstool.png" />
+    <Content Include="Assets\GameResources\Creatures\A_reanimated_skeleton_atrium.png" />
+    <Content Include="Assets\GameResources\Creatures\A_reanimated_skeleton_caves.png" />
+    <Content Include="Assets\GameResources\Creatures\A_reanimated_skeleton_forest.png" />
+    <Content Include="Assets\GameResources\Creatures\A_toadstool.png" />
+    <Content Include="Assets\GameResources\Goods\G_bee_queen_crown.png" />
     <Content Include="Assets\GameResources\Goods\G_blue_moonlens.png" />
     <Content Include="Assets\GameResources\Goods\G_canary_feather.png" />
     <Content Include="Assets\GameResources\Goods\G_chilled_lavae.png" />
@@ -181,6 +193,7 @@
     <Content Include="Assets\GameResources\Goods\G_rare_blueprint.png" />
     <Content Include="Assets\GameResources\Goods\G_red_moonlens.png" />
     <Content Include="Assets\GameResources\Goods\G_red_pouch.png" />
+    <Content Include="Assets\GameResources\Goods\G_saffron_feather.png" />
     <Content Include="Assets\GameResources\Goods\G_shroom_skin.png" />
     <Content Include="Assets\GameResources\Goods\G_sketch.png" />
     <Content Include="Assets\GameResources\Goods\G_succulent.png" />
@@ -282,6 +295,9 @@
     <Content Include="Json\ROG\Sciences.json" />
     <Content Include="Json\SW\Sciences.json" />
     <Content Include="Json\Tencent\Sciences.json" />
+    <None Include="Json\DS\Creatures.json" />
+    <None Include="Json\ROG\Creatures.json" />
+    <None Include="Json\SW\Creatures.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GameResources\Creatures\A_ancient_guardian.png" />
@@ -1609,24 +1625,9 @@
     <Content Include="Assets\Pic\QRCode_Qun.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Json\Creatures.xml" />
-    <Content Include="Json\DST\Creatures.xml" />
-    <Content Include="Json\DST\Goods.xml" />
-    <Content Include="Json\DST\Natures.xml" />
-    <Content Include="Json\DS\Natures.xml" />
-    <Content Include="Json\DS\Goods.xml" />
-    <Content Include="Json\DS\Creatures.xml" />
     <Content Include="Json\Events.xml" />
     <Content Include="Json\Goods.xml" />
     <Content Include="Json\Natures.xml" />
-    <Content Include="Json\ROG\Creatures.xml" />
-    <Content Include="Json\ROG\Goods.xml" />
-    <Content Include="Json\ROG\Natures.xml" />
-    <Content Include="Json\SW\Creatures.xml" />
-    <Content Include="Json\SW\Goods.xml" />
-    <Content Include="Json\SW\Natures.xml" />
-    <Content Include="Json\Tencent\Creatures.xml" />
-    <Content Include="Json\Tencent\Goods.xml" />
-    <Content Include="Json\Tencent\Natures.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
