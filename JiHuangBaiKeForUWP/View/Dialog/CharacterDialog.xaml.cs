@@ -69,6 +69,11 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     CharacterDescription3.Visibility = Visibility.Visible;
                 }
             }
+            if (c.Unlock != null)
+            {
+                CharacterUnlockStackPanel.Visibility = Visibility.Visible;
+                UnlockTextBlock.Text = c.Unlock;
+            }
             CharacterIntroduction.Text = c.Introduce;
         }
     }

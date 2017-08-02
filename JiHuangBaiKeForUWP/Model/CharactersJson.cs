@@ -13,6 +13,7 @@ namespace JiHuangBaiKeForUWP.Model
         public double Hunger { get; set; }
         public double Sanity { get; set; }
         public double Damage { get; set; }
+        public string Unlock { get; set; }
         public string Introduce { get; set; }
         public string Console { get; set; }
         public int? LogMeter { get; set; }
