@@ -32,7 +32,7 @@ namespace JiHuangBaiKeForUWP.Model
         public static SolidColorBrush ColorCyan = new SolidColorBrush(Color.FromArgb(255, 21, 227, 234));     //青色
         public static SolidColorBrush ColorOrange = new SolidColorBrush(Color.FromArgb(255, 246, 166, 11));     //橙色
         public static SolidColorBrush ColorYellow = new SolidColorBrush(Color.FromArgb(255, 238, 232, 21));     //黄色
-        public static SolidColorBrush ColorBorderCyan = new SolidColorBrush(Color.FromArgb(255, 178, 236, 237));     //紫色
+        public static SolidColorBrush ColorBorderCyan = new SolidColorBrush(Color.FromArgb(255, 178, 236, 237));     //TODO 未确认颜色
         #endregion
 
         #region 游戏版本
@@ -102,6 +102,41 @@ namespace JiHuangBaiKeForUWP.Model
             };
             b = temp.ToArray();
             return b;
+        }
+
+        /// <summary>
+        /// 获取游戏图片位置
+        /// </summary>
+        /// <param name="str">图片名称</param>
+        /// <returns>完整路径</returns>
+        public static string GetGameResourcePath(string str)
+        {
+            var strHead = str.Substring(0, 1);
+            switch (strHead)
+            {
+                case "A":
+                    str = $"ms-appx:///Assets/GameResources/Creatures/{str}.png";
+                    break;
+                case "C":
+                    str = $"ms-appx:///Assets/GameResources/Charcters/{str}.png";
+                    break;
+                case "F":
+                    str = $"ms-appx:///Assets/GameResources/Foods/{str}.png";
+                    break;
+                case "G":
+                    str = $"ms-appx:///Assets/GameResources/Goods/{str}.png";
+                    break;
+                case "N":
+                    str = $"ms-appx:///Assets/GameResources/Natures/{str}.png";
+                    break;
+                case "S":
+                    str = $"ms-appx:///Assets/GameResources/Sciences/{str}.png";
+                    break;
+                case "T":
+                    str = $"ms-appx:///Assets/GameResources/Goods/{str}.png";
+                    break;
+            }
+            return str;
         }
     }
 }

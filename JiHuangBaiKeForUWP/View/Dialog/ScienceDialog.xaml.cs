@@ -31,17 +31,17 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             ScienceImage.Source = new BitmapImage(new Uri(c.Picture));
             ScienceName.Text = c.Name;
             ScienceEnName.Text = c.EnName;
-            Need1PicButton.Source = GetPath(c.Need1);
+            Need1PicButton.Source = Global.GetGameResourcePath(c.Need1);
             Need1PicButton.Text = $"×{c.Need1Value}";
             if (c.Need2 != null)
             {
-                Need2PicButton.Source = GetPath(c.Need2);
+                Need2PicButton.Source = Global.GetGameResourcePath(c.Need2);
                 Need2PicButton.Text = $"×{c.Need2Value}";
                 Need2PicButton.Visibility = Visibility.Visible;
             }
             if (c.Need3 != null)
             {
-                Need3PicButton.Source = GetPath(c.Need3);
+                Need3PicButton.Source = Global.GetGameResourcePath(c.Need3);
                 Need3PicButton.Text = $"×{c.Need3Value}";
                 Need3PicButton.Visibility = Visibility.Visible;
             }
@@ -54,51 +54,21 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 if (c.Unlock != null)
                 {
                     UnlockPicButton.Visibility = Visibility.Visible;
-                    UnlockPicButton.Source = GetPath(c.Unlock);
+                    UnlockPicButton.Source = Global.GetGameResourcePath(c.Unlock);
                 }
                 if (c.UnlockCharcter != null)
                 {
                     UnlockCharcterButton.Visibility = Visibility.Visible;
-                    UnlockCharcterImage.Source = new BitmapImage(new Uri(GetPath(c.UnlockCharcter))); 
+                    UnlockCharcterImage.Source = new BitmapImage(new Uri(Global.GetGameResourcePath(c.UnlockCharcter))); 
                 }
                 if (c.UnlockBlueprint != null)
                 {
                     UnlockBlueprintPicButton.Visibility = Visibility.Visible;
-                    UnlockBlueprintPicButton.Source = GetPath(c.UnlockBlueprint);
+                    UnlockBlueprintPicButton.Source = Global.GetGameResourcePath(c.UnlockBlueprint);
                 }
             }
             ScienceIntroduction.Text = c.Introduction;
             Console.Text = $"c_give(\"{c.Console}\",10)";
-        }
-
-        private string GetPath(string str)
-        {
-            var strHead = str.Substring(0, 1);
-            switch (strHead)
-            {
-                case "A":
-                    str = $"ms-appx:///Assets/GameResources/Creatures/{str}.png";
-                    break;
-                case "C":
-                    str = $"ms-appx:///Assets/GameResources/Charcters/{str}.png";
-                    break;
-                case "F":
-                    str = $"ms-appx:///Assets/GameResources/Foods/{str}.png";
-                    break;
-                case "G":
-                    str = $"ms-appx:///Assets/GameResources/Goods/{str}.png";
-                    break;
-                case "N":
-                    str = $"ms-appx:///Assets/GameResources/Natures/{str}.png";
-                    break;
-                case "S":
-                    str = $"ms-appx:///Assets/GameResources/Sciences/{str}.png";
-                    break;
-                default:
-                    str = $"ms-appx:///Assets/GameResources/Goods/{str}.png";
-                    break;
-            }
-            return str;
         }
 
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)

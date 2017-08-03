@@ -126,17 +126,20 @@
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\AnimalPage.xaml.cs">
-      <DependentUpon>AnimalPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\CharacterPage.xaml.cs">
       <DependentUpon>CharacterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CookingSimulatorPage.xaml.cs">
       <DependentUpon>CookingSimulatorPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CreaturePage.xaml.cs">
+      <DependentUpon>CreaturePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialog\CharacterDialog.xaml.cs">
       <DependentUpon>CharacterDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\CreaturesDialog.xaml.cs">
+      <DependentUpon>CreaturesDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Dialog\FoodDialog.xaml.cs">
       <DependentUpon>FoodDialog.xaml</DependentUpon>
@@ -224,6 +227,11 @@
     <Content Include="Assets\GameResources\Goods\G_succulent.png" />
     <Content Include="Assets\GameResources\Goods\G_trinkets.png" />
     <Content Include="Assets\GameResources\Goods\G_yellow_moonlens.png" />
+    <Content Include="Assets\GameResources\Goods\T_beach_toy.png" />
+    <Content Include="Assets\GameResources\Goods\T_black_knight.png" />
+    <Content Include="Assets\GameResources\Goods\T_black_rook.png" />
+    <Content Include="Assets\GameResources\Goods\T_white_knight.png" />
+    <Content Include="Assets\GameResources\Goods\T_white_rook.png" />
     <Content Include="Assets\GameResources\Natures\N_rock_den.png" />
     <Content Include="Assets\GameResources\Sciences\S_bearger_figure_marble.png" />
     <Content Include="Assets\GameResources\Sciences\S_bearger_figure_stone.png" />
@@ -1652,7 +1660,6 @@
     <Content Include="Assets\Pic\Wiki-wordmark.png" />
     <Content Include="Assets\Pic\QRCode_Qun.png" />
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="Json\Creatures.xml" />
     <Content Include="Json\Events.xml" />
     <Content Include="Json\Goods.xml" />
     <Content Include="Json\Natures.xml" />
@@ -1667,6 +1674,11 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\ComboBoxDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Styles\ReadOnlyCheckBoxDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -1696,10 +1708,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AnimalPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\CharacterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1708,7 +1716,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\CreaturePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Dialog\CharacterDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\CreaturesDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1756,6 +1772,9 @@
       <Version>1.5.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
+      <Version>1.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
       <Version>1.5.1</Version>
     </PackageReference>
   </ItemGroup>

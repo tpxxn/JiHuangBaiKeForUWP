@@ -36,36 +36,71 @@ namespace JiHuangBaiKeForUWP.Model
     public class Land
     {
         public List<Creature> Creature { get; set; }
+
+        public Land()
+        {
+            Creature = new List<Creature>();
+        }
     }
     
     public class Ocean
     {
         public List<Creature> Creature { get; set; }
+
+        public Ocean()
+        {
+            Creature = new List<Creature>();
+        }
     }
 
     public class Fly
     {
         public List<Creature> Creature { get; set; }
+
+        public Fly()
+        {
+            Creature = new List<Creature>();
+        }
     }
     
     public class Cave
     {
         public List<Creature> Creature { get; set; }
+
+        public Cave()
+        {
+            Creature = new List<Creature>();
+        }
     }
     
     public class Evil
     {
         public List<Creature> Creature { get; set; }
+
+        public Evil()
+        {
+            Creature = new List<Creature>();
+        }
     }
     
     public class Others
     {
         public List<Creature> Creature { get; set; }
+
+        public Others()
+        {
+            Creature = new List<Creature>();
+        }
     }
     
     public class Boss
     {
         public List<Creature> Creature { get; set; }
+
+        public Boss()
+        {
+            Creature = new List<Creature>();
+        }
     }
 
     public class CreaturesRootObject

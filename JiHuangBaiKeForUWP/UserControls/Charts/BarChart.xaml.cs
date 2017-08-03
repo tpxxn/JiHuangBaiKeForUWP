@@ -13,6 +13,38 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
             this.InitializeComponent();
         }
 
+        #region 依赖属性：标签宽度
+
+        public double LabelWidth
+        {
+            get => (double)GetValue(LabelWidthProperty);
+            set => SetValue(LabelWidthProperty, value);
+        }
+
+        public static readonly DependencyProperty LabelWidthProperty =
+            DependencyProperty.Register("LabelWidth", typeof(double), typeof(BarChart), new PropertyMetadata(false, OnLabelWidthChanged));
+
+
+        private static void OnLabelWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue != null)
+            {
+                var barChart = (BarChart)d;
+
+                if ((double) e.NewValue != 0)
+                {
+                    barChart.LabelTextBlock.Width = (double) e.NewValue;
+                }
+                else
+                {
+                    barChart.LabelTextBlock.Width = 30;
+                }
+            }
+        }
+        #endregion
+
+        #region 依赖属性：最大值
+
         public double MaxValue
         {
             get => (double)GetValue(MaxValueProperty);
@@ -21,6 +53,9 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
 
         public static readonly DependencyProperty MaxValueProperty =
             DependencyProperty.Register("MaxValue", typeof(double), typeof(BarChart), new PropertyMetadata(1));
+
+        #endregion
+
         #region 依赖属性：值
 
         public double Value

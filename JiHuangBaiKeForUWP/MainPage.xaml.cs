@@ -45,7 +45,7 @@ namespace JiHuangBaiKeForUWP
             _iconsListBoxGameDataList = new List<ListBoxItem>(
                 new[]
                 {
-                    CharacterListBoxItem, FoodListBoxItem, ScienceListBoxItem, AnimalListBoxItem,
+                    CharacterListBoxItem, FoodListBoxItem, ScienceListBoxItem, CreatureListBoxItem,
                     NaturalListBoxItem, GoodListBoxItem, DedicatedServersListBoxItem, StrategyListBoxItem,
                     SocialIntercourseListBoxItem
                 }
@@ -153,9 +153,10 @@ namespace JiHuangBaiKeForUWP
                 IconsListBoxGameData.SelectedItem = null;
             }
 
-            if (((ListBoxItem)((ListBox)sender).SelectedItem) != null)
+            var listBoxItem = (ListBoxItem) ((ListBox) sender).SelectedItem;
+            if (listBoxItem != null)
             {
-                var listBoxItemName = ((ListBoxItem)((ListBox)sender).SelectedItem).Name;
+                var listBoxItemName = listBoxItem.Name;
 
                 switch (listBoxItemName)
                 {
@@ -175,9 +176,9 @@ namespace JiHuangBaiKeForUWP
                         FrameTitle.Text = "科技";
                         RootFrame.Navigate(typeof(SciencePage), null);
                         break;
-                    case "AnimalListBoxItem":
+                    case "CreatureListBoxItem":
                         FrameTitle.Text = "生物";
-                        RootFrame.Navigate(typeof(AnimalPage), null);
+                        RootFrame.Navigate(typeof(CreaturePage), null);
                         break;
                     case "NaturalListBoxItem":
                         FrameTitle.Text = "自然";

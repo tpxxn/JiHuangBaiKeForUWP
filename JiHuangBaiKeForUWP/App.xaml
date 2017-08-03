@@ -10,6 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Styles/ComboBoxDictionary.xaml"/>
                 <ResourceDictionary Source="ms-appx:///Styles/TransparentDictionary.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Styles/ReadOnlyCheckBoxDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
