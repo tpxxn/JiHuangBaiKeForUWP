@@ -30,7 +30,11 @@
             <StackPanel Grid.Row="4" HorizontalAlignment="Center" Width="300" Margin="0,10,0,0">
                 <charts:BarChart x:Name="CharacterHealth" Label="生命" MaxValue="300"/>
                 <charts:BarChart x:Name="CharacterHunger" Label="饥饿" MaxValue="300"/>
+                <charts:BarChart x:Name="CharacterLog" HorizontalAlignment="Left" Label="树木值" LabelWidth="45" MaxValue="100" Visibility="Collapsed" />
                 <charts:BarChart x:Name="CharacterSanity" Label="精神" MaxValue="300"/>
+                <charts:BarChart x:Name="CharacterDayDamage" HorizontalAlignment="Left" Label="伤害(白天)" LabelWidth="75" MaxValue="40" Visibility="Collapsed" />
+                <charts:BarChart x:Name="CharacterDuskDamage" HorizontalAlignment="Left" Label="伤害(黄昏)" LabelWidth="75" MaxValue="40" Visibility="Collapsed" />
+                <charts:BarChart x:Name="CharacterNightDamage" HorizontalAlignment="Left" Label="伤害(夜晚)" LabelWidth="75" MaxValue="40" Visibility="Collapsed" />
             </StackPanel>
             <TextBlock Grid.Row="5" x:Name="CharacterDamage" HorizontalAlignment="Center" Margin="10" />
             <TextBlock Grid.Row="6" x:Name="CharacterDescription1" HorizontalAlignment="Left" Margin="50,5,10,5" Visibility="Collapsed"/>

@@ -16,10 +16,10 @@ namespace JiHuangBaiKeForUWP.Model
         public string Unlock { get; set; }
         public string Introduce { get; set; }
         public string Console { get; set; }
-        public int? LogMeter { get; set; }
-        public int? DamageDay { get; set; }
-        public int? DamageDusk { get; set; }
-        public int? DamageNight { get; set; }
+        public int LogMeter { get; set; }
+        public int DamageDay { get; set; }
+        public int DamageDusk { get; set; }
+        public int DamageNight { get; set; }
     }
 
     public class CharacterRootObject

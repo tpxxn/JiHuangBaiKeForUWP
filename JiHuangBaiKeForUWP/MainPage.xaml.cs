@@ -240,11 +240,11 @@ namespace JiHuangBaiKeForUWP
             {
                 Global.AutoSuggestBoxItem.Add(item);
             }
-            var str = sender.Text.Trim();
+            var str = sender.Text.Trim().ToLower();
             if (string.IsNullOrEmpty(str)) return;
             for (var i = Global.AutoSuggestBoxItem.Count-1; i >= 0; i--)
             {
-                if (Global.AutoSuggestBoxItem[i].Name.IndexOf(str, StringComparison.Ordinal) < 0 && Global.AutoSuggestBoxItem[i].EnName.IndexOf(str, StringComparison.Ordinal) < 0)
+                if (Global.AutoSuggestBoxItem[i].Name.ToLower().IndexOf(str, StringComparison.Ordinal) < 0 && Global.AutoSuggestBoxItem[i].EnName.ToLower().IndexOf(str, StringComparison.Ordinal) < 0)
                 {
                     Global.AutoSuggestBoxItem.Remove(Global.AutoSuggestBoxItem[i]);
                 }
@@ -254,18 +254,9 @@ namespace JiHuangBaiKeForUWP
         /// <summary>
         /// 搜索框查询提交事件
         /// </summary>
-        private async void SearchAutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        private void SearchAutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-            if (sender.Items == null) return;
-            var dialog = new ContentDialog()
-            {
-                Title = "当前目录",
-                Content = sender.Items[0].ToString(),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-            };
-            dialog.PrimaryButtonClick += (s, e) => { };
-            await dialog.ShowAsync();
+            
         }
 
         /// <summary>
@@ -273,7 +264,32 @@ namespace JiHuangBaiKeForUWP
         /// </summary>
         private void SearchAutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-
+            var suggestBoxItem = args.SelectedItem as SuggestBoxItem;
+            if (suggestBoxItem == null) return;
+            var suggestBoxItemPicture = suggestBoxItem.Picture;
+            var shortName = suggestBoxItemPicture.Substring(suggestBoxItemPicture.LastIndexOf('/') + 1, suggestBoxItemPicture.Length - suggestBoxItemPicture.LastIndexOf('/') - 5);
+            var picHead = shortName.Substring(0, 1);
+            switch (picHead)
+            {
+                case "A":
+                    FrameTitle.Text = "生物";
+                    RootFrame.Navigate(typeof(CreaturePage), suggestBoxItem.SourcePath);
+                    break;
+                case "C":
+                    FrameTitle.Text = "人物";
+                    RootFrame.Navigate(typeof(CharacterPage), suggestBoxItem.SourcePath);
+                    
+                    break;
+                case "F":
+                    FrameTitle.Text = "食物";
+                    RootFrame.Navigate(typeof(FoodPage), suggestBoxItem.SourcePath);
+                    
+                    break;
+                case "S":
+                    FrameTitle.Text = "科技";
+                    RootFrame.Navigate(typeof(SciencePage), suggestBoxItem.SourcePath);
+                    break;
+            }
         }
 
         #endregion

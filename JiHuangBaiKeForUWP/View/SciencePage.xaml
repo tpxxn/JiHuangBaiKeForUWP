@@ -25,7 +25,7 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel x:Name="ScienceStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="ToolExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_tools.png" Width="40" Height="40" />
@@ -41,7 +41,7 @@
                           ItemClick="ScienceGridView_ItemClick" 
                           animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="LightExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_light.png" Width="40" Height="40" />
@@ -73,7 +73,7 @@
                     ItemClick="ScienceGridView_ItemClick" 
                     animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="SurvivalExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_survival.png" Width="40" Height="40" />
@@ -89,7 +89,7 @@
                     ItemClick="ScienceGridView_ItemClick" 
                     animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="FoodExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_food.png" Width="40" Height="40" />
@@ -105,7 +105,7 @@
                     ItemClick="ScienceGridView_ItemClick" 
                     animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="TechnologyExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_technology.png" Width="40" Height="40" />
@@ -121,7 +121,7 @@
                     ItemClick="ScienceGridView_ItemClick" 
                     animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="FightExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_fight.png" Width="40" Height="40" />
@@ -137,7 +137,7 @@
                     ItemClick="ScienceGridView_ItemClick" 
                     animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="StructuresExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_structures.png" Width="40" Height="40" />
@@ -153,7 +153,7 @@
                     ItemClick="ScienceGridView_ItemClick" 
                     animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="RefineExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_refine.png" Width="40" Height="40" />
@@ -169,7 +169,7 @@
                     ItemClick="ScienceGridView_ItemClick" 
                     animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="MagicExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_magic.png" Width="40" Height="40" />
@@ -185,7 +185,7 @@
                     ItemClick="ScienceGridView_ItemClick" 
                     animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="DressExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_dress.png" Width="40" Height="40" />
@@ -217,7 +217,7 @@
                     ItemClick="ScienceGridView_ItemClick" 
                     animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="BooksExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_books.png" Width="40" Height="40" />

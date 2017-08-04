@@ -179,43 +179,6 @@ namespace JiHuangBaiKeForUWP.Model
         private static readonly List<Creature> CreatureOthersData = new List<Creature>();
         private static readonly List<Creature> CreatureBossData = new List<Creature>();
 
-        public static void AutoSuggestBoxItemSourceAdd(object obj)
-        {
-            var suggestBoxItem = new SuggestBoxItem();
-            var type = obj.GetType();
-            if (type == typeof(Character))
-            {
-                suggestBoxItem.Picture = ((Character) obj).Picture;
-                suggestBoxItem.Name = ((Character) obj).Name;
-                suggestBoxItem.EnName = ((Character) obj).EnName;
-            }
-            else if (type == typeof(FoodRecipe2))
-            {
-                suggestBoxItem.Picture = ((FoodRecipe2)obj).Picture;
-                suggestBoxItem.Name = ((FoodRecipe2)obj).Name;
-                suggestBoxItem.EnName = ((FoodRecipe2)obj).EnName;
-            }
-            else if (type == typeof(Food))
-            {
-                suggestBoxItem.Picture = ((Food)obj).Picture;
-                suggestBoxItem.Name = ((Food)obj).Name;
-                suggestBoxItem.EnName = ((Food)obj).EnName;
-            }
-            else if (type == typeof(Science))
-            {
-                suggestBoxItem.Picture = ((Science)obj).Picture;
-                suggestBoxItem.Name = ((Science)obj).Name;
-                suggestBoxItem.EnName = ((Science)obj).EnName;
-            }
-            else if (type == typeof(Creature))
-            {
-                suggestBoxItem.Picture = ((Creature)obj).Picture;
-                suggestBoxItem.Name = ((Creature)obj).Name;
-                suggestBoxItem.EnName = ((Creature)obj).EnName;
-            }
-            AutoSuggestBoxItemSource.Add(suggestBoxItem);
-        }
-
         public static async void SetAutoSuggestBoxItemSource()
         {
             #region 清空列表
@@ -268,7 +231,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var characterItems in CharacterData)
             {
-                AutoSuggestBoxItemSourceAdd(characterItems);
+                AutoSuggestBoxItemSourceAdd(characterItems, "Character");
             }
             #endregion
             #region 食物
@@ -331,31 +294,31 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var foodRecipeItems in FoodRecipeData)
             {
-                AutoSuggestBoxItemSourceAdd(foodRecipeItems);
+                AutoSuggestBoxItemSourceAdd(foodRecipeItems,"FoodRecipe");
             }
             foreach (var foodItems in FoodMeatData)
             {
-                AutoSuggestBoxItemSourceAdd(foodItems);
+                AutoSuggestBoxItemSourceAdd(foodItems, "FoodMeats");
             }
             foreach (var foodItems in FoodVegetableData)
             {
-                AutoSuggestBoxItemSourceAdd(foodItems);
+                AutoSuggestBoxItemSourceAdd(foodItems, "FoodVegetables");
             }
             foreach (var foodItems in FoodFruitData)
             {
-                AutoSuggestBoxItemSourceAdd(foodItems);
+                AutoSuggestBoxItemSourceAdd(foodItems, "FoodFruits");
             }
             foreach (var foodItems in FoodEggData)
             {
-                AutoSuggestBoxItemSourceAdd(foodItems);
+                AutoSuggestBoxItemSourceAdd(foodItems, "FoodEggs");
             }
             foreach (var foodItems in FoodOtherData)
             {
-                AutoSuggestBoxItemSourceAdd(foodItems);
+                AutoSuggestBoxItemSourceAdd(foodItems, "FoodOthers");
             }
             foreach (var foodItems in FoodNoFcData)
             {
-                AutoSuggestBoxItemSourceAdd(foodItems);
+                AutoSuggestBoxItemSourceAdd(foodItems, "FoodNoFc");
             }
             #endregion
             #region 科技
@@ -514,79 +477,79 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceItems in ScienceToolData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceTool");
             }
             foreach (var scienceItems in ScienceLightData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceLight");
             }
             foreach (var scienceItems in ScienceNauticalData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceNautical");
             }
             foreach (var scienceItems in ScienceSurvivalData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceSurvival");
             }
             foreach (var scienceItems in ScienceFoodData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceFood");
             }
             foreach (var scienceItems in ScienceTechnologyData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceTechnology");
             }
             foreach (var scienceItems in ScienceFightData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceFight");
             }
             foreach (var scienceItems in ScienceStructureData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceStructure");
             }
             foreach (var scienceItems in ScienceRefineData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceRefine");
             }
             foreach (var scienceItems in ScienceMagicData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceMagic");
             }
             foreach (var scienceItems in ScienceDressData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceDress");
             }
             foreach (var scienceItems in ScienceAncientData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceAncient");
             }
             foreach (var scienceItems in ScienceBookData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceBook");
             }
             foreach (var scienceItems in ScienceShadowData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceShadow");
             }
             foreach (var scienceItems in ScienceCritterData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceCritter");
             }
             foreach (var scienceItems in ScienceSculptData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceSculpt");
             }
             foreach (var scienceItems in ScienceCartographyData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceCartography");
             }
             foreach (var scienceItems in ScienceOfferingsData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceOfferings");
             }
             foreach (var scienceItems in ScienceVolcanoData)
             {
-                AutoSuggestBoxItemSourceAdd(scienceItems);
+                AutoSuggestBoxItemSourceAdd(scienceItems, "ScienceVolcano");
             }
             #endregion
             #region 生物
@@ -649,31 +612,31 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var creatureItems in CreatureLandData)
             {
-                AutoSuggestBoxItemSourceAdd(creatureItems);
+                AutoSuggestBoxItemSourceAdd(creatureItems, "CreatureLand");
             }
             foreach (var creatureItems in CreatureOceanData)
             {
-                AutoSuggestBoxItemSourceAdd(creatureItems);
+                AutoSuggestBoxItemSourceAdd(creatureItems, "CreatureOcean");
             }
             foreach (var creatureItems in CreatureFlyData)
             {
-                AutoSuggestBoxItemSourceAdd(creatureItems);
+                AutoSuggestBoxItemSourceAdd(creatureItems, "CreatureFly");
             }
             foreach (var creatureItems in CreatureCaveData)
             {
-                AutoSuggestBoxItemSourceAdd(creatureItems);
+                AutoSuggestBoxItemSourceAdd(creatureItems, "CreatureCave");
             }
             foreach (var creatureItems in CreatureEvilData)
             {
-                AutoSuggestBoxItemSourceAdd(creatureItems);
+                AutoSuggestBoxItemSourceAdd(creatureItems, "CreatureEvil");
             }
             foreach (var creatureItems in CreatureOthersData)
             {
-                AutoSuggestBoxItemSourceAdd(creatureItems);
+                AutoSuggestBoxItemSourceAdd(creatureItems, "CreatureOther");
             }
             foreach (var creatureItems in CreatureBossData)
             {
-                AutoSuggestBoxItemSourceAdd(creatureItems);
+                AutoSuggestBoxItemSourceAdd(creatureItems, "CreatureBoss");
             }
             #endregion
             foreach (var item in AutoSuggestBoxItemSource)
@@ -681,6 +644,45 @@ namespace JiHuangBaiKeForUWP.Model
                 AutoSuggestBoxItem.Add(item);
             }
         }
+
+        public static void AutoSuggestBoxItemSourceAdd(object obj, string sourcePath)
+        {
+            var suggestBoxItem = new SuggestBoxItem();
+            var type = obj.GetType();
+            if (type == typeof(Character))
+            {
+                suggestBoxItem.Picture = ((Character)obj).Picture;
+                suggestBoxItem.Name = ((Character)obj).Name;
+                suggestBoxItem.EnName = ((Character)obj).EnName;
+            }
+            else if (type == typeof(FoodRecipe2))
+            {
+                suggestBoxItem.Picture = ((FoodRecipe2)obj).Picture;
+                suggestBoxItem.Name = ((FoodRecipe2)obj).Name;
+                suggestBoxItem.EnName = ((FoodRecipe2)obj).EnName;
+            }
+            else if (type == typeof(Food))
+            {
+                suggestBoxItem.Picture = ((Food)obj).Picture;
+                suggestBoxItem.Name = ((Food)obj).Name;
+                suggestBoxItem.EnName = ((Food)obj).EnName;
+            }
+            else if (type == typeof(Science))
+            {
+                suggestBoxItem.Picture = ((Science)obj).Picture;
+                suggestBoxItem.Name = ((Science)obj).Name;
+                suggestBoxItem.EnName = ((Science)obj).EnName;
+            }
+            else if (type == typeof(Creature))
+            {
+                suggestBoxItem.Picture = ((Creature)obj).Picture;
+                suggestBoxItem.Name = ((Creature)obj).Name;
+                suggestBoxItem.EnName = ((Creature)obj).EnName;
+            }
+            suggestBoxItem.SourcePath = sourcePath;
+            AutoSuggestBoxItemSource.Add(suggestBoxItem);
+        }
+
         #endregion
 
         /// <summary>

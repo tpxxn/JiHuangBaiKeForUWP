@@ -33,6 +33,35 @@ namespace JiHuangBaiKeForUWP.View
         private readonly ObservableCollection<Creature> _creatureOthersData = new ObservableCollection<Creature>();
         private readonly ObservableCollection<Creature> _creatureBossData = new ObservableCollection<Creature>();
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var parameter = (string)e.Parameter;
+            switch (parameter)
+            {
+                case "CreatureLand":
+                    LandExpander.IsExPanded = true;
+                    break;
+                case "CreatureOcean":
+                    OceanExpander.IsExPanded = true;
+                    break;
+                case "CreatureFly":
+                    FlyExpander.IsExPanded = true;
+                    break;
+                case "CreatureCave":
+                    CaveExpander.IsExPanded = true;
+                    break;
+                case "CreatureEvil":
+                    EvilExpander.IsExPanded = true;
+                    break;
+                case "CreatureOther":
+                    OthersExpander.IsExPanded = true;
+                    break;
+                case "CreatureBoss":
+                    BossExpander.IsExPanded = true;
+                    break;
+            }
+        }
+
         public CreaturePage()
         {
             this.InitializeComponent();

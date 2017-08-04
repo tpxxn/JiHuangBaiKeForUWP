@@ -46,9 +46,28 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             CharacterHunger.BarColor = Global.ColorKhaki;
             CharacterSanity.Value = c.Sanity;
             CharacterSanity.BarColor = Global.ColorRed;
-            if (c.Name == "海獭伍迪" || c.Name == "阿比盖尔")
+            if (c.Name == "阿比盖尔")
+            {
+                CharacterDamage.Visibility = Visibility.Collapsed;
+                CharacterHealth.LabelWidth = 75;
+                CharacterDayDamage.Visibility = Visibility.Visible;
+                CharacterDayDamage.Value = c.DamageDay;
+                CharacterDayDamage.BarColor = Global.ColorBlue;
+                CharacterDuskDamage.Visibility = Visibility.Visible;
+                CharacterDuskDamage.Value = c.DamageDusk;
+                CharacterDuskDamage.BarColor = Global.ColorBlue;
+                CharacterNightDamage.Visibility = Visibility.Visible;
+                CharacterNightDamage.Value = c.DamageNight;
+                CharacterNightDamage.BarColor = Global.ColorBlue;
+            }
+            if (c.Name == "海獭伍迪")
             {
                 CharacterDamage.Text = $"伤害：{c.Damage} 点";
+                CharacterHealth.LabelWidth = 45;
+                CharacterSanity.LabelWidth = 45;
+                CharacterLog.Visibility = Visibility.Visible;
+                CharacterLog.Value = c.LogMeter;
+                CharacterLog.BarColor = Global.ColorPurple;
             }
             else
             {

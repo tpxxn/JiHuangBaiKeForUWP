@@ -28,6 +28,12 @@ namespace JiHuangBaiKeForUWP.View
     {
         private readonly ObservableCollection<Character> _characterData = new ObservableCollection<Character>();
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var parameter = (string)e.Parameter;
+            
+        }
+
         public CharacterPage()
         {
             this.InitializeComponent();

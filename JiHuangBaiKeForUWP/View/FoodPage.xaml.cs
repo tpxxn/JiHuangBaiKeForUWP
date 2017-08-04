@@ -32,6 +32,36 @@ namespace JiHuangBaiKeForUWP.View
         private readonly ObservableCollection<Food> _foodEggData = new ObservableCollection<Food>();
         private readonly ObservableCollection<Food> _foodOtherData = new ObservableCollection<Food>();
         private readonly ObservableCollection<Food> _foodNoFcData = new ObservableCollection<Food>();
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var parameter = (string)e.Parameter;
+            switch (parameter)
+            {
+                case "FoodRecipe":
+                    RecipesExpander.IsExPanded = true;
+                    break;
+                case "FoodMeats":
+                    MeatsExpander.IsExPanded = true;
+                    break;
+                case "FoodVegetables":
+                    VegetablesExpander.IsExPanded = true;
+                    break;
+                case "FoodFruits":
+                    FruitsExpander.IsExPanded = true;
+                    break;
+                case "FoodEggs":
+                    EggsExpander.IsExPanded = true;
+                    break;
+                case "FoodOthers":
+                    OtherExpander.IsExPanded = true;
+                    break;
+                case "FoodNoFc":
+                    NoFcExpander.IsExPanded = true;
+                    break;
+            }
+        }
+
         public FoodPage()
         {
             this.InitializeComponent();

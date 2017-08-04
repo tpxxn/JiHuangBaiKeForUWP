@@ -45,6 +45,71 @@ namespace JiHuangBaiKeForUWP.View
         private readonly ObservableCollection<Science> _scienceOfferingsData = new ObservableCollection<Science>();
         private readonly ObservableCollection<Science> _scienceVolcanoData = new ObservableCollection<Science>();
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var parameter = (string)e.Parameter;
+            switch (parameter)
+            {
+                case "ScienceTool":
+                    ToolExpander.IsExPanded = true;
+                    break;
+                case "ScienceLight":
+                    LightExpander.IsExPanded = true;
+                    break;
+                case "ScienceNautical":
+                    NauticalExpander.IsExPanded = true;
+                    break;
+                case "ScienceSurvival":
+                    SurvivalExpander.IsExPanded = true;
+                    break;
+                case "ScienceFood":
+                    FoodExpander.IsExPanded = true;
+                    break;
+                case "ScienceTechnology":
+                    TechnologyExpander.IsExPanded = true;
+                    break;
+                case "ScienceFight":
+                    FightExpander.IsExPanded = true;
+                    break;
+                case "ScienceStructure":
+                    StructuresExpander.IsExPanded = true;
+                    break;
+                case "ScienceRefine":
+                    RefineExpander.IsExPanded = true;
+                    break;
+                case "ScienceMagic":
+                    MagicExpander.IsExPanded = true;
+                    break;
+                case "ScienceDress":
+                    DressExpander.IsExPanded = true;
+                    break;
+                case "ScienceAncient":
+                    AncientExpander.IsExPanded = true;
+                    break;
+                case "ScienceBook":
+                    BooksExpander.IsExPanded = true;
+                    break;
+                case "ScienceShadow":
+                    ShadowExpander.IsExPanded = true;
+                    break;
+                case "ScienceCritter":
+                    CritterExpaner.IsExPanded = true;
+                    break;
+                case "ScienceSculpt":
+                    SculptExpander.IsExPanded = true;
+                    break;
+                case "ScienceCartography":
+                    CartographyExpander.IsExPanded = true;
+                    break;
+                case "ScienceOfferings":
+                    OfferingsExpander.IsExPanded = true;
+                    break;
+                case "ScienceVolcano":
+                    VolcanoExpander.IsExPanded = true;
+                    break;
+            }
+        }
+
         public SciencePage()
         {
             this.InitializeComponent();

@@ -36,7 +36,7 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel x:Name="FoodStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="RecipesExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/CP_CrockPot.png" Width="40" Height="40" />
@@ -52,7 +52,7 @@
                               ItemClick="FoodRecipeGridView_ItemClick" 
                               animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="MeatsExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Foods/FC_Meats.png" Width="40" Height="40" />
@@ -68,7 +68,7 @@
                               ItemClick="FoodGridView_ItemClick" 
                               animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="VegetablesExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Foods/FC_Vegetables.png" Width="40" Height="40" />
@@ -84,7 +84,7 @@
                               ItemClick="FoodGridView_ItemClick" 
                               animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="FruitsExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Foods/FC_Fruit.png" Width="40" Height="40" />
@@ -100,7 +100,7 @@
                               ItemClick="FoodGridView_ItemClick" 
                               animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="EggsExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Foods/FC_Eggs.png" Width="40" Height="40" />
@@ -116,7 +116,7 @@
                               ItemClick="FoodGridView_ItemClick" 
                               animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="OtherExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Goods/G_twigs.png" Width="40" Height="40" />
@@ -132,7 +132,7 @@
                               ItemClick="FoodGridView_ItemClick" 
                               animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
-            <uc:Expander VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="NoFcExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Foods/F_petals.png" Width="40" Height="40" />
