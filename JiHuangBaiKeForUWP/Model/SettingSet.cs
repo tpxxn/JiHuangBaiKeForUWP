@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 
-namespace JiHuangBaiKeForUWP.Manager
+namespace JiHuangBaiKeForUWP.Model
 {
     internal sealed class SettingSet
     {
@@ -39,10 +39,7 @@ namespace JiHuangBaiKeForUWP.Manager
                 return (bool)themeIsOn;
 
             }
-            else
-            {
-                return true;
-            }
+            return false;
         }
 
         #endregion
@@ -76,10 +73,7 @@ namespace JiHuangBaiKeForUWP.Manager
                 return (int)gameVersion;
 
             }
-            else
-            {
-                return 3;
-            }
+            return 0;
         }
 
         #endregion

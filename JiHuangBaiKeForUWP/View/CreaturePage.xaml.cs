@@ -49,28 +49,14 @@ namespace JiHuangBaiKeForUWP.View
 
         public async void Deserialize()
         {
-            Uri uri;
-            const string fileName = "Creatures.json";
-            var folderExists = await Global.ApplicationFolder.TryGetItemAsync(Global.BuiltInGameVersionJsonFolder[Global.GameVersion]);
-            if (folderExists == null)
-            {
-                uri = new Uri("ms-appx:///Json/" + Global.BuiltInGameVersionJsonFolder[Global.GameVersion] + "/" +
-                              fileName);
-            }
-            else
-            {
-                uri = new Uri(Global.ApplicationFolder.Path + "/" + Global.BuiltInGameVersionJsonFolder[Global.GameVersion] + "/" + fileName);
-            }
-            var storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
-            var str = await FileIO.ReadTextAsync(storageFile);
-            var creature = JsonConvert.DeserializeObject<CreaturesRootObject>(str);
+            var creature = JsonConvert.DeserializeObject<CreaturesRootObject>(await Global.GetJsonString("Creatures.json"));
             foreach (var creatureLandItems in creature.Land.Creature)
             {
                 _creatureLandData.Add(creatureLandItems);
             }
             foreach (var creatureLandItems in _creatureLandData)
             {
-                creatureLandItems.Picture = $"ms-appx:///Assets/GameResources/Creatures/{creatureLandItems.Picture}.png";
+                creatureLandItems.Picture = Global.GetGameResourcePath(creatureLandItems.Picture);
             }
             foreach (var creatureOceanItems in creature.Ocean.Creature)
             {
@@ -78,7 +64,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var creatureOceanItems in _creatureOceanData)
             {
-                creatureOceanItems.Picture = $"ms-appx:///Assets/GameResources/Creatures/{creatureOceanItems.Picture}.png";
+                creatureOceanItems.Picture = Global.GetGameResourcePath(creatureOceanItems.Picture);
             }
             foreach (var creatureFlyItems in creature.Fly.Creature)
             {
@@ -86,7 +72,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var creatureFlyItems in _creatureFlyData)
             {
-                creatureFlyItems.Picture = $"ms-appx:///Assets/GameResources/Creatures/{creatureFlyItems.Picture}.png";
+                creatureFlyItems.Picture = Global.GetGameResourcePath(creatureFlyItems.Picture);
             }
             foreach (var creatureCaveItems in creature.Cave.Creature)
             {
@@ -94,7 +80,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var creatureCaveItems in _creatureCaveData)
             {
-                creatureCaveItems.Picture = $"ms-appx:///Assets/GameResources/Creatures/{creatureCaveItems.Picture}.png";
+                creatureCaveItems.Picture = Global.GetGameResourcePath(creatureCaveItems.Picture);
             }
             foreach (var creatureEvilItems in creature.Evil.Creature)
             {
@@ -102,7 +88,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var creatureEvilItems in _creatureEvilData)
             {
-                creatureEvilItems.Picture = $"ms-appx:///Assets/GameResources/Creatures/{creatureEvilItems.Picture}.png";
+                creatureEvilItems.Picture = Global.GetGameResourcePath(creatureEvilItems.Picture);
             }
             foreach (var creatureOthersItems in creature.Others.Creature)
             {
@@ -110,7 +96,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var creatureOthersItems in _creatureOthersData)
             {
-                creatureOthersItems.Picture = $"ms-appx:///Assets/GameResources/Creatures/{creatureOthersItems.Picture}.png";
+                creatureOthersItems.Picture = Global.GetGameResourcePath(creatureOthersItems.Picture);
             }
             foreach (var creatureBossItems in creature.Boss.Creature)
             {
@@ -118,7 +104,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var creatureBossItems in _creatureBossData)
             {
-                creatureBossItems.Picture = $"ms-appx:///Assets/GameResources/Creatures/{creatureBossItems.Picture}.png";
+                creatureBossItems.Picture = Global.GetGameResourcePath(creatureBossItems.Picture);
             }
         }
 

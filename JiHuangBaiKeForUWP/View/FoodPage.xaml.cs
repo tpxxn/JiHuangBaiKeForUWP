@@ -40,28 +40,14 @@ namespace JiHuangBaiKeForUWP.View
 
         public async void Deserialize()
         {
-            Uri uri;
-            const string fileName = "Foods.json";
-            var folderExists = await Global.ApplicationFolder.TryGetItemAsync(Global.BuiltInGameVersionJsonFolder[Global.GameVersion]);
-            if (folderExists == null)
-            {
-                uri = new Uri("ms-appx:///Json/" + Global.BuiltInGameVersionJsonFolder[Global.GameVersion] + "/" +
-                              fileName);
-            }
-            else
-            {
-                uri = new Uri(Global.ApplicationFolder.Path + "/" + Global.BuiltInGameVersionJsonFolder[Global.GameVersion] + "/" + fileName);
-            }
-            var storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
-            var str = await FileIO.ReadTextAsync(storageFile);
-            var food = JsonConvert.DeserializeObject<FoodRootObject>(str);
+            var food = JsonConvert.DeserializeObject<FoodRootObject>(await Global.GetJsonString("Foods.json"));
             foreach (var foodRecipeItems in food.FoodRecipe.FoodRecipes)
             {
                 _foodRecipeData.Add(foodRecipeItems);
             }
             foreach (var foodRecipeItems in _foodRecipeData)
             {
-                foodRecipeItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodRecipeItems.Picture}.png";
+                foodRecipeItems.Picture = Global.GetGameResourcePath(foodRecipeItems.Picture);
             }
             foreach (var foodMeatsItems in food.FoodMeats.Foods)
             {
@@ -69,7 +55,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodMeatsItems in _foodMeatData)
             {
-                foodMeatsItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodMeatsItems.Picture}.png";
+                foodMeatsItems.Picture = Global.GetGameResourcePath(foodMeatsItems.Picture);
             }
             foreach (var foodVegetablesItems in food.FoodVegetables.Foods)
             {
@@ -77,7 +63,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodVegetablesItems in _foodVegetableData)
             {
-                foodVegetablesItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodVegetablesItems.Picture}.png";
+                foodVegetablesItems.Picture = Global.GetGameResourcePath(foodVegetablesItems.Picture);
             }
             foreach (var foodFruitItems in food.FoodFruit.Foods)
             {
@@ -85,7 +71,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodFruitItems in _foodFruitData)
             {
-                foodFruitItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodFruitItems.Picture}.png";
+                foodFruitItems.Picture = Global.GetGameResourcePath(foodFruitItems.Picture);
             }
             foreach (var foodEggsItems in food.FoodEggs.Foods)
             {
@@ -93,7 +79,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodEggsItems in _foodEggData)
             {
-                foodEggsItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodEggsItems.Picture}.png";
+                foodEggsItems.Picture = Global.GetGameResourcePath(foodEggsItems.Picture);
             }
             foreach (var foodOthersItems in food.FoodOthers.Foods)
             {
@@ -101,7 +87,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodOthersItems in _foodOtherData)
             {
-                foodOthersItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodOthersItems.Picture}.png";
+                foodOthersItems.Picture = Global.GetGameResourcePath(foodOthersItems.Picture);
             }
             foreach (var foodNoFcItems in food.FoodNoFc.Foods)
             {
@@ -109,7 +95,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodNoFcItems in _foodNoFcData)
             {
-                foodNoFcItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodNoFcItems.Picture}.png";
+                foodNoFcItems.Picture = Global.GetGameResourcePath(foodNoFcItems.Picture);
             }
         }
 

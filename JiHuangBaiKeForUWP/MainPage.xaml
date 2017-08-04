@@ -5,8 +5,26 @@
     xmlns:local="using:JiHuangBaiKeForUWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:JiHuangBaiKeForUWP.Model"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <DataTemplate x:Key="AutoSuggestBoxDataTemplate" x:DataType="model:SuggestBoxItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image Width="50" Source="{Binding Picture}" />
+                <TextBlock x:Name="AutoSuggestBoxItemTextBlock" Grid.Column="1" Margin="7,3,4,3" VerticalAlignment="Center">
+                    <Run Text="{Binding Name}" />
+                    <LineBreak/>
+                    <Run Text="{Binding EnName}" />
+                </TextBlock>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    
     <Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
@@ -49,7 +67,17 @@
         <RelativePanel x:Name="RootRelativePanel">
             <Button x:Name="HamburgerButton" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="26" Tapped="HamburgerButton_Tapped"  Foreground="White" Width="56" Height="48" Background="{x:Null}" />
             <TextBlock x:Name="FrameTitle" RelativePanel.RightOf="HamburgerButton" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="26" Margin="10,0,0,0" Foreground="White" Text="人物"/>
-            <AutoSuggestBox x:Name="SearchAutoSuggestBox" PlaceholderText="输入搜索内容..." Width="225" QueryIcon="Find" TextChanged="SearchAutoSuggestBox_TextChanged" QuerySubmitted="SearchAutoSuggestBox_QuerySubmitted" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,0,10,0"/>
+            <AutoSuggestBox x:Name="SearchAutoSuggestBox" 
+                            PlaceholderText="输入搜索内容..." 
+                            TextChanged="SearchAutoSuggestBox_TextChanged" 
+                            QuerySubmitted="SearchAutoSuggestBox_QuerySubmitted" 
+                            SuggestionChosen="SearchAutoSuggestBox_SuggestionChosen" 
+                            RelativePanel.AlignRightWithPanel="True" 
+                            RelativePanel.AlignVerticalCenterWithPanel="True" 
+                            Margin="0,0,10,0" Width="225" 
+                            QueryIcon="Find"
+                            ItemTemplate="{StaticResource AutoSuggestBoxDataTemplate}"
+                            TextMemberPath="{Binding Path=Text, Source=AutoSuggestBoxItemTextBlock}"/>
         </RelativePanel>
         <SplitView x:Name="RootSplit" Grid.Row="1" DisplayMode="CompactOverlay" OpenPaneLength="200" CompactPaneLength="56" IsPaneOpen="True">
             <SplitView.Pane>

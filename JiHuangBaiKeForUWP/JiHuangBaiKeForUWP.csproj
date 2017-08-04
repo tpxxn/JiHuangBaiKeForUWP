@@ -101,12 +101,13 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Manager\SettingSet.cs" />
+    <Compile Include="Model\SettingSet.cs" />
     <Compile Include="Model\CharactersJson.cs" />
     <Compile Include="Model\CreaturesJson.cs" />
     <Compile Include="Model\FoodsJson.cs" />
     <Compile Include="Model\Global.cs" />
     <Compile Include="Model\SciencesJson.cs" />
+    <Compile Include="Model\SuggestBoxItem.cs" />
     <Compile Include="UserControls\Charts\BarChart.xaml.cs">
       <DependentUpon>BarChart.xaml</DependentUpon>
     </Compile>

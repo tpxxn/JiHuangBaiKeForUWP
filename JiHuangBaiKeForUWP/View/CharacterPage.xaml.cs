@@ -36,28 +36,14 @@ namespace JiHuangBaiKeForUWP.View
 
         public async void Deserialize()
         {
-            Uri uri;
-            const string fileName = "Characters.json";
-            var folderExists = await Global.ApplicationFolder.TryGetItemAsync(Global.BuiltInGameVersionJsonFolder[Global.GameVersion]);
-            if (folderExists == null)
-            {
-                uri = new Uri("ms-appx:///Json/" + Global.BuiltInGameVersionJsonFolder[Global.GameVersion] + "/" +
-                              fileName);
-            }
-            else
-            {
-                uri = new Uri(Global.ApplicationFolder.Path + "/" + Global.BuiltInGameVersionJsonFolder[Global.GameVersion] + "/" + fileName);
-            }
-            var storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
-            var str = await FileIO.ReadTextAsync(storageFile);
-            var character = JsonConvert.DeserializeObject<CharacterRootObject>(str);
+            var character = JsonConvert.DeserializeObject<CharacterRootObject>(await Global.GetJsonString("Characters.json"));
             foreach (var characterItems in character.Character)
             {
                 _characterData.Add(characterItems);
             }
             foreach (var characterItems in _characterData)
             {
-                characterItems.Picture = $"ms-appx:///Assets/GameResources/Charcters/{characterItems.Picture}.png";
+                characterItems.Picture = Global.GetGameResourcePath(characterItems.Picture);
             }
         }
 

@@ -25,5 +25,10 @@ namespace JiHuangBaiKeForUWP.Model
     public class CharacterRootObject
     {
         public List<Character> Character { get; set; }
+
+        public CharacterRootObject()
+        {
+            Character = new List<Character>();
+        }
     }
 }

@@ -15,10 +15,19 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using JiHuangBaiKeForUWP.Manager;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View;
-using Newtonsoft.Json;
+
+// 对话框示例
+// var dialog = new ContentDialog()
+// {
+//     Title = "当前目录",
+//     Content = ApplicationData.Current.LocalFolder.Path,
+//     PrimaryButtonText = "确定",
+//     FullSizeDesired = false,
+// };
+// dialog.PrimaryButtonClick += (s, e) => { };
+// await dialog.ShowAsync();
 
 namespace JiHuangBaiKeForUWP
 {
@@ -40,6 +49,7 @@ namespace JiHuangBaiKeForUWP
         public MainPage()
         {
             InitializeComponent();
+            //全局初始化
             GlobalInitializeComponent();
             //读取游戏版本
             _iconsListBoxGameDataList = new List<ListBoxItem>(
@@ -56,13 +66,14 @@ namespace JiHuangBaiKeForUWP
                     SettingListBoxItem, AboutListBoxItem
                 }
             );
-
+            // 设置Frame标题Margin属性
             SetFrameTitleMargin();
-
+            // 汉堡菜单边框
             HamburgerGrid.BorderBrush = new SolidColorBrush(AccentColor);
-
             // 默认页
             RootFrame.SourcePageType = typeof(CharacterPage);
+            // 设置SearchAutoSuggestBox的数据源
+            SearchAutoSuggestBox.ItemsSource = Global.AutoSuggestBoxItem;
         }
 
         /// <summary>
@@ -70,7 +81,10 @@ namespace JiHuangBaiKeForUWP
         /// </summary>
         public void GlobalInitializeComponent()
         {
+            // 读取游戏版本
             Global.GameVersion = SettingSet.GameVersionSettingRead();
+            // 设置AutoSuggestBox的数据源
+            Global.SetAutoSuggestBoxItemSource();
         }
         #endregion
 
@@ -100,11 +114,7 @@ namespace JiHuangBaiKeForUWP
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
                 () =>
                 {
-                    var brush = RootGrid.Background as SolidColorBrush;
-                    if (brush == null)
-                    {
-                        brush = new SolidColorBrush();
-                    }
+                    var brush = RootGrid.Background as SolidColorBrush ?? new SolidColorBrush();
                     brush.Color = bg;
                 });
         }
@@ -215,18 +225,6 @@ namespace JiHuangBaiKeForUWP
             {
                 RootSplit.IsPaneOpen = false;
             }
-
-
-//            var dialog = new ContentDialog()
-//            {
-//                Title = "当前目录",
-//                Content = ApplicationData.Current.LocalFolder.Path,
-//                PrimaryButtonText = "确定",
-//                FullSizeDesired = false,
-//            };
-//            dialog.PrimaryButtonClick += (s, e) => { };
-//            await dialog.ShowAsync();
-
         }
 
         #endregion
@@ -237,13 +235,43 @@ namespace JiHuangBaiKeForUWP
         /// </summary>
         private void SearchAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-
+            Global.AutoSuggestBoxItem.Clear();
+            foreach (var item in Global.AutoSuggestBoxItemSource)
+            {
+                Global.AutoSuggestBoxItem.Add(item);
+            }
+            var str = sender.Text.Trim();
+            if (string.IsNullOrEmpty(str)) return;
+            for (var i = Global.AutoSuggestBoxItem.Count-1; i >= 0; i--)
+            {
+                if (Global.AutoSuggestBoxItem[i].Name.IndexOf(str, StringComparison.Ordinal) < 0 && Global.AutoSuggestBoxItem[i].EnName.IndexOf(str, StringComparison.Ordinal) < 0)
+                {
+                    Global.AutoSuggestBoxItem.Remove(Global.AutoSuggestBoxItem[i]);
+                }
+            }
         }
 
         /// <summary>
         /// 搜索框查询提交事件
         /// </summary>
-        private void SearchAutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        private async void SearchAutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            if (sender.Items == null) return;
+            var dialog = new ContentDialog()
+            {
+                Title = "当前目录",
+                Content = sender.Items[0].ToString(),
+                PrimaryButtonText = "确定",
+                FullSizeDesired = false,
+            };
+            dialog.PrimaryButtonClick += (s, e) => { };
+            await dialog.ShowAsync();
+        }
+
+        /// <summary>
+        /// 搜索框选择事件
+        /// </summary>
+        private void SearchAutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
 
         }

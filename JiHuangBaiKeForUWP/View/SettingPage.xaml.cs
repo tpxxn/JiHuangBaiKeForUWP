@@ -16,7 +16,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using JiHuangBaiKeForUWP.Manager;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls.SettingPage;
 using Microsoft.Win32.SafeHandles;
@@ -77,6 +76,7 @@ namespace JiHuangBaiKeForUWP.View
         {
             SettingSet.GameVersionSettingSet(GameVersionComboBox.SelectedIndex);
             Global.GameVersion = GameVersionComboBox.SelectedIndex;
+            Global.SetAutoSuggestBoxItemSource();
         }
         
         #endregion
