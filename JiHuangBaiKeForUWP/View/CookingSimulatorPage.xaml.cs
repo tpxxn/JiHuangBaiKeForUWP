@@ -25,15 +25,17 @@ namespace JiHuangBaiKeForUWP.View
     /// </summary>
     public sealed partial class CookingSimulatorPage : Page
     {
-        private readonly ObservableCollection<FoodMeat> _foodMeatData = new ObservableCollection<FoodMeat>();
-        private readonly ObservableCollection<FoodVegetable> _foodVegetableData = new ObservableCollection<FoodVegetable>();
-        private readonly ObservableCollection<FoodFruit> _foodFruitData = new ObservableCollection<FoodFruit>();
-        private readonly ObservableCollection<FoodEgg> _foodEggData = new ObservableCollection<FoodEgg>();
-        private readonly ObservableCollection<FoodOther> _foodOtherData = new ObservableCollection<FoodOther>();
+        private readonly ObservableCollection<Food> _foodMeatData = new ObservableCollection<Food>();
+        private readonly ObservableCollection<Food> _foodVegetableData = new ObservableCollection<Food>();
+        private readonly ObservableCollection<Food> _foodFruitData = new ObservableCollection<Food>();
+        private readonly ObservableCollection<Food> _foodEggData = new ObservableCollection<Food>();
+        private readonly ObservableCollection<Food> _foodOtherData = new ObservableCollection<Food>();
 
         public CookingSimulatorPage()
         {
             this.InitializeComponent();
+            if (Global.GameVersion != 4)
+                PortableCrockPotStackPanel.Visibility = Visibility.Collapsed;
             Deserialize();
         }
 
@@ -54,7 +56,7 @@ namespace JiHuangBaiKeForUWP.View
             var storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
             var str = await FileIO.ReadTextAsync(storageFile);
             var food = JsonConvert.DeserializeObject<FoodRootObject>(str);
-            foreach (var foodMeatsItems in food.FoodMeats)
+            foreach (var foodMeatsItems in food.FoodMeats.Foods)
             {
                 _foodMeatData.Add(foodMeatsItems);
             }
@@ -62,7 +64,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 foodMeatsItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodMeatsItems.Picture}.png";
             }
-            foreach (var foodVegetablesItems in food.FoodVegetables)
+            foreach (var foodVegetablesItems in food.FoodVegetables.Foods)
             {
                 _foodVegetableData.Add(foodVegetablesItems);
             }
@@ -70,7 +72,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 foodVegetablesItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodVegetablesItems.Picture}.png";
             }
-            foreach (var foodFruitItems in food.FoodFruit)
+            foreach (var foodFruitItems in food.FoodFruit.Foods)
             {
                 _foodFruitData.Add(foodFruitItems);
             }
@@ -78,7 +80,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 foodFruitItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodFruitItems.Picture}.png";
             }
-            foreach (var foodEggsItems in food.FoodEggs)
+            foreach (var foodEggsItems in food.FoodEggs.Foods)
             {
                 _foodEggData.Add(foodEggsItems);
             }
@@ -86,7 +88,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 foodEggsItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodEggsItems.Picture}.png";
             }
-            foreach (var foodOthersItems in food.FoodOthers)
+            foreach (var foodOthersItems in food.FoodOthers.Foods)
             {
                 _foodOtherData.Add(foodOthersItems);
             }
@@ -96,31 +98,11 @@ namespace JiHuangBaiKeForUWP.View
             }
         }
 
-        private void FoodMeatGridView_ItemClick(object sender, ItemClickEventArgs e)
+        private void FoodGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (e.ClickedItem is FoodMeat food) CS_Add(food.Picture);
+            if (e.ClickedItem is Food food) CS_Add(food.Picture);
         }
 
-        private void FoodVegetableGridView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (e.ClickedItem is FoodVegetable food) CS_Add(food.Picture);
-        }
-
-        private void FoodFruitGridView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (e.ClickedItem is FoodFruit food) CS_Add(food.Picture);
-        }
-
-        private void FoodEggGridView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (e.ClickedItem is FoodEgg food) CS_Add(food.Picture);
-        }
-
-        private void FoodOtherGridView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (e.ClickedItem is FoodOther food) CS_Add(food.Picture);
-        }
-        
         #region 变量初始化
         //重置
         private void ResetButton_Tapped(object sender, TappedRoutedEventArgs e)
@@ -315,9 +297,6 @@ namespace JiHuangBaiKeForUWP.View
                     CsFtFishes += 1;
                     CsFtEel += 1;
                     CsFtMeats += 0.5;
-                    break;
-                case "F_moleworm":
-                    CsFtMoleworm += 1;
                     break;
                 case "F_limpets":
                     CsFtFishes += 0.5;
@@ -587,7 +566,10 @@ namespace JiHuangBaiKeForUWP.View
                 case "F_twigs":
                     CsFtTwigs += 1;
                     break;
-                #endregion
+                case "F_moleworm":
+                    CsFtMoleworm += 1;
+                    break;
+                    #endregion
             }
         }
         //烹饪计算
@@ -647,8 +629,10 @@ namespace JiHuangBaiKeForUWP.View
             #endregion
             #region 烹饪
             //------------------------SW------------------------
-                //便携式烹饪锅的四种食物
-                if (ToggleSwitch.IsOn)
+            //便携式烹饪锅的四种食物
+            if (Global.GameVersion == 4)
+            {
+                if (PortableCrockPotToggleSwitch.IsOn)
                 {
                     if (CsFtFruit >= 2 && CsFtButter >= 1 && CsFtHoney >= 1)
                         CS_CrockPotListAddFood("F_fresh_fruit_crepes", 30);
@@ -681,6 +665,7 @@ namespace JiHuangBaiKeForUWP.View
                     CS_CrockPotListAddFood("F_shark_fin_soup", 20);
                 if (CsFtFishes >= 2.5)
                     CS_CrockPotListAddFood("F_seafood_gumbo", 10);
+            }
             //------------------------其他------------------------
             if (CsFtRoyalJelly >= 1 && CsFtTwigs == 0 && CsFtMonsterFoods == 0)
                 CS_CrockPotListAddFood("F_jellybeans", 12);
@@ -957,27 +942,27 @@ namespace JiHuangBaiKeForUWP.View
             //TODO
         }
 
-//        private void button_CS_Food_Result_Click(object sender, RoutedEventArgs e)
-//        {
-//            foreach (UIElement expanderStackpanel in WrapPanel_Right_Food.Children)
-//            {
-//                foreach (UIElement buttonWithText in ((ExpanderStackpanel)expanderStackpanel).UcWrapPanel.Children)
-//                {
-//                    string[] RightButtonTag = (string[])(((ButtonWithText)buttonWithText).UCButton.Tag);
-//                    string RightButtonTag0 = RightButtonTag[0];
-//                    RightButtonTag0 = RSN.GetFileName(RightButtonTag0);
-//                    if (CrockPotList[FoodIndex] == RightButtonTag0)
-//                    {
-//                        Sidebar_Food_Click(null, null);
-//                        Sidebar_Food.IsChecked = true;
-//                        WrapPanel_Left_Food.UpdateLayout();
-//                        Food_Click(((ButtonWithText)buttonWithText).UCButton, null);
-//                        WrapPanel_Left_Food.UpdateLayout();
-//                        //Point point = ((ButtonWithText)buttonWithText).TransformToVisual(WrapPanel_Right_Food).Transform(new Point(0, 0));
-//                        //ScrollViewer_Right_Food.ScrollToVerticalOffset(point.Y);
-//                    }
-//                }
-//            }
-//        }
+        //        private void button_CS_Food_Result_Click(object sender, RoutedEventArgs e)
+        //        {
+        //            foreach (UIElement expanderStackpanel in WrapPanel_Right_Food.Children)
+        //            {
+        //                foreach (UIElement buttonWithText in ((ExpanderStackpanel)expanderStackpanel).UcWrapPanel.Children)
+        //                {
+        //                    string[] RightButtonTag = (string[])(((ButtonWithText)buttonWithText).UCButton.Tag);
+        //                    string RightButtonTag0 = RightButtonTag[0];
+        //                    RightButtonTag0 = RSN.GetFileName(RightButtonTag0);
+        //                    if (CrockPotList[FoodIndex] == RightButtonTag0)
+        //                    {
+        //                        Sidebar_Food_Click(null, null);
+        //                        Sidebar_Food.IsChecked = true;
+        //                        WrapPanel_Left_Food.UpdateLayout();
+        //                        Food_Click(((ButtonWithText)buttonWithText).UCButton, null);
+        //                        WrapPanel_Left_Food.UpdateLayout();
+        //                        //Point point = ((ButtonWithText)buttonWithText).TransformToVisual(WrapPanel_Right_Food).Transform(new Point(0, 0));
+        //                        //ScrollViewer_Right_Food.ScrollToVerticalOffset(point.Y);
+        //                    }
+        //                }
+        //            }
+        //        }
     }
 }

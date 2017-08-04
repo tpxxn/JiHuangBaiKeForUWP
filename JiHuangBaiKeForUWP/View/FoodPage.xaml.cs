@@ -25,13 +25,13 @@ namespace JiHuangBaiKeForUWP.View
     /// </summary>
     public sealed partial class FoodPage : Page
     {
-        private readonly ObservableCollection<FoodRecipe> _foodRecipeData = new ObservableCollection<FoodRecipe>();
-        private readonly ObservableCollection<FoodMeat> _foodMeatData = new ObservableCollection<FoodMeat>();
-        private readonly ObservableCollection<FoodVegetable> _foodVegetableData = new ObservableCollection<FoodVegetable>();
-        private readonly ObservableCollection<FoodFruit> _foodFruitData = new ObservableCollection<FoodFruit>();
-        private readonly ObservableCollection<FoodEgg> _foodEggData = new ObservableCollection<FoodEgg>();
-        private readonly ObservableCollection<FoodOther> _foodOtherData = new ObservableCollection<FoodOther>();
-        private readonly ObservableCollection<FoodNoFc> _foodNoFcData = new ObservableCollection<FoodNoFc>();
+        private readonly ObservableCollection<FoodRecipe2> _foodRecipeData = new ObservableCollection<FoodRecipe2>();
+        private readonly ObservableCollection<Food> _foodMeatData = new ObservableCollection<Food>();
+        private readonly ObservableCollection<Food> _foodVegetableData = new ObservableCollection<Food>();
+        private readonly ObservableCollection<Food> _foodFruitData = new ObservableCollection<Food>();
+        private readonly ObservableCollection<Food> _foodEggData = new ObservableCollection<Food>();
+        private readonly ObservableCollection<Food> _foodOtherData = new ObservableCollection<Food>();
+        private readonly ObservableCollection<Food> _foodNoFcData = new ObservableCollection<Food>();
         public FoodPage()
         {
             this.InitializeComponent();
@@ -55,7 +55,7 @@ namespace JiHuangBaiKeForUWP.View
             var storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
             var str = await FileIO.ReadTextAsync(storageFile);
             var food = JsonConvert.DeserializeObject<FoodRootObject>(str);
-            foreach (var foodRecipeItems in food.FoodRecipe)
+            foreach (var foodRecipeItems in food.FoodRecipe.FoodRecipes)
             {
                 _foodRecipeData.Add(foodRecipeItems);
             }
@@ -63,7 +63,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 foodRecipeItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodRecipeItems.Picture}.png";
             }
-            foreach (var foodMeatsItems in food.FoodMeats)
+            foreach (var foodMeatsItems in food.FoodMeats.Foods)
             {
                 _foodMeatData.Add(foodMeatsItems);
             }
@@ -71,7 +71,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 foodMeatsItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodMeatsItems.Picture}.png";
             }
-            foreach (var foodVegetablesItems in food.FoodVegetables)
+            foreach (var foodVegetablesItems in food.FoodVegetables.Foods)
             {
                 _foodVegetableData.Add(foodVegetablesItems);
             }
@@ -79,7 +79,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 foodVegetablesItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodVegetablesItems.Picture}.png";
             }
-            foreach (var foodFruitItems in food.FoodFruit)
+            foreach (var foodFruitItems in food.FoodFruit.Foods)
             {
                 _foodFruitData.Add(foodFruitItems);
             }
@@ -87,7 +87,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 foodFruitItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodFruitItems.Picture}.png";
             }
-            foreach (var foodEggsItems in food.FoodEggs)
+            foreach (var foodEggsItems in food.FoodEggs.Foods)
             {
                 _foodEggData.Add(foodEggsItems);
             }
@@ -95,7 +95,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 foodEggsItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodEggsItems.Picture}.png";
             }
-            foreach (var foodOthersItems in food.FoodOthers)
+            foreach (var foodOthersItems in food.FoodOthers.Foods)
             {
                 _foodOtherData.Add(foodOthersItems);
             }
@@ -103,7 +103,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 foodOthersItems.Picture = $"ms-appx:///Assets/GameResources/Foods/{foodOthersItems.Picture}.png";
             }
-            foreach (var foodNoFcItems in food.FoodNoFc)
+            foreach (var foodNoFcItems in food.FoodNoFc.Foods)
             {
                 _foodNoFcData.Add(foodNoFcItems);
             }
@@ -115,7 +115,7 @@ namespace JiHuangBaiKeForUWP.View
 
         private void FoodRecipeGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as FoodRecipe;
+            var c = e.ClickedItem as FoodRecipe2;
             var contentDialog = new ContentDialog
             {
                 Content = new FoodRecipeDialog(c),
@@ -126,74 +126,9 @@ namespace JiHuangBaiKeForUWP.View
             Global.ShowDialog(contentDialog, FoodStackPanel);
         }
 
-        private void FoodMeatGridView_ItemClick(object sender, ItemClickEventArgs e)
+        private void FoodGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as FoodMeat;
-            var contentDialog = new ContentDialog
-            {
-                Content = new FoodDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog, FoodStackPanel);
-        }
-
-        private void FoodVegetableGridView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var c = e.ClickedItem as FoodVegetable;
-            var contentDialog = new ContentDialog
-            {
-                Content = new FoodDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog, FoodStackPanel);
-        }
-
-        private void FoodFruitGridView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var c = e.ClickedItem as FoodFruit;
-            var contentDialog = new ContentDialog
-            {
-                Content = new FoodDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog, FoodStackPanel);
-        }
-
-        private void FoodEggGridView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var c = e.ClickedItem as FoodEgg;
-            var contentDialog = new ContentDialog
-            {
-                Content = new FoodDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog, FoodStackPanel);
-        }
-
-        private void FoodOtherGridView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var c = e.ClickedItem as FoodOther;
-            var contentDialog = new ContentDialog
-            {
-                Content = new FoodDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog, FoodStackPanel);
-        }
-
-        private void FoodNoFcGridView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var c = e.ClickedItem as FoodNoFc;
+            var c = e.ClickedItem as Food;
             var contentDialog = new ContentDialog
             {
                 Content = new FoodDialog(c),

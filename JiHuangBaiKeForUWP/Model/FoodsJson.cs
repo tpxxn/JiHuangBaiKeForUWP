@@ -2,6 +2,7 @@
 
 namespace JiHuangBaiKeForUWP.Model
 {
+
     public class Restrictions1
     {
         public string Pre { get; set; }
@@ -25,12 +26,14 @@ namespace JiHuangBaiKeForUWP.Model
         public string Pre { get; set; }
         public string Text { get; set; }
     }
+
     public class Restrictions5
     {
         public string Pre { get; set; }
         public string Text { get; set; }
     }
-    public class FoodRecipe
+
+    public class FoodRecipe2
     {
         public string Picture { get; set; }
         public string Name { get; set; }
@@ -46,10 +49,6 @@ namespace JiHuangBaiKeForUWP.Model
         public string Need1 { get; set; }
         public string NeedPicture2 { get; set; }
         public string Need2 { get; set; }
-        public string NeedPictureOr { get; set; }
-        public string NeedOr { get; set; }
-        public string NeedPicture3 { get; set; }
-        public string Need3 { get; set; }
         public Restrictions1 Restrictions1 { get; set; }
         public Restrictions2 Restrictions2 { get; set; }
         public Restrictions3 Restrictions3 { get; set; }
@@ -61,18 +60,23 @@ namespace JiHuangBaiKeForUWP.Model
         public string Recommend4 { get; set; }
         public string Introduce { get; set; }
         public string Console { get; set; }
+        public string NeedPictureOr { get; set; }
+        public string NeedOr { get; set; }
+        public string NeedPicture3 { get; set; }
+        public string Need3 { get; set; }
+    }
+
+    public class FoodRecipe
+    {
+        public List<FoodRecipe2> FoodRecipes { get; set; }
 
         public FoodRecipe()
         {
-            Restrictions1 = new Restrictions1();
-            Restrictions2 = new Restrictions2();
-            Restrictions3 = new Restrictions3();
-            Restrictions4 = new Restrictions4();
-            Restrictions5 = new Restrictions5();
-        } 
+            FoodRecipes = new List<FoodRecipe2>();
+        }
     }
 
-    public class FoodMeat
+    public class Food
     {
         public string Picture { get; set; }
         public string Name { get; set; }
@@ -88,102 +92,87 @@ namespace JiHuangBaiKeForUWP.Model
         public string Introduce { get; set; }
         public string Console { get; set; }
     }
-
-    public class FoodVegetable
+   
+    public class FoodMeats
     {
-        public string Picture { get; set; }
-        public string Name { get; set; }
-        public string EnName { get; set; }
-        public double Health { get; set; }
-        public double Hunger { get; set; }
-        public double Sanity { get; set; }
-        public double Perish { get; set; }
-        public string Attribute { get; set; }
-        public string AttributeValue { get; set; }
-        public string Introduce { get; set; }
-        public string Console { get; set; }
+        public List<Food> Foods { get; set; }
+
+        public FoodMeats()
+        {
+            Foods = new List<Food>();
+        }
     }
 
-    public class FoodFruit
+    public class FoodVegetables
     {
-        public string Picture { get; set; }
-        public string Name { get; set; }
-        public string EnName { get; set; }
-        public double Health { get; set; }
-        public double Hunger { get; set; }
-        public double Sanity { get; set; }
-        public double Perish { get; set; }
-        public string Attribute { get; set; }
-        public string AttributeValue { get; set; }
-        public string Attribute2 { get; set; }
-        public string AttributeValue2 { get; set; }
-        public string Introduce { get; set; }
-        public string Console { get; set; }
+        public List<Food> Foods { get; set; }
+
+        public FoodVegetables()
+        {
+            Foods = new List<Food>();
+        }
     }
 
-    public class FoodEgg
+
+    public class FoodFruits
     {
-        public string Picture { get; set; }
-        public string Name { get; set; }
-        public string EnName { get; set; }
-        public double Health { get; set; }
-        public double Hunger { get; set; }
-        public double Sanity { get; set; }
-        public double Perish { get; set; }
-        public string Attribute { get; set; }
-        public string AttributeValue { get; set; }
-        public string Introduce { get; set; }
-        public string Console { get; set; }
+        public List<Food> Foods { get; set; }
+
+        public FoodFruits()
+        {
+            Foods = new List<Food>();
+        }
     }
 
-    public class FoodOther
+    public class FoodEggs
     {
-        public string Picture { get; set; }
-        public string Name { get; set; }
-        public string EnName { get; set; }
-        public double Health { get; set; }
-        public double Hunger { get; set; }
-        public double Sanity { get; set; }
-        public double Perish { get; set; }
-        public string Attribute { get; set; }
-        public string AttributeValue { get; set; }
-        public string Introduce { get; set; }
-        public string Console { get; set; }
+        public List<Food> Foods { get; set; }
+
+        public FoodEggs()
+        {
+            Foods = new List<Food>();
+        }
     }
 
+    public class FoodOthers
+    {
+        public List<Food> Foods { get; set; }
+
+        public FoodOthers()
+        {
+            Foods = new List<Food>();
+        }
+    }
+    
     public class FoodNoFc
     {
-        public string Picture { get; set; }
-        public string Name { get; set; }
-        public string EnName { get; set; }
-        public double Health { get; set; }
-        public double Hunger { get; set; }
-        public double Sanity { get; set; }
-        public double Perish { get; set; }
-        public string Attribute { get; set; }
-        public string Introduce { get; set; }
-        public string Console { get; set; }
+        public List<Food> Foods { get; set; }
+
+        public FoodNoFc()
+        {
+            Foods = new List<Food>();
+        }
     }
 
     public class FoodRootObject
     {
-        public List<FoodRecipe> FoodRecipe { get; set; }
-        public List<FoodMeat> FoodMeats { get; set; }
-        public List<FoodVegetable> FoodVegetables { get; set; }
-        public List<FoodFruit> FoodFruit { get; set; }
-        public List<FoodEgg> FoodEggs { get; set; }
-        public List<FoodOther> FoodOthers { get; set; }
-        public List<FoodNoFc> FoodNoFc { get; set; }
+        public FoodRecipe FoodRecipe { get; set; }
+        public FoodMeats FoodMeats { get; set; }
+        public FoodVegetables FoodVegetables { get; set; }
+        public FoodFruits FoodFruit { get; set; }
+        public FoodEggs FoodEggs { get; set; }
+        public FoodOthers FoodOthers { get; set; }
+        public FoodNoFc FoodNoFc { get; set; }
 
         public FoodRootObject()
         {
-            FoodRecipe = new List<FoodRecipe>();
-            FoodMeats = new List<FoodMeat>();
-            FoodVegetables = new List<FoodVegetable>();
-            FoodFruit = new List<FoodFruit>();
-            FoodEggs = new List<FoodEgg>();
-            FoodOthers = new List<FoodOther>();
-            FoodNoFc = new List<FoodNoFc>();
+            FoodRecipe = new FoodRecipe();
+            FoodMeats = new FoodMeats();
+            FoodVegetables = new FoodVegetables();
+            FoodFruit = new FoodFruits();
+            FoodEggs = new FoodEggs();
+            FoodOthers = new FoodOthers();
+            FoodNoFc = new FoodNoFc();
         }
     }
 }

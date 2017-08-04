@@ -23,6 +23,7 @@ namespace JiHuangBaiKeForUWP.Model
         public static readonly StorageFolder ApplicationFolder = ApplicationData.Current.LocalFolder;
 
         #region "颜色常量"
+
         public static SolidColorBrush ColorGreen = new SolidColorBrush(Color.FromArgb(255, 94, 182, 96));     //绿色
         public static SolidColorBrush ColorKhaki = new SolidColorBrush(Color.FromArgb(255, 237, 182, 96));    //卡其布色/土黄色
         public static SolidColorBrush ColorRed = new SolidColorBrush(Color.FromArgb(255, 216, 82, 79));       //红色
@@ -33,6 +34,7 @@ namespace JiHuangBaiKeForUWP.Model
         public static SolidColorBrush ColorOrange = new SolidColorBrush(Color.FromArgb(255, 246, 166, 11));     //橙色
         public static SolidColorBrush ColorYellow = new SolidColorBrush(Color.FromArgb(255, 238, 232, 21));     //黄色
         public static SolidColorBrush ColorBorderCyan = new SolidColorBrush(Color.FromArgb(255, 178, 236, 237));     //TODO 未确认颜色
+
         #endregion
 
         #region 游戏版本
@@ -47,13 +49,8 @@ namespace JiHuangBaiKeForUWP.Model
         /// </summary>
         public static string[] BuiltInGameVersionJsonFolder =
         {
-            "DST", "Tencent", "DS", "ROG", "SW"
+            "DST", "Tencent", "DS", "ROG", "Shipwrecked"
         };
-
-        /// <summary>
-        /// 版本数据集合
-        /// </summary>
-        public static ObservableCollection<string> VersionData = new ObservableCollection<string>();
 
         #endregion
 

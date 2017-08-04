@@ -125,7 +125,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 scienceSurvivalItems.Picture = $"ms-appx:///Assets/GameResources/Sciences/{scienceSurvivalItems.Picture}.png";
             }
-            foreach (var scienceFoodItems in science.Food.Science)
+            foreach (var scienceFoodItems in science.Foods.Science)
             {
                 _scienceFoodData.Add(scienceFoodItems);
             }

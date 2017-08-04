@@ -34,7 +34,7 @@
                 </StackPanel>
                 <StackPanel Grid.Column="1" Width="200" HorizontalAlignment="Left">
                     <charts:BarChart x:Name="FoodSanity" Label="精神" MaxValue="50"/>
-                    <charts:BarChart x:Name="FoodPerish" Label="保鲜" MaxValue="20"/>
+                    <charts:BarChart x:Name="FoodPerish" Label="保鲜" MaxValue="40"/>
                 </StackPanel>
             </Grid>
             <StackPanel x:Name="FoodAttributeStackPanel" Grid.Row="4" Margin="0,5,0,0">

@@ -73,8 +73,9 @@
 				"Need1Value": 3,
 				"Need2": "G_rocks",
 				"Need2Value": 3,
-				"Need3": "G_cut_grass",
-				"Need3Value": 6,
+				"Need3": "S_rope",
+				"Need3Value": 2,
+				"Unlock": "S_science_machine",
 				"Introduction": "用于破坏建筑，收回50%以上的建材，一般可以去拆野外的建筑获得资源。",
 				"Console": "hammer"
 			}, {
@@ -448,8 +449,8 @@
 				"Need1Value": 4,
 				"Need2": "S_cut_stone",
 				"Need2Value": 2,
-				"Need3": "S_electrical_doodad",
-				"Need3Value": 2,
+				"Need3": "S_gold_nugget",
+				"Need3Value": 6,
 				"Unlock": "S_science_machine",
 				"Introduction": "靠近后为玩家解锁二级科技，制作成功后，当前科技将永久解锁。",
 				"Console": "researchlab2"
@@ -943,17 +944,6 @@
 				"Unlock": "S_prestihatitator",
 				"Introduction": "能让周围所有生物睡着的神器，由于制作材料需要曼德拉草，一般还是捡到的比较多。",
 				"Console": "panflute"
-			}, {
-				"Picture": "S_old_bell",
-				"Name": "旧钟",
-				"EnName": "Old Bell",
-				"Need1": "G_glommer's_wings",
-				"Need1Value": 1,
-				"Need2": "G_glommer's_flower",
-				"Need2Value": 1,
-				"UnlockBlueprint": "G_blueprint",
-				"Introduction": "蓝图需用鹤嘴锄砸格罗姆雕像获得。使用后过几秒会有一个长满鳞片的大脚，能砍伐树木、挖矿等，造成一千点伤害。在洞穴使用则会引发地震。",
-				"Console": "bell"
 			}, {
 				"Picture": "S_one-man_band",
 				"Name": "独奏乐器",

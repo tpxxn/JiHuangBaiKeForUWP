@@ -66,11 +66,11 @@ namespace JiHuangBaiKeForUWP.Model
         }
     }
 
-    public class Food
+    public class Foods
     {
         public List<Science> Science { get; set; }
 
-        public Food()
+        public Foods()
         {
             Science = new List<Science>();
         }
@@ -223,7 +223,7 @@ namespace JiHuangBaiKeForUWP.Model
         public Light Light { get; set; }
         public Nautical Nautical { get; set; }
         public Survival Survival { get; set; }
-        public Food Food { get; set; }
+        public Foods Foods { get; set; }
         public Technology Technology { get; set; }
         public Fight Fight { get; set; }
         public Structure Structure { get; set; }
@@ -245,7 +245,7 @@ namespace JiHuangBaiKeForUWP.Model
             Light = new Light();
             Nautical = new Nautical();
             Survival = new Survival();
-            Food = new Food();
+            Foods = new Foods();
             Technology = new Technology();
             Fight = new Fight();
             Structure = new Structure();

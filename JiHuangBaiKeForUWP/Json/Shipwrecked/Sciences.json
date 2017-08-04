@@ -604,7 +604,7 @@
 			}, {
 				"Picture": "S_bug_net",
 				"Name": "捕虫网",
-				"EnName": "Bug Net",
+				"EnName": "Net",
 				"Need1": "G_twigs",
 				"Need1Value": 4,
 				"Need2": "G_silk",

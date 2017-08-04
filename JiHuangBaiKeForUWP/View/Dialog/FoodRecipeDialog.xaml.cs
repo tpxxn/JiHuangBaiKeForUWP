@@ -27,7 +27,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
     /// </summary>
     public sealed partial class FoodRecipeDialog : Page
     {
-        public FoodRecipeDialog(FoodRecipe c)
+        public FoodRecipeDialog(FoodRecipe2 c)
         {
             this.InitializeComponent();
 

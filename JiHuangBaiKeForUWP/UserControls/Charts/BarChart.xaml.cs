@@ -1,7 +1,6 @@
 ﻿using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 
 namespace JiHuangBaiKeForUWP.UserControls.Charts
@@ -27,18 +26,16 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
 
         private static void OnLabelWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue != null)
-            {
-                var barChart = (BarChart)d;
+            if (e.NewValue == null) return;
+            var barChart = (BarChart)d;
 
-                if ((double) e.NewValue != 0)
-                {
-                    barChart.LabelTextBlock.Width = (double) e.NewValue;
-                }
-                else
-                {
-                    barChart.LabelTextBlock.Width = 30;
-                }
+            if ((double) e.NewValue != 0)
+            {
+                barChart.LabelTextBlock.Width = (double) e.NewValue;
+            }
+            else
+            {
+                barChart.LabelTextBlock.Width = 30;
             }
         }
         #endregion
@@ -69,26 +66,28 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
 
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue != null)
+            if (e.NewValue == null) return;
+            var barChart = (BarChart)d;
+            if ((double)e.NewValue != 0)
             {
-                var barChart = (BarChart)d;
-                if ((double)e.NewValue != 0)
-                {
-                    barChart.ValueTextBlock.Text = e.NewValue.ToString();
-                }
-                else
-                {
-                    barChart.Visibility = Visibility.Collapsed;
-                }
-                if ((double)e.NewValue < 0)
-                {
-                    barChart.ValueTextBlock.Foreground = new SolidColorBrush(Colors.White);
-                    barChart.ValueRectangle.Width = -(double)e.NewValue / barChart.MaxValue * 300;
-                }
-                else
-                {
-                    barChart.ValueRectangle.Width = (double)e.NewValue / barChart.MaxValue * 300;
-                }
+                barChart.ValueTextBlock.Text = e.NewValue.ToString();
+            }
+            else
+            {
+                barChart.Visibility = Visibility.Collapsed;
+            }
+            if ((double)e.NewValue < 0)
+            {
+                barChart.ValueTextBlock.Foreground = new SolidColorBrush(Colors.White);
+                barChart.ValueRectangle.Width = -(double)e.NewValue / barChart.MaxValue * 300;
+            }
+            else
+            {
+                barChart.ValueRectangle.Width = (double)e.NewValue / barChart.MaxValue * 300;
+            }
+            if ((double) e.NewValue == 1000)
+            {
+                barChart.ValueTextBlock.Text = "∞";
             }
         }
         #endregion
@@ -106,11 +105,9 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
 
         private static void OnLabelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue != null)
-            {
-                var barChart = (BarChart)d;
-                barChart.LabelTextBlock.Text = (string)e.NewValue;
-            }
+            if (e.NewValue == null) return;
+            var barChart = (BarChart)d;
+            barChart.LabelTextBlock.Text = (string)e.NewValue;
         }
 
         #endregion
@@ -128,11 +125,9 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
 
         private static void OnBarColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue != null)
-            {
-                var barChart = (BarChart)d;
-                barChart.ValueRectangle.Fill = (SolidColorBrush)e.NewValue;
-            }
+            if (e.NewValue == null) return;
+            var barChart = (BarChart)d;
+            barChart.ValueRectangle.Fill = (SolidColorBrush)e.NewValue;
         }
 
         #endregion

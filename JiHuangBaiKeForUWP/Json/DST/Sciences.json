@@ -240,7 +240,7 @@
 				"Need2Value": 1,
 				"Need3": "G_petals",
 				"Need3Value": 3,
-				"Unlock": "C_willow",
+				"UnlockCharcter": "C_willow",
 				"Introduction": "薇洛出生自带的打火机，联机版有耐久限制，作用与火炬大同小异，不受下雨影响，还能用来烤食物。",
 				"Console": "lighter"
 			},
@@ -554,15 +554,6 @@
 				"Unlock": "S_alchemy_engine",
 				"Introduction": "靠近篝火可以吸收热量，供玩家在冬季保暖，有一定热度时戴在身上还可以发光.放在冰箱里可以放热，供玩家夏季乘凉。",
 				"Console": "heatrock"
-			},
-			{
-				"Picture": "S_thatch_pack",
-				"Name": "茅草包",
-				"EnName": "Thatch Pack",
-				"Need1": "G_palm_leaf",
-				"Need1Value": 4,
-				"Introduction": "只能增加4格物品栏，大概没有更小的包了。唯一的好处是不需要科技就能做。",
-				"Console": "thatchpack"
 			},
 			{
 				"Picture": "S_gift_wrap",
@@ -1433,18 +1424,6 @@
 			},
 			{
 				"Picture": "S_cobblestones",
-				"Name": "SW卵石路",
-				"EnName": "Cobblestones",
-				"Need1": "G_rocky_turf",
-				"Need1Value": 1,
-				"Need2": "S_boards",
-				"Need2Value": 1,
-				"Unlock": "S_alchemy_engine",
-				"Introduction": "可放置地皮，主角和其他生物在卵石路上行走，都会增加50%移动速度，尽早为自己基地铺上吧。",
-				"Console": "cobblestones"
-			},
-			{
-				"Picture": "S_cobblestones",
 				"Name": "卵石路",
 				"EnName": "Cobblestones",
 				"Need1": "G_magma_turf",
@@ -1503,9 +1482,9 @@
 				"Picture": "S_festive_tree_planter",
 				"Name": "圣诞树盆",
 				"EnName": "Festive Tree Planter",
-				"Need1": "G_foliage",
-				"Need1Value": 5,
-				"Need2": "G_broken_shell",
+				"Need1": "G_manure",
+				"Need1Value": 2,
+				"Need2": "S_boards",
 				"Need2Value": 1,
 				"Unlock": "S_alchemy_engine",
 				"Introduction": "种植松果、坚果或多枝的树的果实都可以长出圣诞树。冬季盛宴活动特有。",
@@ -1515,10 +1494,10 @@
 				"Picture": "S_gobbler_shrine",
 				"Name": "火鸡祭坛",
 				"EnName": "Gobbler Shrine",
-				"Need1": "G_foliage",
-				"Need1Value": 5,
-				"Need2": "G_broken_shell",
-				"Need2Value": 1,
+				"Need1": "S_gold_nugget",
+				"Need1Value": 8,
+				"Need2": "S_boards",
+				"Need2Value": 2,
 				"Unlock": "S_alchemy_engine",
 				"Introduction": "供奉上浆果灌木丛或者蜜汁浆果丛可以解锁年货标签。击杀火鸡掉落的福袋开出的金元宝是制作年货标签物品的必要道具。鸡年吉祥活动特有。",
 				"Console": "pottedfern"

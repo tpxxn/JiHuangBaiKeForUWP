@@ -22,13 +22,13 @@
             </StackPanel>
 
             <StackPanel>
-                <TextBlock x:Uid="Feedback" Text="加入QQ群" FontSize="22" Margin="20,20,0,0" Foreground="Black" />
+                <TextBlock x:Uid="Feedback" Text="加入QQ群" FontSize="22" Margin="20,20,0,0" />
                 <HyperlinkButton Margin="20,5,0,0" NavigateUri="http://www.jihuangbaike.com/jump.html">
                     <Image Source="/Assets/Pic/QRCode_Qun.png" Height="128" />
                 </HyperlinkButton>
-                <TextBlock x:Uid="Feedback" Text="发送反馈" FontSize="22" Margin="20,20,0,0" Foreground="Black" />
+                <TextBlock x:Uid="Feedback" Text="发送反馈" FontSize="22" Margin="20,20,0,0" />
                 <StackPanel Orientation="Horizontal" Margin="20,5,0,0">
-                    <TextBlock x:Uid="EMail" VerticalAlignment="Center" Foreground="Black">
+                    <TextBlock x:Uid="EMail" VerticalAlignment="Center">
                     <Run Text="发送邮件至："/>
                     </TextBlock>
                     <HyperlinkButton NavigateUri="mailto:351765204@qq.com" Content="351765204@qq.com" />

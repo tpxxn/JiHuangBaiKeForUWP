@@ -20,7 +20,7 @@
     <PackageCertificateKeyFile>JiHuangBaiKeForUWP_TemporaryKey.pfx</PackageCertificateKeyFile>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -107,7 +107,6 @@
     <Compile Include="Model\FoodsJson.cs" />
     <Compile Include="Model\Global.cs" />
     <Compile Include="Model\SciencesJson.cs" />
-    <Compile Include="Model\VersionJson.cs" />
     <Compile Include="UserControls\Charts\BarChart.xaml.cs">
       <DependentUpon>BarChart.xaml</DependentUpon>
     </Compile>
@@ -185,8 +184,8 @@
     <Content Include="Assets\GameResources\Creatures\A_no_eyed_deer_chained_blue.png" />
     <Content Include="Assets\GameResources\Creatures\A_no_eyed_deer_chained_red.png" />
     <Content Include="Assets\GameResources\Creatures\A_no_eyed_deer_horned.png" />
-    <Content Include="Assets\GameResources\Creatures\A_reanimated_skeleton_atrium.png" />
     <Content Include="Assets\GameResources\Creatures\A_reanimated_skeleton_caves.png" />
+    <Content Include="Assets\GameResources\Creatures\A_reanimated_skeleton_atrium.png" />
     <Content Include="Assets\GameResources\Creatures\A_reanimated_skeleton_forest.png" />
     <Content Include="Assets\GameResources\Creatures\A_shadow_bishop_level_1.png" />
     <Content Include="Assets\GameResources\Creatures\A_shadow_bishop_level_2.png" />
@@ -317,23 +316,23 @@
     <Content Include="Json\DST\Characters.json" />
     <Content Include="Json\DS\Characters.json" />
     <Content Include="Json\ROG\Characters.json" />
-    <Content Include="Json\SW\Characters.json" />
     <Content Include="Json\Tencent\Characters.json" />
     <Content Include="Json\DST\Foods.json" />
     <Content Include="Json\DS\Foods.json" />
     <Content Include="Json\ROG\Foods.json" />
     <Content Include="Json\Tencent\Foods.json" />
-    <Content Include="Json\SW\Foods.json" />
     <Content Include="Json\DST\Sciences.json" />
     <Content Include="Json\DS\Sciences.json" />
     <Content Include="Json\ROG\Sciences.json" />
-    <Content Include="Json\SW\Sciences.json" />
     <Content Include="Json\Tencent\Sciences.json" />
     <Content Include="Json\DST\Creatures.json" />
     <Content Include="Json\DS\Creatures.json" />
     <Content Include="Json\ROG\Creatures.json" />
-    <Content Include="Json\SW\Creatures.json" />
     <Content Include="Json\Tencent\Creatures.json" />
+    <Content Include="Json\Shipwrecked\Characters.json" />
+    <Content Include="Json\Shipwrecked\Creatures.json" />
+    <Content Include="Json\Shipwrecked\Foods.json" />
+    <Content Include="Json\Shipwrecked\Sciences.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GameResources\Creatures\A_ancient_guardian.png" />
@@ -1762,9 +1761,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Net.Http">
-      <Version>2.2.29</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>5.2.3</Version>
     </PackageReference>

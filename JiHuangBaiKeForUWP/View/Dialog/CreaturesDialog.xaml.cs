@@ -251,6 +251,10 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             {
                 Console.Text = $"c_give(\"{c.Console}\",10)";
             }
+            else
+            {
+                CopyGrid.Visibility = Visibility.Collapsed;
+            }
         }
 
         /// <summary>

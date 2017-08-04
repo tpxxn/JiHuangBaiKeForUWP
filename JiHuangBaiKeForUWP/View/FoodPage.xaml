@@ -11,7 +11,7 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <DataTemplate x:Key="FoodRecipeDataTemplate" x:DataType="datetype:FoodRecipe">
+        <DataTemplate x:Key="FoodRecipeDataTemplate" x:DataType="datetype:FoodRecipe2">
             <Grid Margin="5" Width="80" Height="80">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -22,62 +22,7 @@
             </Grid>
         </DataTemplate>
 
-        <DataTemplate x:Key="FoodMeatDataTemplate" x:DataType="datetype:FoodMeat">
-            <Grid Margin="5" Width="80" Height="80">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
-            </Grid>
-        </DataTemplate>
-
-        <DataTemplate x:Key="FoodVegetableDataTemplate" x:DataType="datetype:FoodVegetable">
-            <Grid Margin="5" Width="80" Height="80">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
-            </Grid>
-        </DataTemplate>
-
-        <DataTemplate x:Key="FoodFruitDataTemplate" x:DataType="datetype:FoodFruit">
-            <Grid Margin="5" Width="80" Height="80">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
-            </Grid>
-        </DataTemplate>
-
-        <DataTemplate x:Key="FoodEggDataTemplate" x:DataType="datetype:FoodEgg">
-            <Grid Margin="5" Width="80" Height="80">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
-            </Grid>
-        </DataTemplate>
-
-        <DataTemplate x:Key="FoodOtherDataTemplate" x:DataType="datetype:FoodOther">
-            <Grid Margin="5" Width="80" Height="80">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
-            </Grid>
-        </DataTemplate>
-
-        <DataTemplate x:Key="FoodNoFcDataTemplate" x:DataType="datetype:FoodNoFc">
+        <DataTemplate x:Key="FoodDataTemplate" x:DataType="datetype:Food">
             <Grid Margin="5" Width="80" Height="80">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -117,10 +62,10 @@
                 <GridView Name="FoodMeatGridView" 
                               Margin="10"
                               ItemsSource="{x:Bind _foodMeatData}" 
-                              ItemTemplate="{StaticResource FoodMeatDataTemplate}" 
+                              ItemTemplate="{StaticResource FoodDataTemplate}" 
                               SelectionMode="None" 
                               IsItemClickEnabled="True" 
-                              ItemClick="FoodMeatGridView_ItemClick" 
+                              ItemClick="FoodGridView_ItemClick" 
                               animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
             <uc:Expander VerticalAlignment="Top" FontSize="17">
@@ -133,10 +78,10 @@
                 <GridView Name="FoodVegetableGridView" 
                               Margin="10"
                               ItemsSource="{x:Bind _foodVegetableData}" 
-                              ItemTemplate="{StaticResource FoodVegetableDataTemplate}" 
+                              ItemTemplate="{StaticResource FoodDataTemplate}" 
                               SelectionMode="None" 
                               IsItemClickEnabled="True" 
-                              ItemClick="FoodVegetableGridView_ItemClick" 
+                              ItemClick="FoodGridView_ItemClick" 
                               animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
             <uc:Expander VerticalAlignment="Top" FontSize="17">
@@ -149,10 +94,10 @@
                 <GridView Name="FoodFruitGridView" 
                               Margin="10"
                               ItemsSource="{x:Bind _foodFruitData}" 
-                              ItemTemplate="{StaticResource FoodFruitDataTemplate}" 
+                              ItemTemplate="{StaticResource FoodDataTemplate}" 
                               SelectionMode="None" 
                               IsItemClickEnabled="True" 
-                              ItemClick="FoodFruitGridView_ItemClick" 
+                              ItemClick="FoodGridView_ItemClick" 
                               animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
             <uc:Expander VerticalAlignment="Top" FontSize="17">
@@ -165,10 +110,10 @@
                 <GridView Name="FoodEggGridView" 
                               Margin="10"
                               ItemsSource="{x:Bind _foodEggData}" 
-                              ItemTemplate="{StaticResource FoodEggDataTemplate}" 
+                              ItemTemplate="{StaticResource FoodDataTemplate}" 
                               SelectionMode="None" 
                               IsItemClickEnabled="True" 
-                              ItemClick="FoodEggGridView_ItemClick" 
+                              ItemClick="FoodGridView_ItemClick" 
                               animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
             <uc:Expander VerticalAlignment="Top" FontSize="17">
@@ -181,10 +126,10 @@
                 <GridView Name="FoodOtherGridView" 
                               Margin="10"
                               ItemsSource="{x:Bind _foodOtherData}" 
-                              ItemTemplate="{StaticResource FoodOtherDataTemplate}" 
+                              ItemTemplate="{StaticResource FoodDataTemplate}" 
                               SelectionMode="None" 
                               IsItemClickEnabled="True" 
-                              ItemClick="FoodOtherGridView_ItemClick" 
+                              ItemClick="FoodGridView_ItemClick" 
                               animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
             <uc:Expander VerticalAlignment="Top" FontSize="17">
@@ -197,10 +142,10 @@
                 <GridView Name="FoodNoFcGridView" 
                               Margin="10"
                               ItemsSource="{x:Bind _foodNoFcData}" 
-                              ItemTemplate="{StaticResource FoodNoFcDataTemplate}" 
+                              ItemTemplate="{StaticResource FoodDataTemplate}" 
                               SelectionMode="None" 
                               IsItemClickEnabled="True" 
-                              ItemClick="FoodNoFcGridView_ItemClick" 
+                              ItemClick="FoodGridView_ItemClick" 
                               animations:ReorderGridAnimation.Duration="250"/>
             </uc:Expander>
         </StackPanel>
