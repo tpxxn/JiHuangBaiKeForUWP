@@ -137,6 +137,17 @@ namespace JiHuangBaiKeForUWP.Model
             return str;
         }
 
+        /// <summary>
+        /// 获取文件名
+        /// </summary>
+        /// <param name="Path">长字符串</param>
+        /// <returns>资源文件路径</returns>
+        public static string GetFileName(string Path)
+        {
+            Path = Path.Substring(Path.LastIndexOf('/') + 1, Path.Length - Path.LastIndexOf('/') - 5);
+            return Path;
+        }
+
         #region 自动搜索
         /// <summary>
         /// 自动建议框Item数组

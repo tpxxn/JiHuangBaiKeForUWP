@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -28,20 +29,37 @@ namespace JiHuangBaiKeForUWP.View
     {
         private readonly ObservableCollection<Character> _characterData = new ObservableCollection<Character>();
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            var parameter = (string)e.Parameter;
-            
+            var parameter = (string[])e.Parameter;
+            await Deserialize();
+            if (parameter == null) return;
+            var _e = parameter[1];
+            if (CharacterGridView.Items == null) return;
+            foreach (var gridViewItem in CharacterGridView.Items)
+            {
+                var character = gridViewItem as Character;
+                if (character == null || character.Picture != _e) continue;
+                var contentDialog = new ContentDialog
+                {
+                    Content = new CharacterDialog(character),
+                    PrimaryButtonText = "确定",
+                    FullSizeDesired = false,
+                    Style = Global.Transparent
+                };
+                Global.ShowDialog(contentDialog, CharacterStackPanel);
+                break;
+            }
         }
 
         public CharacterPage()
         {
             this.InitializeComponent();
-            Deserialize();
         }
 
-        public async void Deserialize()
+        public async Task<bool> Deserialize()
         {
+            _characterData.Clear();
             var character = JsonConvert.DeserializeObject<CharacterRootObject>(await Global.GetJsonString("Characters.json"));
             foreach (var characterItems in character.Character)
             {
@@ -51,6 +69,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 characterItems.Picture = Global.GetGameResourcePath(characterItems.Picture);
             }
+            return false;
         }
 
         private void CharacterGridView_ItemClick(object sender, ItemClickEventArgs e)

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -33,43 +34,97 @@ namespace JiHuangBaiKeForUWP.View
         private readonly ObservableCollection<Food> _foodOtherData = new ObservableCollection<Food>();
         private readonly ObservableCollection<Food> _foodNoFcData = new ObservableCollection<Food>();
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            var parameter = (string)e.Parameter;
-            switch (parameter)
+            var parameter = (string[])e.Parameter;
+            await Deserialize();
+            if (parameter == null) return;
+            var _e = parameter[1];
+            switch (parameter[0])
             {
                 case "FoodRecipe":
                     RecipesExpander.IsExPanded = true;
+                    OnNavigatedToFoodRecipeDialog(_e);
                     break;
                 case "FoodMeats":
                     MeatsExpander.IsExPanded = true;
+                    OnNavigatedToFoodDialog(FoodMeatGridView,_e);
                     break;
                 case "FoodVegetables":
                     VegetablesExpander.IsExPanded = true;
+                    OnNavigatedToFoodDialog(FoodVegetableGridView,_e);
                     break;
                 case "FoodFruits":
                     FruitsExpander.IsExPanded = true;
+                    OnNavigatedToFoodDialog(FoodFruitGridView,_e);
                     break;
                 case "FoodEggs":
                     EggsExpander.IsExPanded = true;
+                    OnNavigatedToFoodDialog(FoodEggGridView,_e);
                     break;
                 case "FoodOthers":
                     OtherExpander.IsExPanded = true;
+                    OnNavigatedToFoodDialog(FoodOtherGridView,_e);
                     break;
                 case "FoodNoFc":
                     NoFcExpander.IsExPanded = true;
+                    OnNavigatedToFoodDialog(FoodNoFcGridView,_e);
                     break;
+            }
+        }
+
+        private void OnNavigatedToFoodRecipeDialog(string _e)
+        {
+            if (FoodRecipeGridView.Items == null) return;
+            foreach (var gridViewItem in FoodRecipeGridView.Items)
+            {
+                var food = gridViewItem as FoodRecipe2;
+                if (food == null || food.Picture != _e) continue;
+                var contentDialog = new ContentDialog
+                {
+                    Content = new FoodRecipeDialog(food),
+                    PrimaryButtonText = "确定",
+                    FullSizeDesired = false,
+                    Style = Global.Transparent
+                };
+                Global.ShowDialog(contentDialog, FoodStackPanel);
+                break;
+            }
+        }
+
+        private void OnNavigatedToFoodDialog(GridView gridView,string _e)
+        {
+            if (gridView.Items == null) return;
+            foreach (var gridViewItem in gridView.Items)
+            {
+                var food = gridViewItem as Food;
+                if (food == null || food.Picture != _e) continue;
+                var contentDialog = new ContentDialog
+                {
+                    Content = new FoodDialog(food),
+                    PrimaryButtonText = "确定",
+                    FullSizeDesired = false,
+                    Style = Global.Transparent
+                };
+                Global.ShowDialog(contentDialog, FoodStackPanel);
+                break;
             }
         }
 
         public FoodPage()
         {
             this.InitializeComponent();
-            Deserialize();
         }
 
-        public async void Deserialize()
+        public async Task<bool> Deserialize()
         {
+            _foodRecipeData.Clear();
+            _foodMeatData.Clear();
+            _foodVegetableData.Clear();
+            _foodFruitData.Clear();
+            _foodEggData.Clear();
+            _foodOtherData.Clear();
+            _foodNoFcData.Clear();
             var food = JsonConvert.DeserializeObject<FoodRootObject>(await Global.GetJsonString("Foods.json"));
             foreach (var foodRecipeItems in food.FoodRecipe.FoodRecipes)
             {
@@ -127,6 +182,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 foodNoFcItems.Picture = Global.GetGameResourcePath(foodNoFcItems.Picture);
             }
+            return false;
         }
 
         private void FoodRecipeGridView_ItemClick(object sender, ItemClickEventArgs e)

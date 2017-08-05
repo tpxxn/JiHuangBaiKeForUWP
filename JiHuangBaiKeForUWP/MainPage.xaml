@@ -76,8 +76,7 @@
                             RelativePanel.AlignVerticalCenterWithPanel="True" 
                             Margin="0,0,10,0" Width="225" 
                             QueryIcon="Find"
-                            ItemTemplate="{StaticResource AutoSuggestBoxDataTemplate}"
-                            TextMemberPath="{Binding Path=Text, Source=AutoSuggestBoxItemTextBlock}"/>
+                            ItemTemplate="{StaticResource AutoSuggestBoxDataTemplate}"/>
         </RelativePanel>
         <SplitView x:Name="RootSplit" Grid.Row="1" DisplayMode="CompactOverlay" OpenPaneLength="200" CompactPaneLength="56" IsPaneOpen="True">
             <SplitView.Pane>

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -33,32 +34,61 @@ namespace JiHuangBaiKeForUWP.View
         private readonly ObservableCollection<Creature> _creatureOthersData = new ObservableCollection<Creature>();
         private readonly ObservableCollection<Creature> _creatureBossData = new ObservableCollection<Creature>();
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            var parameter = (string)e.Parameter;
-            switch (parameter)
+            var parameter = (string[])e.Parameter;
+            await Deserialize();
+            if (parameter == null) return;
+            var _e = parameter[1];
+            switch (parameter[0])
             {
                 case "CreatureLand":
                     LandExpander.IsExPanded = true;
+                    OnNavigatedToCreatureDialog(CreatureLandGridView,_e);
                     break;
                 case "CreatureOcean":
                     OceanExpander.IsExPanded = true;
+                    OnNavigatedToCreatureDialog(CreatureOceanGridView,_e);
                     break;
                 case "CreatureFly":
                     FlyExpander.IsExPanded = true;
+                    OnNavigatedToCreatureDialog(CreatureFlyGridView,_e);
                     break;
                 case "CreatureCave":
                     CaveExpander.IsExPanded = true;
+                    OnNavigatedToCreatureDialog(CreatureCaveGridView,_e);
                     break;
                 case "CreatureEvil":
                     EvilExpander.IsExPanded = true;
+                    OnNavigatedToCreatureDialog(CreatureEvilGridView,_e);
                     break;
                 case "CreatureOther":
                     OthersExpander.IsExPanded = true;
+                    OnNavigatedToCreatureDialog(CreatureOthersGridView,_e);
                     break;
                 case "CreatureBoss":
                     BossExpander.IsExPanded = true;
+                    OnNavigatedToCreatureDialog(CreatureBossGridView,_e);
                     break;
+            }
+        }
+
+        private void OnNavigatedToCreatureDialog(GridView gridView, string _e)
+        {
+            if (gridView.Items == null) return;
+            foreach (var gridViewItem in gridView.Items)
+            {
+                var creature = gridViewItem as Creature;
+                if (creature == null || creature.Picture != _e) continue;
+                var contentDialog = new ContentDialog
+                {
+                    Content = new CreaturesDialog(creature),
+                    PrimaryButtonText = "确定",
+                    FullSizeDesired = false,
+                    Style = Global.Transparent
+                };
+                Global.ShowDialog(contentDialog, CreatureStackPanel);
+                break;
             }
         }
 
@@ -73,11 +103,17 @@ namespace JiHuangBaiKeForUWP.View
             {
                 CaveExpander.Visibility = Visibility.Collapsed;
             }
-            Deserialize();
         }
 
-        public async void Deserialize()
+        public async Task<bool> Deserialize()
         {
+            _creatureLandData.Clear();
+            _creatureOceanData.Clear();
+            _creatureFlyData.Clear();
+            _creatureCaveData.Clear();
+            _creatureEvilData.Clear();
+            _creatureOthersData.Clear();
+            _creatureBossData.Clear();
             var creature = JsonConvert.DeserializeObject<CreaturesRootObject>(await Global.GetJsonString("Creatures.json"));
             foreach (var creatureLandItems in creature.Land.Creature)
             {
@@ -135,6 +171,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 creatureBossItems.Picture = Global.GetGameResourcePath(creatureBossItems.Picture);
             }
+            return false;
         }
 
         private void CreatureGridView_ItemClick(object sender, ItemClickEventArgs e)

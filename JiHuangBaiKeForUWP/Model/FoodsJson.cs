@@ -64,6 +64,15 @@ namespace JiHuangBaiKeForUWP.Model
         public string NeedOr { get; set; }
         public string NeedPicture3 { get; set; }
         public string Need3 { get; set; }
+
+        public FoodRecipe2()
+        {
+            Restrictions1 = new Restrictions1();
+            Restrictions2 = new Restrictions2();
+            Restrictions3 = new Restrictions3();
+            Restrictions4 = new Restrictions4();
+            Restrictions5 = new Restrictions5();
+        }
     }
 
     public class FoodRecipe

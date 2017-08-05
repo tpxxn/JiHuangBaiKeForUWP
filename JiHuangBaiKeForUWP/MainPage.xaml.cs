@@ -256,7 +256,52 @@ namespace JiHuangBaiKeForUWP
         /// </summary>
         private void SearchAutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-            
+            Global.AutoSuggestBoxItem.Clear();
+            foreach (var item in Global.AutoSuggestBoxItemSource)
+            {
+                Global.AutoSuggestBoxItem.Add(item);
+            }
+            var str = sender.Text.Trim().ToLower();
+            if (string.IsNullOrEmpty(str)) return;
+            for (var i = Global.AutoSuggestBoxItem.Count - 1; i >= 0; i--)
+            {
+                if (Global.AutoSuggestBoxItem[i].Name.ToLower().IndexOf(str, StringComparison.Ordinal) < 0 && Global.AutoSuggestBoxItem[i].EnName.ToLower().IndexOf(str, StringComparison.Ordinal) < 0)
+                {
+                    Global.AutoSuggestBoxItem.Remove(Global.AutoSuggestBoxItem[i]);
+                }
+            }
+            if (sender.Items != null && sender.Items.Count != 0 && args.ChosenSuggestion == null)
+            {
+                var suggestBoxItem = sender.Items[0] as SuggestBoxItem;
+                if (suggestBoxItem == null) return;
+                var suggestBoxItemPicture = suggestBoxItem.Picture;
+                var shortName = suggestBoxItemPicture.Substring(suggestBoxItemPicture.LastIndexOf('/') + 1,
+                    suggestBoxItemPicture.Length - suggestBoxItemPicture.LastIndexOf('/') - 5);
+                var picHead = shortName.Substring(0, 1);
+                var extraData = new[] {suggestBoxItem.SourcePath, suggestBoxItem.Picture};
+                switch (picHead)
+                {
+                    case "A":
+                        FrameTitle.Text = "生物";
+                        RootFrame.Navigate(typeof(CreaturePage), extraData);
+                        break;
+                    case "C":
+                        FrameTitle.Text = "人物";
+                        RootFrame.Navigate(typeof(CharacterPage), extraData);
+
+                        break;
+                    case "F":
+                        FrameTitle.Text = "食物";
+                        RootFrame.Navigate(typeof(FoodPage), extraData);
+
+                        break;
+                    case "S":
+                        FrameTitle.Text = "科技";
+                        RootFrame.Navigate(typeof(SciencePage), extraData);
+                        break;
+                }
+                sender.Text = suggestBoxItem.Name;
+            }
         }
 
         /// <summary>
@@ -269,27 +314,29 @@ namespace JiHuangBaiKeForUWP
             var suggestBoxItemPicture = suggestBoxItem.Picture;
             var shortName = suggestBoxItemPicture.Substring(suggestBoxItemPicture.LastIndexOf('/') + 1, suggestBoxItemPicture.Length - suggestBoxItemPicture.LastIndexOf('/') - 5);
             var picHead = shortName.Substring(0, 1);
+            var extraData = new[] { suggestBoxItem.SourcePath , suggestBoxItem.Picture};
             switch (picHead)
             {
                 case "A":
                     FrameTitle.Text = "生物";
-                    RootFrame.Navigate(typeof(CreaturePage), suggestBoxItem.SourcePath);
+                    RootFrame.Navigate(typeof(CreaturePage), extraData);
                     break;
                 case "C":
                     FrameTitle.Text = "人物";
-                    RootFrame.Navigate(typeof(CharacterPage), suggestBoxItem.SourcePath);
+                    RootFrame.Navigate(typeof(CharacterPage), extraData);
                     
                     break;
                 case "F":
                     FrameTitle.Text = "食物";
-                    RootFrame.Navigate(typeof(FoodPage), suggestBoxItem.SourcePath);
+                    RootFrame.Navigate(typeof(FoodPage), extraData);
                     
                     break;
                 case "S":
                     FrameTitle.Text = "科技";
-                    RootFrame.Navigate(typeof(SciencePage), suggestBoxItem.SourcePath);
+                    RootFrame.Navigate(typeof(SciencePage), extraData);
                     break;
             }
+            sender.Text = suggestBoxItem.Name;
         }
 
         #endregion
