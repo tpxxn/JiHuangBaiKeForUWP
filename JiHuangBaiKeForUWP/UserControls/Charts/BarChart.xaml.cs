@@ -53,6 +53,32 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
 
         #endregion
 
+        #region 依赖属性：当值为0依然显示
+        public bool ShowIfZero
+        {
+            get => (bool)GetValue(ShowIfZeroProperty);
+            set => SetValue(ShowIfZeroProperty, value);
+        }
+
+        public static readonly DependencyProperty ShowIfZeroProperty =
+            DependencyProperty.Register("Value", typeof(bool), typeof(BarChart), new PropertyMetadata(false,OnShowIfZeroChanged));
+
+        private static void OnShowIfZeroChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue == null) return;
+            var barChart = (BarChart)d;
+
+            if ((bool)e.NewValue)
+            {
+                barChart.ShowIfZero = true;
+            }
+            else
+            {
+                barChart.ShowIfZero = false;
+            }
+        }
+        #endregion
+
         #region 依赖属性：值
 
         public double Value
@@ -68,7 +94,8 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         {
             if (e.NewValue == null) return;
             var barChart = (BarChart)d;
-            if ((double)e.NewValue != 0)
+            barChart.ValueTextBlock.Text = e.NewValue.ToString();
+            if ((double)e.NewValue != 0 || barChart.ShowIfZero)
             {
                 barChart.ValueTextBlock.Text = e.NewValue.ToString();
             }

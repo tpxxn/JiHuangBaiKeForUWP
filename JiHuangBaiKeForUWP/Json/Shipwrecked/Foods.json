@@ -147,7 +147,7 @@
             },
             {
                 "Picture": "F_fish_tacos",
-                "Name": "玉米饼包炸鱼",
+                "Name": "炸鱼卷",
                 "EnName": "Fish Tacos",
                 "Health": 20,
                 "Hunger": 37.5,
@@ -168,7 +168,7 @@
             },
             {
                 "Picture": "F_fishsticks",
-                "Name": "炸鱼条",
+                "Name": "鱼条",
                 "EnName": "Fishsticks",
                 "Health": 40,
                 "Hunger": 37.5,
@@ -193,7 +193,7 @@
             },
             {
                 "Picture": "F_fist_full_of_jam",
-                "Name": "果酱蜜饯",
+                "Name": "果酱",
                 "EnName": "Fist Full of Jam",
                 "Health": 3,
                 "Hunger": 37.5,
@@ -251,7 +251,7 @@
             },
             {
                 "Picture": "F_honey_nuggets",
-                "Name": "甜蜜金砖",
+                "Name": "蜂蜜肉丁",
                 "EnName": "Honey Nuggets",
                 "Health": 20,
                 "Hunger": 37.5,
@@ -280,7 +280,7 @@
             },
             {
                 "Picture": "F_honey_ham",
-                "Name": "蜜汁火腿",
+                "Name": "蜂蜜火腿",
                 "EnName": "Honey Ham",
                 "Health": 30,
                 "Hunger": 75,
@@ -353,7 +353,7 @@
             },
             {
                 "Picture": "F_monster_lasagna",
-                "Name": "怪物千层饼",
+                "Name": "怪物千层面",
                 "EnName": "Monster Lasagna",
                 "Health": -20,
                 "Hunger": 37.5,
@@ -375,7 +375,7 @@
                 "Recommend2": "F_monster_meat",
                 "Recommend3": "F_berries",
                 "Recommend4": "F_berries",
-                "Introduce": "如果一不小心放入两块怪兽肉或者榴莲基本上就做出这货了。一般不会有人想吃它吧。不过维伯吃了能回37.5的饥饿。",
+                "Introduce": "如果一不小心放入两块怪物肉或者榴莲基本上就做出这货了。一般不会有人想吃它吧。不过维伯吃了能回37.5的饥饿。",
                 "Console": "monsterlasagna"
             },
             {
@@ -407,7 +407,7 @@
             },
             {
                 "Picture": "F_powdercake",
-                "Name": "芝士蛋糕",
+                "Name": "火药蛋糕",
                 "EnName": "Powdercake",
                 "Health": -3,
                 "Hunger": 0,
@@ -430,7 +430,7 @@
             },
             {
                 "Picture": "F_pumpkin_cookie",
-                "Name": "南瓜饼",
+                "Name": "南瓜饼干",
                 "EnName": "Pumpkin Cookies",
                 "Health": 0,
                 "Hunger": 37.5,
@@ -478,7 +478,7 @@
             },
             {
                 "Picture": "F_stuffed_eggplant",
-                "Name": "香酥茄盒",
+                "Name": "茄盒",
                 "EnName": "Stuffed Eggplant",
                 "Health": 3,
                 "Hunger": 37.5,
@@ -547,7 +547,7 @@
             },
             {
                 "Picture": "F_unagi",
-                "Name": "鳗鱼寿司卷",
+                "Name": "鳗鱼苔藓团",
                 "EnName": "Unagi",
                 "Health": 20,
                 "Hunger": 18.75,
@@ -586,12 +586,12 @@
                 "Recommend2": "F_egg",
                 "Recommend3": "F_berries",
                 "Recommend4": "F_berries",
-                "Introduce": "打蝴蝶出了蝴蝶黄油就做这个吧，回血能力惊人。",
+                "Introduce": "打蝴蝶出了黄油就做这个吧，回血能力惊人。",
                 "Console": "waffles"
             },
             {
                 "Picture": "F_flower_salad",
-                "Name": "花瓣沙拉",
+                "Name": "花朵沙拉",
                 "EnName": "Flower Salad",
                 "Health": 40,
                 "Hunger": 12.5,
@@ -632,7 +632,7 @@
             },
             {
                 "Picture": "F_guacamole",
-                "Name": "鼹鼠鳄梨酱",
+                "Name": "地鼠鳄梨酱",
                 "EnName": "Guacamole",
                 "Health": 20,
                 "Hunger": 37.5,
@@ -691,7 +691,7 @@
                 "Recommend2": "F_ice",
                 "Recommend3": "F_honey",
                 "Recommend4": "F_honey",
-                "Introduce": "精神回复神器！美中不足的是需要一个蝴蝶黄油或者电羊奶。食用后15秒降低40温度。",
+                "Introduce": "精神回复神器！美中不足的是需要一个黄油或者电羊奶。食用后15秒降低40温度。",
                 "Console": "icecream"
             },
             {
@@ -752,7 +752,7 @@
             },
             {
                 "Picture": "F_trail_mix",
-                "Name": "水果杂烩",
+                "Name": "果味什锦",
                 "EnName": "Trail Mix",
                 "Health": 30,
                 "Hunger": 12.5,
@@ -786,7 +786,7 @@
                 "Recommend2": "F_berries",
                 "Recommend3": "F_berries",
                 "Recommend4": "F_berries",
-                "Introduce": "在猪王旁建家的话烤坚果是不会缺的，回复不少血量的神器。",
+                "Introduce": "在猪王旁建家的话烤桦树果是不会缺的，回复不少血量的神器。",
                 "Console": "trailmix"
             },
             {
@@ -1012,7 +1012,7 @@
                 "Recommend2": "F_butter",
                 "Recommend3": "F_twigs",
                 "Recommend4": "F_twigs",
-                "Introduce": "需要活龙虾，回复量惊人，可惜蝴蝶黄油比较罕见。和亚克章鱼可以交换到加农炮。",
+                "Introduce": "需要活龙虾，回复量惊人，可惜黄油比较罕见。和亚克章鱼可以交换到加农炮。",
                 "Console": "lobsterdinner"
             },
             {
@@ -1038,7 +1038,7 @@
                 "Recommend2": "F_monster_meat",
                 "Recommend3": "F_egg",
                 "Recommend4": "F_seaweed",
-                "Introduce": "大概是怪兽肉没地方用才会做这个吧？需要便携式烹饪锅！",
+                "Introduce": "大概是怪物肉没地方用才会做这个吧？需要便携式烹饪锅！",
                 "Console": "monstertartare"
             },
             {
@@ -1150,7 +1150,7 @@
             },
             {
                 "Picture": "F_wet_goop",
-                "Name": "湿腻焦糊",
+                "Name": "潮湿粘糊物",
                 "EnName": "Wet Goop",
                 "Health": 0,
                 "Hunger": 0,
@@ -1168,7 +1168,7 @@
         "Foods": [
             {
                 "Picture": "F_meat",
-                "Name": "肉",
+                "Name": "肉块",
                 "EnName": "Meat",
                 "Health": 1,
                 "Hunger": 25,
@@ -1181,7 +1181,7 @@
             },
             {
                 "Picture": "F_cooked_meat",
-                "Name": "烤肉",
+                "Name": "烤肉块",
                 "EnName": "Cooked Meat",
                 "Health": 3,
                 "Hunger": 25,
@@ -1207,8 +1207,8 @@
             },
             {
                 "Picture": "F_monster_meat",
-                "Name": "怪兽肉",
-                "EnName": "Monster Jerky",
+                "Name": "怪物肉",
+                "EnName": "Monster Meat",
                 "Health": -20,
                 "Hunger": 18.75,
                 "Sanity": -15,
@@ -1222,7 +1222,7 @@
             },
             {
                 "Picture": "F_cooked_monster_meat",
-                "Name": "烤怪兽肉",
+                "Name": "烤怪物肉",
                 "EnName": "Cooked Monster Meat",
                 "Health": -3,
                 "Hunger": 18.75,
@@ -1232,12 +1232,12 @@
                 "AttributeValue": "×1",
                 "Attribute2": "FC_Monster_Meats",
                 "AttributeValue2": "×1",
-                "Introduce": "把怪兽肉放在篝火上烤制。",
+                "Introduce": "把怪物肉放在篝火上烤制。",
                 "Console": "cookedmonstermeat"
             },
             {
                 "Picture": "F_monster_jerky",
-                "Name": "怪兽肉干",
+                "Name": "怪物肉干",
                 "EnName": "Monster Jerky",
                 "Health": -3,
                 "Hunger": 18.75,
@@ -1247,12 +1247,12 @@
                 "AttributeValue": "×1",
                 "Attribute2": "FC_Monster_Meats",
                 "AttributeValue2": "×1",
-                "Introduce": "把怪兽肉挂在晒肉架上风干制成。",
+                "Introduce": "把怪物肉挂在晒肉架上风干制成。",
                 "Console": "monstermeat_dried"
             },
             {
                 "Picture": "F_morsel",
-                "Name": "小肉块",
+                "Name": "小块肉",
                 "EnName": "Morsel",
                 "Health": 1,
                 "Hunger": 12.5,
@@ -1330,7 +1330,7 @@
             },
             {
                 "Picture": "F_cooked_frog_legs",
-                "Name": "烤青蛙腿",
+                "Name": "烤蛙腿",
                 "EnName": "Cooked Frog Legs",
                 "Health": 1,
                 "Hunger": 12.5,
@@ -1633,7 +1633,7 @@
         "Foods": [
             {
                 "Picture": "F_blue_cap",
-                "Name": "蓝蘑菇",
+                "Name": "蓝蘑菇头",
                 "EnName": "Blue Cap",
                 "Health": 20,
                 "Hunger": 12.5,
@@ -1654,12 +1654,12 @@
                 "Perish": 10,
                 "Attribute": "FC_Vegetables",
                 "AttributeValue": "×0.5",
-                "Introduce": "把蓝蘑菇放在篝火上烤制。",
+                "Introduce": "把蓝蘑菇头放在篝火上烤制。",
                 "Console": "blue_cap_cooked"
             },
             {
                 "Picture": "F_green_cap",
-                "Name": "绿蘑菇",
+                "Name": "绿蘑菇头",
                 "EnName": "Green Cap",
                 "Health": 0,
                 "Hunger": 12.5,
@@ -1680,12 +1680,12 @@
                 "Perish": 10,
                 "Attribute": "FC_Vegetables",
                 "AttributeValue": "×0.5",
-                "Introduce": "把绿蘑菇放在篝火上烤制。",
+                "Introduce": "把绿蘑菇头放在篝火上烤制。",
                 "Console": "green_cap_cooked"
             },
             {
                 "Picture": "F_red_cap",
-                "Name": "红蘑菇",
+                "Name": "红蘑菇头",
                 "EnName": "Red Cap",
                 "Health": -20,
                 "Hunger": 12.5,
@@ -1706,7 +1706,7 @@
                 "Perish": 10,
                 "Attribute": "FC_Vegetables",
                 "AttributeValue": "×0.5",
-                "Introduce": "把红蘑菇放在篝火上烤制。",
+                "Introduce": "把红蘑菇头放在篝火上烤制。",
                 "Console": "red_cap_cooked"
             },
             {
@@ -1724,7 +1724,7 @@
             },
             {
                 "Picture": "F_braised_eggplant",
-                "Name": "红烧茄子",
+                "Name": "炖茄子",
                 "EnName": "Braised Eggplant",
                 "Health": 20,
                 "Hunger": 25,
@@ -1802,7 +1802,7 @@
             },
             {
                 "Picture": "F_hot_pumpkin",
-                "Name": "热南瓜",
+                "Name": "加热南瓜",
                 "EnName": "Hot Pumpkin",
                 "Health": 8,
                 "Hunger": 37.5,
@@ -2044,7 +2044,7 @@
             },
             {
                 "Picture": "F_grilled_watermelon",
-                "Name": "烤西瓜",
+                "Name": "炙热西瓜",
                 "EnName": "Grilled Watermelon",
                 "Health": 1,
                 "Hunger": 12.5,
@@ -2121,7 +2121,7 @@
                 "Perish": 10,
                 "Attribute": "FC_Eggs",
                 "AttributeValue": "×1",
-                "Introduce": "喂养被囚禁的鸟任何肉类或肉类食品(除了生的怪兽肉)获得，也可以在企鹅筑巢区发现，在船难版砍倒丛林树也会掉落。",
+                "Introduce": "喂养被囚禁的鸟任何肉类或肉类食品(除了生的怪物肉)获得，也可以在企鹅筑巢区发现，在船难版砍倒丛林树也会掉落。",
                 "Console": "bird_egg"
             },
             {
@@ -2139,7 +2139,7 @@
             },
             {
                 "Picture": "F_tallbird_egg",
-                "Name": "高脚鸟蛋",
+                "Name": "高鸟蛋",
                 "EnName": "Tallbird Egg",
                 "Health": 3,
                 "Hunger": 25,
@@ -2152,7 +2152,7 @@
             },
             {
                 "Picture": "F_fried_tallbird_egg",
-                "Name": "油煎高脚鸟蛋",
+                "Name": "煎高鸟蛋",
                 "EnName": "Fried Tallbird Egg",
                 "Health": 0,
                 "Hunger": 37.5,
@@ -2160,7 +2160,7 @@
                 "Perish": 6,
                 "Attribute": "FC_Eggs",
                 "AttributeValue": "×4",
-                "Introduce": "把高脚鸟蛋放在篝火上烤制。",
+                "Introduce": "把高鸟蛋放在篝火上烤制。",
                 "Console": "tallbirdegg_cooked"
             },
             {
@@ -2208,7 +2208,7 @@
             },
             {
                 "Picture": "F_butter",
-                "Name": "蝴蝶黄油",
+                "Name": "黄油",
                 "EnName": "Butter",
                 "Health": 40,
                 "Hunger": 25,
@@ -2289,7 +2289,7 @@
             },
             {
                 "Picture": "F_dark_petals",
-                "Name": "恶魔花瓣",
+                "Name": "黑暗花瓣",
                 "EnName": "Dark Petals",
                 "Health": 0,
                 "Hunger": 0,
@@ -2313,7 +2313,7 @@
             },
             {
                 "Picture": "F_leafy_meat",
-                "Name": "多叶的肉",
+                "Name": "叶肉",
                 "EnName": "Leafy Meat",
                 "Health": 0,
                 "Hunger": 12.5,
@@ -2325,14 +2325,14 @@
             },
             {
                 "Picture": "F_cooked_leafy_meat",
-                "Name": "烤多叶的肉",
+                "Name": "烤叶肉",
                 "EnName": "Cooked Leafy Meat",
                 "Health": 1,
                 "Hunger": 18.75,
                 "Sanity": 0,
                 "Perish": 10,
                 "Attribute": "荤",
-                "Introduce": "把多叶的肉放在篝火上烤制。",
+                "Introduce": "把叶肉放在篝火上烤制。",
                 "Console": "plantmeat_cooked"
             },
             {
@@ -2360,14 +2360,14 @@
             },
             {
                 "Picture": "F_hatching_tallbird_egg",
-                "Name": "孵化中的高脚鸟蛋",
+                "Name": "孵化中的高鸟蛋",
                 "EnName": "Hatching Tallbird Egg",
                 "Health": 3,
                 "Hunger": 25,
                 "Sanity": 0,
                 "Perish": 1000,
                 "Attribute": "荤",
-                "Introduce": "黄昏或晚上把高脚鸟蛋放在篝火旁获得。",
+                "Introduce": "黄昏或晚上把高鸟蛋放在篝火旁获得。",
                 "Console": "tallbirdegg_cracked"
             },
             {
@@ -2385,7 +2385,7 @@
             {
                 "Picture": "F_toasted_seeds",
                 "Name": "烤种子",
-                "EnName": "Petals",
+                "EnName": "Toasted Seeds",
                 "Health": 1,
                 "Hunger": 4.6875,
                 "Sanity": 0,
@@ -2622,14 +2622,14 @@
             },
             {
                 "Picture": "F_rot",
-                "Name": "腐烂食物",
+                "Name": "腐烂物",
                 "EnName": "Rot",
                 "Health": -1,
                 "Hunger": -10,
                 "Sanity": 0,
                 "Perish": 1000,
                 "Attribute": "素",
-                "Introduce": "一般食物腐烂后都会变成腐烂食物，吃下去大概会觉得很恶心吧。",
+                "Introduce": "一般食物腐烂后都会变成腐烂物，吃下去大概会觉得很恶心吧。",
                 "Console": "spoiled_food"
             }
         ]

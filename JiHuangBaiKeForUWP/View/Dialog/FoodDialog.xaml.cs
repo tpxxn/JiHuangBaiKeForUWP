@@ -45,6 +45,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             {
                 Attribute2PicButton.Source = $"ms-appx:///Assets/GameResources/Foods/{c.Attribute2}.png";
                 Attribute2PicButton.Text = c.AttributeValue2;
+                Attribute2PicButton.Visibility = Visibility.Visible;
             }
             FoodIntroduction.Text = c.Introduce;
             Console.Text = $"c_give(\"{c.Console}\",10)";

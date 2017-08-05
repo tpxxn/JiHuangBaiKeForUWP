@@ -41,7 +41,7 @@
                 <TextBlock Text="食物属性：" />
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                     <userControls:PicButton x:Name="Attribute1PicButton" Tapped="Food_Jump_Tapped"/>
-                    <userControls:PicButton x:Name="Attribute2PicButton" Visibility="Collapsed" Tapped="Food_Jump_Tapped"/>
+                    <userControls:PicButton x:Name="Attribute2PicButton" Visibility="Collapsed" Margin="5,0,0,0" Tapped="Food_Jump_Tapped"/>
                 </StackPanel>
             </StackPanel>
             <TextBlock Grid.Row="5" x:Name="FoodIntroduction" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="10" />

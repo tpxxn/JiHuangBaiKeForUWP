@@ -12,7 +12,7 @@
 
     <Page.Resources>
         <DataTemplate x:Key="FoodDataTemplate" x:DataType="datetype:Food">
-            <Grid Margin="5" Width="80" Height="80">
+            <Grid Margin="5" Width="90" Height="90">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />

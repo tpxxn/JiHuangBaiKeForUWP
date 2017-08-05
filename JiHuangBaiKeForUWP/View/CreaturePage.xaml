@@ -11,7 +11,7 @@
     mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate x:Key="CreatureDataTemplate" x:DataType="datetype:Creature">
-            <Grid Margin="5" Width="105" Height="105">
+            <Grid Margin="5" Width="120" Height="120">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />

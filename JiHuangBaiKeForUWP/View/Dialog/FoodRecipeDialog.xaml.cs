@@ -50,6 +50,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             FoodRecipePerish.BarColor = Global.ColorBlue;
             FoodRecipeCooktime.Value = c.Cooktime;
             FoodRecipeCooktime.BarColor = Global.ColorPurple;
+            FoodRecipePriority.ShowIfZero = true;
             FoodRecipePriority.Value = c.Priority;
             FoodRecipePriority.BarColor = Global.ColorPink;
             Need1Button.Source = $"ms-appx:///Assets/GameResources/Foods/{c.NeedPicture1}.png";
