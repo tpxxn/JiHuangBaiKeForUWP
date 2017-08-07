@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.VoiceCommands;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -34,19 +37,45 @@ namespace JiHuangBaiKeForUWP
         }
 
         /// <summary>
+        /// 注册语音指令
+        /// </summary>
+        private static async Task InsertVoiceCommands()
+        {
+            await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(
+                await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///frontCortanaVoiceCommands.xml")));
+        }
+
+        /// <summary>
+        /// 全局变量初始化
+        /// </summary>
+        public void GlobalInitializeComponent()
+        {
+            // 读取游戏版本
+            Global.GameVersion = SettingSet.GameVersionSettingRead();
+            // 设置AutoSuggestBox的数据源
+            Global.SetAutoSuggestBoxItemSource();
+        }
+
+        /// <summary>
         /// 在应用程序由最终用户正常启动时进行调用。
         /// 将在启动应用程序以打开特定文件等情况下使用。
         /// </summary>
         /// <param name="e">有关启动请求和过程的详细信息。</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            //帧计数器
+            // 帧计数器
             //#if DEBUG
             //    if (System.Diagnostics.Debugger.IsAttached)
             //    {
             //        this.DebugSettings.EnableFrameRateCounter = true;
             //    }
             //#endif 
+
+            // 安装VCD命令文件
+            await InsertVoiceCommands();
+
+            //全局初始化
+            GlobalInitializeComponent();
 
             var rootFrame = Window.Current.Content as Frame;
 
@@ -103,6 +132,57 @@ namespace JiHuangBaiKeForUWP
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: 保存应用程序状态并停止任何后台活动
             deferral.Complete();
+        }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
+            // 如果程序不是因为语音命令而激活的，就不处理
+            if (args.Kind != ActivationKind.VoiceCommand) return;
+
+            //将参数转为语音指令事件对象
+            var vcargs = (VoiceCommandActivatedEventArgs)args;
+            // 分析被识别的命令
+            var res = vcargs.Result;
+            var resText = vcargs.Result.Text;
+            // 获取被识别的命令的名字
+            var cmdName = res.RulePath[0];
+            Type navType = null;
+            string propertie = null;
+            //判断用户使用的是哪种语音指令
+            switch (cmdName)
+            {
+                case "searchItem":
+                    navType = typeof(MainPage);
+                    //获取语音指令的参数
+                    propertie = res.SemanticInterpretation.Properties["search"][0];
+//                    propertie = resText;
+//                    System.Diagnostics.Debug.Assert(false, propertie);
+                    break;
+//                case "QueryFlight":
+//                    navType = typeof(QueryPage);
+//                    //获取语音指令的参数
+//                    propertie = res.SemanticInterpretation.Properties["City"][0];
+//                    break;
+//                case "NavToPage":
+//                    //获取语音指令的参数
+//                    propertie = res.SemanticInterpretation.Properties["Destination"][0];
+//
+//                    //根据 propertie 参数决定跳转到指定界面，这里就不判断了
+//                    navType = typeof(QueryPage);
+//                    break;
+            }
+            //获取页面引用
+            var root = Window.Current.Content as Frame;
+            if (root == null)
+            {
+                root = new Frame();
+                Window.Current.Content = root;
+            }
+            root.Navigate(navType, propertie);
+
+            // 确保当前窗口处于活动状态
+            Window.Current.Activate();
         }
     }
 }

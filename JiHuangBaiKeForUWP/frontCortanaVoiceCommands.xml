@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+  <CommandSet xml:lang="zh-CN" Name="JiHuangBaiKeCommandSet_zh-cn">
+    <AppName>饥荒百科</AppName>
+    <Example>饥荒百科搜索培根煎蛋</Example>
+    <Command Name="searchItem">
+      <Example>饥荒百科搜索培根煎蛋</Example>
+      <ListenFor RequireAppName="ExplicitlySpecified">{builtin:AppName}[告诉我]{search}[是什么]</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">[在]{builtin:AppName}[搜索]{search}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">[在]{builtin:AppName}[查询]{search}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">[在]{builtin:AppName}[查找]{search}</ListenFor>
+      <Feedback>正在搜索{search}...</Feedback>
+      <Navigate/>
+    </Command>
+    <PhraseTopic Label="search" Scenario="Search"/>
+  </CommandSet>
+</VoiceCommands>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,7 +68,7 @@ namespace JiHuangBaiKeForUWP.Model
         /// <param name="stackPanlel">StackPanel</param>
         public static async void ShowDialog(ContentDialog contentDialog, StackPanel stackPanlel)
         {
-
+            ShowedDialog = contentDialog;
             contentDialog.Closed += async delegate
             {
                 await stackPanlel.Blur(0, 0).StartAsync();
@@ -83,6 +84,16 @@ namespace JiHuangBaiKeForUWP.Model
 
             await contentDialog.ShowAsync();
         }
+
+        public static void HideDialog(ContentDialog contentDialog)
+        {
+            if (contentDialog == null) return;
+            contentDialog = ShowedDialog;
+            contentDialog.Hide();
+        }
+
+        public static ContentDialog ShowedDialog { get; set; }
+
 
         /// <summary>
         /// 删除重复数据
@@ -190,7 +201,7 @@ namespace JiHuangBaiKeForUWP.Model
         private static readonly List<Creature> CreatureOthersData = new List<Creature>();
         private static readonly List<Creature> CreatureBossData = new List<Creature>();
 
-        public static async void SetAutoSuggestBoxItemSource()
+        public static async Task SetAutoSuggestBoxItemSource()
         {
             #region 清空列表
             AutoSuggestBoxItem.Clear();
@@ -703,8 +714,9 @@ namespace JiHuangBaiKeForUWP.Model
         /// <returns>string类型文本</returns>
         public static async Task<string> GetJsonString(string fileName)
         {
-            var folderExists = await ApplicationFolder.TryGetItemAsync(BuiltInGameVersionJsonFolder[GameVersion]);
-            var uri = folderExists == null ? new Uri("ms-appx:///Json/" + BuiltInGameVersionJsonFolder[GameVersion] + "/" + fileName) : new Uri(ApplicationFolder.Path + "/" + BuiltInGameVersionJsonFolder[GameVersion] + "/" + fileName);
+            //            var folderExists = await ApplicationFolder.TryGetItemAsync(BuiltInGameVersionJsonFolder[GameVersion]);
+            //            var uri = folderExists == null ? new Uri("ms-appx:///Json/" + BuiltInGameVersionJsonFolder[GameVersion] + "/" + fileName) : new Uri(ApplicationFolder.Path + "/" + BuiltInGameVersionJsonFolder[GameVersion] + "/" + fileName);
+            var uri = new Uri("ms-appx:///Json/" + BuiltInGameVersionJsonFolder[GameVersion] + "/" + fileName);
             var storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
             var str = await FileIO.ReadTextAsync(storageFile);
             return str;

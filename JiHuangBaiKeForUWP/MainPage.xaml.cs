@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -49,8 +50,6 @@ namespace JiHuangBaiKeForUWP
         public MainPage()
         {
             InitializeComponent();
-            //全局初始化
-            GlobalInitializeComponent();
             //读取游戏版本
             _iconsListBoxGameDataList = new List<ListBoxItem>(
                 new[]
@@ -76,16 +75,6 @@ namespace JiHuangBaiKeForUWP
             SearchAutoSuggestBox.ItemsSource = Global.AutoSuggestBoxItem;
         }
 
-        /// <summary>
-        /// 全局变量初始化
-        /// </summary>
-        public void GlobalInitializeComponent()
-        {
-            // 读取游戏版本
-            Global.GameVersion = SettingSet.GameVersionSettingRead();
-            // 设置AutoSuggestBox的数据源
-            Global.SetAutoSuggestBoxItemSource();
-        }
         #endregion
 
         #region 设置背景色跟随系统背景色
@@ -98,6 +87,10 @@ namespace JiHuangBaiKeForUWP
             _uisetting.ColorValuesChanged += OnColorValuesChanged;
             var bgcolor = _uisetting.GetColorValue(UIColorType.Accent);
             RootGrid.Background = new SolidColorBrush(bgcolor);
+
+            var searchItem = (string)e.Parameter;
+            if (string.IsNullOrEmpty(searchItem) == false)
+                VoiceSearch(searchItem);
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -339,6 +332,51 @@ namespace JiHuangBaiKeForUWP
             sender.Text = suggestBoxItem.Name;
         }
 
+        /// <summary>
+        /// 语音搜索
+        /// </summary>
+        /// <param name="searchItem">搜索内容</param>
+        public async void VoiceSearch(string searchItem)
+        {
+            SearchAutoSuggestBox.Text = searchItem;
+            Global.HideDialog(Global.ShowedDialog);
+            SuggestBoxItem suggestBoxItem = null;
+            await Global.SetAutoSuggestBoxItemSource();
+            foreach (var autoSuggestBoxItem in Global.AutoSuggestBoxItem)
+            {
+                if (searchItem != autoSuggestBoxItem.Name && searchItem != autoSuggestBoxItem.EnName) continue;
+                suggestBoxItem = autoSuggestBoxItem;
+                break;
+            }
+            if (suggestBoxItem != null)
+            {
+                var suggestBoxItemPicture = suggestBoxItem.Picture;
+                var shortName = suggestBoxItemPicture.Substring(suggestBoxItemPicture.LastIndexOf('/') + 1, suggestBoxItemPicture.Length - suggestBoxItemPicture.LastIndexOf('/') - 5);
+                var picHead = shortName.Substring(0, 1);
+                var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
+                switch (picHead)
+                {
+                    case "A":
+                        FrameTitle.Text = "生物";
+                        RootFrame.Navigate(typeof(CreaturePage), extraData);
+                        break;
+                    case "C":
+                        FrameTitle.Text = "人物";
+                        RootFrame.Navigate(typeof(CharacterPage), extraData);
+
+                        break;
+                    case "F":
+                        FrameTitle.Text = "食物";
+                        RootFrame.Navigate(typeof(FoodPage), extraData);
+
+                        break;
+                    case "S":
+                        FrameTitle.Text = "科技";
+                        RootFrame.Navigate(typeof(SciencePage), extraData);
+                        break;
+                }
+            }
+        }
         #endregion
 
         #endregion
