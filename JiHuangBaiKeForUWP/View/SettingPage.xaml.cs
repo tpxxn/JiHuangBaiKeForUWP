@@ -72,11 +72,11 @@ namespace JiHuangBaiKeForUWP.View
         /// <summary>
         /// 游戏版本改变时自动保存
         /// </summary>
-        private void GameVersionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void GameVersionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SettingSet.GameVersionSettingSet(GameVersionComboBox.SelectedIndex);
             Global.GameVersion = GameVersionComboBox.SelectedIndex;
-            Global.SetAutoSuggestBoxItemSource();
+            await Global.SetAutoSuggestBoxItem();
         }
         
         #endregion

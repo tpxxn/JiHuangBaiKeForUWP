@@ -61,26 +61,27 @@ namespace JiHuangBaiKeForUWP.Model
         /// </summary>
         public static readonly Style Transparent = (Style)Application.Current.Resources["TransparentDialog"];
 
+
         /// <summary>
         /// 显示对话框
         /// </summary>
         /// <param name="contentDialog">ContentDialog</param>
-        /// <param name="stackPanlel">StackPanel</param>
-        public static async void ShowDialog(ContentDialog contentDialog, StackPanel stackPanlel)
+        public static async void ShowDialog(ContentDialog contentDialog)
         {
+            var frame = Window.Current.Content as Frame;
             ShowedDialog = contentDialog;
             contentDialog.Closed += async delegate
             {
-                await stackPanlel.Blur(0, 0).StartAsync();
+                await frame.Blur(0, 0).StartAsync();
                 contentDialog.Hide();
             };
 
             contentDialog.PrimaryButtonClick += async delegate
             {
-                await stackPanlel.Blur(0, 0).StartAsync();
+                await frame.Blur(0, 0).StartAsync();
                 contentDialog.Hide();
             };
-            await stackPanlel.Blur(7, 100).StartAsync();
+            await frame.Blur(7, 100).StartAsync();
 
             await contentDialog.ShowAsync();
         }
@@ -161,11 +162,14 @@ namespace JiHuangBaiKeForUWP.Model
 
         #region 自动搜索
         /// <summary>
-        /// 自动建议框Item数组
+        /// 自动建议框Item集合
         /// </summary>
         public static ObservableCollection<SuggestBoxItem> AutoSuggestBoxItem = new ObservableCollection<SuggestBoxItem>();
+        /// <summary>
+        /// 自动建议框Item集合数据源
+        /// </summary>
         public static List<SuggestBoxItem> AutoSuggestBoxItemSource = new List<SuggestBoxItem>();
-
+        #region 自动搜索List
         private static readonly List<Character> CharacterData = new List<Character>();
         private static readonly List<FoodRecipe2> FoodRecipeData = new List<FoodRecipe2>();
         private static readonly List<Food> FoodMeatData = new List<Food>();
@@ -200,8 +204,12 @@ namespace JiHuangBaiKeForUWP.Model
         private static readonly List<Creature> CreatureEvilData = new List<Creature>();
         private static readonly List<Creature> CreatureOthersData = new List<Creature>();
         private static readonly List<Creature> CreatureBossData = new List<Creature>();
+        #endregion
 
-        public static async Task SetAutoSuggestBoxItemSource()
+        /// <summary>
+        /// 设置自动搜索框数据源
+        /// </summary>
+        public static async Task SetAutoSuggestBoxItem()
         {
             #region 清空列表
             AutoSuggestBoxItem.Clear();
@@ -661,10 +669,12 @@ namespace JiHuangBaiKeForUWP.Model
                 AutoSuggestBoxItemSourceAdd(creatureItems, "CreatureBoss");
             }
             #endregion
+            #region 把AutoSuggestBoxItemSource数据源加入到AutoSuggestBoxItem
             foreach (var item in AutoSuggestBoxItemSource)
             {
                 AutoSuggestBoxItem.Add(item);
             }
+            #endregion
         }
 
         public static void AutoSuggestBoxItemSourceAdd(object obj, string sourcePath)

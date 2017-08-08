@@ -36,9 +36,9 @@ namespace JiHuangBaiKeForUWP.View
             if (parameter == null) return;
             var _e = parameter[1];
             if (CharacterGridView.Items == null) return;
-            foreach (var gridViewItem in CharacterGridView.Items)
+            foreach (var gridViewItem in _characterData)
             {
-                var character = gridViewItem as Character;
+                var character = gridViewItem;
                 if (character == null || character.Picture != _e) continue;
                 var contentDialog = new ContentDialog
                 {
@@ -47,7 +47,7 @@ namespace JiHuangBaiKeForUWP.View
                     FullSizeDesired = false,
                     Style = Global.Transparent
                 };
-                Global.ShowDialog(contentDialog, CharacterStackPanel);
+                Global.ShowDialog(contentDialog);
                 break;
             }
         }
@@ -80,9 +80,9 @@ namespace JiHuangBaiKeForUWP.View
                 Content = new CharacterDialog(c),
                 PrimaryButtonText = "确定",
                 FullSizeDesired = false,
-                Style = Global.Transparent
+                Style = Global.Transparent,
             };
-            Global.ShowDialog(contentDialog, CharacterStackPanel);
+            Global.ShowDialog(contentDialog);
         }
     }
 }

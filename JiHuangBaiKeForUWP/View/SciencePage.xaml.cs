@@ -56,89 +56,89 @@ namespace JiHuangBaiKeForUWP.View
             {
                 case "ScienceTool":
                     ToolExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceToolGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceToolGridView,_scienceToolData,_e);
                     break;
                 case "ScienceLight":
                     LightExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceLightGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceLightGridView,_scienceLightData,_e);
                     break;
                 case "ScienceNautical":
                     NauticalExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceNauticalGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceNauticalGridView,_scienceNauticalData,_e);
                     break;
                 case "ScienceSurvival":
                     SurvivalExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceSurvivalGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceSurvivalGridView,_scienceSurvivalData,_e);
                     break;
                 case "ScienceFood":
                     FoodExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceFoodGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceFoodGridView,_scienceFoodData,_e);
                     break;
                 case "ScienceTechnology":
                     TechnologyExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceTechnologyGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceTechnologyGridView,_scienceTechnologyData,_e);
                     break;
                 case "ScienceFight":
                     FightExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceFightGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceFightGridView,_scienceFightData,_e);
                     break;
                 case "ScienceStructure":
                     StructuresExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceStructureGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceStructureGridView,_scienceStructureData,_e);
                     break;
                 case "ScienceRefine":
                     RefineExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceRefineGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceRefineGridView,_scienceRefineData,_e);
                     break;
                 case "ScienceMagic":
                     MagicExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceMagicGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceMagicGridView,_scienceMagicData,_e);
                     break;
                 case "ScienceDress":
                     DressExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceDressGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceDressGridView,_scienceDressData,_e);
                     break;
                 case "ScienceAncient":
                     AncientExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceAncientGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceAncientGridView,_scienceAncientData,_e);
                     break;
                 case "ScienceBook":
                     BooksExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceBookGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceBookGridView,_scienceBookData,_e);
                     break;
                 case "ScienceShadow":
                     ShadowExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceShadowGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceShadowGridView,_scienceShadowData,_e);
                     break;
                 case "ScienceCritter":
                     CritterExpaner.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceCritterGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceCritterGridView,_scienceCritterData,_e);
                     break;
                 case "ScienceSculpt":
                     SculptExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceSculptGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceSculptGridView,_scienceSculptData,_e);
                     break;
                 case "ScienceCartography":
                     CartographyExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceCartographyGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceCartographyGridView,_scienceCartographyData,_e);
                     break;
                 case "ScienceOfferings":
                     OfferingsExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceOfferingsGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceOfferingsGridView,_scienceOfferingsData,_e);
                     break;
                 case "ScienceVolcano":
                     VolcanoExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceVolcanoGridView,_e);
+                    OnNavigatedToScienceDialog(ScienceVolcanoGridView,_scienceVolcanoData,_e);
                     break;
             }
         }
 
-        private void OnNavigatedToScienceDialog(GridView gridView, string _e)
+        private void OnNavigatedToScienceDialog(GridView gridView, ObservableCollection<Science> scienceCollection,string _e)
         {
             if (gridView.Items == null) return;
-            foreach (var gridViewItem in gridView.Items)
+            foreach (var gridViewItem in scienceCollection)
             {
-                var science = gridViewItem as Science;
+                var science = gridViewItem;
                 if (science == null || science.Picture != _e) continue;
                 var contentDialog = new ContentDialog
                 {
@@ -147,7 +147,7 @@ namespace JiHuangBaiKeForUWP.View
                     FullSizeDesired = false,
                     Style = Global.Transparent
                 };
-                Global.ShowDialog(contentDialog, ScienceStackPanel);
+                Global.ShowDialog(contentDialog);
                 break;
             }
         }
@@ -369,7 +369,7 @@ namespace JiHuangBaiKeForUWP.View
                 FullSizeDesired = false,
                 Style = Global.Transparent
             };
-            Global.ShowDialog(contentDialog, ScienceStackPanel);
+            Global.ShowDialog(contentDialog);
         }
     }
 }

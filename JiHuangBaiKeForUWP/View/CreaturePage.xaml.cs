@@ -44,41 +44,41 @@ namespace JiHuangBaiKeForUWP.View
             {
                 case "CreatureLand":
                     LandExpander.IsExPanded = true;
-                    OnNavigatedToCreatureDialog(CreatureLandGridView,_e);
+                    OnNavigatedToCreatureDialog(CreatureLandGridView, _creatureLandData, _e);
                     break;
                 case "CreatureOcean":
                     OceanExpander.IsExPanded = true;
-                    OnNavigatedToCreatureDialog(CreatureOceanGridView,_e);
+                    OnNavigatedToCreatureDialog(CreatureOceanGridView, _creatureOceanData, _e);
                     break;
                 case "CreatureFly":
                     FlyExpander.IsExPanded = true;
-                    OnNavigatedToCreatureDialog(CreatureFlyGridView,_e);
+                    OnNavigatedToCreatureDialog(CreatureFlyGridView, _creatureFlyData, _e);
                     break;
                 case "CreatureCave":
                     CaveExpander.IsExPanded = true;
-                    OnNavigatedToCreatureDialog(CreatureCaveGridView,_e);
+                    OnNavigatedToCreatureDialog(CreatureCaveGridView, _creatureCaveData, _e);
                     break;
                 case "CreatureEvil":
                     EvilExpander.IsExPanded = true;
-                    OnNavigatedToCreatureDialog(CreatureEvilGridView,_e);
+                    OnNavigatedToCreatureDialog(CreatureEvilGridView, _creatureEvilData, _e);
                     break;
                 case "CreatureOther":
                     OthersExpander.IsExPanded = true;
-                    OnNavigatedToCreatureDialog(CreatureOthersGridView,_e);
+                    OnNavigatedToCreatureDialog(CreatureOthersGridView, _creatureOthersData, _e);
                     break;
                 case "CreatureBoss":
                     BossExpander.IsExPanded = true;
-                    OnNavigatedToCreatureDialog(CreatureBossGridView,_e);
+                    OnNavigatedToCreatureDialog(CreatureBossGridView, _creatureBossData, _e);
                     break;
             }
         }
 
-        private void OnNavigatedToCreatureDialog(GridView gridView, string _e)
+        private void OnNavigatedToCreatureDialog(GridView gridView, ObservableCollection<Creature> creatureCollection, string _e)
         {
             if (gridView.Items == null) return;
-            foreach (var gridViewItem in gridView.Items)
+            foreach (var gridViewItem in creatureCollection)
             {
-                var creature = gridViewItem as Creature;
+                var creature = gridViewItem;
                 if (creature == null || creature.Picture != _e) continue;
                 var contentDialog = new ContentDialog
                 {
@@ -87,7 +87,7 @@ namespace JiHuangBaiKeForUWP.View
                     FullSizeDesired = false,
                     Style = Global.Transparent
                 };
-                Global.ShowDialog(contentDialog, CreatureStackPanel);
+                Global.ShowDialog(contentDialog);
                 break;
             }
         }
@@ -184,7 +184,7 @@ namespace JiHuangBaiKeForUWP.View
                 FullSizeDesired = false,
                 Style = Global.Transparent
             };
-            Global.ShowDialog(contentDialog, CreatureStackPanel);
+            Global.ShowDialog(contentDialog);
         }
 
     }

@@ -48,27 +48,27 @@ namespace JiHuangBaiKeForUWP.View
                     break;
                 case "FoodMeats":
                     MeatsExpander.IsExPanded = true;
-                    OnNavigatedToFoodDialog(FoodMeatGridView,_e);
+                    OnNavigatedToFoodDialog(FoodMeatGridView, _foodMeatData, _e);
                     break;
                 case "FoodVegetables":
                     VegetablesExpander.IsExPanded = true;
-                    OnNavigatedToFoodDialog(FoodVegetableGridView,_e);
+                    OnNavigatedToFoodDialog(FoodVegetableGridView, _foodVegetableData, _e);
                     break;
                 case "FoodFruits":
                     FruitsExpander.IsExPanded = true;
-                    OnNavigatedToFoodDialog(FoodFruitGridView,_e);
+                    OnNavigatedToFoodDialog(FoodFruitGridView, _foodFruitData, _e);
                     break;
                 case "FoodEggs":
                     EggsExpander.IsExPanded = true;
-                    OnNavigatedToFoodDialog(FoodEggGridView,_e);
+                    OnNavigatedToFoodDialog(FoodEggGridView, _foodEggData, _e);
                     break;
                 case "FoodOthers":
                     OtherExpander.IsExPanded = true;
-                    OnNavigatedToFoodDialog(FoodOtherGridView,_e);
+                    OnNavigatedToFoodDialog(FoodOtherGridView, _foodOtherData, _e);
                     break;
                 case "FoodNoFc":
                     NoFcExpander.IsExPanded = true;
-                    OnNavigatedToFoodDialog(FoodNoFcGridView,_e);
+                    OnNavigatedToFoodDialog(FoodNoFcGridView, _foodNoFcData, _e);
                     break;
             }
         }
@@ -76,9 +76,9 @@ namespace JiHuangBaiKeForUWP.View
         private void OnNavigatedToFoodRecipeDialog(string _e)
         {
             if (FoodRecipeGridView.Items == null) return;
-            foreach (var gridViewItem in FoodRecipeGridView.Items)
+            foreach (var gridViewItem in _foodRecipeData)
             {
-                var food = gridViewItem as FoodRecipe2;
+                var food = gridViewItem;
                 if (food == null || food.Picture != _e) continue;
                 var contentDialog = new ContentDialog
                 {
@@ -87,17 +87,17 @@ namespace JiHuangBaiKeForUWP.View
                     FullSizeDesired = false,
                     Style = Global.Transparent
                 };
-                Global.ShowDialog(contentDialog, FoodStackPanel);
+                Global.ShowDialog(contentDialog);
                 break;
             }
         }
 
-        private void OnNavigatedToFoodDialog(GridView gridView,string _e)
+        private void OnNavigatedToFoodDialog(GridView gridView, ObservableCollection<Food> foodCollection, string _e)
         {
             if (gridView.Items == null) return;
-            foreach (var gridViewItem in gridView.Items)
+            foreach (var gridViewItem in foodCollection)
             {
-                var food = gridViewItem as Food;
+                var food = gridViewItem;
                 if (food == null || food.Picture != _e) continue;
                 var contentDialog = new ContentDialog
                 {
@@ -106,7 +106,7 @@ namespace JiHuangBaiKeForUWP.View
                     FullSizeDesired = false,
                     Style = Global.Transparent
                 };
-                Global.ShowDialog(contentDialog, FoodStackPanel);
+                Global.ShowDialog(contentDialog);
                 break;
             }
         }
@@ -195,7 +195,7 @@ namespace JiHuangBaiKeForUWP.View
                 FullSizeDesired = false,
                 Style = Global.Transparent
             };
-            Global.ShowDialog(contentDialog, FoodStackPanel);
+            Global.ShowDialog(contentDialog);
         }
 
         private void FoodGridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -208,7 +208,7 @@ namespace JiHuangBaiKeForUWP.View
                 FullSizeDesired = false,
                 Style = Global.Transparent
             };
-            Global.ShowDialog(contentDialog, FoodStackPanel);
+            Global.ShowDialog(contentDialog);
         }
     }
 }

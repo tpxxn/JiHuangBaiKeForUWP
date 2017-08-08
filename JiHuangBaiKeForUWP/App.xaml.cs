@@ -48,12 +48,12 @@ namespace JiHuangBaiKeForUWP
         /// <summary>
         /// 全局变量初始化
         /// </summary>
-        public void GlobalInitializeComponent()
+        public async void GlobalInitializeComponent()
         {
             // 读取游戏版本
             Global.GameVersion = SettingSet.GameVersionSettingRead();
             // 设置AutoSuggestBox的数据源
-            Global.SetAutoSuggestBoxItemSource();
+            await Global.SetAutoSuggestBoxItem();
         }
 
         /// <summary>
@@ -63,13 +63,14 @@ namespace JiHuangBaiKeForUWP
         /// <param name="e">有关启动请求和过程的详细信息。</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            // 帧计数器
+            #region 帧计数器
             //#if DEBUG
             //    if (System.Diagnostics.Debugger.IsAttached)
             //    {
             //        this.DebugSettings.EnableFrameRateCounter = true;
             //    }
             //#endif 
+            #endregion
 
             // 安装VCD命令文件
             await InsertVoiceCommands();
@@ -104,10 +105,6 @@ namespace JiHuangBaiKeForUWP
                 // 确保当前窗口处于活动状态
                 Window.Current.Activate();
             }
-
-            ((Frame) Window.Current.Content).RequestedTheme =
-                SettingSet.ThemeSettingRead() ? ElementTheme.Dark : ElementTheme.Light;
-
         }
 
         /// <summary>
@@ -144,7 +141,7 @@ namespace JiHuangBaiKeForUWP
             var vcargs = (VoiceCommandActivatedEventArgs)args;
             // 分析被识别的命令
             var res = vcargs.Result;
-            var resText = vcargs.Result.Text;
+//            var resText = vcargs.Result.Text;
             // 获取被识别的命令的名字
             var cmdName = res.RulePath[0];
             Type navType = null;
@@ -156,21 +153,7 @@ namespace JiHuangBaiKeForUWP
                     navType = typeof(MainPage);
                     //获取语音指令的参数
                     propertie = res.SemanticInterpretation.Properties["search"][0];
-//                    propertie = resText;
-//                    System.Diagnostics.Debug.Assert(false, propertie);
                     break;
-//                case "QueryFlight":
-//                    navType = typeof(QueryPage);
-//                    //获取语音指令的参数
-//                    propertie = res.SemanticInterpretation.Properties["City"][0];
-//                    break;
-//                case "NavToPage":
-//                    //获取语音指令的参数
-//                    propertie = res.SemanticInterpretation.Properties["Destination"][0];
-//
-//                    //根据 propertie 参数决定跳转到指定界面，这里就不判断了
-//                    navType = typeof(QueryPage);
-//                    break;
             }
             //获取页面引用
             var root = Window.Current.Content as Frame;
