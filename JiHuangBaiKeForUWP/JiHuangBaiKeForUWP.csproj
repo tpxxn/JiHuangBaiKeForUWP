@@ -103,6 +103,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\NaturalJson.cs" />
     <Compile Include="Model\SettingSet.cs" />
     <Compile Include="Model\CharactersJson.cs" />
     <Compile Include="Model\CreaturesJson.cs" />
@@ -148,6 +149,9 @@
     </Compile>
     <Compile Include="View\Dialog\FoodRecipeDialog.xaml.cs">
       <DependentUpon>FoodRecipeDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\NaturalDialog.xaml.cs">
+      <DependentUpon>NaturalDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Dialog\ScienceDialog.xaml.cs">
       <DependentUpon>ScienceDialog.xaml</DependentUpon>
@@ -234,7 +238,31 @@
     <Content Include="Assets\GameResources\Goods\T_black_rook.png" />
     <Content Include="Assets\GameResources\Goods\T_white_knight.png" />
     <Content Include="Assets\GameResources\Goods\T_white_rook.png" />
+    <Content Include="Assets\GameResources\Natures\N_ancient_beacon.png" />
+    <Content Include="Assets\GameResources\Natures\N_ancient_chest.png" />
+    <Content Include="Assets\GameResources\Natures\N_ancient_fence.png" />
+    <Content Include="Assets\GameResources\Natures\N_ancient_gateway.png" />
+    <Content Include="Assets\GameResources\Natures\N_ancient_mural.png" />
+    <Content Include="Assets\GameResources\Natures\N_ancient_obelisk.png" />
+    <Content Include="Assets\GameResources\Natures\N_ancient_statue_atrium.png" />
+    <Content Include="Assets\GameResources\Natures\N_ancient_statue_atrium_nightmare.png" />
+    <Content Include="Assets\GameResources\Natures\N_atrium.png" />
+    <Content Include="Assets\GameResources\Natures\N_depths_worm_lure.png" />
+    <Content Include="Assets\GameResources\Natures\N_gigantic_beehive.png" />
+    <Content Include="Assets\GameResources\Natures\N_loot_stash.png" />
+    <Content Include="Assets\GameResources\Natures\N_marble_comedy.png" />
+    <Content Include="Assets\GameResources\Natures\N_marble_pawn.png" />
+    <Content Include="Assets\GameResources\Natures\N_marble_tragedy.png" />
+    <Content Include="Assets\GameResources\Natures\N_marble_vase.png" />
+    <Content Include="Assets\GameResources\Natures\N_moon_rubble_build.png" />
+    <Content Include="Assets\GameResources\Natures\N_moon_stone.png" />
+    <Content Include="Assets\GameResources\Natures\N_oasis_cactus.png" />
+    <Content Include="Assets\GameResources\Natures\N_oasis_lake.png" />
     <Content Include="Assets\GameResources\Natures\N_rock_den.png" />
+    <Content Include="Assets\GameResources\Natures\N_sculpture_bishopbody.png" />
+    <Content Include="Assets\GameResources\Natures\N_sculpture_knightbody.png" />
+    <Content Include="Assets\GameResources\Natures\N_sculpture_rookbody.png" />
+    <Content Include="Assets\GameResources\Natures\N_stagehand.png" />
     <Content Include="Assets\GameResources\Sciences\S_bearger_figure_marble.png" />
     <Content Include="Assets\GameResources\Sciences\S_bearger_figure_stone.png" />
     <Content Include="Assets\GameResources\Sciences\S_beeswax.png" />
@@ -339,6 +367,11 @@
     <Content Include="Json\Shipwrecked\Creatures.json" />
     <Content Include="Json\Shipwrecked\Foods.json" />
     <Content Include="Json\Shipwrecked\Sciences.json" />
+    <Content Include="Json\DST\Natural.json" />
+    <Content Include="Json\DS\Natural.json" />
+    <Content Include="Json\ROG\Natural.json" />
+    <Content Include="Json\Shipwrecked\Natural.json" />
+    <Content Include="Json\Tencent\Natural.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GameResources\Creatures\A_ancient_guardian.png" />
@@ -1667,7 +1700,6 @@
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Json\Events.xml" />
     <Content Include="Json\Goods.xml" />
-    <Content Include="Json\Natures.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -1738,6 +1770,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Dialog\FoodRecipeDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\NaturalDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

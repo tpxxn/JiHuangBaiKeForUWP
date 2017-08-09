@@ -5,9 +5,40 @@
     xmlns:local="using:JiHuangBaiKeForUWP.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="using:JiHuangBaiKeForUWP.UserControls.Expander"
+    xmlns:datetype="using:JiHuangBaiKeForUWP.Model"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="NaturalDataTemplate" x:DataType="datetype:Nature">
+            <Grid Margin="5" Width="120" Height="120">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="14" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="NaturalStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <uc:Expander x:Name="LandExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="生物群落" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="NaturalBiomesGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _naturalBiomesData}" 
+                          ItemTemplate="{StaticResource NaturalDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="NaturalGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

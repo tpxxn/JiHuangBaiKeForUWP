@@ -37,12 +37,12 @@ namespace JiHuangBaiKeForUWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
         #region 字段成员
 
         private static readonly Color AccentColor = (Color)Application.Current.Resources["SystemAccentColor"];
         private readonly List<ListBoxItem> _iconsListBoxGameDataList;
         private readonly List<ListBoxItem> _iconsListBoxSettingAndAboutList;
-        private bool _autoSuggestBoxTextChangedFlag;
 
         #endregion
 
@@ -51,6 +51,7 @@ namespace JiHuangBaiKeForUWP
         public MainPage()
         {
             InitializeComponent();
+            Global.RootGrid = RootGrid;
             //读取游戏版本
             _iconsListBoxGameDataList = new List<ListBoxItem>(
                 new[]
@@ -227,6 +228,7 @@ namespace JiHuangBaiKeForUWP
         #endregion
 
         #region 搜索框
+
         /// <summary>
         /// 搜索框内容改变事件
         /// </summary>
@@ -282,28 +284,8 @@ namespace JiHuangBaiKeForUWP
                         suggestBoxItemPicture.Length - suggestBoxItemPicture.LastIndexOf('/') - 5);
                     var picHead = shortName.Substring(0, 1);
                     var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
-                    switch (picHead)
-                    {
-                        case "A":
-                            FrameTitle.Text = "生物";
-                            RootFrame.Navigate(typeof(CreaturePage), extraData);
-                            break;
-                        case "C":
-                            FrameTitle.Text = "人物";
-                            RootFrame.Navigate(typeof(CharacterPage), extraData);
-
-                            break;
-                        case "F":
-                            FrameTitle.Text = "食物";
-                            RootFrame.Navigate(typeof(FoodPage), extraData);
-
-                            break;
-                        case "S":
-                            FrameTitle.Text = "科技";
-                            RootFrame.Navigate(typeof(SciencePage), extraData);
-                            break;
-                    }
-                    sender.Text = suggestBoxItem.Name;
+                    AutoSuggestNavigate(picHead, extraData);
+                    SearchAutoSuggestBox.Text = suggestBoxItem.Name;
                 }
             }
         }
@@ -319,28 +301,8 @@ namespace JiHuangBaiKeForUWP
             var shortName = suggestBoxItemPicture.Substring(suggestBoxItemPicture.LastIndexOf('/') + 1, suggestBoxItemPicture.Length - suggestBoxItemPicture.LastIndexOf('/') - 5);
             var picHead = shortName.Substring(0, 1);
             var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
-            switch (picHead)
-            {
-                case "A":
-                    FrameTitle.Text = "生物";
-                    RootFrame.Navigate(typeof(CreaturePage), extraData);
-                    break;
-                case "C":
-                    FrameTitle.Text = "人物";
-                    RootFrame.Navigate(typeof(CharacterPage), extraData);
-
-                    break;
-                case "F":
-                    FrameTitle.Text = "食物";
-                    RootFrame.Navigate(typeof(FoodPage), extraData);
-
-                    break;
-                case "S":
-                    FrameTitle.Text = "科技";
-                    RootFrame.Navigate(typeof(SciencePage), extraData);
-                    break;
-            }
-            sender.Text = suggestBoxItem.Name;
+            AutoSuggestNavigate(picHead, extraData);
+            SearchAutoSuggestBox.Text = suggestBoxItem.Name;
         }
 
         /// <summary>
@@ -352,12 +314,6 @@ namespace JiHuangBaiKeForUWP
             Global.HideDialog(Global.ShowedDialog);
             SuggestBoxItem suggestBoxItem = null;
             await Global.SetAutoSuggestBoxItem();
-
-//            Global.AutoSuggestBoxItem.Clear();
-//            foreach (var item in Global.AutoSuggestBoxItemSource)
-//            {
-//                Global.AutoSuggestBoxItem.Add(item);
-//            }
             var searchItemToLower = searchItem.Trim().ToLower();
             if (string.IsNullOrEmpty(searchItemToLower)) return;
             for (var i = Global.AutoSuggestBoxItem.Count - 1; i >= 0; i--)
@@ -369,9 +325,7 @@ namespace JiHuangBaiKeForUWP
             }
             if (Global.AutoSuggestBoxItem.Count == 0)
             {
-                _autoSuggestBoxTextChangedFlag = true;
                 SearchAutoSuggestBox.Text = "";
-                _autoSuggestBoxTextChangedFlag = false;
                 var dialog = new ContentDialog()
                 {
                     Title = "搜索错误！",
@@ -397,29 +351,44 @@ namespace JiHuangBaiKeForUWP
                 var shortName = suggestBoxItemPicture.Substring(suggestBoxItemPicture.LastIndexOf('/') + 1, suggestBoxItemPicture.Length - suggestBoxItemPicture.LastIndexOf('/') - 5);
                 var picHead = shortName.Substring(0, 1);
                 var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
-                switch (picHead)
-                {
-                    case "A":
-                        FrameTitle.Text = "生物";
-                        CreatureListBoxItem.IsSelected = true;
-                        RootFrame.Navigate(typeof(CreaturePage), extraData);
-                        break;
-                    case "C":
-                        FrameTitle.Text = "人物";
-                        CharacterListBoxItem.IsSelected = true;
-                        RootFrame.Navigate(typeof(CharacterPage), extraData);
-                        break;
-                    case "F":
-                        FrameTitle.Text = "食物";
-                        FoodListBoxItem.IsSelected = true;
-                        RootFrame.Navigate(typeof(FoodPage), extraData);
-                        break;
-                    case "S":
-                        FrameTitle.Text = "科技";
-                        ScienceListBoxItem.IsSelected = true;
-                        RootFrame.Navigate(typeof(SciencePage), extraData);
-                        break;
-                }
+                AutoSuggestNavigate(picHead, extraData);
+            }
+        }
+
+        /// <summary>
+        /// 自动搜索框导航
+        /// </summary>
+        /// <param name="picHead">图片文件名第一个字母</param>
+        /// <param name="extraData">额外数据</param>
+        private void AutoSuggestNavigate(string picHead,string[] extraData)
+        {
+            switch (picHead)
+            {
+                case "A":
+                    FrameTitle.Text = "生物";
+                    CreatureListBoxItem.IsSelected = true;
+                    RootFrame.Navigate(typeof(CreaturePage), extraData);
+                    break;
+                case "C":
+                    FrameTitle.Text = "人物";
+                    CharacterListBoxItem.IsSelected = true;
+                    RootFrame.Navigate(typeof(CharacterPage), extraData);
+                    break;
+                case "F":
+                    FrameTitle.Text = "食物";
+                    FoodListBoxItem.IsSelected = true;
+                    RootFrame.Navigate(typeof(FoodPage), extraData);
+                    break;
+                case "S":
+                    FrameTitle.Text = "科技";
+                    ScienceListBoxItem.IsSelected = true;
+                    RootFrame.Navigate(typeof(SciencePage), extraData);
+                    break;
+                case "N":
+                    FrameTitle.Text = "自然";
+                    NaturalListBoxItem.IsSelected = true;
+                    RootFrame.Navigate(typeof(NaturalPage), extraData);
+                    break;
             }
         }
         #endregion

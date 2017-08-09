@@ -24,7 +24,7 @@ namespace JiHuangBaiKeForUWP.Model
         /// </summary>
         public static readonly StorageFolder ApplicationFolder = ApplicationData.Current.LocalFolder;
 
-        #region "颜色常量"
+        #region 颜色常量
 
         public static SolidColorBrush ColorGreen = new SolidColorBrush(Color.FromArgb(255, 94, 182, 96));     //绿色
         public static SolidColorBrush ColorKhaki = new SolidColorBrush(Color.FromArgb(255, 237, 182, 96));    //卡其布色/土黄色
@@ -60,41 +60,6 @@ namespace JiHuangBaiKeForUWP.Model
         /// 透明Style
         /// </summary>
         public static readonly Style Transparent = (Style)Application.Current.Resources["TransparentDialog"];
-
-
-        /// <summary>
-        /// 显示对话框
-        /// </summary>
-        /// <param name="contentDialog">ContentDialog</param>
-        public static async void ShowDialog(ContentDialog contentDialog)
-        {
-            var frame = Window.Current.Content as Frame;
-            ShowedDialog = contentDialog;
-            contentDialog.Closed += async delegate
-            {
-                await frame.Blur(0, 0).StartAsync();
-                contentDialog.Hide();
-            };
-
-            contentDialog.PrimaryButtonClick += async delegate
-            {
-                await frame.Blur(0, 0).StartAsync();
-                contentDialog.Hide();
-            };
-            await frame.Blur(7, 100).StartAsync();
-
-            await contentDialog.ShowAsync();
-        }
-
-        public static void HideDialog(ContentDialog contentDialog)
-        {
-            if (contentDialog == null) return;
-            contentDialog = ShowedDialog;
-            contentDialog.Hide();
-        }
-
-        public static ContentDialog ShowedDialog { get; set; }
-
 
         /// <summary>
         /// 删除重复数据
@@ -152,13 +117,56 @@ namespace JiHuangBaiKeForUWP.Model
         /// <summary>
         /// 获取文件名
         /// </summary>
-        /// <param name="Path">长字符串</param>
+        /// <param name="path">长字符串</param>
         /// <returns>资源文件路径</returns>
-        public static string GetFileName(string Path)
+        public static string GetFileName(string path)
         {
-            Path = Path.Substring(Path.LastIndexOf('/') + 1, Path.Length - Path.LastIndexOf('/') - 5);
-            return Path;
+            path = path.Substring(path.LastIndexOf('/') + 1, path.Length - path.LastIndexOf('/') - 5);
+            return path;
         }
+
+        #region 对话框
+
+        public static Grid RootGrid { get; set; }
+
+        /// <summary>
+        /// 显示对话框
+        /// </summary>
+        /// <param name="contentDialog">ContentDialog</param>
+        public static async void ShowDialog(ContentDialog contentDialog)
+        {
+            contentDialog.Closed += async delegate
+            {
+                await RootGrid.Blur(0, 0).StartAsync();
+                contentDialog.Hide();
+            };
+
+            contentDialog.PrimaryButtonClick += async delegate
+            {
+                await RootGrid.Blur(0, 0).StartAsync();
+                contentDialog.Hide();
+            };
+            await RootGrid.Blur(7, 100).StartAsync();
+            await contentDialog.ShowAsync();
+        }
+
+        /// <summary>
+        /// 隐藏对话框
+        /// </summary>
+        /// <param name="contentDialog">对话框变量</param>
+        public static void HideDialog(ContentDialog contentDialog)
+        {
+            if (contentDialog == null) return;
+            contentDialog = ShowedDialog;
+            contentDialog.Hide();
+        }
+
+        /// <summary>
+        /// 对话框是否已显示
+        /// </summary>
+        public static ContentDialog ShowedDialog { get; set; }
+
+        #endregion
 
         #region 自动搜索
         /// <summary>
@@ -204,6 +212,7 @@ namespace JiHuangBaiKeForUWP.Model
         private static readonly List<Creature> CreatureEvilData = new List<Creature>();
         private static readonly List<Creature> CreatureOthersData = new List<Creature>();
         private static readonly List<Creature> CreatureBossData = new List<Creature>();
+        private static readonly List<Nature> NaturalBiomesData = new List<Nature>();
         #endregion
 
         /// <summary>
@@ -248,6 +257,7 @@ namespace JiHuangBaiKeForUWP.Model
             CreatureEvilData.Clear();
             CreatureOthersData.Clear();
             CreatureBossData.Clear();
+            NaturalBiomesData.Clear();
             #endregion
             #region 人物
             var character = JsonConvert.DeserializeObject<CharacterRootObject>(await GetJsonString("Characters.json"));
@@ -669,6 +679,21 @@ namespace JiHuangBaiKeForUWP.Model
                 AutoSuggestBoxItemSourceAdd(creatureItems, "CreatureBoss");
             }
             #endregion
+            #region 自然
+            var natural = JsonConvert.DeserializeObject<NaturalRootObject>(await GetJsonString("Natural.json"));
+            foreach (var naturalLandItems in natural.Biomes.Nature)
+            {
+                NaturalBiomesData.Add(naturalLandItems);
+            }
+            foreach (var naturalLandItems in NaturalBiomesData)
+            {
+                naturalLandItems.Picture = GetGameResourcePath(naturalLandItems.Picture);
+            }
+            foreach (var naturalItems in NaturalBiomesData)
+            {
+                AutoSuggestBoxItemSourceAdd(naturalItems, "NaturalBiomes");
+            }
+            #endregion
             #region 把AutoSuggestBoxItemSource数据源加入到AutoSuggestBoxItem
             foreach (var item in AutoSuggestBoxItemSource)
             {
@@ -677,6 +702,11 @@ namespace JiHuangBaiKeForUWP.Model
             #endregion
         }
 
+        /// <summary>
+        /// 自动搜索框数据添加
+        /// </summary>
+        /// <param name="obj">Items对象</param>
+        /// <param name="sourcePath">源路径</param>
         public static void AutoSuggestBoxItemSourceAdd(object obj, string sourcePath)
         {
             var suggestBoxItem = new SuggestBoxItem();
@@ -710,6 +740,12 @@ namespace JiHuangBaiKeForUWP.Model
                 suggestBoxItem.Picture = ((Creature)obj).Picture;
                 suggestBoxItem.Name = ((Creature)obj).Name;
                 suggestBoxItem.EnName = ((Creature)obj).EnName;
+            }
+            else if (type == typeof(Nature))
+            {
+                suggestBoxItem.Picture = ((Nature)obj).Picture;
+                suggestBoxItem.Name = ((Nature)obj).Name;
+                suggestBoxItem.EnName = ((Nature)obj).EnName;
             }
             suggestBoxItem.SourcePath = sourcePath;
             AutoSuggestBoxItemSource.Add(suggestBoxItem);
