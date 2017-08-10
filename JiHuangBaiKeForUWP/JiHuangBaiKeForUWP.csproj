@@ -103,6 +103,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\GoodsJson.cs" />
     <Compile Include="Model\NaturalJson.cs" />
     <Compile Include="Model\SettingSet.cs" />
     <Compile Include="Model\CharactersJson.cs" />
@@ -206,22 +207,64 @@
     <Content Include="Assets\GameResources\Creatures\A_toadstool.png" />
     <Content Include="Assets\GameResources\Creatures\A_woven_shadow_hand.png" />
     <Content Include="Assets\GameResources\Creatures\A_woven_shadow_skull.png" />
+    <Content Include="Assets\GameResources\Goods\G_ancient_key.png" />
+    <Content Include="Assets\GameResources\Goods\G_apple_cider.png" />
     <Content Include="Assets\GameResources\Goods\G_bee_queen_crown.png" />
+    <Content Include="Assets\GameResources\Goods\G_blueyellow_festive_bauble.png" />
+    <Content Include="Assets\GameResources\Goods\G_blue_festive_bauble.png" />
+    <Content Include="Assets\GameResources\Goods\G_blue_festive_light.png" />
     <Content Include="Assets\GameResources\Goods\G_blue_moonlens.png" />
     <Content Include="Assets\GameResources\Goods\G_bone_armor.png" />
     <Content Include="Assets\GameResources\Goods\G_bone_helm.png" />
+    <Content Include="Assets\GameResources\Goods\G_broken_stake.png" />
     <Content Include="Assets\GameResources\Goods\G_canary_feather.png" />
+    <Content Include="Assets\GameResources\Goods\G_candy_apple.png" />
+    <Content Include="Assets\GameResources\Goods\G_candy_cane.png" />
+    <Content Include="Assets\GameResources\Goods\G_candy_corn.png" />
+    <Content Include="Assets\GameResources\Goods\G_catcoon_candy.png" />
     <Content Include="Assets\GameResources\Goods\G_chilled_lavae.png" />
+    <Content Include="Assets\GameResources\Goods\G_chocolate_log_cake.png" />
+    <Content Include="Assets\GameResources\Goods\G_choco_pigs.png" />
+    <Content Include="Assets\GameResources\Goods\G_cubic_zirkonia_Ball.png" />
+    <Content Include="Assets\GameResources\Goods\G_cyan_festive_bauble.png" />
     <Content Include="Assets\GameResources\Goods\G_deer_antler_1.png" />
     <Content Include="Assets\GameResources\Goods\G_deer_antler_2.png" />
     <Content Include="Assets\GameResources\Goods\G_deer_antler_3.png" />
     <Content Include="Assets\GameResources\Goods\G_desert_stone.png" />
+    <Content Include="Assets\GameResources\Goods\G_empty_elixir.png" />
+    <Content Include="Assets\GameResources\Goods\G_eternal_fruitcake.png" />
+    <Content Include="Assets\GameResources\Goods\G_faux_fangs.png" />
     <Content Include="Assets\GameResources\Goods\G_fossil_fragment.png" />
+    <Content Include="Assets\GameResources\Goods\G_ghost_pop.png" />
+    <Content Include="Assets\GameResources\Goods\G_gingerbread_cookie.png" />
+    <Content Include="Assets\GameResources\Goods\G_gloden_festive_bauble.png" />
+    <Content Include="Assets\GameResources\Goods\G_green_festive_bauble.png" />
+    <Content Include="Assets\GameResources\Goods\G_green_festive_light.png" />
     <Content Include="Assets\GameResources\Goods\G_green_moonlens.png" />
+    <Content Include="Assets\GameResources\Goods\G_gummy_spider.png" />
+    <Content Include="Assets\GameResources\Goods\G_heavenly_eggnog.png" />
+    <Content Include="Assets\GameResources\Goods\G_hot_cocoa.png" />
+    <Content Include="Assets\GameResources\Goods\G_jelly_worm.png" />
     <Content Include="Assets\GameResources\Goods\G_lucky_gold_nugget.png" />
+    <Content Include="Assets\GameResources\Goods\G_magnificent_adornment_bearger.png" />
+    <Content Include="Assets\GameResources\Goods\G_magnificent_adornment_beequeen.png" />
+    <Content Include="Assets\GameResources\Goods\G_magnificent_adornment_deerclops.png" />
+    <Content Include="Assets\GameResources\Goods\G_magnificent_adornment_dragonfly.png" />
+    <Content Include="Assets\GameResources\Goods\G_magnificent_adornment_moose.png" />
+    <Content Include="Assets\GameResources\Goods\G_magnificent_adornment_toadstool.png" />
+    <Content Include="Assets\GameResources\Goods\G_monkey_paw.png" />
+    <Content Include="Assets\GameResources\Goods\G_not_so_candy_corn.png" />
+    <Content Include="Assets\GameResources\Goods\G_orangeyellow_festive_bauble.png" />
     <Content Include="Assets\GameResources\Goods\G_orange_moonlens.png" />
+    <Content Include="Assets\GameResources\Goods\G_pink_festive_bauble.png" />
+    <Content Include="Assets\GameResources\Goods\G_plum_pudding.png" />
     <Content Include="Assets\GameResources\Goods\G_purple_moonlens.png" />
+    <Content Include="Assets\GameResources\Goods\G_raisins.png" />
     <Content Include="Assets\GameResources\Goods\G_rare_blueprint.png" />
+    <Content Include="Assets\GameResources\Goods\G_redgreen_festive_bauble.png" />
+    <Content Include="Assets\GameResources\Goods\G_redyellow_festive_bauble.png" />
+    <Content Include="Assets\GameResources\Goods\G_red_festive_bauble.png" />
+    <Content Include="Assets\GameResources\Goods\G_red_festive_light.png" />
     <Content Include="Assets\GameResources\Goods\G_red_moonlens.png" />
     <Content Include="Assets\GameResources\Goods\G_red_pouch.png" />
     <Content Include="Assets\GameResources\Goods\G_saffron_feather.png" />
@@ -229,10 +272,17 @@
     <Content Include="Assets\GameResources\Goods\G_shadow_thurible.png" />
     <Content Include="Assets\GameResources\Goods\G_shroom_skin.png" />
     <Content Include="Assets\GameResources\Goods\G_sketch.png" />
+    <Content Include="Assets\GameResources\Goods\G_spider_ring.png" />
     <Content Include="Assets\GameResources\Goods\G_stag_antler.png" />
     <Content Include="Assets\GameResources\Goods\G_succulent.png" />
+    <Content Include="Assets\GameResources\Goods\G_sugar_cookie.png" />
+    <Content Include="Assets\GameResources\Goods\G_tentacle_lolli.png" />
     <Content Include="Assets\GameResources\Goods\G_trinkets.png" />
+    <Content Include="Assets\GameResources\Goods\G_white_festive_bauble.png" />
+    <Content Include="Assets\GameResources\Goods\G_white_festive_light.png" />
+    <Content Include="Assets\GameResources\Goods\G_yellow_festive_bauble.png" />
     <Content Include="Assets\GameResources\Goods\G_yellow_moonlens.png" />
+    <Content Include="Assets\GameResources\Goods\G_“raisins”.png" />
     <Content Include="Assets\GameResources\Goods\T_beach_toy.png" />
     <Content Include="Assets\GameResources\Goods\T_black_knight.png" />
     <Content Include="Assets\GameResources\Goods\T_black_rook.png" />
@@ -254,10 +304,12 @@
     <Content Include="Assets\GameResources\Natures\N_marble_pawn.png" />
     <Content Include="Assets\GameResources\Natures\N_marble_tragedy.png" />
     <Content Include="Assets\GameResources\Natures\N_marble_vase.png" />
+    <Content Include="Assets\GameResources\Natures\N_moonrock.png" />
     <Content Include="Assets\GameResources\Natures\N_moon_rubble_build.png" />
     <Content Include="Assets\GameResources\Natures\N_moon_stone.png" />
     <Content Include="Assets\GameResources\Natures\N_oasis_cactus.png" />
     <Content Include="Assets\GameResources\Natures\N_oasis_lake.png" />
+    <Content Include="Assets\GameResources\Natures\N_odd_skeleton.png" />
     <Content Include="Assets\GameResources\Natures\N_rock_den.png" />
     <Content Include="Assets\GameResources\Natures\N_sculpture_bishopbody.png" />
     <Content Include="Assets\GameResources\Natures\N_sculpture_knightbody.png" />
@@ -372,6 +424,11 @@
     <Content Include="Json\ROG\Natural.json" />
     <Content Include="Json\Shipwrecked\Natural.json" />
     <Content Include="Json\Tencent\Natural.json" />
+    <Content Include="Json\DST\Goods.json" />
+    <Content Include="Json\DS\Goods.json" />
+    <Content Include="Json\ROG\Goods.json" />
+    <Content Include="Json\Shipwrecked\Goods.json" />
+    <Content Include="Json\Tencent\Goods.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GameResources\Creatures\A_ancient_guardian.png" />
@@ -1698,8 +1755,6 @@
     <Content Include="Assets\Pic\Wiki-wordmark.png" />
     <Content Include="Assets\Pic\QRCode_Qun.png" />
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="Json\Events.xml" />
-    <Content Include="Json\Goods.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -1831,6 +1886,11 @@
     <AssemblyOriginatorKeyFile>JiHuangBaiKeForUWP_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties Json_4DST_4Creatures_1json__JSONSchema="http://json.schemastore.org/chrome-manifest" />
+    </VisualStudio>
+  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
