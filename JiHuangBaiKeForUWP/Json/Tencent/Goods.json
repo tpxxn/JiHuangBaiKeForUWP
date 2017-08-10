@@ -1,6 +1,6 @@
 ﻿{
   "Material": {
-    "Good": [
+    "GoodMaterial": [
       {
         "Picture": "G_ash",
         "Name": "灰烬",
@@ -1269,7 +1269,7 @@
     ]
   },
   "Equipment": {
-    "Good": [
+    "GoodEquipment": [
       {
         "Picture": "S_axe",
         "Name": "斧头",
@@ -2041,7 +2041,7 @@
     ]
   },
   "Sapling": {
-    "Good": [
+    "GoodSapling": [
       {
         "Picture": "G_birchnut",
         "Name": "桦木果",
@@ -2140,7 +2140,7 @@
     ]
   },
   "Creatures": {
-    "Good": [
+    "GoodCreatures": [
       {
         "Picture": "A_rabbit",
         "Name": "兔子",
@@ -2300,7 +2300,7 @@
     ]
   },
   "Trinkets": {
-    "Good": [
+    "GoodTrinkets": [
       {
         "Picture": "T_melty_marbles",
         "Name": "融化的弹珠",
@@ -2496,7 +2496,7 @@
     ]
   },
   "Turf": {
-    "Good": [
+    "GoodTurf": [
       {
         "Picture": "S_cobblestones",
         "Name": "卵石路",
@@ -2664,7 +2664,7 @@
     ]
   },
   "Pet": {
-    "Good": [
+    "GoodPet": [
       {
         "Picture": "G_eye_bone",
         "Name": "眼骨",
@@ -2705,7 +2705,7 @@
     ]
   },
   "Unlock": {
-    "Good": [
+    "GoodUnlock": [
       {
         "Picture": "G_webber's_skull",
         "Name": "韦伯的头颅",

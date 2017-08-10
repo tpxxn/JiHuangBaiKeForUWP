@@ -1,6 +1,6 @@
 ﻿{
   "Material": {
-    "Good": [
+    "GoodMaterial": [
       {
         "Picture": "G_ash",
         "Name": "灰烬",
@@ -851,7 +851,7 @@
     ]
   },
   "Equipment": {
-    "Good": [
+    "GoodEquipment": [
       {
         "Picture": "S_axe",
         "Name": "斧头",
@@ -1534,7 +1534,7 @@
     ]
   },
   "Sapling": {
-    "Good": [
+    "GoodSapling": [
       {
         "Picture": "G_grass_tuft_SW",
         "Name": "长草簇",
@@ -1598,7 +1598,7 @@
     ]
   },
   "Creatures": {
-    "Good": [
+    "GoodCreatures": [
       {
         "Picture": "A_crabbit",
         "Name": "兔蟹",
@@ -1730,7 +1730,7 @@
     ]
   },
   "Trinkets": {
-    "Good": [
+    "GoodTrinkets": [
       {
         "Picture": "T_orange_soda",
         "Name": "橘子汽水",
@@ -1818,7 +1818,7 @@
     ]
   },
   "Turf": {
-    "Good": [
+    "GoodTurf": [
       {
         "Picture": "S_cobblestones",
         "Name": "卵石路",
@@ -1912,7 +1912,7 @@
     ]
   },
   "Pet": {
-    "Good": [
+    "GoodPet": [
       {
         "Picture": "G_fishbone",
         "Name": "鱼骨",
@@ -1929,7 +1929,7 @@
     ]
   },
   "Unlock": {
-    "Good": [
+    "GoodUnlock": [
       {
         "Picture": "G_iron_key",
         "Name": "铁制钥匙",

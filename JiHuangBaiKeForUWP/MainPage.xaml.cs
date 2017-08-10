@@ -119,8 +119,6 @@ namespace JiHuangBaiKeForUWP
 
         #endregion
 
-        #region 顶部按钮
-
         #region 汉堡菜单
 
         /// <summary>
@@ -379,6 +377,11 @@ namespace JiHuangBaiKeForUWP
                     FoodListBoxItem.IsSelected = true;
                     RootFrame.Navigate(typeof(FoodPage), extraData);
                     break;
+                case "G":
+                    FrameTitle.Text = "物品";
+                    GoodListBoxItem.IsSelected = true;
+                    RootFrame.Navigate(typeof(GoodPage), extraData);
+                    break;
                 case "S":
                     FrameTitle.Text = "科技";
                     ScienceListBoxItem.IsSelected = true;
@@ -391,8 +394,6 @@ namespace JiHuangBaiKeForUWP
                     break;
             }
         }
-        #endregion
-
         #endregion
 
     }

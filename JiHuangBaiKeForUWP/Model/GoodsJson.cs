@@ -25,11 +25,11 @@ namespace JiHuangBaiKeForUWP.Model
 
     public class Material
     {
-        public List<GoodMaterial> Good { get; set; }
+        public List<GoodMaterial> GoodMaterial { get; set; }
 
         public Material()
         {
-            Good = new List<GoodMaterial>();
+            GoodMaterial = new List<GoodMaterial>();
         }
     }
 
@@ -62,11 +62,11 @@ namespace JiHuangBaiKeForUWP.Model
 
     public class Equipment
     {
-        public List<Equipment> Good { get; set; }
+        public List<Equipment> GoodEquipment { get; set; }
 
         public Equipment()
         {
-            Good = new List<Equipment>();
+            GoodEquipment = new List<Equipment>();
         }
     }
 
@@ -87,11 +87,11 @@ namespace JiHuangBaiKeForUWP.Model
 
     public class Sapling
     {
-        public List<GoodSapling> Good { get; set; }
+        public List<GoodSapling> GoodSapling { get; set; }
 
         public Sapling()
         {
-            Good = new List<GoodSapling>();
+            GoodSapling = new List<GoodSapling>();
         }
     }
 
@@ -112,11 +112,11 @@ namespace JiHuangBaiKeForUWP.Model
 
     public class Creatures
     {
-        public List<GoodCreatures> Good { get; set; }
+        public List<GoodCreatures> GoodCreatures { get; set; }
 
         public Creatures()
         {
-            Good = new List<GoodCreatures>();
+            GoodCreatures = new List<GoodCreatures>();
         }
     }
 
@@ -130,11 +130,11 @@ namespace JiHuangBaiKeForUWP.Model
 
     public class Trinkets
     {
-        public List<Trinkets> Good { get; set; }
+        public List<Trinkets> GoodTrinkets { get; set; }
 
         public Trinkets()
         {
-            Good = new List<Trinkets>();
+            GoodTrinkets = new List<Trinkets>();
         }
     }
 
@@ -151,11 +151,11 @@ namespace JiHuangBaiKeForUWP.Model
 
     public class Turf
     {
-        public List<GoodTurf> Good { get; set; }
+        public List<GoodTurf> GoodTurf { get; set; }
 
         public Turf()
         {
-            Good = new List<GoodTurf>();
+            GoodTurf = new List<GoodTurf>();
         }
     }
 

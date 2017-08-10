@@ -1,6 +1,6 @@
 ﻿{
   "Material": {
-    "Good": [
+    "GoodMaterial": [
       {
         "Picture": "G_ash",
         "Name": "灰烬",
@@ -1269,7 +1269,7 @@
     ]
   },
   "Equipment": {
-    "Good": [
+    "GoodEquipment": [
       {
         "Picture": "S_axe",
         "Name": "斧头",
@@ -2054,7 +2054,7 @@
     ]
   },
   "Sapling": {
-    "Good": [
+    "GoodSapling": [
       {
         "Picture": "G_birchnut",
         "Name": "桦木果",
@@ -2153,7 +2153,7 @@
     ]
   },
   "Creatures": {
-    "Good": [
+    "GoodCreatures": [
       {
         "Picture": "A_rabbit",
         "Name": "兔子",
@@ -2313,7 +2313,7 @@
     ]
   },
   "Trinkets": {
-    "Good": [
+    "GoodTrinkets": [
       {
         "Picture": "T_melty_marbles",
         "Name": "融在一起的玻璃球",
@@ -2509,7 +2509,7 @@
     ]
   },
   "Turf": {
-    "Good": [
+    "GoodTurf": [
       {
         "Picture": "S_cobblestones",
         "Name": "鹅卵石",
@@ -2677,7 +2677,7 @@
     ]
   },
   "Pet": {
-    "Good": [
+    "GoodPet": [
       {
         "Picture": "G_eye_bone",
         "Name": "眼骨",
