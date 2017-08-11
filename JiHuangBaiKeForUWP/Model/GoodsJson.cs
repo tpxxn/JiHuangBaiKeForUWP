@@ -41,18 +41,19 @@ namespace JiHuangBaiKeForUWP.Model
         public double Attack { get; set; }
         public double MinAttack { get; set; }
         public double MaxAttack { get; set; }
+        public string AttackString { get; set; }
         public double AttackOnBoat { get; set; }
         public double AttackWet { get; set; }
         public string Durability { get; set; }
-        public string Introduction { get; set; }
-        public string Console { get; set; }
         public double Wet { get; set; }
         public double Heat { get; set; }
         public double Sanity { get; set; }
         public double Hunger { get; set; }
-        public string DropBy { get; set; }
-        public List<string> Ability { get; set; }
         public double Defense { get; set; }
+        public List<string> Ability { get; set; }
+        public string DropBy { get; set; }
+        public string Introduction { get; set; }
+        public string Console { get; set; }
 
         public GoodEquipment()
         {
@@ -62,11 +63,11 @@ namespace JiHuangBaiKeForUWP.Model
 
     public class Equipment
     {
-        public List<Equipment> GoodEquipment { get; set; }
+        public List<GoodEquipment> GoodEquipment { get; set; }
 
         public Equipment()
         {
-            GoodEquipment = new List<Equipment>();
+            GoodEquipment = new List<GoodEquipment>();
         }
     }
 
@@ -119,25 +120,7 @@ namespace JiHuangBaiKeForUWP.Model
             GoodCreatures = new List<GoodCreatures>();
         }
     }
-
-    public class GoodTrinkets
-    {
-        public string Picture { get; set; }
-        public string Name { get; set; }
-        public string EnName { get; set; }
-        public string Console { get; set; }
-    }
-
-    public class Trinkets
-    {
-        public List<Trinkets> GoodTrinkets { get; set; }
-
-        public Trinkets()
-        {
-            GoodTrinkets = new List<Trinkets>();
-        }
-    }
-
+    
     public class GoodTurf
     {
         public string Picture { get; set; }
@@ -177,11 +160,11 @@ namespace JiHuangBaiKeForUWP.Model
 
     public class Pet
     {
-        public List<GoodPet> Good { get; set; }
+        public List<GoodPet> GoodPet { get; set; }
 
         public Pet()
         {
-            Good = new List<GoodPet>();
+            GoodPet = new List<GoodPet>();
         }
     }
 
@@ -203,11 +186,11 @@ namespace JiHuangBaiKeForUWP.Model
 
     public class Unlock
     {
-        public List<GoodUnlock> Good { get; set; }
+        public List<GoodUnlock> GoodUnlock { get; set; }
 
         public Unlock()
         {
-            Good = new List<GoodUnlock>();
+            GoodUnlock = new List<GoodUnlock>();
         }
     }
 
@@ -218,6 +201,16 @@ namespace JiHuangBaiKeForUWP.Model
         public string EnName { get; set; }
         public string Introduction { get; set; }
         public string Console { get; set; }
+    }
+
+    public class Trinkets
+    {
+        public List<Good> GoodTrinkets { get; set; }
+
+        public Trinkets()
+        {
+            GoodTrinkets = new List<Good>();
+        }
     }
 
     public class HallowedNights
@@ -283,6 +276,8 @@ namespace JiHuangBaiKeForUWP.Model
         public HallowedNights HallowedNights { get; set; }
         public WintersFeast WintersFeast { get; set; }
         public YearOfTheGobbler YearOfTheGobbler { get; set; }
+        public Component Component { get; set; }
+        public GoodOthers GoodOthers { get; set; }
 
         public GoodsRootObject()
         {
@@ -297,6 +292,8 @@ namespace JiHuangBaiKeForUWP.Model
             HallowedNights = new HallowedNights();
             WintersFeast = new WintersFeast();
             YearOfTheGobbler = new YearOfTheGobbler();
+            Component = new Component();
+            GoodOthers = new GoodOthers();
         }
     }
 }

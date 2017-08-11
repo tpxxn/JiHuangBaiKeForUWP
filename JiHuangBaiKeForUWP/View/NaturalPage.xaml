@@ -24,7 +24,7 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel x:Name="NaturalStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <uc:Expander x:Name="LandExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="BiomesExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="生物群落" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>

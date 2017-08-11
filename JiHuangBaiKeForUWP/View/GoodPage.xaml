@@ -5,9 +5,297 @@
     xmlns:local="using:JiHuangBaiKeForUWP.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="using:JiHuangBaiKeForUWP.UserControls.Expander"
+    xmlns:datetype="using:JiHuangBaiKeForUWP.Model"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="GoodMaterialDataTemplate" x:DataType="datetype:GoodMaterial">
+            <Grid Margin="5" Width="90" Height="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <DataTemplate x:Key="GoodEquipmentDataTemplate" x:DataType="datetype:GoodEquipment">
+            <Grid Margin="5" Width="90" Height="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
 
-    </Grid>
+        <DataTemplate x:Key="GoodSaplingDataTemplate" x:DataType="datetype:GoodSapling">
+            <Grid Margin="5" Width="90" Height="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="GoodCreaturesDataTemplate" x:DataType="datetype:GoodCreatures">
+            <Grid Margin="5" Width="90" Height="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="GoodTurfDataTemplate" x:DataType="datetype:GoodTurf">
+            <Grid Margin="5" Width="90" Height="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="GoodPetDataTemplate" x:DataType="datetype:GoodPet">
+            <Grid Margin="5" Width="90" Height="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="GoodUnlockDataTemplate" x:DataType="datetype:GoodUnlock">
+            <Grid Margin="5" Width="90" Height="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="GoodDataTemplate" x:DataType="datetype:Good">
+            <Grid Margin="5" Width="90" Height="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="GoodStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <uc:Expander x:Name="MaterialExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="材料" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="GoodMaterialGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _goodMaterialData}" 
+                          ItemTemplate="{StaticResource GoodMaterialDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="GoodMaterialGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="EquipmentExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="装备" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="GoodEquipmentGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _goodEquipmentData}" 
+                          ItemTemplate="{StaticResource GoodEquipmentDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="GoodEquipmentGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="SaplingExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="树苗" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="GoodSaplingGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _goodSaplingData}" 
+                          ItemTemplate="{StaticResource GoodSaplingDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="GoodSaplingGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="CreaturesExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="生物" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="GoodCreaturesGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _goodCreaturesData}" 
+                          ItemTemplate="{StaticResource GoodCreaturesDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="GoodCreaturesGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="TrinketsExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="玩具" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="GoodTrinketsGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _goodTrinketsData}" 
+                          ItemTemplate="{StaticResource GoodDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="GoodGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="TurfExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="地皮" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="GoodTurfGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _goodTurfData}" 
+                          ItemTemplate="{StaticResource GoodTurfDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="GoodTurfGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="PetExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="宠物" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="GoodPetGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _goodPetData}" 
+                          ItemTemplate="{StaticResource GoodPetDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="GoodPetGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="UnlockExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="解锁" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="GoodUnlockGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _goodUnlockData}" 
+                          ItemTemplate="{StaticResource GoodUnlockDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="GoodUnlockGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="HallowedNightsExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="Hellowed Nights" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="GoodHallowedNightsGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _goodHallowedNightsData}" 
+                          ItemTemplate="{StaticResource GoodDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="GoodGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="WintersFeastExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="Winter's Feast" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="GoodWintersFeastGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _goodWintersFeastData}" 
+                          ItemTemplate="{StaticResource GoodDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="GoodGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="YearOfTheGobblerExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="Year of the Gobbler" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="GoodYearOfTheGobblerGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _goodYearOfTheGobblerData}" 
+                          ItemTemplate="{StaticResource GoodDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="GoodGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="ComponentExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="零件" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="GoodComponentGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _goodComponentData}" 
+                          ItemTemplate="{StaticResource GoodDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="GoodGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+            <uc:Expander x:Name="GoodOthersExpander" VerticalAlignment="Top" FontSize="17">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="其他" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="GoodOthersGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _goodOthersData}" 
+                          ItemTemplate="{StaticResource GoodDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="GoodGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250"/>
+            </uc:Expander>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

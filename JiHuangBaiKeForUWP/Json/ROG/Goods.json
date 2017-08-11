@@ -1154,7 +1154,6 @@
                 "Picture": "S_thermal_stone",
                 "Name": "保温石",
                 "EnName": "Thermal Stone",
-                "Durability": "8次",
                 "Heat": 120,
                 "Introduction": "每次变灰耐久度减少1点，可以用来升温也可以用来降温。",
                 "Console": "heatrock"
@@ -2148,17 +2147,37 @@
         "GoodPet": [
             {
                 "Picture": "G_eye_bone",
-                "Name": "眼骨",
+                "Name": "切斯特眼骨",
                 "EnName": "Eye Bone",
                 "Dead": "G_eye_bone_died",
                 "Follow": [
-                    "A_chester",
-                    "A_snow_chester",
-                    "A_shadow_chester"
+                  "A_chester"
                 ],
                 "Introduction": "通常可以在鹅卵石的尽头找到，也有可能在沼泽附近。眼骨可以召唤切斯特并让切斯特跟随，放在地上或切斯特里会使切斯特停止跟随。切斯特死亡后眼骨将闭眼，一天后切斯特重生。",
                 "Console": "chester_eyebone"
-            }
+              },
+              {
+                "Picture": "G_eye_bone_snow",
+                "Name": "寒冰切斯特眼骨",
+                "EnName": "Eye Bone",
+                "Dead": "G_eye_bone_died_snow",
+                "Follow": [
+                  "A_snow_chester"
+                ],
+                "Introduction": "通常可以在鹅卵石的尽头找到，也有可能在沼泽附近。眼骨可以召唤切斯特并让切斯特跟随，放在地上或切斯特里会使切斯特停止跟随。切斯特死亡后眼骨将闭眼，一天后切斯特重生。",
+                "Console": "chester_eyebone"
+              },
+              {
+                "Picture": "G_eye_bone_shadow",
+                "Name": "暗影切斯特眼骨",
+                "EnName": "Eye Bone",
+                "Dead": "G_eye_bone_died_shadow",
+                "Follow": [
+                  "A_shadow_chester"
+                ],
+                "Introduction": "通常可以在鹅卵石的尽头找到，也有可能在沼泽附近。眼骨可以召唤切斯特并让切斯特跟随，放在地上或切斯特里会使切斯特停止跟随。切斯特死亡后眼骨将闭眼，一天后切斯特重生。",
+                "Console": "chester_eyebone"
+              },
         ]
     },
     "Unlock": {

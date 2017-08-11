@@ -36,7 +36,7 @@ namespace JiHuangBaiKeForUWP.View
             switch (parameter[0])
             {
                 case "NaturalBiomes":
-                    LandExpander.IsExPanded = true;
+                    BiomesExpander.IsExPanded = true;
                     OnNavigatedToNaturalBiomesDialog(NaturalBiomesGridView, _naturalBiomesData, _e);
                     break;
             }

@@ -35,7 +35,7 @@ namespace JiHuangBaiKeForUWP.Model
         public static SolidColorBrush ColorCyan = new SolidColorBrush(Color.FromArgb(255, 21, 227, 234));     //青色
         public static SolidColorBrush ColorOrange = new SolidColorBrush(Color.FromArgb(255, 246, 166, 11));     //橙色
         public static SolidColorBrush ColorYellow = new SolidColorBrush(Color.FromArgb(255, 238, 232, 21));     //黄色
-        public static SolidColorBrush ColorBorderCyan = new SolidColorBrush(Color.FromArgb(255, 178, 236, 237));     //TODO 未确认颜色
+        public static SolidColorBrush ColorBorderCyan = new SolidColorBrush(Color.FromArgb(255, 178, 236, 237));     //天蓝色
 
         #endregion
 
@@ -213,6 +213,19 @@ namespace JiHuangBaiKeForUWP.Model
         private static readonly List<Creature> CreatureOthersData = new List<Creature>();
         private static readonly List<Creature> CreatureBossData = new List<Creature>();
         private static readonly List<Nature> NaturalBiomesData = new List<Nature>();
+        private static readonly List<GoodMaterial> GoodMaterialData = new List<GoodMaterial>();
+        private static readonly List<GoodEquipment> GoodEquipmentData = new List<GoodEquipment>();
+        private static readonly List<GoodSapling> GoodSaplingData = new List<GoodSapling>();
+        private static readonly List<GoodCreatures> GoodCreaturesData = new List<GoodCreatures>();
+        private static readonly List<Good> GoodTrinketsData = new List<Good>();
+        private static readonly List<GoodTurf> GoodTurfData = new List<GoodTurf>();
+        private static readonly List<GoodPet> GoodPetData = new List<GoodPet>();
+        private static readonly List<GoodUnlock> GoodUnlockData = new List<GoodUnlock>();
+        private static readonly List<Good> GoodHallowedNightsData = new List<Good>();
+        private static readonly List<Good> GoodWintersFeastData = new List<Good>();
+        private static readonly List<Good> GoodYearOfTheGobblerData = new List<Good>();
+        private static readonly List<Good> GoodComponentData = new List<Good>();
+        private static readonly List<Good> GoodOthersData = new List<Good>();
         #endregion
 
         /// <summary>
@@ -258,6 +271,19 @@ namespace JiHuangBaiKeForUWP.Model
             CreatureOthersData.Clear();
             CreatureBossData.Clear();
             NaturalBiomesData.Clear();
+            GoodMaterialData.Clear();
+            GoodEquipmentData.Clear();
+            GoodSaplingData.Clear();
+            GoodCreaturesData.Clear();
+            GoodTrinketsData.Clear();
+            GoodTurfData.Clear();
+            GoodPetData.Clear();
+            GoodUnlockData.Clear();
+            GoodHallowedNightsData.Clear();
+            GoodWintersFeastData.Clear();
+            GoodYearOfTheGobblerData.Clear();
+            GoodComponentData.Clear();
+            GoodOthersData.Clear();
             #endregion
             #region 人物
             var character = JsonConvert.DeserializeObject<CharacterRootObject>(await GetJsonString("Characters.json"));
@@ -694,6 +720,165 @@ namespace JiHuangBaiKeForUWP.Model
                 AutoSuggestBoxItemSourceAdd(naturalItems, "NaturalBiomes");
             }
             #endregion
+            #region 物品
+            var good = JsonConvert.DeserializeObject<GoodsRootObject>(await GetJsonString("Goods.json"));
+            foreach (var goodMaterialItems in good.Material.GoodMaterial)
+            {
+                GoodMaterialData.Add(goodMaterialItems);
+            }
+            foreach (var goodMaterialItems in GoodMaterialData)
+            {
+                goodMaterialItems.Picture = GetGameResourcePath(goodMaterialItems.Picture);
+            }
+            foreach (var goodEquipmentItems in good.Equipment.GoodEquipment)
+            {
+                GoodEquipmentData.Add(goodEquipmentItems);
+            }
+            foreach (var goodEquipmentItems in GoodEquipmentData)
+            {
+                goodEquipmentItems.Picture = GetGameResourcePath(goodEquipmentItems.Picture);
+            }
+            foreach (var goodSaplingItems in good.Sapling.GoodSapling)
+            {
+                GoodSaplingData.Add(goodSaplingItems);
+            }
+            foreach (var goodSaplingItems in GoodSaplingData)
+            {
+                goodSaplingItems.Picture = GetGameResourcePath(goodSaplingItems.Picture);
+            }
+            foreach (var goodCreaturesItems in good.Creatures.GoodCreatures)
+            {
+                GoodCreaturesData.Add(goodCreaturesItems);
+            }
+            foreach (var goodCreaturesItems in GoodCreaturesData)
+            {
+                goodCreaturesItems.Picture = GetGameResourcePath(goodCreaturesItems.Picture);
+            }
+            foreach (var goodTrinketsItems in good.Trinkets.GoodTrinkets)
+            {
+                GoodTrinketsData.Add(goodTrinketsItems);
+            }
+            foreach (var goodTrinketsItems in GoodTrinketsData)
+            {
+                goodTrinketsItems.Picture = GetGameResourcePath(goodTrinketsItems.Picture);
+            }
+            foreach (var goodTurfItems in good.Turf.GoodTurf)
+            {
+                GoodTurfData.Add(goodTurfItems);
+            }
+            foreach (var goodTurfItems in GoodTurfData)
+            {
+                goodTurfItems.Picture = GetGameResourcePath(goodTurfItems.Picture);
+            }
+            foreach (var goodPetItems in good.Pet.GoodPet)
+            {
+                GoodPetData.Add(goodPetItems);
+            }
+            foreach (var goodPetItems in GoodPetData)
+            {
+                goodPetItems.Picture = GetGameResourcePath(goodPetItems.Picture);
+            }
+            foreach (var goodUnlockItems in good.Unlock.GoodUnlock)
+            {
+                GoodUnlockData.Add(goodUnlockItems);
+            }
+            foreach (var goodUnlockItems in GoodUnlockData)
+            {
+                goodUnlockItems.Picture = GetGameResourcePath(goodUnlockItems.Picture);
+            }
+            foreach (var goodHallowedNightsItems in good.HallowedNights.Good)
+            {
+                GoodHallowedNightsData.Add(goodHallowedNightsItems);
+            }
+            foreach (var goodHallowedNightsItems in GoodHallowedNightsData)
+            {
+                goodHallowedNightsItems.Picture = GetGameResourcePath(goodHallowedNightsItems.Picture);
+            }
+            foreach (var goodWinterwsFeastItems in good.WintersFeast.Good)
+            {
+                GoodWintersFeastData.Add(goodWinterwsFeastItems);
+            }
+            foreach (var goodWinterwsFeastItems in GoodWintersFeastData)
+            {
+                goodWinterwsFeastItems.Picture = GetGameResourcePath(goodWinterwsFeastItems.Picture);
+            }
+            foreach (var goodYearOfTheGobblerItems in good.YearOfTheGobbler.Good)
+            {
+                GoodYearOfTheGobblerData.Add(goodYearOfTheGobblerItems);
+            }
+            foreach (var goodYearOfTheGobblerItems in GoodYearOfTheGobblerData)
+            {
+                goodYearOfTheGobblerItems.Picture = GetGameResourcePath(goodYearOfTheGobblerItems.Picture);
+            }
+            foreach (var goodComponentItems in good.Component.Good)
+            {
+                GoodComponentData.Add(goodComponentItems);
+            }
+            foreach (var goodComponentItems in GoodComponentData)
+            {
+                goodComponentItems.Picture = GetGameResourcePath(goodComponentItems.Picture);
+            }
+            foreach (var goodOthersItems in good.GoodOthers.Good)
+            {
+                GoodOthersData.Add(goodOthersItems);
+            }
+            foreach (var goodOthersItems in GoodOthersData)
+            {
+                goodOthersItems.Picture = GetGameResourcePath(goodOthersItems.Picture);
+            }
+            foreach (var goodMaterialItems in GoodMaterialData)
+            {
+                AutoSuggestBoxItemSourceAdd(goodMaterialItems, "GoodMaterial");
+            }
+            foreach (var goodEquipmentItems in GoodEquipmentData)
+            {
+                AutoSuggestBoxItemSourceAdd(goodEquipmentItems, "GoodEquipment");
+            }
+            foreach (var goodSaplingItems in GoodSaplingData)
+            {
+                AutoSuggestBoxItemSourceAdd(goodSaplingItems, "GoodSapling");
+            }
+            foreach (var goodCreaturesItems in GoodCreaturesData)
+            {
+                AutoSuggestBoxItemSourceAdd(goodCreaturesItems, "GoodCreatures");
+            }
+            foreach (var goodTrinketsItems in GoodTrinketsData)
+            {
+                AutoSuggestBoxItemSourceAdd(goodTrinketsItems, "GoodTrinkets");
+            }
+            foreach (var goodTurfItems in GoodTurfData)
+            {
+                AutoSuggestBoxItemSourceAdd(goodTurfItems, "GoodTurf");
+            }
+            foreach (var goodPetItems in GoodPetData)
+            {
+                AutoSuggestBoxItemSourceAdd(goodPetItems, "GoodPet");
+            }
+            foreach (var goodUnlockItems in GoodUnlockData)
+            {
+                AutoSuggestBoxItemSourceAdd(goodUnlockItems, "GoodUnlock");
+            }
+            foreach (var goodHallowedNightsItems in GoodHallowedNightsData)
+            {
+                AutoSuggestBoxItemSourceAdd(goodHallowedNightsItems, "GoodHallowedNights");
+            }
+            foreach (var goodWintersFeastItems in GoodWintersFeastData)
+            {
+                AutoSuggestBoxItemSourceAdd(goodWintersFeastItems, "GoodWintersFeast");
+            }
+            foreach (var goodYearOfTheGobblerItems in GoodYearOfTheGobblerData)
+            {
+                AutoSuggestBoxItemSourceAdd(goodYearOfTheGobblerItems, "GoodYearOfTheGobbler");
+            }
+            foreach (var goodComponentItems in GoodComponentData)
+            {
+                AutoSuggestBoxItemSourceAdd(goodComponentItems, "GoodComponent");
+            }
+            foreach (var goodOthersItems in GoodOthersData)
+            {
+                AutoSuggestBoxItemSourceAdd(goodOthersItems, "GoodOthers");
+            }
+            #endregion
             #region 把AutoSuggestBoxItemSource数据源加入到AutoSuggestBoxItem
             foreach (var item in AutoSuggestBoxItemSource)
             {
@@ -746,6 +931,54 @@ namespace JiHuangBaiKeForUWP.Model
                 suggestBoxItem.Picture = ((Nature)obj).Picture;
                 suggestBoxItem.Name = ((Nature)obj).Name;
                 suggestBoxItem.EnName = ((Nature)obj).EnName;
+            }
+            else if (type == typeof(GoodMaterial))
+            {
+                suggestBoxItem.Picture = ((GoodMaterial)obj).Picture;
+                suggestBoxItem.Name = ((GoodMaterial)obj).Name;
+                suggestBoxItem.EnName = ((GoodMaterial)obj).EnName;
+            }
+            else if (type == typeof(GoodEquipment))
+            {
+                suggestBoxItem.Picture = ((GoodEquipment)obj).Picture;
+                suggestBoxItem.Name = ((GoodEquipment)obj).Name;
+                suggestBoxItem.EnName = ((GoodEquipment)obj).EnName;
+            }
+            else if (type == typeof(GoodSapling))
+            {
+                suggestBoxItem.Picture = ((GoodSapling)obj).Picture;
+                suggestBoxItem.Name = ((GoodSapling)obj).Name;
+                suggestBoxItem.EnName = ((GoodSapling)obj).EnName;
+            }
+            else if (type == typeof(GoodCreatures))
+            {
+                suggestBoxItem.Picture = ((GoodCreatures)obj).Picture;
+                suggestBoxItem.Name = ((GoodCreatures)obj).Name;
+                suggestBoxItem.EnName = ((GoodCreatures)obj).EnName;
+            }
+            else if (type == typeof(GoodTurf))
+            {
+                suggestBoxItem.Picture = ((GoodTurf)obj).Picture;
+                suggestBoxItem.Name = ((GoodTurf)obj).Name;
+                suggestBoxItem.EnName = ((GoodTurf)obj).EnName;
+            }
+            else if (type == typeof(GoodPet))
+            {
+                suggestBoxItem.Picture = ((GoodPet)obj).Picture;
+                suggestBoxItem.Name = ((GoodPet)obj).Name;
+                suggestBoxItem.EnName = ((GoodPet)obj).EnName;
+            }
+            else if (type == typeof(GoodUnlock))
+            {
+                suggestBoxItem.Picture = ((GoodUnlock)obj).Picture;
+                suggestBoxItem.Name = ((GoodUnlock)obj).Name;
+                suggestBoxItem.EnName = ((GoodUnlock)obj).EnName;
+            }
+            else if (type == typeof(Good))
+            {
+                suggestBoxItem.Picture = ((Good)obj).Picture;
+                suggestBoxItem.Name = ((Good)obj).Name;
+                suggestBoxItem.EnName = ((Good)obj).EnName;
             }
             suggestBoxItem.SourcePath = sourcePath;
             AutoSuggestBoxItemSource.Add(suggestBoxItem);

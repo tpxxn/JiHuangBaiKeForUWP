@@ -22,8 +22,6 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Image Grid.Row="0" x:Name="NatureImage" Stretch="Uniform" Height="128" HorizontalAlignment="Center" />
             <TextBlock Grid.Row="1" x:Name="NatureName" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" />

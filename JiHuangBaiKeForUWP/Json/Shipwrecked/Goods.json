@@ -1131,7 +1131,6 @@
         "Picture": "S_thermal_stone",
         "Name": "保温石",
         "EnName": "Thermal Stone",
-        "Durability": "8次",
         "Heat": 120,
         "Introduction": "每次变灰耐久度减少1点，可以用来升温也可以用来降温。",
         "Console": "heatrock"
@@ -1320,7 +1319,7 @@
         "Picture": "S_spear_gun",
         "Name": "矛枪",
         "EnName": "Spear Gun",
-        "Attack": "3×装载矛的伤害",
+        "AttackString": "3×装载矛的伤害",
         "Durability": "8次",
         "Introduction": "可以装载战斗长矛、长矛、毒矛、黑曜石矛，射出去的矛要自己捡回来。",
         "Console": "spear_launcher"

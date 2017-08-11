@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="JiHuangBaiKeForUWP.View.Dialog.GoodCreaturesDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JiHuangBaiKeForUWP.View.Dialog"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wrapPanel="using:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel"
+    xmlns:charts="using:JiHuangBaiKeForUWP.UserControls.Charts"
+    mc:Ignorable="d">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" x:Name="GoodImage" Stretch="Uniform" Height="85" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="1" x:Name="GoodName" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="2" x:Name="GoodEnName" FontSize="25" FontFamily="/Assets/Font/belisa_plumilla.ttf#Belisa plumilla manual" HorizontalAlignment="Center" Margin="0,5,0,0" />
+            <charts:BarChart Grid.Row="3" x:Name="GoodFresh" Label="保鲜" MaxValue="300" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="4" x:Name="GoodGoodsTextBlock" Text="杀害后获得：" Margin="0,10"/>
+            <wrapPanel:WrapPanel Grid.Row="5" x:Name="GoodGoodsWrapPanel" Orientation="Horizontal"/>
+            <Grid Grid.Row="6" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="Console" Margin="0,5,15,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <Button Grid.Column="1" HorizontalAlignment="Left" Tapped="Copy_Tapped">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Copy" />
+                            <TextBlock Text="复制" Margin="8,0,0,0" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

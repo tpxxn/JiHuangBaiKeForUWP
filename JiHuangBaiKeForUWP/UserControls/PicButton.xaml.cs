@@ -60,6 +60,40 @@ namespace JiHuangBaiKeForUWP.UserControls
         }
 
         #endregion
+
+        #region 属性：PictureSize
+
+        public double PictureSize
+        {
+            get => (double)GetValue(PictureSizeProperty);
+            set => SetValue(PictureSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty PictureSizeProperty =
+            DependencyProperty.Register("PictureSize", typeof(double), typeof(PicButton), new PropertyMetadata(false, OnPictureSizeChang));
+
+        private static void OnPictureSizeChang(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue == null) return;
+            var picButton = (PicButton)d;
+            if ((double) e.NewValue > 0)
+            {
+                picButton.PictureButton.Height = (double) e.NewValue;
+                picButton.PictureButton.Width = (double) e.NewValue;
+                picButton.PictureButtonImage.Height = (double) e.NewValue - 3;
+                picButton.PictureButtonImage.Width = (double)e.NewValue - 3;
+
+            }
+            else
+            {
+                picButton.PictureButton.Height = 45;
+                picButton.PictureButton.Width = 45;
+                picButton.PictureButtonImage.Height = 42;
+                picButton.PictureButtonImage.Width = 42;
+            }
+        }
+
+        #endregion
         public PicButton()
         {
             this.InitializeComponent();

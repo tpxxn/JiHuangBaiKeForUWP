@@ -19,7 +19,7 @@
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <PackageCertificateKeyFile>
     </PackageCertificateKeyFile>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <PackageCertificateThumbprint>4F1FBC2BB76F57812F6AE3E4C86741882757BB18</PackageCertificateThumbprint>
@@ -150,6 +150,30 @@
     </Compile>
     <Compile Include="View\Dialog\FoodRecipeDialog.xaml.cs">
       <DependentUpon>FoodRecipeDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\GoodCreaturesDialog.xaml.cs">
+      <DependentUpon>GoodCreaturesDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\GoodDialog.xaml.cs">
+      <DependentUpon>GoodDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\GoodEquipmentDialog.xaml.cs">
+      <DependentUpon>GoodEquipmentDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\GoodMaterialDialog.xaml.cs">
+      <DependentUpon>GoodMaterialDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\GoodPetDialog.xaml.cs">
+      <DependentUpon>GoodPetDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\GoodSaplingDialog.xaml.cs">
+      <DependentUpon>GoodSaplingDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\GoodTurfDialog.xaml.cs">
+      <DependentUpon>GoodTurfDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\GoodUnlockDialog.xaml.cs">
+      <DependentUpon>GoodUnlockDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Dialog\NaturalDialog.xaml.cs">
       <DependentUpon>NaturalDialog.xaml</DependentUpon>
@@ -1825,6 +1849,38 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Dialog\FoodRecipeDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\GoodCreaturesDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\GoodDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\GoodEquipmentDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\GoodMaterialDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\GoodPetDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\GoodSaplingDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\GoodTurfDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\GoodUnlockDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

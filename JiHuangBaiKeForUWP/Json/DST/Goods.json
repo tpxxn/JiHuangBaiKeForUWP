@@ -428,7 +428,7 @@
         "Console": "feather_crow"
       },
       {
-        "Picture": "Saffron_Feather",
+        "Picture": "G_saffron_feather",
         "Name": "金黄羽毛",
         "EnName": "Saffron Feather",
         "Science": [
@@ -2001,7 +2001,7 @@
         "Console": "krampus_sack"
       },
       {
-        "Picture": "Bee_Queen_Crown",
+        "Picture": "G_bee_queen_crown",
         "Name": "蜂后头冠",
         "EnName": "Bee Queen Crown",
         "DropBy": "A_bee_queen",
@@ -2261,7 +2261,7 @@
         "Console": "robin_winter"
       },
       {
-        "Picture": "Canary",
+        "Picture": "A_canary",
         "Name": "金丝雀",
         "EnName": "Canary",
         "Fresh": 2,
@@ -2680,12 +2680,32 @@
     "GoodPet": [
       {
         "Picture": "G_eye_bone",
-        "Name": "眼骨",
+        "Name": "切斯特眼骨",
         "EnName": "Eye Bone",
         "Dead": "G_eye_bone_died",
         "Follow": [
-          "A_chester",
-          "A_snow_chester",
+          "A_chester"
+        ],
+        "Introduction": "通常可以在鹅卵石的尽头找到，也有可能在沼泽附近。眼骨可以召唤切斯特并让切斯特跟随，放在地上或切斯特里会使切斯特停止跟随。切斯特死亡后眼骨将闭眼，一天后切斯特重生。",
+        "Console": "chester_eyebone"
+      },
+      {
+        "Picture": "G_eye_bone_snow",
+        "Name": "寒冰切斯特眼骨",
+        "EnName": "Eye Bone",
+        "Dead": "G_eye_bone_died_snow",
+        "Follow": [
+          "A_snow_chester"
+        ],
+        "Introduction": "通常可以在鹅卵石的尽头找到，也有可能在沼泽附近。眼骨可以召唤切斯特并让切斯特跟随，放在地上或切斯特里会使切斯特停止跟随。切斯特死亡后眼骨将闭眼，一天后切斯特重生。",
+        "Console": "chester_eyebone"
+      },
+      {
+        "Picture": "G_eye_bone_shadow",
+        "Name": "暗影切斯特眼骨",
+        "EnName": "Eye Bone",
+        "Dead": "G_eye_bone_died_shadow",
+        "Follow": [
           "A_shadow_chester"
         ],
         "Introduction": "通常可以在鹅卵石的尽头找到，也有可能在沼泽附近。眼骨可以召唤切斯特并让切斯特跟随，放在地上或切斯特里会使切斯特停止跟随。切斯特死亡后眼骨将闭眼，一天后切斯特重生。",

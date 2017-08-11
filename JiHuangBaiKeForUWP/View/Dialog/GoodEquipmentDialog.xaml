@@ -1,0 +1,77 @@
+﻿<Page
+    x:Class="JiHuangBaiKeForUWP.View.Dialog.GoodEquipmentDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JiHuangBaiKeForUWP.View.Dialog"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:charts="using:JiHuangBaiKeForUWP.UserControls.Charts"
+    xmlns:picButton="using:JiHuangBaiKeForUWP.UserControls"
+    xmlns:wrapPanel="using:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel"
+    mc:Ignorable="d">
+
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid x:Name="GoodsRootGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" x:Name="GoodImage" Stretch="Uniform" Height="128" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="1" x:Name="GoodName" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="2" x:Name="GoodEnName" FontSize="25" FontFamily="/Assets/Font/belisa_plumilla.ttf#Belisa plumilla manual" HorizontalAlignment="Center" Margin="0,5,0,0" />
+            <Grid x:Name="BarChartGrid" Grid.Row="3" HorizontalAlignment="Center" Width="600" Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="BarChartGridColumn1" Width="*"/>
+                    <ColumnDefinition x:Name="BarChartGridColumn2" Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="BarChartStackPanel1" Grid.Column="0" Width="200" HorizontalAlignment="Right">
+                    <charts:BarChart x:Name="GoodAttack" Label="攻击" MaxValue="200" LabelWidth="90"/>
+                    <TextBlock x:Name="GoodAttackString" Text=" 攻击        3×装载矛的伤害" FontSize="16" Margin="5"/>
+                    <charts:BarChart x:Name="GoodMinAttack" Label="最小攻击" MaxValue="200" LabelWidth="90"/>
+                    <charts:BarChart x:Name="GoodMaxAttack" Label="最大攻击" MaxValue="200" LabelWidth="90"/>
+                    <charts:BarChart x:Name="GoodAttackOnBoat" Label="攻击（船上）" MaxValue="200" LabelWidth="90"/>
+                    <charts:BarChart x:Name="GoodAttackWet" Label="攻击（潮湿）" MaxValue="200" LabelWidth="90"/>
+                    <charts:BarChart x:Name="GoodDurability" Label="耐久" MaxValue="25" LabelWidth="90"/>
+                </StackPanel>
+                <StackPanel x:Name="BarChartStackPanel2" Grid.Column="1" Width="200" HorizontalAlignment="Left">
+                    <charts:BarChart x:Name="GoodWet" Label="防潮" MaxValue="20" LabelWidth="90"/>
+                    <charts:BarChart x:Name="GoodHeat" Label="隔热" MaxValue="10" LabelWidth="90"/>
+                    <charts:BarChart x:Name="GoodSanity" Label="精神" MaxValue="90" LabelWidth="90"/>
+                    <charts:BarChart x:Name="GoodHunger" Label="饥饿" MaxValue="90" LabelWidth="90"/>
+                    <charts:BarChart x:Name="GoodDefense" Label="防御" MaxValue="400" LabelWidth="90"/>
+                </StackPanel>
+            </Grid>
+            <TextBlock x:Name="AbilityTextBlock" Grid.Row="4" Text="特殊能力：" Margin="0,10"/>
+            <StackPanel x:Name="AbilityStackPanel" Grid.Row="5" HorizontalAlignment="Center"/>
+            <StackPanel x:Name="GoodSourceStackPanel" Grid.Row="6" Orientation="Horizontal">
+                <TextBlock Text="来源于生物：" Margin="0,10"/>
+                <picButton:PicButton x:Name="GoodSourcePicButton" Margin="5,0,0,0"/>
+            </StackPanel>
+            <TextBlock Grid.Row="7" x:Name="GoodIntroduction" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="10,20,10,10" />
+            <Grid x:Name="CopyGrid" Grid.Row="8" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="Console" Margin="0,5,15,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <Button Grid.Column="1" HorizontalAlignment="Left" Tapped="Copy_Tapped">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Copy" />
+                            <TextBlock Text="复制" Margin="8,0,0,0" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>
