@@ -52,6 +52,15 @@ namespace JiHuangBaiKeForUWP
         {
             InitializeComponent();
             Global.RootGrid = RootGrid;
+            Global.FrameTitle = FrameTitle;
+            Global.RootFrame = RootFrame;
+            Global.MainPageListBoxItem.Add(CharacterListBoxItem);
+            Global.MainPageListBoxItem.Add(FoodListBoxItem);
+            Global.MainPageListBoxItem.Add(CookListBoxItem);
+            Global.MainPageListBoxItem.Add(ScienceListBoxItem);
+            Global.MainPageListBoxItem.Add(CreatureListBoxItem);
+            Global.MainPageListBoxItem.Add(NaturalListBoxItem);
+            Global.MainPageListBoxItem.Add(GoodListBoxItem);
             //读取游戏版本
             _iconsListBoxGameDataList = new List<ListBoxItem>(
                 new[]
@@ -309,7 +318,6 @@ namespace JiHuangBaiKeForUWP
         /// <param name="searchItem">搜索内容</param>
         public async void VoiceSearch(string searchItem)
         {
-            Global.HideDialog(Global.ShowedDialog);
             SuggestBoxItem suggestBoxItem = null;
             await Global.SetAutoSuggestBoxItem();
             var searchItemToLower = searchItem.Trim().ToLower();
@@ -346,7 +354,7 @@ namespace JiHuangBaiKeForUWP
             if (suggestBoxItem != null)
             {
                 var suggestBoxItemPicture = suggestBoxItem.Picture;
-                var shortName = suggestBoxItemPicture.Substring(suggestBoxItemPicture.LastIndexOf('/') + 1, suggestBoxItemPicture.Length - suggestBoxItemPicture.LastIndexOf('/') - 5);
+                var shortName = Global.GetFileName(suggestBoxItemPicture);
                 var picHead = shortName.Substring(0, 1);
                 var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
                 AutoSuggestNavigate(picHead, extraData);
@@ -358,7 +366,7 @@ namespace JiHuangBaiKeForUWP
         /// </summary>
         /// <param name="picHead">图片文件名第一个字母</param>
         /// <param name="extraData">额外数据</param>
-        private void AutoSuggestNavigate(string picHead,string[] extraData)
+        private void AutoSuggestNavigate(string picHead, string[] extraData)
         {
             switch (picHead)
             {

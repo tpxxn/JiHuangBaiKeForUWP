@@ -116,7 +116,7 @@ namespace JiHuangBaiKeForUWP.View
             this.InitializeComponent();
         }
 
-        public async Task<bool> Deserialize()
+        public async Task Deserialize()
         {
             _foodRecipeData.Clear();
             _foodMeatData.Clear();
@@ -182,7 +182,6 @@ namespace JiHuangBaiKeForUWP.View
             {
                 foodNoFcItems.Picture = Global.GetGameResourcePath(foodNoFcItems.Picture);
             }
-            return false;
         }
 
         private void FoodRecipeGridView_ItemClick(object sender, ItemClickEventArgs e)

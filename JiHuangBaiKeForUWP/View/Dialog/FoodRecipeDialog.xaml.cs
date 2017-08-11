@@ -18,8 +18,6 @@ using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls;
 
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
-
 namespace JiHuangBaiKeForUWP.View.Dialog
 {
     /// <summary>
@@ -53,24 +51,24 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             FoodRecipePriority.ShowIfZero = true;
             FoodRecipePriority.Value = c.Priority;
             FoodRecipePriority.BarColor = Global.ColorPink;
-            Need1Button.Source = $"ms-appx:///Assets/GameResources/Foods/{c.NeedPicture1}.png";
+            Need1Button.Source = Global.GetGameResourcePath(c.NeedPicture1);
             Need1Button.Text = c.Need1;
             if (c.NeedOr != null)
             {
                 NeedOrButton.Visibility = Visibility.Visible;
-                NeedOrButton.Source = $"ms-appx:///Assets/GameResources/Foods/{c.NeedPictureOr}.png";
+                NeedOrButton.Source = Global.GetGameResourcePath(c.NeedPictureOr);
                 NeedOrButton.Text = c.NeedOr;
             }
             if (c.Need2 != null)
             {
                 Need2Button.Visibility = Visibility.Visible;
-                Need2Button.Source = $"ms-appx:///Assets/GameResources/Foods/{c.NeedPicture2}.png";
+                Need2Button.Source = Global.GetGameResourcePath(c.NeedPicture2);
                 Need2Button.Text = c.Need2;
             }
             if (c.Need3 != null)
             {
                 Need3Button.Visibility = Visibility.Visible;
-                Need3Button.Source = $"ms-appx:///Assets/GameResources/Foods/{c.NeedPicture3}.png";
+                Need3Button.Source = Global.GetGameResourcePath(c.NeedPicture3);
                 Need3Button.Text = c.Need3;
             }
             #region restrictions
@@ -163,10 +161,10 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 FoodRecipeRestrictionsTextBlock.Visibility = Visibility.Collapsed;
             }
             #endregion
-            Recommend1Button.Source = $"ms-appx:///Assets/GameResources/Foods/{c.Recommend1}.png";
-            Recommend2Button.Source = $"ms-appx:///Assets/GameResources/Foods/{c.Recommend2}.png";
-            Recommend3Button.Source = $"ms-appx:///Assets/GameResources/Foods/{c.Recommend3}.png";
-            Recommend4Button.Source = $"ms-appx:///Assets/GameResources/Foods/{c.Recommend4}.png";
+            Recommend1Button.Source = Global.GetGameResourcePath(c.Recommend1);
+            Recommend2Button.Source = Global.GetGameResourcePath(c.Recommend2);
+            Recommend3Button.Source = Global.GetGameResourcePath(c.Recommend3);
+            Recommend4Button.Source = Global.GetGameResourcePath(c.Recommend4);  
             FoodRecipeIntroduction.Text = c.Introduce;
             Console.Text = $"c_give(\"{c.Console}\",10)";
         }
@@ -178,14 +176,30 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             Clipboard.SetContent(dataPackage);
         }
 
-        private void Food_Jump_Tapped(object sender, TappedRoutedEventArgs e)
+        private async void Food_Jump_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            switch (((PicButton)sender).Source)
+            var picturePath = ((PicButton)sender).Source;
+            var rootFrame = Global.RootFrame;
+            var shortName = Global.GetFileName(picturePath);
+            await Global.SetAutoSuggestBoxItem();
+            foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
             {
-                //TODO Food跳转按钮跳转事件
-                default:
-                    break;
+                if (picturePath == suggestBoxItem.Picture)
+                {
+                    var picHead = shortName.Substring(0, 2);
+                    switch (picHead)
+                    {
+                        case "F_":
+                            var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
+                            rootFrame.Navigate(typeof(FoodPage), extraData);
+                            break;
+                        case "FC":
+                            // ignore
+                            break;
+                    }
+                }
             }
         }
+        
     }
 }

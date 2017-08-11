@@ -94,6 +94,7 @@ namespace JiHuangBaiKeForUWP.UserControls
         }
 
         #endregion
+
         public PicButton()
         {
             this.InitializeComponent();

@@ -182,7 +182,7 @@ namespace JiHuangBaiKeForUWP.View
                 OfferingsExpanderTextBolck.Text = "贡品";
             }
         }
-        public async Task<bool> Deserialize()
+        public async Task Deserialize()
         {
             _scienceToolData.Clear();
             _scienceLightData.Clear();
@@ -356,7 +356,6 @@ namespace JiHuangBaiKeForUWP.View
             {
                 scienceVolcanoItems.Picture = Global.GetGameResourcePath(scienceVolcanoItems.Picture);
             }
-            return false;
         }
 
         private void ScienceGridView_ItemClick(object sender, ItemClickEventArgs e)

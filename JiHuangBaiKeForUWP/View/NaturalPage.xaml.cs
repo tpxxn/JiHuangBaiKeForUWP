@@ -66,7 +66,7 @@ namespace JiHuangBaiKeForUWP.View
             this.InitializeComponent();
         }
 
-        public async Task<bool> Deserialize()
+        public async Task Deserialize()
         {
             _naturalBiomesData.Clear();
             var natural = JsonConvert.DeserializeObject<NaturalRootObject>(await Global.GetJsonString("Natural.json"));
@@ -78,7 +78,6 @@ namespace JiHuangBaiKeForUWP.View
             {
                 natureBiomesItems.Picture = Global.GetGameResourcePath(natureBiomesItems.Picture);
             }
-            return false;
         }
 
         private void NaturalGridView_ItemClick(object sender, ItemClickEventArgs e)

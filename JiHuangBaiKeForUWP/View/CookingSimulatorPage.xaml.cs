@@ -614,8 +614,8 @@ namespace JiHuangBaiKeForUWP.View
             CS_RecipeStatistics(CsRecipe4);
             #endregion
             #region 烹饪
-            //------------------------SW------------------------
-            //便携式烹饪锅的四种食物
+            // ------------------------SW------------------------
+            // 便携式烹饪锅的四种食物
             if (Global.GameVersion == 4)
             {
                 if (PortableCrockPotToggleSwitch.IsOn)
@@ -652,7 +652,7 @@ namespace JiHuangBaiKeForUWP.View
                 if (CsFtFishes >= 2.5)
                     CS_CrockPotListAddFood("F_seafood_gumbo", 10);
             }
-            //------------------------其他------------------------
+            // ------------------------其他------------------------
             if (CsFtRoyalJelly >= 1 && CsFtTwigs == 0 && CsFtMonsterFoods == 0)
                 CS_CrockPotListAddFood("F_jellybeans", 12);
             if (CsFtCactusFlesh >= 1 && CsFtMoleworm >= 1 && CsFtFruit == 0)
@@ -782,11 +782,13 @@ namespace JiHuangBaiKeForUWP.View
                 CrockPotList.Add(foodName);
             }
         }
+
         //烹饪结果图片
         private void CS_image_Food_Result_Source(string source)
         {
-            FoodResultImage.Source = new BitmapImage(new Uri($"ms-appx:///Assets/GameResources/Foods/{source}.png"));
+            FoodResultImage.Source = new BitmapImage(new Uri(Global.GetGameResourcePath(source)));
         }
+
         //烹饪结果文字
         private string CS_Food_Text(string source)
         {
@@ -922,33 +924,30 @@ namespace JiHuangBaiKeForUWP.View
             }
             FoodResultTextBlock.Text = CS_Food_Text(CsFoodName);
         }
-        //烹饪结果跳转
-        private void ResultButton_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            //TODO
-        }
 
-        //        private void button_CS_Food_Result_Click(object sender, RoutedEventArgs e)
-        //        {
-        //            foreach (UIElement expanderStackpanel in WrapPanel_Right_Food.Children)
-        //            {
-        //                foreach (UIElement buttonWithText in ((ExpanderStackpanel)expanderStackpanel).UcWrapPanel.Children)
-        //                {
-        //                    string[] RightButtonTag = (string[])(((ButtonWithText)buttonWithText).UCButton.Tag);
-        //                    string RightButtonTag0 = RightButtonTag[0];
-        //                    RightButtonTag0 = RSN.GetFileName(RightButtonTag0);
-        //                    if (CrockPotList[FoodIndex] == RightButtonTag0)
-        //                    {
-        //                        Sidebar_Food_Click(null, null);
-        //                        Sidebar_Food.IsChecked = true;
-        //                        WrapPanel_Left_Food.UpdateLayout();
-        //                        Food_Click(((ButtonWithText)buttonWithText).UCButton, null);
-        //                        WrapPanel_Left_Food.UpdateLayout();
-        //                        //Point point = ((ButtonWithText)buttonWithText).TransformToVisual(WrapPanel_Right_Food).Transform(new Point(0, 0));
-        //                        //ScrollViewer_Right_Food.ScrollToVerticalOffset(point.Y);
-        //                    }
-        //                }
-        //            }
-        //        }
+        // 烹饪结果跳转
+        private async void ResultButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (FoodResultImage.Source != null)
+            {
+                //                var picturePath = FoodResultImage.Source;
+                var picturePath = CrockPotList[FoodIndex];
+                var rootFrame = Global.RootFrame;
+                var mainPageListBoxItem = Global.MainPageListBoxItem;
+                var frameTitle = Global.FrameTitle;
+                await Global.SetAutoSuggestBoxItem();
+                foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
+                {
+                    if (picturePath == Global.GetFileName(suggestBoxItem.Picture))
+                    {
+                        frameTitle.Text = "自然";
+                        mainPageListBoxItem[1].IsSelected = true;
+                        var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
+                        rootFrame.Navigate(typeof(FoodPage), extraData);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

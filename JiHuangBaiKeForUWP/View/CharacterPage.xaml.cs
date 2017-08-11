@@ -57,7 +57,7 @@ namespace JiHuangBaiKeForUWP.View
             this.InitializeComponent();
         }
 
-        public async Task<bool> Deserialize()
+        public async Task Deserialize()
         {
             _characterData.Clear();
             var character = JsonConvert.DeserializeObject<CharacterRootObject>(await Global.GetJsonString("Characters.json"));
@@ -69,7 +69,6 @@ namespace JiHuangBaiKeForUWP.View
             {
                 characterItems.Picture = Global.GetGameResourcePath(characterItems.Picture);
             }
-            return false;
         }
 
         private void CharacterGridView_ItemClick(object sender, ItemClickEventArgs e)

@@ -267,7 +267,7 @@ namespace JiHuangBaiKeForUWP.View
             }
         }
 
-        public async Task<bool> Deserialize()
+        public async Task Deserialize()
         {
             _goodMaterialData.Clear();
             _goodEquipmentData.Clear();
@@ -387,7 +387,6 @@ namespace JiHuangBaiKeForUWP.View
             {
                 goodGoodOthersItems.Picture = Global.GetGameResourcePath(goodGoodOthersItems.Picture);
             }
-            return false;
         }
 
         private void GoodMaterialGridView_ItemClick(object sender, ItemClickEventArgs e)

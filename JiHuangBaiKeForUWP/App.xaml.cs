@@ -156,13 +156,13 @@ namespace JiHuangBaiKeForUWP
                     break;
             }
             //获取页面引用
-            var root = Window.Current.Content as Frame;
-            if (root == null)
+            var rootFrame = Window.Current.Content as Frame;
+            if (rootFrame == null)
             {
-                root = new Frame();
-                Window.Current.Content = root;
+                rootFrame = new Frame();
+                Window.Current.Content = rootFrame;
             }
-            root.Navigate(navType, propertie);
+            rootFrame.Navigate(navType, propertie);
 
             // 确保当前窗口处于活动状态
             Window.Current.Activate();

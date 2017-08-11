@@ -57,15 +57,5 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             dataPackage.SetText(Console.Text);
             Clipboard.SetContent(dataPackage);
         }
-
-        private void Food_Jump_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            switch (((PicButton)sender).Source)
-            {
-                //TODO Food跳转按钮跳转事件
-                default:
-                    break;
-            }
-        }
     }
 }

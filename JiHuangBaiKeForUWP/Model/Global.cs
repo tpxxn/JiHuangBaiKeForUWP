@@ -24,6 +24,11 @@ namespace JiHuangBaiKeForUWP.Model
         /// </summary>
         public static readonly StorageFolder ApplicationFolder = ApplicationData.Current.LocalFolder;
 
+        public static Grid RootGrid { get; set; }
+        public static TextBlock FrameTitle { get; set; }
+        public static Frame RootFrame { get; set; }
+        public static List<ListBoxItem> MainPageListBoxItem { get; set; } = new List<ListBoxItem>();
+
         #region 颜色常量
 
         public static SolidColorBrush ColorGreen = new SolidColorBrush(Color.FromArgb(255, 94, 182, 96));     //绿色
@@ -127,7 +132,6 @@ namespace JiHuangBaiKeForUWP.Model
 
         #region 对话框
 
-        public static Grid RootGrid { get; set; }
 
         /// <summary>
         /// 显示对话框
@@ -135,6 +139,8 @@ namespace JiHuangBaiKeForUWP.Model
         /// <param name="contentDialog">ContentDialog</param>
         public static async void ShowDialog(ContentDialog contentDialog)
         {
+            ShowedDialog?.Hide();
+            ShowedDialog = contentDialog;
             contentDialog.Closed += async delegate
             {
                 await RootGrid.Blur(0, 0).StartAsync();
@@ -151,17 +157,6 @@ namespace JiHuangBaiKeForUWP.Model
         }
 
         /// <summary>
-        /// 隐藏对话框
-        /// </summary>
-        /// <param name="contentDialog">对话框变量</param>
-        public static void HideDialog(ContentDialog contentDialog)
-        {
-            if (contentDialog == null) return;
-            contentDialog = ShowedDialog;
-            contentDialog.Hide();
-        }
-
-        /// <summary>
         /// 对话框是否已显示
         /// </summary>
         public static ContentDialog ShowedDialog { get; set; }
@@ -172,11 +167,11 @@ namespace JiHuangBaiKeForUWP.Model
         /// <summary>
         /// 自动建议框Item集合
         /// </summary>
-        public static ObservableCollection<SuggestBoxItem> AutoSuggestBoxItem = new ObservableCollection<SuggestBoxItem>();
+        public static ObservableCollection<SuggestBoxItem> AutoSuggestBoxItem { get; set; } = new ObservableCollection<SuggestBoxItem>();
         /// <summary>
         /// 自动建议框Item集合数据源
         /// </summary>
-        public static List<SuggestBoxItem> AutoSuggestBoxItemSource = new List<SuggestBoxItem>();
+        public static List<SuggestBoxItem> AutoSuggestBoxItemSource { get; set; } = new List<SuggestBoxItem>();
         #region 自动搜索List
         private static readonly List<Character> CharacterData = new List<Character>();
         private static readonly List<FoodRecipe2> FoodRecipeData = new List<FoodRecipe2>();

@@ -105,7 +105,7 @@ namespace JiHuangBaiKeForUWP.View
             }
         }
 
-        public async Task<bool> Deserialize()
+        public async Task Deserialize()
         {
             _creatureLandData.Clear();
             _creatureOceanData.Clear();
@@ -171,7 +171,6 @@ namespace JiHuangBaiKeForUWP.View
             {
                 creatureBossItems.Picture = Global.GetGameResourcePath(creatureBossItems.Picture);
             }
-            return false;
         }
 
         private void CreatureGridView_ItemClick(object sender, ItemClickEventArgs e)
