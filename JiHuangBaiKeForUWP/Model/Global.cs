@@ -896,84 +896,98 @@ namespace JiHuangBaiKeForUWP.Model
                 suggestBoxItem.Picture = ((Character)obj).Picture;
                 suggestBoxItem.Name = ((Character)obj).Name;
                 suggestBoxItem.EnName = ((Character)obj).EnName;
+                suggestBoxItem.Category = "人物";
             }
             else if (type == typeof(FoodRecipe2))
             {
                 suggestBoxItem.Picture = ((FoodRecipe2)obj).Picture;
                 suggestBoxItem.Name = ((FoodRecipe2)obj).Name;
                 suggestBoxItem.EnName = ((FoodRecipe2)obj).EnName;
+                suggestBoxItem.Category = "食物";
             }
             else if (type == typeof(Food))
             {
                 suggestBoxItem.Picture = ((Food)obj).Picture;
                 suggestBoxItem.Name = ((Food)obj).Name;
                 suggestBoxItem.EnName = ((Food)obj).EnName;
+                suggestBoxItem.Category = "食物";
             }
             else if (type == typeof(Science))
             {
                 suggestBoxItem.Picture = ((Science)obj).Picture;
                 suggestBoxItem.Name = ((Science)obj).Name;
                 suggestBoxItem.EnName = ((Science)obj).EnName;
+                suggestBoxItem.Category = "科技";
             }
             else if (type == typeof(Creature))
             {
                 suggestBoxItem.Picture = ((Creature)obj).Picture;
                 suggestBoxItem.Name = ((Creature)obj).Name;
                 suggestBoxItem.EnName = ((Creature)obj).EnName;
+                suggestBoxItem.Category = "生物";
             }
             else if (type == typeof(Nature))
             {
                 suggestBoxItem.Picture = ((Nature)obj).Picture;
                 suggestBoxItem.Name = ((Nature)obj).Name;
                 suggestBoxItem.EnName = ((Nature)obj).EnName;
+                suggestBoxItem.Category = "自然";
             }
             else if (type == typeof(GoodMaterial))
             {
                 suggestBoxItem.Picture = ((GoodMaterial)obj).Picture;
                 suggestBoxItem.Name = ((GoodMaterial)obj).Name;
                 suggestBoxItem.EnName = ((GoodMaterial)obj).EnName;
+                suggestBoxItem.Category = "物品";
             }
             else if (type == typeof(GoodEquipment))
             {
                 suggestBoxItem.Picture = ((GoodEquipment)obj).Picture;
                 suggestBoxItem.Name = ((GoodEquipment)obj).Name;
                 suggestBoxItem.EnName = ((GoodEquipment)obj).EnName;
+                suggestBoxItem.Category = "物品";
             }
             else if (type == typeof(GoodSapling))
             {
                 suggestBoxItem.Picture = ((GoodSapling)obj).Picture;
                 suggestBoxItem.Name = ((GoodSapling)obj).Name;
                 suggestBoxItem.EnName = ((GoodSapling)obj).EnName;
+                suggestBoxItem.Category = "物品";
             }
             else if (type == typeof(GoodCreatures))
             {
                 suggestBoxItem.Picture = ((GoodCreatures)obj).Picture;
                 suggestBoxItem.Name = ((GoodCreatures)obj).Name;
                 suggestBoxItem.EnName = ((GoodCreatures)obj).EnName;
+                suggestBoxItem.Category = "物品";
             }
             else if (type == typeof(GoodTurf))
             {
                 suggestBoxItem.Picture = ((GoodTurf)obj).Picture;
                 suggestBoxItem.Name = ((GoodTurf)obj).Name;
                 suggestBoxItem.EnName = ((GoodTurf)obj).EnName;
+                suggestBoxItem.Category = "物品";
             }
             else if (type == typeof(GoodPet))
             {
                 suggestBoxItem.Picture = ((GoodPet)obj).Picture;
                 suggestBoxItem.Name = ((GoodPet)obj).Name;
                 suggestBoxItem.EnName = ((GoodPet)obj).EnName;
+                suggestBoxItem.Category = "物品";
             }
             else if (type == typeof(GoodUnlock))
             {
                 suggestBoxItem.Picture = ((GoodUnlock)obj).Picture;
                 suggestBoxItem.Name = ((GoodUnlock)obj).Name;
                 suggestBoxItem.EnName = ((GoodUnlock)obj).EnName;
+                suggestBoxItem.Category = "物品";
             }
             else if (type == typeof(Good))
             {
                 suggestBoxItem.Picture = ((Good)obj).Picture;
                 suggestBoxItem.Name = ((Good)obj).Name;
                 suggestBoxItem.EnName = ((Good)obj).EnName;
+                suggestBoxItem.Category = "物品";
             }
             suggestBoxItem.SourcePath = sourcePath;
             AutoSuggestBoxItemSource.Add(suggestBoxItem);

@@ -47,6 +47,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         Margin = thickness,
                         Source = Global.GetGameResourcePath(picPath)
                     };
+                    picButton.Tapped += Good_Jump_Tapped;
                     GoodScienceWrapPanel.Children.Add(picButton);
                 }
             }
@@ -65,6 +66,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         Margin = thickness,
                         Source = Global.GetGameResourcePath(picPath)
                     };
+                    picButton.Tapped += Good_Jump_Tapped;
                     GoodSourceCreatureWrapPanel.Children.Add(picButton);
                 }
             }
@@ -79,6 +81,35 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var dataPackage = new DataPackage();
             dataPackage.SetText(Console.Text);
             Clipboard.SetContent(dataPackage);
+        }
+
+        private static async void Good_Jump_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var picturePath = ((PicButton)sender).Source;
+            var rootFrame = Global.RootFrame;
+            var shortName = Global.GetFileName(picturePath);
+            var mainPageListBoxItem = Global.MainPageListBoxItem;
+            var frameTitle = Global.FrameTitle;
+            await Global.SetAutoSuggestBoxItem();
+            foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
+            {
+                if (picturePath != suggestBoxItem.Picture) continue;
+                var picHead = shortName.Substring(0, 1);
+                string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
+                switch (picHead)
+                {
+                    case "S":
+                        frameTitle.Text = "科技";
+                        mainPageListBoxItem[3].IsSelected = true;
+                        rootFrame.Navigate(typeof(SciencePage), extraData);
+                        break;
+                    case "A":
+                        frameTitle.Text = "生物";
+                        mainPageListBoxItem[4].IsSelected = true;
+                        rootFrame.Navigate(typeof(CreaturePage), extraData);
+                        break;
+                }
+            }
         }
     }
 }

@@ -62,6 +62,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         Source = Global.GetGameResourcePath(goodSource),
                         Text = goodText
                     };
+                    picButton.Tapped += Good_Jump_Tapped;
                     GoodGoodsWrapPanel.Children.Add(picButton);
                 }
             }
@@ -73,6 +74,33 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var dataPackage = new DataPackage();
             dataPackage.SetText(Console.Text);
             Clipboard.SetContent(dataPackage);
+        }
+
+        private static async void Good_Jump_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var picturePath = ((PicButton)sender).Source;
+            var rootFrame = Global.RootFrame;
+            var shortName = Global.GetFileName(picturePath);
+            var mainPageListBoxItem = Global.MainPageListBoxItem;
+            var frameTitle = Global.FrameTitle;
+            await Global.SetAutoSuggestBoxItem();
+            foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
+            {
+                if (picturePath != suggestBoxItem.Picture) continue;
+                var picHead = shortName.Substring(0, 1);
+                string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
+                switch (picHead)
+                {
+                    case "F":
+                        frameTitle.Text = "食物";
+                        mainPageListBoxItem[1].IsSelected = true;
+                        rootFrame.Navigate(typeof(FoodPage), extraData);
+                        break;
+                    case "G":
+                        rootFrame.Navigate(typeof(GoodPage), extraData);
+                        break;
+                }
+            }
         }
     }
 }

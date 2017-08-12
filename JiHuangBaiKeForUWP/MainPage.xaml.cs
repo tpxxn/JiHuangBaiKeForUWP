@@ -286,12 +286,8 @@ namespace JiHuangBaiKeForUWP
                 {
                     var suggestBoxItem = sender.Items[0] as SuggestBoxItem;
                     if (suggestBoxItem == null) return;
-                    var suggestBoxItemPicture = suggestBoxItem.Picture;
-                    var shortName = suggestBoxItemPicture.Substring(suggestBoxItemPicture.LastIndexOf('/') + 1,
-                        suggestBoxItemPicture.Length - suggestBoxItemPicture.LastIndexOf('/') - 5);
-                    var picHead = shortName.Substring(0, 1);
-                    var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
-                    AutoSuggestNavigate(picHead, extraData);
+                    var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture, suggestBoxItem.Category };
+                    AutoSuggestNavigate(extraData);
                     SearchAutoSuggestBox.Text = suggestBoxItem.Name;
                 }
             }
@@ -305,10 +301,8 @@ namespace JiHuangBaiKeForUWP
             var suggestBoxItem = args.SelectedItem as SuggestBoxItem;
             if (suggestBoxItem == null) return;
             var suggestBoxItemPicture = suggestBoxItem.Picture;
-            var shortName = suggestBoxItemPicture.Substring(suggestBoxItemPicture.LastIndexOf('/') + 1, suggestBoxItemPicture.Length - suggestBoxItemPicture.LastIndexOf('/') - 5);
-            var picHead = shortName.Substring(0, 1);
-            var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
-            AutoSuggestNavigate(picHead, extraData);
+            var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture, suggestBoxItem.Category };
+            AutoSuggestNavigate(extraData);
             SearchAutoSuggestBox.Text = suggestBoxItem.Name;
         }
 
@@ -354,10 +348,8 @@ namespace JiHuangBaiKeForUWP
             if (suggestBoxItem != null)
             {
                 var suggestBoxItemPicture = suggestBoxItem.Picture;
-                var shortName = Global.GetFileName(suggestBoxItemPicture);
-                var picHead = shortName.Substring(0, 1);
-                var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
-                AutoSuggestNavigate(picHead, extraData);
+                var extraData = new[] {  suggestBoxItem.SourcePath, suggestBoxItem.Picture, suggestBoxItem.Category};
+                AutoSuggestNavigate(extraData);
             }
         }
 
@@ -366,39 +358,39 @@ namespace JiHuangBaiKeForUWP
         /// </summary>
         /// <param name="picHead">图片文件名第一个字母</param>
         /// <param name="extraData">额外数据</param>
-        private void AutoSuggestNavigate(string picHead, string[] extraData)
+        private void AutoSuggestNavigate(string[] extraData)
         {
-            switch (picHead)
+            switch (extraData[2])
             {
-                case "A":
-                    FrameTitle.Text = "生物";
-                    CreatureListBoxItem.IsSelected = true;
-                    RootFrame.Navigate(typeof(CreaturePage), extraData);
-                    break;
-                case "C":
+                case "人物":
                     FrameTitle.Text = "人物";
                     CharacterListBoxItem.IsSelected = true;
                     RootFrame.Navigate(typeof(CharacterPage), extraData);
                     break;
-                case "F":
+                case "食物":
                     FrameTitle.Text = "食物";
                     FoodListBoxItem.IsSelected = true;
                     RootFrame.Navigate(typeof(FoodPage), extraData);
                     break;
-                case "G":
-                    FrameTitle.Text = "物品";
-                    GoodListBoxItem.IsSelected = true;
-                    RootFrame.Navigate(typeof(GoodPage), extraData);
-                    break;
-                case "S":
+                case "科技":
                     FrameTitle.Text = "科技";
                     ScienceListBoxItem.IsSelected = true;
                     RootFrame.Navigate(typeof(SciencePage), extraData);
                     break;
-                case "N":
+                case "生物":
+                    FrameTitle.Text = "生物";
+                    CreatureListBoxItem.IsSelected = true;
+                    RootFrame.Navigate(typeof(CreaturePage), extraData);
+                    break;
+                case "自然":
                     FrameTitle.Text = "自然";
                     NaturalListBoxItem.IsSelected = true;
                     RootFrame.Navigate(typeof(NaturalPage), extraData);
+                    break;
+                case "物品":
+                    FrameTitle.Text = "物品";
+                    GoodListBoxItem.IsSelected = true;
+                    RootFrame.Navigate(typeof(GoodPage), extraData);
                     break;
             }
         }

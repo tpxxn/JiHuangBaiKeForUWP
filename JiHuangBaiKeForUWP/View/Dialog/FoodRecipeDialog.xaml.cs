@@ -184,19 +184,17 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             await Global.SetAutoSuggestBoxItem();
             foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
             {
-                if (picturePath == suggestBoxItem.Picture)
+                if (picturePath != suggestBoxItem.Picture) continue;
+                var picHead = shortName.Substring(0, 2);
+                var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
+                switch (picHead)
                 {
-                    var picHead = shortName.Substring(0, 2);
-                    switch (picHead)
-                    {
-                        case "F_":
-                            var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
-                            rootFrame.Navigate(typeof(FoodPage), extraData);
-                            break;
-                        case "FC":
-                            // ignore
-                            break;
-                    }
+                    case "F_":
+                        rootFrame.Navigate(typeof(FoodPage), extraData);
+                        break;
+                    case "FC":
+                        // ignore
+                        break;
                 }
             }
         }

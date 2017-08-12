@@ -78,14 +78,35 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             Clipboard.SetContent(dataPackage);
         }
 
-        private void Science_Jump_Tapped(object sender, TappedRoutedEventArgs e)
+        private async void Science_Jump_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            
-            switch (((PicButton)sender).Source)
+            var picturePath = ((PicButton)sender).Source;
+            var rootFrame = Global.RootFrame;
+            var shortName = Global.GetFileName(picturePath);
+            var mainPageListBoxItem = Global.MainPageListBoxItem;
+            var frameTitle = Global.FrameTitle;
+            await Global.SetAutoSuggestBoxItem();
+            foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
             {
-                //TODO Food跳转按钮跳转事件
-                default:
-                    break;
+                if (picturePath != suggestBoxItem.Picture) continue;
+                var picHead = shortName.Substring(0, 1);
+                string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
+                switch (picHead)
+                {
+                    case "F":
+                        frameTitle.Text = "食物";
+                        mainPageListBoxItem[1].IsSelected = true;
+                        rootFrame.Navigate(typeof(FoodPage), extraData);
+                        break;
+                    case "S":
+                        rootFrame.Navigate(typeof(SciencePage), extraData);
+                        break;
+                    case "G":
+                        frameTitle.Text = "物品";
+                        mainPageListBoxItem[6].IsSelected = true;
+                        rootFrame.Navigate(typeof(GoodPage), extraData);
+                        break;
+                }
             }
         }
     }

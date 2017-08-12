@@ -91,7 +91,7 @@
         "Console": "rocks"
       },
       {
-        "Picture": "S_gold_nugget",
+        "Picture": "G_gold_nugget",
         "Name": "金块",
         "EnName": "Gold Nugget",
         "Science": [
@@ -1353,7 +1353,7 @@
       },
       {
         "Picture": "S_brush",
-        "Name": "刷毛",
+        "Name": "牛毛刷",
         "EnName": "Brush",
         "Attack": 27.2,
         "Durability": "100次",
@@ -2043,7 +2043,7 @@
         "Console": "armorskeleton"
       },
       {
-        "Picture": "G_shadow_atrium",
+        "Picture": "G_shadow_thurible",
         "Name": "阴影香炉",
         "EnName": "Shadow Thurible",
         "DropBy": "A_reanimated_skeleton_caves",
@@ -2815,7 +2815,7 @@
       },
       {
         "Picture": "G_not_so_candy_corn",
-        "Name": "不怎么含糖的玉米",
+        "Name": "不怎么甜的玉米",
         "EnName": "Not-So-Candy Corn",
         "Introduction": "万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。",
         "Console": "halloweencandy_3"

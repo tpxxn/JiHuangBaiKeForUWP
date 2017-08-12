@@ -18,6 +18,8 @@
                 <Image Width="50" Height="50" Source="{Binding Picture}" />
                 <TextBlock x:Name="AutoSuggestBoxItemTextBlock" Grid.Column="1" Margin="7,3,4,3" VerticalAlignment="Center">
                     <Run Text="{Binding Name}" />
+                    <Run Text=" - " />
+                    <Run Text="{Binding Category}" />
                     <LineBreak/>
                     <Run Text="{Binding EnName}" />
                 </TextBlock>

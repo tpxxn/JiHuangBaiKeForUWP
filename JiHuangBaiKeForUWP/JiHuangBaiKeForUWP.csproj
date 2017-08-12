@@ -23,6 +23,7 @@
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <PackageCertificateThumbprint>4F1FBC2BB76F57812F6AE3E4C86741882757BB18</PackageCertificateThumbprint>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -262,6 +263,7 @@
     <Content Include="Assets\GameResources\Goods\G_ghost_pop.png" />
     <Content Include="Assets\GameResources\Goods\G_gingerbread_cookie.png" />
     <Content Include="Assets\GameResources\Goods\G_gloden_festive_bauble.png" />
+    <Content Include="Assets\GameResources\Goods\G_gold_nugget.png" />
     <Content Include="Assets\GameResources\Goods\G_green_festive_bauble.png" />
     <Content Include="Assets\GameResources\Goods\G_green_festive_light.png" />
     <Content Include="Assets\GameResources\Goods\G_green_moonlens.png" />

@@ -928,25 +928,20 @@ namespace JiHuangBaiKeForUWP.View
         // 烹饪结果跳转
         private async void ResultButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (FoodResultImage.Source != null)
+            if (FoodResultImage.Source == null) return;
+            var picturePath = CrockPotList[FoodIndex];
+            var rootFrame = Global.RootFrame;
+            var mainPageListBoxItem = Global.MainPageListBoxItem;
+            var frameTitle = Global.FrameTitle;
+            await Global.SetAutoSuggestBoxItem();
+            foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
             {
-                //                var picturePath = FoodResultImage.Source;
-                var picturePath = CrockPotList[FoodIndex];
-                var rootFrame = Global.RootFrame;
-                var mainPageListBoxItem = Global.MainPageListBoxItem;
-                var frameTitle = Global.FrameTitle;
-                await Global.SetAutoSuggestBoxItem();
-                foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
-                {
-                    if (picturePath == Global.GetFileName(suggestBoxItem.Picture))
-                    {
-                        frameTitle.Text = "自然";
-                        mainPageListBoxItem[1].IsSelected = true;
-                        var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
-                        rootFrame.Navigate(typeof(FoodPage), extraData);
-                        break;
-                    }
-                }
+                if (picturePath != Global.GetFileName(suggestBoxItem.Picture)) continue;
+                frameTitle.Text = "自然";
+                mainPageListBoxItem[1].IsSelected = true;
+                var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
+                rootFrame.Navigate(typeof(FoodPage), extraData);
+                break;
             }
         }
     }

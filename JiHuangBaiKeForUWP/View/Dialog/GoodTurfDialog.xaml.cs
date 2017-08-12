@@ -17,8 +17,6 @@ using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls;
 
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
-
 namespace JiHuangBaiKeForUWP.View.Dialog
 {
     /// <summary>
@@ -53,6 +51,23 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var dataPackage = new DataPackage();
             dataPackage.SetText(Console.Text);
             Clipboard.SetContent(dataPackage);
+        }
+
+        private async void Good_Jump_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var picturePath = ((PicButton)sender).Source;
+            var rootFrame = Global.RootFrame;
+            var mainPageListBoxItem = Global.MainPageListBoxItem;
+            var frameTitle = Global.FrameTitle;
+            await Global.SetAutoSuggestBoxItem();
+            foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
+            {
+                if (picturePath != suggestBoxItem.Picture) continue;
+                string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
+                frameTitle.Text = "科技";
+                mainPageListBoxItem[3].IsSelected = true;
+                rootFrame.Navigate(typeof(SciencePage), extraData);
+            }
         }
     }
 }

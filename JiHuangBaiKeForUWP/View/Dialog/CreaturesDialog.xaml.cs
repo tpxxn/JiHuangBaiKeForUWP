@@ -166,8 +166,9 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         {
                             HorizontalAlignment = HorizontalAlignment.Left,
                             Margin = thickness,
-                            Source = Global.GetGameResourcePath(goodSource)
+                            Source = Global.GetGameResourcePath(goodSource),
                         };
+                        picButton.Tapped += Creature_Jump_Tapped;
                         GoodsWrapPanel.Children.Add(picButton);
                     }
                     else
@@ -190,6 +191,8 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                                 Source = Global.GetGameResourcePath(goodText),
                                 Text = "）"
                             };
+                            picButton1.Tapped += Creature_Jump_Tapped;
+                            picButton2.Tapped += Creature_Jump_Tapped;
                             stackPanel.Children.Add(picButton1);
                             stackPanel.Children.Add(picButton2);
                             GoodsWrapPanel.Children.Add(stackPanel);
@@ -203,6 +206,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                                 Source = Global.GetGameResourcePath(goodSource),
                                 Text = goodText
                             };
+                            picButton.Tapped += Creature_Jump_Tapped;
                             GoodsWrapPanel.Children.Add(picButton);
                         }
                     }
@@ -1066,14 +1070,40 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             Clipboard.SetContent(dataPackage);
         }
 
-        private void Creature_Jump_Tapped(object sender, TappedRoutedEventArgs e)
+        private static async void Creature_Jump_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
-            switch (((PicButton)sender).Source)
+            var picturePath = ((PicButton)sender).Source;
+            var rootFrame = Global.RootFrame;
+            var shortName = Global.GetFileName(picturePath);
+            var mainPageListBoxItem = Global.MainPageListBoxItem;
+            var frameTitle = Global.FrameTitle;
+            await Global.SetAutoSuggestBoxItem();
+            foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
             {
-                //TODO Food跳转按钮跳转事件
-                default:
-                    break;
+                if (picturePath == suggestBoxItem.Picture)
+                {
+                    var picHead = shortName.Substring(0, 1);
+                    string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
+                    switch (picHead)
+                    {
+                        case "F":
+                            frameTitle.Text = "食物";
+                            mainPageListBoxItem[1].IsSelected = true;
+                            rootFrame.Navigate(typeof(FoodPage), extraData);
+                            break;
+                        case "S":
+                            frameTitle.Text = "科技";
+                            mainPageListBoxItem[3].IsSelected = true;
+                            rootFrame.Navigate(typeof(SciencePage), extraData);
+                            break;
+                        case "A":
+                        case "G":
+                            frameTitle.Text = "物品";
+                            mainPageListBoxItem[6].IsSelected = true;
+                            rootFrame.Navigate(typeof(GoodPage), extraData);
+                            break;
+                    }
+                }
             }
         }
     }

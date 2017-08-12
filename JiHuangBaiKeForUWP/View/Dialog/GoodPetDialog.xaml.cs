@@ -51,6 +51,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         Source = Global.GetGameResourcePath(picPath),
                         PictureSize = 90
                     };
+                    picButton.Tapped += Good_Jump_Tapped;
                     GoodFollowWrapPanel.Children.Add(picButton);
                 }
             }
@@ -63,6 +64,23 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var dataPackage = new DataPackage();
             dataPackage.SetText(Console.Text);
             Clipboard.SetContent(dataPackage);
+        }
+
+        private static async void Good_Jump_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var picturePath = ((PicButton)sender).Source;
+            var rootFrame = Global.RootFrame;
+            var mainPageListBoxItem = Global.MainPageListBoxItem;
+            var frameTitle = Global.FrameTitle;
+            await Global.SetAutoSuggestBoxItem();
+            foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
+            {
+                if (picturePath != suggestBoxItem.Picture) continue;
+                string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
+                frameTitle.Text = "生物";
+                mainPageListBoxItem[4].IsSelected = true;
+                rootFrame.Navigate(typeof(CreaturePage), extraData);
+            }
         }
     }
 }
