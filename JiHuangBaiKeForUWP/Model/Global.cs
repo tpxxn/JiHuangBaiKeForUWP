@@ -70,7 +70,6 @@ namespace JiHuangBaiKeForUWP.Model
         /// 删除重复数据
         /// </summary>
         /// <param name="str">字符串数组</param>
-        /// <returns></returns>
         public static string[] StringDelRepeatData(string[] str)
         {
             var b = str.GroupBy(p => p).Select(p => p.Key).ToArray();

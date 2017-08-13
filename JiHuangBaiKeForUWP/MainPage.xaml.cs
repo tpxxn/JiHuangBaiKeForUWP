@@ -66,7 +66,7 @@ namespace JiHuangBaiKeForUWP
                 new[]
                 {
                     CharacterListBoxItem, FoodListBoxItem, ScienceListBoxItem, CreatureListBoxItem,
-                    NaturalListBoxItem, GoodListBoxItem, DedicatedServersListBoxItem, StrategyListBoxItem,
+                    NaturalListBoxItem, GoodListBoxItem, StrategyListBoxItem,
                     SocialIntercourseListBoxItem
                 }
             );
@@ -177,48 +177,51 @@ namespace JiHuangBaiKeForUWP
                 {
                     case "CharacterListBoxItem":
                         FrameTitle.Text = "人物";
-                        RootFrame.Navigate(typeof(CharacterPage), null);
+                        RootFrame.Navigate(typeof(CharacterPage));
                         break;
                     case "FoodListBoxItem":
                         FrameTitle.Text = "食物";
-                        RootFrame.Navigate(typeof(FoodPage), null);
+                        RootFrame.Navigate(typeof(FoodPage));
                         break;
                     case "CookListBoxItem":
                         FrameTitle.Text = "模拟";
-                        RootFrame.Navigate(typeof(CookingSimulatorPage), null);
+                        RootFrame.Navigate(typeof(CookingSimulatorPage));
                         break;
                     case "ScienceListBoxItem":
                         FrameTitle.Text = "科技";
-                        RootFrame.Navigate(typeof(SciencePage), null);
+                        RootFrame.Navigate(typeof(SciencePage));
                         break;
                     case "CreatureListBoxItem":
                         FrameTitle.Text = "生物";
-                        RootFrame.Navigate(typeof(CreaturePage), null);
+                        RootFrame.Navigate(typeof(CreaturePage));
                         break;
                     case "NaturalListBoxItem":
                         FrameTitle.Text = "自然";
-                        RootFrame.Navigate(typeof(NaturalPage), null);
+                        RootFrame.Navigate(typeof(NaturalPage));
                         break;
                     case "GoodListBoxItem":
                         FrameTitle.Text = "物品";
-                        RootFrame.Navigate(typeof(GoodPage), null);
+                        RootFrame.Navigate(typeof(GoodPage));
                         break;
-                    case "DedicatedServersListBoxItem":
-                        FrameTitle.Text = "服务器";
-                        break;
+//                    case "DedicatedServersListBoxItem":
+//                        FrameTitle.Text = "服务器";
+//                        RootFrame.Navigate(typeof(DedicatedServersPage));
+//                        break;
                     case "StrategyListBoxItem":
                         FrameTitle.Text = "攻略";
+                        RootFrame.Navigate(typeof(StrategyPage));
                         break;
                     case "SocialIntercourseListBoxItem":
                         FrameTitle.Text = "社交";
+                        RootFrame.Navigate(typeof(SocialIntercoursePage));
                         break;
                     case "SettingListBoxItem":
                         FrameTitle.Text = "设置";
-                        RootFrame.Navigate(typeof(SettingPage), null);
+                        RootFrame.Navigate(typeof(SettingPage));
                         break;
                     case "AboutListBoxItem":
                         FrameTitle.Text = "关于";
-                        RootFrame.Navigate(typeof(AboutPage), null);
+                        RootFrame.Navigate(typeof(AboutPage));
                         break;
                     default:
                         FrameTitle.Text = "";
