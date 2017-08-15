@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
@@ -18,6 +20,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View;
+
 
 // 对话框示例
 // var dialog = new ContentDialog()
@@ -51,6 +54,16 @@ namespace JiHuangBaiKeForUWP
         public MainPage()
         {
             InitializeComponent();
+            if (Width <= 641)
+            {
+                AutoSuggestButton.Visibility = Visibility.Visible;
+                SearchAutoSuggestBox.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                AutoSuggestButton.Visibility = Visibility.Collapsed;
+                SearchAutoSuggestBox.Visibility = Visibility.Visible;
+            }
             Global.RootGrid = RootGrid;
             Global.FrameTitle = FrameTitle;
             Global.RootFrame = RootFrame;
@@ -136,7 +149,36 @@ namespace JiHuangBaiKeForUWP
         private void HamburgerButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             RootSplit.IsPaneOpen = !RootSplit.IsPaneOpen;
+            if (RootSplit.IsPaneOpen == false)
+            {
+                AutoSuggestButton.Visibility = Visibility.Visible;
+                SearchAutoSuggestBox.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                AutoSuggestButton.Visibility = Visibility.Collapsed;
+                SearchAutoSuggestBox.Visibility = Visibility.Visible;
+            }
             SetFrameTitleMargin();
+        }
+
+        /// <summary>
+        /// 触摸搜索按钮展开Pane并显示搜索框
+        /// </summary>
+        private void AutoSuggestButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            RootSplit.IsPaneOpen = !RootSplit.IsPaneOpen;
+            AutoSuggestButton.Visibility = Visibility.Collapsed;
+            SearchAutoSuggestBox.Visibility = Visibility.Visible;
+        }
+
+        /// <summary>
+        /// Pane关闭时设置隐藏搜索框显示搜索按钮
+        /// </summary>
+        private void RootSplit_PaneClosing(SplitView sender, object args)
+        {
+            AutoSuggestButton.Visibility = Visibility.Visible;
+            SearchAutoSuggestBox.Visibility = Visibility.Collapsed;
         }
 
         /// <summary>
@@ -146,7 +188,7 @@ namespace JiHuangBaiKeForUWP
         {
             if (RootSplit.DisplayMode == SplitViewDisplayMode.CompactInline)
             {
-                FrameTitle.Margin = RootSplit.IsPaneOpen ? new Thickness(154, 0, 0, 0) : new Thickness(10, 0, 0, 0);
+                FrameTitle.Margin = RootSplit.IsPaneOpen ? new Thickness(180, 0, 0, 0) : new Thickness(10, 0, 0, 0);
             }
             else
             {
@@ -303,7 +345,6 @@ namespace JiHuangBaiKeForUWP
         {
             var suggestBoxItem = args.SelectedItem as SuggestBoxItem;
             if (suggestBoxItem == null) return;
-            var suggestBoxItemPicture = suggestBoxItem.Picture;
             var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture, suggestBoxItem.Category };
             AutoSuggestNavigate(extraData);
             SearchAutoSuggestBox.Text = suggestBoxItem.Name;
@@ -348,18 +389,14 @@ namespace JiHuangBaiKeForUWP
                 SearchAutoSuggestBox.Text = searchItem;
                 SearchAutoSuggestBox.Focus(FocusState.Programmatic);
             }
-            if (suggestBoxItem != null)
-            {
-                var suggestBoxItemPicture = suggestBoxItem.Picture;
-                var extraData = new[] {  suggestBoxItem.SourcePath, suggestBoxItem.Picture, suggestBoxItem.Category};
-                AutoSuggestNavigate(extraData);
-            }
+            if (suggestBoxItem == null) return;
+            var extraData = new[] {  suggestBoxItem.SourcePath, suggestBoxItem.Picture, suggestBoxItem.Category};
+            AutoSuggestNavigate(extraData);
         }
 
         /// <summary>
         /// 自动搜索框导航
         /// </summary>
-        /// <param name="picHead">图片文件名第一个字母</param>
         /// <param name="extraData">额外数据</param>
         private void AutoSuggestNavigate(string[] extraData)
         {

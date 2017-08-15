@@ -17,9 +17,7 @@
                 </Grid.ColumnDefinitions>
                 <Image Width="50" Height="50" Source="{Binding Picture}" />
                 <TextBlock x:Name="AutoSuggestBoxItemTextBlock" Grid.Column="1" Margin="7,3,4,3" VerticalAlignment="Center">
-                    <Run Text="{Binding Name}" />
-                    <Run Text=" - " />
-                    <Run Text="{Binding Category}" />
+                    <Run Text="{Binding Name}" /><Run Text=" - " /><Run Text="{Binding Category}" />
                     <LineBreak/>
                     <Run Text="{Binding EnName}" />
                 </TextBlock>
@@ -35,6 +33,8 @@
                         <Setter Target="RootSplit.DisplayMode" Value="Overlay"/>
                         <Setter Target="RootSplit.IsPaneOpen" Value="False"/>
                         <Setter Target="FrameTitle.Margin" Value="10,0,0,0"/>
+                        <Setter Target="AutoSuggestButton.Visibility" Value="Visible"/>
+                        <Setter Target="SearchAutoSuggestBox.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0"/>
@@ -45,6 +45,8 @@
                         <Setter Target="RootSplit.DisplayMode" Value="CompactOverlay"/>
                         <Setter Target="RootSplit.IsPaneOpen" Value="False"/>
                         <Setter Target="FrameTitle.Margin" Value="10,0,0,0"/>
+                        <Setter Target="AutoSuggestButton.Visibility" Value="Visible"/>
+                        <Setter Target="SearchAutoSuggestBox.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="641"/>
@@ -54,7 +56,9 @@
                     <VisualState.Setters>
                         <Setter Target="RootSplit.DisplayMode" Value="CompactInline"/>
                         <Setter Target="RootSplit.IsPaneOpen" Value="True"/>
-                        <Setter Target="FrameTitle.Margin" Value="154,0,0,0"/>
+                        <Setter Target="FrameTitle.Margin" Value="180,0,0,0"/>
+                        <Setter Target="AutoSuggestButton.Visibility" Value="Collapsed"/>
+                        <Setter Target="SearchAutoSuggestBox.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="1008"/>
@@ -69,352 +73,108 @@
         <RelativePanel x:Name="RootRelativePanel">
             <Button x:Name="HamburgerButton" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="26" Tapped="HamburgerButton_Tapped"  Foreground="White" Width="56" Height="48" Background="{x:Null}" />
             <TextBlock x:Name="FrameTitle" RelativePanel.RightOf="HamburgerButton" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="26" Margin="10,0,0,0" Foreground="White" Text="人物"/>
-            <AutoSuggestBox x:Name="SearchAutoSuggestBox" 
-                            PlaceholderText="输入搜索内容..." 
-                            TextChanged="SearchAutoSuggestBox_TextChanged" 
-                            QuerySubmitted="SearchAutoSuggestBox_QuerySubmitted" 
-                            SuggestionChosen="SearchAutoSuggestBox_SuggestionChosen" 
-                            RelativePanel.AlignRightWithPanel="True" 
-                            RelativePanel.AlignVerticalCenterWithPanel="True" 
-                            Margin="0,0,10,0" Width="225" 
-                            QueryIcon="Find"
-                            ItemTemplate="{StaticResource AutoSuggestBoxDataTemplate}">
-                <AutoSuggestBox.Resources>
-                    <Style x:Key="AutoSuggestBoxTextBoxStyle" TargetType="TextBox">
-                        <Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}"/>
-                        <Setter Property="MinHeight" Value="{ThemeResource TextControlThemeMinHeight}"/>
-                        <Setter Property="Foreground" Value="{ThemeResource TextControlForeground}"/>
-                        <Setter Property="Background" Value="{ThemeResource TextControlBackground}"/>
-                        <Setter Property="BorderBrush" Value="{ThemeResource TextControlBorderBrush}"/>
-                        <Setter Property="SelectionHighlightColor" Value="{ThemeResource TextControlSelectionHighlightColor}"/>
-                        <Setter Property="BorderThickness" Value="{ThemeResource TextControlBorderThemeThickness}"/>
-                        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
-                        <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
-                        <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Auto"/>
-                        <Setter Property="ScrollViewer.VerticalScrollMode" Value="Auto"/>
-                        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
-                        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
-                        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False"/>
-                        <Setter Property="Padding" Value="{ThemeResource TextControlThemePadding}"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="TextBox">
-                                    <Grid>
-                                        <Grid.Resources>
-                                            <Style x:Name="DeleteButtonStyle" TargetType="Button">
-                                                <Setter Property="Template">
-                                                    <Setter.Value>
-                                                        <ControlTemplate TargetType="Button">
-                                                            <Grid x:Name="ButtonLayoutGrid" BorderBrush="{ThemeResource TextControlButtonBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{ThemeResource TextControlButtonBackground}">
-                                                                <VisualStateManager.VisualStateGroups>
-                                                                    <VisualStateGroup x:Name="CommonStates">
-                                                                        <VisualState x:Name="Normal"/>
-                                                                        <VisualState x:Name="PointerOver">
-                                                                            <Storyboard>
-                                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ButtonLayoutGrid">
-                                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonBackgroundPointerOver}"/>
-                                                                                </ObjectAnimationUsingKeyFrames>
-                                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ButtonLayoutGrid">
-                                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonBorderBrushPointerOver}"/>
-                                                                                </ObjectAnimationUsingKeyFrames>
-                                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="GlyphElement">
-                                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonForegroundPointerOver}"/>
-                                                                                </ObjectAnimationUsingKeyFrames>
-                                                                            </Storyboard>
-                                                                        </VisualState>
-                                                                        <VisualState x:Name="Pressed">
-                                                                            <Storyboard>
-                                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ButtonLayoutGrid">
-                                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonBackgroundPressed}"/>
-                                                                                </ObjectAnimationUsingKeyFrames>
-                                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ButtonLayoutGrid">
-                                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonBorderBrushPressed}"/>
-                                                                                </ObjectAnimationUsingKeyFrames>
-                                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="GlyphElement">
-                                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonForegroundPressed}"/>
-                                                                                </ObjectAnimationUsingKeyFrames>
-                                                                            </Storyboard>
-                                                                        </VisualState>
-                                                                        <VisualState x:Name="Disabled">
-                                                                            <Storyboard>
-                                                                                <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ButtonLayoutGrid"/>
-                                                                            </Storyboard>
-                                                                        </VisualState>
-                                                                    </VisualStateGroup>
-                                                                </VisualStateManager.VisualStateGroups>
-                                                                <TextBlock x:Name="GlyphElement" AutomationProperties.AccessibilityView="Raw" Foreground="{ThemeResource TextControlButtonForeground}" FontStyle="Normal" FontSize="{ThemeResource AutoSuggestBoxIconFontSize}" FontFamily="{ThemeResource SymbolThemeFontFamily}" HorizontalAlignment="Center" Text="&#xE10A;" VerticalAlignment="Center"/>
-                                                            </Grid>
-                                                        </ControlTemplate>
-                                                    </Setter.Value>
-                                                </Setter>
-                                            </Style>
-                                            <Style x:Name="QueryButtonStyle" TargetType="Button">
-                                                <Setter Property="Template">
-                                                    <Setter.Value>
-                                                        <ControlTemplate TargetType="Button">
-                                                            <Grid x:Name="ButtonLayoutGrid" BorderBrush="{ThemeResource TextControlButtonBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{ThemeResource TextControlButtonBackground}">
-                                                                <VisualStateManager.VisualStateGroups>
-                                                                    <VisualStateGroup x:Name="CommonStates">
-                                                                        <VisualState x:Name="Normal"/>
-                                                                        <VisualState x:Name="PointerOver">
-                                                                            <Storyboard>
-                                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ButtonLayoutGrid">
-                                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonBackgroundPointerOver}"/>
-                                                                                </ObjectAnimationUsingKeyFrames>
-                                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ButtonLayoutGrid">
-                                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonBorderBrushPointerOver}"/>
-                                                                                </ObjectAnimationUsingKeyFrames>
-                                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonForegroundPointerOver}"/>
-                                                                                </ObjectAnimationUsingKeyFrames>
-                                                                            </Storyboard>
-                                                                        </VisualState>
-                                                                        <VisualState x:Name="Pressed">
-                                                                            <Storyboard>
-                                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ButtonLayoutGrid">
-                                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonBackgroundPressed}"/>
-                                                                                </ObjectAnimationUsingKeyFrames>
-                                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ButtonLayoutGrid">
-                                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonBorderBrushPressed}"/>
-                                                                                </ObjectAnimationUsingKeyFrames>
-                                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonForegroundPressed}"/>
-                                                                                </ObjectAnimationUsingKeyFrames>
-                                                                            </Storyboard>
-                                                                        </VisualState>
-                                                                        <VisualState x:Name="Disabled">
-                                                                            <Storyboard>
-                                                                                <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ButtonLayoutGrid"/>
-                                                                            </Storyboard>
-                                                                        </VisualState>
-                                                                    </VisualStateGroup>
-                                                                </VisualStateManager.VisualStateGroups>
-                                                                <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" FontSize="{ThemeResource AutoSuggestBoxIconFontSize}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                                            </Grid>
-                                                        </ControlTemplate>
-                                                    </Setter.Value>
-                                                </Setter>
-                                            </Style>
-                                        </Grid.Resources>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="*"/>
-                                        </Grid.RowDefinitions>
-                                        <VisualStateManager.VisualStateGroups>
-                                            <VisualStateGroup x:Name="CommonStates">
-                                                <VisualState x:Name="Disabled">
-                                                    <Storyboard>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="HeaderContentPresenter">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlHeaderForegroundDisabled}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="BorderElement">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundDisabled}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="BorderElement">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlBorderBrushDisabled}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentElement">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlForegroundDisabled}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="PlaceholderTextContentPresenter">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlPlaceholderForegroundDisabled}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                    </Storyboard>
-                                                </VisualState>
-                                                <VisualState x:Name="Normal"/>
-                                                <VisualState x:Name="PointerOver">
-                                                    <Storyboard>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="BorderElement">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlBorderBrushPointerOver}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="BorderElement">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundPointerOver}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="PlaceholderTextContentPresenter">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlPlaceholderForegroundPointerOver}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentElement">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlForegroundPointerOver}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                    </Storyboard>
-                                                </VisualState>
-                                                <VisualState x:Name="Focused">
-                                                    <Storyboard>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="PlaceholderTextContentPresenter">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlPlaceholderForegroundFocused}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="BorderElement">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundFocused}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="BorderElement">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlBorderBrushFocused}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentElement">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlForegroundFocused}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="RequestedTheme" Storyboard.TargetName="ContentElement">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Light"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="QueryButton">
-                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlButtonForeground}"/>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                    </Storyboard>
-                                                </VisualState>
-                                            </VisualStateGroup>
-                                            <VisualStateGroup x:Name="ButtonStates">
-                                                <VisualState x:Name="ButtonVisible">
-                                                    <Storyboard>
-                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="DeleteButton">
-                                                            <DiscreteObjectKeyFrame KeyTime="0">
-                                                                <DiscreteObjectKeyFrame.Value>
-                                                                    <Visibility>Visible</Visibility>
-                                                                </DiscreteObjectKeyFrame.Value>
-                                                            </DiscreteObjectKeyFrame>
-                                                        </ObjectAnimationUsingKeyFrames>
-                                                    </Storyboard>
-                                                </VisualState>
-                                                <VisualState x:Name="ButtonCollapsed"/>
-                                            </VisualStateGroup>
-                                        </VisualStateManager.VisualStateGroups>
-                                        <Border x:Name="BorderElement" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="1"/>
-                                        <ContentPresenter x:Name="HeaderContentPresenter" Grid.ColumnSpan="3" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" Foreground="{ThemeResource TextControlHeaderForeground}" FontWeight="Normal" Margin="0,0,0,8" Grid.Row="0" TextWrapping="Wrap" Visibility="Collapsed" x:DeferLoadStrategy="Lazy"/>
-                                        <ScrollViewer x:Name="ContentElement" AutomationProperties.AccessibilityView="Raw" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" IsTabStop="False" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" Grid.Row="1" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" ZoomMode="Disabled"/>
-                                        <ContentControl x:Name="PlaceholderTextContentPresenter" Grid.ColumnSpan="3" Content="{TemplateBinding PlaceholderText}" Foreground="{ThemeResource TextControlPlaceholderForeground}" IsHitTestVisible="False" IsTabStop="False" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" Grid.Row="1"/>
-                                        <Button x:Name="DeleteButton" AutomationProperties.AccessibilityView="Raw" BorderThickness="{TemplateBinding BorderThickness}" Grid.Column="1" FontSize="{TemplateBinding FontSize}" IsTabStop="False" MinWidth="34" Grid.Row="1" Style="{StaticResource DeleteButtonStyle}" Visibility="Collapsed" VerticalAlignment="Stretch"/>
-                                        <Button x:Name="QueryButton" BorderThickness="{TemplateBinding BorderThickness}" Grid.Column="2" FontSize="{TemplateBinding FontSize}" IsTabStop="False" MinWidth="34" Grid.Row="1" Style="{StaticResource QueryButtonStyle}" VerticalAlignment="Stretch" Width="{TemplateBinding Height}"/>
-                                    </Grid>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                    <Style x:Key="AutoSuggestBoxStyle1" TargetType="AutoSuggestBox">
-                        <Setter Property="VerticalAlignment" Value="Top"/>
-                        <Setter Property="IsTabStop" Value="False"/>
-                        <Setter Property="TextBoxStyle" Value="{StaticResource AutoSuggestBoxTextBoxStyle}"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="AutoSuggestBox">
-                                    <Grid x:Name="LayoutRoot">
-                                        <VisualStateManager.VisualStateGroups>
-                                            <VisualStateGroup x:Name="Orientation">
-                                                <VisualState x:Name="Landscape"/>
-                                                <VisualState x:Name="Portrait"/>
-                                            </VisualStateGroup>
-                                        </VisualStateManager.VisualStateGroups>
-                                        <TextBox x:Name="TextBox" ScrollViewer.BringIntoViewOnFocusChange="False" DesiredCandidateWindowAlignment="BottomEdge" Header="{TemplateBinding Header}" Margin="0" PlaceholderText="{TemplateBinding PlaceholderText}" Style="{TemplateBinding TextBoxStyle}" Width="{TemplateBinding Width}" Canvas.ZIndex="0"/>
-                                        <Popup x:Name="SuggestionsPopup">
-                                            <Border x:Name="SuggestionsContainer">
-                                                <Border.RenderTransform>
-                                                    <TranslateTransform x:Name="UpwardTransform"/>
-                                                </Border.RenderTransform>
-                                                <ListView x:Name="SuggestionsList" BorderBrush="{ThemeResource AutoSuggestBoxSuggestionsListBorderBrush}" BorderThickness="{ThemeResource AutoSuggestListBorderThemeThickness}" Background="{ThemeResource AutoSuggestBoxSuggestionsListBackground}" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" IsItemClickEnabled="True" ItemTemplate="{TemplateBinding ItemTemplate}" ItemContainerStyle="{TemplateBinding ItemContainerStyle}" ItemTemplateSelector="{TemplateBinding ItemTemplateSelector}" MaxHeight="{ThemeResource AutoSuggestListMaxHeight}" Margin="{ThemeResource AutoSuggestListMargin}" Padding="{ThemeResource AutoSuggestListPadding}">
-                                                    <ListView.ItemContainerTransitions>
-                                                        <TransitionCollection/>
-                                                    </ListView.ItemContainerTransitions>
-                                                </ListView>
-                                            </Border>
-                                        </Popup>
-                                    </Grid>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </AutoSuggestBox.Resources>
-                <AutoSuggestBox.Style>
-                    <StaticResource ResourceKey="AutoSuggestBoxStyle1"/>
-                </AutoSuggestBox.Style>
-            </AutoSuggestBox>
         </RelativePanel>
-        <SplitView x:Name="RootSplit" Grid.Row="1" DisplayMode="CompactOverlay" OpenPaneLength="200" CompactPaneLength="56" IsPaneOpen="True">
+        <SplitView x:Name="RootSplit" Grid.Row="1" DisplayMode="CompactOverlay" OpenPaneLength="235" CompactPaneLength="56" IsPaneOpen="True" PaneClosing="RootSplit_PaneClosing">
             <SplitView.Pane>
-                <Grid x:Name="HamburgerGrid" BorderThickness="1">
+                <Grid x:Name="HamburgerGrid" BorderThickness="1" Width="237">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="37"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <ListBox Grid.Row="0" Background="#CC000000" x:Name="IconsListBoxGameData" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single" Tapped="IconsListBoxGameData_Tapped">
-                        <ListBoxItem x:Name="CharacterListBoxItem" IsSelected="True" Height="50" Padding="0">
+                    <Grid Background="#CC000000">
+                        <Button x:Name="AutoSuggestButton" Background="{x:Null}" Margin="0,0,0,0" Width="56" Tapped="AutoSuggestButton_Tapped">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="&#xE094;" Foreground="White"/>
+                        </Button>
+                        <AutoSuggestBox Visibility="Collapsed"
+                                        x:Name="SearchAutoSuggestBox" 
+                                        PlaceholderText="输入搜索内容..." 
+                                        TextChanged="SearchAutoSuggestBox_TextChanged" 
+                                        QuerySubmitted="SearchAutoSuggestBox_QuerySubmitted" 
+                                        SuggestionChosen="SearchAutoSuggestBox_SuggestionChosen" 
+                                        Width="225" QueryIcon="Find"
+                                        Margin="-3,0,0,0"
+                                        ItemTemplate="{StaticResource AutoSuggestBoxDataTemplate}" 
+                                        VerticalAlignment="Center" Style="{StaticResource AutoSuggestBoxStyle}"/>
+                    </Grid>
+                    <ListBox Grid.Row="1" Background="#CC000000" x:Name="IconsListBoxGameData" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single" Tapped="IconsListBoxGameData_Tapped">
+                        <ListBoxItem x:Name="CharacterListBoxItem" IsSelected="True" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
                                 <Image Source="Assets/HamburgerMenu/HamburgerMenuCharacter.png" Width="48" Height="48"/>
-                                <TextBlock Text="人物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                                <TextBlock Text="人物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem x:Name="FoodListBoxItem" Height="50" Padding="0">
+                        <ListBoxItem x:Name="FoodListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
                                 <Image Source="Assets/HamburgerMenu/HamburgerMenuFood.png" Width="48" Height="48"/>
-                                <TextBlock Text="食物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                                <TextBlock Text="食物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem x:Name="CookListBoxItem" Height="50" Padding="0">
+                        <ListBoxItem x:Name="CookListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
                                 <Image Source="Assets/HamburgerMenu/HamburgerMenuCookingSimulator.png" Width="48" Height="48"/>
-                                <TextBlock Text="模拟" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                                <TextBlock Text="模拟" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem x:Name="ScienceListBoxItem" Height="50" Padding="0">
+                        <ListBoxItem x:Name="ScienceListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
                                 <Image Source="Assets/HamburgerMenu/HamburgerMenuScience.png" Width="48" Height="48"/>
-                                <TextBlock Text="科技" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                                <TextBlock Text="科技" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem x:Name="CreatureListBoxItem" Height="50" Padding="0">
+                        <ListBoxItem x:Name="CreatureListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
                                 <Image Source="Assets/HamburgerMenu/HamburgerMenuAnimal.png" Width="48" Height="48"/>
-                                <TextBlock Text="生物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                                <TextBlock Text="生物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem x:Name="NaturalListBoxItem" Height="50" Padding="0">
+                        <ListBoxItem x:Name="NaturalListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
                                 <Image Source="Assets/HamburgerMenu/HamburgerMenuNatural.png" Width="48" Height="48"/>
-                                <TextBlock Text="自然" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                                <TextBlock Text="自然" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem x:Name="GoodListBoxItem" Height="50" Padding="0">
+                        <ListBoxItem x:Name="GoodListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
                                 <Image Source="Assets/HamburgerMenu/HamburgerMenuGood.png" Width="48" Height="48"/>
-                                <TextBlock Text="物品" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                                <TextBlock Text="物品" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
 <!--                        <ListBoxItem x:Name="PartingLine1" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>-->
-<!--                        <ListBoxItem x:Name="DedicatedServersListBoxItem" Height="50" Padding="0">-->
+<!--                        <ListBoxItem x:Name="DedicatedServersListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">-->
 <!--                            <StackPanel Orientation="Horizontal" Height="48">-->
 <!--                                <Image Source="Assets/HamburgerMenu/HamburgerMenuDedicatedServer.png" Width="48" Height="48"/>-->
-<!--                                <TextBlock Text="独立服务器" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>-->
+<!--                                <TextBlock Text="独立服务器" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>-->
 <!--                            </StackPanel>-->
 <!--                        </ListBoxItem>-->
                         <ListBoxItem x:Name="PartingLine2" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
-                        <ListBoxItem x:Name="StrategyListBoxItem" Height="50" Padding="0">
+                        <ListBoxItem x:Name="StrategyListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="48">
                                 <Image Source="Assets/HamburgerMenu/HamburgerMenuStrategy.png" Width="48" Height="48"/>
-                                <TextBlock Text="攻略" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                                <TextBlock Text="攻略" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem x:Name="PartingLine3" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
                         
                     </ListBox>
-                    <ListBox Grid.Row="1" Background="#CC000000" x:Name="IconsListBoxSettingAndAbout" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single"  Tapped="IconsListBoxGameData_Tapped">
-                        <ListBoxItem x:Name="SocialIntercourseListBoxItem" Height="50" Padding="0">
+                    <ListBox Grid.Row="2" Background="#CC000000" x:Name="IconsListBoxSettingAndAbout" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single"  Tapped="IconsListBoxGameData_Tapped">
+                        <ListBoxItem x:Name="SocialIntercourseListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
                                 <Image UseLayoutRounding="True" Source="Assets/HamburgerMenu/HamburgerMenuSocialIntercourse.png" Width="48" Height="48" Margin="0,0,0,0"/>
-                                <TextBlock Text="社交" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                                <TextBlock Text="社交" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem x:Name="PartingLine4" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
-                        <ListBoxItem x:Name="SettingListBoxItem" Height="50" Padding="0">
+                        <ListBoxItem x:Name="SettingListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
                                 <Image Source="Assets/HamburgerMenu/HamburgerMenuSetting.png" Width="48" Height="48"/>
-                                <TextBlock Text="设置" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                                <TextBlock Text="设置" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem x:Name="AboutListBoxItem" Height="50" Padding="0">
+                        <ListBoxItem x:Name="AboutListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
                                 <Image Source="Assets/HamburgerMenu/HamburgerMenuAbout.png" Width="48" Height="48"/>
-                                <TextBlock Text="关于" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="20,0,0,0"/>
+                                <TextBlock Text="关于" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                     </ListBox>
