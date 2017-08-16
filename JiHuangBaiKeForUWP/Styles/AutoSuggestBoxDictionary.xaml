@@ -7,7 +7,6 @@
         <Setter Property="MinHeight" Value="{ThemeResource TextControlThemeMinHeight}"/>
         <Setter Property="Foreground" Value="{ThemeResource TextControlForeground}"/>
         <Setter Property="Background" Value="{ThemeResource TextControlBackground}"/>
-<!--        <Setter Property="BorderBrush" Value="{ThemeResource TextControlBorderBrush}"/>-->
         <Setter Property="BorderBrush" Value="#1B1B1B"/>
         <Setter Property="SelectionHighlightColor" Value="{ThemeResource TextControlSelectionHighlightColor}"/>
         <Setter Property="BorderThickness" Value="{ThemeResource TextControlBorderThemeThickness}"/>
