@@ -244,10 +244,25 @@
                                  Canvas.ZIndex="0" Background="#8F8F8F"/>
                         <Popup x:Name="SuggestionsPopup">
                             <Border x:Name="SuggestionsContainer">
+                                <Border.Background>
+                                    <AcrylicBrush BackgroundSource="HostBackdrop" TintColor="DimGray" TintOpacity="0.6"/>
+                                </Border.Background>
                                 <Border.RenderTransform>
                                     <TranslateTransform x:Name="UpwardTransform"/>
                                 </Border.RenderTransform>
-                                <ListView x:Name="SuggestionsList" BorderBrush="{ThemeResource AutoSuggestBoxSuggestionsListBorderBrush}" BorderThickness="{ThemeResource AutoSuggestListBorderThemeThickness}" Background="{ThemeResource AutoSuggestBoxSuggestionsListBackground}" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" IsItemClickEnabled="True" ItemTemplate="{TemplateBinding ItemTemplate}" ItemContainerStyle="{TemplateBinding ItemContainerStyle}" ItemTemplateSelector="{TemplateBinding ItemTemplateSelector}" MaxHeight="{ThemeResource AutoSuggestListMaxHeight}" Margin="{ThemeResource AutoSuggestListMargin}" Padding="{ThemeResource AutoSuggestListPadding}">
+                                <ListView 
+                                    x:Name="SuggestionsList" 
+                                    BorderBrush="{ThemeResource AutoSuggestBoxSuggestionsListBorderBrush}" 
+                                    BorderThickness="{ThemeResource AutoSuggestListBorderThemeThickness}"
+                                    Background="{x:Null}" 
+                                    DisplayMemberPath="{TemplateBinding DisplayMemberPath}" 
+                                    IsItemClickEnabled="True" 
+                                    ItemTemplate="{TemplateBinding ItemTemplate}" 
+                                    ItemContainerStyle="{TemplateBinding ItemContainerStyle}" 
+                                    ItemTemplateSelector="{TemplateBinding ItemTemplateSelector}" 
+                                    MaxHeight="{ThemeResource AutoSuggestListMaxHeight}" 
+                                    Margin="{ThemeResource AutoSuggestListMargin}" 
+                                    Padding="{ThemeResource AutoSuggestListPadding}">
                                     <ListView.ItemContainerTransitions>
                                         <TransitionCollection/>
                                     </ListView.ItemContainerTransitions>

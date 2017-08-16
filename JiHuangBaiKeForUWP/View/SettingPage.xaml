@@ -9,14 +9,14 @@
     xmlns:system="using:System"
     mc:Ignorable="d">
 
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="{x:Null}">
         <StackPanel Margin="10">
-            <StackPanel>
+            <StackPanel Visibility="Collapsed">
                 <TextBlock FontSize="26" Text="深色主题"/>
                 <ToggleSwitch x:Name="ThemeToggleSwitch" Toggled="ThemeToggleSwitch_Toggled"/>
             </StackPanel>
             <StackPanel Margin="0,20,0,0" >
-                <TextBlock FontSize="26" Text="游戏版本"/>
+                <TextBlock FontSize="26" Text="游戏版本" Foreground="White"/>
                 <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
                     <ComboBox x:Name="GameVersionComboBox" 
                               HorizontalAlignment="Left" 
@@ -24,7 +24,11 @@
                               HorizontalContentAlignment="Stretch" 
                               ItemContainerStyle="{StaticResource ComboBoxItemStyle}" 
                               DataContextChanged="GameVersionComboBox_DataContextChanged" 
-                              SelectionChanged="GameVersionComboBox_SelectionChanged" Width="200" >
+                              SelectionChanged="GameVersionComboBox_SelectionChanged" 
+                              Width="200" Foreground="White" Style="{StaticResource ComboBoxStyle}">
+                        <ComboBox.Background>
+                            <AcrylicBrush BackgroundSource="HostBackdrop" TintColor="DarkSlateGray" TintOpacity="0.6"/>
+                        </ComboBox.Background>
                         <ComboBoxItem>
                             <TextBlock Text="DST(steam饥荒联机)"/>
                         </ComboBoxItem>

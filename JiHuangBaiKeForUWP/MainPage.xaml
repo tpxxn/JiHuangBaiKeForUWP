@@ -16,7 +16,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Image Width="50" Height="50" Source="{Binding Picture}" />
-                <TextBlock x:Name="AutoSuggestBoxItemTextBlock" Grid.Column="1" Margin="7,3,4,3" VerticalAlignment="Center">
+                <TextBlock x:Name="AutoSuggestBoxItemTextBlock" Grid.Column="1" Margin="7,3,4,3" VerticalAlignment="Center" Foreground="White">
                     <Run Text="{Binding Name}" /><Run Text=" - " /><Run Text="{Binding Category}" />
                     <LineBreak/>
                     <Run Text="{Binding EnName}" />
@@ -24,7 +24,7 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    
+
     <Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
@@ -71,10 +71,16 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <RelativePanel x:Name="RootRelativePanel">
+            <RelativePanel.Background>
+                <AcrylicBrush BackgroundSource="HostBackdrop" TintColor="DimGray" TintOpacity="0.6"/>
+            </RelativePanel.Background>
             <Button x:Name="HamburgerButton" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="26" Tapped="HamburgerButton_Tapped"  Foreground="White" Width="56" Height="48" Background="{x:Null}" />
-            <TextBlock x:Name="FrameTitle" RelativePanel.RightOf="HamburgerButton" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="26" Margin="10,0,0,0" Foreground="White" Text="人物"/>
+            <TextBlock x:Name="FrameTitle" RelativePanel.RightOf="HamburgerButton" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="26" Margin="10,0,0,0" Text="人物" Foreground="White"/>
         </RelativePanel>
         <SplitView x:Name="RootSplit" Grid.Row="1" DisplayMode="CompactOverlay" OpenPaneLength="235" CompactPaneLength="56" IsPaneOpen="True" PaneClosing="RootSplit_PaneClosing">
+            <SplitView.PaneBackground>
+                <AcrylicBrush BackgroundSource="HostBackdrop" TintColor="DarkSlateGray" TintOpacity="0.6"/>
+            </SplitView.PaneBackground>
             <SplitView.Pane>
                 <Grid x:Name="HamburgerGrid" BorderThickness="1" Width="237">
                     <Grid.RowDefinitions>
@@ -82,7 +88,8 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Grid Background="#CC000000">
+                    <!--                    <Grid Background="#CC000000">-->
+                    <Grid Background="{x:Null}" >
                         <Button x:Name="AutoSuggestButton" Background="{x:Null}" Margin="0,0,0,0" Width="56" Tapped="AutoSuggestButton_Tapped">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="&#xE094;" Foreground="White"/>
                         </Button>
@@ -97,91 +104,102 @@
                                         ItemTemplate="{StaticResource AutoSuggestBoxDataTemplate}" 
                                         VerticalAlignment="Center" Style="{StaticResource AutoSuggestBoxStyle}"/>
                     </Grid>
-                    <ListBox Grid.Row="1" Background="#CC000000" x:Name="IconsListBoxGameData" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single" Tapped="IconsListBoxGameData_Tapped">
+                    <!--                    <ListBox Grid.Row="1" Background="#CC000000" x:Name="IconsListBoxGameData" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single" Tapped="IconsListBoxGameData_Tapped">-->
+                    <ListBox Grid.Row="1" Background="{x:Null}" x:Name="IconsListBoxGameData" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single" Tapped="IconsListBoxGameData_Tapped">
+
                         <ListBoxItem x:Name="CharacterListBoxItem" IsSelected="True" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
-                                <Image Source="Assets/HamburgerMenu/HamburgerMenuCharacter.png" Width="48" Height="48"/>
-                                <TextBlock Text="人物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
+                                <TextBlock Text="&#x4E0C;" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
+<!--                                <Image Source="Assets/HamburgerMenu/HamburgerMenuCharacter.png" Width="48" Height="48"/>-->
+                                <TextBlock Text="人物" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem x:Name="FoodListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
-                                <Image Source="Assets/HamburgerMenu/HamburgerMenuFood.png" Width="48" Height="48"/>
-                                <TextBlock Text="食物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
+                                <TextBlock Text="&#x4E01;" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
+<!--                                <Image Source="Assets/HamburgerMenu/HamburgerMenuFood.png" Width="48" Height="48"/>-->
+                                <TextBlock Text="食物" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem x:Name="CookListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
-                                <Image Source="Assets/HamburgerMenu/HamburgerMenuCookingSimulator.png" Width="48" Height="48"/>
-                                <TextBlock Text="模拟" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
+                                <TextBlock Text="&#x4E02;" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
+<!--                                <Image Source="Assets/HamburgerMenu/HamburgerMenuCookingSimulator.png" Width="48" Height="48"/>-->
+                                <TextBlock Text="模拟" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem x:Name="ScienceListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
-                                <Image Source="Assets/HamburgerMenu/HamburgerMenuScience.png" Width="48" Height="48"/>
-                                <TextBlock Text="科技" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
+                                <TextBlock Text="&#x4E03;" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
+<!--                                <Image Source="Assets/HamburgerMenu/HamburgerMenuScience.png" Width="48" Height="48"/>-->
+                                <TextBlock Text="科技" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem x:Name="CreatureListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
-                                <Image Source="Assets/HamburgerMenu/HamburgerMenuAnimal.png" Width="48" Height="48"/>
-                                <TextBlock Text="生物" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
+                                <TextBlock Text="&#x4E04;" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
+<!--                                <Image Source="Assets/HamburgerMenu/HamburgerMenuAnimal.png" Width="48" Height="48"/>-->
+                                <TextBlock Text="生物" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem x:Name="NaturalListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
-                                <Image Source="Assets/HamburgerMenu/HamburgerMenuNatural.png" Width="48" Height="48"/>
-                                <TextBlock Text="自然" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
+                                <TextBlock Text="&#x4E05;" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
+<!--                                <Image Source="Assets/HamburgerMenu/HamburgerMenuNatural.png" Width="48" Height="48"/>-->
+                                <TextBlock Text="自然" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem x:Name="GoodListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
-                                <Image Source="Assets/HamburgerMenu/HamburgerMenuGood.png" Width="48" Height="48"/>
-                                <TextBlock Text="物品" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
+                                <TextBlock Text="&#x4E06;" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
+<!--                                <Image Source="Assets/HamburgerMenu/HamburgerMenuGood.png" Width="48" Height="48"/>-->
+                                <TextBlock Text="物品" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
-<!--                        <ListBoxItem x:Name="PartingLine1" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>-->
-<!--                        <ListBoxItem x:Name="DedicatedServersListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">-->
-<!--                            <StackPanel Orientation="Horizontal" Height="48">-->
-<!--                                <Image Source="Assets/HamburgerMenu/HamburgerMenuDedicatedServer.png" Width="48" Height="48"/>-->
-<!--                                <TextBlock Text="独立服务器" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>-->
-<!--                            </StackPanel>-->
-<!--                        </ListBoxItem>-->
                         <ListBoxItem x:Name="PartingLine2" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
                         <ListBoxItem x:Name="StrategyListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="48">
-                                <Image Source="Assets/HamburgerMenu/HamburgerMenuStrategy.png" Width="48" Height="48"/>
-                                <TextBlock Text="攻略" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
+                                <TextBlock Text="&#x4E08;" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
+<!--                                <Image Source="Assets/HamburgerMenu/HamburgerMenuStrategy.png" Width="48" Height="48"/>-->
+                                <TextBlock Text="攻略" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem x:Name="PartingLine3" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
-                        
                     </ListBox>
-                    <ListBox Grid.Row="2" Background="#CC000000" x:Name="IconsListBoxSettingAndAbout" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single"  Tapped="IconsListBoxGameData_Tapped">
+                    <!--                    <ListBox Grid.Row="2" Background="#CC000000" x:Name="IconsListBoxSettingAndAbout" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single"  Tapped="IconsListBoxGameData_Tapped">-->
+                    <ListBox Grid.Row="2" Background="{x:Null}" x:Name="IconsListBoxSettingAndAbout" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single"  Tapped="IconsListBoxGameData_Tapped">
+
                         <ListBoxItem x:Name="SocialIntercourseListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
-                                <Image UseLayoutRounding="True" Source="Assets/HamburgerMenu/HamburgerMenuSocialIntercourse.png" Width="48" Height="48" Margin="0,0,0,0"/>
-                                <TextBlock Text="社交" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
+                                <TextBlock Text="&#x4E09;" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
+<!--                                <Image UseLayoutRounding="True" Source="Assets/HamburgerMenu/HamburgerMenuSocialIntercourse.png" Width="48" Height="48" Margin="0,0,0,0"/>-->
+                                <TextBlock Text="社交" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem x:Name="PartingLine4" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
                         <ListBoxItem x:Name="SettingListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
-                                <Image Source="Assets/HamburgerMenu/HamburgerMenuSetting.png" Width="48" Height="48"/>
-                                <TextBlock Text="设置" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
+                                <TextBlock Text="&#x4E0A;" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
+<!--                                <Image Source="Assets/HamburgerMenu/HamburgerMenuSetting.png" Width="48" Height="48"/>-->
+                                <TextBlock Text="设置" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem x:Name="AboutListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
-                                <Image Source="Assets/HamburgerMenu/HamburgerMenuAbout.png" Width="48" Height="48"/>
-                                <TextBlock Text="关于" FontSize="18" VerticalAlignment="Center" Foreground="White" Margin="50,0,0,0"/>
+                                <TextBlock Text="&#x4E0B;" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
+<!--                                <Image Source="Assets/HamburgerMenu/HamburgerMenuAbout.png" Width="48" Height="48"/>-->
+                                <TextBlock Text="关于" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                     </ListBox>
                 </Grid>
             </SplitView.Pane>
             <SplitView.Content>
-                <Frame x:Name="RootFrame" Margin="0,1,0,0"/>
+                <Frame x:Name="RootFrame" Margin="0,1,0,0">
+                    <Frame.Background>
+                        <AcrylicBrush BackgroundSource="HostBackdrop" TintColor="DimGray" TintOpacity="0.6"/>
+                    </Frame.Background>
+                </Frame>
             </SplitView.Content>
         </SplitView>
     </Grid>

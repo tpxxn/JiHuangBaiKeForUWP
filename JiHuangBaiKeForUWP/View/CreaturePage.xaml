@@ -17,13 +17,13 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="14" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="14" HorizontalAlignment="Center" Foreground="White"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel x:Name="CreatureStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel x:Name="CreatureStackPanel" Background="{x:Null}">
             <uc:Expander x:Name="LandExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">

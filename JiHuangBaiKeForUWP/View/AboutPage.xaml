@@ -8,8 +8,11 @@
     mc:Ignorable="d">
     
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <StackPanel VerticalAlignment="Center" Background="{ThemeResource SystemControlBackgroundAccentBrush}">
+        <StackPanel Background="{x:Null}">
+            <StackPanel VerticalAlignment="Center">
+                <StackPanel.Background>
+                    <AcrylicBrush BackgroundSource="HostBackdrop" TintColor="DarkSlateGray" TintOpacity="0.6"/>
+                </StackPanel.Background>
                 <Ellipse Height="120" Width="120" StrokeThickness="4" Stroke="White" Margin="0,15,0,0">
                     <Ellipse.Fill>
                         <ImageBrush ImageSource="/Assets/Logo/LargeTile.scale-400.png" />
@@ -22,29 +25,29 @@
             </StackPanel>
 
             <StackPanel>
-                <TextBlock x:Uid="Feedback" Text="加入QQ群" FontSize="22" Margin="20,20,0,0" />
+                <TextBlock x:Uid="Feedback" Text="加入QQ群" FontSize="22" Margin="20,20,0,0" Foreground="White"/>
                 <HyperlinkButton Margin="20,5,0,0" NavigateUri="http://www.jihuangbaike.com/jump.html">
                     <Image Source="/Assets/Pic/QRCode_Qun.png" Height="128" />
                 </HyperlinkButton>
-                <TextBlock x:Uid="Feedback" Text="发送反馈" FontSize="22" Margin="20,20,0,0" />
+                <TextBlock x:Uid="Feedback" Text="发送反馈" FontSize="22" Margin="20,20,0,0" Foreground="White"/>
                 <StackPanel Orientation="Horizontal" Margin="20,5,0,0">
-                    <TextBlock x:Uid="EMail" VerticalAlignment="Center">
+                    <TextBlock x:Uid="EMail" VerticalAlignment="Center" Foreground="White">
                     <Run Text="发送邮件至："/>
                     </TextBlock>
                     <HyperlinkButton NavigateUri="mailto:351765204@qq.com" Content="351765204@qq.com" />
                 </StackPanel>
 
-                <TextBlock Text="数据来源" FontSize="22" Margin="20,20,0,0" />
+                <TextBlock Text="数据来源" FontSize="22" Margin="20,20,0,0" Foreground="White"/>
                 <StackPanel Orientation="Horizontal">
                     <HyperlinkButton NavigateUri="http://dontstarve.wikia.com">
                         <Image Source="/Assets/Pic/Wiki-wordmark.png" Height="30" />
                     </HyperlinkButton>
-                    <TextBlock Text="以及" VerticalAlignment="Center" />
+                    <TextBlock Text="以及" VerticalAlignment="Center" Foreground="White"/>
                     <HyperlinkButton Margin="10,0,0,0" Content="张高兴" NavigateUri="https://github.com/ZhangGaoxing/JiHuangBaike/tree/master" VerticalAlignment="Center" />
                 </StackPanel>
 
-                <TextBlock Text="其他" FontSize="22" Margin="20,20,0,0" />
-                <TextBlock FontSize="14" Margin="20,5,0,0">
+                <TextBlock Text="其他" FontSize="22" Margin="20,20,0,0" Foreground="White"/>
+                <TextBlock FontSize="14" Margin="20,5,0,0" Foreground="White">
                 <Run Text="本应用使用 MIT 许可开源"/>
                 </TextBlock>
                 <HyperlinkButton Margin="20,5,0,0" NavigateUri="https://github.com/tpxxn/JiHuangBaiKeForUWP/blob/master/LICENSE">

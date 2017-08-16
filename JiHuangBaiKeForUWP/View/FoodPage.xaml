@@ -18,7 +18,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" Foreground="White"/>
             </Grid>
         </DataTemplate>
 
@@ -29,13 +29,13 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" Foreground="White"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel x:Name="FoodStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel x:Name="FoodStackPanel" Background="{x:Null}">
             <uc:Expander x:Name="RecipesExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">

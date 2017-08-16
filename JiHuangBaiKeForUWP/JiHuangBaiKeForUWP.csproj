@@ -11,7 +11,7 @@
     <AssemblyName>JiHuangBaiKeForUWP</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.15063.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16257.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -211,6 +211,7 @@
     <Content Include="Assets\Font\belisa_plumilla.ttf" />
     <Content Include="Assets\Font\holomdl2.ttf" />
     <Content Include="Assets\Font\segmdl2.ttf" />
+    <Content Include="Assets\Font\JiHuangBaiKeFont.ttf" />
     <None Include="JiHuangBaiKeForUWP_TemporaryKey.pfx" />
     <Content Include="Assets\GameResources\Creatures\A_antlion.png" />
     <Content Include="Assets\GameResources\Creatures\A_bee_queen.png" />

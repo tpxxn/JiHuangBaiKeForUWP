@@ -18,12 +18,12 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" Foreground="White"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{x:Null}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -32,14 +32,14 @@
             <StackPanel x:Name="SettingStackPanel" HorizontalAlignment="Left" RelativePanel.AlignHorizontalCenterWithPanel="True">
                 <StackPanel Orientation="Horizontal">
                     <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
-                        <TextBlock FontSize="26" Text="自动清空材料" Margin="0,20,0,0"/>
-                        <ToggleSwitch x:Name="AutoCleanToggleSwitch" IsOn="True"/>
+                        <TextBlock FontSize="26" Text="自动清空材料" Margin="0,20,0,0" Foreground="White"/>
+                        <ToggleSwitch x:Name="AutoCleanToggleSwitch" IsOn="True" Foreground="White"/>
                     </StackPanel>
-                    <Button x:Name="ResetButton" Content="重置" Tapped="ResetButton_Tapped" Margin="20,0,0,0"/>
+                    <Button x:Name="ResetButton" Content="重置" Tapped="ResetButton_Tapped" Margin="20,0,0,0" Foreground="White"/>
                 </StackPanel>
                 <StackPanel x:Name="PortableCrockPotStackPanel" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <TextBlock FontSize="26" Text="烹煮锅"/>
-                    <ToggleSwitch x:Name="PortableCrockPotToggleSwitch" OffContent="烹煮锅" OnContent="便携式烹饪锅"/>
+                    <TextBlock FontSize="26" Text="烹煮锅" Foreground="White"/>
+                    <ToggleSwitch x:Name="PortableCrockPotToggleSwitch" OffContent="烹煮锅" OnContent="便携式烹饪锅" Foreground="White"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel RelativePanel.Below="SettingStackPanel">
@@ -57,7 +57,7 @@
                         <Image x:Name="Food4Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
                     </Button>
                 </StackPanel>
-                <SymbolIcon x:Name="CalculationSymbolIcon" Symbol="Up" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Margin="0,20">
+                <SymbolIcon x:Name="CalculationSymbolIcon" Symbol="Up" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Margin="0,20" Foreground="White">
                     <SymbolIcon.RenderTransform>
                         <CompositeTransform ScaleY="-2" ScaleX="2"/>
                     </SymbolIcon.RenderTransform>
@@ -69,7 +69,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" x:Name="SwitchLeftButton" Background="{x:Null}" Visibility="Collapsed" Tapped="SwitchLeftButton_Tapped">
-                        <SymbolIcon Symbol="Up" RenderTransformOrigin="0.5,0.5">
+                        <SymbolIcon Symbol="Up" RenderTransformOrigin="0.5,0.5" Foreground="White">
                             <SymbolIcon.RenderTransform>
                                 <CompositeTransform Rotation="270"/>
                             </SymbolIcon.RenderTransform>
@@ -79,14 +79,14 @@
                         <Image x:Name="FoodResultImage" Height="52" Width="52" Margin="-4,0,-3,0"/>
                     </Button>
                     <Button Grid.Column="2" x:Name="SwitchRightButton" Background="{x:Null}" Visibility="Collapsed" Tapped="SwitchRightButton_Tapped">
-                        <SymbolIcon Symbol="Up" RenderTransformOrigin="0.5,0.5">
+                        <SymbolIcon Symbol="Up" RenderTransformOrigin="0.5,0.5" Foreground="White">
                             <SymbolIcon.RenderTransform>
                                 <CompositeTransform Rotation="90"/>
                             </SymbolIcon.RenderTransform>
                         </SymbolIcon>
                     </Button>
                 </Grid>
-                <TextBlock x:Name="FoodResultTextBlock" RelativePanel.Below="ResultButton" RelativePanel.AlignHorizontalCenterWith="ResultButton" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="FoodResultTextBlock" RelativePanel.Below="ResultButton" RelativePanel.AlignHorizontalCenterWith="ResultButton" HorizontalAlignment="Center" Foreground="White"/>
             </StackPanel>
         </RelativePanel>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">

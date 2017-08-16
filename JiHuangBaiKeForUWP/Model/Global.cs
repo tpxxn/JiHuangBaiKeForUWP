@@ -140,18 +140,18 @@ namespace JiHuangBaiKeForUWP.Model
         {
             ShowedDialog?.Hide();
             ShowedDialog = contentDialog;
-            contentDialog.Closed += async delegate
+            contentDialog.Closed += delegate
             {
-                await RootGrid.Blur(0, 0).StartAsync();
+//                await RootGrid.Blur(0, 0).StartAsync();
                 contentDialog.Hide();
             };
 
-            contentDialog.PrimaryButtonClick += async delegate
+            contentDialog.PrimaryButtonClick += delegate
             {
-                await RootGrid.Blur(0, 0).StartAsync();
+//                await RootGrid.Blur(0, 0).StartAsync();
                 contentDialog.Hide();
             };
-            await RootGrid.Blur(7, 100).StartAsync();
+            //            await RootGrid.Blur(7, 100).StartAsync();
             await contentDialog.ShowAsync();
         }
 
