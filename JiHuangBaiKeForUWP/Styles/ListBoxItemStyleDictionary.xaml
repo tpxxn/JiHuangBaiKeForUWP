@@ -43,7 +43,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightListLowBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="White"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -53,7 +53,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightListMediumBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="White"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -63,7 +63,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlForegroundAccentBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="PressedLeftBackground">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
@@ -76,7 +76,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlForegroundAccentBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="PressedLeftBackground">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
@@ -89,7 +89,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightListLowBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlForegroundAccentBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="PressedLeftBackground">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
@@ -102,7 +102,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightListMediumBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlForegroundAccentBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="PressedLeftBackground">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
@@ -133,7 +133,7 @@
                             Style="{StaticResource BodyContentPresenterStyle}"
                             TextWrapping="NoWrap" 
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Foreground="{ThemeResource SystemControlForegroundAccentBrush}"/>
+                            Foreground="White"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

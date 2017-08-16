@@ -211,6 +211,7 @@
     <Content Include="Assets\Font\belisa_plumilla.ttf" />
     <Content Include="Assets\Font\holomdl2.ttf" />
     <Content Include="Assets\Font\segmdl2.ttf" />
+    <Content Include="Assets\Font\JiHuangBaiKeFont.ttf" />
     <None Include="JiHuangBaiKeForUWP_TemporaryKey.pfx" />
     <Content Include="Assets\GameResources\Creatures\A_antlion.png" />
     <Content Include="Assets\GameResources\Creatures\A_bee_queen.png" />
