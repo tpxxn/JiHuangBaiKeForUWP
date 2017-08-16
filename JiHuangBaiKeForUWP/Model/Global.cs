@@ -142,16 +142,13 @@ namespace JiHuangBaiKeForUWP.Model
             ShowedDialog = contentDialog;
             contentDialog.Closed += delegate
             {
-//                await RootGrid.Blur(0, 0).StartAsync();
                 contentDialog.Hide();
             };
 
             contentDialog.PrimaryButtonClick += delegate
             {
-//                await RootGrid.Blur(0, 0).StartAsync();
                 contentDialog.Hide();
             };
-            //            await RootGrid.Blur(7, 100).StartAsync();
             await contentDialog.ShowAsync();
         }
 

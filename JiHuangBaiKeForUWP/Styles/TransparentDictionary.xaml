@@ -7,7 +7,7 @@
         <Setter Property="Foreground" Value="{ThemeResource ContentDialogForeground}" />
         <Setter Property="Background">
             <Setter.Value>
-                <AcrylicBrush BackgroundSource="HostBackdrop" TintColor="Gray" TintOpacity="0.6"/>
+                <AcrylicBrush BackgroundSource="HostBackdrop" TintColor="Gray" TintOpacity="0.8"/>
             </Setter.Value>
         </Setter>
         <Setter Property="BorderBrush" Value="Transparent" />
