@@ -5,6 +5,9 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Display;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -12,8 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
+using JiHuangBaiKeForUWP.Model;
 
 namespace JiHuangBaiKeForUWP.View
 {
@@ -22,9 +24,149 @@ namespace JiHuangBaiKeForUWP.View
     /// </summary>
     public sealed partial class StrategyPage : Page
     {
+        private readonly List<ListBox> _listBoxList;
+        private readonly Stack<ListBoxItem> _listBoxItemStack = new Stack<ListBoxItem>();
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var size = GetScreen();
+            if (size.Width <= 800)
+            {
+                MenuColumn.Width = new GridLength(1, GridUnitType.Star);
+                WebViewColumn.Width = new GridLength(0);
+            }
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+        }
+
         public StrategyPage()
         {
             this.InitializeComponent();
+            _listBoxItemStack.Clear();
+            _listBoxList = new List<ListBox>(new[] { GameBaseListBox, BossListBox });
+            if (Global.GameVersion == 1)
+            {
+                ChinesizeGameListBoxItem.Visibility = Visibility.Collapsed;
+                ModDownloadListBoxItem.Visibility = Visibility.Collapsed;
+                RecommendModListBoxItem.Visibility = Visibility.Collapsed;
+            }
+            ListBox_Tapped(GameBaseListBox, null);
+            _listBoxItemStack.Push(BaseOperationListBoxItem);
+            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
         }
+
+        public static Size GetScreen()
+        {
+            var applicationView = ApplicationView.GetForCurrentView();
+            var displayInformation = DisplayInformation.GetForCurrentView();
+            var bounds = applicationView.VisibleBounds;
+            var scale = displayInformation.RawPixelsPerViewPixel;
+            var size = new Size(bounds.Width * scale, bounds.Height * scale);
+            return size;
+        }
+
+        private void App_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            var size = GetScreen();
+            if (size.Width > 801)
+            {
+                if (_listBoxItemStack.Count <= 1) return;
+                _listBoxItemStack.Pop();
+                var popListBoxItem = _listBoxItemStack.Peek();
+                foreach (var listBox in _listBoxList)
+                {
+                    if (listBox.Items == null) continue;
+                    foreach (ListBoxItem listBoxItem in listBox.Items)
+                    {
+                        if (listBoxItem.Name != popListBoxItem.Name) continue;
+                        popListBoxItem.IsSelected = true;
+                        ListBox_Tapped(listBox, null);
+                    }
+                }
+            }
+            else
+            {
+                MenuColumn.Width = new GridLength(1, GridUnitType.Star);
+                WebViewColumn.Width = new GridLength(0);
+            }
+        }
+
+        private void ListBox_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var senderListBox = (ListBox)sender;
+            foreach (var listBox in _listBoxList)
+            {
+                if (listBox != senderListBox)
+                {
+                    listBox.SelectedItem = null;
+                }
+            }
+            var listBoxItem = (ListBoxItem)((ListBox)sender).SelectedItem;
+            if (e != null && listBoxItem != _listBoxItemStack.Peek())
+            {
+                _listBoxItemStack.Push(listBoxItem);
+            }
+            var size = GetScreen();
+            if (size.Width > 801)
+            {
+                MenuColumn.Width = new GridLength(300);
+                WebViewColumn.Width = new GridLength(1, GridUnitType.Star);
+            }
+            else
+            {
+                MenuColumn.Width = new GridLength(0);
+                WebViewColumn.Width = new GridLength(1, GridUnitType.Star);
+            }
+            var webView = StrategyWebView;
+            if (listBoxItem != null)
+            {
+                var listBoxItemName = listBoxItem.Name;
+                switch (listBoxItemName)
+                {
+                    case "BaseOperationListBoxItem":
+                        webView.Navigate(new Uri("https://steamcommunity.com/sharedfiles/filedetails/?id=966448064&searchtext=%E6%93%8D%E4%BD%9C"));
+                        break;
+                    case "ChinesizeGameListBoxItem":
+                        webView.Navigate(new Uri("https://steamcommunity.com/sharedfiles/filedetails/?id=757621274"));
+                        break;
+                    case "ModDownloadListBoxItem":
+                        webView.Navigate(new Uri("https://steamcommunity.com/app/322330/workshop/"));
+                        break;
+                    case "RecommendModListBoxItem":
+                        webView.Navigate(new Uri("https://steamcommunity.com/sharedfiles/filedetails/?id=635215011"));
+                        break;
+                    case "GameUpdateListBoxItem":
+                        webView.Navigate(new Uri("http://store.steampowered.com/news/?appids=322330"));
+                        break;
+                }
+            }
+        }
+
+        #region WebView加载
+        private void StrategyWebView_NavigationStarting(WebView sender, WebViewNavigationStartingEventArgs args)
+        {
+            LoadingControl.IsLoading = true;
+            StrategyWebView.Visibility = Visibility.Collapsed;
+        }
+
+        private void StrategyWebView_NavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
+        {
+            LoadingControl.IsLoading = false;
+            if (args.IsSuccess)
+            {
+                StrategyWebView.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                var contentDialog = new ContentDialog()
+                {
+                    Title = "加载失败",
+                    Content = "电波君可能被墙挡住勒~~o(>_<)o ~~",
+                    PrimaryButtonText = "确定",
+                    FullSizeDesired = false,
+                };
+                Global.ShowDialog(contentDialog);
+            }
+        }
+        #endregion
     }
 }

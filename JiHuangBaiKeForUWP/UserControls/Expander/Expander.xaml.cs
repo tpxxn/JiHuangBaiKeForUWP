@@ -28,8 +28,21 @@ namespace JiHuangBaiKeForUWP.UserControls.Expander
         }
 
         public static readonly DependencyProperty IsExPandedProperty =
-            DependencyProperty.Register("IsExPanded", typeof(bool), typeof(Expander), new PropertyMetadata(false));
+            DependencyProperty.Register("IsExPanded", typeof(bool), typeof(Expander), new PropertyMetadata(false, OnIsExPandedChanged));
 
+        private static void OnIsExPandedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue == null) return;
+            var expander = (Expander)d;
+            if ((bool)e.NewValue)
+            {
+                expander.ExpandToggleButton.IsChecked = true;
+            }
+            else
+            {
+                expander.ExpandToggleButton.IsChecked = false;
+            }
+        }
         #endregion
 
         #region 属性：Header

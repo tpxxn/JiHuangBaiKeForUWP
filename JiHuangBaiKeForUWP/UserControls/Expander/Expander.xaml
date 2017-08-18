@@ -27,6 +27,6 @@
                 <ContentPresenter Content="{x:Bind Header,Mode=OneWay}" Margin="10,0"/>
             </StackPanel>
         </ToggleButton>
-        <ContentPresenter Grid.Row="1" Content="{x:Bind ExpandContent,Mode=OneWay}" Visibility="{x:Bind IsExPanded,Mode=OneWay,Converter={StaticResource BoolToVisibility}}"/>
+        <ContentPresenter Grid.Row="1" Content="{x:Bind ExpandContent,Mode=OneWay}" Visibility="{x:Bind IsExPanded,Mode=OneWay,Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Stretch"/>
     </Grid>
 </UserControl>

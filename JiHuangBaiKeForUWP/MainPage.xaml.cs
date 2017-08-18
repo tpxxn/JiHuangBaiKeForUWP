@@ -10,6 +10,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -21,17 +22,15 @@ using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View;
 
-
 // 对话框示例
-// var dialog = new ContentDialog()
+// var contentDialog = new ContentDialog()
 // {
-//     Title = "当前目录",
-//     Content = ApplicationData.Current.LocalFolder.Path,
+//     Title = "加载失败",
+//     Content = "加载当前页面错误，可能需要翻墙(～￣▽￣)～",
 //     PrimaryButtonText = "确定",
 //     FullSizeDesired = false,
 // };
-// dialog.PrimaryButtonClick += (s, e) => { };
-// await dialog.ShowAsync();
+// Global.ShowDialog(contentDialog);
 
 namespace JiHuangBaiKeForUWP
 {
@@ -201,6 +200,7 @@ namespace JiHuangBaiKeForUWP
         /// </summary>
         private void IconsListBoxGameData_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
             if (sender == IconsListBoxGameData)
             {
                 IconsListBoxSettingAndAbout.SelectedItem = null;
@@ -209,7 +209,6 @@ namespace JiHuangBaiKeForUWP
             {
                 IconsListBoxGameData.SelectedItem = null;
             }
-
             var listBoxItem = (ListBoxItem)((ListBox)sender).SelectedItem;
             if (listBoxItem != null)
             {
@@ -245,10 +244,6 @@ namespace JiHuangBaiKeForUWP
                         FrameTitle.Text = "物品";
                         RootFrame.Navigate(typeof(GoodPage));
                         break;
-//                    case "DedicatedServersListBoxItem":
-//                        FrameTitle.Text = "服务器";
-//                        RootFrame.Navigate(typeof(DedicatedServersPage));
-//                        break;
                     case "StrategyListBoxItem":
                         FrameTitle.Text = "攻略";
                         RootFrame.Navigate(typeof(StrategyPage));

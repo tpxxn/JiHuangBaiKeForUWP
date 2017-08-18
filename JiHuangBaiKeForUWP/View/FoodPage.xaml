@@ -36,7 +36,7 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel x:Name="FoodStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <uc:Expander x:Name="RecipesExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="RecipesExpander" IsExPanded="True" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/CP_CrockPot.png" Width="40" Height="40" />

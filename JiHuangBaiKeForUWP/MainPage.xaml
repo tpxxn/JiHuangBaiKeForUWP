@@ -75,8 +75,8 @@
             <TextBlock x:Name="FrameTitle" RelativePanel.RightOf="HamburgerButton" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="26" Margin="10,0,0,0" Foreground="White" Text="人物"/>
         </RelativePanel>
         <SplitView x:Name="RootSplit" Grid.Row="1" DisplayMode="CompactOverlay" OpenPaneLength="235" CompactPaneLength="56" IsPaneOpen="True" PaneClosing="RootSplit_PaneClosing">
-            <SplitView.Pane>
-                <Grid x:Name="HamburgerGrid" BorderThickness="1" Width="237">
+            <SplitView.Pane >
+                <Grid x:Name="HamburgerGrid" BorderThickness="1" Width="237" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="37"/>
                         <RowDefinition Height="*"/>
