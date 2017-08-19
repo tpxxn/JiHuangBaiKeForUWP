@@ -78,8 +78,7 @@ namespace JiHuangBaiKeForUWP
                 new[]
                 {
                     CharacterListBoxItem, FoodListBoxItem, ScienceListBoxItem, CreatureListBoxItem,
-                    NaturalListBoxItem, GoodListBoxItem, StrategyListBoxItem,
-                    SocialIntercourseListBoxItem
+                    NaturalListBoxItem, GoodListBoxItem
                 }
             );
             _iconsListBoxSettingAndAboutList = new List<ListBoxItem>(
@@ -200,7 +199,6 @@ namespace JiHuangBaiKeForUWP
         /// </summary>
         private void IconsListBoxGameData_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
             if (sender == IconsListBoxGameData)
             {
                 IconsListBoxSettingAndAbout.SelectedItem = null;
@@ -243,14 +241,6 @@ namespace JiHuangBaiKeForUWP
                     case "GoodListBoxItem":
                         FrameTitle.Text = "物品";
                         RootFrame.Navigate(typeof(GoodPage));
-                        break;
-                    case "StrategyListBoxItem":
-                        FrameTitle.Text = "攻略";
-                        RootFrame.Navigate(typeof(StrategyPage));
-                        break;
-                    case "SocialIntercourseListBoxItem":
-                        FrameTitle.Text = "社交";
-                        RootFrame.Navigate(typeof(SocialIntercoursePage));
                         break;
                     case "SettingListBoxItem":
                         FrameTitle.Text = "设置";

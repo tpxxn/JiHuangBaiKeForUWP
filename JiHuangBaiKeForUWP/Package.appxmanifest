@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="4053c70f-1f52-4e36-913d-71ccf7bc9092" Publisher="CN=tpxxn" Version="1.1.1.0" />
-  <mp:PhoneIdentity PhoneProductId="4053c70f-1f52-4e36-913d-71ccf7bc9092" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="53454tpxxn.bytpxxn" Publisher="CN=9CE81905-8FA3-425F-AE78-BC58A25236F9" Version="1.1.2.0" />
+  <mp:PhoneIdentity PhoneProductId="6220777c-6abc-461e-835e-551c940c6288" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>JiHuangBaiKeForUWP</DisplayName>
+    <DisplayName>饥荒百科全书 by tpxxn</DisplayName>
     <PublisherDisplayName>tpxxn</PublisherDisplayName>
     <Logo>Assets\Logo\StoreLogo.png</Logo>
   </Properties>
@@ -34,7 +34,4 @@
       </uap:VisualElements>
     </Application>
   </Applications>
-  <Capabilities>
-    <Capability Name="internetClient" />
-  </Capabilities>
 </Package>
