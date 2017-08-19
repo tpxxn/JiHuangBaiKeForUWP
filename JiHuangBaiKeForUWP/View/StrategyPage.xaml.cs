@@ -35,25 +35,16 @@ namespace JiHuangBaiKeForUWP.View
                 MenuColumn.Width = new GridLength(1, GridUnitType.Star);
                 WebViewColumn.Width = new GridLength(0);
             }
+            //后退按钮可见
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
         }
 
-        public StrategyPage()
-        {
-            this.InitializeComponent();
-            _listBoxItemStack.Clear();
-            _listBoxList = new List<ListBox>(new[] { GameBaseListBox, BossListBox });
-            if (Global.GameVersion == 1)
-            {
-                ChinesizeGameListBoxItem.Visibility = Visibility.Collapsed;
-                ModDownloadListBoxItem.Visibility = Visibility.Collapsed;
-                RecommendModListBoxItem.Visibility = Visibility.Collapsed;
-            }
-            ListBox_Tapped(GameBaseListBox, null);
-            _listBoxItemStack.Push(BaseOperationListBoxItem);
-            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
-        }
+        #region 处理后退按钮
 
+        /// <summary>
+        /// 获取窗口大小(和内置函数数据不一样)
+        /// </summary>
+        /// <returns>Size类型的窗口尺寸</returns>
         public static Size GetScreen()
         {
             var applicationView = ApplicationView.GetForCurrentView();
@@ -64,6 +55,25 @@ namespace JiHuangBaiKeForUWP.View
             return size;
         }
 
+        /// <summary>
+        /// ScrollViewer滚动到指定位置
+        /// </summary>
+        /// <param name="scrollViewer">ScrollViewer的Name</param>
+        /// <param name="uiElement">UIElement的Name</param>
+        public static void ScrollToElement(ScrollViewer scrollViewer, UIElement uiElement)
+        {
+            var transform = uiElement.TransformToVisual(scrollViewer);
+            var point = transform.TransformPoint(new Point(0, 0));
+            if (point.Y != 0)
+            {
+                var y = point.Y + scrollViewer.VerticalOffset;
+                scrollViewer.ChangeView(null, y, null, true);
+            }
+        }
+
+        /// <summary>
+        /// 后退按钮请求处理
+        /// </summary>
         private void App_BackRequested(object sender, BackRequestedEventArgs e)
         {
             var size = GetScreen();
@@ -79,6 +89,7 @@ namespace JiHuangBaiKeForUWP.View
                     {
                         if (listBoxItem.Name != popListBoxItem.Name) continue;
                         popListBoxItem.IsSelected = true;
+                        ScrollToElement(StrategyScrollViewer, listBoxItem);
                         ListBox_Tapped(listBox, null);
                     }
                 }
@@ -88,6 +99,24 @@ namespace JiHuangBaiKeForUWP.View
                 MenuColumn.Width = new GridLength(1, GridUnitType.Star);
                 WebViewColumn.Width = new GridLength(0);
             }
+        }
+
+        #endregion
+
+        public StrategyPage()
+        {
+            this.InitializeComponent();
+            _listBoxItemStack.Clear();
+            _listBoxList = new List<ListBox>(new[] { GameBaseListBox, BossListBox });
+            if (Global.GameVersion == 1)
+            {
+                ChinesizeGameListBoxItem.Visibility = Visibility.Collapsed;
+                ModDownloadListBoxItem.Visibility = Visibility.Collapsed;
+                RecommendModListBoxItem.Visibility = Visibility.Collapsed;
+            }
+            ListBox_Tapped(GameBaseListBox, null);
+            _listBoxItemStack.Push(BaseOperationListBoxItem);
+            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
         }
 
         private void ListBox_Tapped(object sender, TappedRoutedEventArgs e)
