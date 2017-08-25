@@ -103,20 +103,71 @@ namespace JiHuangBaiKeForUWP.View
 
         #endregion
 
+        /// <summary>
+        /// 构造事件
+        /// </summary>
         public StrategyPage()
         {
             this.InitializeComponent();
             _listBoxItemStack.Clear();
             _listBoxList = new List<ListBox>(new[] { GameBaseListBox, BossListBox });
+            //TGP隐藏汉化游戏、Mod订阅、推荐Mod
             if (Global.GameVersion == 1)
             {
                 ChinesizeGameListBoxItem.Visibility = Visibility.Collapsed;
                 ModDownloadListBoxItem.Visibility = Visibility.Collapsed;
                 RecommendModListBoxItem.Visibility = Visibility.Collapsed;
             }
+            //隐藏BOSS打法
+            if (Global.GameVersion == 4)
+            {
+                HideListBoxItem(new List<ListBoxItem>
+                {
+                    TreguardBossListBoxItem, PoisonBirchnutBossListBoxItem, SpiderQueenBossListBoxItem, VargQueenBossListBoxItem,
+                    EwecusQueenBossListBoxItem, BeeQueenBossListBoxItem, AncientGuardianBossListBoxItem, DeerclopsBossListBoxItem,
+                    MooseBossListBoxItem, DragonflyBossListBoxItem, BeargerBossListBoxItem, ReanimatedSkeletonBossListBoxItem,
+                    AncientFuelweaverBossListBoxItem, ToadstoolBossListBoxItem, MiseryToadstoolBossListBoxItem, KlausBossListBoxItem,
+                    AntlionBossListBoxItem
+                });
+            }
+            else
+            {
+                HideListBoxItem(new List<ListBoxItem>
+                {
+                    PlamTreeguardBossListBoxItem, QuackenBossListBoxItem, SeaInadoBossListBoxItem, TigerSharkBossListBoxItem
+                });
+                if (Global.GameVersion != 0 && Global.GameVersion != 1)
+                {
+                    HideListBoxItem(new List<ListBoxItem>
+                    {
+                        EwecusQueenBossListBoxItem, BeeQueenBossListBoxItem, ReanimatedSkeletonBossListBoxItem, AncientFuelweaverBossListBoxItem,
+                        ToadstoolBossListBoxItem, MiseryToadstoolBossListBoxItem, KlausBossListBoxItem, AntlionBossListBoxItem
+                    });
+                    if (Global.GameVersion == 2)
+                    {
+                        HideListBoxItem(new List<ListBoxItem>
+                        {
+                            VargQueenBossListBoxItem, PoisonBirchnutBossListBoxItem, MooseBossListBoxItem, DragonflyBossListBoxItem,
+                            BeargerBossListBoxItem
+                        });
+                    }
+                }
+            }
             ListBox_Tapped(GameBaseListBox, null);
             _listBoxItemStack.Push(BaseOperationListBoxItem);
             SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+        }
+
+        /// <summary>
+        /// 隐藏listBoxItemList列表中的ListBoxItem
+        /// </summary>
+        /// <param name="listBoxItemList">需要隐藏的ListBoxItem列表</param>
+        private static void HideListBoxItem(List<ListBoxItem> listBoxItemList)
+        {
+            foreach (var listBoxItem in listBoxItemList)
+            {
+                listBoxItem.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void ListBox_Tapped(object sender, TappedRoutedEventArgs e)

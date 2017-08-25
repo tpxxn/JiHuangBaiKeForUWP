@@ -88,8 +88,17 @@
                         <ListBoxItem x:Name="SpiderQueenBossListBoxItem" Height="50" Style="{StaticResource StrategyListBoxItemStyle}">
                             <TextBlock x:Name="SpiderQueenBossTextBlock" Text="蜘蛛女王" HorizontalAlignment="Stretch" FontSize="18"/>
                         </ListBoxItem>
+                        <ListBoxItem x:Name="VargQueenBossListBoxItem" Height="50" Style="{StaticResource StrategyListBoxItemStyle}">
+                            <TextBlock x:Name="VargQueenBossTextBlock" Text="座狼" HorizontalAlignment="Stretch" FontSize="18"/>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="EwecusQueenBossListBoxItem" Height="50" Style="{StaticResource StrategyListBoxItemStyle}">
+                            <TextBlock x:Name="EwecusQueenBossTextBlock" Text="粘液钢羊" HorizontalAlignment="Stretch" FontSize="18"/>
+                        </ListBoxItem>
                         <ListBoxItem x:Name="BeeQueenBossListBoxItem" Height="50" Style="{StaticResource StrategyListBoxItemStyle}">
                             <TextBlock x:Name="BeeQueenBossTextBlock" Text="蜜蜂女王" HorizontalAlignment="Stretch" FontSize="18"/>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="AncientGuardianBossListBoxItem" Height="50" Style="{StaticResource StrategyListBoxItemStyle}">
+                            <TextBlock x:Name="AncientGuardianBossTextBlock" Text="远古守护者" HorizontalAlignment="Stretch" FontSize="18"/>
                         </ListBoxItem>
                         <ListBoxItem x:Name="DeerclopsBossListBoxItem" Height="50" Style="{StaticResource StrategyListBoxItemStyle}">
                             <TextBlock x:Name="DeerclopsBossTextBlock" Text="独眼巨鹿" HorizontalAlignment="Stretch" FontSize="18"/>
@@ -120,6 +129,18 @@
                         </ListBoxItem>
                         <ListBoxItem x:Name="AntlionBossListBoxItem" Height="50" Style="{StaticResource StrategyListBoxItemStyle}">
                             <TextBlock x:Name="AntlionBossTextBlock" Text="蚁狮" HorizontalAlignment="Stretch" FontSize="18"/>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="PlamTreeguardBossListBoxItem" Height="50" Style="{StaticResource StrategyListBoxItemStyle}">
+                        <TextBlock x:Name="PlamTreeguardBossTextBlock" Text="椰树守卫" HorizontalAlignment="Stretch" FontSize="18"/>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="QuackenBossListBoxItem" Height="50" Style="{StaticResource StrategyListBoxItemStyle}">
+                            <TextBlock x:Name="QuackenBossTextBlock" Text="呱肯乌贼" HorizontalAlignment="Stretch" FontSize="18"/>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="SeaInadoBossListBoxItem" Height="50" Style="{StaticResource StrategyListBoxItemStyle}">
+                            <TextBlock x:Name="SeaInadoBossTextBlock" Text="豹卷风" HorizontalAlignment="Stretch" FontSize="18"/>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="TigerSharkBossListBoxItem" Height="50" Style="{StaticResource StrategyListBoxItemStyle}">
+                            <TextBlock x:Name="TigerSharkBossTextBlock" Text="虎鲨" HorizontalAlignment="Stretch" FontSize="18"/>
                         </ListBoxItem>
                     </ListBox>
                 </expander:Expander>
