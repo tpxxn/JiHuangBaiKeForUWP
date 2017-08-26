@@ -23,6 +23,7 @@ namespace JiHuangBaiKeForUWP.Model
         /// 应用程序文件夹
         /// </summary>
         public static readonly StorageFolder ApplicationFolder = ApplicationData.Current.LocalFolder;
+        public static string ErrorStackString { get; set; }
 
         public static Grid RootGrid { get; set; }
         public static TextBlock FrameTitle { get; set; }

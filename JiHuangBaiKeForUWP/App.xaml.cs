@@ -18,6 +18,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
+using JiHuangBaiKeForUWP.View;
+using UnhandledExceptionEventArgs = JiHuangBaiKeForUWP.Model.UnhandledExceptionEventArgs;
 
 namespace JiHuangBaiKeForUWP
 {
@@ -34,7 +36,54 @@ namespace JiHuangBaiKeForUWP
         {
             InitializeComponent();
             Suspending += OnSuspending;
+            //未处理异常的处理
+            UnhandledException += OnUnhandledException;
         }
+
+        #region 异常处理
+        private void OnUnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+            Global.ErrorStackString = GetExceptionDetailMessage(e.Exception);
+            ErrorReportDialog();
+            //            await new MessageDialog("Application Unhandled Exception:\r\n" + GetExceptionDetailMessage(e.Exception), "程序出错嘞 (Ｔ▽Ｔ)").ShowAsync();
+        }
+
+        /// <summary>
+        /// Should be called from OnActivated and OnLaunched
+        /// </summary>
+        private static void RegisterExceptionHandlingSynchronizationContext()
+        {
+            ExceptionHandlingSynchronizationContext
+                .Register()
+                .UnhandledException += SynchronizationContext_UnhandledException;
+        }
+
+        private static void SynchronizationContext_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+            Global.ErrorStackString = GetExceptionDetailMessage(e.Exception);
+            ErrorReportDialog();
+            //            await new MessageDialog("Synchronization Context Unhandled Exception:\r\n" + GetExceptionDetailMessage(e.Exception), "程序出错嘞 (Ｔ▽Ｔ)").ShowAsync();
+        }
+
+        private static string GetExceptionDetailMessage(Exception ex)
+        {
+            return $"{ex.Message}\r\n{ex.StackTraceEx()}";
+        }
+
+        private static void ErrorReportDialog()
+        {
+            var contentDialog = new ContentDialog
+            {
+                Content = new ErrorReportPage(Global.ErrorStackString),
+                PrimaryButtonText = "取消",
+                FullSizeDesired = false,
+                Style = Global.Transparent
+            };
+            Global.ShowDialog(contentDialog);
+        }
+        #endregion
 
         /// <summary>
         /// 注册语音指令
@@ -63,6 +112,9 @@ namespace JiHuangBaiKeForUWP
         /// <param name="e">有关启动请求和过程的详细信息。</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
+            //注册异常处理
+            RegisterExceptionHandlingSynchronizationContext();
+
             #region 帧计数器
             //#if DEBUG
             //    if (System.Diagnostics.Debugger.IsAttached)
@@ -133,6 +185,8 @@ namespace JiHuangBaiKeForUWP
 
         protected override void OnActivated(IActivatedEventArgs args)
         {
+            //注册异常处理
+            RegisterExceptionHandlingSynchronizationContext();
             base.OnActivated(args);
             // 如果程序不是因为语音命令而激活的，就不处理
             if (args.Kind != ActivationKind.VoiceCommand) return;
