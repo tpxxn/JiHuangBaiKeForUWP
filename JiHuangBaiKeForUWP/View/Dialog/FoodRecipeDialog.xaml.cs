@@ -51,8 +51,18 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             FoodRecipePriority.ShowIfZero = true;
             FoodRecipePriority.Value = c.Priority;
             FoodRecipePriority.BarColor = Global.ColorPink;
-            Need1Button.Source = Global.GetGameResourcePath(c.NeedPicture1);
-            Need1Button.Text = c.Need1;
+            if (c.EnName != "Wet Goop")
+            {
+                Need1Button.Source = Global.GetGameResourcePath(c.NeedPicture1);
+                Need1Button.Text = c.Need1;
+            }
+            else
+            {
+                FoodRecipeHhsColumnDefinition.Width = new GridLength(0);
+                FoodRecipePcpStackPanel.HorizontalAlignment = HorizontalAlignment.Center;
+                FoodNeedStackPanel.Visibility = Visibility.Collapsed;
+                FoodRecommendStackPanel.Visibility = Visibility.Collapsed;
+            }
             if (c.NeedOr != null)
             {
                 NeedOrButton.Visibility = Visibility.Visible;
@@ -161,10 +171,13 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 FoodRecipeRestrictionsTextBlock.Visibility = Visibility.Collapsed;
             }
             #endregion
-            Recommend1Button.Source = Global.GetGameResourcePath(c.Recommend1);
-            Recommend2Button.Source = Global.GetGameResourcePath(c.Recommend2);
-            Recommend3Button.Source = Global.GetGameResourcePath(c.Recommend3);
-            Recommend4Button.Source = Global.GetGameResourcePath(c.Recommend4);  
+            if (c.Recommend1 != null)
+            {
+                Recommend1Button.Source = Global.GetGameResourcePath(c.Recommend1);
+                Recommend2Button.Source = Global.GetGameResourcePath(c.Recommend2);
+                Recommend3Button.Source = Global.GetGameResourcePath(c.Recommend3);
+                Recommend4Button.Source = Global.GetGameResourcePath(c.Recommend4);
+            }
             FoodRecipeIntroduction.Text = c.Introduce;
             Console.Text = $"c_give(\"{c.Console}\",10)";
         }

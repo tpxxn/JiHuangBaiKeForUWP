@@ -1860,31 +1860,31 @@
 				"Introduction": "龙蝇是夏季BOSS，通常可以在荒漠的岩浆附近找到。拍打攻击伤害为75(对生物150)，并且会放出三次37.5(对生物75)伤害的火环，有燃烧效果。联机版的龙蝇还会生成能燃烧物品的熔岩幼虫，要十分小心。如果龙蝇离开它的巢穴过远就会飞回去并恢复满状态。可以建造围墙挡住熔岩幼虫然后穿上足够的装备击杀。",
 				"Console": "dragonfly"
 			},
-			{
-				"Picture": "A_bearger",
-				"Name": "熊獾",
-				"EnName": "Bearger",
-				"Health": 3000,
-				"Attack": 100,
-				"AttackInterval": 3,
-				"AttackScope": 6,
-				"MoveSpeed": 3,
-				"RunSpeed": 10,
-				"Dangerous": 8,
-				"SanityEffect": -100,
-				"IsActiveAttack": false,
-				"IsTeamWork": true,
-				"Goods": [
-					"F_meat|×8",
-					"S_thick_fur|×1"
-				],
-				"Ability": [
-					"范围攻击",
-					"吃地上和容器里的食物"
-				],
-				"Introduction": "熊獾是秋季BOSS，出现后会到处寻找食物吃，包括箱子里的食物，会被蜂箱吸引，吃了10个蜂蜜就会睡觉。它路过的建筑和树木会被摧毁。在联机版里，熊獾会一边走一边掉落毛簇，90个毛簇即可制作三个厚皮毛(击杀熊獾也会掉落一个厚皮毛)。熊獾被激怒后移动速度会提升到6，精神影响也会变成-400/min，它会攻击玩家和生物，攻击生物时攻击力为200点。它的攻击方式是打三下然后用前爪猛击地面，产生的冲击波会摧毁树木和建筑，所以击杀熊獾时要远离家里。",
-				"Console": "bearger"
-			},
+      {
+        "Picture": "A_bearger",
+        "Name": "熊獾",
+        "EnName": "Bearger",
+        "Health": 3000,
+        "Attack": 100,
+        "AttackInterval": 3,
+        "AttackScope": 6,
+        "MoveSpeed": 3,
+        "RunSpeed": 10,
+        "Dangerous": 8,
+        "SanityEffect": -100,
+        "IsActiveAttack": false,
+        "IsTeamWork": false,
+        "Goods": [
+          "F_meat|×8",
+          "S_thick_fur|×1"
+        ],
+        "Ability": [
+          "范围攻击",
+          "吃地上和容器里的食物"
+        ],
+        "Introduction": "熊獾是秋季BOSS，出现后会到处寻找食物吃，包括箱子里的食物，会被蜂箱吸引，吃了10个蜂蜜就会睡觉。它路过的建筑和树木会被摧毁。在联机版里，熊獾会一边走一边掉落毛簇，90个毛簇即可制作三个厚皮毛(击杀熊獾也会掉落一个厚皮毛)。熊獾被激怒后移动速度会提升到6，精神影响也会变成-400/min，它会攻击玩家和生物，攻击生物时攻击力为200点。它的攻击方式是打三下然后用前爪猛击地面，产生的冲击波会摧毁树木和建筑，所以击杀熊獾时要远离家里。",
+        "Console": "bearger"
+      },
 			{
 				"Picture": "A_deerclops",
 				"Name": "独眼巨鹿",

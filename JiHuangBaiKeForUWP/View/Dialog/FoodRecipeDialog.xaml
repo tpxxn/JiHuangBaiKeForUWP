@@ -29,7 +29,7 @@
             <Image Grid.Row="3" x:Name="FoodRecipePortableCrockPot" Height="40" HorizontalAlignment="Center" Margin="0,5,0,0" Visibility="Collapsed"/>
             <Grid Grid.Row="4" HorizontalAlignment="Center" Width="600" Margin="0,10,0,0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition x:Name="FoodRecipeHhsColumnDefinition" Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Width="200" HorizontalAlignment="Right">
@@ -37,13 +37,13 @@
                     <charts:BarChart x:Name="FoodRecipeHunger" Label="饥饿" MaxValue="150"/>
                     <charts:BarChart x:Name="FoodRecipeSanity" Label="精神" MaxValue="50"/>
                 </StackPanel>
-                <StackPanel Grid.Column="1" Width="200" HorizontalAlignment="Left">
+                <StackPanel x:Name="FoodRecipePcpStackPanel" Grid.Column="1" Width="200" HorizontalAlignment="Left">
                     <charts:BarChart x:Name="FoodRecipePerish" Label="保鲜" MaxValue="20"/>
                     <charts:BarChart x:Name="FoodRecipeCooktime" Label="烹饪" MaxValue="60"/>
                     <charts:BarChart x:Name="FoodRecipePriority" Label="优先" MaxValue="30"/>
                 </StackPanel>
             </Grid>
-            <StackPanel Grid.Row="5" Margin="0,5,0,0">
+            <StackPanel x:Name="FoodNeedStackPanel" Grid.Row="5" Margin="0,5,0,0">
                 <TextBlock Text="烹饪需求：" />
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                     <picButton:PicButton x:Name="Need1Button" Tapped="Food_Jump_Tapped"/>
@@ -56,7 +56,7 @@
                 <TextBlock x:Name="FoodRecipeRestrictionsTextBlock" Text="填充限制：" />
                 <StackPanel x:Name="FoodRecipeRestrictionsStackPanel" HorizontalAlignment="Center" Orientation="Vertical"/>
             </StackPanel>
-            <StackPanel Grid.Row="7" Margin="0,5,0,0">
+            <StackPanel x:Name="FoodRecommendStackPanel" Grid.Row="7" Margin="0,5,0,0">
                 <TextBlock Text="推荐食谱：" />
                 <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
