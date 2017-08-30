@@ -44,7 +44,8 @@
                 </StackPanel>
                 <StackPanel x:Name="BarChartStackPanel2" Grid.Column="1" Width="200" HorizontalAlignment="Left">
                     <charts:BarChart x:Name="GoodWet" Label="防潮" MaxValue="20" LabelWidth="90"/>
-                    <charts:BarChart x:Name="GoodHeat" Label="隔热" MaxValue="10" LabelWidth="90"/>
+                    <charts:BarChart x:Name="GoodColdResistance" Label="防寒" MaxValue="10" LabelWidth="90"/>
+                    <charts:BarChart x:Name="GoodHeatResistance" Label="耐热" MaxValue="10" LabelWidth="90"/>
                     <charts:BarChart x:Name="GoodSanity" Label="精神" MaxValue="90" LabelWidth="90"/>
                     <charts:BarChart x:Name="GoodHunger" Label="饥饿" MaxValue="90" LabelWidth="90"/>
                     <charts:BarChart x:Name="GoodDefense" Label="防御" MaxValue="400" LabelWidth="90"/>
@@ -59,11 +60,15 @@
             <TextBlock Grid.Row="7" x:Name="GoodIntroduction" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="10,20,10,10" />
             <Grid x:Name="CopyGrid" Grid.Row="8" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Name="Console" Margin="0,5,15,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
-                <Button Grid.Column="1" HorizontalAlignment="Left" Tapped="Copy_Tapped">
+                <TextBlock x:Name="ConsolePre" Margin="0,5,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <TextBox x:Name="ConsoleNum" Grid.Column="1" Text="1" MaxLength="4" TextChanged="ConsoleNum_TextChanged" TextAlignment="Center"/>
+                <TextBlock Grid.Column="2" x:Name="ConsolePos" Text=")" Margin="0,5,15,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <Button Grid.Column="3" HorizontalAlignment="Left" Tapped="Copy_Tapped">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Copy" />

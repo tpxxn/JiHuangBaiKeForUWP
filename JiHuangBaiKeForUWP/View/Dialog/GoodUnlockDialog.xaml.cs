@@ -46,22 +46,28 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     {
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = thickness,
-                        Source = Global.GetGameResourcePath(picPath),
+                        Source = StringProcess.GetGameResourcePath(picPath),
                         PictureSize = 75
                     };
                     GoodDropByWrapPanel.Children.Add(picButton);
                 }
             }
             // 解锁人物
-            GoodUnlockCharacterWrapPicButton.Source = Global.GetGameResourcePath(c.UnlockCharacter);
+            GoodUnlockCharacterWrapPicButton.Source = StringProcess.GetGameResourcePath(c.UnlockCharacter);
             GoodIntroduction.Text = c.Introduction;
-            Console.Text = $"c_give(\"{c.Console}\",10)";
+            ConsolePre.Text = $"c_give(\"{c.Console}\",";
+        }
+
+        private void ConsoleNum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            StringProcess.ConsoleNumTextCheck(textbox);
         }
 
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var dataPackage = new DataPackage();
-            dataPackage.SetText(Console.Text);
+            dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
         }
     }

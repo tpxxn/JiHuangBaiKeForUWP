@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -53,7 +54,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             FoodRecipePriority.BarColor = Global.ColorPink;
             if (c.EnName != "Wet Goop")
             {
-                Need1Button.Source = Global.GetGameResourcePath(c.NeedPicture1);
+                Need1Button.Source = StringProcess.GetGameResourcePath(c.NeedPicture1);
                 Need1Button.Text = c.Need1;
             }
             else
@@ -66,19 +67,19 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             if (c.NeedOr != null)
             {
                 NeedOrButton.Visibility = Visibility.Visible;
-                NeedOrButton.Source = Global.GetGameResourcePath(c.NeedPictureOr);
+                NeedOrButton.Source = StringProcess.GetGameResourcePath(c.NeedPictureOr);
                 NeedOrButton.Text = c.NeedOr;
             }
             if (c.Need2 != null)
             {
                 Need2Button.Visibility = Visibility.Visible;
-                Need2Button.Source = Global.GetGameResourcePath(c.NeedPicture2);
+                Need2Button.Source = StringProcess.GetGameResourcePath(c.NeedPicture2);
                 Need2Button.Text = c.Need2;
             }
             if (c.Need3 != null)
             {
                 Need3Button.Visibility = Visibility.Visible;
-                Need3Button.Source = Global.GetGameResourcePath(c.NeedPicture3);
+                Need3Button.Source = StringProcess.GetGameResourcePath(c.NeedPicture3);
                 Need3Button.Text = c.Need3;
             }
             #region restrictions
@@ -86,7 +87,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var restrictions2 = new List<string>();
             var prePicture = new[] { c.Restrictions1.Text, c.Restrictions2.Text, c.Restrictions3.Text, c.Restrictions4.Text, c.Restrictions5.Text };
             var pre = new[] { c.Restrictions1.Pre, c.Restrictions2.Pre, c.Restrictions3.Pre, c.Restrictions4.Pre, c.Restrictions5.Pre };
-            var restrictionsAttributes = Global.StringDelRepeatData(pre);
+            var restrictionsAttributes = StringProcess.StringDelRepeatData(pre);
             if (pre[0] == restrictionsAttributes[0] && prePicture[0] != null)
             {
                 restrictions1.Add(prePicture[0]);
@@ -173,19 +174,25 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             #endregion
             if (c.Recommend1 != null)
             {
-                Recommend1Button.Source = Global.GetGameResourcePath(c.Recommend1);
-                Recommend2Button.Source = Global.GetGameResourcePath(c.Recommend2);
-                Recommend3Button.Source = Global.GetGameResourcePath(c.Recommend3);
-                Recommend4Button.Source = Global.GetGameResourcePath(c.Recommend4);
+                Recommend1Button.Source = StringProcess.GetGameResourcePath(c.Recommend1);
+                Recommend2Button.Source = StringProcess.GetGameResourcePath(c.Recommend2);
+                Recommend3Button.Source = StringProcess.GetGameResourcePath(c.Recommend3);
+                Recommend4Button.Source = StringProcess.GetGameResourcePath(c.Recommend4);
             }
             FoodRecipeIntroduction.Text = c.Introduce;
-            Console.Text = $"c_give(\"{c.Console}\",10)";
+            ConsolePre.Text = $"c_give(\"{c.Console}\",";
+        }
+
+        private void ConsoleNum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            StringProcess.ConsoleNumTextCheck(textbox);
         }
 
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var dataPackage = new DataPackage();
-            dataPackage.SetText(Console.Text);
+            dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
         }
 
@@ -193,7 +200,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
         {
             var picturePath = ((PicButton)sender).Source;
             var rootFrame = Global.RootFrame;
-            var shortName = Global.GetFileName(picturePath);
+            var shortName = StringProcess.GetFileName(picturePath);
             await Global.SetAutoSuggestBoxItem();
             foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
             {
@@ -211,6 +218,5 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 }
             }
         }
-        
     }
 }

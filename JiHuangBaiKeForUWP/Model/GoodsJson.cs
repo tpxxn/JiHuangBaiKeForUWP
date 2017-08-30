@@ -46,7 +46,8 @@ namespace JiHuangBaiKeForUWP.Model
         public double AttackWet { get; set; }
         public string Durability { get; set; }
         public double Wet { get; set; }
-        public double Heat { get; set; }
+        public double ColdResistance { get; set; }
+        public double HeatResistance { get; set; }
         public double Sanity { get; set; }
         public double Hunger { get; set; }
         public double Defense { get; set; }

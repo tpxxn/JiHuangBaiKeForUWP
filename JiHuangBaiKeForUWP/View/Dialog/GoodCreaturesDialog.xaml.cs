@@ -59,20 +59,26 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     {
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = thickness,
-                        Source = Global.GetGameResourcePath(goodSource),
+                        Source = StringProcess.GetGameResourcePath(goodSource),
                         Text = goodText
                     };
                     picButton.Tapped += Good_Jump_Tapped;
                     GoodGoodsWrapPanel.Children.Add(picButton);
                 }
             }
-            Console.Text = $"c_give(\"{c.Console}\",10)";
+            ConsolePre.Text = $"c_give(\"{c.Console}\",";
+        }
+
+        private void ConsoleNum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            StringProcess.ConsoleNumTextCheck(textbox);
         }
 
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var dataPackage = new DataPackage();
-            dataPackage.SetText(Console.Text);
+            dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
         }
 
@@ -80,7 +86,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
         {
             var picturePath = ((PicButton)sender).Source;
             var rootFrame = Global.RootFrame;
-            var shortName = Global.GetFileName(picturePath);
+            var shortName = StringProcess.GetFileName(picturePath);
             var mainPageListBoxItem = Global.MainPageListBoxItem;
             var frameTitle = Global.FrameTitle;
             await Global.SetAutoSuggestBoxItem();

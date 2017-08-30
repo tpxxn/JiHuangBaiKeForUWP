@@ -69,14 +69,14 @@ namespace JiHuangBaiKeForUWP.View
         public async Task Deserialize()
         {
             _naturalBiomesData.Clear();
-            var natural = JsonConvert.DeserializeObject<NaturalRootObject>(await Global.GetJsonString("Natural.json"));
+            var natural = JsonConvert.DeserializeObject<NaturalRootObject>(await StringProcess.GetJsonString("Natural.json"));
             foreach (var natureBiomesItems in natural.Biomes.Nature)
             {
                 _naturalBiomesData.Add(natureBiomesItems);
             }
             foreach (var natureBiomesItems in _naturalBiomesData)
             {
-                natureBiomesItems.Picture = Global.GetGameResourcePath(natureBiomesItems.Picture);
+                natureBiomesItems.Picture = StringProcess.GetGameResourcePath(natureBiomesItems.Picture);
             }
         }
 

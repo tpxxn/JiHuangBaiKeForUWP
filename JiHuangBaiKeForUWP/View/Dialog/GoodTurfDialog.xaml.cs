@@ -38,18 +38,24 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             }
             else
             {
-                GoodMakePicButton.Source = Global.GetGameResourcePath(c.Make);
+                GoodMakePicButton.Source = StringProcess.GetGameResourcePath(c.Make);
             }
             //草皮纹理
-            GoodSourceTextureWrapPanel.Source = new BitmapImage(new Uri(Global.GetGameResourcePath(c.Texture)));
+            GoodSourceTextureWrapPanel.Source = new BitmapImage(new Uri(StringProcess.GetGameResourcePath(c.Texture)));
             GoodIntroduction.Text = c.Introduction;
-            Console.Text = $"c_give(\"{c.Console}\",10)";
+            ConsolePre.Text = $"c_give(\"{c.Console}\",";
+        }
+
+        private void ConsoleNum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            StringProcess.ConsoleNumTextCheck(textbox);
         }
 
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var dataPackage = new DataPackage();
-            dataPackage.SetText(Console.Text);
+            dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
         }
 

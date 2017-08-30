@@ -31,7 +31,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             GoodName.Text = c.Name;
             GoodEnName.Text = c.EnName;
             if (c.Attack== 0 && c.MinAttack == 0 && c.MaxAttack == 0 && string.IsNullOrEmpty(c.AttackString) && c.AttackOnBoat == 0 &&
-                c.AttackWet == 0 && string.IsNullOrEmpty(c.Durability) && c.Wet == 0 && c.Heat == 0 && c.Sanity == 0 && c.Hunger == 0 && c.Defense == 0)
+                c.AttackWet == 0 && string.IsNullOrEmpty(c.Durability) && c.Wet == 0 && c.ColdResistance == 0 && c.HeatResistance == 0 && c.Sanity == 0 && c.Hunger == 0 && c.Defense == 0)
             {
                 BarChartGrid.Visibility = Visibility.Collapsed;
             }
@@ -44,7 +44,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     BarChartStackPanel2.HorizontalAlignment = HorizontalAlignment.Center;
                     BarChartGridColumn1.Width = new GridLength(0);
                 }
-                if (c.Wet == 0 && c.Heat == 0 && c.Sanity == 0 && c.Hunger == 0 && c.Defense == 0)
+                if (c.Wet == 0 && c.ColdResistance == 0 && c.HeatResistance == 0 && c.Sanity == 0 && c.Hunger == 0 && c.Defense == 0)
                 {
                     BarChartStackPanel2.Visibility = Visibility.Collapsed;
                     BarChartStackPanel1.HorizontalAlignment = HorizontalAlignment.Center;
@@ -124,14 +124,23 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             {
                 GoodWet.Visibility = Visibility.Collapsed;
             }
-            if (c.Heat != 0)
+            if (c.ColdResistance != 0)
             {
-                GoodHeat.Value = c.Heat;
-                GoodHeat.BarColor = Global.ColorOrange;
+                GoodColdResistance.Value = c.ColdResistance;
+                GoodColdResistance.BarColor = Global.ColorOrange;
             }
             else
             {
-                GoodHeat.Visibility = Visibility.Collapsed;
+                GoodColdResistance.Visibility = Visibility.Collapsed;
+            }
+            if (c.HeatResistance != 0)
+            {
+                GoodHeatResistance.Value = c.HeatResistance;
+                GoodHeatResistance.BarColor = Global.ColorOrange;
+            }
+            else
+            {
+                GoodHeatResistance.Visibility = Visibility.Collapsed;
             }
             if (c.Sanity != 0)
             {
@@ -186,14 +195,14 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             }
             else
             {
-                GoodSourcePicButton.Source = Global.GetGameResourcePath(c.DropBy);
+                GoodSourcePicButton.Source = StringProcess.GetGameResourcePath(c.DropBy);
             }
             // 介绍
             GoodIntroduction.Text = c.Introduction;
             // 控制台
             if (c.Console != null)
             {
-                Console.Text = $"c_give(\"{c.Console}\",10)";
+                ConsolePre.Text = $"c_give(\"{c.Console}\",";
             }
             else
             {
@@ -201,10 +210,16 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             }
         }
 
+        private void ConsoleNum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            StringProcess.ConsoleNumTextCheck(textbox);
+        }
+
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var dataPackage = new DataPackage();
-            dataPackage.SetText(Console.Text);
+            dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
         }
     }

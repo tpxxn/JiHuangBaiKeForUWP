@@ -23,8 +23,15 @@ namespace JiHuangBaiKeForUWP.Model
         /// 应用程序文件夹
         /// </summary>
         public static readonly StorageFolder ApplicationFolder = ApplicationData.Current.LocalFolder;
+
+        /// <summary>
+        /// 错误堆栈字符串
+        /// </summary>
         public static string ErrorStackString { get; set; }
 
+        /// <summary>
+        /// MainPage需要保存在Global里额几个控件对象
+        /// </summary>
         public static Grid RootGrid { get; set; }
         public static TextBlock FrameTitle { get; set; }
         public static Frame RootFrame { get; set; }
@@ -61,77 +68,13 @@ namespace JiHuangBaiKeForUWP.Model
         };
 
         #endregion
+        
+        #region 对话框
 
         /// <summary>
         /// 透明Style
         /// </summary>
         public static readonly Style Transparent = (Style)Application.Current.Resources["TransparentDialog"];
-
-        /// <summary>
-        /// 删除重复数据
-        /// </summary>
-        /// <param name="str">字符串数组</param>
-        public static string[] StringDelRepeatData(string[] str)
-        {
-            var b = str.GroupBy(p => p).Select(p => p.Key).ToArray();
-            if (b.Length != 1) return b;
-            var temp = new List<string>
-            {
-                b[0],
-                ""
-            };
-            b = temp.ToArray();
-            return b;
-        }
-
-        /// <summary>
-        /// 获取游戏图片位置
-        /// </summary>
-        /// <param name="str">图片名称</param>
-        /// <returns>完整路径</returns>
-        public static string GetGameResourcePath(string str)
-        {
-            var strHead = str.Substring(0, 1);
-            switch (strHead)
-            {
-                case "A":
-                    str = $"ms-appx:///Assets/GameResources/Creatures/{str}.png";
-                    break;
-                case "C":
-                    str = $"ms-appx:///Assets/GameResources/Charcters/{str}.png";
-                    break;
-                case "F":
-                    str = $"ms-appx:///Assets/GameResources/Foods/{str}.png";
-                    break;
-                case "G":
-                    str = $"ms-appx:///Assets/GameResources/Goods/{str}.png";
-                    break;
-                case "N":
-                    str = $"ms-appx:///Assets/GameResources/Natures/{str}.png";
-                    break;
-                case "S":
-                    str = $"ms-appx:///Assets/GameResources/Sciences/{str}.png";
-                    break;
-                case "T":
-                    str = $"ms-appx:///Assets/GameResources/Goods/{str}.png";
-                    break;
-            }
-            return str;
-        }
-
-        /// <summary>
-        /// 获取文件名
-        /// </summary>
-        /// <param name="path">长字符串</param>
-        /// <returns>资源文件路径</returns>
-        public static string GetFileName(string path)
-        {
-            path = path.Substring(path.LastIndexOf('/') + 1, path.Length - path.LastIndexOf('/') - 5);
-            return path;
-        }
-
-        #region 对话框
-
 
         /// <summary>
         /// 显示对话框
@@ -281,14 +224,14 @@ namespace JiHuangBaiKeForUWP.Model
             GoodOthersData.Clear();
             #endregion
             #region 人物
-            var character = JsonConvert.DeserializeObject<CharacterRootObject>(await GetJsonString("Characters.json"));
+            var character = JsonConvert.DeserializeObject<CharacterRootObject>(await StringProcess.GetJsonString("Characters.json"));
             foreach (var characterItems in character.Character)
             {
                 CharacterData.Add(characterItems);
             }
             foreach (var characterItems in CharacterData)
             {
-                characterItems.Picture = GetGameResourcePath(characterItems.Picture);
+                characterItems.Picture = StringProcess.GetGameResourcePath(characterItems.Picture);
             }
             foreach (var characterItems in CharacterData)
             {
@@ -296,14 +239,14 @@ namespace JiHuangBaiKeForUWP.Model
             }
             #endregion
             #region 食物
-            var food = JsonConvert.DeserializeObject<FoodRootObject>(await GetJsonString("Foods.json"));
+            var food = JsonConvert.DeserializeObject<FoodRootObject>(await StringProcess.GetJsonString("Foods.json"));
             foreach (var foodRecipeItems in food.FoodRecipe.FoodRecipes)
             {
                 FoodRecipeData.Add(foodRecipeItems);
             }
             foreach (var foodRecipeItems in FoodRecipeData)
             {
-                foodRecipeItems.Picture = GetGameResourcePath(foodRecipeItems.Picture);
+                foodRecipeItems.Picture = StringProcess.GetGameResourcePath(foodRecipeItems.Picture);
             }
             foreach (var foodMeatsItems in food.FoodMeats.Foods)
             {
@@ -311,7 +254,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var foodMeatsItems in FoodMeatData)
             {
-                foodMeatsItems.Picture = GetGameResourcePath(foodMeatsItems.Picture);
+                foodMeatsItems.Picture = StringProcess.GetGameResourcePath(foodMeatsItems.Picture);
             }
             foreach (var foodVegetablesItems in food.FoodVegetables.Foods)
             {
@@ -319,7 +262,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var foodVegetablesItems in FoodVegetableData)
             {
-                foodVegetablesItems.Picture = GetGameResourcePath(foodVegetablesItems.Picture);
+                foodVegetablesItems.Picture = StringProcess.GetGameResourcePath(foodVegetablesItems.Picture);
             }
             foreach (var foodFruitItems in food.FoodFruit.Foods)
             {
@@ -327,7 +270,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var foodFruitItems in FoodFruitData)
             {
-                foodFruitItems.Picture = GetGameResourcePath(foodFruitItems.Picture);
+                foodFruitItems.Picture = StringProcess.GetGameResourcePath(foodFruitItems.Picture);
             }
             foreach (var foodEggsItems in food.FoodEggs.Foods)
             {
@@ -335,7 +278,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var foodEggsItems in FoodEggData)
             {
-                foodEggsItems.Picture = GetGameResourcePath(foodEggsItems.Picture);
+                foodEggsItems.Picture = StringProcess.GetGameResourcePath(foodEggsItems.Picture);
             }
             foreach (var foodOthersItems in food.FoodOthers.Foods)
             {
@@ -343,7 +286,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var foodOthersItems in FoodOtherData)
             {
-                foodOthersItems.Picture = GetGameResourcePath(foodOthersItems.Picture);
+                foodOthersItems.Picture = StringProcess.GetGameResourcePath(foodOthersItems.Picture);
             }
             foreach (var foodNoFcItems in food.FoodNoFc.Foods)
             {
@@ -351,7 +294,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var foodNoFcItems in FoodNoFcData)
             {
-                foodNoFcItems.Picture = GetGameResourcePath(foodNoFcItems.Picture);
+                foodNoFcItems.Picture = StringProcess.GetGameResourcePath(foodNoFcItems.Picture);
             }
             foreach (var foodRecipeItems in FoodRecipeData)
             {
@@ -383,14 +326,14 @@ namespace JiHuangBaiKeForUWP.Model
             }
             #endregion
             #region 科技
-            var science = JsonConvert.DeserializeObject<ScienceRootObject>(await GetJsonString("Sciences.json"));
+            var science = JsonConvert.DeserializeObject<ScienceRootObject>(await StringProcess.GetJsonString("Sciences.json"));
             foreach (var scienceToolItems in science.Tool.Science)
             {
                 ScienceToolData.Add(scienceToolItems);
             }
             foreach (var scienceToolItems in ScienceToolData)
             {
-                scienceToolItems.Picture = GetGameResourcePath(scienceToolItems.Picture);
+                scienceToolItems.Picture = StringProcess.GetGameResourcePath(scienceToolItems.Picture);
             }
             foreach (var scienceLightItems in science.Light.Science)
             {
@@ -398,7 +341,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceLightItems in ScienceLightData)
             {
-                scienceLightItems.Picture = GetGameResourcePath(scienceLightItems.Picture);
+                scienceLightItems.Picture = StringProcess.GetGameResourcePath(scienceLightItems.Picture);
             }
             foreach (var scienceNauticalItems in science.Nautical.Science)
             {
@@ -406,7 +349,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceNauticalItems in ScienceNauticalData)
             {
-                scienceNauticalItems.Picture = GetGameResourcePath(scienceNauticalItems.Picture);
+                scienceNauticalItems.Picture = StringProcess.GetGameResourcePath(scienceNauticalItems.Picture);
             }
             foreach (var scienceSurvivalItems in science.Survival.Science)
             {
@@ -414,7 +357,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceSurvivalItems in ScienceSurvivalData)
             {
-                scienceSurvivalItems.Picture = GetGameResourcePath(scienceSurvivalItems.Picture);
+                scienceSurvivalItems.Picture = StringProcess.GetGameResourcePath(scienceSurvivalItems.Picture);
             }
             foreach (var scienceFoodItems in science.Foods.Science)
             {
@@ -422,7 +365,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceFoodItems in ScienceFoodData)
             {
-                scienceFoodItems.Picture = GetGameResourcePath(scienceFoodItems.Picture);
+                scienceFoodItems.Picture = StringProcess.GetGameResourcePath(scienceFoodItems.Picture);
             }
             foreach (var scienceTechnologyItems in science.Technology.Science)
             {
@@ -430,7 +373,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceTechnologyItems in ScienceTechnologyData)
             {
-                scienceTechnologyItems.Picture = GetGameResourcePath(scienceTechnologyItems.Picture);
+                scienceTechnologyItems.Picture = StringProcess.GetGameResourcePath(scienceTechnologyItems.Picture);
             }
             foreach (var scienceFightItems in science.Fight.Science)
             {
@@ -438,7 +381,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceFightItems in ScienceFightData)
             {
-                scienceFightItems.Picture = GetGameResourcePath(scienceFightItems.Picture);
+                scienceFightItems.Picture = StringProcess.GetGameResourcePath(scienceFightItems.Picture);
             }
             foreach (var scienceStructureItems in science.Structure.Science)
             {
@@ -446,7 +389,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceStructureItems in ScienceStructureData)
             {
-                scienceStructureItems.Picture = GetGameResourcePath(scienceStructureItems.Picture);
+                scienceStructureItems.Picture = StringProcess.GetGameResourcePath(scienceStructureItems.Picture);
             }
             foreach (var scienceRefineItems in science.Refine.Science)
             {
@@ -454,7 +397,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceRefineItems in ScienceRefineData)
             {
-                scienceRefineItems.Picture = GetGameResourcePath(scienceRefineItems.Picture);
+                scienceRefineItems.Picture = StringProcess.GetGameResourcePath(scienceRefineItems.Picture);
             }
             foreach (var scienceMagicItems in science.Magic.Science)
             {
@@ -462,7 +405,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceMagicItems in ScienceMagicData)
             {
-                scienceMagicItems.Picture = GetGameResourcePath(scienceMagicItems.Picture);
+                scienceMagicItems.Picture = StringProcess.GetGameResourcePath(scienceMagicItems.Picture);
             }
             foreach (var scienceDressItems in science.Dress.Science)
             {
@@ -470,7 +413,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceDressItems in ScienceDressData)
             {
-                scienceDressItems.Picture = GetGameResourcePath(scienceDressItems.Picture);
+                scienceDressItems.Picture = StringProcess.GetGameResourcePath(scienceDressItems.Picture);
             }
             foreach (var scienceAncientItems in science.Ancient.Science)
             {
@@ -478,7 +421,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceAncientItems in ScienceAncientData)
             {
-                scienceAncientItems.Picture = GetGameResourcePath(scienceAncientItems.Picture);
+                scienceAncientItems.Picture = StringProcess.GetGameResourcePath(scienceAncientItems.Picture);
             }
             foreach (var scienceBookItems in science.Book.Science)
             {
@@ -486,7 +429,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceBookItems in ScienceBookData)
             {
-                scienceBookItems.Picture = GetGameResourcePath(scienceBookItems.Picture);
+                scienceBookItems.Picture = StringProcess.GetGameResourcePath(scienceBookItems.Picture);
             }
             foreach (var scienceShadowItems in science.Shadow.Science)
             {
@@ -494,7 +437,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceShadowItems in ScienceShadowData)
             {
-                scienceShadowItems.Picture = GetGameResourcePath(scienceShadowItems.Picture);
+                scienceShadowItems.Picture = StringProcess.GetGameResourcePath(scienceShadowItems.Picture);
             }
             foreach (var scienceCritterItems in science.Critter.Science)
             {
@@ -502,7 +445,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceCritterItems in ScienceCritterData)
             {
-                scienceCritterItems.Picture = GetGameResourcePath(scienceCritterItems.Picture);
+                scienceCritterItems.Picture = StringProcess.GetGameResourcePath(scienceCritterItems.Picture);
             }
             foreach (var scienceSculptItems in science.Sculpt.Science)
             {
@@ -510,7 +453,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceSculptItems in ScienceSculptData)
             {
-                scienceSculptItems.Picture = GetGameResourcePath(scienceSculptItems.Picture);
+                scienceSculptItems.Picture = StringProcess.GetGameResourcePath(scienceSculptItems.Picture);
             }
             foreach (var scienceCartographyItems in science.Cartography.Science)
             {
@@ -518,7 +461,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceCartographyItems in ScienceCartographyData)
             {
-                scienceCartographyItems.Picture = GetGameResourcePath(scienceCartographyItems.Picture);
+                scienceCartographyItems.Picture = StringProcess.GetGameResourcePath(scienceCartographyItems.Picture);
             }
             foreach (var scienceOfferingsItems in science.Offerings.Science)
             {
@@ -526,7 +469,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceOfferingsItems in ScienceOfferingsData)
             {
-                scienceOfferingsItems.Picture = GetGameResourcePath(scienceOfferingsItems.Picture);
+                scienceOfferingsItems.Picture = StringProcess.GetGameResourcePath(scienceOfferingsItems.Picture);
             }
             foreach (var scienceVolcanoItems in science.Volcano.Science)
             {
@@ -534,7 +477,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var scienceVolcanoItems in ScienceVolcanoData)
             {
-                scienceVolcanoItems.Picture = GetGameResourcePath(scienceVolcanoItems.Picture);
+                scienceVolcanoItems.Picture = StringProcess.GetGameResourcePath(scienceVolcanoItems.Picture);
             }
             foreach (var scienceItems in ScienceToolData)
             {
@@ -614,14 +557,14 @@ namespace JiHuangBaiKeForUWP.Model
             }
             #endregion
             #region 生物
-            var creature = JsonConvert.DeserializeObject<CreaturesRootObject>(await GetJsonString("Creatures.json"));
+            var creature = JsonConvert.DeserializeObject<CreaturesRootObject>(await StringProcess.GetJsonString("Creatures.json"));
             foreach (var creatureLandItems in creature.Land.Creature)
             {
                 CreatureLandData.Add(creatureLandItems);
             }
             foreach (var creatureLandItems in CreatureLandData)
             {
-                creatureLandItems.Picture = GetGameResourcePath(creatureLandItems.Picture);
+                creatureLandItems.Picture = StringProcess.GetGameResourcePath(creatureLandItems.Picture);
             }
             foreach (var creatureOceanItems in creature.Ocean.Creature)
             {
@@ -629,7 +572,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var creatureOceanItems in CreatureOceanData)
             {
-                creatureOceanItems.Picture = GetGameResourcePath(creatureOceanItems.Picture);
+                creatureOceanItems.Picture = StringProcess.GetGameResourcePath(creatureOceanItems.Picture);
             }
             foreach (var creatureFlyItems in creature.Fly.Creature)
             {
@@ -637,7 +580,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var creatureFlyItems in CreatureFlyData)
             {
-                creatureFlyItems.Picture = GetGameResourcePath(creatureFlyItems.Picture);
+                creatureFlyItems.Picture = StringProcess.GetGameResourcePath(creatureFlyItems.Picture);
             }
             foreach (var creatureCaveItems in creature.Cave.Creature)
             {
@@ -645,7 +588,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var creatureCaveItems in CreatureCaveData)
             {
-                creatureCaveItems.Picture = GetGameResourcePath(creatureCaveItems.Picture);
+                creatureCaveItems.Picture = StringProcess.GetGameResourcePath(creatureCaveItems.Picture);
             }
             foreach (var creatureEvilItems in creature.Evil.Creature)
             {
@@ -653,7 +596,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var creatureEvilItems in CreatureEvilData)
             {
-                creatureEvilItems.Picture = GetGameResourcePath(creatureEvilItems.Picture);
+                creatureEvilItems.Picture = StringProcess.GetGameResourcePath(creatureEvilItems.Picture);
             }
             foreach (var creatureOthersItems in creature.Others.Creature)
             {
@@ -661,7 +604,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var creatureOthersItems in CreatureOthersData)
             {
-                creatureOthersItems.Picture = GetGameResourcePath(creatureOthersItems.Picture);
+                creatureOthersItems.Picture = StringProcess.GetGameResourcePath(creatureOthersItems.Picture);
             }
             foreach (var creatureBossItems in creature.Boss.Creature)
             {
@@ -669,7 +612,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var creatureBossItems in CreatureBossData)
             {
-                creatureBossItems.Picture = GetGameResourcePath(creatureBossItems.Picture);
+                creatureBossItems.Picture = StringProcess.GetGameResourcePath(creatureBossItems.Picture);
             }
             foreach (var creatureItems in CreatureLandData)
             {
@@ -701,14 +644,14 @@ namespace JiHuangBaiKeForUWP.Model
             }
             #endregion
             #region 自然
-            var natural = JsonConvert.DeserializeObject<NaturalRootObject>(await GetJsonString("Natural.json"));
+            var natural = JsonConvert.DeserializeObject<NaturalRootObject>(await StringProcess.GetJsonString("Natural.json"));
             foreach (var naturalLandItems in natural.Biomes.Nature)
             {
                 NaturalBiomesData.Add(naturalLandItems);
             }
             foreach (var naturalLandItems in NaturalBiomesData)
             {
-                naturalLandItems.Picture = GetGameResourcePath(naturalLandItems.Picture);
+                naturalLandItems.Picture = StringProcess.GetGameResourcePath(naturalLandItems.Picture);
             }
             foreach (var naturalItems in NaturalBiomesData)
             {
@@ -716,14 +659,14 @@ namespace JiHuangBaiKeForUWP.Model
             }
             #endregion
             #region 物品
-            var good = JsonConvert.DeserializeObject<GoodsRootObject>(await GetJsonString("Goods.json"));
+            var good = JsonConvert.DeserializeObject<GoodsRootObject>(await StringProcess.GetJsonString("Goods.json"));
             foreach (var goodMaterialItems in good.Material.GoodMaterial)
             {
                 GoodMaterialData.Add(goodMaterialItems);
             }
             foreach (var goodMaterialItems in GoodMaterialData)
             {
-                goodMaterialItems.Picture = GetGameResourcePath(goodMaterialItems.Picture);
+                goodMaterialItems.Picture = StringProcess.GetGameResourcePath(goodMaterialItems.Picture);
             }
             foreach (var goodEquipmentItems in good.Equipment.GoodEquipment)
             {
@@ -731,7 +674,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var goodEquipmentItems in GoodEquipmentData)
             {
-                goodEquipmentItems.Picture = GetGameResourcePath(goodEquipmentItems.Picture);
+                goodEquipmentItems.Picture = StringProcess.GetGameResourcePath(goodEquipmentItems.Picture);
             }
             foreach (var goodSaplingItems in good.Sapling.GoodSapling)
             {
@@ -739,7 +682,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var goodSaplingItems in GoodSaplingData)
             {
-                goodSaplingItems.Picture = GetGameResourcePath(goodSaplingItems.Picture);
+                goodSaplingItems.Picture = StringProcess.GetGameResourcePath(goodSaplingItems.Picture);
             }
             foreach (var goodCreaturesItems in good.Creatures.GoodCreatures)
             {
@@ -747,7 +690,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var goodCreaturesItems in GoodCreaturesData)
             {
-                goodCreaturesItems.Picture = GetGameResourcePath(goodCreaturesItems.Picture);
+                goodCreaturesItems.Picture = StringProcess.GetGameResourcePath(goodCreaturesItems.Picture);
             }
             foreach (var goodTrinketsItems in good.Trinkets.GoodTrinkets)
             {
@@ -755,7 +698,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var goodTrinketsItems in GoodTrinketsData)
             {
-                goodTrinketsItems.Picture = GetGameResourcePath(goodTrinketsItems.Picture);
+                goodTrinketsItems.Picture = StringProcess.GetGameResourcePath(goodTrinketsItems.Picture);
             }
             foreach (var goodTurfItems in good.Turf.GoodTurf)
             {
@@ -763,7 +706,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var goodTurfItems in GoodTurfData)
             {
-                goodTurfItems.Picture = GetGameResourcePath(goodTurfItems.Picture);
+                goodTurfItems.Picture = StringProcess.GetGameResourcePath(goodTurfItems.Picture);
             }
             foreach (var goodPetItems in good.Pet.GoodPet)
             {
@@ -771,7 +714,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var goodPetItems in GoodPetData)
             {
-                goodPetItems.Picture = GetGameResourcePath(goodPetItems.Picture);
+                goodPetItems.Picture = StringProcess.GetGameResourcePath(goodPetItems.Picture);
             }
             foreach (var goodUnlockItems in good.Unlock.GoodUnlock)
             {
@@ -779,7 +722,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var goodUnlockItems in GoodUnlockData)
             {
-                goodUnlockItems.Picture = GetGameResourcePath(goodUnlockItems.Picture);
+                goodUnlockItems.Picture = StringProcess.GetGameResourcePath(goodUnlockItems.Picture);
             }
             foreach (var goodHallowedNightsItems in good.HallowedNights.Good)
             {
@@ -787,7 +730,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var goodHallowedNightsItems in GoodHallowedNightsData)
             {
-                goodHallowedNightsItems.Picture = GetGameResourcePath(goodHallowedNightsItems.Picture);
+                goodHallowedNightsItems.Picture = StringProcess.GetGameResourcePath(goodHallowedNightsItems.Picture);
             }
             foreach (var goodWinterwsFeastItems in good.WintersFeast.Good)
             {
@@ -795,7 +738,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var goodWinterwsFeastItems in GoodWintersFeastData)
             {
-                goodWinterwsFeastItems.Picture = GetGameResourcePath(goodWinterwsFeastItems.Picture);
+                goodWinterwsFeastItems.Picture = StringProcess.GetGameResourcePath(goodWinterwsFeastItems.Picture);
             }
             foreach (var goodYearOfTheGobblerItems in good.YearOfTheGobbler.Good)
             {
@@ -803,7 +746,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var goodYearOfTheGobblerItems in GoodYearOfTheGobblerData)
             {
-                goodYearOfTheGobblerItems.Picture = GetGameResourcePath(goodYearOfTheGobblerItems.Picture);
+                goodYearOfTheGobblerItems.Picture = StringProcess.GetGameResourcePath(goodYearOfTheGobblerItems.Picture);
             }
             foreach (var goodComponentItems in good.Component.Good)
             {
@@ -811,7 +754,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var goodComponentItems in GoodComponentData)
             {
-                goodComponentItems.Picture = GetGameResourcePath(goodComponentItems.Picture);
+                goodComponentItems.Picture = StringProcess.GetGameResourcePath(goodComponentItems.Picture);
             }
             foreach (var goodOthersItems in good.GoodOthers.Good)
             {
@@ -819,7 +762,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var goodOthersItems in GoodOthersData)
             {
-                goodOthersItems.Picture = GetGameResourcePath(goodOthersItems.Picture);
+                goodOthersItems.Picture = StringProcess.GetGameResourcePath(goodOthersItems.Picture);
             }
             foreach (var goodMaterialItems in GoodMaterialData)
             {
@@ -994,20 +937,5 @@ namespace JiHuangBaiKeForUWP.Model
         }
 
         #endregion
-
-        /// <summary>
-        /// 返回Json文本
-        /// </summary>
-        /// <param name="fileName">文件名</param>
-        /// <returns>string类型文本</returns>
-        public static async Task<string> GetJsonString(string fileName)
-        {
-            //            var folderExists = await ApplicationFolder.TryGetItemAsync(BuiltInGameVersionJsonFolder[GameVersion]);
-            //            var uri = folderExists == null ? new Uri("ms-appx:///Json/" + BuiltInGameVersionJsonFolder[GameVersion] + "/" + fileName) : new Uri(ApplicationFolder.Path + "/" + BuiltInGameVersionJsonFolder[GameVersion] + "/" + fileName);
-            var uri = new Uri("ms-appx:///Json/" + BuiltInGameVersionJsonFolder[GameVersion] + "/" + fileName);
-            var storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
-            var str = await FileIO.ReadTextAsync(storageFile);
-            return str;
-        }
     }
 }

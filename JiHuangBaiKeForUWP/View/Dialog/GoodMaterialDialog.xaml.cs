@@ -45,7 +45,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     {
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = thickness,
-                        Source = Global.GetGameResourcePath(picPath)
+                        Source = StringProcess.GetGameResourcePath(picPath)
                     };
                     picButton.Tapped += Good_Jump_Tapped;
                     GoodScienceWrapPanel.Children.Add(picButton);
@@ -64,7 +64,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     {
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = thickness,
-                        Source = Global.GetGameResourcePath(picPath)
+                        Source = StringProcess.GetGameResourcePath(picPath)
                     };
                     picButton.Tapped += Good_Jump_Tapped;
                     GoodSourceCreatureWrapPanel.Children.Add(picButton);
@@ -73,13 +73,19 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             // 介绍
             GoodIntroduction.Text = c.Introduction;
             // 控制台
-            Console.Text = $"c_give(\"{c.Console}\",10)";
+            ConsolePre.Text = $"c_give(\"{c.Console}\",";
+        }
+
+        private void ConsoleNum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            StringProcess.ConsoleNumTextCheck(textbox);
         }
 
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var dataPackage = new DataPackage();
-            dataPackage.SetText(Console.Text);
+            dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
         }
 
@@ -87,7 +93,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
         {
             var picturePath = ((PicButton)sender).Source;
             var rootFrame = Global.RootFrame;
-            var shortName = Global.GetFileName(picturePath);
+            var shortName = StringProcess.GetFileName(picturePath);
             var mainPageListBoxItem = Global.MainPageListBoxItem;
             var frameTitle = Global.FrameTitle;
             await Global.SetAutoSuggestBoxItem();

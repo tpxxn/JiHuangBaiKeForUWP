@@ -32,7 +32,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             GoodName.Text = c.Name;
             GoodEnName.Text = c.EnName;
             // 宠物死亡
-            GoodDeadWrapPicButton.Source = Global.GetGameResourcePath(c.Dead);
+            GoodDeadWrapPicButton.Source = StringProcess.GetGameResourcePath(c.Dead);
             // 跟随宠物
             var thickness = new Thickness(5, 0, 0, 0);
             if (c.Follow == null || c.Follow.Count == 0)
@@ -48,7 +48,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     {
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = thickness,
-                        Source = Global.GetGameResourcePath(picPath),
+                        Source = StringProcess.GetGameResourcePath(picPath),
                         PictureSize = 90
                     };
                     picButton.Tapped += Good_Jump_Tapped;
@@ -56,13 +56,19 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 }
             }
             GoodIntroduction.Text = c.Introduction;
-            Console.Text = $"c_give(\"{c.Console}\",10)";
+            ConsolePre.Text = $"c_give(\"{c.Console}\",";
+        }
+
+        private void ConsoleNum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            StringProcess.ConsoleNumTextCheck(textbox);
         }
 
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var dataPackage = new DataPackage();
-            dataPackage.SetText(Console.Text);
+            dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
         }
 

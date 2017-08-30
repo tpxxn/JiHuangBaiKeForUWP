@@ -203,14 +203,14 @@ namespace JiHuangBaiKeForUWP.View
             _scienceCartographyData.Clear();
             _scienceOfferingsData.Clear();
             _scienceVolcanoData.Clear();
-            var science = JsonConvert.DeserializeObject<ScienceRootObject>(await Global.GetJsonString("Sciences.json"));
+            var science = JsonConvert.DeserializeObject<ScienceRootObject>(await StringProcess.GetJsonString("Sciences.json"));
             foreach (var scienceToolItems in science.Tool.Science)
             {
                 _scienceToolData.Add(scienceToolItems);
             }
             foreach (var scienceToolItems in _scienceToolData)
             {
-                scienceToolItems.Picture = Global.GetGameResourcePath(scienceToolItems.Picture);
+                scienceToolItems.Picture = StringProcess.GetGameResourcePath(scienceToolItems.Picture);
             }
             foreach (var scienceLightItems in science.Light.Science)
             {
@@ -218,7 +218,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceLightItems in _scienceLightData)
             {
-                scienceLightItems.Picture = Global.GetGameResourcePath(scienceLightItems.Picture);
+                scienceLightItems.Picture = StringProcess.GetGameResourcePath(scienceLightItems.Picture);
             }
             foreach (var scienceNauticalItems in science.Nautical.Science)
             {
@@ -226,7 +226,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceNauticalItems in _scienceNauticalData)
             {
-                scienceNauticalItems.Picture = Global.GetGameResourcePath(scienceNauticalItems.Picture);
+                scienceNauticalItems.Picture = StringProcess.GetGameResourcePath(scienceNauticalItems.Picture);
             }
             foreach (var scienceSurvivalItems in science.Survival.Science)
             {
@@ -234,7 +234,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceSurvivalItems in _scienceSurvivalData)
             {
-                scienceSurvivalItems.Picture = Global.GetGameResourcePath(scienceSurvivalItems.Picture);
+                scienceSurvivalItems.Picture = StringProcess.GetGameResourcePath(scienceSurvivalItems.Picture);
             }
             foreach (var scienceFoodItems in science.Foods.Science)
             {
@@ -242,7 +242,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceFoodItems in _scienceFoodData)
             {
-                scienceFoodItems.Picture = Global.GetGameResourcePath(scienceFoodItems.Picture);
+                scienceFoodItems.Picture = StringProcess.GetGameResourcePath(scienceFoodItems.Picture);
             }
             foreach (var scienceTechnologyItems in science.Technology.Science)
             {
@@ -250,7 +250,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceTechnologyItems in _scienceTechnologyData)
             {
-                scienceTechnologyItems.Picture = Global.GetGameResourcePath(scienceTechnologyItems.Picture);
+                scienceTechnologyItems.Picture = StringProcess.GetGameResourcePath(scienceTechnologyItems.Picture);
             }
             foreach (var scienceFightItems in science.Fight.Science)
             {
@@ -258,7 +258,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceFightItems in _scienceFightData)
             {
-                scienceFightItems.Picture = Global.GetGameResourcePath(scienceFightItems.Picture);
+                scienceFightItems.Picture = StringProcess.GetGameResourcePath(scienceFightItems.Picture);
             }
             foreach (var scienceStructureItems in science.Structure.Science)
             {
@@ -266,7 +266,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceStructureItems in _scienceStructureData)
             {
-                scienceStructureItems.Picture = Global.GetGameResourcePath(scienceStructureItems.Picture);
+                scienceStructureItems.Picture = StringProcess.GetGameResourcePath(scienceStructureItems.Picture);
             }
             foreach (var scienceRefineItems in science.Refine.Science)
             {
@@ -274,7 +274,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceRefineItems in _scienceRefineData)
             {
-                scienceRefineItems.Picture = Global.GetGameResourcePath(scienceRefineItems.Picture);
+                scienceRefineItems.Picture = StringProcess.GetGameResourcePath(scienceRefineItems.Picture);
             }
             foreach (var scienceMagicItems in science.Magic.Science)
             {
@@ -282,7 +282,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceMagicItems in _scienceMagicData)
             {
-                scienceMagicItems.Picture = Global.GetGameResourcePath(scienceMagicItems.Picture);
+                scienceMagicItems.Picture = StringProcess.GetGameResourcePath(scienceMagicItems.Picture);
             }
             foreach (var scienceDressItems in science.Dress.Science)
             {
@@ -290,7 +290,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceDressItems in _scienceDressData)
             {
-                scienceDressItems.Picture = Global.GetGameResourcePath(scienceDressItems.Picture);
+                scienceDressItems.Picture = StringProcess.GetGameResourcePath(scienceDressItems.Picture);
             }
             foreach (var scienceAncientItems in science.Ancient.Science)
             {
@@ -298,7 +298,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceAncientItems in _scienceAncientData)
             {
-                scienceAncientItems.Picture = Global.GetGameResourcePath(scienceAncientItems.Picture);
+                scienceAncientItems.Picture = StringProcess.GetGameResourcePath(scienceAncientItems.Picture);
             }
             foreach (var scienceBookItems in science.Book.Science)
             {
@@ -306,7 +306,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceBookItems in _scienceBookData)
             {
-                scienceBookItems.Picture = Global.GetGameResourcePath(scienceBookItems.Picture);
+                scienceBookItems.Picture = StringProcess.GetGameResourcePath(scienceBookItems.Picture);
             }
             foreach (var scienceShadowItems in science.Shadow.Science)
             {
@@ -314,7 +314,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceShadowItems in _scienceShadowData)
             {
-                scienceShadowItems.Picture = Global.GetGameResourcePath(scienceShadowItems.Picture);
+                scienceShadowItems.Picture = StringProcess.GetGameResourcePath(scienceShadowItems.Picture);
             }
             foreach (var scienceCritterItems in science.Critter.Science)
             {
@@ -322,7 +322,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceCritterItems in _scienceCritterData)
             {
-                scienceCritterItems.Picture = Global.GetGameResourcePath(scienceCritterItems.Picture);
+                scienceCritterItems.Picture = StringProcess.GetGameResourcePath(scienceCritterItems.Picture);
             }
             foreach (var scienceSculptItems in science.Sculpt.Science)
             {
@@ -330,7 +330,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceSculptItems in _scienceSculptData)
             {
-                scienceSculptItems.Picture = Global.GetGameResourcePath(scienceSculptItems.Picture);
+                scienceSculptItems.Picture = StringProcess.GetGameResourcePath(scienceSculptItems.Picture);
             }
             foreach (var scienceCartographyItems in science.Cartography.Science)
             {
@@ -338,7 +338,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceCartographyItems in _scienceCartographyData)
             {
-                scienceCartographyItems.Picture = Global.GetGameResourcePath(scienceCartographyItems.Picture);
+                scienceCartographyItems.Picture = StringProcess.GetGameResourcePath(scienceCartographyItems.Picture);
             }
             foreach (var scienceOfferingsItems in science.Offerings.Science)
             {
@@ -346,7 +346,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceOfferingsItems in _scienceOfferingsData)
             {
-                scienceOfferingsItems.Picture = Global.GetGameResourcePath(scienceOfferingsItems.Picture);
+                scienceOfferingsItems.Picture = StringProcess.GetGameResourcePath(scienceOfferingsItems.Picture);
             }
             foreach (var scienceVolcanoItems in science.Volcano.Science)
             {
@@ -354,7 +354,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var scienceVolcanoItems in _scienceVolcanoData)
             {
-                scienceVolcanoItems.Picture = Global.GetGameResourcePath(scienceVolcanoItems.Picture);
+                scienceVolcanoItems.Picture = StringProcess.GetGameResourcePath(scienceVolcanoItems.Picture);
             }
         }
 
