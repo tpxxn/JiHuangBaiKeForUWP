@@ -24,6 +24,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
     /// </summary>
     public sealed partial class ScienceDialog : Page
     {
+        private string _unlockCharcter;
         public ScienceDialog(Science c)
         {
             this.InitializeComponent();
@@ -59,7 +60,8 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 if (c.UnlockCharcter != null)
                 {
                     UnlockCharcterButton.Visibility = Visibility.Visible;
-                    UnlockCharcterImage.Source = new BitmapImage(new Uri(StringProcess.GetGameResourcePath(c.UnlockCharcter))); 
+                    UnlockCharcterImage.Source = new BitmapImage(new Uri(StringProcess.GetGameResourcePath(c.UnlockCharcter)));
+                    _unlockCharcter = StringProcess.GetGameResourcePath(c.UnlockCharcter);
                 }
                 if (c.UnlockBlueprint != null)
                 {
@@ -113,6 +115,23 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         rootFrame.Navigate(typeof(GoodPage), extraData);
                         break;
                 }
+            }
+        }
+
+        private async void Science_CharacterJump_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var picturePath = _unlockCharcter;
+            var rootFrame = Global.RootFrame;
+            var mainPageListBoxItem = Global.MainPageListBoxItem;
+            var frameTitle = Global.FrameTitle;
+            await Global.SetAutoSuggestBoxItem();
+            foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
+            {
+                if (picturePath != suggestBoxItem.Picture) continue;
+                string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
+                frameTitle.Text = "人物";
+                mainPageListBoxItem[0].IsSelected = true;
+                rootFrame.Navigate(typeof(CharacterPage), extraData);
             }
         }
     }

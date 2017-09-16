@@ -307,7 +307,7 @@
         "Need3Value": 1,
         "Unlock": "S_alchemy_engine",
         "Introduction": "戴上鼹鼠眼罩就像戴上了夜视仪，但是千万别在白天戴上鼹鼠眼罩，别怪我没提醒你哟！可以用发光浆果添加燃料。",
-        "Console": "moggles"
+        "Console": "molehat"
       },
       {
         "Picture": "S_pumpkin_lantern",
@@ -1163,7 +1163,7 @@
         "Name": "回旋镖",
         "EnName": "Boomerang",
         "Need1": "S_boards",
-        "Need1Value": 2,
+        "Need1Value": 1,
         "Need2": "G_silk",
         "Need2Value": 1,
         "Need3": "G_charcoal",
@@ -2037,6 +2037,18 @@
   },
   "Dress": {
     "Science": [
+      {
+        "Picture": "S_trusty_tape",
+        "Name": "可靠的胶带",
+        "EnName": "Trusty Tape",
+        "Need1": "G_cut_grass",
+        "Need1Value": 3,
+        "Need2": "G_silk",
+        "Need2Value": 1,
+        "UnlockCharcter": "C_winona",
+        "Introduction": "薇诺娜出生自带的物品，功能类似缝补工具，可以修补衣物5天的耐久度。",
+        "Console": "sewing_tape"
+      },
       {
         "Picture": "S_sewing_kit",
         "Name": "缝补工具",

@@ -15,7 +15,6 @@
                         <ImageBrush ImageSource="/Assets/Logo/LargeTile.scale-400.png" />
                     </Ellipse.Fill>
                 </Ellipse>
-
                 <TextBlock x:Name="AppNameTextBlock" Text="饥荒百科" Foreground="White" FontSize="30" Margin="0,10,0,0" HorizontalAlignment="Center" />
                 <TextBlock x:Name="VersionTextBlock" HorizontalAlignment="Center" Foreground="White" Margin="0,5,0,0" />
                 <TextBlock x:Name="PublisherTextBlock" HorizontalAlignment="Center" Foreground="White" Margin="0,5,0,15" />

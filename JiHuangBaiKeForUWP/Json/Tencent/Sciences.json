@@ -285,7 +285,7 @@
 				"Need3Value": 1,
 				"Unlock": "S_alchemy_engine",
 				"Introduction": "戴上鼹鼠帽就像戴上了夜视仪，但是千万别在白天戴上鼹鼠帽，别怪我没提醒你哟！可以用发光浆果添加燃料。",
-				"Console": "moggles"
+				"Console": "molehat"
 			}, {
 				"Picture": "S_pumpkin_lantern",
 				"Name": "南瓜灯",
@@ -1080,7 +1080,7 @@
 				"Name": "回旋镖",
 				"EnName": "Boomerang",
 				"Need1": "S_boards",
-				"Need1Value": 2,
+				"Need1Value": 1,
 				"Need2": "G_silk",
 				"Need2Value": 1,
 				"Need3": "G_charcoal",

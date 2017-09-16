@@ -2753,6 +2753,13 @@
         "EnName": "Rare Blueprint",
         "Introduction": "稀有蓝图一般通过打BOSS获得，可以获得一些好东西的科技。",
         "Console": "(prefab name)_blueprint"
+      },
+      {
+        "Picture": "G_crumpled_package",
+        "Name": "皱巴巴的包裹",
+        "EnName": "Crumpled Package",
+        "Introduction": "在湖泊中钓鱼可以获得皱巴巴的包裹，打开后可能得到几种玩具(包括沙桶玩具)、蓝图和视尚眼镜、沙漠护目镜、盆栽的肉质植物稀有蓝图。",
+        "Console": "wetpouch"
       }
     ]
   },

@@ -29,7 +29,7 @@
                             <TextBlock Text="DST(steam饥荒联机)"/>
                         </ComboBoxItem>
                         <ComboBoxItem>
-                            <TextBlock Text="DST(TGP及QQGame)"/>
+                            <TextBlock Text="DST(TGP/WeGame/QQGame)"/>
                         </ComboBoxItem>
                         <ComboBoxItem>
                             <TextBlock Text="DS(饥荒单机)"/>

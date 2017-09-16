@@ -2748,22 +2748,29 @@
       ]
   },
   "GoodOthers": {
-      "Good": [
-          {
-              "Picture": "G_blueprint",
-              "Name": "科技蓝图",
-              "EnName": "Blueprint",
-              "Introduction": "蓝图通常可以在风滚草和X标记点找到，冒险模式的开始也可以找到一些。使用蓝图将会恢复15点精神，并且解锁某个科技，旧钟科技只能通过蓝图解锁。(以上规律不适用于远古科技)",
-              "Console": "(prefab name)_blueprint"
-          },
-          {
-              "Picture": "G_rare_blueprint",
-              "Name": "稀有蓝图",
-              "EnName": "Rare Blueprint",
-              "Introduction": "稀有蓝图一般通过打BOSS获得，可以获得一些好东西的科技。",
-              "Console": "(prefab name)_blueprint"
-          }
-      ]
+    "Good": [
+      {
+        "Picture": "G_blueprint",
+        "Name": "科技蓝图",
+        "EnName": "Blueprint",
+        "Introduction": "蓝图通常可以在风滚草和X标记点找到，冒险模式的开始也可以找到一些。使用蓝图将会恢复15点精神，并且解锁某个科技，旧钟科技只能通过蓝图解锁。(以上规律不适用于远古科技)",
+        "Console": "(prefab name)_blueprint"
+      },
+      {
+        "Picture": "G_rare_blueprint",
+        "Name": "稀有蓝图",
+        "EnName": "Rare Blueprint",
+        "Introduction": "稀有蓝图一般通过打BOSS获得，可以获得一些好东西的科技。",
+        "Console": "(prefab name)_blueprint"
+      },
+      {
+        "Picture": "G_crumpled_package",
+        "Name": "皱皱的袋子",
+        "EnName": "Crumpled Package",
+        "Introduction": "在湖泊中钓鱼可以获得皱皱的袋子，打开后可能得到几种玩具(包括沙桶玩具)、蓝图和时髦目镜、沙漠目镜、盆栽多肉植物稀有蓝图。",
+        "Console": "wetpouch"
+      }
+    ]
   },
   "HallowedNights": {
       "Good": [
