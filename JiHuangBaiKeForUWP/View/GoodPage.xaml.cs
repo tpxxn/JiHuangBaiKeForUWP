@@ -282,14 +282,14 @@ namespace JiHuangBaiKeForUWP.View
             _goodYearOfTheGobblerData.Clear();
             _goodComponentData.Clear();
             _goodOthersData.Clear();
-            var good = JsonConvert.DeserializeObject<GoodsRootObject>(await Global.GetJsonString("Goods.json"));
+            var good = JsonConvert.DeserializeObject<GoodsRootObject>(await StringProcess.GetJsonString("Goods.json"));
             foreach (var goodMaterialItems in good.Material.GoodMaterial)
             {
                 _goodMaterialData.Add(goodMaterialItems);
             }
             foreach (var goodMaterialItems in _goodMaterialData)
             {
-                goodMaterialItems.Picture = Global.GetGameResourcePath(goodMaterialItems.Picture);
+                goodMaterialItems.Picture = StringProcess.GetGameResourcePath(goodMaterialItems.Picture);
             }
             foreach (var goodEquipmentItems in good.Equipment.GoodEquipment)
             {
@@ -297,7 +297,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var goodEquipmentItems in _goodEquipmentData)
             {
-                goodEquipmentItems.Picture = Global.GetGameResourcePath(goodEquipmentItems.Picture);
+                goodEquipmentItems.Picture = StringProcess.GetGameResourcePath(goodEquipmentItems.Picture);
             }
             foreach (var goodSaplingItems in good.Sapling.GoodSapling)
             {
@@ -305,7 +305,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var goodSaplingItems in _goodSaplingData)
             {
-                goodSaplingItems.Picture = Global.GetGameResourcePath(goodSaplingItems.Picture);
+                goodSaplingItems.Picture = StringProcess.GetGameResourcePath(goodSaplingItems.Picture);
             }
             foreach (var goodCreaturesItems in good.Creatures.GoodCreatures)
             {
@@ -313,7 +313,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var goodCreaturesItems in _goodCreaturesData)
             {
-                goodCreaturesItems.Picture = Global.GetGameResourcePath(goodCreaturesItems.Picture);
+                goodCreaturesItems.Picture = StringProcess.GetGameResourcePath(goodCreaturesItems.Picture);
             }
             foreach (var goodTrinketsItems in good.Trinkets.GoodTrinkets)
             {
@@ -321,7 +321,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var goodTrinketsItems in _goodTrinketsData)
             {
-                goodTrinketsItems.Picture = Global.GetGameResourcePath(goodTrinketsItems.Picture);
+                goodTrinketsItems.Picture = StringProcess.GetGameResourcePath(goodTrinketsItems.Picture);
             }
             foreach (var goodTurfItems in good.Turf.GoodTurf)
             {
@@ -329,7 +329,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var goodTurfItems in _goodTurfData)
             {
-                goodTurfItems.Picture = Global.GetGameResourcePath(goodTurfItems.Picture);
+                goodTurfItems.Picture = StringProcess.GetGameResourcePath(goodTurfItems.Picture);
             }
             foreach (var goodPetItems in good.Pet.GoodPet)
             {
@@ -337,7 +337,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var goodPetItems in _goodPetData)
             {
-                goodPetItems.Picture = Global.GetGameResourcePath(goodPetItems.Picture);
+                goodPetItems.Picture = StringProcess.GetGameResourcePath(goodPetItems.Picture);
             }
             foreach (var goodUnlockItems in good.Unlock.GoodUnlock)
             {
@@ -345,7 +345,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var goodUnlockItems in _goodUnlockData)
             {
-                goodUnlockItems.Picture = Global.GetGameResourcePath(goodUnlockItems.Picture);
+                goodUnlockItems.Picture = StringProcess.GetGameResourcePath(goodUnlockItems.Picture);
             }
             foreach (var goodHallowedNightsItems in good.HallowedNights.Good)
             {
@@ -353,7 +353,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var goodHallowedNightsItems in _goodHallowedNightsData)
             {
-                goodHallowedNightsItems.Picture = Global.GetGameResourcePath(goodHallowedNightsItems.Picture);
+                goodHallowedNightsItems.Picture = StringProcess.GetGameResourcePath(goodHallowedNightsItems.Picture);
             }
             foreach (var goodWintersFeastItems in good.WintersFeast.Good)
             {
@@ -361,7 +361,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var goodWintersFeastItems in _goodWintersFeastData)
             {
-                goodWintersFeastItems.Picture = Global.GetGameResourcePath(goodWintersFeastItems.Picture);
+                goodWintersFeastItems.Picture = StringProcess.GetGameResourcePath(goodWintersFeastItems.Picture);
             }
             foreach (var goodYearOfTheGobblerItems in good.YearOfTheGobbler.Good)
             {
@@ -369,7 +369,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var goodYearOfTheGobblerItems in _goodYearOfTheGobblerData)
             {
-                goodYearOfTheGobblerItems.Picture = Global.GetGameResourcePath(goodYearOfTheGobblerItems.Picture);
+                goodYearOfTheGobblerItems.Picture = StringProcess.GetGameResourcePath(goodYearOfTheGobblerItems.Picture);
             }
             foreach (var goodComponentItems in good.Component.Good)
             {
@@ -377,7 +377,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var goodComponentItems in _goodComponentData)
             {
-                goodComponentItems.Picture = Global.GetGameResourcePath(goodComponentItems.Picture);
+                goodComponentItems.Picture = StringProcess.GetGameResourcePath(goodComponentItems.Picture);
             }
             foreach (var goodGoodOthersItems in good.GoodOthers.Good)
             {
@@ -385,7 +385,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var goodGoodOthersItems in _goodOthersData)
             {
-                goodGoodOthersItems.Picture = Global.GetGameResourcePath(goodGoodOthersItems.Picture);
+                goodGoodOthersItems.Picture = StringProcess.GetGameResourcePath(goodGoodOthersItems.Picture);
             }
         }
 

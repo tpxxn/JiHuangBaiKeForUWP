@@ -60,14 +60,14 @@ namespace JiHuangBaiKeForUWP.View
         public async Task Deserialize()
         {
             _characterData.Clear();
-            var character = JsonConvert.DeserializeObject<CharacterRootObject>(await Global.GetJsonString("Characters.json"));
+            var character = JsonConvert.DeserializeObject<CharacterRootObject>(await StringProcess.GetJsonString("Characters.json"));
             foreach (var characterItems in character.Character)
             {
                 _characterData.Add(characterItems);
             }
             foreach (var characterItems in _characterData)
             {
-                characterItems.Picture = Global.GetGameResourcePath(characterItems.Picture);
+                characterItems.Picture = StringProcess.GetGameResourcePath(characterItems.Picture);
             }
         }
 

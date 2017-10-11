@@ -930,7 +930,7 @@
                 "EnName": "Straw Hat",
                 "Durability": "5天",
                 "Wet": 20,
-                "Heat": 60,
+                "HeatResistance": 60,
                 "Introduction": "一般的防潮隔热装备。",
                 "Console": "strawhat"
             },
@@ -940,7 +940,7 @@
                 "EnName": "Top Hat",
                 "Durability": "6天",
                 "Wet": 20,
-                "Heat": 60,
+                "HeatResistance": 60,
                 "Sanity": 2,
                 "Introduction": "少量的防潮效果，还有少量隔热和效果和精神光环。",
                 "Console": "tophat"
@@ -951,7 +951,7 @@
                 "EnName": "Eyebrella",
                 "Durability": "8天",
                 "Wet": 100,
-                "Heat": 240,
+                "HeatResistance": 240,
                 "Introduction": "无敌的防潮效果！隔热效果也是绝佳！",
                 "Console": "eyebrellahat"
             },
@@ -959,7 +959,8 @@
                 "Picture": "S_thermal_stone",
                 "Name": "保温石",
                 "EnName": "Thermal Stone",
-                "Heat": 120,
+                "ColdResistance": 120,
+                "HeatResistance": 120,
                 "Introduction": "每次变灰耐久度减少1点，可以用来升温也可以用来降温。",
                 "Console": "heatrock"
             },
@@ -968,7 +969,7 @@
                 "Name": "兔子耳罩",
                 "EnName": "Rabbit Earmuffs",
                 "Durability": "5天",
-                "Heat": 60,
+                "ColdResistance": 60,
                 "Introduction": "不怎么样的隔热装备，不过挺可爱的~",
                 "Console": "earmuffshat"
             },
@@ -978,7 +979,7 @@
                 "EnName": "Beefalo Hat",
                 "Durability": "10天",
                 "Wet": 20,
-                "Heat": 240,
+                "ColdResistance": 240,
                 "Introduction": "有了牛帽冬天就不用愁了。",
                 "Console": "beefalohat"
             },
@@ -987,7 +988,7 @@
                 "Name": "冬帽",
                 "EnName": "Winter Hat",
                 "Durability": "10天",
-                "Heat": 120,
+                "ColdResistance": 120,
                 "Sanity": 1.33,
                 "Introduction": "一般过冬的装备。",
                 "Console": "winterhat"
@@ -997,7 +998,7 @@
                 "Name": "短背心",
                 "EnName": "Dapper Vest",
                 "Durability": "10天",
-                "Heat": 60,
+                "ColdResistance": 60,
                 "Sanity": 3.33,
                 "Introduction": "没啥用的隔热装备。",
                 "Console": "sweatervest"
@@ -1007,7 +1008,7 @@
                 "Name": "透风外套",
                 "EnName": "Breezy Vest",
                 "Durability": "10天",
-                "Heat": 60,
+                "ColdResistance": 60,
                 "Sanity": 2,
                 "Introduction": "纯粹是浪费红色象鼻。",
                 "Console": "trunkvest_summer"
@@ -1017,7 +1018,7 @@
                 "Name": "厚外套",
                 "EnName": "Puffy Vest",
                 "Durability": "15天",
-                "Heat": 240,
+                "ColdResistance": 240,
                 "Sanity": 2,
                 "Introduction": "极好的隔热装备。",
                 "Console": "trunkvest_winter"
@@ -1268,7 +1269,7 @@
                 "EnName": "Tam o' Shanter",
                 "DropBy": "A_mactusk",
                 "Durability": "25天",
-                "Heat": 120,
+                "ColdResistance": 120,
                 "Sanity": 6.66,
                 "Introduction": "只能打海象掉落。",
                 "Console": "walrushat"

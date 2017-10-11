@@ -114,14 +114,14 @@ namespace JiHuangBaiKeForUWP.View
             _creatureEvilData.Clear();
             _creatureOthersData.Clear();
             _creatureBossData.Clear();
-            var creature = JsonConvert.DeserializeObject<CreaturesRootObject>(await Global.GetJsonString("Creatures.json"));
+            var creature = JsonConvert.DeserializeObject<CreaturesRootObject>(await StringProcess.GetJsonString("Creatures.json"));
             foreach (var creatureLandItems in creature.Land.Creature)
             {
                 _creatureLandData.Add(creatureLandItems);
             }
             foreach (var creatureLandItems in _creatureLandData)
             {
-                creatureLandItems.Picture = Global.GetGameResourcePath(creatureLandItems.Picture);
+                creatureLandItems.Picture = StringProcess.GetGameResourcePath(creatureLandItems.Picture);
             }
             foreach (var creatureOceanItems in creature.Ocean.Creature)
             {
@@ -129,7 +129,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var creatureOceanItems in _creatureOceanData)
             {
-                creatureOceanItems.Picture = Global.GetGameResourcePath(creatureOceanItems.Picture);
+                creatureOceanItems.Picture = StringProcess.GetGameResourcePath(creatureOceanItems.Picture);
             }
             foreach (var creatureFlyItems in creature.Fly.Creature)
             {
@@ -137,7 +137,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var creatureFlyItems in _creatureFlyData)
             {
-                creatureFlyItems.Picture = Global.GetGameResourcePath(creatureFlyItems.Picture);
+                creatureFlyItems.Picture = StringProcess.GetGameResourcePath(creatureFlyItems.Picture);
             }
             foreach (var creatureCaveItems in creature.Cave.Creature)
             {
@@ -145,7 +145,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var creatureCaveItems in _creatureCaveData)
             {
-                creatureCaveItems.Picture = Global.GetGameResourcePath(creatureCaveItems.Picture);
+                creatureCaveItems.Picture = StringProcess.GetGameResourcePath(creatureCaveItems.Picture);
             }
             foreach (var creatureEvilItems in creature.Evil.Creature)
             {
@@ -153,7 +153,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var creatureEvilItems in _creatureEvilData)
             {
-                creatureEvilItems.Picture = Global.GetGameResourcePath(creatureEvilItems.Picture);
+                creatureEvilItems.Picture = StringProcess.GetGameResourcePath(creatureEvilItems.Picture);
             }
             foreach (var creatureOthersItems in creature.Others.Creature)
             {
@@ -161,7 +161,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var creatureOthersItems in _creatureOthersData)
             {
-                creatureOthersItems.Picture = Global.GetGameResourcePath(creatureOthersItems.Picture);
+                creatureOthersItems.Picture = StringProcess.GetGameResourcePath(creatureOthersItems.Picture);
             }
             foreach (var creatureBossItems in creature.Boss.Creature)
             {
@@ -169,7 +169,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var creatureBossItems in _creatureBossData)
             {
-                creatureBossItems.Picture = Global.GetGameResourcePath(creatureBossItems.Picture);
+                creatureBossItems.Picture = StringProcess.GetGameResourcePath(creatureBossItems.Picture);
             }
         }
 

@@ -125,14 +125,14 @@ namespace JiHuangBaiKeForUWP.View
             _foodEggData.Clear();
             _foodOtherData.Clear();
             _foodNoFcData.Clear();
-            var food = JsonConvert.DeserializeObject<FoodRootObject>(await Global.GetJsonString("Foods.json"));
+            var food = JsonConvert.DeserializeObject<FoodRootObject>(await StringProcess.GetJsonString("Foods.json"));
             foreach (var foodRecipeItems in food.FoodRecipe.FoodRecipes)
             {
                 _foodRecipeData.Add(foodRecipeItems);
             }
             foreach (var foodRecipeItems in _foodRecipeData)
             {
-                foodRecipeItems.Picture = Global.GetGameResourcePath(foodRecipeItems.Picture);
+                foodRecipeItems.Picture = StringProcess.GetGameResourcePath(foodRecipeItems.Picture);
             }
             foreach (var foodMeatsItems in food.FoodMeats.Foods)
             {
@@ -140,7 +140,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodMeatsItems in _foodMeatData)
             {
-                foodMeatsItems.Picture = Global.GetGameResourcePath(foodMeatsItems.Picture);
+                foodMeatsItems.Picture = StringProcess.GetGameResourcePath(foodMeatsItems.Picture);
             }
             foreach (var foodVegetablesItems in food.FoodVegetables.Foods)
             {
@@ -148,7 +148,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodVegetablesItems in _foodVegetableData)
             {
-                foodVegetablesItems.Picture = Global.GetGameResourcePath(foodVegetablesItems.Picture);
+                foodVegetablesItems.Picture = StringProcess.GetGameResourcePath(foodVegetablesItems.Picture);
             }
             foreach (var foodFruitItems in food.FoodFruit.Foods)
             {
@@ -156,7 +156,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodFruitItems in _foodFruitData)
             {
-                foodFruitItems.Picture = Global.GetGameResourcePath(foodFruitItems.Picture);
+                foodFruitItems.Picture = StringProcess.GetGameResourcePath(foodFruitItems.Picture);
             }
             foreach (var foodEggsItems in food.FoodEggs.Foods)
             {
@@ -164,7 +164,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodEggsItems in _foodEggData)
             {
-                foodEggsItems.Picture = Global.GetGameResourcePath(foodEggsItems.Picture);
+                foodEggsItems.Picture = StringProcess.GetGameResourcePath(foodEggsItems.Picture);
             }
             foreach (var foodOthersItems in food.FoodOthers.Foods)
             {
@@ -172,7 +172,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodOthersItems in _foodOtherData)
             {
-                foodOthersItems.Picture = Global.GetGameResourcePath(foodOthersItems.Picture);
+                foodOthersItems.Picture = StringProcess.GetGameResourcePath(foodOthersItems.Picture);
             }
             foreach (var foodNoFcItems in food.FoodNoFc.Foods)
             {
@@ -180,7 +180,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodNoFcItems in _foodNoFcData)
             {
-                foodNoFcItems.Picture = Global.GetGameResourcePath(foodNoFcItems.Picture);
+                foodNoFcItems.Picture = StringProcess.GetGameResourcePath(foodNoFcItems.Picture);
             }
         }
 

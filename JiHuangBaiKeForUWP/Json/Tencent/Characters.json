@@ -1,7 +1,7 @@
 ﻿{
   "Character": [
     {
-      "Picture": "C_wilson",
+      "Picture": "C_wilson_dst",
       "Name": "威尔逊",
       "EnName": "Wilson",
       "Motto": "\"我将用我的脑子征服这个世界！\"",
@@ -16,7 +16,7 @@
       "Console": "wilson"
     },
     {
-      "Picture": "C_willow",
+      "Picture": "C_willow_dst",
       "Name": "薇洛",
       "EnName": "Willow",
       "Motto": "\"所有的一切都会在最美丽的火焰中燃烧。\"",
@@ -33,7 +33,7 @@
       "Console": "willow"
     },
     {
-      "Picture": "C_wolfgang",
+      "Picture": "C_wolfgang_dst",
       "Name": "沃尔夫冈",
       "EnName": "Wolfgang",
       "Motto": "\"我是男子汉！是最最强壮的男人！\"",
@@ -49,7 +49,7 @@
       "Console": "wolfgang"
     },
     {
-      "Picture": "C_wendy",
+      "Picture": "C_wendy_dst",
       "Name": "温蒂",
       "EnName": "Wendy",
       "Motto": "\"阿比盖尔？快回来！我们还没玩够呢。\"",
@@ -66,7 +66,7 @@
       "Console": "wendy"
     },
     {
-      "Picture": "C_wx78",
+      "Picture": "C_wx78_dst",
       "Name": "WX-78",
       "EnName": "WX-78",
       "Motto": "\"情感模块无响应\"",
@@ -83,7 +83,7 @@
       "Console": "wx78"
     },
     {
-      "Picture": "C_wickerbottom",
+      "Picture": "C_wickerbottom_dst",
       "Name": "维克波顿",
       "EnName": "Wickerbottom",
       "Motto": "\"嘘！图书馆里不准讲话！\"",
@@ -100,7 +100,7 @@
       "Console": "wickerbottom"
     },
     {
-      "Picture": "C_woodie",
+      "Picture": "C_woodie_dst",
       "Name": "伍迪",
       "EnName": "Woodie",
       "Motto": "\"那棵树很好看对吧？很快就要没了。\"",
@@ -118,7 +118,7 @@
       "Console": "woodie"
     },
     {
-      "Picture": "C_wes",
+      "Picture": "C_wes_dst",
       "Name": "韦斯",
       "EnName": "Wes",
       "Motto": "......",
@@ -135,10 +135,10 @@
       "Console": "wes"
     },
     {
-      "Picture": "C_waxwell",
+      "Picture": "C_waxwell_dst",
       "Name": "麦克斯韦",
       "EnName": "Maxwell",
-      "Motto": "我爱自由。",
+      "Motto": "\"我爱自由。\"",
       "Descriptions": [
         "*衣冠楚楚但是不堪一击",
         "*可以将脑子分成很多块",
@@ -152,10 +152,10 @@
       "Console": "waxwell"
     },
     {
-      "Picture": "C_wathgrithr",
+      "Picture": "C_wathgrithr_dst",
       "Name": "薇格弗德",
       "EnName": "Wigfrid",
-      "Motto": "对我来说，世界只不过是个舞台！",
+      "Motto": "\"对我来说，世界只不过是个舞台！\"",
       "Descriptions": [
         "*精通战斗",
         "*吸收死去敌人的力量",
@@ -169,10 +169,10 @@
       "Console": "wathgrithr"
     },
     {
-      "Picture": "C_webber",
+      "Picture": "C_webber_dst",
       "Name": "韦伯",
       "EnName": "Webber",
-      "Motto": "我们永远在一起，从不会孤单一人！",
+      "Motto": "\"我们永远在一起，从不会孤单一人！\"",
       "Descriptions": [
         "*是一个怪物",
         "*可以和蜘蛛成为朋友",

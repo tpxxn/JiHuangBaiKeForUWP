@@ -41,7 +41,7 @@ namespace JiHuangBaiKeForUWP.View
             await ReportError(ViewNameTextBox.Text, ErrorStackTextBox.Text, _includeDeviceInfo);
         }
 
-        public static async Task ReportError(string viewName, string errorStack = null, bool includeDeviceInfo = true)
+        public static async Task ReportError(string viewName, string errorStack = null,bool includeDeviceInfo = true)
         {
             var deviceInfo = new EasClientDeviceInformation();
 

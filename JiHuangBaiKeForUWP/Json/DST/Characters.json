@@ -1,7 +1,7 @@
 ﻿{
   "Character": [
     {
-      "Picture": "C_wilson",
+      "Picture": "C_wilson_dst",
       "Name": "威尔逊",
       "EnName": "Wilson",
       "Motto": "\"我会用我的智慧征服世界！\"",
@@ -16,7 +16,7 @@
       "Console": "wilson"
     },
     {
-      "Picture": "C_willow",
+      "Picture": "C_willow_dst",
       "Name": "薇洛",
       "EnName": "Willow",
       "Motto": "\"一切都沐浴在美丽的火焰之中。\"",
@@ -33,7 +33,7 @@
       "Console": "willow"
     },
     {
-      "Picture": "C_wolfgang",
+      "Picture": "C_wolfgang_dst",
       "Name": "沃尔夫冈",
       "EnName": "Wolfgang",
       "Motto": "\"我是强大的！没有人比我更强！\"",
@@ -49,7 +49,7 @@
       "Console": "wolfgang"
     },
     {
-      "Picture": "C_wendy",
+      "Picture": "C_wendy_dst",
       "Name": "温蒂",
       "EnName": "Wendy",
       "Motto": "\"阿比盖尔？快回来！我还要和你玩呢。\"",
@@ -66,7 +66,7 @@
       "Console": "wendy"
     },
     {
-      "Picture": "C_wx78",
+      "Picture": "C_wx78_dst",
       "Name": "WX-78",
       "EnName": "WX-78",
       "Motto": "\"情感模块未响应\"",
@@ -83,7 +83,7 @@
       "Console": "wx78"
     },
     {
-      "Picture": "C_wickerbottom",
+      "Picture": "C_wickerbottom_dst",
       "Name": "维克波顿",
       "EnName": "Wickerbottom",
       "Motto": "\"嘘！不许说话！\"",
@@ -100,7 +100,7 @@
       "Console": "wickerbottom"
     },
     {
-      "Picture": "C_woodie",
+      "Picture": "C_woodie_dst",
       "Name": "伍迪",
       "EnName": "Woodie",
       "Motto": "\"这树看上去不错，不是么？但不会太久。\"",
@@ -118,7 +118,7 @@
       "Console": "woodie"
     },
     {
-      "Picture": "C_wes",
+      "Picture": "C_wes_dst",
       "Name": "韦斯",
       "EnName": "Wes",
       "Motto": "......",
@@ -135,10 +135,10 @@
       "Console": "wes"
     },
     {
-      "Picture": "C_waxwell",
+      "Picture": "C_waxwell_dst",
       "Name": "麦克斯韦",
       "EnName": "Maxwell",
-      "Motto": "自由才适合我。",
+      "Motto": "\"自由才适合我。\"",
       "Descriptions": [
         "*衣着整洁，但很脆弱",
         "*可以把他的精神分成很多部分",
@@ -152,10 +152,10 @@
       "Console": "waxwell"
     },
     {
-      "Picture": "C_wathgrithr",
+      "Picture": "C_wathgrithr_dst",
       "Name": "维格弗里德",
       "EnName": "Wigfrid",
-      "Motto": "对我来说，这个世界就是一个舞台！",
+      "Motto": "\"对我来说，这个世界就是一个舞台！\"",
       "Descriptions": [
         "*擅长战斗",
         "*从倒下的敌人身上获得力量",
@@ -169,10 +169,10 @@
       "Console": "wathgrithr"
     },
     {
-      "Picture": "C_webber",
+      "Picture": "C_webber_dst",
       "Name": "韦伯",
       "EnName": "Webber",
-      "Motto": "我们永远在一起，从不会孤单一人！",
+      "Motto": "\"我们永远在一起，从不会孤单一人！\"",
       "Descriptions": [
         "*是一个怪物",
         "*可以和蜘蛛成为朋友",
@@ -184,6 +184,23 @@
       "Damage": 1,
       "Introduce": "韦伯 (未被消化者) 与其他角色不同，出生自带一个蜘蛛卵和两个怪兽肉。吃怪兽肉和怪兽千层饼不会有血量和精神惩罚。得小心别靠近猪人和兔人，它们会主动攻击你。相反的可以用怪兽肉收买蜘蛛作为你的帮手。他会长出毛绒绒的小胡子，具有一定的保温功能，还可以刮下少量蜘蛛网。",
       "Console": "webber"
+    },
+    {
+      "Picture": "C_winona_dst",
+      "Name": "薇诺娜",
+      "EnName": "Winona",
+      "Motto": "\"努力工作和辛勤劳动可以修复任何东西\"",
+      "Descriptions": [
+        "*是一个熟练的建造师",
+        "*免疫一次查理(黑暗)的打击",
+        "*携带她自己的工具"
+      ],
+      "Health": 150,
+      "Hunger": 150,
+      "Sanity": 200,
+      "Damage": 1,
+      "Introduce": "薇诺娜(手巧的女红) 薇诺娜出生自带三个可靠的胶带，可以用来修补衣物(类似缝补工具)，增加衣物五天的使用时间。她制作所有科技的(动画效果)时间是别人的一半，初期加快建造基地的速度。她是查理的姐姐，所以可以免疫一次查理的攻击(每当获得光亮时刷新该被动，例如天亮、使用照明设备、站在发光物体旁)。",
+      "Console": "winona"
     },
     {
       "Picture": "C_wendy_1",

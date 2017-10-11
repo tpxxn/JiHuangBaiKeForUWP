@@ -41,14 +41,14 @@ namespace JiHuangBaiKeForUWP.View
 
         public async void Deserialize()
         {
-            var food = JsonConvert.DeserializeObject<FoodRootObject>(await Global.GetJsonString("Foods.json"));
+            var food = JsonConvert.DeserializeObject<FoodRootObject>(await StringProcess.GetJsonString("Foods.json"));
             foreach (var foodMeatsItems in food.FoodMeats.Foods)
             {
                 _foodMeatData.Add(foodMeatsItems);
             }
             foreach (var foodMeatsItems in _foodMeatData)
             {
-                foodMeatsItems.Picture = Global.GetGameResourcePath(foodMeatsItems.Picture);
+                foodMeatsItems.Picture = StringProcess.GetGameResourcePath(foodMeatsItems.Picture);
             }
             foreach (var foodVegetablesItems in food.FoodVegetables.Foods)
             {
@@ -56,7 +56,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodVegetablesItems in _foodVegetableData)
             {
-                foodVegetablesItems.Picture = Global.GetGameResourcePath(foodVegetablesItems.Picture);
+                foodVegetablesItems.Picture = StringProcess.GetGameResourcePath(foodVegetablesItems.Picture);
             }
             foreach (var foodFruitItems in food.FoodFruit.Foods)
             {
@@ -64,7 +64,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodFruitItems in _foodFruitData)
             {
-                foodFruitItems.Picture = Global.GetGameResourcePath(foodFruitItems.Picture);
+                foodFruitItems.Picture = StringProcess.GetGameResourcePath(foodFruitItems.Picture);
             }
             foreach (var foodEggsItems in food.FoodEggs.Foods)
             {
@@ -72,7 +72,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodEggsItems in _foodEggData)
             {
-                foodEggsItems.Picture = Global.GetGameResourcePath(foodEggsItems.Picture);
+                foodEggsItems.Picture = StringProcess.GetGameResourcePath(foodEggsItems.Picture);
             }
             foreach (var foodOthersItems in food.FoodOthers.Foods)
             {
@@ -80,7 +80,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             foreach (var foodOthersItems in _foodOtherData)
             {
-                foodOthersItems.Picture = Global.GetGameResourcePath(foodOthersItems.Picture);
+                foodOthersItems.Picture = StringProcess.GetGameResourcePath(foodOthersItems.Picture);
             }
         }
 
@@ -786,7 +786,7 @@ namespace JiHuangBaiKeForUWP.View
         //烹饪结果图片
         private void CS_image_Food_Result_Source(string source)
         {
-            FoodResultImage.Source = new BitmapImage(new Uri(Global.GetGameResourcePath(source)));
+            FoodResultImage.Source = new BitmapImage(new Uri(StringProcess.GetGameResourcePath(source)));
         }
 
         //烹饪结果文字
@@ -936,7 +936,7 @@ namespace JiHuangBaiKeForUWP.View
             await Global.SetAutoSuggestBoxItem();
             foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
             {
-                if (picturePath != Global.GetFileName(suggestBoxItem.Picture)) continue;
+                if (picturePath != StringProcess.GetFileName(suggestBoxItem.Picture)) continue;
                 frameTitle.Text = "自然";
                 mainPageListBoxItem[1].IsSelected = true;
                 var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };

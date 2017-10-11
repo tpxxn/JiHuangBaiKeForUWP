@@ -32,7 +32,7 @@
             <StackPanel Grid.Row="4" x:Name="ScienceUnlockStackPanel" Margin="0,5,0,0">
                 <TextBlock Text="解锁：" />
                 <RelativePanel HorizontalAlignment="Center">
-                    <Button x:Name="UnlockCharcterButton" Width="81" Height="126" Background="{x:Null}" Visibility="Collapsed">
+                    <Button x:Name="UnlockCharcterButton" Width="81" Height="126" Background="{x:Null}" Visibility="Collapsed" Tapped="Science_CharacterJump_Tapped">
                         <Image x:Name="UnlockCharcterImage" Height="123" Margin="-10"/>
                     </Button>
                     <userControls:PicButton x:Name="UnlockPicButton" Tapped="Science_Jump_Tapped" RelativePanel.RightOf="UnlockCharcterButton" RelativePanel.AlignVerticalCenterWithPanel="True" Visibility="Collapsed"/>
@@ -42,11 +42,15 @@
             <TextBlock Grid.Row="5" x:Name="ScienceIntroduction" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="10" />
             <Grid Grid.Row="6" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Name="Console" Margin="0,5,15,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
-                <Button Grid.Column="1" HorizontalAlignment="Left" Tapped="Copy_Tapped">
+                <TextBlock x:Name="ConsolePre" Margin="0,5,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <TextBox x:Name="ConsoleNum" Grid.Column="1" Text="1" MaxLength="4" TextChanged="ConsoleNum_TextChanged" TextAlignment="Center"/>
+                <TextBlock Grid.Column="2" x:Name="ConsolePos" Text=")" Margin="0,5,15,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <Button Grid.Column="3" HorizontalAlignment="Left" Tapped="Copy_Tapped">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Copy" />

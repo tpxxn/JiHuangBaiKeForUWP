@@ -695,7 +695,7 @@
                 "Name": "回旋镖",
                 "EnName": "Boomerang",
                 "Need1": "S_boards",
-                "Need1Value": 2,
+                "Need1Value": 1,
                 "Need2": "G_silk",
                 "Need2Value": 1,
                 "Need3": "G_charcoal",

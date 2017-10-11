@@ -44,7 +44,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     {
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = thickness,
-                        Source = Global.GetGameResourcePath(picPath)
+                        Source = StringProcess.GetGameResourcePath(picPath)
                     };
                     NaturalAbundantWrapPanel.Children.Add(picButton);
                 }
@@ -62,7 +62,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     {
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = thickness,
-                        Source = Global.GetGameResourcePath(picPath)
+                        Source = StringProcess.GetGameResourcePath(picPath)
                     };
                     NaturalOccasionalWrapPanel.Children.Add(picButton);
                 }
@@ -80,7 +80,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     {
                         HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = thickness,
-                        Source = Global.GetGameResourcePath(picPath)
+                        Source = StringProcess.GetGameResourcePath(picPath)
                     };
                     NaturalRareWrapPanel.Children.Add(picButton);
                 }

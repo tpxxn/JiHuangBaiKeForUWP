@@ -20,9 +20,6 @@ using Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel;
 
 namespace JiHuangBaiKeForUWP.View.Dialog
 {
-    /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
-    /// </summary>
     public sealed partial class CreaturesDialog : Page
     {
         public CreaturesDialog(Creature c)
@@ -166,7 +163,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         {
                             HorizontalAlignment = HorizontalAlignment.Left,
                             Margin = thickness,
-                            Source = Global.GetGameResourcePath(goodSource),
+                            Source = StringProcess.GetGameResourcePath(goodSource),
                         };
                         picButton.Tapped += Creature_Jump_Tapped;
                         GoodsWrapPanel.Children.Add(picButton);
@@ -183,12 +180,12 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                             var picButton1 = new PicButton
                             {
                                 HorizontalAlignment = HorizontalAlignment.Left,
-                                Source = Global.GetGameResourcePath(goodSource),
+                                Source = StringProcess.GetGameResourcePath(goodSource),
                                 Text = "（"
                             };
                             var picButton2 = new PicButton
                             {
-                                Source = Global.GetGameResourcePath(goodText),
+                                Source = StringProcess.GetGameResourcePath(goodText),
                                 Text = "）"
                             };
                             picButton1.Tapped += Creature_Jump_Tapped;
@@ -203,7 +200,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                             {
                                 HorizontalAlignment = HorizontalAlignment.Left,
                                 Margin = thickness,
-                                Source = Global.GetGameResourcePath(goodSource),
+                                Source = StringProcess.GetGameResourcePath(goodSource),
                                 Text = goodText
                             };
                             picButton.Tapped += Creature_Jump_Tapped;
@@ -253,7 +250,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             // 控制台
             if (c.Console != null)
             {
-                Console.Text = $"c_give(\"{c.Console}\",10)";
+                ConsolePre.Text = $"c_give(\"{c.Console}\",";
             }
             else
             {
@@ -289,9 +286,9 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             };
             var value50WrapPanel = new WrapPanel();
             if (gameVersion != 2)
-                value50WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_glommer") });
+                value50WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_glommer") });
             if (gameVersion == 4)
-                value50WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_seal") });
+                value50WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_seal") });
             // 1-50
             var value1To50TextBlock = new TextBlock
             {
@@ -299,7 +296,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 Text = "1-50"
             };
             var value1To50WrapPanel = new WrapPanel();
-            value1To50WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_doydoy") });
+            value1To50WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_doydoy") });
             // 7
             var value7TextBlock = new TextBlock
             {
@@ -307,7 +304,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 Text = "7"
             };
             var value7WrapPanel = new WrapPanel();
-            value7WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_blue_whale") });
+            value7WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_blue_whale") });
             // 6
             var value6TextBlock = new TextBlock
             {
@@ -316,12 +313,12 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             };
             var value6WrapPanel = new WrapPanel();
             if (gameVersion != 4)
-                value6WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_baby_beefalo") });
-            value6WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_smallbird") });
+                value6WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_baby_beefalo") });
+            value6WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_smallbird") });
             if (gameVersion == 4)
             {
-                value6WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_parrot_pirate") });
-                value6WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_white_whale") });
+                value6WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_parrot_pirate") });
+                value6WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_white_whale") });
             }
             // 5
             var value5TextBlock = new TextBlock
@@ -330,7 +327,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 Text = "5"
             };
             var value5WrapPanel = new WrapPanel();
-            value5WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_catcoon") });
+            value5WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_catcoon") });
             // 4
             var value4TextBlock = new TextBlock
             {
@@ -340,16 +337,16 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var value4WrapPanel = new WrapPanel();
             if (gameVersion != 4)
             {
-                value4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_beefalo") });
+                value4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_beefalo") });
             }
             else
             {
-                value4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_water_beefalo") });
-                value4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_swordfish") });
+                value4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_water_beefalo") });
+                value4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_swordfish") });
             }
             if (gameVersion == 0 || gameVersion == 1)
             {
-                value4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_no_eyed_deer") });
+                value4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_no_eyed_deer") });
             }
             // 3
             var value3TextBlock = new TextBlock
@@ -358,11 +355,11 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 Text = "3"
             };
             var value3WrapPanel = new WrapPanel();
-            value3WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_pig_man") });
+            value3WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_pig_man") });
             if (gameVersion != 4)
             {
-                value3WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_bunnyman") });
-                value3WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_beardlord") });
+                value3WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_bunnyman") });
+                value3WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_beardlord") });
             }
             // 2
             var value2TextBlock = new TextBlock
@@ -373,23 +370,23 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var value2WrapPanel = new WrapPanel();
             if (gameVersion != 4)
             {
-                value2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_redbird") });
-                value2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_snowbird") });
-                value2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_pengull") });
+                value2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_redbird") });
+                value2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_snowbird") });
+                value2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_pengull") });
             }
-            value2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_tallbird") });
-            value2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_teentallbird") });
+            value2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_tallbird") });
+            value2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_teentallbird") });
             if (gameVersion == 4)
             {
-                value2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_parrot_pirate") });
-                value2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_dogfish") });
-                value2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_bottenosed_ballphin") });
-                value2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_prime_ape") });
-                value2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_wobster") });
+                value2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_parrot_pirate") });
+                value2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_dogfish") });
+                value2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_bottenosed_ballphin") });
+                value2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_prime_ape") });
+                value2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_wobster") });
             }
             if (gameVersion == 0 || gameVersion == 1)
             {
-                value2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_canary") });
+                value2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_canary") });
             }
             // 1
             var value1TextBlock = new TextBlock
@@ -400,20 +397,20 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var value1WrapPanel = new WrapPanel();
             if (gameVersion != 4)
             {
-                value1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_rabbit") });
-                value1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_beardling") });
-                value1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_crow") });
-                value1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_butterfly") });
-                value1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_moleworm") });
+                value1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_rabbit") });
+                value1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_beardling") });
+                value1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_crow") });
+                value1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_butterfly") });
+                value1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_moleworm") });
             }
-            value1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_bee") });
+            value1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_bee") });
             if (gameVersion == 4)
             {
-                value1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_butterfly_sw") });
-                value1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_crabbit") });
-                value1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_jellyfish") });
-                value1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_seagull") });
-                value1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("A_toucan") });
+                value1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_butterfly_sw") });
+                value1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_crabbit") });
+                value1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_jellyfish") });
+                value1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_seagull") });
+                value1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("A_toucan") });
             }
             // 添加控件
             // 非DS
@@ -467,22 +464,22 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             };
             rootStackPanel.Children.Add(titleTextBlock);
             var wrapPanel = new WrapPanel { HorizontalAlignment = HorizontalAlignment.Center, Width = 360 };
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_fish") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_cooked_fish") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_tropical_fish") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_limpets") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_cooked_limpets") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_wobster") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_dead_wobster") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_delicious_wobster") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_mussel") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_cooked_mussel") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_fish_morsel") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_cooked_fish_morsel") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_raw_fish") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_fish_steak") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_dead_dogfish") });
-            wrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_dead_swordfish") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_fish") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_cooked_fish") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_tropical_fish") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_limpets") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_cooked_limpets") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_wobster") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_dead_wobster") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_delicious_wobster") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_mussel") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_cooked_mussel") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_fish_morsel") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_cooked_fish_morsel") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_raw_fish") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_fish_steak") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_dead_dogfish") });
+            wrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_dead_swordfish") });
             rootStackPanel.Children.Add(wrapPanel);
             CreaturesRootGrid.Children.Add(rootStackPanel);
             Grid.SetRow(rootStackPanel, 9);
@@ -512,198 +509,198 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var goldNugget1PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("S_gold_nugget"),
+                Source = StringProcess.GetGameResourcePath("S_gold_nugget"),
                 Text = "×1"
             };
             var goldNugget1WrapPanel = new WrapPanel();
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_egg") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_cooked_egg") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_morsel") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_cooked_morsel") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_meat") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_cooked_meat") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_drumstick") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_fried_drumstick") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_leafy_meat") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_cooked_leafy_meat") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_fish") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_cooked_fish") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_batilisk_wing") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_cooked_batilisk_wing") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_koalefant_trunk") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_winter_koalefant_trunk") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_koalefant_trunk_steak") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("G_slurper_pelt") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_small_jerky") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_jerky") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_monster_jerky") });
-            goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("G_pig_skin") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_egg") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_cooked_egg") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_morsel") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_cooked_morsel") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_meat") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_cooked_meat") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_drumstick") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_fried_drumstick") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_leafy_meat") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_cooked_leafy_meat") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_fish") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_cooked_fish") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_batilisk_wing") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_cooked_batilisk_wing") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_koalefant_trunk") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_winter_koalefant_trunk") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_koalefant_trunk_steak") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("G_slurper_pelt") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_small_jerky") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_jerky") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_monster_jerky") });
+            goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("G_pig_skin") });
             if (gameVersion == 0 || gameVersion == 1)
             {
-                goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_beach_toy") });
+                goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_beach_toy") });
             }
             else
             {
-                goldNugget1WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_sea_worther") });
+                goldNugget1WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_sea_worther") });
             }
             // 2
             var goldNugget2PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("S_gold_nugget"),
+                Source = StringProcess.GetGameResourcePath("S_gold_nugget"),
                 Text = "×2"
             };
             var goldNugget2WrapPanel = new WrapPanel();
-            goldNugget2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("G_bunny_puff") });
-            goldNugget2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_second_hand_dentures") });
+            goldNugget2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("G_bunny_puff") });
+            goldNugget2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_second_hand_dentures") });
             if (gameVersion == 0 || gameVersion == 1)
             {
-                goldNugget2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_bent_spork") });
-                goldNugget2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_air_unfreshener") });
+                goldNugget2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_bent_spork") });
+                goldNugget2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_air_unfreshener") });
             }
             else
             {
-                goldNugget2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_sextant") });
-                goldNugget2WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_toy_boat") });
+                goldNugget2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_sextant") });
+                goldNugget2WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_toy_boat") });
             }
             // 3
             var goldNugget3PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("S_gold_nugget"),
+                Source = StringProcess.GetGameResourcePath("S_gold_nugget"),
                 Text = "×3"
             };
             var goldNugget3WrapPanel = new WrapPanel();
             if (gameVersion == 0 || gameVersion == 1)
             {
-                goldNugget3WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_leaky_teacup") });
-                goldNugget3WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_shoe_horn") });
+                goldNugget3WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_leaky_teacup") });
+                goldNugget3WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_shoe_horn") });
             }
             else
             {
-                goldNugget3WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_one_true_earring") });
+                goldNugget3WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_one_true_earring") });
             }
             // 4
             var goldNugget4PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("S_gold_nugget"),
+                Source = StringProcess.GetGameResourcePath("S_gold_nugget"),
                 Text = "×4"
             };
             var goldNugget4WrapPanel = new WrapPanel();
-            goldNugget4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_ball_and_cup") });
-            goldNugget4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_gord's_knot") });
-            goldNugget4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_melty_marbles") });
-            goldNugget4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_tiny_rocketship") });
+            goldNugget4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_ball_and_cup") });
+            goldNugget4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_gord's_knot") });
+            goldNugget4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_melty_marbles") });
+            goldNugget4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_tiny_rocketship") });
             if (gameVersion == 0 || gameVersion == 1)
             {
-                goldNugget4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_white_bishop") });
-                goldNugget4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_black_bishop") });
-                goldNugget4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_frayed_yarn") });
-                goldNugget4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_wire_hanger") });
-                goldNugget4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_white_rook") });
-                goldNugget4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_black_rook") });
-                goldNugget4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_white_knight") });
-                goldNugget4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_black_knight") });
+                goldNugget4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_white_bishop") });
+                goldNugget4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_black_bishop") });
+                goldNugget4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_frayed_yarn") });
+                goldNugget4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_wire_hanger") });
+                goldNugget4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_white_rook") });
+                goldNugget4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_black_rook") });
+                goldNugget4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_white_knight") });
+                goldNugget4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_black_knight") });
             }
             else
             {
-                goldNugget4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_old_boot") });
-                goldNugget4WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_wine_bottle_candle") });
+                goldNugget4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_old_boot") });
+                goldNugget4WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_wine_bottle_candle") });
             }
             // 5
             var goldNugget5PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("S_gold_nugget"),
+                Source = StringProcess.GetGameResourcePath("S_gold_nugget"),
                 Text = "×5"
             };
             var goldNugget5WrapPanel = new WrapPanel();
-            goldNugget5WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_eel") });
-            goldNugget5WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("F_cooked_eel") });
-            goldNugget5WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_frazzled_wires") });
-            goldNugget5WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_gnome_1") });
-            goldNugget5WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_lying_robot") });
+            goldNugget5WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_eel") });
+            goldNugget5WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("F_cooked_eel") });
+            goldNugget5WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_frazzled_wires") });
+            goldNugget5WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_gnome_1") });
+            goldNugget5WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_lying_robot") });
             if (gameVersion == 0 || gameVersion == 1)
             {
-                goldNugget5WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_gnome_2") });
-                goldNugget5WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_beaten_beater") });
+                goldNugget5WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_gnome_2") });
+                goldNugget5WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_beaten_beater") });
             }
             // 6
             var goldNugget6PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("S_gold_nugget"),
+                Source = StringProcess.GetGameResourcePath("S_gold_nugget"),
                 Text = "×6"
             };
             var goldNugget6WrapPanel = new WrapPanel();
-            goldNugget6WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_fake_kazoo") });
+            goldNugget6WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_fake_kazoo") });
             if (gameVersion == 0 || gameVersion == 1)
             {
-                goldNugget6WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_toy_trojan_horse") });
-                goldNugget6WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_unbalanced_top") });
+                goldNugget6WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_toy_trojan_horse") });
+                goldNugget6WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_unbalanced_top") });
             }
             else
             {
-                goldNugget6WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_brain_cloud_pill") });
-                goldNugget6WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_orange_soda") });
-                goldNugget6WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_ukulele") });
+                goldNugget6WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_brain_cloud_pill") });
+                goldNugget6WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_orange_soda") });
+                goldNugget6WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_ukulele") });
             }
             // 7
             var goldNugget7PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("S_gold_nugget"),
+                Source = StringProcess.GetGameResourcePath("S_gold_nugget"),
                 Text = "×7"
             };
             var goldNugget7WrapPanel = new WrapPanel();
-            goldNugget7WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_mismatched_buttons") });
+            goldNugget7WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_mismatched_buttons") });
             if (gameVersion == 0 || gameVersion == 1)
             {
-                goldNugget7WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_back_scratcher") });
+                goldNugget7WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_back_scratcher") });
             }
             else
             {
-                goldNugget7WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_soaked_candle") });
-                goldNugget7WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_license_plate") });
-                goldNugget7WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_ancient_vase") });
+                goldNugget7WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_soaked_candle") });
+                goldNugget7WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_license_plate") });
+                goldNugget7WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_ancient_vase") });
             }
             // 8
             var goldNugget8PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("S_gold_nugget"),
+                Source = StringProcess.GetGameResourcePath("S_gold_nugget"),
                 Text = "×8"
             };
             var goldNugget8WrapPanel = new WrapPanel();
-            goldNugget8WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_dessicated_tentacle") });
-            goldNugget8WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_hardened_rubber_bung") });
+            goldNugget8WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_dessicated_tentacle") });
+            goldNugget8WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_hardened_rubber_bung") });
             if (gameVersion == 0 || gameVersion == 1)
             {
-                goldNugget8WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_lucky_cat_jar") });
+                goldNugget8WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_lucky_cat_jar") });
             }
             else
             {
-                goldNugget8WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_voodoo_doll") });
+                goldNugget8WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_voodoo_doll") });
             }
             // 9
             var goldNugget9PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("S_gold_nugget"),
+                Source = StringProcess.GetGameResourcePath("S_gold_nugget"),
                 Text = "×9"
             };
             var goldNugget9WrapPanel = new WrapPanel();
-            goldNugget9WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_potato_cup") });
+            goldNugget9WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_potato_cup") });
             // 10
             var goldNugget10PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("S_gold_nugget"),
+                Source = StringProcess.GetGameResourcePath("S_gold_nugget"),
                 Text = "×10"
             };
             var goldNugget10WrapPanel = new WrapPanel();
-            goldNugget10WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_broken_AAC_device") });
+            goldNugget10WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_broken_AAC_device") });
             stackPanel.Children.Add(goldNugget1PicButton);
             stackPanel.Children.Add(goldNugget1WrapPanel);
             stackPanel.Children.Add(goldNugget2PicButton);
@@ -758,82 +755,82 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var dubloons5PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("G_dubloons"),
+                Source = StringProcess.GetGameResourcePath("G_dubloons"),
                 Text = "×5"
             };
             var dubloons5WrapPanel = new WrapPanel();
-            dubloons5WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_old_boot") });
-            dubloons5WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_license_plate") });
-            dubloons5WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_wine_bottle_candle") });
+            dubloons5WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_old_boot") });
+            dubloons5WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_license_plate") });
+            dubloons5WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_wine_bottle_candle") });
             // 7
             var dubloons7PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("G_dubloons"),
+                Source = StringProcess.GetGameResourcePath("G_dubloons"),
                 Text = "×7"
             };
             var dubloons7WrapPanel = new WrapPanel();
-            dubloons7WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_orange_soda") });
-            dubloons7WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_voodoo_doll") });
-            dubloons7WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_second_hand_dentures") });
+            dubloons7WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_orange_soda") });
+            dubloons7WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_voodoo_doll") });
+            dubloons7WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_second_hand_dentures") });
             // 8
             var dubloons8PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("G_dubloons"),
+                Source = StringProcess.GetGameResourcePath("G_dubloons"),
                 Text = "×8"
             };
             var dubloons8WrapPanel = new WrapPanel();
-            dubloons8WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_brain_cloud_pill") });
-            dubloons8WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_toy_boat") });
-            dubloons8WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_ukulele") });
+            dubloons8WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_brain_cloud_pill") });
+            dubloons8WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_toy_boat") });
+            dubloons8WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_ukulele") });
             // 9
             var dubloons9PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("G_dubloons"),
+                Source = StringProcess.GetGameResourcePath("G_dubloons"),
                 Text = "×9"
             };
             var dubloons9WrapPanel = new WrapPanel();
-            dubloons9WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_ball_and_cup") });
-            dubloons9WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_gord's_knot") });
-            dubloons9WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_melty_marbles") });
-            dubloons9WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_tiny_rocketship") });
+            dubloons9WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_ball_and_cup") });
+            dubloons9WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_gord's_knot") });
+            dubloons9WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_melty_marbles") });
+            dubloons9WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_tiny_rocketship") });
             // 10
             var dubloons10PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("G_dubloons"),
+                Source = StringProcess.GetGameResourcePath("G_dubloons"),
                 Text = "×10"
             };
             var dubloons10WrapPanel = new WrapPanel();
-            dubloons10WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_frazzled_wires") });
-            dubloons10WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_gnome_1") });
-            dubloons10WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_lying_robot") });
+            dubloons10WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_frazzled_wires") });
+            dubloons10WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_gnome_1") });
+            dubloons10WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_lying_robot") });
             // 11
             var dubloons11PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("G_dubloons"),
+                Source = StringProcess.GetGameResourcePath("G_dubloons"),
                 Text = "×11"
             };
             var dubloons11WrapPanel = new WrapPanel();
-            dubloons11WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_ancient_vase") });
-            dubloons11WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_broken_AAC_device") });
-            dubloons11WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_fake_kazoo") });
-            dubloons11WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_sextant") });
+            dubloons11WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_ancient_vase") });
+            dubloons11WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_broken_AAC_device") });
+            dubloons11WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_fake_kazoo") });
+            dubloons11WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_sextant") });
             // 12
             var dubloons12PicButton = new PicButton
             {
                 Margin = new Thickness(0, 0, 0, 5),
-                Source = Global.GetGameResourcePath("G_dubloons"),
+                Source = StringProcess.GetGameResourcePath("G_dubloons"),
                 Text = "×12"
             };
             var dubloons12WrapPanel = new WrapPanel();
-            dubloons12WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_one_true_earring") });
-            dubloons12WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_dessicated_tentacle") });
-            dubloons12WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_hardened_rubber_bung") });
-            dubloons12WrapPanel.Children.Add(new PicButton { Source = Global.GetGameResourcePath("T_mismatched_buttons") });
+            dubloons12WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_one_true_earring") });
+            dubloons12WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_dessicated_tentacle") });
+            dubloons12WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_hardened_rubber_bung") });
+            dubloons12WrapPanel.Children.Add(new PicButton { Source = StringProcess.GetGameResourcePath("T_mismatched_buttons") });
             // 添加控件
             dubloonsStackPanel.Children.Add(dubloons5PicButton);
             dubloonsStackPanel.Children.Add(dubloons5WrapPanel);
@@ -862,42 +859,42 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             };
             fishsWrapPanel.Children.Add(new PicButton
             {
-                Source = Global.GetGameResourcePath("G_dubloons"),
+                Source = StringProcess.GetGameResourcePath("G_dubloons"),
                 Text = "×1"
             });
             fishsWrapPanel.Children.Add(new PicButton
             {
-                Source = Global.GetGameResourcePath("F_seaweed"),
+                Source = StringProcess.GetGameResourcePath("F_seaweed"),
                 Margin = new Thickness(5, 0, 0, 0),
                 Text = "×1（38.46%）"
             });
             fishsWrapPanel.Children.Add(new PicButton
             {
-                Source = Global.GetGameResourcePath("G_seashell"),
+                Source = StringProcess.GetGameResourcePath("G_seashell"),
                 Margin = new Thickness(5, 0, 0, 0),
                 Text = "×1（23.08%）"
             });
             fishsWrapPanel.Children.Add(new PicButton
             {
-                Source = Global.GetGameResourcePath("G_coral"),
+                Source = StringProcess.GetGameResourcePath("G_coral"),
                 Margin = new Thickness(5, 0, 0, 0),
                 Text = "×1（23.08%）"
             });
             fishsWrapPanel.Children.Add(new PicButton
             {
-                Source = Global.GetGameResourcePath("F_blubber"),
+                Source = StringProcess.GetGameResourcePath("F_blubber"),
                 Margin = new Thickness(5, 0, 0, 0),
                 Text = "×1（7.69%）"
             });
             fishsWrapPanel.Children.Add(new PicButton
             {
-                Source = Global.GetGameResourcePath("F_shark_fin"),
+                Source = StringProcess.GetGameResourcePath("F_shark_fin"),
                 Margin = new Thickness(5, 0, 0, 0),
                 Text = "×1（7.69%）"
             });
             fishsWrapPanel.Children.Add(new PicButton
             {
-                Source = Global.GetGameResourcePath("G_golden_key"),
+                Source = StringProcess.GetGameResourcePath("G_golden_key"),
                 Margin = new Thickness(5, 0, 0, 0),
                 Text = "×1（10%）（未解锁伍德莱格）"
             });
@@ -921,11 +918,11 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             };
             var recipe1PicButton = new PicButton
             {
-                Source=Global.GetGameResourcePath("F_california_roll")
+                Source=StringProcess.GetGameResourcePath("F_california_roll")
             };
             var science1PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("S_thatch_sail")
+                Source = StringProcess.GetGameResourcePath("S_thatch_sail")
             };
             rTs1StackPanel.Children.Add(recipe1PicButton);
             rTs1StackPanel.Children.Add(new SymbolIcon { VerticalAlignment = VerticalAlignment.Center, Symbol = Symbol.Forward });
@@ -939,11 +936,11 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             };
             var recipe2PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("F_seafood_gumbo")
+                Source = StringProcess.GetGameResourcePath("F_seafood_gumbo")
             };
             var science2PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("S_cloth_sail")
+                Source = StringProcess.GetGameResourcePath("S_cloth_sail")
             };
             rTs2StackPanel.Children.Add(recipe2PicButton);
             rTs2StackPanel.Children.Add(new SymbolIcon { VerticalAlignment = VerticalAlignment.Center, Symbol = Symbol.Forward });
@@ -957,11 +954,11 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             };
             var recipe3PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("F_bisque")
+                Source = StringProcess.GetGameResourcePath("F_bisque")
             };
             var science3PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("S_trawl_net")
+                Source = StringProcess.GetGameResourcePath("S_trawl_net")
             };
             rTs3StackPanel.Children.Add(recipe3PicButton);
             rTs3StackPanel.Children.Add(new SymbolIcon { VerticalAlignment = VerticalAlignment.Center, Symbol = Symbol.Forward });
@@ -975,11 +972,11 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             };
             var recipe4PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("F_jelly-O_pop")
+                Source = StringProcess.GetGameResourcePath("F_jelly-O_pop")
             };
             var science4PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("S_sea_trap")
+                Source = StringProcess.GetGameResourcePath("S_sea_trap")
             };
             rTs4StackPanel.Children.Add(recipe4PicButton);
             rTs4StackPanel.Children.Add(new SymbolIcon { VerticalAlignment = VerticalAlignment.Center, Symbol = Symbol.Forward });
@@ -993,11 +990,11 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             };
             var recipe5PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("F_ceviche")
+                Source = StringProcess.GetGameResourcePath("F_ceviche")
             };
             var science5PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("S_spyglass")
+                Source = StringProcess.GetGameResourcePath("S_spyglass")
             };
             rTs5StackPanel.Children.Add(recipe5PicButton);
             rTs5StackPanel.Children.Add(new SymbolIcon { VerticalAlignment = VerticalAlignment.Center, Symbol = Symbol.Forward });
@@ -1011,11 +1008,11 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             };
             var recipe6PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("F_surf_'n'_turf")
+                Source = StringProcess.GetGameResourcePath("F_surf_'n'_turf")
             };
             var science6PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("S_boat_lantern")
+                Source = StringProcess.GetGameResourcePath("S_boat_lantern")
             };
             rTs6StackPanel.Children.Add(recipe6PicButton);
             rTs6StackPanel.Children.Add(new SymbolIcon { VerticalAlignment = VerticalAlignment.Center, Symbol = Symbol.Forward });
@@ -1029,11 +1026,11 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             };
             var recipe7PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("F_lobster_bisque")
+                Source = StringProcess.GetGameResourcePath("F_lobster_bisque")
             };
             var science7PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("S_pirate_hat")
+                Source = StringProcess.GetGameResourcePath("S_pirate_hat")
             };
             rTs7StackPanel.Children.Add(recipe7PicButton);
             rTs7StackPanel.Children.Add(new SymbolIcon { VerticalAlignment = VerticalAlignment.Center, Symbol = Symbol.Forward });
@@ -1047,11 +1044,11 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             };
             var recipe8PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("F_lobster_dinner")
+                Source = StringProcess.GetGameResourcePath("F_lobster_dinner")
             };
             var science8PicButton = new PicButton
             {
-                Source = Global.GetGameResourcePath("S_boat_cannon")
+                Source = StringProcess.GetGameResourcePath("S_boat_cannon")
             };
             rTs8StackPanel.Children.Add(recipe8PicButton);
             rTs8StackPanel.Children.Add(new SymbolIcon { VerticalAlignment = VerticalAlignment.Center, Symbol = Symbol.Forward });
@@ -1063,10 +1060,16 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             Grid.SetRow(rootStackPanel, 9);
         }
 
+        private void ConsoleNum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            StringProcess.ConsoleNumTextCheck(textbox);
+        }
+
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var dataPackage = new DataPackage();
-            dataPackage.SetText(Console.Text);
+            dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
         }
 
@@ -1074,7 +1077,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
         {
             var picturePath = ((PicButton)sender).Source;
             var rootFrame = Global.RootFrame;
-            var shortName = Global.GetFileName(picturePath);
+            var shortName = StringProcess.GetFileName(picturePath);
             var mainPageListBoxItem = Global.MainPageListBoxItem;
             var frameTitle = Global.FrameTitle;
             await Global.SetAutoSuggestBoxItem();

@@ -112,6 +112,7 @@
     <Compile Include="Model\FoodsJson.cs" />
     <Compile Include="Model\Global.cs" />
     <Compile Include="Model\SciencesJson.cs" />
+    <Compile Include="Model\StringProcess.cs" />
     <Compile Include="Model\SuggestBoxItem.cs" />
     <Compile Include="Model\UnhandledException.cs" />
     <Compile Include="UserControls\Charts\BarChart.xaml.cs">
@@ -212,6 +213,18 @@
     <Content Include="Assets\Font\JiHuangBaiKeFont.ttf" />
     <None Include="JiHuangBaiKeForUWP_StoreKey.pfx" />
     <None Include="JiHuangBaiKeForUWP_TemporaryKey.pfx" />
+    <Content Include="Assets\GameResources\Charcters\C_wathgrithr_dst.png" />
+    <Content Include="Assets\GameResources\Charcters\C_waxwell_dst.png" />
+    <Content Include="Assets\GameResources\Charcters\C_webber_dst.png" />
+    <Content Include="Assets\GameResources\Charcters\C_wendy_dst.png" />
+    <Content Include="Assets\GameResources\Charcters\C_wes_dst.png" />
+    <Content Include="Assets\GameResources\Charcters\C_wickerbottom_dst.png" />
+    <Content Include="Assets\GameResources\Charcters\C_willow_dst.png" />
+    <Content Include="Assets\GameResources\Charcters\C_wilson_dst.png" />
+    <Content Include="Assets\GameResources\Charcters\C_winona_dst.png" />
+    <Content Include="Assets\GameResources\Charcters\C_wolfgang_dst.png" />
+    <Content Include="Assets\GameResources\Charcters\C_woodie_dst.png" />
+    <Content Include="Assets\GameResources\Charcters\C_wx78_dst.png" />
     <Content Include="Assets\GameResources\Creatures\A_antlion.png" />
     <Content Include="Assets\GameResources\Creatures\A_bee_queen.png" />
     <Content Include="Assets\GameResources\Creatures\A_canary.png" />
@@ -256,6 +269,7 @@
     <Content Include="Assets\GameResources\Goods\G_chilled_lavae.png" />
     <Content Include="Assets\GameResources\Goods\G_chocolate_log_cake.png" />
     <Content Include="Assets\GameResources\Goods\G_choco_pigs.png" />
+    <Content Include="Assets\GameResources\Goods\G_crumpled_package.png" />
     <Content Include="Assets\GameResources\Goods\G_cubic_zirkonia_Ball.png" />
     <Content Include="Assets\GameResources\Goods\G_cyan_festive_bauble.png" />
     <Content Include="Assets\GameResources\Goods\G_deer_antler_1.png" />
@@ -268,6 +282,8 @@
     <Content Include="Assets\GameResources\Goods\G_fossil_fragment.png" />
     <Content Include="Assets\GameResources\Goods\G_ghost_pop.png" />
     <Content Include="Assets\GameResources\Goods\G_gingerbread_cookie.png" />
+    <Content Include="Assets\GameResources\Goods\G_glass_castle.png" />
+    <Content Include="Assets\GameResources\Goods\G_glass_spike.png" />
     <Content Include="Assets\GameResources\Goods\G_gloden_festive_bauble.png" />
     <Content Include="Assets\GameResources\Goods\G_gold_nugget.png" />
     <Content Include="Assets\GameResources\Goods\G_green_festive_bauble.png" />
@@ -300,6 +316,9 @@
     <Content Include="Assets\GameResources\Goods\G_red_moonlens.png" />
     <Content Include="Assets\GameResources\Goods\G_red_pouch.png" />
     <Content Include="Assets\GameResources\Goods\G_saffron_feather.png" />
+    <Content Include="Assets\GameResources\Goods\G_sculpture_bishophead.png" />
+    <Content Include="Assets\GameResources\Goods\G_sculpture_knighthead.png" />
+    <Content Include="Assets\GameResources\Goods\G_sculpture_rooknose.png" />
     <Content Include="Assets\GameResources\Goods\G_shadow_atrium.png" />
     <Content Include="Assets\GameResources\Goods\G_shadow_thurible.png" />
     <Content Include="Assets\GameResources\Goods\G_shroom_skin.png" />
@@ -424,6 +443,7 @@
     <Content Include="Assets\GameResources\Sciences\S_rook_figure_stone.png" />
     <Content Include="Assets\GameResources\Sciences\S_scaled_furnace.png" />
     <Content Include="Assets\GameResources\Sciences\S_the_lazy_deserter.png" />
+    <Content Include="Assets\GameResources\Sciences\S_trusty_tape.png" />
     <Content Include="Assets\GameResources\Sciences\S_vargling.png" />
     <Content Include="Assets\GameResources\Sciences\S_wax_paper.png" />
     <Content Include="Assets\GameResources\Sciences\S_wood_fence.png" />

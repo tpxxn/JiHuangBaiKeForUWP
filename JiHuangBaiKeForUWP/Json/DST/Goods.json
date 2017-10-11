@@ -236,6 +236,7 @@
           "S_improved_farm",
           "S_grass_suit",
           "S_hay_wall",
+		  "S_trusty_tape",
           "S_straw_hat",
           "S_rope"
         ],
@@ -571,6 +572,7 @@
           "S_siesta_lean-to",
           "S_boomerang",
           "S_spider_eggs",
+		  "S_trusty_tape",
           "S_sewing_kit",
           "S_top_hat",
           "S_winter_hat",
@@ -1262,8 +1264,9 @@
           "S_the_lazy_deserter"
         ],
         "SourceCreature": [
-          "Antlion"
+          "A_antlion"
         ],
+		"Introduction": "制作怠惰的逃亡者的必要材料，来源于蚁狮",
         "Console": "townportaltalisman"
       }
     ]
@@ -1430,7 +1433,7 @@
         "EnName": "Pretty Parasol",
         "Durability": "2天",
         "Wet": 50,
-        "Heat": 120,
+        "HeatResistance": 120,
         "Sanity": 2,
         "Introduction": "既防潮又隔热。",
         "Console": "grass_umbrella"
@@ -1452,7 +1455,7 @@
         "EnName": "Straw Hat",
         "Durability": "5天",
         "Wet": 20,
-        "Heat": 60,
+        "HeatResistance": 60,
         "Introduction": "一般的防潮隔热装备。",
         "Console": "strawhat"
       },
@@ -1462,7 +1465,7 @@
         "EnName": "Top Hat",
         "Durability": "6天",
         "Wet": 20,
-        "Heat": 60,
+        "HeatResistance": 60,
         "Sanity": 2,
         "Introduction": "少量的防潮效果，还有少量隔热和效果和精神光环。",
         "Console": "tophat"
@@ -1483,7 +1486,7 @@
         "EnName": "Rain Coat",
         "Durability": "8天",
         "Wet": 100,
-        "Heat": 60,
+        "ColdResistance": 60,
         "Introduction": "雨帽加雨衣，绝配！",
         "Console": "raincoat"
       },
@@ -1493,7 +1496,7 @@
         "EnName": "Eyebrella",
         "Durability": "8天",
         "Wet": 100,
-        "Heat": 240,
+        "HeatResistance": 240,
         "Introduction": "无敌的防潮效果！隔热效果也是绝佳！",
         "Console": "eyebrellahat"
       },
@@ -1502,7 +1505,8 @@
         "Name": "保温石",
         "EnName": "Thermal Stone",
         "Durability": "8次",
-        "Heat": 120,
+        "ColdResistance": 120,
+        "HeatResistance": 120,
         "Introduction": "每次变灰耐久度减少1点，可以用来升温也可以用来降温。",
         "Console": "heatrock"
       },
@@ -1512,7 +1516,7 @@
         "EnName": "Whirly Fan",
         "Attack": 17,
         "Durability": "90秒",
-        "Heat": 30,
+        "HeatResistance": 30,
         "Introduction": "DST版中玩具似的隔热道具，可以用来打人哦！",
         "Console": "minifan"
       },
@@ -1521,7 +1525,7 @@
         "Name": "兔子耳罩",
         "EnName": "Rabbit Earmuffs",
         "Durability": "5天",
-        "Heat": 60,
+        "ColdResistance": 60,
         "Introduction": "不怎么样的隔热装备，不过挺可爱的~",
         "Console": "earmuffshat"
       },
@@ -1531,7 +1535,7 @@
         "EnName": "Beefalo Hat",
         "Durability": "10天",
         "Wet": 20,
-        "Heat": 240,
+        "ColdResistance": 240,
         "Introduction": "有了牛帽冬天就不用愁了。",
         "Console": "beefalohat"
       },
@@ -1540,7 +1544,7 @@
         "Name": "冬帽",
         "EnName": "Winter Hat",
         "Durability": "10天",
-        "Heat": 120,
+        "ColdResistance": 120,
         "Sanity": 1.33,
         "Introduction": "一般过冬的装备。",
         "Console": "winterhat"
@@ -1550,7 +1554,7 @@
         "Name": "猫帽",
         "EnName": "Cat Cap",
         "Durability": "10天",
-        "Heat": 60,
+        "ColdResistance": 60,
         "Sanity": 3.33,
         "Introduction": "没啥用的隔热装备。",
         "Console": "catcoonhat"
@@ -1561,7 +1565,7 @@
         "EnName": "Fashion Melon",
         "Durability": "3天",
         "Wet": 20,
-        "Heat": 120,
+        "HeatResistance": 120,
         "Sanity": -2,
         "Introduction": "廉价的隔热装备。",
         "Console": "watermelonhat"
@@ -1571,7 +1575,7 @@
         "Name": "冰方块",
         "EnName": "Ice Cube",
         "Durability": "4天",
-        "Heat": 240,
+        "HeatResistance": 240,
         "Sanity": 0,
         "Introduction": "隔热效果很好，不过会增加潮湿度。",
         "Console": "icehat"
@@ -1581,7 +1585,7 @@
         "Name": "短背心",
         "EnName": "Dapper Vest",
         "Durability": "10天",
-        "Heat": 60,
+        "ColdResistance": 60,
         "Sanity": 3.33,
         "Introduction": "没啥用的隔热装备。",
         "Console": "sweatervest"
@@ -1591,7 +1595,7 @@
         "Name": "透风外套",
         "EnName": "Breezy Vest",
         "Durability": "10天",
-        "Heat": 60,
+        "ColdResistance": 60,
         "Sanity": 2,
         "Introduction": "纯粹是浪费红色象鼻。",
         "Console": "trunkvest_summer"
@@ -1601,7 +1605,7 @@
         "Name": "厚外套",
         "EnName": "Puffy Vest",
         "Durability": "15天",
-        "Heat": 240,
+        "ColdResistance": 240,
         "Sanity": 2,
         "Introduction": "极好的隔热装备。",
         "Console": "trunkvest_winter"
@@ -1611,7 +1615,7 @@
         "Name": "花格衬衫",
         "EnName": "Floral Shirt",
         "Durability": "15天",
-        "Heat": 240,
+        "HeatResistance": 240,
         "Sanity": 3.33,
         "Introduction": "极好的隔热装备，而且在船难版里制作材料比较简单。",
         "Console": "hawaiianshirt"
@@ -1621,7 +1625,7 @@
         "Name": "熊皮背心",
         "EnName": "Hibearnation Vest",
         "Durability": "7天",
-        "Heat": 240,
+        "ColdResistance": 240,
         "Sanity": 4.44,
         "Hunger": 75,
         "Introduction": "隔热效果是最好，可惜材料太难得，而且耐久度不长。",
@@ -1633,7 +1637,7 @@
         "EnName": "Summer Frest",
         "Durability": "8天",
         "Wet": 20,
-        "Heat": 120,
+        "HeatResistance": 120,
         "Sanity": 2,
         "Introduction": "不错的隔热装备。",
         "Console": "reflectivevest"
@@ -1957,7 +1961,7 @@
         "EnName": "Tam o' Shanter",
         "DropBy": "A_mactusk",
         "Durability": "25天",
-        "Heat": 120,
+        "ColdResistance": 120,
         "Sanity": 6.66,
         "Introduction": "只能打海象掉落。",
         "Console": "walrushat"
@@ -2752,6 +2756,48 @@
         "EnName": "Rare Blueprint",
         "Introduction": "稀有蓝图一般通过打BOSS获得，可以获得一些好东西的科技。",
         "Console": "(prefab name)_blueprint"
+      },
+      {
+        "Picture": "G_crumpled_package",
+        "Name": "皱巴巴的包裹",
+        "EnName": "Crumpled Package",
+        "Introduction": "在湖泊中钓鱼可以获得皱巴巴的包裹，打开后可能得到几种玩具(包括沙桶玩具)、蓝图和视尚眼镜、沙漠护目镜、盆栽的肉质植物稀有蓝图。",
+        "Console": "wetpouch"
+      },
+      {
+        "Picture": "G_glass_spike",
+        "Name": "玻璃尖刺",
+        "EnName": "Glass Spike",
+        "Introduction": "与蚁狮对战时用火点燃沙尖刺可以变成玻璃尖刺，装饰品，可以背走(背着的时候移动速度极慢)，骑牛可以快速搬运。",
+        "Console": "glassspike_short"
+      },
+      {
+        "Picture": "G_glass_castle",
+        "Name": "玻璃城堡",
+        "EnName": "Glass Castle",
+        "Introduction": "与蚁狮对战时用火点燃沙城堡可以变成玻璃城堡，装饰品，可以背走(背着的时候移动速度极慢)，骑牛可以快速搬运。",
+        "Console": "glassblock"
+      },
+      {
+        "Picture": "G_sculpture_rooknose",
+        "Name": "可疑的大理石",
+        "EnName": "Suspicious Marble",
+        "Introduction": "可能产生在地图任意位置，可以将其放到大理石雕塑以修复雕塑，修复后的雕塑月圆时会变成对应的发条生物。",
+        "Console": "sculpture_rooknose"
+      },
+      {
+        "Picture": "G_sculpture_knighthead",
+        "Name": "可疑的大理石",
+        "EnName": "Suspicious Marble",
+        "Introduction": "可能产生在地图任意位置，可以将其放到大理石雕塑以修复雕塑，修复后的雕塑月圆时会变成对应的发条生物。",
+        "Console": "sculpture_knighthead"
+      },
+      {
+        "Picture": "G_sculpture_bishophead",
+        "Name": "可疑的大理石",
+        "EnName": "Suspicious Marble",
+        "Introduction": "可能产生在地图任意位置，可以将其放到大理石雕塑以修复雕塑，修复后的雕塑月圆时会变成对应的发条生物。",
+        "Console": "sculpture_bishophead"
       }
     ]
   },

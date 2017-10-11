@@ -24,6 +24,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
     /// </summary>
     public sealed partial class ScienceDialog : Page
     {
+        private string _unlockCharcter;
         public ScienceDialog(Science c)
         {
             this.InitializeComponent();
@@ -31,17 +32,17 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             ScienceImage.Source = new BitmapImage(new Uri(c.Picture));
             ScienceName.Text = c.Name;
             ScienceEnName.Text = c.EnName;
-            Need1PicButton.Source = Global.GetGameResourcePath(c.Need1);
+            Need1PicButton.Source = StringProcess.GetGameResourcePath(c.Need1);
             Need1PicButton.Text = $"×{c.Need1Value}";
             if (c.Need2 != null)
             {
-                Need2PicButton.Source = Global.GetGameResourcePath(c.Need2);
+                Need2PicButton.Source = StringProcess.GetGameResourcePath(c.Need2);
                 Need2PicButton.Text = $"×{c.Need2Value}";
                 Need2PicButton.Visibility = Visibility.Visible;
             }
             if (c.Need3 != null)
             {
-                Need3PicButton.Source = Global.GetGameResourcePath(c.Need3);
+                Need3PicButton.Source = StringProcess.GetGameResourcePath(c.Need3);
                 Need3PicButton.Text = $"×{c.Need3Value}";
                 Need3PicButton.Visibility = Visibility.Visible;
             }
@@ -54,27 +55,34 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 if (c.Unlock != null)
                 {
                     UnlockPicButton.Visibility = Visibility.Visible;
-                    UnlockPicButton.Source = Global.GetGameResourcePath(c.Unlock);
+                    UnlockPicButton.Source = StringProcess.GetGameResourcePath(c.Unlock);
                 }
                 if (c.UnlockCharcter != null)
                 {
                     UnlockCharcterButton.Visibility = Visibility.Visible;
-                    UnlockCharcterImage.Source = new BitmapImage(new Uri(Global.GetGameResourcePath(c.UnlockCharcter))); 
+                    UnlockCharcterImage.Source = new BitmapImage(new Uri(StringProcess.GetGameResourcePath(c.UnlockCharcter)));
+                    _unlockCharcter = StringProcess.GetGameResourcePath(c.UnlockCharcter);
                 }
                 if (c.UnlockBlueprint != null)
                 {
                     UnlockBlueprintPicButton.Visibility = Visibility.Visible;
-                    UnlockBlueprintPicButton.Source = Global.GetGameResourcePath(c.UnlockBlueprint);
+                    UnlockBlueprintPicButton.Source = StringProcess.GetGameResourcePath(c.UnlockBlueprint);
                 }
             }
             ScienceIntroduction.Text = c.Introduction;
-            Console.Text = $"c_give(\"{c.Console}\",10)";
+            ConsolePre.Text = $"c_give(\"{c.Console}\",";
+        }
+
+        private void ConsoleNum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            StringProcess.ConsoleNumTextCheck(textbox);
         }
 
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var dataPackage = new DataPackage();
-            dataPackage.SetText(Console.Text);
+            dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
         }
 
@@ -82,7 +90,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
         {
             var picturePath = ((PicButton)sender).Source;
             var rootFrame = Global.RootFrame;
-            var shortName = Global.GetFileName(picturePath);
+            var shortName = StringProcess.GetFileName(picturePath);
             var mainPageListBoxItem = Global.MainPageListBoxItem;
             var frameTitle = Global.FrameTitle;
             await Global.SetAutoSuggestBoxItem();
@@ -107,6 +115,23 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         rootFrame.Navigate(typeof(GoodPage), extraData);
                         break;
                 }
+            }
+        }
+
+        private async void Science_CharacterJump_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var picturePath = _unlockCharcter;
+            var rootFrame = Global.RootFrame;
+            var mainPageListBoxItem = Global.MainPageListBoxItem;
+            var frameTitle = Global.FrameTitle;
+            await Global.SetAutoSuggestBoxItem();
+            foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
+            {
+                if (picturePath != suggestBoxItem.Picture) continue;
+                string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
+                frameTitle.Text = "人物";
+                mainPageListBoxItem[0].IsSelected = true;
+                rootFrame.Navigate(typeof(CharacterPage), extraData);
             }
         }
     }
