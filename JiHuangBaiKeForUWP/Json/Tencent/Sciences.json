@@ -223,7 +223,7 @@
 				"Need2Value": 1,
 				"Need3": "G_petals",
 				"Need3Value": 3,
-				"UnlockCharcter": "C_willow",
+				"UnlockCharcter": "C_willow_dst",
 				"Introduction": "薇洛出生自带的打火机，联机版有耐久限制，作用与火炬大同小异，不受下雨影响，还能用来烤食物。",
 				"Console": "lighter"
 			}, {
@@ -398,7 +398,7 @@
 				"Need2Value": 2,
 				"Need3": "G_silk",
 				"Need3Value": 2,
-				"UnlockCharcter": "C_willow",
+				"UnlockCharcter": "C_willow_dst",
 				"Introduction": "薇洛出生自带的小熊伯尼，精神低的时候放在地上可以吸引暗影怪的仇恨。",
 				"Console": "bernie_inactive"
 			}, {
@@ -488,7 +488,7 @@
 				"EnName": "Pile o' Balloons",
 				"Need1": "S_waterballoon",
 				"Need1Value": 4,
-				"UnlockCharcter": "C_wes",
+				"UnlockCharcter": "C_wes_dst",
 				"Introduction": "韦斯出生自带的一堆气球，用途嘛...当然是吹气球啦！每次吹气球会掉5点精神，气球被击破会连环引爆，然而伤害低的可怜。",
 				"Console": "balloons_empty"
 			}, {
@@ -905,7 +905,7 @@
 				"Need2Value": 2,
 				"Need3": "G_gold_nugget",
 				"Need3Value": 2,
-				"UnlockCharcter": "C_wathgrithr",
+				"UnlockCharcter": "C_wathgrithr_dst",
 				"Introduction": "薇格弗德出生自带的战斗长矛，攻击力比长矛要高一些，制作材料也比较简单，适合人手一把。",
 				"Console": "spear_wathgrithr"
 			}, {
@@ -916,7 +916,7 @@
 				"Need1Value": 2,
 				"Need2": "G_rocks",
 				"Need2Value": 2,
-				"UnlockCharcter": "C_wathgrithr",
+				"UnlockCharcter": "C_wathgrithr_dst",
 				"Introduction": "薇格弗德出生自带的战斗头盔，防御力不错，建议人手一个并多备一些，消耗得比较快。",
 				"Console": "wathgrithrhat"
 			}, {
@@ -1155,7 +1155,7 @@
         "Need2Value": 6,
         "Need3": "S_papyrus",
         "Need3Value": 6,
-        "UnlockCharcter": "C_webber",
+        "UnlockCharcter": "C_webber_dst",
         "Introduction": "韦伯出生自带的蜘蛛卵，需要的材料实在有点多，而且并没有什么用。",
         "Console": "spidereggsack"
       },
@@ -1650,7 +1650,7 @@
 				"Need1Value": 6,
 				"Need2": "G_nightmare_fuel",
 				"Need2Value": 1,
-				"UnlockCharcter": "C_wendy",
+				"UnlockCharcter": "C_wendy_dst",
 				"Introduction": "温蒂出生自带的Abigail之花，当花开时放在地上并杀死一只生物(暗影怪不算)可召唤妹妹阿比盖尔。"
 			}, {
 				"Picture": "S_prestihatitator",
@@ -2421,7 +2421,7 @@
 				"Need2": "G_egg",
 				"Need2Value": 2,
 				"Need3Value": 0,
-				"UnlockCharcter": "C_wickerbottom",
+				"UnlockCharcter": "C_wickerbottom_dst",
 				"Introduction": "维克波顿周围将出现大量的鸟类，阅读书籍将会降低50精神，维克波顿专有，可使用5次。",
 				"Console": "book_birds"
 			}, {
@@ -2434,7 +2434,7 @@
 				"Need2Value": 1,
 				"Need3": "G_manure",
 				"Need3Value": 1,
-				"UnlockCharcter": "C_wickerbottom",
+				"UnlockCharcter": "C_wickerbottom_dst",
 				"Introduction": "让周围的植物迅速生长(需先施肥，冬天只对农场有效)，阅读书籍将会降低33精神，维克波顿专有，可使用5次。",
 				"Console": "book_gardening"
 			}, {
@@ -2447,7 +2447,7 @@
 				"Need2Value": 2,
 				"Need3Value": 0,
 				"Unlock": "S_prestihatitator",
-				"UnlockCharcter": "C_wickerbottom",
+				"UnlockCharcter": "C_wickerbottom_dst",
 				"Introduction": "让周围生物进入梦乡，阅读书籍将会降低33精神，维克波顿专有，可使用5次。",
 				"Console": "book_sleep"
 			}, {
@@ -2460,7 +2460,7 @@
 				"Need2Value": 1,
 				"Need3Value": 0,
 				"Unlock": "S_shadow_manipulator",
-				"UnlockCharcter": "C_wickerbottom",
+				"UnlockCharcter": "C_wickerbottom_dst",
 				"Introduction": "维克波顿周围将出现大量闪电，阅读书籍将会降低33精神，维克波顿专有，可使用5次。",
 				"Console": "book_brimstone"
 			}, {
@@ -2473,7 +2473,7 @@
 				"Need2Value": 1,
 				"Need3Value": 0,
 				"Unlock": "S_alchemy_engine",
-				"UnlockCharcter": "C_wickerbottom",
+				"UnlockCharcter": "C_wickerbottom_dst",
 				"Introduction": "维克波顿周围将出现3只触手，阅读书籍将会降低50精神，维克波顿专有，可使用5次。",
 				"Console": "book_tentacles"
 			}
@@ -2491,7 +2491,7 @@
 				"Need2Value": 2,
 				"Need3": "G_health",
 				"Need3Value": -50,
-				"UnlockCharcter": "C_waxwell",
+				"UnlockCharcter": "C_waxwell_dst",
 				"Introduction": "麦克斯韦专属秘典！把它放到地上并且站在其周围(书呈翻开状)才能解锁暗影科技。",
 				"Console": "waxwelljournal"
 			}, {
@@ -2505,7 +2505,7 @@
 				"Need3": "G_sanity",
 				"Need3Value": -20,
 				"Unlock": "S_codex_umbra",
-				"UnlockCharcter": "C_waxwell",
+				"UnlockCharcter": "C_waxwell_dst",
 				"Introduction": "麦克斯韦耗费20%(即40点)的精神(上限)召唤出暗影伐木工，跟随走动，会自动搜寻周围树木砍伐。拥有1点生命值。"
 			}, {
 				"Picture": "S_shadow_miner",
@@ -2518,7 +2518,7 @@
 				"Need3": "G_sanity",
 				"Need3Value": -20,
 				"Unlock": "S_codex_umbra",
-				"UnlockCharcter": "C_waxwell",
+				"UnlockCharcter": "C_waxwell_dst",
 				"Introduction": "麦克斯韦耗费20%(即40点)的精神(上限)召唤出暗影矿工，跟随走动，会自动搜寻周围石矿开采。拥有1点生命值。"
 			}, {
 				"Picture": "S_shadow_digger",
@@ -2531,7 +2531,7 @@
 				"Need3": "G_sanity",
 				"Need3Value": -20,
 				"Unlock": "S_codex_umbra",
-				"UnlockCharcter": "C_waxwell",
+				"UnlockCharcter": "C_waxwell_dst",
 				"Introduction": "麦克斯韦耗费20%(即40点)的精神(上限)召唤出暗影挖掘者，跟随走动，会自动搜寻周围树桩挖掘(不会挖浆果灌木丛等)。拥有1点的生命值。"
 			}, {
 				"Picture": "S_shadow_duelist",
@@ -2544,7 +2544,7 @@
 				"Need3": "G_sanity",
 				"Need3Value": -35,
 				"Unlock": "S_codex_umbra",
-				"UnlockCharcter": "C_waxwell",
+				"UnlockCharcter": "C_waxwell_dst",
 				"Introduction": "麦克斯韦耗费35%(即70点)的精神(上限)召唤出暗影伐斗士，跟随走动，会自动搜寻周围生物猎杀(40攻击力)。拥有100点生命值。"
 			}
 		]

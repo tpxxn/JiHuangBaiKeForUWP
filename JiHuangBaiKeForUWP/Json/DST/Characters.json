@@ -1,7 +1,7 @@
 ﻿{
   "Character": [
     {
-      "Picture": "C_wilson",
+      "Picture": "C_wilson_dst",
       "Name": "威尔逊",
       "EnName": "Wilson",
       "Motto": "\"我会用我的智慧征服世界！\"",
@@ -16,7 +16,7 @@
       "Console": "wilson"
     },
     {
-      "Picture": "C_willow",
+      "Picture": "C_willow_dst",
       "Name": "薇洛",
       "EnName": "Willow",
       "Motto": "\"一切都沐浴在美丽的火焰之中。\"",
@@ -33,7 +33,7 @@
       "Console": "willow"
     },
     {
-      "Picture": "C_wolfgang",
+      "Picture": "C_wolfgang_dst",
       "Name": "沃尔夫冈",
       "EnName": "Wolfgang",
       "Motto": "\"我是强大的！没有人比我更强！\"",
@@ -49,7 +49,7 @@
       "Console": "wolfgang"
     },
     {
-      "Picture": "C_wendy",
+      "Picture": "C_wendy_dst",
       "Name": "温蒂",
       "EnName": "Wendy",
       "Motto": "\"阿比盖尔？快回来！我还要和你玩呢。\"",
@@ -66,7 +66,7 @@
       "Console": "wendy"
     },
     {
-      "Picture": "C_wx78",
+      "Picture": "C_wx78_dst",
       "Name": "WX-78",
       "EnName": "WX-78",
       "Motto": "\"情感模块未响应\"",
@@ -83,7 +83,7 @@
       "Console": "wx78"
     },
     {
-      "Picture": "C_wickerbottom",
+      "Picture": "C_wickerbottom_dst",
       "Name": "维克波顿",
       "EnName": "Wickerbottom",
       "Motto": "\"嘘！不许说话！\"",
@@ -100,7 +100,7 @@
       "Console": "wickerbottom"
     },
     {
-      "Picture": "C_woodie",
+      "Picture": "C_woodie_dst",
       "Name": "伍迪",
       "EnName": "Woodie",
       "Motto": "\"这树看上去不错，不是么？但不会太久。\"",
@@ -118,7 +118,7 @@
       "Console": "woodie"
     },
     {
-      "Picture": "C_wes",
+      "Picture": "C_wes_dst",
       "Name": "韦斯",
       "EnName": "Wes",
       "Motto": "......",
@@ -135,7 +135,7 @@
       "Console": "wes"
     },
     {
-      "Picture": "C_waxwell",
+      "Picture": "C_waxwell_dst",
       "Name": "麦克斯韦",
       "EnName": "Maxwell",
       "Motto": "\"自由才适合我。\"",
@@ -152,7 +152,7 @@
       "Console": "waxwell"
     },
     {
-      "Picture": "C_wathgrithr",
+      "Picture": "C_wathgrithr_dst",
       "Name": "维格弗里德",
       "EnName": "Wigfrid",
       "Motto": "\"对我来说，这个世界就是一个舞台！\"",
@@ -169,7 +169,7 @@
       "Console": "wathgrithr"
     },
     {
-      "Picture": "C_webber",
+      "Picture": "C_webber_dst",
       "Name": "韦伯",
       "EnName": "Webber",
       "Motto": "\"我们永远在一起，从不会孤单一人！\"",
@@ -186,7 +186,7 @@
       "Console": "webber"
     },
     {
-      "Picture": "C_winona",
+      "Picture": "C_winona_dst",
       "Name": "薇诺娜",
       "EnName": "Winona",
       "Motto": "\"努力工作和辛勤劳动可以修复任何东西\"",

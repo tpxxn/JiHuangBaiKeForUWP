@@ -10,7 +10,7 @@
     xmlns:wrapPanel="using:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel"
     mc:Ignorable="d">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <ScrollViewer Name="CreaturesDialogScrollViewer" VerticalScrollBarVisibility="Auto">
         <Grid x:Name="CreaturesRootGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />

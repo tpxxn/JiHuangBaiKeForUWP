@@ -52,6 +52,10 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             FoodRecipePriority.ShowIfZero = true;
             FoodRecipePriority.Value = c.Priority;
             FoodRecipePriority.BarColor = Global.ColorPink;
+            FoodTemperature.Value = c.Temperature;
+            FoodTemperature.BarColor = Global.ColorCyan;
+            FoodTemperatureDuration.Value = c.TemperatureDuration;
+            FoodTemperatureDuration.BarColor = Global.ColorOrange;
             if (c.EnName != "Wet Goop")
             {
                 Need1Button.Source = StringProcess.GetGameResourcePath(c.NeedPicture1);

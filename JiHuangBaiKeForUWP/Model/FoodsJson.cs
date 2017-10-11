@@ -42,6 +42,8 @@ namespace JiHuangBaiKeForUWP.Model
         public double Health { get; set; }
         public double Hunger { get; set; }
         public double Sanity { get; set; }
+        public double Temperature { get; set; }
+        public double TemperatureDuration { get; set; }
         public double Perish { get; set; }
         public double Cooktime { get; set; }
         public double Priority { get; set; }

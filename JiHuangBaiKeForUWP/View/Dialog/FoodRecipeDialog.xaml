@@ -36,11 +36,13 @@
                     <charts:BarChart x:Name="FoodRecipeHealth" Label="生命" MaxValue="100"/>
                     <charts:BarChart x:Name="FoodRecipeHunger" Label="饥饿" MaxValue="150"/>
                     <charts:BarChart x:Name="FoodRecipeSanity" Label="精神" MaxValue="50"/>
+                    <charts:BarChart x:Name="FoodRecipePerish" Label="保鲜" MaxValue="20"/>
                 </StackPanel>
                 <StackPanel x:Name="FoodRecipePcpStackPanel" Grid.Column="1" Width="200" HorizontalAlignment="Left">
-                    <charts:BarChart x:Name="FoodRecipePerish" Label="保鲜" MaxValue="20"/>
                     <charts:BarChart x:Name="FoodRecipeCooktime" Label="烹饪" MaxValue="60"/>
                     <charts:BarChart x:Name="FoodRecipePriority" Label="优先" MaxValue="30"/>
+                    <charts:BarChart x:Name="FoodTemperature" Label="温度" MaxValue="40"/>
+                    <charts:BarChart x:Name="FoodTemperatureDuration" Label="温时" MaxValue="15"/>
                 </StackPanel>
             </Grid>
             <StackPanel x:Name="FoodNeedStackPanel" Grid.Row="5" Margin="0,5,0,0">

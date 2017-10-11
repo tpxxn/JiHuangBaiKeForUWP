@@ -2769,6 +2769,41 @@
         "EnName": "Crumpled Package",
         "Introduction": "在湖泊中钓鱼可以获得皱皱的袋子，打开后可能得到几种玩具(包括沙桶玩具)、蓝图和时髦目镜、沙漠目镜、盆栽多肉植物稀有蓝图。",
         "Console": "wetpouch"
+      },
+      {
+        "Picture": "G_glass_spike",
+        "Name": "玻璃尖刺",
+        "EnName": "Glass Spike",
+        "Introduction": "与蚁狮对战时用火点燃沙尖刺可以变成玻璃尖刺，装饰品，可以背走(背着的时候移动速度极慢)，骑牛可以快速搬运。",
+        "Console": "glassspike_short"
+      },
+      {
+        "Picture": "G_glass_castle",
+        "Name": "玻璃城堡",
+        "EnName": "Glass Castle",
+        "Introduction": "与蚁狮对战时用火点燃沙城堡可以变成玻璃城堡，装饰品，可以背走(背着的时候移动速度极慢)，骑牛可以快速搬运。",
+        "Console": "glassblock"
+      },
+      {
+        "Picture": "G_sculpture_rooknose",
+        "Name": "可疑的大理石",
+        "EnName": "Suspicious Marble",
+        "Introduction": "可能产生在地图任意位置，可以将其放到大理石雕塑以修复雕塑，修复后的雕塑月圆时会变成对应的发条生物。",
+        "Console": "sculpture_rooknose"
+      },
+      {
+        "Picture": "G_sculpture_knighthead",
+        "Name": "可疑的大理石",
+        "EnName": "Suspicious Marble",
+        "Introduction": "可能产生在地图任意位置，可以将其放到大理石雕塑以修复雕塑，修复后的雕塑月圆时会变成对应的发条生物。",
+        "Console": "sculpture_knighthead"
+      },
+      {
+        "Picture": "G_sculpture_bishophead",
+        "Name": "可疑的大理石",
+        "EnName": "Suspicious Marble",
+        "Introduction": "可能产生在地图任意位置，可以将其放到大理石雕塑以修复雕塑，修复后的雕塑月圆时会变成对应的发条生物。",
+        "Console": "sculpture_bishophead"
       }
     ]
   },
