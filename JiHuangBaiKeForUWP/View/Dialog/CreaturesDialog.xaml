@@ -65,7 +65,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="ConsolePre" Margin="0,5,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
                 <TextBox x:Name="ConsoleNum" Grid.Column="1" Text="1" MaxLength="4" TextChanged="ConsoleNum_TextChanged" TextAlignment="Center"/>
-                <TextBlock Grid.Column="2" x:Name="ConsolePos" Text=")" Margin="0,5,15,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <TextBlock x:Name="ConsolePos" Grid.Column="2" Text=")" Margin="0,5,15,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
                 <Button Grid.Column="3" HorizontalAlignment="Left" Tapped="Copy_Tapped">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">

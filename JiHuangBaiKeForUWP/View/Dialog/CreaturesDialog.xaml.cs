@@ -250,7 +250,9 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             // 控制台
             if (c.Console != null)
             {
-                ConsolePre.Text = $"c_give(\"{c.Console}\",";
+                ConsolePre.Text = $"c_spawn(\"{c.Console}\",";
+                if (c.ConsoleStateValue != null)
+                    ConsolePos.Text = $"):{c.ConsoleStateValue}";
             }
             else
             {
@@ -1069,7 +1071,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var dataPackage = new DataPackage();
-            dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
+            dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ConsolePos.Text);
             Clipboard.SetContent(dataPackage);
         }
 

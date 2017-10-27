@@ -2560,7 +2560,7 @@
                 "Hunger": 10,
                 "Sanity": 50,
                 "Perish": 1,
-                "Attribute": "素",
+                "Attribute": "荤",
                 "Introduce": "智慧树采摘。",
                 "Console": "coral_brain"
             },
