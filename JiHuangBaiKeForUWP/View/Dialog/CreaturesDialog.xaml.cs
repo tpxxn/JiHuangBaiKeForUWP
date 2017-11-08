@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls;
-using Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel;
+using Microsoft.Toolkit.Uwp.UI.Controls;
 
 namespace JiHuangBaiKeForUWP.View.Dialog
 {

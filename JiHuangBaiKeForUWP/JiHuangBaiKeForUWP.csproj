@@ -11,7 +11,7 @@
     <AssemblyName>JiHuangBaiKeForUWP</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.15063.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -105,6 +105,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\CallExternalContent.cs" />
+    <Compile Include="Model\Fonts.cs" />
     <Compile Include="Model\GoodsJson.cs" />
     <Compile Include="Model\NaturalJson.cs" />
     <Compile Include="Model\SettingSet.cs" />
@@ -199,6 +200,15 @@
     </Compile>
     <Compile Include="View\SciencePage.xaml.cs">
       <DependentUpon>SciencePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingChildPage\CortanaChildPage.xaml.cs">
+      <DependentUpon>CortanaChildPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingChildPage\FeedbackChildPage.xaml.cs">
+      <DependentUpon>FeedbackChildPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingChildPage\SettingChildPage.xaml.cs">
+      <DependentUpon>SettingChildPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SettingPage.xaml.cs">
       <DependentUpon>SettingPage.xaml</DependentUpon>
@@ -455,6 +465,12 @@
     <Content Include="Assets\GameResources\Sciences\S_wood_fence.png" />
     <Content Include="Assets\GameResources\Sciences\S_wood_gate.png" />
     <Content Include="Assets\HamburgerMenu\HamburgerMenuSocialIntercourse.png" />
+    <Content Include="Assets\Pic\QRCode_wx1.png" />
+    <Content Include="Assets\Pic\QRCode_wx2.png" />
+    <Content Include="Assets\Pic\QRCode_wx5.png" />
+    <Content Include="Assets\Pic\QRCode_zfb1.png" />
+    <Content Include="Assets\Pic\QRCode_zfb2.png" />
+    <Content Include="Assets\Pic\QRCode_zfb5.png" />
     <Content Include="frontCortanaVoiceCommands.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -1957,6 +1973,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\SettingChildPage\CortanaChildPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingChildPage\FeedbackChildPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingChildPage\SettingChildPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SettingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1975,16 +2003,16 @@
       <Version>1.0.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>5.4.0</Version>
+      <Version>6.0.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp">
-      <Version>1.5.1</Version>
+      <Version>2.0.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
-      <Version>1.5.1</Version>
+      <Version>2.0.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
-      <Version>1.5.1</Version>
+      <Version>2.0.0</Version>
     </PackageReference>
     <PackageReference Include="WindowsAppStudio.Uwp">
       <Version>1.5.3</Version>

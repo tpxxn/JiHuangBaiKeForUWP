@@ -9,40 +9,35 @@
     xmlns:system="using:System"
     mc:Ignorable="d">
 
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Margin="10">
-            <StackPanel>
-                <TextBlock FontSize="26" Text="深色主题"/>
-                <ToggleSwitch x:Name="ThemeToggleSwitch" Toggled="ThemeToggleSwitch_Toggled"/>
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" >
-                <TextBlock FontSize="26" Text="游戏版本"/>
-                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
-                    <ComboBox x:Name="GameVersionComboBox" 
-                              HorizontalAlignment="Left" 
-                              VerticalAlignment="Stretch" 
-                              HorizontalContentAlignment="Stretch" 
-                              ItemContainerStyle="{StaticResource ComboBoxItemStyle}" 
-                              DataContextChanged="GameVersionComboBox_DataContextChanged" 
-                              SelectionChanged="GameVersionComboBox_SelectionChanged" Width="200" >
-                        <ComboBoxItem>
-                            <TextBlock Text="DST(steam饥荒联机)"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Text="DST(WeGame/QQGame)"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Text="DS(饥荒单机)"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Text="RoG(巨兽统治)"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <TextBlock Text="SW(失落之船)"/>
-                        </ComboBoxItem>
-                    </ComboBox>
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ListBox Grid.Row="0" SelectionMode="Single" Tapped="ListBox_Tapped">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBoxItem x:Name="SettingBoxItem" IsSelected="True" Style="{StaticResource SettingListBoxItemStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="通用" FontSize="18" VerticalAlignment="Center" Margin="20,0"/>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem x:Name="CortanaBoxItem" Style="{StaticResource SettingListBoxItemStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="语音" FontSize="18" VerticalAlignment="Center" Margin="20,0"/>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem x:Name="FeedbackBoxItem" Style="{StaticResource SettingListBoxItemStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="意见与建议" FontSize="18" VerticalAlignment="Center" Margin="20,0"/>
+                    </StackPanel>
+                </ListBoxItem>
+            </ListBox>
+            <Frame x:Name="RootFrame" Grid.Row="1" Margin="0"/>
+        </Grid>
     </ScrollViewer>
 </Page>

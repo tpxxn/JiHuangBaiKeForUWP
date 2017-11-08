@@ -75,8 +75,8 @@
             <TextBlock x:Name="FrameTitle" RelativePanel.RightOf="HamburgerButton" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="26" Margin="10,0,0,0" Foreground="White" Text="人物"/>
         </RelativePanel>
         <SplitView x:Name="RootSplit" Grid.Row="1" DisplayMode="CompactOverlay" OpenPaneLength="235" CompactPaneLength="56" IsPaneOpen="True" PaneClosing="RootSplit_PaneClosing">
-            <SplitView.Pane >
-                <Grid x:Name="HamburgerGrid" BorderThickness="1" Width="237" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}">
+            <SplitView.Pane>
+                <Grid x:Name="HamburgerGrid" BorderThickness="0" Width="237" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="37"/>
                         <RowDefinition Height="*"/>
@@ -140,18 +140,17 @@
                                 <TextBlock Text="物品" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem x:Name="PartingLine2" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
-                        <ListBoxItem x:Name="StrategyListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
+                        <ListBoxItem Visibility="Collapsed" x:Name="PartingLine2" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
+                        <ListBoxItem Visibility="Collapsed" x:Name="StrategyListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="48">
                                 <TextBlock Text="&#x4E08;" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
                                 <TextBlock Text="攻略" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem x:Name="PartingLine3" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
-                        
+                        <ListBoxItem Visibility="Collapsed" x:Name="PartingLine3" Height="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" IsEnabled="False"/>
                     </ListBox>
-                    <ListBox Grid.Row="2" Background="#CC000000" x:Name="IconsListBoxSettingAndAbout" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single"  Tapped="IconsListBoxGameData_Tapped">
-                        <ListBoxItem x:Name="SocialIntercourseListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
+                    <ListBox Grid.Row="2" Background="#CC000000" x:Name="IconsListBoxSettingAndAbout" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="0,0,0,1" SelectionMode="Single"  Tapped="IconsListBoxGameData_Tapped" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                        <ListBoxItem Visibility="Collapsed" x:Name="SocialIntercourseListBoxItem" Height="50" Style="{StaticResource ListBoxItemStyle}">
                             <StackPanel Orientation="Horizontal" Height="48">
                                 <TextBlock Text="&#x4E09;" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
                                 <TextBlock Text="社交" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>

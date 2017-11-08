@@ -5,6 +5,8 @@
     xmlns:local="using:JiHuangBaiKeForUWP.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:JiHuangBaiKeForUWP.Model"
+    xmlns:system="using:System"
     mc:Ignorable="d">
     
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
@@ -21,10 +23,32 @@
             </StackPanel>
 
             <StackPanel>
+                <!--加群-->
                 <TextBlock x:Uid="Feedback" Text="加入QQ群" FontSize="22" Margin="20,20,0,0" />
                 <HyperlinkButton Margin="20,5,0,0" NavigateUri="http://www.jihuangbaike.com/jump.html">
                     <Image Source="/Assets/Pic/QRCode_Qun.png" Height="128" />
                 </HyperlinkButton>
+                <!--请客-->
+                <TextBlock x:Uid="DonationTextBlock" Text="请作者姐姐吃点东西~" FontSize="22" Margin="20,20,0,0"/>
+                <StackPanel Margin="20,5,0,5" Orientation="Horizontal">
+                    <RadioButton x:Name="ZfbRadioButton" Content="支付宝" Click="ZfbRadioButton_Click" IsChecked="True"/>
+                    <RadioButton x:Name="WxRadioButton" Content="微信" Click="WxRadioButton_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,5,0,0">
+                    <StackPanel>
+                        <Image x:Name="Donation1Image" Source="/Assets/Pic/QRCode_zfb1.png" Height="128" />
+                        <TextBlock Text="请一包咪咪(1元)" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Margin="50,0,0,0">
+                        <Image x:Name="Donation2Image" Source="/Assets/Pic/QRCode_zfb2.png" Height="128" />
+                        <TextBlock Text="请一农夫山泉(2元)" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Margin="50,0,0,0">
+                        <Image x:Name="Donation5Image" Source="/Assets/Pic/QRCode_zfb5.png" Height="128" />
+                        <TextBlock Text="请一瓶小茗同学(5元)" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+                <!--反馈-->
                 <TextBlock x:Uid="Feedback" Text="发送反馈" FontSize="22" Margin="20,20,0,0" />
                 <StackPanel Orientation="Horizontal" Margin="20,5,0,0">
                     <TextBlock x:Uid="EMail" VerticalAlignment="Center">
@@ -32,7 +56,7 @@
                     </TextBlock>
                     <HyperlinkButton NavigateUri="mailto:351765204@qq.com" Content="351765204@qq.com" />
                 </StackPanel>
-
+                <!--数据来源-->
                 <TextBlock Text="数据来源" FontSize="22" Margin="20,20,0,0" />
                 <StackPanel Orientation="Horizontal">
                     <HyperlinkButton NavigateUri="http://dontstarve.wikia.com">
@@ -41,7 +65,7 @@
                     <TextBlock Text="以及" VerticalAlignment="Center" />
                     <HyperlinkButton Margin="10,0,0,0" Content="张高兴" NavigateUri="https://github.com/ZhangGaoxing/JiHuangBaike/tree/master" VerticalAlignment="Center" />
                 </StackPanel>
-
+                <!--其他-->
                 <TextBlock Text="其他" FontSize="22" Margin="20,20,0,0" />
                 <TextBlock FontSize="14" Margin="20,5,0,0">
                 <Run Text="本应用使用 MIT 许可开源"/>

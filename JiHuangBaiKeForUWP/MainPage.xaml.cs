@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.Storage;
 using Windows.UI;
 using Windows.UI.Core;
@@ -25,7 +26,7 @@ using JiHuangBaiKeForUWP.View;
 // 对话框示例
 // var contentDialog = new ContentDialog()
 // {
-//     Title = "加载失败",
+//     Title = "测试",
 //     Content = "加载当前页面错误，可能需要翻墙(～￣▽￣)～",
 //     PrimaryButtonText = "确定",
 //     FullSizeDesired = false,

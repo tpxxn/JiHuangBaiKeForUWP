@@ -84,7 +84,7 @@
 				"EnName": "Frog",
 				"Health": 100,
 				"Attack": 10,
-				"AttackInterval": 10,
+				"AttackInterval": 1,
 				"AttackScope": 3,
 				"MoveSpeed": 4,
 				"RunSpeed": 8,
@@ -544,7 +544,7 @@
 				"IsActiveAttack": false,
 				"IsTeamWork": false,
 				"Goods": [
-					"F_meat|×3",
+					"F_meat|×2",
 					"G_volt_goat_horn|×1（25%）"
 				],
 				"Ability": [
@@ -568,7 +568,7 @@
 				"IsTeamWork": true,
 				"Goods": [
 					"F_electric_milk|×1",
-					"F_meat|×3",
+					"F_meat|×2",
 					"G_volt_goat_horn|×1（25%）"
 				],
 				"Introduction": "击杀伏特电羊会额外获得一个电羊奶。攻击电羊或被电羊攻击均会触电，可以戴着雨帽、雨衣或眼球伞来防电。"

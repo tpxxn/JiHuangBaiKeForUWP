@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:charts="using:JiHuangBaiKeForUWP.UserControls.Charts"
     xmlns:picButton="using:JiHuangBaiKeForUWP.UserControls"
-    xmlns:wrapPanel="using:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel"
+    xmlns:wrapPanel="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d">
 
     <ScrollViewer Name="CreaturesDialogScrollViewer" VerticalScrollBarVisibility="Auto">

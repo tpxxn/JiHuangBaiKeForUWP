@@ -84,7 +84,7 @@
 				"EnName": "Frog",
 				"Health": 100,
 				"Attack": 10,
-				"AttackInterval": 10,
+				"AttackInterval": 1,
 				"AttackScope": 3,
 				"MoveSpeed": 4,
 				"RunSpeed": 8,

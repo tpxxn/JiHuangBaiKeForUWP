@@ -119,6 +119,27 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         }
         #endregion
 
+
+        #region 依赖属性：单位
+
+        public string Unit
+        {
+            get => (string)GetValue(UnitProperty);
+            set => SetValue(UnitProperty, value);
+        }
+
+        public static readonly DependencyProperty UnitProperty =
+            DependencyProperty.Register("Value", typeof(string), typeof(BarChart), new PropertyMetadata(false, OnUnitChanged));
+
+        private static void OnUnitChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue == null) return;
+            var barChart = (BarChart)d;
+            barChart.ValueTextBlock.Text += e.NewValue.ToString();
+        }
+        #endregion
+
+
         #region 依赖属性：标签
 
         public string Label
