@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:charts="using:JiHuangBaiKeForUWP.UserControls.Charts"
     xmlns:picButton="using:JiHuangBaiKeForUWP.UserControls"
-    xmlns:wrapPanel="using:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel"
+    xmlns:wrapPanel="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d">
 
 
@@ -55,7 +55,7 @@
             <StackPanel x:Name="AbilityStackPanel" Grid.Row="5" HorizontalAlignment="Center"/>
             <StackPanel x:Name="GoodSourceStackPanel" Grid.Row="6" Orientation="Horizontal">
                 <TextBlock Text="来源于生物：" Margin="0,10"/>
-                <picButton:PicButton x:Name="GoodSourcePicButton" Margin="5,0,0,0"/>
+                <picButton:PicButton x:Name="GoodSourcePicButton" Margin="5,0,0,0" Tapped="DropBy_Jump_Tapped"/>
             </StackPanel>
             <TextBlock Grid.Row="7" x:Name="GoodIntroduction" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="10,20,10,10" />
             <Grid x:Name="CopyGrid" Grid.Row="8" HorizontalAlignment="Center">

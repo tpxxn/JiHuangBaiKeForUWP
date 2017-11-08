@@ -1306,7 +1306,7 @@
                 "Health": 8,
                 "Hunger": 12.5,
                 "Sanity": 5,
-                "Perish": 10,
+                "Perish": 3,
                 "Attribute": "FC_Vegetables",
                 "AttributeValue": "×0.5",
                 "Introduce": "夏天在沙漠采摘。",

@@ -25,6 +25,7 @@ namespace JiHuangBaiKeForUWP.Model
         public List<string> Ability { get; set; }
         public string Introduction { get; set; }
         public string Console { get; set; }
+        public string ConsoleStateValue { get; set; }
 
         public Creature()
         {

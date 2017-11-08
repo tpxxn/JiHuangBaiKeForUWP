@@ -109,5 +109,19 @@ namespace JiHuangBaiKeForUWP.Model
                 }
             }
         }
+
+        /// <summary>
+        /// 检查QQ文本框
+        /// </summary>
+        /// <param name="textbox">文本框对象</param>
+        public static void QqNumTextCheck(TextBox textbox)
+        {
+            if (!Regex.IsMatch(textbox.Text, "^\\d*\\.?\\d*$") && textbox.Text != "")
+            {
+                int pos = textbox.SelectionStart - 1;
+                textbox.Text = textbox.Text.Remove(pos, 1);
+                textbox.SelectionStart = pos;
+            }
+        }
     }
 }

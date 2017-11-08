@@ -40,7 +40,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             FoodPerish.Value = c.Perish;
             FoodPerish.BarColor = Global.ColorBlue;
             Attribute1PicButton.Source = $"ms-appx:///Assets/GameResources/Foods/{c.Attribute}.png";
-            Attribute1PicButton.Text = c.AttributeValue;
+            Attribute1PicButton.Text = c.AttributeValue ?? c.Attribute;
             if (c.AttributeValue2 != null)
             {
                 Attribute2PicButton.Source = $"ms-appx:///Assets/GameResources/Foods/{c.Attribute2}.png";

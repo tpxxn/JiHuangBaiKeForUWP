@@ -19,7 +19,7 @@ using JiHuangBaiKeForUWP.Model;
 namespace JiHuangBaiKeForUWP.View
 {
     /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
+    /// 《饥荒百科全书 by tpxxn》应用错误报告页面
     /// </summary>
     public sealed partial class ErrorReportPage : Page
     {
@@ -34,14 +34,11 @@ namespace JiHuangBaiKeForUWP.View
 
         private async void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DeviceInfoCheckBox.IsChecked == true)
-            {
-                _includeDeviceInfo = true;
-            }
+            _includeDeviceInfo = DeviceInfoCheckBox.IsChecked == true;
             await ReportError(ViewNameTextBox.Text, ErrorStackTextBox.Text, _includeDeviceInfo);
         }
 
-        public static async Task ReportError(string viewName, string errorStack = null,bool includeDeviceInfo = true)
+        public static async Task ReportError(string viewName, string errorStack = null, bool includeDeviceInfo = true)
         {
             var deviceInfo = new EasClientDeviceInformation();
 

@@ -104,11 +104,13 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     var regularExpressionsResult = System.Text.RegularExpressions.Regex.Replace(c.Durability, @"[^0-9]+", "");
                     var doubleResult = double.Parse(regularExpressionsResult);
                     GoodDurability.Value = doubleResult;
+                    var regularExpressionsResult2 = System.Text.RegularExpressions.Regex.Replace(c.Durability, @"[0-9]+", "");
+                    GoodDurability.Unit = regularExpressionsResult2;
                     GoodDurability.BarColor = Global.ColorBlue;
                 }
                 catch
                 {
-                    // ignored
+                    //ignore
                 }
             }
             else
@@ -221,6 +223,23 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var dataPackage = new DataPackage();
             dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
+        }
+
+        private async void DropBy_Jump_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var picturePath = ((PicButton)sender).Source;
+            var rootFrame = Global.RootFrame;
+            var mainPageListBoxItem = Global.MainPageListBoxItem;
+            var frameTitle = Global.FrameTitle;
+            await Global.SetAutoSuggestBoxItem();
+            foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
+            {
+                if (picturePath != suggestBoxItem.Picture) continue;
+                string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
+                frameTitle.Text = "生物";
+                mainPageListBoxItem[4].IsSelected = true;
+                rootFrame.Navigate(typeof(CreaturePage), extraData);
+            }
         }
     }
 }

@@ -112,6 +112,7 @@
                   "S_lightning_rod",
                   "S_battle_spear",
                   "S_battle_helm",
+                  "S_electric_dart",
                   "S_birdcage",
                   "S_gobbler_shrine",
                   "S_scaled_chest",
@@ -293,6 +294,7 @@
                   "S_blow_dart",
                   "S_sleep_dart",
                   "S_fire_dart",
+                  "S_electric_dart",
                   "S_pan_flute",
                   "S_papyrus"
               ],
@@ -433,7 +435,7 @@
               "EnName": "Saffron Feather",
               "Science": [
                   "S_napsack",
-                  "Electric_Dart"
+                  "S_electric_dart"
               ],
               "SourceCreature": [
                   "Canary"
@@ -1374,7 +1376,7 @@
               "Name": "露西斧",
               "EnName": "Lucy the Axe",
               "Attack": 27.2,
-              "Durability": "∞",
+              "Durability": "1000",
               "Introduction": "除了用作工具还能用来打怪。",
               "Console": "lucy"
           },
@@ -1401,7 +1403,7 @@
               "Name": "步行手杖",
               "EnName": "Walking Cane",
               "Attack": 17,
-              "Durability": "∞",
+              "Durability": "1000",
               "Introduction": "除了用作工具还能用来打怪。",
               "Console": "cane"
           },
@@ -1984,7 +1986,7 @@
               "Ability": [
                   "14格背包"
               ],
-              "Durability": "∞",
+              "Durability": "1000",
               "Introduction": "击杀坎普斯极小几率获得。",
               "Console": "krampus_sack"
           },

@@ -1154,7 +1154,7 @@
                 "Name": "噩梦燃料",
                 "EnName": "Nightmare Fuel",
                 "Need1": "G_dark_petals",
-                "Need1Value": 3,
+                "Need1Value": 4,
                 "Unlock": "S_alchemy_engine",
                 "Introduction": "高级素材，可以用来制作梦魇装备，或者为暗影灯添加燃料。",
                 "Console": "nightmarefuel"
