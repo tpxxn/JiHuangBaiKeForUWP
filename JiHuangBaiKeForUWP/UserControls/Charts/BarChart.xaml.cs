@@ -81,7 +81,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
 
         #region 依赖属性：值
 
-        public double Value
+        public double? Value
         {
             get => (double)GetValue(ValueProperty);
             set => SetValue(ValueProperty, value);
@@ -119,7 +119,6 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         }
         #endregion
 
-
         #region 依赖属性：单位
 
         public string Unit
@@ -139,7 +138,6 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         }
         #endregion
 
-
         #region 依赖属性：标签
 
         public string Label
@@ -153,9 +151,14 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
 
         private static void OnLabelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue == null) return;
             var barChart = (BarChart)d;
+            if (string.IsNullOrEmpty(e.NewValue.ToString()))
+            {
+                barChart.LabelTextBlock.Width = 0;
+            }
+            if (e.NewValue == null) return;
             barChart.LabelTextBlock.Text = (string)e.NewValue;
+            
         }
 
         #endregion

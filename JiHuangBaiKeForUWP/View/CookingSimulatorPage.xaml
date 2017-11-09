@@ -8,6 +8,7 @@
     xmlns:uc="using:JiHuangBaiKeForUWP.UserControls.Expander"
     xmlns:datetype="using:JiHuangBaiKeForUWP.Model"
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+    xmlns:charts="using:JiHuangBaiKeForUWP.UserControls.Charts"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -25,70 +26,98 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition x:Name="RelativePanelRowDefinition" Height="250"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <RelativePanel Grid.Row="0" Height="250" Margin="10" HorizontalAlignment="Center">
-            <StackPanel x:Name="SettingStackPanel" HorizontalAlignment="Left" RelativePanel.AlignHorizontalCenterWithPanel="True">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
+        <ScrollViewer>
+            <RelativePanel x:Name="CookingSimulatorRelativePanel" Height="250" Margin="10" HorizontalAlignment="Center">
+                <StackPanel x:Name="SettingStackPanel" RelativePanel.AlignHorizontalCenterWithPanel="True">
+                    <StackPanel Orientation="Horizontal">
                         <ToggleSwitch x:Name="AutoCleanToggleSwitch" IsOn="True" OnContent="自动清空材料" OffContent="不自动清空材料"/>
+                        <Button x:Name="ResetButton" Content="重置" Tapped="ResetButton_Tapped" Margin="20,0,0,0"/>
                     </StackPanel>
-                    <Button x:Name="ResetButton" Content="重置" Tapped="ResetButton_Tapped" Margin="20,0,0,0"/>
-                </StackPanel>
-                <StackPanel x:Name="PortableCrockPotStackPanel" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <TextBlock FontSize="26" Text="烹煮锅"/>
                     <ToggleSwitch x:Name="PortableCrockPotToggleSwitch" OffContent="烹煮锅" OnContent="便携式烹饪锅"/>
                 </StackPanel>
-            </StackPanel>
-            <StackPanel RelativePanel.Below="SettingStackPanel">
-                <StackPanel x:Name="FoodButtonStackPanel" Width="256" Orientation="Horizontal">
-                    <Button x:Name="Food1Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food1Button_Tapped" BorderBrush="#FF707070">
-                        <Image x:Name="Food1Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
-                    </Button>
-                    <Button x:Name="Food2Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food2Button_Tapped" BorderBrush="#FF707070">
-                        <Image x:Name="Food2Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
-                    </Button>
-                    <Button x:Name="Food3Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food3Button_Tapped" BorderBrush="#FF707070">
-                        <Image x:Name="Food3Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
-                    </Button>
-                    <Button x:Name="Food4Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food4Button_Tapped" BorderBrush="#FF707070">
-                        <Image x:Name="Food4Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
-                    </Button>
+                <StackPanel x:Name="SmulatorStackPanel" Orientation="Horizontal" RelativePanel.Below="SettingStackPanel">
+                    <StackPanel x:Name="FoodButtonStackPanel" Width="256" Orientation="Horizontal" VerticalAlignment="Top">
+                        <Button x:Name="Food1Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food1Button_Tapped" BorderBrush="#FF707070">
+                            <Image x:Name="Food1Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
+                        </Button>
+                        <Button x:Name="Food2Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food2Button_Tapped" BorderBrush="#FF707070">
+                            <Image x:Name="Food2Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
+                        </Button>
+                        <Button x:Name="Food3Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food3Button_Tapped" BorderBrush="#FF707070">
+                            <Image x:Name="Food3Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
+                        </Button>
+                        <Button x:Name="Food4Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food4Button_Tapped" BorderBrush="#FF707070">
+                            <Image x:Name="Food4Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
+                        </Button>
+                    </StackPanel>
+                    <SymbolIcon x:Name="CalculationSymbolIcon" Symbol="Up" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Height="20" Margin="20,-20,0,0">
+                        <SymbolIcon.RenderTransform>
+                            <CompositeTransform ScaleY="2" ScaleX="2" Rotation="90"/>
+                        </SymbolIcon.RenderTransform>
+                    </SymbolIcon>
+                    <StackPanel Margin="20,0,0,0">
+                        <Grid HorizontalAlignment="Center" Width="144">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="64"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" x:Name="SwitchLeftButton" Background="{x:Null}" Visibility="Collapsed" Tapped="SwitchLeftButton_Tapped">
+                                <SymbolIcon Symbol="Up" RenderTransformOrigin="0.5,0.5">
+                                    <SymbolIcon.RenderTransform>
+                                        <CompositeTransform Rotation="270"/>
+                                    </SymbolIcon.RenderTransform>
+                                </SymbolIcon>
+                            </Button>
+                            <Button Grid.Column="1" x:Name="ResultButton" Width="64" Height="64" Background="{x:Null}" Tapped="ResultButton_Tapped" BorderBrush="#FF707070">
+                                <Image x:Name="FoodResultImage" Height="52" Width="52" Margin="-4,0,-3,0"/>
+                            </Button>
+                            <Button Grid.Column="2" x:Name="SwitchRightButton" Background="{x:Null}" Visibility="Collapsed" Tapped="SwitchRightButton_Tapped">
+                                <SymbolIcon Symbol="Up" RenderTransformOrigin="0.5,0.5">
+                                    <SymbolIcon.RenderTransform>
+                                        <CompositeTransform Rotation="90"/>
+                                    </SymbolIcon.RenderTransform>
+                                </SymbolIcon>
+                            </Button>
+                        </Grid>
+                        <TextBlock x:Name="FoodResultTextBlock" RelativePanel.Below="ResultButton" RelativePanel.AlignHorizontalCenterWith="ResultButton" HorizontalAlignment="Center"/>
+                    </StackPanel>
                 </StackPanel>
-                <SymbolIcon x:Name="CalculationSymbolIcon" Symbol="Up" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Margin="0,20">
-                    <SymbolIcon.RenderTransform>
-                        <CompositeTransform ScaleY="-2" ScaleX="2"/>
-                    </SymbolIcon.RenderTransform>
-                </SymbolIcon>
-                <Grid HorizontalAlignment="Center" Width="144">
+                <Grid Margin="50,0,0,0" RelativePanel.Below="SmulatorStackPanel">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="64"/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" x:Name="SwitchLeftButton" Background="{x:Null}" Visibility="Collapsed" Tapped="SwitchLeftButton_Tapped">
-                        <SymbolIcon Symbol="Up" RenderTransformOrigin="0.5,0.5">
-                            <SymbolIcon.RenderTransform>
-                                <CompositeTransform Rotation="270"/>
-                            </SymbolIcon.RenderTransform>
-                        </SymbolIcon>
-                    </Button>
-                    <Button Grid.Column="1" x:Name="ResultButton" Width="64" Height="64" Background="{x:Null}" Tapped="ResultButton_Tapped" BorderBrush="#FF707070">
-                        <Image x:Name="FoodResultImage" Height="52" Width="52" Margin="-4,0,-3,0"/>
-                    </Button>
-                    <Button Grid.Column="2" x:Name="SwitchRightButton" Background="{x:Null}" Visibility="Collapsed" Tapped="SwitchRightButton_Tapped">
-                        <SymbolIcon Symbol="Up" RenderTransformOrigin="0.5,0.5">
-                            <SymbolIcon.RenderTransform>
-                                <CompositeTransform Rotation="90"/>
-                            </SymbolIcon.RenderTransform>
-                        </SymbolIcon>
-                    </Button>
+                    <StackPanel Width="200">
+                        <charts:BarChart x:Name="FoodHealth" Label="" MaxValue="400"/>
+                        <charts:BarChart x:Name="FoodHunger" Label="" MaxValue="600"/>
+                        <charts:BarChart x:Name="FoodSanity" Label="" MaxValue="200"/>
+                    </StackPanel>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="生命" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="1" Text="饥饿" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="2" Text="精神" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <StackPanel Width="200" Grid.Column="2">
+                        <charts:BarChart x:Name="FoodRecipeHealth" Label="" MaxValue="100"/>
+                        <charts:BarChart x:Name="FoodRecipeHunger" Label="" MaxValue="150"/>
+                        <charts:BarChart x:Name="FoodRecipeSanity" Label="" MaxValue="50"/>
+                    </StackPanel>
                 </Grid>
-                <TextBlock x:Name="FoodResultTextBlock" RelativePanel.Below="ResultButton" RelativePanel.AlignHorizontalCenterWith="ResultButton" HorizontalAlignment="Center"/>
-            </StackPanel>
-        </RelativePanel>
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            </RelativePanel>
+        </ScrollViewer>
+        <Thumb Style="{StaticResource ThumbStyle}" x:Name="CookingSimulatorThumb" Grid.Row="1" DragDelta="CookingSimulatorThumb_DragDelta"/>
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <uc:Expander VerticalAlignment="Top" FontSize="17">
                     <uc:Expander.Header>

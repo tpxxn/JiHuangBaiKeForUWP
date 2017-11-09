@@ -12,8 +12,8 @@
                 <ResourceDictionary Source="ms-appx:///Styles/ReadOnlyCheckBoxDictionary.xaml"/>
                 <ResourceDictionary Source="ms-appx:///Styles/ListBoxItemStyleDictionary.xaml"/>
                 <ResourceDictionary Source="ms-appx:///Styles/AutoSuggestBoxDictionary.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Styles/ThumbDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-
 </Application>

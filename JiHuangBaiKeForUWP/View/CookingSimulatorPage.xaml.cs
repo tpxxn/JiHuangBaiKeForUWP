@@ -25,6 +25,7 @@ namespace JiHuangBaiKeForUWP.View
     /// </summary>
     public sealed partial class CookingSimulatorPage : Page
     {
+        private readonly ObservableCollection<FoodRecipe2> _foodRecipeData = new ObservableCollection<FoodRecipe2>();
         private readonly ObservableCollection<Food> _foodMeatData = new ObservableCollection<Food>();
         private readonly ObservableCollection<Food> _foodVegetableData = new ObservableCollection<Food>();
         private readonly ObservableCollection<Food> _foodFruitData = new ObservableCollection<Food>();
@@ -35,13 +36,43 @@ namespace JiHuangBaiKeForUWP.View
         {
             this.InitializeComponent();
             if (Global.GameVersion != 4)
-                PortableCrockPotStackPanel.Visibility = Visibility.Collapsed;
+            {
+                PortableCrockPotToggleSwitch.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                RelativePanelRowDefinition.Height = new GridLength(270);
+                CookingSimulatorRelativePanel.Height = 270;
+            }
+            FoodHealth.ShowIfZero = true;
+            FoodHunger.ShowIfZero = true;
+            FoodSanity.ShowIfZero = true;
+            FoodRecipeHealth.ShowIfZero = true;
+            FoodRecipeHunger.ShowIfZero = true;
+            FoodRecipeSanity.ShowIfZero = true;
+            FoodHealth.Value = 0;
+            FoodHunger.Value = 0;
+            FoodSanity.Value = 0;
+            FoodRecipeHealth.Value = 0;
+            FoodRecipeHunger.Value = 0;
+            FoodRecipeSanity.Value = 0;
+            FoodHealth.BarColor = Global.ColorGreen;
+            FoodHunger.BarColor = Global.ColorKhaki;
+            FoodSanity.BarColor = Global.ColorRed;
+            FoodRecipeHealth.BarColor = Global.ColorGreen;
+            FoodRecipeHunger.BarColor = Global.ColorKhaki;
+            FoodRecipeSanity.BarColor = Global.ColorRed;
             Deserialize();
         }
 
         public async void Deserialize()
         {
             var food = JsonConvert.DeserializeObject<FoodRootObject>(await StringProcess.GetJsonString("Foods.json"));
+            foreach (var foodRecipeItems in food.FoodRecipe.FoodRecipes)
+            {
+                _foodRecipeData.Add(foodRecipeItems);
+            }
+
             foreach (var foodMeatsItems in food.FoodMeats.Foods)
             {
                 _foodMeatData.Add(foodMeatsItems);
@@ -102,6 +133,12 @@ namespace JiHuangBaiKeForUWP.View
             CrockPotList.Clear();
             CrockPotListIndex = -1;
             CrockPotMaxPriority = -128;
+            FoodHealth.Value = 0;
+            FoodHunger.Value = 0;
+            FoodSanity.Value = 0;
+            FoodRecipeHealth.Value = 0;
+            FoodRecipeHunger.Value = 0;
+            FoodRecipeSanity.Value = 0;
         }
         //四个位置
         public string CsRecipe1 = "";
@@ -156,33 +193,40 @@ namespace JiHuangBaiKeForUWP.View
         public sbyte CrockPotMaxPriority = -128; //优先度最大值
         #endregion
 
-        public static string GetFileName(string shortName)
-        {
-            shortName = shortName.Substring(shortName.LastIndexOf('/') + 1, shortName.Length - shortName.LastIndexOf('/') - 5);
-            return shortName;
-        }
-
-        //添加食材
+        /// <summary>
+        /// 添加食材
+        /// </summary>
+        /// <param name="foodName">食材名称</param>
         private void CS_Add(string foodName)
         {
+            if (CsRecipe1 == "" && CsRecipe2 == "" && CsRecipe3 == "" && CsRecipe4 == "")
+            {
+                FoodHealth.Value = 0;
+                FoodHunger.Value = 0;
+                FoodSanity.Value = 0;
+            }
+            if (CsRecipe1 == "" || CsRecipe2 == "" || CsRecipe3 == "" || CsRecipe4 == "")
+            { 
+                CS_Food_Property(foodName);
+            }
             if (CsRecipe1 == "")
             {
-                CsRecipe1 = GetFileName(foodName);
+                CsRecipe1 = StringProcess.GetFileName(foodName);
                 Food1Image.Source = new BitmapImage(new Uri(foodName));
             }
             else if (CsRecipe2 == "")
             {
-                CsRecipe2 = GetFileName(foodName);
+                CsRecipe2 = StringProcess.GetFileName(foodName);
                 Food2Image.Source = new BitmapImage(new Uri(foodName));
             }
             else if (CsRecipe3 == "")
             {
-                CsRecipe3 = GetFileName(foodName);
+                CsRecipe3 = StringProcess.GetFileName(foodName);
                 Food3Image.Source = new BitmapImage(new Uri(foodName));
             }
             else if (CsRecipe4 == "")
             {
-                CsRecipe4 = GetFileName(foodName);
+                CsRecipe4 = StringProcess.GetFileName(foodName);
                 Food4Image.Source = new BitmapImage(new Uri(foodName));
             }
             if (CsRecipe1 != "" && CsRecipe2 != "" && CsRecipe3 != "" && CsRecipe4 != "")
@@ -190,31 +234,143 @@ namespace JiHuangBaiKeForUWP.View
                 CS_CrockPotCalculation();
             }
         }
-        //删除食材
+
+        /// <summary>
+        /// 删除食材
+        /// </summary>
         private void Food1Button_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            CS_Food_Property(CsRecipe1, false);
             CsRecipe1 = "";
             Food1Image.Source = null;
         }
 
         private void Food2Button_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            CS_Food_Property(CsRecipe2, false);
             CsRecipe2 = "";
             Food2Image.Source = null;
         }
 
         private void Food3Button_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            CS_Food_Property(CsRecipe3, false);
             CsRecipe3 = "";
             Food3Image.Source = null;
         }
 
         private void Food4Button_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            CS_Food_Property(CsRecipe4, false);
             CsRecipe4 = "";
             Food4Image.Source = null;
         }
-        //食材属性统计
+
+        /// <summary>
+        /// 烹饪食材属性
+        /// </summary>
+        /// <param name="source">食物代码</param>
+        /// <param name="plus"></param>
+        private void CS_Food_Property(string source, bool plus = true)
+        {
+            if (string.IsNullOrEmpty(source)) return;
+            source = StringProcess.GetGameResourcePath(source);
+            foreach (var foodMeat in _foodMeatData)
+            {
+                if (source == foodMeat.Picture)
+                {
+                    if (plus)
+                    {
+                        FoodHealth.Value += foodMeat.Health;
+                        FoodHunger.Value += foodMeat.Hunger;
+                        FoodSanity.Value += foodMeat.Sanity;
+                    }
+                    else
+                    {
+                        FoodHealth.Value -= foodMeat.Health;
+                        FoodHunger.Value -= foodMeat.Hunger;
+                        FoodSanity.Value -= foodMeat.Sanity;
+                    }
+                }
+            }
+            foreach (var foodVegetable in _foodVegetableData)
+            {
+                if (source == foodVegetable.Picture)
+                {
+                    if (plus)
+                    {
+                        FoodHealth.Value += foodVegetable.Health;
+                        FoodHunger.Value += foodVegetable.Hunger;
+                        FoodSanity.Value += foodVegetable.Sanity;
+                    }
+                    else
+                    {
+                        FoodHealth.Value -= foodVegetable.Health;
+                        FoodHunger.Value -= foodVegetable.Hunger;
+                        FoodSanity.Value -= foodVegetable.Sanity;
+                    }
+                }
+            }
+            foreach (var foodFruit in _foodFruitData)
+            {
+                if (source == foodFruit.Picture)
+                {
+                    if (plus)
+                    {
+                        FoodHealth.Value += foodFruit.Health;
+                        FoodHunger.Value += foodFruit.Hunger;
+                        FoodSanity.Value += foodFruit.Sanity;
+                    }
+                    else
+                    {
+                        FoodHealth.Value -= foodFruit.Health;
+                        FoodHunger.Value -= foodFruit.Hunger;
+                        FoodSanity.Value -= foodFruit.Sanity;
+                    }
+                }
+            }
+            foreach (var foodEgg in _foodEggData)
+            {
+                if (source == foodEgg.Picture)
+                {
+                    if (plus)
+                    {
+                        FoodHealth.Value += foodEgg.Health;
+                        FoodHunger.Value += foodEgg.Hunger;
+                        FoodSanity.Value += foodEgg.Sanity;
+                    }
+                    else
+                    {
+                        FoodHealth.Value -= foodEgg.Health;
+                        FoodHunger.Value -= foodEgg.Hunger;
+                        FoodSanity.Value -= foodEgg.Sanity;
+                    }
+                }
+            }
+            foreach (var foodOther in _foodOtherData)
+            {
+                if (source == foodOther.Picture)
+                {
+                    if (plus)
+                    {
+                        FoodHealth.Value += foodOther.Health;
+                        FoodHunger.Value += foodOther.Hunger;
+                        FoodSanity.Value += foodOther.Sanity;
+                    }
+                    else
+                    {
+                        FoodHealth.Value -= foodOther.Health;
+                        FoodHunger.Value -= foodOther.Hunger;
+                        FoodSanity.Value -= foodOther.Sanity;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 食材属性统计
+        /// </summary>
+        /// <param name="name">食材名</param>
         private void CS_RecipeStatistics(string name)
         {
             switch (name)
@@ -555,10 +711,13 @@ namespace JiHuangBaiKeForUWP.View
                 case "F_moleworm":
                     CsFtMoleworm += 1;
                     break;
-                    #endregion
+                #endregion
             }
         }
-        //烹饪计算
+
+        /// <summary>
+        /// 烹饪计算
+        /// </summary>
         private void CS_CrockPotCalculation()
         {
             FoodIndex = 0;
@@ -740,7 +899,12 @@ namespace JiHuangBaiKeForUWP.View
                 CS_CrockPotListAddFood("F_wet_goop", -2);
             }
             CsFoodName = CrockPotList[0];
-            CS_image_Food_Result_Source(CrockPotList[0]);
+            //显示食物图片
+            CS_image_Food_Result_Source(CsFoodName);
+            //显示食物名称
+            FoodResultTextBlock.Text = CS_Food_Text(CsFoodName);
+            //显示食物属性
+            CS_FoodRecipe_Property(CsFoodName);
             #endregion
             #region 选择按钮显示判断
             if (CrockPotListIndex < 1)
@@ -756,8 +920,6 @@ namespace JiHuangBaiKeForUWP.View
                 SwitchRightButton.IsEnabled = true;
             }
             #endregion
-            //显示食物名称
-            FoodResultTextBlock.Text = CS_Food_Text(CsFoodName);
             #region 自动清空材料
             if (AutoCleanToggleSwitch.IsOn)
             {
@@ -772,7 +934,12 @@ namespace JiHuangBaiKeForUWP.View
             }
             #endregion
         }
-        //向食物列表添加食物
+
+        /// <summary>
+        /// 向食物列表添加食物
+        /// </summary>
+        /// <param name="foodName">食物名</param>
+        /// <param name="foodPriority">食物优先度</param>
         private void CS_CrockPotListAddFood(string foodName, sbyte foodPriority)
         {
             if (foodPriority >= CrockPotMaxPriority)
@@ -783,13 +950,21 @@ namespace JiHuangBaiKeForUWP.View
             }
         }
 
-        //烹饪结果图片
+        #region 烹饪结果
+        /// <summary>
+        /// 烹饪结果图片
+        /// </summary>
+        /// <param name="source">食物代码</param>
         private void CS_image_Food_Result_Source(string source)
         {
             FoodResultImage.Source = new BitmapImage(new Uri(StringProcess.GetGameResourcePath(source)));
         }
 
-        //烹饪结果文字
+        /// <summary>
+        /// 烹饪结果文字
+        /// </summary>
+        /// <param name="source">食物代码</param>
+        /// <returns>烹饪结果</returns>
         private string CS_Food_Text(string source)
         {
             switch (source)
@@ -892,40 +1067,27 @@ namespace JiHuangBaiKeForUWP.View
                     return null;
             }
         }
-        //左右切换按钮
-        private void SwitchLeftButton_Tapped(object sender, TappedRoutedEventArgs e)
+
+        /// <summary>
+        /// 烹饪结果属性
+        /// </summary>
+        /// <param name="source">食物代码</param>
+        private void CS_FoodRecipe_Property(string source)
         {
-            SwitchRightButton.IsEnabled = true;
-            if (FoodIndex != 0)
+            foreach (var foodRecipe in _foodRecipeData)
             {
-                FoodIndex -= 1;
-                if (FoodIndex == 0)
+                if (source == foodRecipe.Picture)
                 {
-                    SwitchLeftButton.IsEnabled = false;
+                    FoodRecipeHealth.Value = foodRecipe.Health;
+                    FoodRecipeHunger.Value = foodRecipe.Hunger;
+                    FoodRecipeSanity.Value = foodRecipe.Sanity;
                 }
-                CsFoodName = CrockPotList[FoodIndex];
-                CS_image_Food_Result_Source(CrockPotList[FoodIndex]);
             }
-            FoodResultTextBlock.Text = CS_Food_Text(CsFoodName);
         }
 
-        private void SwitchRightButton_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            SwitchLeftButton.IsEnabled = true;
-            if (FoodIndex != CrockPotListIndex)
-            {
-                FoodIndex += 1;
-                if (FoodIndex == CrockPotListIndex)
-                {
-                    SwitchRightButton.IsEnabled = false;
-                }
-                CsFoodName = CrockPotList[FoodIndex];
-                CS_image_Food_Result_Source(CrockPotList[FoodIndex]);
-            }
-            FoodResultTextBlock.Text = CS_Food_Text(CsFoodName);
-        }
-
-        // 烹饪结果跳转
+        /// <summary>
+        /// 烹饪结果跳转
+        /// </summary>
         private async void ResultButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (FoodResultImage.Source == null) return;
@@ -942,6 +1104,74 @@ namespace JiHuangBaiKeForUWP.View
                 var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
                 rootFrame.Navigate(typeof(FoodPage), extraData);
                 break;
+            }
+        }
+
+        /// <summary>
+        /// 左右切换按钮
+        /// </summary>
+        private void SwitchLeftButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            SwitchRightButton.IsEnabled = true;
+            if (FoodIndex != 0)
+            {
+                FoodIndex -= 1;
+                if (FoodIndex == 0)
+                {
+                    SwitchLeftButton.IsEnabled = false;
+                }
+                CsFoodName = CrockPotList[FoodIndex];
+                CS_image_Food_Result_Source(CrockPotList[FoodIndex]);
+                CS_FoodRecipe_Property(CrockPotList[FoodIndex]);
+            }
+            FoodResultTextBlock.Text = CS_Food_Text(CsFoodName);
+        }
+
+        private void SwitchRightButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            SwitchLeftButton.IsEnabled = true;
+            if (FoodIndex != CrockPotListIndex)
+            {
+                FoodIndex += 1;
+                if (FoodIndex == CrockPotListIndex)
+                {
+                    SwitchRightButton.IsEnabled = false;
+                }
+                CsFoodName = CrockPotList[FoodIndex];
+                CS_image_Food_Result_Source(CrockPotList[FoodIndex]);
+                CS_FoodRecipe_Property(CrockPotList[FoodIndex]);
+            }
+            FoodResultTextBlock.Text = CS_Food_Text(CsFoodName);
+        }
+        #endregion
+
+        /// <summary>
+        /// 拖动界面大小
+        /// </summary>
+        private void CookingSimulatorThumb_DragDelta(object sender, DragDeltaEventArgs e)
+        {
+            var thumbY = e.VerticalChange;
+            try
+            {
+                var gridLength = new GridLength(RelativePanelRowDefinition.Height.Value + thumbY);
+                if (Global.GameVersion != 4)
+                {
+                    if (gridLength.Value <= 250 && gridLength.Value >= 0)
+                    {
+                        RelativePanelRowDefinition.Height = gridLength;
+                    }
+                }
+                else
+                {
+                    if (gridLength.Value <= 270 && gridLength.Value >= 0)
+                    {
+                        RelativePanelRowDefinition.Height = gridLength;
+                    }
+                }
+            }
+            catch
+            {
+                //ignore
             }
         }
     }
