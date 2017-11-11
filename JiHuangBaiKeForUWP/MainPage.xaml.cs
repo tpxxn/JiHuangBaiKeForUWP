@@ -58,7 +58,7 @@ namespace JiHuangBaiKeForUWP
                 SearchAutoSuggestBox.Visibility = Visibility.Visible;
             }
             Global.RootGrid = RootGrid;
-            Global.FrameTitle = FrameTitle;
+            Global.FrameTitle = Global.GetOsVersion() > 16299 ? FrameTitleAcrylic : FrameTitle;
             Global.RootFrame = RootFrame;
             Global.IconsListViewGameData = IconsListViewGameData;
             Global.IconsListViewSettingAndAbout = IconsListViewSettingAndAbout;
@@ -285,6 +285,7 @@ namespace JiHuangBaiKeForUWP
             if (hamburgerMenuItem.NavigatePage != null)
             {
                 RootFrame.Navigate(hamburgerMenuItem.NavigatePage);
+                FrameTitleAcrylic.Text = hamburgerMenuItem.Text;
             }
         }
 

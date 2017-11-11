@@ -40,6 +40,7 @@
                         <Setter Target="RootSplit.DisplayMode" Value="Overlay"/>
                         <Setter Target="RootSplit.IsPaneOpen" Value="False"/>
                         <Setter Target="FrameTitle.Margin" Value="10,0,0,0"/>
+                        <Setter Target="FrameTitleAcrylic.Margin" Value="10,0,0,0"/>
                         <Setter Target="AutoSuggestButton.Visibility" Value="Visible"/>
                         <Setter Target="SearchAutoSuggestBox.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
@@ -52,6 +53,7 @@
                         <Setter Target="RootSplit.DisplayMode" Value="CompactOverlay"/>
                         <Setter Target="RootSplit.IsPaneOpen" Value="False"/>
                         <Setter Target="FrameTitle.Margin" Value="10,0,0,0"/>
+                        <Setter Target="FrameTitleAcrylic.Margin" Value="10,0,0,0"/>
                         <Setter Target="AutoSuggestButton.Visibility" Value="Visible"/>
                         <Setter Target="SearchAutoSuggestBox.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
@@ -64,6 +66,7 @@
                         <Setter Target="RootSplit.DisplayMode" Value="CompactInline"/>
                         <Setter Target="RootSplit.IsPaneOpen" Value="True"/>
                         <Setter Target="FrameTitle.Margin" Value="180,0,0,0"/>
+                        <Setter Target="FrameTitleAcrlic.Margin" Value="180,0,0,0"/>
                         <Setter Target="AutoSuggestButton.Visibility" Value="Collapsed"/>
                         <Setter Target="SearchAutoSuggestBox.Visibility" Value="Visible"/>
                     </VisualState.Setters>

@@ -64,6 +64,7 @@ namespace JiHuangBaiKeForUWP.Model
             ((HamburgerMenuItem)IconsListViewGameData.Items[index]).Selected = Visibility.Visible;
             ((HamburgerMenuItem)IconsListViewGameData.Items[index]).Color = new SolidColorBrush(AccentColor);
             RootFrame.Navigate(((HamburgerMenuItem)IconsListViewGameData.Items[index]).NavigatePage);
+            FrameTitle.Text = ((HamburgerMenuItem) IconsListViewGameData.Items[index]).Text;
 
         }
 
