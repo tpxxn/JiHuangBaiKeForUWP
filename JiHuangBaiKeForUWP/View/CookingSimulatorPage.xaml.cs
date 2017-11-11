@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -31,6 +32,21 @@ namespace JiHuangBaiKeForUWP.View
         private readonly ObservableCollection<Food> _foodFruitData = new ObservableCollection<Food>();
         private readonly ObservableCollection<Food> _foodEggData = new ObservableCollection<Food>();
         private readonly ObservableCollection<Food> _foodOtherData = new ObservableCollection<Food>();
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (Global.GetOsVersion() >= 16299)
+            {
+                var dimGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Color.FromArgb(255, 105, 105, 105),
+                    TintOpacity = 0.3
+                };
+                CookingSimulatorGrid.Background = dimGrayAcrylicBrush;
+            }
+        }
 
         public CookingSimulatorPage()
         {
@@ -1093,14 +1109,13 @@ namespace JiHuangBaiKeForUWP.View
             if (FoodResultImage.Source == null) return;
             var picturePath = CrockPotList[FoodIndex];
             var rootFrame = Global.RootFrame;
-            var mainPageListBoxItem = Global.MainPageListBoxItem;
             var frameTitle = Global.FrameTitle;
             await Global.SetAutoSuggestBoxItem();
             foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
             {
                 if (picturePath != StringProcess.GetFileName(suggestBoxItem.Picture)) continue;
-                frameTitle.Text = "自然";
-                mainPageListBoxItem[1].IsSelected = true;
+                frameTitle.Text = "食物";
+                Global.PageJump(1);
                 var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
                 rootFrame.Navigate(typeof(FoodPage), extraData);
                 break;

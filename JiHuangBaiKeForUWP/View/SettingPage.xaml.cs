@@ -1,5 +1,9 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using Windows.UI;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+using JiHuangBaiKeForUWP.Model;
 
 namespace JiHuangBaiKeForUWP.View
 {
@@ -8,7 +12,29 @@ namespace JiHuangBaiKeForUWP.View
     /// </summary>
     public sealed partial class SettingPage : Page
     {
-       
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (Global.GetOsVersion() >= 16299)
+            {
+                var dimGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Color.FromArgb(255, 105, 105, 105),
+                    TintOpacity = 0.3
+                };
+                var darkSlateGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Color.FromArgb(255, 47, 79, 79),
+                    TintOpacity = 0.5
+                };
+                RootGrid.Background = dimGrayAcrylicBrush;
+                TopListBox.Background = darkSlateGrayAcrylicBrush;
+            }
+        }
+
         #region 构造器
 
         public SettingPage()

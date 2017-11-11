@@ -87,7 +87,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var picturePath = ((PicButton)sender).Source;
             var rootFrame = Global.RootFrame;
             var shortName = StringProcess.GetFileName(picturePath);
-            var mainPageListBoxItem = Global.MainPageListBoxItem;
             var frameTitle = Global.FrameTitle;
             await Global.SetAutoSuggestBoxItem();
             foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
@@ -99,7 +98,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 {
                     case "F":
                         frameTitle.Text = "食物";
-                        mainPageListBoxItem[1].IsSelected = true;
+                        Global.PageJump(1);
                         rootFrame.Navigate(typeof(FoodPage), extraData);
                         break;
                     case "G":

@@ -24,7 +24,7 @@
         </DataTemplate>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid x:Name="CookingSimulatorGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition x:Name="RelativePanelRowDefinition" Height="250"/>
             <RowDefinition Height="30"/>

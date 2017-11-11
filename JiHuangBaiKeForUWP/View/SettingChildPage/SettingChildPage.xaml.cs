@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,6 +31,22 @@ namespace JiHuangBaiKeForUWP.View.SettingChildPage
     /// </summary>
     public sealed partial class SettingChildPage : Page
     {
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (Global.GetOsVersion() >= 16299)
+            {
+                var dimGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Color.FromArgb(255, 105, 105, 105),
+                    TintOpacity = 0.3
+                };
+                RootStackPanel.Background = dimGrayAcrylicBrush;
+                ThemeStackPanel.Visibility = Visibility.Collapsed;
+            }
+        }
+
         #region 字段
 
         private readonly int _gameVersionSelectIndex;
@@ -52,8 +69,7 @@ namespace JiHuangBaiKeForUWP.View.SettingChildPage
         private void ThemeToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
             SettingSet.ThemeSettingSet(ThemeToggleSwitch.IsOn);
-            ((Frame)Window.Current.Content).RequestedTheme =
-                ThemeToggleSwitch.IsOn ? ElementTheme.Dark : ElementTheme.Light;
+            ((Frame)Window.Current.Content).RequestedTheme = ThemeToggleSwitch.IsOn ? ElementTheme.Dark : ElementTheme.Light;
         }
 
         #endregion

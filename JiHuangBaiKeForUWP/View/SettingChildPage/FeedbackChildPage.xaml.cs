@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,6 +23,21 @@ namespace JiHuangBaiKeForUWP.View.SettingChildPage
     /// </summary>
     public sealed partial class FeedbackChildPage : Page
     {
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var dimGrayAcrylicBrush = new AcrylicBrush
+            {
+                BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                FallbackColor = Colors.Transparent,
+                TintColor = Color.FromArgb(255, 105, 105, 105),
+                TintOpacity = 0.3
+            };
+            if (Global.GetOsVersion() >= 16299)
+            {
+                RootGrid.Background = dimGrayAcrylicBrush;
+            }
+        }
+
         public FeedbackChildPage()
         {
             this.InitializeComponent();

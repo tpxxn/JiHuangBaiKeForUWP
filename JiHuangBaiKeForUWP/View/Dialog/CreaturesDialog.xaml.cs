@@ -1080,7 +1080,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var picturePath = ((PicButton)sender).Source;
             var rootFrame = Global.RootFrame;
             var shortName = StringProcess.GetFileName(picturePath);
-            var mainPageListBoxItem = Global.MainPageListBoxItem;
             var frameTitle = Global.FrameTitle;
             await Global.SetAutoSuggestBoxItem();
             foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
@@ -1093,18 +1092,18 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     {
                         case "F":
                             frameTitle.Text = "食物";
-                            mainPageListBoxItem[1].IsSelected = true;
+                            Global.PageJump(1);
                             rootFrame.Navigate(typeof(FoodPage), extraData);
                             break;
                         case "S":
                             frameTitle.Text = "科技";
-                            mainPageListBoxItem[3].IsSelected = true;
+                            Global.PageJump(3);
                             rootFrame.Navigate(typeof(SciencePage), extraData);
                             break;
                         case "A":
                         case "G":
                             frameTitle.Text = "物品";
-                            mainPageListBoxItem[6].IsSelected = true;
+                            Global.PageJump(6);
                             rootFrame.Navigate(typeof(GoodPage), extraData);
                             break;
                     }

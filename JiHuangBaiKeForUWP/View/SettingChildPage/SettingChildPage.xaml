@@ -10,9 +10,9 @@
     mc:Ignorable="d">
 
 
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Margin="10">
-            <StackPanel>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+        <StackPanel x:Name="RootStackPanel" Margin="10" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <StackPanel x:Name="ThemeStackPanel">
                 <TextBlock FontSize="26" Text="深色主题"/>
                 <ToggleSwitch x:Name="ThemeToggleSwitch" Toggled="ThemeToggleSwitch_Toggled"/>
             </StackPanel>

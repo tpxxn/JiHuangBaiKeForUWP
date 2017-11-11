@@ -133,7 +133,7 @@ namespace JiHuangBaiKeForUWP
 
             //全局初始化
             GlobalInitializeComponent();
-            
+
             var rootFrame = Window.Current.Content as Frame;
 
             // 不要在窗口已包含内容时重复应用程序初始化，

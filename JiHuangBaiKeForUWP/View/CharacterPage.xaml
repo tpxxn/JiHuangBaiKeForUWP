@@ -17,12 +17,12 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Image Source="{x:Bind Picture}" Stretch="Uniform" />
-                <TextBlock Grid.Row="1" Text="{x:Bind Name}" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" HorizontalAlignment="Center"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <ScrollViewer x:Name="CharacterScrollViewer" VerticalScrollBarVisibility="Auto">
         <StackPanel x:Name="CharacterStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <GridView Name="CharacterGridView" 
                       Margin="10"

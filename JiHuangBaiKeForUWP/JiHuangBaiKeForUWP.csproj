@@ -107,6 +107,7 @@
     <Compile Include="Model\CallExternalContent.cs" />
     <Compile Include="Model\Fonts.cs" />
     <Compile Include="Model\GoodsJson.cs" />
+    <Compile Include="Model\HamburgerMenuItem.cs" />
     <Compile Include="Model\NaturalJson.cs" />
     <Compile Include="Model\SettingSet.cs" />
     <Compile Include="Model\CharactersJson.cs" />

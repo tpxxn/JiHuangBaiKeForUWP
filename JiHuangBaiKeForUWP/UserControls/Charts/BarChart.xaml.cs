@@ -61,7 +61,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         }
 
         public static readonly DependencyProperty ShowIfZeroProperty =
-            DependencyProperty.Register("Value", typeof(bool), typeof(BarChart), new PropertyMetadata(false,OnShowIfZeroChanged));
+            DependencyProperty.Register("ShowIfZero", typeof(bool), typeof(BarChart), new PropertyMetadata(false,OnShowIfZeroChanged));
 
         private static void OnShowIfZeroChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -128,7 +128,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         }
 
         public static readonly DependencyProperty UnitProperty =
-            DependencyProperty.Register("Value", typeof(string), typeof(BarChart), new PropertyMetadata(false, OnUnitChanged));
+            DependencyProperty.Register("Unit", typeof(string), typeof(BarChart), new PropertyMetadata(false, OnUnitChanged));
 
         private static void OnUnitChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

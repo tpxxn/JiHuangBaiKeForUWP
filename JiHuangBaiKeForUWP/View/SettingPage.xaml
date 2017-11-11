@@ -15,7 +15,7 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <ListBox Grid.Row="0" SelectionMode="Single" Tapped="ListBox_Tapped">
+            <ListBox x:Name="TopListBox" Grid.Row="0" SelectionMode="Single" Tapped="ListBox_Tapped">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel Orientation="Horizontal"/>

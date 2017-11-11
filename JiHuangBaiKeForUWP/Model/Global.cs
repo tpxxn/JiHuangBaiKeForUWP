@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.System.Profile;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -19,6 +20,7 @@ namespace JiHuangBaiKeForUWP.Model
 
     public static class Global
     {
+        #region 常量
         /// <summary>
         /// 应用程序文件夹
         /// </summary>
@@ -35,9 +37,80 @@ namespace JiHuangBaiKeForUWP.Model
         public static Grid RootGrid { get; set; }
         public static TextBlock FrameTitle { get; set; }
         public static Frame RootFrame { get; set; }
-        public static List<ListBoxItem> MainPageListBoxItem { get; set; } = new List<ListBoxItem>();
+        public static ListView IconsListViewGameData { get; set; }
+        public static ListView IconsListViewSettingAndAbout { get; set; }
+
+        #endregion
+
+        #region 方法
+        /// <summary>
+        /// 页面跳转
+        /// </summary>
+        /// <param name="index">页面序号</param>
+        public static void PageJump(int index)
+        {
+            // ReSharper disable once PossibleNullReferenceException
+            foreach (var hamburgerMenuItem in IconsListViewGameData.Items)
+            {
+                ((HamburgerMenuItem)hamburgerMenuItem).Color = new SolidColorBrush(Colors.White);
+                ((HamburgerMenuItem)hamburgerMenuItem).Selected = Visibility.Collapsed;
+            }
+            // ReSharper disable once PossibleNullReferenceException
+            foreach (var hamburgerMenuItem in IconsListViewSettingAndAbout.Items)
+            {
+                ((HamburgerMenuItem)hamburgerMenuItem).Color = new SolidColorBrush(Colors.White);
+                ((HamburgerMenuItem)hamburgerMenuItem).Selected = Visibility.Collapsed;
+            }
+            ((HamburgerMenuItem)IconsListViewGameData.Items[index]).Selected = Visibility.Visible;
+            ((HamburgerMenuItem)IconsListViewGameData.Items[index]).Color = new SolidColorBrush(AccentColor);
+            RootFrame.Navigate(((HamburgerMenuItem)IconsListViewGameData.Items[index]).NavigatePage);
+
+        }
+
+        /// <summary>
+        /// 获取系统版本
+        /// </summary>
+        /// <returns>系统版本号</returns>
+        public static ulong GetOsVersion()
+        {
+            var version = Convert.ToUInt64(AnalyticsInfo.VersionInfo.DeviceFamilyVersion);
+            return version >> 16 & 0xFFFF;
+        }
+        #endregion
+
+        /// <summary>
+        /// DimGray色亚克力笔刷
+        /// </summary>
+        //public static AcrylicBrush DimGrayAcrylicBrush = new AcrylicBrush
+        //{
+        //    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+        //    FallbackColor = Colors.Transparent,
+        //    TintColor = Color.FromArgb(255, 105, 105, 105),
+        //    TintOpacity = 0.3
+        //};
+        //public static AcrylicBrush DarkSlateGrayAcrylicBrush = new AcrylicBrush
+        //{
+        //    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+        //    FallbackColor = Colors.Transparent,
+        //    TintColor = Color.FromArgb(255, 47, 79, 79),
+        //    TintOpacity = 0.5
+        //};
+        //public static AcrylicBrush LightSlateGrayAcrylicBrush = new AcrylicBrush
+        //{
+        //    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+        //    FallbackColor = Colors.Transparent,
+        //    TintColor = Color.FromArgb(255, 119, 136, 153),
+        //    TintOpacity = 0.5
+        //};
+
+        ///// <summary>
+        ///// RevealStyle
+        ///// </summary>
+        //public static Style GridViewItemRevealStyle = (Style)Application.Current.Resources["GridViewItemRevealStyle"];
+        //public static Style ButtonRevealStyle = (Style)Application.Current.Resources["ButtonRevealStyle"];
 
         #region 颜色常量
+        public static Color AccentColor = (Color)Application.Current.Resources["SystemAccentColor"];
 
         public static SolidColorBrush ColorGreen = new SolidColorBrush(Color.FromArgb(255, 94, 182, 96));     //绿色
         public static SolidColorBrush ColorKhaki = new SolidColorBrush(Color.FromArgb(255, 237, 182, 96));    //卡其布色/土黄色
@@ -50,6 +123,8 @@ namespace JiHuangBaiKeForUWP.Model
         public static SolidColorBrush ColorYellow = new SolidColorBrush(Color.FromArgb(255, 238, 232, 21));     //黄色
         public static SolidColorBrush ColorBorderCyan = new SolidColorBrush(Color.FromArgb(255, 178, 236, 237));     //天蓝色
         public static SolidColorBrush ColorGray = new SolidColorBrush(Color.FromArgb(255, 244, 244, 245));     //灰色
+        public static SolidColorBrush ColorWhite = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));     //白色
+        public static SolidColorBrush ColorBlack = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));     //黑色
 
         #endregion
 
@@ -59,7 +134,7 @@ namespace JiHuangBaiKeForUWP.Model
         /// 游戏版本
         /// </summary>
         public static int GameVersion { get; set; }
-        
+
         /// <summary>
         /// 内置游戏版本Json文件夹名
         /// </summary>
@@ -69,7 +144,7 @@ namespace JiHuangBaiKeForUWP.Model
         };
 
         #endregion
-        
+
         #region 对话框
 
         /// <summary>
@@ -299,7 +374,7 @@ namespace JiHuangBaiKeForUWP.Model
             }
             foreach (var foodRecipeItems in FoodRecipeData)
             {
-                AutoSuggestBoxItemSourceAdd(foodRecipeItems,"FoodRecipe");
+                AutoSuggestBoxItemSourceAdd(foodRecipeItems, "FoodRecipe");
             }
             foreach (var foodItems in FoodMeatData)
             {

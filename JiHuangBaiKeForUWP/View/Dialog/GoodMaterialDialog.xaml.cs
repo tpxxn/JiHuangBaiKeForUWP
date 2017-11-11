@@ -94,7 +94,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var picturePath = ((PicButton)sender).Source;
             var rootFrame = Global.RootFrame;
             var shortName = StringProcess.GetFileName(picturePath);
-            var mainPageListBoxItem = Global.MainPageListBoxItem;
             var frameTitle = Global.FrameTitle;
             await Global.SetAutoSuggestBoxItem();
             foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
@@ -106,12 +105,12 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 {
                     case "S":
                         frameTitle.Text = "科技";
-                        mainPageListBoxItem[3].IsSelected = true;
+                        Global.PageJump(3);
                         rootFrame.Navigate(typeof(SciencePage), extraData);
                         break;
                     case "A":
                         frameTitle.Text = "生物";
-                        mainPageListBoxItem[4].IsSelected = true;
+                        Global.PageJump(4);
                         rootFrame.Navigate(typeof(CreaturePage), extraData);
                         break;
                 }
