@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace JiHuangBaiKeForUWP.View.Dialog
 {
@@ -24,9 +25,25 @@ namespace JiHuangBaiKeForUWP.View.Dialog
     /// </summary>
     public sealed partial class GoodMaterialDialog : Page
     {
-        public GoodMaterialDialog(GoodMaterial c)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            Global.FrameTitle.Text = "物品详情";
+            if (e.Parameter != null)
+            {
+                LoadData((GoodMaterial)e.Parameter);
+            }
+            var imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Image");
+            imageAnimation?.TryStart(GoodImage);
+        }
+
+        public GoodMaterialDialog()
         {
             this.InitializeComponent();
+        }
+
+        private void LoadData(GoodMaterial c)
+        {
             GoodImage.Source = new BitmapImage(new Uri(c.Picture));
             GoodName.Text = c.Name;
             GoodEnName.Text = c.EnName;
@@ -100,20 +117,41 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             {
                 if (picturePath != suggestBoxItem.Picture) continue;
                 var picHead = shortName.Substring(0, 1);
-                string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
+                string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
                 switch (picHead)
                 {
                     case "S":
                         frameTitle.Text = "科技";
                         Global.PageJump(3);
                         rootFrame.Navigate(typeof(SciencePage), extraData);
+                        Global.PageStack.Push(new PageStackItem { TypeName = typeof(SciencePage), Object = extraData });
                         break;
                     case "A":
                         frameTitle.Text = "生物";
                         Global.PageJump(4);
                         rootFrame.Navigate(typeof(CreaturePage), extraData);
+                        Global.PageStack.Push(new PageStackItem { TypeName = typeof(CreaturePage), Object = extraData });
                         break;
                 }
+            }
+        }
+
+        private void ScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            List<DependencyObject> list = new List<DependencyObject>();
+            Global.FindChildren(list, (ScrollViewer)sender);
+            int scrollViewerGrid = 0;
+            foreach (var dependencyObject in list)
+            {
+                if (dependencyObject.ToString() == "Windows.UI.Xaml.Controls.Grid")
+                {
+                    scrollViewerGrid = dependencyObject.GetHashCode();
+                    break;
+                }
+            }
+            if (e.OriginalSource.GetHashCode() == scrollViewerGrid)
+            {
+                Global.App_BackRequested();
             }
         }
     }

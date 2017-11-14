@@ -16,7 +16,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
                 <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="14" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
@@ -37,7 +37,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="NaturalGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="BiomesEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
         </StackPanel>
     </ScrollViewer>

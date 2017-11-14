@@ -16,7 +16,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
                 <TextBlock Grid.Row="1" Text="{x:Bind Name}" HorizontalAlignment="Center"/>
             </Grid>
         </DataTemplate>
@@ -30,8 +30,14 @@
                       ItemTemplate="{StaticResource CharacterDataTemplate}" 
                       SelectionMode="None" 
                       IsItemClickEnabled="True" 
-                      ItemClick="CharacterGridView_ItemClick" 
-                      animations:ReorderGridAnimation.Duration="250"/>
+                      ItemClick="CharacterGridView_ItemClick"
+                      animations:ReorderGridAnimation.Duration="250">
+                <GridView.ItemContainerTransitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition x:Name="EntranceTransition" />
+                    </TransitionCollection>
+                </GridView.ItemContainerTransitions>
+            </GridView>
         </StackPanel>
     </ScrollViewer>
 </Page>

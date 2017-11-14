@@ -10,8 +10,8 @@
     mc:Ignorable="d">
 
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid x:Name="GoodRootGrid">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Tapped="ScrollViewer_Tapped">
+        <Grid x:Name="GoodRootGrid" MaxWidth="500">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />

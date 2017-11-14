@@ -9,8 +9,8 @@
     xmlns:wrapPanel="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid x:Name="NaturesRootGrid">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Tapped="ScrollViewer_Tapped">
+        <Grid x:Name="NaturesRootGrid" MaxWidth="500">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />

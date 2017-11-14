@@ -44,9 +44,28 @@ namespace JiHuangBaiKeForUWP.View
         }
         #endregion
 
+        int lastSelectedMenuItem = 0;
+
         private void ListBox_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var listBoxItem = (ListBoxItem)((ListBox)sender).SelectedItem;
+
+            var SelectedItemIndex = ((ListBox)sender).SelectedIndex;
+
+            if (SelectedItemIndex < lastSelectedMenuItem)
+            {
+                ContentThemeTransition.HorizontalOffset = (double)Global.ContentThemeTransitionShift.LeftOrUpShift;
+            }
+            else if (SelectedItemIndex == lastSelectedMenuItem)
+            {
+                ContentThemeTransition.HorizontalOffset = (double)Global.ContentThemeTransitionShift.NoneShift;
+            }
+            else
+            {
+                ContentThemeTransition.HorizontalOffset = (double)Global.ContentThemeTransitionShift.RightOrDownShift;
+            }
+            lastSelectedMenuItem = SelectedItemIndex;
+
             if (listBoxItem != null)
             {
                 var listBoxItemName = listBoxItem.Name;

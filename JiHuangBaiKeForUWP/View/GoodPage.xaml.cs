@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View.Dialog;
 using Newtonsoft.Json;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace JiHuangBaiKeForUWP.View
 {
@@ -39,6 +40,23 @@ namespace JiHuangBaiKeForUWP.View
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            Global.FrameTitle.Text = "物品";
+            if (e.NavigationMode == NavigationMode.Back)
+            {
+                MaterialEntranceTransition.FromVerticalOffset = 0;
+				EquipmentEntranceTransition.FromVerticalOffset = 0;
+				SaplingEntranceTransition.FromVerticalOffset = 0;
+				CreaturesEntranceTransition.FromVerticalOffset = 0;
+				TrinketsEntranceTransition.FromVerticalOffset = 0;
+				TurfEntranceTransition.FromVerticalOffset = 0;
+				PetEntranceTransition.FromVerticalOffset = 0;
+				UnlockEntranceTransition.FromVerticalOffset = 0;
+				HallowedNightsEntranceTransition.FromVerticalOffset = 0;
+				WintersFeastEntranceTransition.FromVerticalOffset = 0;
+				YearOfTheGobblerEntranceTransition.FromVerticalOffset = 0;
+				ComponentEntranceTransition.FromVerticalOffset = 0;
+				OthersEntranceTransition.FromVerticalOffset = 0;
+            }
             if (Global.GetOsVersion() >= 16299)
             {
                 var dimGrayAcrylicBrush = new AcrylicBrush
@@ -118,14 +136,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var good = gridViewItem;
                 if (good == null || good.Picture != _e) continue;
-                var contentDialog = new ContentDialog
-                {
-                    Content = new GoodMaterialDialog(good),
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                    Style = Global.Transparent
-                };
-                Global.ShowDialog(contentDialog);
+                Frame.Navigate(typeof(GoodMaterialDialog), good);
                 break;
             }
         }
@@ -137,14 +148,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var good = gridViewItem;
                 if (good == null || good.Picture != _e) continue;
-                var contentDialog = new ContentDialog
-                {
-                    Content = new GoodEquipmentDialog(good),
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                    Style = Global.Transparent
-                };
-                Global.ShowDialog(contentDialog);
+                Frame.Navigate(typeof(GoodEquipmentDialog), good);
                 break;
             }
         }
@@ -156,14 +160,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var good = gridViewItem;
                 if (good == null || good.Picture != _e) continue;
-                var contentDialog = new ContentDialog
-                {
-                    Content = new GoodSaplingDialog(good),
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                    Style = Global.Transparent
-                };
-                Global.ShowDialog(contentDialog);
+                Frame.Navigate(typeof(GoodSaplingDialog), good);
                 break;
             }
         }
@@ -175,14 +172,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var good = gridViewItem;
                 if (good == null || good.Picture != _e) continue;
-                var contentDialog = new ContentDialog
-                {
-                    Content = new GoodCreaturesDialog(good),
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                    Style = Global.Transparent
-                };
-                Global.ShowDialog(contentDialog);
+                Frame.Navigate(typeof(GoodCreaturesDialog), good);
                 break;
             }
         }
@@ -194,14 +184,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var good = gridViewItem;
                 if (good == null || good.Picture != _e) continue;
-                var contentDialog = new ContentDialog
-                {
-                    Content = new GoodTurfDialog(good),
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                    Style = Global.Transparent
-                };
-                Global.ShowDialog(contentDialog);
+                Frame.Navigate(typeof(GoodTurfDialog), good);
                 break;
             }
         }
@@ -213,14 +196,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var good = gridViewItem;
                 if (good == null || good.Picture != _e) continue;
-                var contentDialog = new ContentDialog
-                {
-                    Content = new GoodPetDialog(good),
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                    Style = Global.Transparent
-                };
-                Global.ShowDialog(contentDialog);
+                Frame.Navigate(typeof(GoodPetDialog), good);
                 break;
             }
         }
@@ -232,14 +208,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var good = gridViewItem;
                 if (good == null || good.Picture != _e) continue;
-                var contentDialog = new ContentDialog
-                {
-                    Content = new GoodUnlockDialog(good),
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                    Style = Global.Transparent
-                };
-                Global.ShowDialog(contentDialog);
+                Frame.Navigate(typeof(GoodUnlockDialog), good);
                 break;
             }
         }
@@ -251,14 +220,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var good = gridViewItem;
                 if (good == null || good.Picture != _e) continue;
-                var contentDialog = new ContentDialog
-                {
-                    Content = new GoodDialog(good),
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                    Style = Global.Transparent
-                };
-                Global.ShowDialog(contentDialog);
+                Frame.Navigate(typeof(GoodDialog), good);
                 break;
             }
         }
@@ -403,106 +365,106 @@ namespace JiHuangBaiKeForUWP.View
 
         private void GoodMaterialGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as GoodMaterial;
-            var contentDialog = new ContentDialog
+            if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                Content = new GoodMaterialDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog);
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("Image");
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
+            }
+            var item = (GoodMaterial)e.ClickedItem;
+            Frame.Navigate(typeof(GoodMaterialDialog), item);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodMaterialDialog), Object = item });
         }
 
         private void GoodEquipmentGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as GoodEquipment;
-            var contentDialog = new ContentDialog
+			if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                Content = new GoodEquipmentDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog);
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("Image");
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
+            }
+            var item = (GoodEquipment)e.ClickedItem;
+            Frame.Navigate(typeof(GoodEquipmentDialog), item);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodEquipmentDialog), Object = item });
         }
 
         private void GoodSaplingGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as GoodSapling;
-            var contentDialog = new ContentDialog
+			if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                Content = new GoodSaplingDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog);
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("Image");
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
+            }
+            var item = (GoodSapling)e.ClickedItem;
+            Frame.Navigate(typeof(GoodSaplingDialog), item);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodSaplingDialog), Object = item });
         }
 
         private void GoodCreaturesGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as GoodCreatures;
-            var contentDialog = new ContentDialog
+			if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                Content = new GoodCreaturesDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog);
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("Image");
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
+            }
+            var item = (GoodCreatures)e.ClickedItem;
+            Frame.Navigate(typeof(GoodCreaturesDialog), item);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodCreaturesDialog), Object = item });
         }
         
         private void GoodTurfGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as GoodTurf;
-            var contentDialog = new ContentDialog
+			if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                Content = new GoodTurfDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog);
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("Image");
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
+            }
+            var item = (GoodTurf)e.ClickedItem;
+            Frame.Navigate(typeof(GoodTurfDialog), item);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodTurfDialog), Object = item });
         }
 
         private void GoodPetGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as GoodPet;
-            var contentDialog = new ContentDialog
+			if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                Content = new GoodPetDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog);
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("Image");
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
+            }
+            var item = (GoodPet)e.ClickedItem;
+            Frame.Navigate(typeof(GoodPetDialog), item);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPetDialog), Object = item });
         }
 
         private void GoodUnlockGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as GoodUnlock;
-            var contentDialog = new ContentDialog
+			if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                Content = new GoodUnlockDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog);
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("Image");
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
+            }
+            var item = (GoodUnlock)e.ClickedItem;
+            Frame.Navigate(typeof(GoodUnlockDialog), item);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodUnlockDialog), Object = item });
         }
 
         private void GoodGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as Good;
-            var contentDialog = new ContentDialog
+			if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                Content = new GoodDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog);
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("Image");
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
+            }
+            var item = (Good)e.ClickedItem;
+            Frame.Navigate(typeof(GoodDialog), item);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodDialog), Object = item });
         }
     }
 }

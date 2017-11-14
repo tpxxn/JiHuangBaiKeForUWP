@@ -8,12 +8,15 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.System.Profile;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media;
 using JiHuangBaiKeForUWP.View;
 using Microsoft.Toolkit.Uwp.UI.Animations;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace JiHuangBaiKeForUWP.Model
 {
@@ -40,6 +43,51 @@ namespace JiHuangBaiKeForUWP.Model
         public static ListView IconsListViewGameData { get; set; }
         public static ListView IconsListViewSettingAndAbout { get; set; }
 
+        public enum ContentThemeTransitionShift
+        {
+            LeftOrUpShift = -28,
+            NoneShift = 0,
+            RightOrDownShift = 28
+        }
+
+        #endregion
+
+        #region 后退按钮相关
+        public static Stack<PageStackItem> PageStack = new Stack<PageStackItem>();
+
+        /// <summary>
+        /// 后退按钮请求处理
+        /// </summary>
+        public static void App_BackRequested()
+        {
+            if (PageStack.Count > 1)
+            {
+                PageStack.Pop();
+                var pageStackItem = PageStack.Peek();
+                RootFrame.Navigate(pageStackItem.TypeName, pageStackItem.Object);
+            }
+        }
+
+        /// <summary>
+        /// 遍历视觉树
+        /// </summary>
+        /// <typeparam name="T">泛型T</typeparam>
+        /// <param name="results">结果List</param>
+        /// <param name="startNode">开始节点</param>
+        public static void FindChildren<T>(List<T> results, DependencyObject startNode) where T : DependencyObject
+        {
+            var count = VisualTreeHelper.GetChildrenCount(startNode);
+            for (var i = 0; i < count; i++)
+            {
+                var current = VisualTreeHelper.GetChild(startNode, i);
+                if (current.GetType() == typeof(T) || (current.GetType().GetTypeInfo().IsSubclassOf(typeof(T))))
+                {
+                    var asType = (T)current;
+                    results.Add(asType);
+                }
+                FindChildren(results, current);
+            }
+        }
         #endregion
 
         #region 方法
@@ -64,8 +112,7 @@ namespace JiHuangBaiKeForUWP.Model
             ((HamburgerMenuItem)IconsListViewGameData.Items[index]).Selected = Visibility.Visible;
             ((HamburgerMenuItem)IconsListViewGameData.Items[index]).Color = new SolidColorBrush(AccentColor);
             RootFrame.Navigate(((HamburgerMenuItem)IconsListViewGameData.Items[index]).NavigatePage);
-            FrameTitle.Text = ((HamburgerMenuItem) IconsListViewGameData.Items[index]).Text;
-
+            FrameTitle.Text = ((HamburgerMenuItem)IconsListViewGameData.Items[index]).Text;
         }
 
         /// <summary>

@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace JiHuangBaiKeForUWP.View.Dialog
 {
@@ -26,10 +27,25 @@ namespace JiHuangBaiKeForUWP.View.Dialog
     /// </summary>
     public sealed partial class FoodRecipeDialog : Page
     {
-        public FoodRecipeDialog(FoodRecipe2 c)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            Global.FrameTitle.Text = "食物详情";
+            if (e.Parameter != null)
+            {
+                LoadData((FoodRecipe2)e.Parameter);
+            }
+            var imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Image");
+            imageAnimation?.TryStart(FoodRecipeImage);
+        }
+
+        public FoodRecipeDialog()
         {
             this.InitializeComponent();
+        }
 
+        private void LoadData(FoodRecipe2 c)
+        {
             FoodRecipeImage.Source = new BitmapImage(new Uri(c.Picture));
             FoodRecipeName.Text = c.Name;
             FoodRecipeEnName.Text = c.EnName;
@@ -215,11 +231,32 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 {
                     case "F_":
                         rootFrame.Navigate(typeof(FoodPage), extraData);
+                        Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
                         break;
                     case "FC":
                         // ignore
                         break;
                 }
+            }
+        }
+
+
+        private void ScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            List<DependencyObject> list = new List<DependencyObject>();
+            Global.FindChildren(list, (ScrollViewer)sender);
+            int scrollViewerGrid = 0;
+            foreach (var dependencyObject in list)
+            {
+                if (dependencyObject.ToString() == "Windows.UI.Xaml.Controls.Grid")
+                {
+                    scrollViewerGrid = dependencyObject.GetHashCode();
+                    break;
+                }
+            }
+            if (e.OriginalSource.GetHashCode() == scrollViewerGrid)
+            {
+                Global.App_BackRequested();
             }
         }
     }

@@ -9,8 +9,8 @@
     xmlns:picButton="using:JiHuangBaiKeForUWP.UserControls"
     mc:Ignorable="d">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid>
+    <ScrollViewer x:Name="RootScrollViewer" VerticalScrollBarVisibility="Auto" Tapped="ScrollViewer_Tapped">
+        <Grid x:Name="RootGrid" MaxWidth="500">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />

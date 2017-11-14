@@ -1118,6 +1118,7 @@ namespace JiHuangBaiKeForUWP.View
                 Global.PageJump(1);
                 var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
                 rootFrame.Navigate(typeof(FoodPage), extraData);
+                Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
                 break;
             }
         }

@@ -25,7 +25,7 @@
             <StackPanel x:Name="ContentStackPanel">
                 <!--加群-->
                 <TextBlock x:Uid="Feedback" Text="加入QQ群" FontSize="22" Margin="20,20,0,0" />
-                <HyperlinkButton Margin="20,5,0,0" NavigateUri="http://www.jihuangbaike.com/jump.html">
+                <HyperlinkButton Margin="20,5,0,0" NavigateUri="http://shang.qq.com/wpa/qunwpa?idkey=c7bd1fac7312bb1afbfde97bec4095e68465b04dc1b262759518cbb876a3bae1">
                     <Image Source="/Assets/Pic/QRCode_Qun.png" Height="128" />
                 </HyperlinkButton>
                 <!--请客-->

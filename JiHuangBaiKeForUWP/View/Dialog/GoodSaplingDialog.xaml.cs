@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls;
+using Windows.UI.Xaml.Media.Animation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -26,10 +27,25 @@ namespace JiHuangBaiKeForUWP.View.Dialog
     /// </summary>
     public sealed partial class GoodSaplingDialog : Page
     {
-        public GoodSaplingDialog(GoodSapling c)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            Global.FrameTitle.Text = "物品详情";
+            if (e.Parameter != null)
+            {
+                LoadData((GoodSapling)e.Parameter);
+            }
+            var imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Image");
+            imageAnimation?.TryStart(GoodImage);
+        }
+
+        public GoodSaplingDialog()
         {
             this.InitializeComponent();
+        }
 
+        private void LoadData(GoodSapling c)
+        {
             GoodImage.Source = new BitmapImage(new Uri(c.Picture));
             GoodName.Text = c.Name;
             GoodEnName.Text = c.EnName;
@@ -69,6 +85,25 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var dataPackage = new DataPackage();
             dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
+        }
+
+        private void ScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            List<DependencyObject> list = new List<DependencyObject>();
+            Global.FindChildren(list, (ScrollViewer)sender);
+            int scrollViewerGrid = 0;
+            foreach (var dependencyObject in list)
+            {
+                if (dependencyObject.ToString() == "Windows.UI.Xaml.Controls.Grid")
+                {
+                    scrollViewerGrid = dependencyObject.GetHashCode();
+                    break;
+                }
+            }
+            if (e.OriginalSource.GetHashCode() == scrollViewerGrid)
+            {
+                Global.App_BackRequested();
+            }
         }
     }
 }

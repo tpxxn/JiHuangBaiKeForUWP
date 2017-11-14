@@ -24,11 +24,15 @@
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="HamburgerMenuDataTemplate">
-            <StackPanel Orientation="Horizontal" Height="48">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
                 <Rectangle Fill="{ThemeResource SystemControlBackgroundAccentBrush}" Visibility="{Binding Selected, Mode=TwoWay}" HorizontalAlignment="Left" Width="5" Height="28" />
                 <TextBlock Text="{Binding Icon}" Foreground="{Binding Color}" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
-                <TextBlock Text="{Binding Text}" Foreground="{Binding Color}" FontSize="18" VerticalAlignment="Center" Margin="75,0,0,0"/>
-            </StackPanel>
+                <TextBlock Text="{Binding Text}" Foreground="{Binding Color}" Grid.Column="1" FontSize="18" VerticalAlignment="Center" Margin="60,0,0,0"/>
+            </Grid>
         </DataTemplate>
     </Page.Resources>
     
@@ -91,9 +95,9 @@
             <Button x:Name="HamburgerButton" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="26" Tapped="HamburgerButton_Tapped"  Foreground="White" Width="56" Height="48" Background="{x:Null}" />
             <TextBlock x:Name="FrameTitle" RelativePanel.RightOf="HamburgerButton" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="26" Margin="10,0,0,0" Foreground="White" Text="人物"/>
         </RelativePanel>
-        <SplitView x:Name="RootSplit" Grid.Row="1" DisplayMode="CompactOverlay" OpenPaneLength="235" CompactPaneLength="56" IsPaneOpen="True" PaneClosing="RootSplit_PaneClosing">
+        <SplitView x:Name="RootSplit" Grid.Row="1" DisplayMode="CompactOverlay" OpenPaneLength="240" CompactPaneLength="56" IsPaneOpen="True" PaneClosing="RootSplit_PaneClosing">
             <SplitView.Pane>
-                <Grid x:Name="HamburgerGrid" BorderThickness="0" Width="237" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}">
+                <Grid x:Name="HamburgerGrid" BorderThickness="0" Width="235" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="37"/>
                         <RowDefinition Height="*"/>
@@ -136,7 +140,13 @@
                 </Grid>
             </SplitView.Pane>
             <SplitView.Content>
-                <Frame x:Name="RootFrame" Margin="0,1,0,0"/>
+                <Frame x:Name="RootFrame" Margin="0,1,0,0" Navigated="RootFrame_Navigated" Navigating="RootFrame_Navigating">
+                    <!--<Frame.ContentTransitions>
+                        <TransitionCollection>
+                            <ContentThemeTransition x:Name="contentThemeTransition" VerticalOffset="0"/>
+                        </TransitionCollection>
+                    </Frame.ContentTransitions>-->
+                </Frame>
             </SplitView.Content>
         </SplitView>
     </Grid>

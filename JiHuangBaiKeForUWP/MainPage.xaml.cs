@@ -23,7 +23,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View;
-using LogicalTree = Microsoft.Toolkit.Uwp.UI.Extensions.LogicalTree;
 
 // 对话框示例
 // var contentDialog = new ContentDialog()
@@ -57,8 +56,12 @@ namespace JiHuangBaiKeForUWP
                 AutoSuggestButton.Visibility = Visibility.Collapsed;
                 SearchAutoSuggestBox.Visibility = Visibility.Visible;
             }
+            //订阅后退按钮事件
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+            //Global类里的一些设定
             Global.RootGrid = RootGrid;
-            Global.FrameTitle = Global.GetOsVersion() > 16299 ? FrameTitleAcrylic : FrameTitle;
+            Global.FrameTitle = Global.GetOsVersion() >= 16299 ? FrameTitleAcrylic : FrameTitle;
             Global.RootFrame = RootFrame;
             Global.IconsListViewGameData = IconsListViewGameData;
             Global.IconsListViewSettingAndAbout = IconsListViewSettingAndAbout;
@@ -68,6 +71,7 @@ namespace JiHuangBaiKeForUWP
             HamburgerGrid.BorderBrush = new SolidColorBrush(Global.AccentColor);
             // 默认页
             RootFrame.SourcePageType = typeof(CharacterPage);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterPage) });
             // 设置SearchAutoSuggestBox的ItemSource属性
             SearchAutoSuggestBox.ItemsSource = Global.AutoSuggestBoxItem;
             // 设置主题
@@ -93,11 +97,9 @@ namespace JiHuangBaiKeForUWP
             _uisetting.ColorValuesChanged += OnColorValuesChanged;
             var bgcolor = _uisetting.GetColorValue(UIColorType.Accent);
             RootGrid.Background = new SolidColorBrush(bgcolor);
-
             var searchItem = (string)e.Parameter;
             if (string.IsNullOrEmpty(searchItem) == false && searchItem != "...")
                 VoiceSearch(searchItem);
-
             //使用Fluent Design System
             if (Global.GetOsVersion() >= 16299)
             {
@@ -151,7 +153,7 @@ namespace JiHuangBaiKeForUWP
         {
             Color bg;
             bg = sender.GetColorValue(UIColorType.Accent);
-            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
                 () =>
                 {
                     var brush = RootGrid.Background as SolidColorBrush ?? new SolidColorBrush();
@@ -285,7 +287,8 @@ namespace JiHuangBaiKeForUWP
             if (hamburgerMenuItem.NavigatePage != null)
             {
                 RootFrame.Navigate(hamburgerMenuItem.NavigatePage);
-                FrameTitleAcrylic.Text = hamburgerMenuItem.Text;
+                Global.PageStack.Push(new PageStackItem { TypeName = hamburgerMenuItem.NavigatePage });
+                Global.FrameTitle.Text = hamburgerMenuItem.Text;
             }
         }
 
@@ -426,7 +429,7 @@ namespace JiHuangBaiKeForUWP
             if (suggestBoxItem == null) return;
             var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture, suggestBoxItem.Category };
             AutoSuggestNavigate(extraData);
-            SearchAutoSuggestBox.Text = suggestBoxItem.Name;
+            SearchAutoSuggestBox.Text = "";
         }
 
         /// <summary>
@@ -482,38 +485,140 @@ namespace JiHuangBaiKeForUWP
             switch (extraData[2])
             {
                 case "人物":
-                    FrameTitle.Text = "人物";
+                    Global.FrameTitle.Text = "人物";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[0]);
                     RootFrame.Navigate(typeof(CharacterPage), extraData);
+                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterPage), Object = extraData });
                     break;
                 case "食物":
-                    FrameTitle.Text = "食物";
+                    Global.FrameTitle.Text = "食物";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[1]);
                     RootFrame.Navigate(typeof(FoodPage), extraData);
+                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
                     break;
                 case "科技":
-                    FrameTitle.Text = "科技";
+                    Global.FrameTitle.Text = "科技";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[3]);
                     RootFrame.Navigate(typeof(SciencePage), extraData);
+                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(SciencePage), Object = extraData });
                     break;
                 case "生物":
-                    FrameTitle.Text = "生物";
+                    Global.FrameTitle.Text = "生物";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[4]);
                     RootFrame.Navigate(typeof(CreaturePage), extraData);
+                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(CreaturePage), Object = extraData });
                     break;
                 case "自然":
-                    FrameTitle.Text = "自然";
+                    Global.FrameTitle.Text = "自然";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[5]);
                     RootFrame.Navigate(typeof(NaturalPage), extraData);
+                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(NaturalPage), Object = extraData });
                     break;
                 case "物品":
-                    FrameTitle.Text = "物品";
+                    Global.FrameTitle.Text = "物品";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[6]);
                     RootFrame.Navigate(typeof(GoodPage), extraData);
+                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPage), Object = extraData });
                     break;
             }
         }
         #endregion
 
+        #region 后退按钮
+        /// <summary>
+        /// 处理后退按钮是否显示
+        /// </summary>
+        private void RootFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            //RootFrame.ContentTransitions = null;
+
+            //SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = Global.PageStack.Count > 1 ?
+            //    AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+        }
+
+        /// <summary>
+        /// 后退按钮请求处理
+        /// </summary>
+        private void App_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            if (Global.PageStack.Count > 1)
+            {
+                Global.PageStack.Pop();
+                var pageStackItem = Global.PageStack.Peek();
+                RootFrame.Navigate(pageStackItem.TypeName, pageStackItem.Object);
+                switch (pageStackItem.TypeName.ToString())
+                {
+                    case "JiHuangBaiKeForUWP.View.CharacterPage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[0]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.FoodPage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[1]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.CookingSimulatorPage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[2]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.SciencePage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[3]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.CreaturePage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[4]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.NaturalPage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[5]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.GoodPage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[6]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.SettingPage":
+                        HamburgerMenu_ItemSelect_NoPush(_settingAndAboutHamburgerMenuItem[0]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.AboutPage":
+                        HamburgerMenu_ItemSelect_NoPush(_settingAndAboutHamburgerMenuItem[1]);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 返回时修改Hamburger菜单的选中状态
+        /// </summary>
+        public void HamburgerMenu_ItemSelect_NoPush(HamburgerMenuItem hamburgerMenuItem)
+        {
+            // 遍历，将选中Rectangle隐藏
+            foreach (var gameDataHamburgerMenuItem in _gameDataHamburgerMenuItem)
+            {
+                gameDataHamburgerMenuItem.Color = new SolidColorBrush(Colors.White);
+                gameDataHamburgerMenuItem.Selected = Visibility.Collapsed;
+            }
+            foreach (var settingAndAboutHamburgerMenuItem in _settingAndAboutHamburgerMenuItem)
+            {
+                settingAndAboutHamburgerMenuItem.Color = new SolidColorBrush(Colors.White);
+                settingAndAboutHamburgerMenuItem.Selected = Visibility.Collapsed;
+            }
+
+            hamburgerMenuItem.Selected = Visibility.Visible;
+            hamburgerMenuItem.Color = new SolidColorBrush(Global.AccentColor);
+
+            if (hamburgerMenuItem.NavigatePage != null)
+            {
+                Global.FrameTitle.Text = hamburgerMenuItem.Text;
+            }
+        }
+        #endregion
+
+        private void RootFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+//            if (RootFrame.SourcePageType != RootFrame.CurrentSourcePageType)
+//            {
+//                var transitionCollection = new TransitionCollection { new ContentThemeTransition() };
+//                RootFrame.ContentTransitions = transitionCollection;
+//            }
+//            else
+//            {
+//                RootFrame.ContentTransitions = null;
+//            }
+        }
     }
 }

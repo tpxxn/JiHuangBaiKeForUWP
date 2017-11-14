@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
@@ -22,9 +23,28 @@ namespace JiHuangBaiKeForUWP.View.Dialog
 {
     public sealed partial class CreaturesDialog : Page
     {
-        public CreaturesDialog(Creature c)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            Global.FrameTitle.Text = "生物详情";
+            if (e.Parameter != null)
+            {
+                LoadData((Creature)e.Parameter);
+            }
+            var imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Image");
+            imageAnimation?.TryStart(CreatureImage);
+        }
+
+        public CreaturesDialog()
         {
             this.InitializeComponent();
+        }
+
+        /// <summary>
+        /// 加载数据
+        /// </summary>
+        private void LoadData(Creature c)
+        {
             CreatureImage.Source = new BitmapImage(new Uri(c.Picture));
             CreatureName.Text = c.Name;
             CreatureEnName.Text = c.EnName;
@@ -1094,20 +1114,42 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                             frameTitle.Text = "食物";
                             Global.PageJump(1);
                             rootFrame.Navigate(typeof(FoodPage), extraData);
+                            Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
                             break;
                         case "S":
                             frameTitle.Text = "科技";
                             Global.PageJump(3);
                             rootFrame.Navigate(typeof(SciencePage), extraData);
+                            Global.PageStack.Push(new PageStackItem { TypeName = typeof(SciencePage), Object = extraData });
                             break;
                         case "A":
                         case "G":
                             frameTitle.Text = "物品";
                             Global.PageJump(6);
                             rootFrame.Navigate(typeof(GoodPage), extraData);
+                            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPage), Object = extraData });
                             break;
                     }
                 }
+            }
+        }
+
+        private void CreaturesDialogScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            List<DependencyObject> list = new List<DependencyObject>();
+            Global.FindChildren(list, (ScrollViewer)sender);
+            int scrollViewerGrid = 0;
+            foreach (var dependencyObject in list)
+            {
+                if (dependencyObject.ToString() == "Windows.UI.Xaml.Controls.Grid")
+                {
+                    scrollViewerGrid = dependencyObject.GetHashCode();
+                    break;
+                }
+            }
+            if (e.OriginalSource.GetHashCode() == scrollViewerGrid)
+            {
+                Global.App_BackRequested();
             }
         }
     }

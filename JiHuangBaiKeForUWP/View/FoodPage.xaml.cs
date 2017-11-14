@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View.Dialog;
 using Newtonsoft.Json;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace JiHuangBaiKeForUWP.View
 {
@@ -37,6 +38,17 @@ namespace JiHuangBaiKeForUWP.View
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            Global.FrameTitle.Text = "食物";
+            if (e.NavigationMode == NavigationMode.Back)
+            {
+                RecipeEntranceTransition.FromVerticalOffset = 0;
+                MeatEntranceTransition.FromVerticalOffset = 0;
+                VegetableEntranceTransition.FromVerticalOffset = 0;
+                FruitEntranceTransition.FromVerticalOffset = 0;
+                EggEntranceTransition.FromVerticalOffset = 0;
+                OtherEntranceTransition.FromVerticalOffset = 0;
+                NoFcEntranceTransition.FromVerticalOffset = 0;
+            }
             if (Global.GetOsVersion() >= 16299)
             {
                 var dimGrayAcrylicBrush = new AcrylicBrush
@@ -92,14 +104,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var food = gridViewItem;
                 if (food == null || food.Picture != _e) continue;
-                var contentDialog = new ContentDialog
-                {
-                    Content = new FoodRecipeDialog(food),
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                    Style = Global.Transparent
-                };
-                Global.ShowDialog(contentDialog);
+                Frame.Navigate(typeof(FoodRecipeDialog), food);
                 break;
             }
         }
@@ -111,14 +116,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var food = gridViewItem;
                 if (food == null || food.Picture != _e) continue;
-                var contentDialog = new ContentDialog
-                {
-                    Content = new FoodDialog(food),
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                    Style = Global.Transparent
-                };
-                Global.ShowDialog(contentDialog);
+                Frame.Navigate(typeof(FoodDialog), food);
                 break;
             }
         }
@@ -198,28 +196,28 @@ namespace JiHuangBaiKeForUWP.View
 
         private void FoodRecipeGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as FoodRecipe2;
-            var contentDialog = new ContentDialog
+            if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                Content = new FoodRecipeDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog);
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("Image");
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
+            }
+            var item = (FoodRecipe2)e.ClickedItem;
+            Frame.Navigate(typeof(FoodRecipeDialog), item);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodRecipeDialog), Object = item });
         }
 
         private void FoodGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as Food;
-            var contentDialog = new ContentDialog
+            if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                Content = new FoodDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog);
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("Image");
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
+            }
+            var item = (Food)e.ClickedItem;
+            Frame.Navigate(typeof(FoodDialog), item);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodDialog), Object = item });
         }
     }
 }

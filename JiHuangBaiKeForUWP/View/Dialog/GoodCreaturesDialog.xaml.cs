@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace JiHuangBaiKeForUWP.View.Dialog
 {
@@ -24,10 +25,24 @@ namespace JiHuangBaiKeForUWP.View.Dialog
     /// </summary>
     public sealed partial class GoodCreaturesDialog : Page
     {
-        public GoodCreaturesDialog(GoodCreatures c)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            Global.FrameTitle.Text = "物品详情";
+            if (e.Parameter != null)
+            {
+                LoadData((GoodCreatures)e.Parameter);
+            }
+            var imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Image");
+            imageAnimation?.TryStart(GoodImage);
+        }
+
+        public GoodCreaturesDialog()
         {
             this.InitializeComponent();
-
+        }
+        private void LoadData(GoodCreatures c)
+        {
             GoodImage.Source = new BitmapImage(new Uri(c.Picture));
             GoodName.Text = c.Name;
             GoodEnName.Text = c.EnName;
@@ -100,11 +115,32 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         frameTitle.Text = "食物";
                         Global.PageJump(1);
                         rootFrame.Navigate(typeof(FoodPage), extraData);
+                        Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
                         break;
                     case "G":
                         rootFrame.Navigate(typeof(GoodPage), extraData);
+                        Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPage), Object = extraData });
                         break;
                 }
+            }
+        }
+
+        private void ScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            List<DependencyObject> list = new List<DependencyObject>();
+            Global.FindChildren(list, (ScrollViewer)sender);
+            int scrollViewerGrid = 0;
+            foreach (var dependencyObject in list)
+            {
+                if (dependencyObject.ToString() == "Windows.UI.Xaml.Controls.Grid")
+                {
+                    scrollViewerGrid = dependencyObject.GetHashCode();
+                    break;
+                }
+            }
+            if (e.OriginalSource.GetHashCode() == scrollViewerGrid)
+            {
+                Global.App_BackRequested();
             }
         }
     }

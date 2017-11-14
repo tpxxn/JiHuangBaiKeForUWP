@@ -8,8 +8,8 @@
     xmlns:userControls="using:JiHuangBaiKeForUWP.UserControls"
     mc:Ignorable="d">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Tapped="ScrollViewer_Tapped">
+        <Grid MaxWidth="500">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />

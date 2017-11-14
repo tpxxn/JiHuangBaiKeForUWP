@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
@@ -23,7 +24,27 @@ namespace JiHuangBaiKeForUWP.View.Dialog
     /// </summary>
     public sealed partial class CharacterDialog : Page
     {
-        public CharacterDialog(Character c)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            Global.FrameTitle.Text = "人物详情";
+            if (e.Parameter != null)
+            {
+                LoadData((Character)e.Parameter);
+            }
+            var imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Image");
+            imageAnimation?.TryStart(CharacterImage);
+        }
+
+        public CharacterDialog()
+        {
+            this.InitializeComponent();
+        }
+
+        /// <summary>
+        /// 加载数据
+        /// </summary>
+        public void LoadData(Character c)
         {
             this.InitializeComponent();
 
@@ -92,6 +113,25 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 UnlockTextBlock.Text = c.Unlock;
             }
             CharacterIntroduction.Text = c.Introduce;
+        }
+
+        private void ScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            List<DependencyObject> list = new List<DependencyObject>();
+            Global.FindChildren(list, (ScrollViewer)sender);
+            int scrollViewerGrid = 0;
+            foreach (var dependencyObject in list)
+            {
+                if (dependencyObject.ToString() == "Windows.UI.Xaml.Controls.Grid")
+                {
+                    scrollViewerGrid = dependencyObject.GetHashCode();
+                    break;
+                }
+            }
+            if (e.OriginalSource.GetHashCode() == scrollViewerGrid)
+            {
+                Global.App_BackRequested();
+            }
         }
     }
 }

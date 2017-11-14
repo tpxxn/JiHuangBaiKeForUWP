@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace JiHuangBaiKeForUWP.View.Dialog
 {
@@ -24,13 +25,29 @@ namespace JiHuangBaiKeForUWP.View.Dialog
     /// </summary>
     public sealed partial class GoodEquipmentDialog : Page
     {
-        public GoodEquipmentDialog(GoodEquipment c)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            Global.FrameTitle.Text = "物品详情";
+            if (e.Parameter != null)
+            {
+                LoadData((GoodEquipment)e.Parameter);
+            }
+            var imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Image");
+            imageAnimation?.TryStart(GoodImage);
+        }
+
+        public GoodEquipmentDialog()
         {
             this.InitializeComponent();
+        }
+
+        private void LoadData(GoodEquipment c)
+        {
             GoodImage.Source = new BitmapImage(new Uri(c.Picture));
             GoodName.Text = c.Name;
             GoodEnName.Text = c.EnName;
-            if (c.Attack== 0 && c.MinAttack == 0 && c.MaxAttack == 0 && string.IsNullOrEmpty(c.AttackString) && c.AttackOnBoat == 0 &&
+            if (c.Attack == 0 && c.MinAttack == 0 && c.MaxAttack == 0 && string.IsNullOrEmpty(c.AttackString) && c.AttackOnBoat == 0 &&
                 c.AttackWet == 0 && string.IsNullOrEmpty(c.Durability) && c.Wet == 0 && c.ColdResistance == 0 && c.HeatResistance == 0 && c.Sanity == 0 && c.Hunger == 0 && c.Defense == 0)
             {
                 BarChartGrid.Visibility = Visibility.Collapsed;
@@ -238,6 +255,26 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 frameTitle.Text = "生物";
                 Global.PageJump(4);
                 rootFrame.Navigate(typeof(CreaturePage), extraData);
+                Global.PageStack.Push(new PageStackItem { TypeName = typeof(CreaturePage), Object = extraData });
+            }
+        }
+
+        private void ScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            List<DependencyObject> list = new List<DependencyObject>();
+            Global.FindChildren(list, (ScrollViewer)sender);
+            int scrollViewerGrid = 0;
+            foreach (var dependencyObject in list)
+            {
+                if (dependencyObject.ToString() == "Windows.UI.Xaml.Controls.Grid")
+                {
+                    scrollViewerGrid = dependencyObject.GetHashCode();
+                    break;
+                }
+            }
+            if (e.OriginalSource.GetHashCode() == scrollViewerGrid)
+            {
+                Global.App_BackRequested();
             }
         }
     }
