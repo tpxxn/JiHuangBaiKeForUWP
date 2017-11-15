@@ -105,7 +105,9 @@
     </Compile>
     <Compile Include="Model\CallExternalContent.cs" />
     <Compile Include="Model\GoodsJson.cs" />
+    <Compile Include="Model\HamburgerMenuItem.cs" />
     <Compile Include="Model\NaturalJson.cs" />
+    <Compile Include="Model\PageStackItem.cs" />
     <Compile Include="Model\SettingSet.cs" />
     <Compile Include="Model\CharactersJson.cs" />
     <Compile Include="Model\CreaturesJson.cs" />
@@ -1854,6 +1856,11 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Styles\ThumbDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="Styles\TransparentDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1991,6 +1998,9 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.1</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Services.Store.SDK">
+      <Version>10.1705.16001</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp">
       <Version>2.0.0</Version>
     </PackageReference>
@@ -2005,6 +2015,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="Microsoft.Services.Store.Engagement, Version=10.0">
+      <Name>Microsoft Engagement Framework</Name>
+    </SDKReference>
     <SDKReference Include="Microsoft.VCLibs, Version=14.0">
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>

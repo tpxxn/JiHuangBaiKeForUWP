@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -16,6 +17,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace JiHuangBaiKeForUWP.View.Dialog
 {
@@ -24,11 +26,37 @@ namespace JiHuangBaiKeForUWP.View.Dialog
     /// </summary>
     public sealed partial class ScienceDialog : Page
     {
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (Global.GetOsVersion() >= 16299)
+            {
+                var dimGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Global.TinkColor,
+                    TintOpacity = Global.TinkOpacity
+                };
+                RootScrollViewer.Background = dimGrayAcrylicBrush;
+            }
+            base.OnNavigatedTo(e);
+            Global.FrameTitle.Text = "科技详情";
+            if (e.Parameter != null)
+            {
+                LoadData((Science)e.Parameter);
+            }
+            var imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Image");
+            imageAnimation?.TryStart(ScienceImage);
+        }
+
         private string _unlockCharcter;
-        public ScienceDialog(Science c)
+        public ScienceDialog()
         {
             this.InitializeComponent();
+        }
 
+        private void LoadData(Science c)
+        {
             ScienceImage.Source = new BitmapImage(new Uri(c.Picture));
             ScienceName.Text = c.Name;
             ScienceEnName.Text = c.EnName;
@@ -91,7 +119,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var picturePath = ((PicButton)sender).Source;
             var rootFrame = Global.RootFrame;
             var shortName = StringProcess.GetFileName(picturePath);
-            var mainPageListBoxItem = Global.MainPageListBoxItem;
             var frameTitle = Global.FrameTitle;
             await Global.SetAutoSuggestBoxItem();
             foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
@@ -103,16 +130,19 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 {
                     case "F":
                         frameTitle.Text = "食物";
-                        mainPageListBoxItem[1].IsSelected = true;
+                        Global.PageJump(1);
                         rootFrame.Navigate(typeof(FoodPage), extraData);
+                        Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
                         break;
                     case "S":
                         rootFrame.Navigate(typeof(SciencePage), extraData);
+                        Global.PageStack.Push(new PageStackItem { TypeName = typeof(SciencePage), Object = extraData });
                         break;
                     case "G":
                         frameTitle.Text = "物品";
-                        mainPageListBoxItem[6].IsSelected = true;
+                        Global.PageJump(6);
                         rootFrame.Navigate(typeof(GoodPage), extraData);
+                        Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPage), Object = extraData });
                         break;
                 }
             }
@@ -122,7 +152,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
         {
             var picturePath = _unlockCharcter;
             var rootFrame = Global.RootFrame;
-            var mainPageListBoxItem = Global.MainPageListBoxItem;
             var frameTitle = Global.FrameTitle;
             await Global.SetAutoSuggestBoxItem();
             foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
@@ -130,8 +159,20 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 if (picturePath != suggestBoxItem.Picture) continue;
                 string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
                 frameTitle.Text = "人物";
-                mainPageListBoxItem[0].IsSelected = true;
+                Global.PageJump(0);
                 rootFrame.Navigate(typeof(CharacterPage), extraData);
+                Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterPage), Object = extraData });
+            }
+        }
+
+        private void ScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var list = new List<DependencyObject>();
+            Global.FindChildren(list, (ScrollViewer)sender);
+            var scrollViewerGrid = (from dependencyObject in list where dependencyObject.ToString() == "Windows.UI.Xaml.Controls.Grid" select dependencyObject.GetHashCode()).FirstOrDefault();
+            if (e.OriginalSource.GetHashCode() == scrollViewerGrid)
+            {
+                Global.App_BackRequested();
             }
         }
     }

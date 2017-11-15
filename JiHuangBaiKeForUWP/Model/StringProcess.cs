@@ -5,12 +5,22 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.UI;
 using Windows.UI.Xaml.Controls;
 
 namespace JiHuangBaiKeForUWP.Model
 {
     internal static class StringProcess
     {
+        public static Color StringToColor(string str)
+        {
+            var colorA = Convert.ToByte(str.Substring(1, 2), 16);
+            var colorR = Convert.ToByte(str.Substring(3, 2), 16);
+            var colorG = Convert.ToByte(str.Substring(5, 2), 16);
+            var colorB = Convert.ToByte(str.Substring(7, 2), 16);
+            return Color.FromArgb(colorA, colorR, colorG, colorB);
+        }
+
         /// <summary>
         /// 删除重复数据
         /// </summary>

@@ -12,11 +12,10 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
-
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
 namespace JiHuangBaiKeForUWP.View.Dialog
 {
@@ -25,7 +24,38 @@ namespace JiHuangBaiKeForUWP.View.Dialog
     /// </summary>
     public sealed partial class CharacterDialog : Page
     {
-        public CharacterDialog(Character c)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (Global.GetOsVersion() >= 16299)
+            {
+                var dimGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Global.TinkColor,
+                    TintOpacity = Global.TinkOpacity
+                };
+                RootScrollViewer.Background = dimGrayAcrylicBrush;
+            }
+            base.OnNavigatedTo(e);
+            Global.FrameTitle.Text = "人物详情";
+            if (e.Parameter != null)
+            {
+                LoadData((Character)e.Parameter);
+            }
+            var imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Image");
+            imageAnimation?.TryStart(CharacterImage);
+        }
+
+        public CharacterDialog()
+        {
+            this.InitializeComponent();
+        }
+
+        /// <summary>
+        /// 加载数据
+        /// </summary>
+        public void LoadData(Character c)
         {
             this.InitializeComponent();
 
@@ -94,6 +124,17 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 UnlockTextBlock.Text = c.Unlock;
             }
             CharacterIntroduction.Text = c.Introduce;
+        }
+
+        private void ScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var list = new List<DependencyObject>();
+            Global.FindChildren(list, (ScrollViewer)sender);
+            var scrollViewerGrid = (from dependencyObject in list where dependencyObject.ToString() == "Windows.UI.Xaml.Controls.Grid" select dependencyObject.GetHashCode()).FirstOrDefault();
+            if (e.OriginalSource.GetHashCode() == scrollViewerGrid)
+            {
+                Global.App_BackRequested();
+            }
         }
     }
 }

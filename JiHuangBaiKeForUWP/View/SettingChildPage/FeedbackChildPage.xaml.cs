@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,6 +23,21 @@ namespace JiHuangBaiKeForUWP.View.SettingChildPage
     /// </summary>
     public sealed partial class FeedbackChildPage : Page
     {
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var dimGrayAcrylicBrush = new AcrylicBrush
+            {
+                BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                FallbackColor = Colors.Transparent,
+                TintColor = Global.TinkColor,
+                TintOpacity = Global.TinkOpacity
+            };
+            if (Global.GetOsVersion() >= 16299)
+            {
+                RootGrid.Background = dimGrayAcrylicBrush;
+            }
+        }
+
         public FeedbackChildPage()
         {
             this.InitializeComponent();
@@ -50,7 +66,7 @@ namespace JiHuangBaiKeForUWP.View.SettingChildPage
             }
             else
             {
-                await ReportError(FeedbackTextBox.Text, QQTextBox.Text);
+                await ReportError(FeedbackTextBox.Text, QqTextBox.Text);
             }
         }
 
@@ -62,6 +78,22 @@ namespace JiHuangBaiKeForUWP.View.SettingChildPage
             if (qqText != null)
                 body += " QQ：" + qqText;
             await CallExternalContent.OpenEmailComposeAsync(to, subject, body);
+        }
+
+        private async void FeedbackButton_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            var launcher = Microsoft.Services.Store.Engagement.StoreServicesFeedbackLauncher.GetDefault();
+            await launcher.LaunchAsync();
+        }
+
+        private async void GithubButton_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/tpxxn/JiHuangBaiKeForUWP/issues"));
+        }
+
+        private async void QqButton_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("http://shang.qq.com/wpa/qunwpa?idkey=c7bd1fac7312bb1afbfde97bec4095e68465b04dc1b262759518cbb876a3bae1"));
         }
 
     }

@@ -15,7 +15,7 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <ListBox Grid.Row="0" SelectionMode="Single" Tapped="ListBox_Tapped">
+            <ListBox x:Name="TopListBox" Grid.Row="0" SelectionMode="Single" Tapped="ListBox_Tapped">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel Orientation="Horizontal"/>
@@ -37,7 +37,13 @@
                     </StackPanel>
                 </ListBoxItem>
             </ListBox>
-            <Frame x:Name="RootFrame" Grid.Row="1" Margin="0"/>
+            <Frame x:Name="RootFrame" Grid.Row="1" Margin="0">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <ContentThemeTransition x:Name="ContentThemeTransition" VerticalOffset="0"/>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
         </Grid>
     </ScrollViewer>
 </Page>

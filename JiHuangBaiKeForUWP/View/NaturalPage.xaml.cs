@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -17,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View.Dialog;
 using Newtonsoft.Json;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace JiHuangBaiKeForUWP.View
 {
@@ -29,6 +31,22 @@ namespace JiHuangBaiKeForUWP.View
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            Global.FrameTitle.Text = "自然";
+            if (e.NavigationMode == NavigationMode.Back)
+            {
+                BiomesEntranceTransition.FromVerticalOffset = 0;
+            }
+            if (Global.GetOsVersion() >= 16299)
+            {
+                var dimGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Global.TinkColor,
+                    TintOpacity = Global.TinkOpacity
+                };
+                NaturalStackPanel.Background = dimGrayAcrylicBrush;
+            }
             var parameter = (string[])e.Parameter;
             await Deserialize();
             if (parameter == null) return;
@@ -49,14 +67,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var natural = gridViewItem;
                 if (natural == null || natural.Picture != _e) continue;
-                var contentDialog = new ContentDialog
-                {
-                    Content = new NaturalDialog(natural),
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                    Style = Global.Transparent
-                };
-                Global.ShowDialog(contentDialog);
+                Frame.Navigate(typeof(NaturalDialog), natural);
                 break;
             }
         }
@@ -82,15 +93,15 @@ namespace JiHuangBaiKeForUWP.View
 
         private void NaturalGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as Nature;
-            var contentDialog = new ContentDialog
+            if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                Content = new NaturalDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog);
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("Image");
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
+            }
+            var item = (Nature)e.ClickedItem;
+            Frame.Navigate(typeof(NaturalDialog), item);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(NaturalDialog), Object = item });
         }
     }
 }

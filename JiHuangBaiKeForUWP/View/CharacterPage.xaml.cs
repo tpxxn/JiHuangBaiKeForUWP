@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -8,12 +9,14 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using Microsoft.Toolkit.Uwp.UI.Animations;
@@ -31,6 +34,22 @@ namespace JiHuangBaiKeForUWP.View
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            Global.FrameTitle.Text = "人物";
+            if (e.NavigationMode == NavigationMode.Back)
+            {
+                EntranceTransition.FromVerticalOffset = 0;
+            }
+            if (Global.GetOsVersion() >= 16299)
+            {
+                var dimGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Global.TinkColor,
+                    TintOpacity = Global.TinkOpacity
+                };
+                CharacterStackPanel.Background = dimGrayAcrylicBrush;
+            }
             var parameter = (string[])e.Parameter;
             await Deserialize();
             if (parameter == null) return;
@@ -40,14 +59,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var character = gridViewItem;
                 if (character == null || character.Picture != _e) continue;
-                var contentDialog = new ContentDialog
-                {
-                    Content = new CharacterDialog(character),
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                    Style = Global.Transparent
-                };
-                Global.ShowDialog(contentDialog);
+                Frame.Navigate(typeof(CharacterDialog), character);
                 break;
             }
         }
@@ -73,15 +85,15 @@ namespace JiHuangBaiKeForUWP.View
 
         private void CharacterGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as Character;
-            var contentDialog = new ContentDialog
+            if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                Content = new CharacterDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent,
-            };
-            Global.ShowDialog(contentDialog);
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("Image");
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
+            }
+            var item = (Character)e.ClickedItem;
+            Frame.Navigate(typeof(CharacterDialog), item);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterDialog), Object = item });
         }
     }
 }

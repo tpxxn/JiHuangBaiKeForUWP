@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -16,6 +17,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls;
+using Windows.UI.Xaml.Media.Animation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -26,10 +28,36 @@ namespace JiHuangBaiKeForUWP.View.Dialog
     /// </summary>
     public sealed partial class GoodSaplingDialog : Page
     {
-        public GoodSaplingDialog(GoodSapling c)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (Global.GetOsVersion() >= 16299)
+            {
+                var dimGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Global.TinkColor,
+                    TintOpacity = Global.TinkOpacity
+                };
+                RootScrollViewer.Background = dimGrayAcrylicBrush;
+            }
+            base.OnNavigatedTo(e);
+            Global.FrameTitle.Text = "物品详情";
+            if (e.Parameter != null)
+            {
+                LoadData((GoodSapling)e.Parameter);
+            }
+            var imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Image");
+            imageAnimation?.TryStart(GoodImage);
+        }
+
+        public GoodSaplingDialog()
         {
             this.InitializeComponent();
+        }
 
+        private void LoadData(GoodSapling c)
+        {
             GoodImage.Source = new BitmapImage(new Uri(c.Picture));
             GoodName.Text = c.Name;
             GoodEnName.Text = c.EnName;
@@ -69,6 +97,17 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var dataPackage = new DataPackage();
             dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
+        }
+
+        private void ScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var list = new List<DependencyObject>();
+            Global.FindChildren(list, (ScrollViewer)sender);
+            var scrollViewerGrid = (from dependencyObject in list where dependencyObject.ToString() == "Windows.UI.Xaml.Controls.Grid" select dependencyObject.GetHashCode()).FirstOrDefault();
+            if (e.OriginalSource.GetHashCode() == scrollViewerGrid)
+            {
+                Global.App_BackRequested();
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace JiHuangBaiKeForUWP.View.Dialog
 {
@@ -26,10 +27,36 @@ namespace JiHuangBaiKeForUWP.View.Dialog
     /// </summary>
     public sealed partial class FoodRecipeDialog : Page
     {
-        public FoodRecipeDialog(FoodRecipe2 c)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (Global.GetOsVersion() >= 16299)
+            {
+                var dimGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Global.TinkColor,
+                    TintOpacity = Global.TinkOpacity
+                };
+                RootScrollViewer.Background = dimGrayAcrylicBrush;
+            }
+            base.OnNavigatedTo(e);
+            Global.FrameTitle.Text = "食物详情";
+            if (e.Parameter != null)
+            {
+                LoadData((FoodRecipe2)e.Parameter);
+            }
+            var imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Image");
+            imageAnimation?.TryStart(FoodRecipeImage);
+        }
+
+        public FoodRecipeDialog()
         {
             this.InitializeComponent();
+        }
 
+        private void LoadData(FoodRecipe2 c)
+        {
             FoodRecipeImage.Source = new BitmapImage(new Uri(c.Picture));
             FoodRecipeName.Text = c.Name;
             FoodRecipeEnName.Text = c.EnName;
@@ -215,11 +242,24 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 {
                     case "F_":
                         rootFrame.Navigate(typeof(FoodPage), extraData);
+                        Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
                         break;
                     case "FC":
                         // ignore
                         break;
                 }
+            }
+        }
+
+
+        private void ScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var list = new List<DependencyObject>();
+            Global.FindChildren(list, (ScrollViewer)sender);
+            var scrollViewerGrid = (from dependencyObject in list where dependencyObject.ToString() == "Windows.UI.Xaml.Controls.Grid" select dependencyObject.GetHashCode()).FirstOrDefault();
+            if (e.OriginalSource.GetHashCode() == scrollViewerGrid)
+            {
+                Global.App_BackRequested();
             }
         }
     }

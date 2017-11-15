@@ -17,7 +17,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
                 <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
@@ -28,7 +28,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
                 <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
@@ -50,7 +50,13 @@
                               SelectionMode="None" 
                               IsItemClickEnabled="True" 
                               ItemClick="FoodRecipeGridView_ItemClick" 
-                              animations:ReorderGridAnimation.Duration="250"/>
+                              animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="RecipeEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="MeatsExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -66,7 +72,13 @@
                               SelectionMode="None" 
                               IsItemClickEnabled="True" 
                               ItemClick="FoodGridView_ItemClick" 
-                              animations:ReorderGridAnimation.Duration="250"/>
+                              animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="MeatEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="VegetablesExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -82,7 +94,13 @@
                               SelectionMode="None" 
                               IsItemClickEnabled="True" 
                               ItemClick="FoodGridView_ItemClick" 
-                              animations:ReorderGridAnimation.Duration="250"/>
+                              animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="VegetableEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="FruitsExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -98,7 +116,13 @@
                               SelectionMode="None" 
                               IsItemClickEnabled="True" 
                               ItemClick="FoodGridView_ItemClick" 
-                              animations:ReorderGridAnimation.Duration="250"/>
+                              animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="FruitEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="EggsExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -114,7 +138,13 @@
                               SelectionMode="None" 
                               IsItemClickEnabled="True" 
                               ItemClick="FoodGridView_ItemClick" 
-                              animations:ReorderGridAnimation.Duration="250"/>
+                              animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="EggEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="OtherExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -130,7 +160,13 @@
                               SelectionMode="None" 
                               IsItemClickEnabled="True" 
                               ItemClick="FoodGridView_ItemClick" 
-                              animations:ReorderGridAnimation.Duration="250"/>
+                              animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="OtherEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="NoFcExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -146,7 +182,13 @@
                               SelectionMode="None" 
                               IsItemClickEnabled="True" 
                               ItemClick="FoodGridView_ItemClick" 
-                              animations:ReorderGridAnimation.Duration="250"/>
+                              animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="NoFcEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
         </StackPanel>
     </ScrollViewer>

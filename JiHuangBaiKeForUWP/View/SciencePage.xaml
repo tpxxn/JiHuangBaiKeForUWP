@@ -17,7 +17,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
                 <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
@@ -39,7 +39,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="ScienceGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="ToolEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="LightExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -55,7 +61,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="LightEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="NauticalExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -71,7 +83,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="NauticalEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="SurvivalExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -87,7 +105,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="SurvivalEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="FoodExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -103,7 +127,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="FoodEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="TechnologyExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -119,7 +149,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="TechnologyEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="FightExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -135,7 +171,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="FightEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="StructuresExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -151,7 +193,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="StructureEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="RefineExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -167,7 +215,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="RefineEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="MagicExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -183,7 +237,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="MagicEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="DressExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -199,7 +259,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="DressEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="AncientExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -215,7 +281,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="AncientEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="BooksExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -231,7 +303,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="BookEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="ShadowExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -247,7 +325,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="ShadowEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="CritterExpaner" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -263,7 +347,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="CritterEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="SculptExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -279,7 +369,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="SculptEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="CartographyExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -295,7 +391,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="CartographyEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="OfferingsExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -311,7 +413,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="OfferingsEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="VolcanoExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -327,7 +435,13 @@
                     SelectionMode="None" 
                     IsItemClickEnabled="True" 
                     ItemClick="ScienceGridView_ItemClick" 
-                    animations:ReorderGridAnimation.Duration="250"/>
+                    animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="VolcanoEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
         </StackPanel>
     </ScrollViewer>

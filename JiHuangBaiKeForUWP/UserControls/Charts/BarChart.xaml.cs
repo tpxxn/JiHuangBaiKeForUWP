@@ -29,9 +29,9 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
             if (e.NewValue == null) return;
             var barChart = (BarChart)d;
 
-            if ((double) e.NewValue != 0)
+            if ((double)e.NewValue != 0)
             {
-                barChart.LabelTextBlock.Width = (double) e.NewValue;
+                barChart.LabelTextBlock.Width = (double)e.NewValue;
             }
             else
             {
@@ -61,7 +61,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         }
 
         public static readonly DependencyProperty ShowIfZeroProperty =
-            DependencyProperty.Register("Value", typeof(bool), typeof(BarChart), new PropertyMetadata(false,OnShowIfZeroChanged));
+            DependencyProperty.Register("Value", typeof(bool), typeof(BarChart), new PropertyMetadata(false, OnShowIfZeroChanged));
 
         private static void OnShowIfZeroChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -81,7 +81,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
 
         #region 依赖属性：值
 
-        public double Value
+        public double? Value
         {
             get => (double)GetValue(ValueProperty);
             set => SetValue(ValueProperty, value);
@@ -112,13 +112,12 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
             {
                 barChart.ValueRectangle.Width = (double)e.NewValue / barChart.MaxValue * 300;
             }
-            if ((double) e.NewValue == 1000)
+            if ((double)e.NewValue == 1000)
             {
                 barChart.ValueTextBlock.Text = "∞";
             }
         }
         #endregion
-
 
         #region 依赖属性：单位
 
@@ -139,7 +138,6 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         }
         #endregion
 
-
         #region 依赖属性：标签
 
         public string Label
@@ -153,9 +151,14 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
 
         private static void OnLabelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue == null) return;
             var barChart = (BarChart)d;
+            if (string.IsNullOrEmpty(e.NewValue.ToString()))
+            {
+                barChart.LabelTextBlock.Width = 0;
+            }
+            if (e.NewValue == null) return;
             barChart.LabelTextBlock.Text = (string)e.NewValue;
+
         }
 
         #endregion

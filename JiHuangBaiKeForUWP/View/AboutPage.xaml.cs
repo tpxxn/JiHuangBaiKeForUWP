@@ -1,14 +1,43 @@
 ﻿using System;
+using Windows.UI;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Navigation;
+using JiHuangBaiKeForUWP.Model;
 
 namespace JiHuangBaiKeForUWP.View
 {
     public sealed partial class AboutPage : Page
     {
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (Global.GetOsVersion() >= 16299)
+            {
+                var dimGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Global.TinkColor,
+                    TintOpacity = Global.TinkOpacity
+                };
+                var darkSlateGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Color.FromArgb(255, 47, 79, 79),
+                    TintOpacity = 0.5
+                };
+                RootStackPanel.Background = dimGrayAcrylicBrush;
+                HeaderStackPanel.Background = darkSlateGrayAcrylicBrush;
+                ContentStackPanel.Background = dimGrayAcrylicBrush;
+            }
+        }
+
         public AboutPage()
         {
             this.InitializeComponent();
+
             var version = Windows.ApplicationModel.Package.Current.Id.Version;
             VersionTextBlock.Text = $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
             PublisherTextBlock.Text = Windows.ApplicationModel.Package.Current.PublisherDisplayName;

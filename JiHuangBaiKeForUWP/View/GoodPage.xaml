@@ -16,7 +16,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
                 <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
@@ -27,7 +27,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
                 <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
@@ -38,7 +38,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
                 <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
@@ -49,7 +49,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
                 <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
@@ -60,7 +60,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
                 <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
@@ -71,7 +71,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
                 <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
@@ -82,7 +82,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
                 <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
@@ -93,7 +93,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Source="{x:Bind Picture}" Stretch="Uniform" />
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
                 <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
@@ -114,7 +114,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="GoodMaterialGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="MaterialEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="EquipmentExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -129,7 +135,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="GoodEquipmentGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="EquipmentEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="SaplingExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -144,7 +156,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="GoodSaplingGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="SaplingEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="CreaturesExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -159,7 +177,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="GoodCreaturesGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="CreaturesEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="TrinketsExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -174,7 +198,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="GoodGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="TrinketsEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="TurfExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -189,7 +219,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="GoodTurfGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="TurfEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="PetExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -204,7 +240,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="GoodPetGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="PetEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="UnlockExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -219,7 +261,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="GoodUnlockGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="UnlockEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="HallowedNightsExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -234,7 +282,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="GoodGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="HallowedNightsEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="WintersFeastExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -249,7 +303,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="GoodGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="WintersFeastEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="YearOfTheGobblerExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -264,7 +324,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="GoodGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="YearOfTheGobblerEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="ComponentExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -279,7 +345,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="GoodGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="ComponentEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
             <uc:Expander x:Name="GoodOthersExpander" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
@@ -294,7 +366,13 @@
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
                           ItemClick="GoodGridView_ItemClick" 
-                          animations:ReorderGridAnimation.Duration="250"/>
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="OthersEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
             </uc:Expander>
         </StackPanel>
     </ScrollViewer>

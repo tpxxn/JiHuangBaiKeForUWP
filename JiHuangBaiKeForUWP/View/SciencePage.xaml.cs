@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -18,6 +19,7 @@ using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View.Dialog;
 using Newtonsoft.Json;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace JiHuangBaiKeForUWP.View
 {
@@ -48,6 +50,40 @@ namespace JiHuangBaiKeForUWP.View
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            Global.FrameTitle.Text = "科技";
+			if (e.NavigationMode == NavigationMode.Back)
+            {
+                ToolEntranceTransition.FromVerticalOffset = 0;
+                LightEntranceTransition.FromVerticalOffset = 0;
+				NauticalEntranceTransition.FromVerticalOffset = 0;
+				SurvivalEntranceTransition.FromVerticalOffset = 0;
+				FoodEntranceTransition.FromVerticalOffset = 0;
+				TechnologyEntranceTransition.FromVerticalOffset = 0;
+				FightEntranceTransition.FromVerticalOffset = 0;
+				StructureEntranceTransition.FromVerticalOffset = 0;
+				RefineEntranceTransition.FromVerticalOffset = 0;
+				MagicEntranceTransition.FromVerticalOffset = 0;
+				DressEntranceTransition.FromVerticalOffset = 0;
+				AncientEntranceTransition.FromVerticalOffset = 0;
+				BookEntranceTransition.FromVerticalOffset = 0;
+				ShadowEntranceTransition.FromVerticalOffset = 0;
+				CritterEntranceTransition.FromVerticalOffset = 0;
+				SculptEntranceTransition.FromVerticalOffset = 0;
+				CartographyEntranceTransition.FromVerticalOffset = 0;
+				OfferingsEntranceTransition.FromVerticalOffset = 0;
+				VolcanoEntranceTransition.FromVerticalOffset = 0;
+            }
+            if (Global.GetOsVersion() >= 16299)
+            {
+                var dimGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Global.TinkColor,
+                    TintOpacity = Global.TinkOpacity
+                };
+                ScienceStackPanel.Background = dimGrayAcrylicBrush;
+            }
             var parameter = (string[])e.Parameter;
             await Deserialize();
             if (parameter == null) return;
@@ -140,14 +176,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var science = gridViewItem;
                 if (science == null || science.Picture != _e) continue;
-                var contentDialog = new ContentDialog
-                {
-                    Content = new ScienceDialog(science),
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                    Style = Global.Transparent
-                };
-                Global.ShowDialog(contentDialog);
+                Frame.Navigate(typeof(ScienceDialog), science);
                 break;
             }
         }
@@ -360,15 +389,15 @@ namespace JiHuangBaiKeForUWP.View
 
         private void ScienceGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as Science;
-            var contentDialog = new ContentDialog
+            if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                Content = new ScienceDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog);
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("Image");
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
+            }
+            var item = (Science)e.ClickedItem;
+            Frame.Navigate(typeof(ScienceDialog), item);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(ScienceDialog), Object = item });
         }
     }
 }

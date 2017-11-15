@@ -6,8 +6,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.Storage;
 using Windows.UI;
 using Windows.UI.Core;
@@ -25,7 +27,7 @@ using JiHuangBaiKeForUWP.View;
 // 对话框示例
 // var contentDialog = new ContentDialog()
 // {
-//     Title = "加载失败",
+//     Title = "测试",
 //     Content = "加载当前页面错误，可能需要翻墙(～￣▽￣)～",
 //     PrimaryButtonText = "确定",
 //     FullSizeDesired = false,
@@ -39,15 +41,6 @@ namespace JiHuangBaiKeForUWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
-        #region 字段成员
-
-        private static readonly Color AccentColor = (Color)Application.Current.Resources["SystemAccentColor"];
-        private readonly List<ListBoxItem> _iconsListBoxGameDataList;
-        private readonly List<ListBoxItem> _iconsListBoxSettingAndAboutList;
-
-        #endregion
-
         #region 构造事件
 
         public MainPage()
@@ -63,41 +56,37 @@ namespace JiHuangBaiKeForUWP
                 AutoSuggestButton.Visibility = Visibility.Collapsed;
                 SearchAutoSuggestBox.Visibility = Visibility.Visible;
             }
+            //订阅后退按钮事件
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+            //Global类里的一些设定
             Global.RootGrid = RootGrid;
-            Global.FrameTitle = FrameTitle;
+            Global.FrameTitle = Global.GetOsVersion() >= 16299 ? FrameTitleAcrylic : FrameTitle;
+            Global.AutoSuggestGrid = AutoSuggestGrid;
             Global.RootFrame = RootFrame;
-            Global.MainPageListBoxItem.Add(CharacterListBoxItem);
-            Global.MainPageListBoxItem.Add(FoodListBoxItem);
-            Global.MainPageListBoxItem.Add(CookListBoxItem);
-            Global.MainPageListBoxItem.Add(ScienceListBoxItem);
-            Global.MainPageListBoxItem.Add(CreatureListBoxItem);
-            Global.MainPageListBoxItem.Add(NaturalListBoxItem);
-            Global.MainPageListBoxItem.Add(GoodListBoxItem);
-            //读取游戏版本
-            _iconsListBoxGameDataList = new List<ListBoxItem>(
-                new[]
-                {
-                    CharacterListBoxItem, FoodListBoxItem, ScienceListBoxItem, CreatureListBoxItem,
-                    NaturalListBoxItem, GoodListBoxItem
-                }
-            );
-            _iconsListBoxSettingAndAboutList = new List<ListBoxItem>(
-                new[]
-                {
-                    SettingListBoxItem, AboutListBoxItem
-                }
-            );
+            Global.IconsListViewGameData = IconsListViewGameData;
+            Global.IconsListViewSettingAndAbout = IconsListViewSettingAndAbout;
             // 设置Frame标题Margin属性
             SetFrameTitleMargin();
             // 汉堡菜单边框
-            HamburgerGrid.BorderBrush = new SolidColorBrush(AccentColor);
+            //HamburgerGrid.BorderBrush = new SolidColorBrush(Global.AccentColor);
+            //亚克力背景颜色及透明度设置读取
+            Global.TinkOpacity = SettingSet.AcrylicOpacitySettingRead();
+            Global.TinkColor = StringProcess.StringToColor(SettingSet.AcrylicColorSettingRead());
             // 默认页
             RootFrame.SourcePageType = typeof(CharacterPage);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterPage) });
             // 设置SearchAutoSuggestBox的ItemSource属性
             SearchAutoSuggestBox.ItemsSource = Global.AutoSuggestBoxItem;
             // 设置主题
-            ((Frame)Window.Current.Content).RequestedTheme =
-                SettingSet.ThemeSettingRead() ? ElementTheme.Dark : ElementTheme.Light;
+            if (Global.GetOsVersion() >= 16299)
+            {
+                ((Frame)Window.Current.Content).RequestedTheme = ElementTheme.Dark;
+            }
+            else
+            {
+                ((Frame)Window.Current.Content).RequestedTheme = SettingSet.ThemeSettingRead() ? ElementTheme.Dark : ElementTheme.Light;
+            }
         }
 
         #endregion
@@ -112,10 +101,50 @@ namespace JiHuangBaiKeForUWP
             _uisetting.ColorValuesChanged += OnColorValuesChanged;
             var bgcolor = _uisetting.GetColorValue(UIColorType.Accent);
             RootGrid.Background = new SolidColorBrush(bgcolor);
-
             var searchItem = (string)e.Parameter;
             if (string.IsNullOrEmpty(searchItem) == false && searchItem != "...")
                 VoiceSearch(searchItem);
+            //使用Fluent Design System
+            if (Global.GetOsVersion() >= 16299)
+            {
+                //标题栏
+                CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+                var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                titleBar.ButtonBackgroundColor = Colors.Transparent;
+                titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+                titleBar.ButtonHoverBackgroundColor = Colors.Gray;
+                //汉堡菜单按钮和页面标题面板
+                RootSplit.OpenPaneLength = 240;
+                RootRelativePanelAcrylic.Visibility = Visibility.Visible;
+                RootRelativePanel.Visibility = Visibility.Collapsed;
+
+                if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.XamlCompositionBrushBase"))
+                {
+                    //dimGrayAcrylicBrush笔刷
+                    var dimGrayAcrylicBrush = new AcrylicBrush
+                    {
+                        BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                        FallbackColor = Colors.Transparent,
+                        TintColor = Global.TinkColor,
+                        TintOpacity = Global.TinkOpacity
+                    };
+                    RootRelativePanelAcrylic.Background = dimGrayAcrylicBrush;
+                    RootSplit.PaneBackground = dimGrayAcrylicBrush;
+                    RootSplit.Background = dimGrayAcrylicBrush;
+                    HamburgerGrid.BorderThickness = new Thickness(0);
+                    IconsListViewGameData.Background = dimGrayAcrylicBrush;
+                    IconsListViewGameData.BorderThickness = new Thickness(0);
+                    IconsListViewSettingAndAbout.Background = dimGrayAcrylicBrush;
+                    AutoSuggestGrid.Background = null;
+                    //汉堡菜单Reveal
+                    var buttonRevealStyle = (Style)Application.Current.Resources["ButtonRevealStyle"];
+                    HamburgerButtonAcrylic.Style = buttonRevealStyle;
+
+                    var listViewItemRevealStyle = (Style)Application.Current.Resources["ListViewItemRevealStyle"];
+                    IconsListViewGameData.ItemContainerStyle = listViewItemRevealStyle;
+                    IconsListViewSettingAndAbout.ItemContainerStyle = listViewItemRevealStyle;
+                }
+            }
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -125,11 +154,12 @@ namespace JiHuangBaiKeForUWP
                 _uisetting.ColorValuesChanged -= OnColorValuesChanged;
             }
         }
+
         private async void OnColorValuesChanged(UISettings sender, object args)
         {
             Color bg;
             bg = sender.GetColorValue(UIColorType.Accent);
-            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
                 () =>
                 {
                     var brush = RootGrid.Background as SolidColorBrush ?? new SolidColorBrush();
@@ -140,6 +170,133 @@ namespace JiHuangBaiKeForUWP
         #endregion
 
         #region 汉堡菜单
+        private readonly ObservableCollection<HamburgerMenuItem> _gameDataHamburgerMenuItem = new ObservableCollection<HamburgerMenuItem>(
+            new[]
+            {
+                new HamburgerMenuItem()
+                {
+                    Icon = "\x4E0C",
+                    Text = "人物",
+                    Color = new SolidColorBrush(Global.AccentColor),
+                    Selected = Visibility.Visible,
+                    NavigatePage = typeof(CharacterPage)
+                },
+                new HamburgerMenuItem()
+                {
+                    Icon = "\x4E01",
+                    Text = "食物",
+                    Color = new SolidColorBrush(Colors.White),
+                    Selected = Visibility.Collapsed,
+                    NavigatePage = typeof(FoodPage)
+                },
+                new HamburgerMenuItem()
+                {
+                    Icon = "\x4E02",
+                    Text = "模拟",
+                    Color = new SolidColorBrush(Colors.White),
+                    Selected = Visibility.Collapsed,
+                    NavigatePage = typeof(CookingSimulatorPage)
+                },
+                new HamburgerMenuItem()
+                {
+                    Icon = "\x4E03",
+                    Text = "科技",
+                    Color = new SolidColorBrush(Colors.White),
+                    Selected = Visibility.Collapsed,
+                    NavigatePage = typeof(SciencePage)
+                },
+                new HamburgerMenuItem()
+                {
+                    Icon = "\x4E04",
+                    Text = "生物",
+                    Color = new SolidColorBrush(Colors.White),
+                    Selected = Visibility.Collapsed,
+                    NavigatePage = typeof(CreaturePage)
+                },
+                new HamburgerMenuItem()
+                {
+                    Icon = "\x4E05",
+                    Text = "自然",
+                    Color = new SolidColorBrush(Colors.White),
+                    Selected = Visibility.Collapsed,
+                    NavigatePage = typeof(NaturalPage)
+                },
+                new HamburgerMenuItem()
+                {
+                    Icon = "\x4E06",
+                    Text = "物品",
+                    Color = new SolidColorBrush(Colors.White),
+                    Selected = Visibility.Collapsed,
+                    NavigatePage = typeof(GoodPage)
+                }
+            });
+
+        private readonly ObservableCollection<HamburgerMenuItem> _settingAndAboutHamburgerMenuItem = new ObservableCollection<HamburgerMenuItem>(
+            new[]
+            {
+                new HamburgerMenuItem()
+                {
+                    Icon = "\x4E0A",
+                    Text = "设置",
+                    Color = new SolidColorBrush(Colors.White),
+                    Selected = Visibility.Collapsed,
+                    NavigatePage = typeof(SettingPage)
+                },
+                new HamburgerMenuItem()
+                {
+                    Icon = "\x4E0B",
+                    Text = "关于",
+                    Color = new SolidColorBrush(Colors.White),
+                    Selected = Visibility.Collapsed,
+                    NavigatePage = typeof(AboutPage)
+                }
+            });
+
+        /// <summary>
+        /// 汉堡菜单点击
+        /// </summary>
+        private void HamburgerMenu_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // Rectangle显示并导航
+            if (e.ClickedItem is HamburgerMenuItem hamburgerMenuItem)
+            {
+                HamburgerMenu_ItemSelect(hamburgerMenuItem);
+            }
+
+            if (Window.Current.Bounds.Width < 1008)
+            {
+                RootSplit.IsPaneOpen = false;
+            }
+        }
+
+        /// <summary>
+        /// hamburgerMenuItem选择事件
+        /// </summary>
+        /// <param name="hamburgerMenuItem">HamburgerMenuItem</param>
+        public void HamburgerMenu_ItemSelect(HamburgerMenuItem hamburgerMenuItem)
+        {
+            // 遍历，将选中Rectangle隐藏
+            foreach (var gameDataHamburgerMenuItem in _gameDataHamburgerMenuItem)
+            {
+                gameDataHamburgerMenuItem.Color = new SolidColorBrush(Colors.White);
+                gameDataHamburgerMenuItem.Selected = Visibility.Collapsed;
+            }
+            foreach (var settingAndAboutHamburgerMenuItem in _settingAndAboutHamburgerMenuItem)
+            {
+                settingAndAboutHamburgerMenuItem.Color = new SolidColorBrush(Colors.White);
+                settingAndAboutHamburgerMenuItem.Selected = Visibility.Collapsed;
+            }
+
+            hamburgerMenuItem.Selected = Visibility.Visible;
+            hamburgerMenuItem.Color = new SolidColorBrush(Global.AccentColor);
+
+            if (hamburgerMenuItem.NavigatePage != null)
+            {
+                RootFrame.Navigate(hamburgerMenuItem.NavigatePage);
+                Global.PageStack.Push(new PageStackItem { TypeName = hamburgerMenuItem.NavigatePage });
+                Global.FrameTitle.Text = hamburgerMenuItem.Text;
+            }
+        }
 
         /// <summary>
         /// 汉堡菜单按钮触摸事件
@@ -184,81 +341,27 @@ namespace JiHuangBaiKeForUWP
         /// </summary>
         private void SetFrameTitleMargin()
         {
-            if (RootSplit.DisplayMode == SplitViewDisplayMode.CompactInline)
+            if (Global.GetOsVersion() >= 16299)
             {
-                FrameTitle.Margin = RootSplit.IsPaneOpen ? new Thickness(180, 0, 0, 0) : new Thickness(10, 0, 0, 0);
+                if (RootSplit.DisplayMode == SplitViewDisplayMode.CompactInline)
+                {
+                    FrameTitleAcrylic.Margin = RootSplit.IsPaneOpen ? new Thickness(180, 0, 0, 0) : new Thickness(10, 0, 0, 0);
+                }
+                else
+                {
+                    FrameTitleAcrylic.Margin = new Thickness(10, 0, 0, 0);
+                }
             }
             else
             {
-                FrameTitle.Margin = new Thickness(10, 0, 0, 0);
-            }
-        }
-
-        /// <summary>
-        /// 汉堡菜单列表按钮触摸事件
-        /// </summary>
-        private void IconsListBoxGameData_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            if (sender == IconsListBoxGameData)
-            {
-                IconsListBoxSettingAndAbout.SelectedItem = null;
-            }
-            else if (sender == IconsListBoxSettingAndAbout)
-            {
-                IconsListBoxGameData.SelectedItem = null;
-            }
-            var listBoxItem = (ListBoxItem)((ListBox)sender).SelectedItem;
-            if (listBoxItem != null)
-            {
-                var listBoxItemName = listBoxItem.Name;
-
-                switch (listBoxItemName)
+                if (RootSplit.DisplayMode == SplitViewDisplayMode.CompactInline)
                 {
-                    case "CharacterListBoxItem":
-                        FrameTitle.Text = "人物";
-                        RootFrame.Navigate(typeof(CharacterPage));
-                        break;
-                    case "FoodListBoxItem":
-                        FrameTitle.Text = "食物";
-                        RootFrame.Navigate(typeof(FoodPage));
-                        break;
-                    case "CookListBoxItem":
-                        FrameTitle.Text = "模拟";
-                        RootFrame.Navigate(typeof(CookingSimulatorPage));
-                        break;
-                    case "ScienceListBoxItem":
-                        FrameTitle.Text = "科技";
-                        RootFrame.Navigate(typeof(SciencePage));
-                        break;
-                    case "CreatureListBoxItem":
-                        FrameTitle.Text = "生物";
-                        RootFrame.Navigate(typeof(CreaturePage));
-                        break;
-                    case "NaturalListBoxItem":
-                        FrameTitle.Text = "自然";
-                        RootFrame.Navigate(typeof(NaturalPage));
-                        break;
-                    case "GoodListBoxItem":
-                        FrameTitle.Text = "物品";
-                        RootFrame.Navigate(typeof(GoodPage));
-                        break;
-                    case "SettingListBoxItem":
-                        FrameTitle.Text = "设置";
-                        RootFrame.Navigate(typeof(SettingPage));
-                        break;
-                    case "AboutListBoxItem":
-                        FrameTitle.Text = "关于";
-                        RootFrame.Navigate(typeof(AboutPage));
-                        break;
-                    default:
-                        FrameTitle.Text = "";
-                        break;
+                    FrameTitle.Margin = RootSplit.IsPaneOpen ? new Thickness(180, 0, 0, 0) : new Thickness(10, 0, 0, 0);
                 }
-            }
-
-            if (RootSplit.ActualWidth < 1008)
-            {
-                RootSplit.IsPaneOpen = false;
+                else
+                {
+                    FrameTitle.Margin = new Thickness(10, 0, 0, 0);
+                }
             }
         }
 
@@ -332,7 +435,7 @@ namespace JiHuangBaiKeForUWP
             if (suggestBoxItem == null) return;
             var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture, suggestBoxItem.Category };
             AutoSuggestNavigate(extraData);
-            SearchAutoSuggestBox.Text = suggestBoxItem.Name;
+            SearchAutoSuggestBox.Text = "";
         }
 
         /// <summary>
@@ -375,7 +478,7 @@ namespace JiHuangBaiKeForUWP
                 SearchAutoSuggestBox.Focus(FocusState.Programmatic);
             }
             if (suggestBoxItem == null) return;
-            var extraData = new[] {  suggestBoxItem.SourcePath, suggestBoxItem.Picture, suggestBoxItem.Category};
+            var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture, suggestBoxItem.Category };
             AutoSuggestNavigate(extraData);
         }
 
@@ -388,38 +491,140 @@ namespace JiHuangBaiKeForUWP
             switch (extraData[2])
             {
                 case "人物":
-                    FrameTitle.Text = "人物";
-                    CharacterListBoxItem.IsSelected = true;
+                    Global.FrameTitle.Text = "人物";
+                    HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[0]);
                     RootFrame.Navigate(typeof(CharacterPage), extraData);
+                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterPage), Object = extraData });
                     break;
                 case "食物":
-                    FrameTitle.Text = "食物";
-                    FoodListBoxItem.IsSelected = true;
+                    Global.FrameTitle.Text = "食物";
+                    HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[1]);
                     RootFrame.Navigate(typeof(FoodPage), extraData);
+                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
                     break;
                 case "科技":
-                    FrameTitle.Text = "科技";
-                    ScienceListBoxItem.IsSelected = true;
+                    Global.FrameTitle.Text = "科技";
+                    HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[3]);
                     RootFrame.Navigate(typeof(SciencePage), extraData);
+                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(SciencePage), Object = extraData });
                     break;
                 case "生物":
-                    FrameTitle.Text = "生物";
-                    CreatureListBoxItem.IsSelected = true;
+                    Global.FrameTitle.Text = "生物";
+                    HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[4]);
                     RootFrame.Navigate(typeof(CreaturePage), extraData);
+                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(CreaturePage), Object = extraData });
                     break;
                 case "自然":
-                    FrameTitle.Text = "自然";
-                    NaturalListBoxItem.IsSelected = true;
+                    Global.FrameTitle.Text = "自然";
+                    HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[5]);
                     RootFrame.Navigate(typeof(NaturalPage), extraData);
+                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(NaturalPage), Object = extraData });
                     break;
                 case "物品":
-                    FrameTitle.Text = "物品";
-                    GoodListBoxItem.IsSelected = true;
+                    Global.FrameTitle.Text = "物品";
+                    HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[6]);
                     RootFrame.Navigate(typeof(GoodPage), extraData);
+                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPage), Object = extraData });
                     break;
             }
         }
         #endregion
 
+        #region 后退按钮
+        /// <summary>
+        /// 处理后退按钮是否显示
+        /// </summary>
+        private void RootFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            //RootFrame.ContentTransitions = null;
+
+            //SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = Global.PageStack.Count > 1 ?
+            //    AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+        }
+
+        /// <summary>
+        /// 后退按钮请求处理
+        /// </summary>
+        private void App_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            if (Global.PageStack.Count > 1)
+            {
+                Global.PageStack.Pop();
+                var pageStackItem = Global.PageStack.Peek();
+                RootFrame.Navigate(pageStackItem.TypeName, pageStackItem.Object);
+                switch (pageStackItem.TypeName.ToString())
+                {
+                    case "JiHuangBaiKeForUWP.View.CharacterPage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[0]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.FoodPage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[1]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.CookingSimulatorPage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[2]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.SciencePage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[3]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.CreaturePage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[4]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.NaturalPage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[5]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.GoodPage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[6]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.SettingPage":
+                        HamburgerMenu_ItemSelect_NoPush(_settingAndAboutHamburgerMenuItem[0]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.AboutPage":
+                        HamburgerMenu_ItemSelect_NoPush(_settingAndAboutHamburgerMenuItem[1]);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 返回时修改Hamburger菜单的选中状态
+        /// </summary>
+        public void HamburgerMenu_ItemSelect_NoPush(HamburgerMenuItem hamburgerMenuItem)
+        {
+            // 遍历，将选中Rectangle隐藏
+            foreach (var gameDataHamburgerMenuItem in _gameDataHamburgerMenuItem)
+            {
+                gameDataHamburgerMenuItem.Color = new SolidColorBrush(Colors.White);
+                gameDataHamburgerMenuItem.Selected = Visibility.Collapsed;
+            }
+            foreach (var settingAndAboutHamburgerMenuItem in _settingAndAboutHamburgerMenuItem)
+            {
+                settingAndAboutHamburgerMenuItem.Color = new SolidColorBrush(Colors.White);
+                settingAndAboutHamburgerMenuItem.Selected = Visibility.Collapsed;
+            }
+
+            hamburgerMenuItem.Selected = Visibility.Visible;
+            hamburgerMenuItem.Color = new SolidColorBrush(Global.AccentColor);
+
+            if (hamburgerMenuItem.NavigatePage != null)
+            {
+                Global.FrameTitle.Text = hamburgerMenuItem.Text;
+            }
+        }
+        #endregion
+
+        private void RootFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+//            if (RootFrame.SourcePageType != RootFrame.CurrentSourcePageType)
+//            {
+//                var transitionCollection = new TransitionCollection { new ContentThemeTransition() };
+//                RootFrame.ContentTransitions = transitionCollection;
+//            }
+//            else
+//            {
+//                RootFrame.ContentTransitions = null;
+//            }
+        }
     }
 }

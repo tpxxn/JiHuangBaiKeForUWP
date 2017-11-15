@@ -24,7 +24,7 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="5,0" Text="&#xEDDA;" FontFamily="Segoe MDL2 Assets" FontSize="{x:Bind FontSize,Mode=OneWay}" FontWeight="{x:Bind FontWeight,Mode=OneWay}" VerticalAlignment="Center" Visibility="{x:Bind IsExPanded,Mode=OneWay,Converter={StaticResource BoolToVisibilityReverse}}"/>
                 <TextBlock Margin="5,0" Text="&#xEDDC;" FontFamily="Segoe MDL2 Assets" FontSize="{x:Bind FontSize,Mode=OneWay}" FontWeight="{x:Bind FontWeight,Mode=OneWay}" VerticalAlignment="Center" Visibility="{x:Bind IsExPanded,Mode=OneWay,Converter={StaticResource BoolToVisibility}}"/>
-                <ContentPresenter Content="{x:Bind Header,Mode=OneWay}" Margin="10,0"/>
+                <ContentPresenter x:Name="HeaderContentPresenter" Content="{x:Bind Header,Mode=OneWay}" Margin="10,0"/>
             </StackPanel>
         </ToggleButton>
         <ContentPresenter Grid.Row="1" Content="{x:Bind ExpandContent,Mode=OneWay}" Visibility="{x:Bind IsExPanded,Mode=OneWay,Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Stretch"/>

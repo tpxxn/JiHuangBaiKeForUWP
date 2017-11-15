@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View.Dialog;
@@ -36,6 +38,28 @@ namespace JiHuangBaiKeForUWP.View
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            Global.FrameTitle.Text = "生物";
+            if (e.NavigationMode == NavigationMode.Back)
+            {
+                LandEntranceTransition.FromVerticalOffset = 0;
+                OceanEntranceTransition.FromVerticalOffset = 0;
+                FlyEntranceTransition.FromVerticalOffset = 0;
+                CaveEntranceTransition.FromVerticalOffset = 0;
+                EvilEntranceTransition.FromVerticalOffset = 0;
+                OthersEntranceTransition.FromVerticalOffset = 0;
+                BossEntranceTransition.FromVerticalOffset = 0;
+            }
+            if (Global.GetOsVersion() >= 16299)
+            {
+                var dimGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Global.TinkColor,
+                    TintOpacity = Global.TinkOpacity
+                };
+                CreatureStackPanel.Background = dimGrayAcrylicBrush;
+            }
             var parameter = (string[])e.Parameter;
             await Deserialize();
             if (parameter == null) return;
@@ -80,14 +104,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var creature = gridViewItem;
                 if (creature == null || creature.Picture != _e) continue;
-                var contentDialog = new ContentDialog
-                {
-                    Content = new CreaturesDialog(creature),
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                    Style = Global.Transparent
-                };
-                Global.ShowDialog(contentDialog);
+                Frame.Navigate(typeof(CreaturesDialog), creature);
                 break;
             }
         }
@@ -175,16 +192,15 @@ namespace JiHuangBaiKeForUWP.View
 
         private void CreatureGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var c = e.ClickedItem as Creature;
-            var contentDialog = new ContentDialog
+            if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
-                Content = new CreaturesDialog(c),
-                PrimaryButtonText = "确定",
-                FullSizeDesired = false,
-                Style = Global.Transparent
-            };
-            Global.ShowDialog(contentDialog);
+                var root = (FrameworkElement)container.ContentTemplateRoot;
+                var image = (UIElement)root.FindName("Image");
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
+            }
+            var item = (Creature)e.ClickedItem;
+            Frame.Navigate(typeof(CreaturesDialog), item);
+            Global.PageStack.Push(new PageStackItem { TypeName = typeof(CreaturesDialog), Object = item });
         }
-
     }
 }

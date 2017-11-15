@@ -6,19 +6,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.System.Profile;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media;
 using JiHuangBaiKeForUWP.View;
 using Microsoft.Toolkit.Uwp.UI.Animations;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace JiHuangBaiKeForUWP.Model
 {
 
     public static class Global
     {
+        #region 常量
         /// <summary>
         /// 应用程序文件夹
         /// </summary>
@@ -34,10 +39,129 @@ namespace JiHuangBaiKeForUWP.Model
         /// </summary>
         public static Grid RootGrid { get; set; }
         public static TextBlock FrameTitle { get; set; }
+        public static Grid AutoSuggestGrid { get; set; }
         public static Frame RootFrame { get; set; }
-        public static List<ListBoxItem> MainPageListBoxItem { get; set; } = new List<ListBoxItem>();
+        public static ListView IconsListViewGameData { get; set; }
+        public static ListView IconsListViewSettingAndAbout { get; set; }
+        public static Grid SettingPageRootGrid { get; set; }
+        public static Color TinkColor { get; set; }
+        public static double TinkOpacity { get; set; }
+        public enum ContentThemeTransitionShift
+        {
+            LeftOrUpShift = -28,
+            NoneShift = 0,
+            RightOrDownShift = 28
+        }
+
+        #endregion
+
+        #region 后退按钮相关
+        public static Stack<PageStackItem> PageStack = new Stack<PageStackItem>();
+
+        /// <summary>
+        /// 后退按钮请求处理
+        /// </summary>
+        public static void App_BackRequested()
+        {
+            if (PageStack.Count > 1)
+            {
+                PageStack.Pop();
+                var pageStackItem = PageStack.Peek();
+                RootFrame.Navigate(pageStackItem.TypeName, pageStackItem.Object);
+            }
+        }
+
+        /// <summary>
+        /// 遍历视觉树
+        /// </summary>
+        /// <typeparam name="T">泛型T</typeparam>
+        /// <param name="results">结果List</param>
+        /// <param name="startNode">开始节点</param>
+        public static void FindChildren<T>(List<T> results, DependencyObject startNode) where T : DependencyObject
+        {
+            var count = VisualTreeHelper.GetChildrenCount(startNode);
+            for (var i = 0; i < count; i++)
+            {
+                var current = VisualTreeHelper.GetChild(startNode, i);
+                if (current.GetType() == typeof(T) || (current.GetType().GetTypeInfo().IsSubclassOf(typeof(T))))
+                {
+                    var asType = (T)current;
+                    results.Add(asType);
+                }
+                FindChildren(results, current);
+            }
+        }
+        #endregion
+
+        #region 方法
+        /// <summary>
+        /// 页面跳转
+        /// </summary>
+        /// <param name="index">页面序号</param>
+        public static void PageJump(int index)
+        {
+            // ReSharper disable once PossibleNullReferenceException
+            foreach (var hamburgerMenuItem in IconsListViewGameData.Items)
+            {
+                ((HamburgerMenuItem)hamburgerMenuItem).Color = new SolidColorBrush(Colors.White);
+                ((HamburgerMenuItem)hamburgerMenuItem).Selected = Visibility.Collapsed;
+            }
+            // ReSharper disable once PossibleNullReferenceException
+            foreach (var hamburgerMenuItem in IconsListViewSettingAndAbout.Items)
+            {
+                ((HamburgerMenuItem)hamburgerMenuItem).Color = new SolidColorBrush(Colors.White);
+                ((HamburgerMenuItem)hamburgerMenuItem).Selected = Visibility.Collapsed;
+            }
+            ((HamburgerMenuItem)IconsListViewGameData.Items[index]).Selected = Visibility.Visible;
+            ((HamburgerMenuItem)IconsListViewGameData.Items[index]).Color = new SolidColorBrush(AccentColor);
+            RootFrame.Navigate(((HamburgerMenuItem)IconsListViewGameData.Items[index]).NavigatePage);
+            FrameTitle.Text = ((HamburgerMenuItem)IconsListViewGameData.Items[index]).Text;
+        }
+
+        /// <summary>
+        /// 获取系统版本
+        /// </summary>
+        /// <returns>系统版本号</returns>
+        public static ulong GetOsVersion()
+        {
+            var version = Convert.ToUInt64(AnalyticsInfo.VersionInfo.DeviceFamilyVersion);
+            return version >> 16 & 0xFFFF;
+        }
+        #endregion
+
+        /// <summary>
+        /// DimGray色亚克力笔刷
+        /// </summary>
+        //public static AcrylicBrush DimGrayAcrylicBrush = new AcrylicBrush
+        //{
+        //    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+        //    FallbackColor = Colors.Transparent,
+        //    TintColor = Global.TinkColor,
+        //    TintOpacity = Global.TinkOpacity
+        //};
+        //public static AcrylicBrush DarkSlateGrayAcrylicBrush = new AcrylicBrush
+        //{
+        //    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+        //    FallbackColor = Colors.Transparent,
+        //    TintColor = Color.FromArgb(255, 47, 79, 79),
+        //    TintOpacity = 0.5
+        //};
+        //public static AcrylicBrush LightSlateGrayAcrylicBrush = new AcrylicBrush
+        //{
+        //    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+        //    FallbackColor = Colors.Transparent,
+        //    TintColor = Color.FromArgb(255, 119, 136, 153),
+        //    TintOpacity = 0.5
+        //};
+
+        ///// <summary>
+        ///// RevealStyle
+        ///// </summary>
+        //public static Style GridViewItemRevealStyle = (Style)Application.Current.Resources["GridViewItemRevealStyle"];
+        //public static Style ButtonRevealStyle = (Style)Application.Current.Resources["ButtonRevealStyle"];
 
         #region 颜色常量
+        public static Color AccentColor = (Color)Application.Current.Resources["SystemAccentColor"];
 
         public static SolidColorBrush ColorGreen = new SolidColorBrush(Color.FromArgb(255, 94, 182, 96));     //绿色
         public static SolidColorBrush ColorKhaki = new SolidColorBrush(Color.FromArgb(255, 237, 182, 96));    //卡其布色/土黄色
@@ -49,7 +173,13 @@ namespace JiHuangBaiKeForUWP.Model
         public static SolidColorBrush ColorOrange = new SolidColorBrush(Color.FromArgb(255, 246, 166, 11));     //橙色
         public static SolidColorBrush ColorYellow = new SolidColorBrush(Color.FromArgb(255, 238, 232, 21));     //黄色
         public static SolidColorBrush ColorBorderCyan = new SolidColorBrush(Color.FromArgb(255, 178, 236, 237));     //天蓝色
-
+        public static SolidColorBrush ColorGray = new SolidColorBrush(Color.FromArgb(255, 244, 244, 245));     //灰色
+        public static SolidColorBrush ColorWhite = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));     //白色
+        public static SolidColorBrush ColorBlack = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));     //黑色
+        public static SolidColorBrush SplitViewPaneBackgroundLight = new SolidColorBrush(Color.FromArgb(255, 48, 48, 48));     //黑色
+        public static SolidColorBrush SplitViewPaneBackgroundDark = new SolidColorBrush(Color.FromArgb(255, 5, 5, 5));     //黑色
+        public static SolidColorBrush ApplicationPageBackgroundThemeBrushLight = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204));     //黑色
+        
         #endregion
 
         #region 游戏版本

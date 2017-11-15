@@ -32,10 +32,26 @@ namespace JiHuangBaiKeForUWP.View
             ErrorStackTextBox.Text = errorStack;
         }
 
-        private async void SubmitButton_Click(object sender, RoutedEventArgs e)
+        private async void SubmitButton_OnTapped(object sender, TappedRoutedEventArgs e)
         {
             _includeDeviceInfo = DeviceInfoCheckBox.IsChecked == true;
             await ReportError(ViewNameTextBox.Text, ErrorStackTextBox.Text, _includeDeviceInfo);
+        }
+
+        private async void FeedbackButton_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            var launcher = Microsoft.Services.Store.Engagement.StoreServicesFeedbackLauncher.GetDefault();
+            await launcher.LaunchAsync();
+        }
+
+        private async void GithubButton_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/tpxxn/JiHuangBaiKeForUWP/issues"));
+        }
+
+        private async void QqButton_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("http://shang.qq.com/wpa/qunwpa?idkey=c7bd1fac7312bb1afbfde97bec4095e68465b04dc1b262759518cbb876a3bae1"));
         }
 
         public static async Task ReportError(string viewName, string errorStack = null, bool includeDeviceInfo = true)
@@ -71,5 +87,6 @@ namespace JiHuangBaiKeForUWP.View
             var ver = Package.Current.Id.Version;
             return $"{ver.Major}.{ver.Minor}.{ver.Build}.{ver.Revision}";
         }
+
     }
 }

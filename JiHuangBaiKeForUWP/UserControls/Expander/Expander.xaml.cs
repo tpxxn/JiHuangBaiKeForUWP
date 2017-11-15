@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Markup;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using JiHuangBaiKeForUWP.Model;
 
 namespace JiHuangBaiKeForUWP.UserControls.Expander
 {
@@ -75,6 +76,10 @@ namespace JiHuangBaiKeForUWP.UserControls.Expander
         {
             this.InitializeComponent();
             ExpandToggleButton.IsChecked = IsExPanded;
+            if (Global.GetOsVersion() >= 16299)
+            {
+                HeaderContentPresenter.Foreground = Global.ColorWhite;
+            }
         }
 
         private void Expand_Button_Click(object sender, RoutedEventArgs e)

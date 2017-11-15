@@ -10,8 +10,8 @@
     xmlns:wrapPanel="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d">
 
-    <ScrollViewer Name="CreaturesDialogScrollViewer" VerticalScrollBarVisibility="Auto">
-        <Grid x:Name="CreaturesRootGrid">
+    <ScrollViewer Name="CreaturesDialogScrollViewer" VerticalScrollBarVisibility="Auto" Tapped="CreaturesDialogScrollViewer_Tapped" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid x:Name="CreaturesRootGrid" MaxWidth="500" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />

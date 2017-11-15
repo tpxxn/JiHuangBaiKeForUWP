@@ -121,7 +121,7 @@ namespace JiHuangBaiKeForUWP.Model
             GoodCreatures = new List<GoodCreatures>();
         }
     }
-
+    
     public class GoodTurf
     {
         public string Picture { get; set; }

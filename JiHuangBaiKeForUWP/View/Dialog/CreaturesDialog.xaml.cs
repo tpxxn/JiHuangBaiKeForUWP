@@ -6,12 +6,14 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
@@ -22,9 +24,39 @@ namespace JiHuangBaiKeForUWP.View.Dialog
 {
     public sealed partial class CreaturesDialog : Page
     {
-        public CreaturesDialog(Creature c)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (Global.GetOsVersion() >= 16299)
+            {
+                var dimGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Global.TinkColor,
+                    TintOpacity = Global.TinkOpacity
+                };
+                CreaturesDialogScrollViewer.Background = dimGrayAcrylicBrush;
+            }
+            base.OnNavigatedTo(e);
+            Global.FrameTitle.Text = "生物详情";
+            if (e.Parameter != null)
+            {
+                LoadData((Creature)e.Parameter);
+            }
+            var imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("Image");
+            imageAnimation?.TryStart(CreatureImage);
+        }
+
+        public CreaturesDialog()
         {
             this.InitializeComponent();
+        }
+
+        /// <summary>
+        /// 加载数据
+        /// </summary>
+        private void LoadData(Creature c)
+        {
             CreatureImage.Source = new BitmapImage(new Uri(c.Picture));
             CreatureName.Text = c.Name;
             CreatureEnName.Text = c.EnName;
@@ -1080,7 +1112,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             var picturePath = ((PicButton)sender).Source;
             var rootFrame = Global.RootFrame;
             var shortName = StringProcess.GetFileName(picturePath);
-            var mainPageListBoxItem = Global.MainPageListBoxItem;
             var frameTitle = Global.FrameTitle;
             await Global.SetAutoSuggestBoxItem();
             foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
@@ -1093,22 +1124,36 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     {
                         case "F":
                             frameTitle.Text = "食物";
-                            mainPageListBoxItem[1].IsSelected = true;
+                            Global.PageJump(1);
                             rootFrame.Navigate(typeof(FoodPage), extraData);
+                            Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
                             break;
                         case "S":
                             frameTitle.Text = "科技";
-                            mainPageListBoxItem[3].IsSelected = true;
+                            Global.PageJump(3);
                             rootFrame.Navigate(typeof(SciencePage), extraData);
+                            Global.PageStack.Push(new PageStackItem { TypeName = typeof(SciencePage), Object = extraData });
                             break;
                         case "A":
                         case "G":
                             frameTitle.Text = "物品";
-                            mainPageListBoxItem[6].IsSelected = true;
+                            Global.PageJump(6);
                             rootFrame.Navigate(typeof(GoodPage), extraData);
+                            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPage), Object = extraData });
                             break;
                     }
                 }
+            }
+        }
+
+        private void CreaturesDialogScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var list = new List<DependencyObject>();
+            Global.FindChildren(list, (ScrollViewer)sender);
+            var scrollViewerGrid = (from dependencyObject in list where dependencyObject.ToString() == "Windows.UI.Xaml.Controls.Grid" select dependencyObject.GetHashCode()).FirstOrDefault();
+            if (e.OriginalSource.GetHashCode() == scrollViewerGrid)
+            {
+                Global.App_BackRequested();
             }
         }
     }
