@@ -12,12 +12,9 @@
 
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
         <StackPanel x:Name="RootStackPanel" Margin="10" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <StackPanel x:Name="ThemeStackPanel">
-                <TextBlock FontSize="26" Text="深色主题"/>
-                <ToggleSwitch x:Name="ThemeToggleSwitch" Toggled="ThemeToggleSwitch_Toggled"/>
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0">
-                <TextBlock FontSize="26" Text="游戏版本"/>
+            <TextBlock Margin="0,0,0,10" Text="内容选项" FontWeight="Bold" FontSize="26"/>
+            <StackPanel>
+                <TextBlock FontSize="17" Text="游戏版本" Margin="0,0,0,5"/>
                 <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
                     <ComboBox x:Name="GameVersionComboBox" 
                               HorizontalAlignment="Left" 
@@ -43,6 +40,18 @@
                         </ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
+            </StackPanel>
+            <TextBlock Margin="0,40,0,10" Text="个性化界面" FontWeight="Bold" FontSize="26"/>
+            <StackPanel x:Name="ThemeStackPanel">
+                <TextBlock FontSize="17" Text="深色主题" Margin="0,0,0,5"/>
+                <ToggleSwitch x:Name="ThemeToggleSwitch" Toggled="ThemeToggleSwitch_Toggled"/>
+            </StackPanel>
+            <StackPanel x:Name="AcrylicOpacityStackPanel" Margin="0,20,0,0" Visibility="Collapsed">
+                <TextBlock FontSize="17" Text="亚克力背景透明度" Margin="0,0,0,5"/>
+                <Slider x:Name="AcrylicOpacitySlider" Width="200" HorizontalAlignment="Left" Maximum="0.7" Minimum="0.3" SmallChange="0.01" LargeChange="0.04" StepFrequency="0.01" ValueChanged="AcrylicOpacitySlider_ValueChanged"/>
+            </StackPanel>
+            <StackPanel x:Name="AcrylicBackgroundStackPanel" Margin="0,20,0,0" Visibility="Collapsed">
+                <TextBlock FontSize="17" Text="亚克力背景颜色" Margin="0,0,0,5"/>
             </StackPanel>
         </StackPanel>
     </ScrollViewer>

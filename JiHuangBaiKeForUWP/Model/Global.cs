@@ -39,10 +39,13 @@ namespace JiHuangBaiKeForUWP.Model
         /// </summary>
         public static Grid RootGrid { get; set; }
         public static TextBlock FrameTitle { get; set; }
+        public static Grid AutoSuggestGrid { get; set; }
         public static Frame RootFrame { get; set; }
         public static ListView IconsListViewGameData { get; set; }
         public static ListView IconsListViewSettingAndAbout { get; set; }
-
+        public static Grid SettingPageRootGrid { get; set; }
+        public static Color TinkColor { get; set; }
+        public static double TinkOpacity { get; set; }
         public enum ContentThemeTransitionShift
         {
             LeftOrUpShift = -28,
@@ -133,8 +136,8 @@ namespace JiHuangBaiKeForUWP.Model
         //{
         //    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
         //    FallbackColor = Colors.Transparent,
-        //    TintColor = Color.FromArgb(255, 105, 105, 105),
-        //    TintOpacity = 0.3
+        //    TintColor = Global.TinkColor,
+        //    TintOpacity = Global.TinkOpacity
         //};
         //public static AcrylicBrush DarkSlateGrayAcrylicBrush = new AcrylicBrush
         //{
@@ -173,7 +176,10 @@ namespace JiHuangBaiKeForUWP.Model
         public static SolidColorBrush ColorGray = new SolidColorBrush(Color.FromArgb(255, 244, 244, 245));     //灰色
         public static SolidColorBrush ColorWhite = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));     //白色
         public static SolidColorBrush ColorBlack = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));     //黑色
-
+        public static SolidColorBrush SplitViewPaneBackgroundLight = new SolidColorBrush(Color.FromArgb(255, 48, 48, 48));     //黑色
+        public static SolidColorBrush SplitViewPaneBackgroundDark = new SolidColorBrush(Color.FromArgb(255, 5, 5, 5));     //黑色
+        public static SolidColorBrush ApplicationPageBackgroundThemeBrushLight = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204));     //黑色
+        
         #endregion
 
         #region 游戏版本

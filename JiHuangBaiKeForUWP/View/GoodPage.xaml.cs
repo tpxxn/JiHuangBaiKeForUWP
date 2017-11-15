@@ -63,8 +63,8 @@ namespace JiHuangBaiKeForUWP.View
                 {
                     BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
                     FallbackColor = Colors.Transparent,
-                    TintColor = Color.FromArgb(255, 105, 105, 105),
-                    TintOpacity = 0.3
+                    TintColor = Global.TinkColor,
+                    TintOpacity = Global.TinkOpacity
                 };
                 GoodStackPanel.Background = dimGrayAcrylicBrush;
             }

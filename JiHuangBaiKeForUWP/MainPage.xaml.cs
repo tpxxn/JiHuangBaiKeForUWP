@@ -62,13 +62,17 @@ namespace JiHuangBaiKeForUWP
             //Global类里的一些设定
             Global.RootGrid = RootGrid;
             Global.FrameTitle = Global.GetOsVersion() >= 16299 ? FrameTitleAcrylic : FrameTitle;
+            Global.AutoSuggestGrid = AutoSuggestGrid;
             Global.RootFrame = RootFrame;
             Global.IconsListViewGameData = IconsListViewGameData;
             Global.IconsListViewSettingAndAbout = IconsListViewSettingAndAbout;
             // 设置Frame标题Margin属性
             SetFrameTitleMargin();
             // 汉堡菜单边框
-            HamburgerGrid.BorderBrush = new SolidColorBrush(Global.AccentColor);
+            //HamburgerGrid.BorderBrush = new SolidColorBrush(Global.AccentColor);
+            //亚克力背景颜色及透明度设置读取
+            Global.TinkOpacity = SettingSet.AcrylicOpacitySettingRead();
+            Global.TinkColor = StringProcess.StringToColor(SettingSet.AcrylicColorSettingRead());
             // 默认页
             RootFrame.SourcePageType = typeof(CharacterPage);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterPage) });
@@ -109,27 +113,29 @@ namespace JiHuangBaiKeForUWP
                 titleBar.ButtonBackgroundColor = Colors.Transparent;
                 titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
                 titleBar.ButtonHoverBackgroundColor = Colors.Gray;
-
+                //汉堡菜单按钮和页面标题面板
+                RootSplit.OpenPaneLength = 240;
                 RootRelativePanelAcrylic.Visibility = Visibility.Visible;
                 RootRelativePanel.Visibility = Visibility.Collapsed;
 
                 if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.XamlCompositionBrushBase"))
                 {
+                    //dimGrayAcrylicBrush笔刷
                     var dimGrayAcrylicBrush = new AcrylicBrush
                     {
                         BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
                         FallbackColor = Colors.Transparent,
-                        TintColor = Color.FromArgb(255, 105, 105, 105),
-                        TintOpacity = 0.3
+                        TintColor = Global.TinkColor,
+                        TintOpacity = Global.TinkOpacity
                     };
                     RootRelativePanelAcrylic.Background = dimGrayAcrylicBrush;
                     RootSplit.PaneBackground = dimGrayAcrylicBrush;
                     RootSplit.Background = dimGrayAcrylicBrush;
+                    HamburgerGrid.BorderThickness = new Thickness(0);
                     IconsListViewGameData.Background = dimGrayAcrylicBrush;
                     IconsListViewGameData.BorderThickness = new Thickness(0);
                     IconsListViewSettingAndAbout.Background = dimGrayAcrylicBrush;
                     AutoSuggestGrid.Background = null;
-
                     //汉堡菜单Reveal
                     var buttonRevealStyle = (Style)Application.Current.Resources["ButtonRevealStyle"];
                     HamburgerButtonAcrylic.Style = buttonRevealStyle;

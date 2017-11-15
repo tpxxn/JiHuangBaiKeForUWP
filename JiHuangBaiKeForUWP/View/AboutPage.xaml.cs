@@ -18,8 +18,8 @@ namespace JiHuangBaiKeForUWP.View
                 {
                     BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
                     FallbackColor = Colors.Transparent,
-                    TintColor = Color.FromArgb(255, 105, 105, 105),
-                    TintOpacity = 0.3
+                    TintColor = Global.TinkColor,
+                    TintOpacity = Global.TinkOpacity
                 };
                 var darkSlateGrayAcrylicBrush = new AcrylicBrush
                 {
@@ -37,6 +37,7 @@ namespace JiHuangBaiKeForUWP.View
         public AboutPage()
         {
             this.InitializeComponent();
+
             var version = Windows.ApplicationModel.Package.Current.Id.Version;
             VersionTextBlock.Text = $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
             PublisherTextBlock.Text = Windows.ApplicationModel.Package.Current.PublisherDisplayName;

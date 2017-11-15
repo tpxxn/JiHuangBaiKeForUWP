@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,6 +27,17 @@ namespace JiHuangBaiKeForUWP.View.Dialog
     {
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (Global.GetOsVersion() >= 16299)
+            {
+                var dimGrayAcrylicBrush = new AcrylicBrush
+                {
+                    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                    FallbackColor = Colors.Transparent,
+                    TintColor = Global.TinkColor,
+                    TintOpacity = Global.TinkOpacity
+                };
+                RootScrollViewer.Background = dimGrayAcrylicBrush;
+            }
             base.OnNavigatedTo(e);
             Global.FrameTitle.Text = "自然详情";
             if (e.Parameter != null)
@@ -108,17 +120,9 @@ namespace JiHuangBaiKeForUWP.View.Dialog
 
         private void ScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            List<DependencyObject> list = new List<DependencyObject>();
+            var list = new List<DependencyObject>();
             Global.FindChildren(list, (ScrollViewer)sender);
-            int scrollViewerGrid = 0;
-            foreach (var dependencyObject in list)
-            {
-                if (dependencyObject.ToString() == "Windows.UI.Xaml.Controls.Grid")
-                {
-                    scrollViewerGrid = dependencyObject.GetHashCode();
-                    break;
-                }
-            }
+            var scrollViewerGrid = (from dependencyObject in list where dependencyObject.ToString() == "Windows.UI.Xaml.Controls.Grid" select dependencyObject.GetHashCode()).FirstOrDefault();
             if (e.OriginalSource.GetHashCode() == scrollViewerGrid)
             {
                 Global.App_BackRequested();
