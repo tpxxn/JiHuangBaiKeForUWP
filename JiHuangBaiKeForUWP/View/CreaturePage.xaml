@@ -22,9 +22,9 @@
         </DataTemplate>
     </Page.Resources>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel x:Name="CreatureStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <uc:Expander x:Name="LandExpander" VerticalAlignment="Top" FontSize="17">
+    <ScrollViewer x:Name="RootScrollViewer" VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="RootStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <uc:Expander x:Name="LandExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="陆地生物" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -45,7 +45,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="OceanExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="OceanExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="海洋生物" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -66,7 +66,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="FlyExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="FlyExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="飞行生物" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -87,7 +87,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="CaveExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="CaveExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="洞穴生物" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -108,7 +108,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="EvilExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="EvilExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="邪恶生物" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -129,7 +129,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="OthersExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="OthersExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="其他生物" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -150,7 +150,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="BossExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="BossExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="BOSS" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>

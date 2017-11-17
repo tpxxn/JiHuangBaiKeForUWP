@@ -109,6 +109,7 @@
     <Compile Include="Model\HamburgerMenuItem.cs" />
     <Compile Include="Model\NaturalJson.cs" />
     <Compile Include="Model\PageStackItem.cs" />
+    <Compile Include="Model\ReleaseJson.cs" />
     <Compile Include="Model\SettingSet.cs" />
     <Compile Include="Model\CharactersJson.cs" />
     <Compile Include="Model\CreaturesJson.cs" />
@@ -207,6 +208,9 @@
     </Compile>
     <Compile Include="View\SettingChildPage\FeedbackChildPage.xaml.cs">
       <DependentUpon>FeedbackChildPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingChildPage\ReleaseChildPage.xaml.cs">
+      <DependentUpon>ReleaseChildPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SettingChildPage\SettingChildPage.xaml.cs">
       <DependentUpon>SettingChildPage.xaml</DependentUpon>
@@ -505,6 +509,7 @@
     <Content Include="Json\ROG\Goods.json" />
     <Content Include="Json\Shipwrecked\Goods.json" />
     <Content Include="Json\Tencent\Goods.json" />
+    <Content Include="Json\Release.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GameResources\Creatures\A_ancient_guardian.png" />
@@ -1984,6 +1989,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SettingChildPage\FeedbackChildPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingChildPage\ReleaseChildPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

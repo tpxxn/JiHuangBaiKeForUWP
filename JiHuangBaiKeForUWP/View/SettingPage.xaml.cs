@@ -79,6 +79,9 @@ namespace JiHuangBaiKeForUWP.View
                     case "CortanaBoxItem":
                         RootFrame.Navigate(typeof(SettingChildPage.CortanaChildPage));
                         break;
+                    case "ReleaseBoxItem":
+                        RootFrame.Navigate(typeof(SettingChildPage.ReleaseChildPage));
+                        break;
                     case "FeedbackBoxItem":
                         RootFrame.Navigate(typeof(SettingChildPage.FeedbackChildPage));
                         break;

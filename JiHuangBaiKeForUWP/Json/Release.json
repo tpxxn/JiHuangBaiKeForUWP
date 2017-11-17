@@ -1,0 +1,518 @@
+{
+  "Release": [
+    {
+      "Version": "1.2.3",
+      "Data": "2017年11月17日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "增加设置-更新日志页面"
+        },
+        {
+          "Label": "改进",
+          "Content": "现在从详情页面返回会记录之前展开的内容和位置"
+        }
+      ]
+    },
+    {
+      "Version": "1.2.2",
+      "Data": "2017年11月15日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "现在可以设置亚克力背景的透明度(范围0.3~0.7)以及颜色，不使用亚克力背景样式的详情页面背景颜色跟随系统主题(Light/Dark)"
+        },
+        {
+          "Label": "改进",
+          "Content": "设置-意见与建议添加其他反馈方式"
+        },
+        {
+          "Label": "改进",
+          "Content": "修正部分详情页面内容不居中、在不使用亚克力背景样式的情况下汉堡菜单显示不正常的BUG"
+        },
+        {
+          "Label": "改进",
+          "Content": "修正暗影战斗者的生命值"
+        }
+      ]
+    },
+    {
+      "Version": "1.2.1",
+      "Data": "2017年11月14日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "为页面增加部分内容过度动画(Content transition animations)及连贯动画(Connected animation)"
+        },
+        {
+          "Label": "改进",
+          "Content": "修改详情显示为页面而非对话框，现在可以通过窗口左上角返回按钮回溯页面，在详情页面单击任意位置返回前一页"
+        },
+        {
+          "Label": "改进",
+          "Content": "现在点击搜索结果后搜索框自动清空"
+        }
+      ]
+    },
+    {
+      "Version": "1.2.0",
+      "Data": "2017年11月11日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "引入Fluent Design System(仅在RS3及以上系统生效)"
+        }
+      ]
+    },
+    {
+      "Version": "1.1.13",
+      "Data": "2017年11月9日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "模拟界面添加一个可以调整上下界面大小的拖动按钮，现在模拟器可以计算出食材总属性并与做出来的食物比较"
+        }
+      ]
+    },
+    {
+      "Version": "1.1.12",
+      "Data": "2017年11月8日",
+      "UpdataContent": [
+        {
+          "Label": "改进",
+          "Content": "微调汉堡菜单，改动设置、关于页面"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正青蛙的攻击间隔"
+        }
+      ]
+    },
+    {
+      "Version": "1.1.11",
+      "Data": "2017年11月6日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "支持Win 10 RS3版本(16299)"
+        },
+        {
+          "Label": "改进",
+          "Content": "微调“模拟”界面"
+        },
+        {
+          "Label": "改进",
+          "Content": "物品-装备耐久添加单位，现在物品-装备-来源于生物的按钮可以正常跳转"
+        },
+        {
+          "Label": "修复",
+          "Content": "修复错误报告页面选择不发送设备信息也有可能在邮件中加入设备信息的BUG"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正电羊、伏特电羊的战利品"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正物品里与闪电吹箭有关的信息"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正物品-装备耐久无穷大显示错误的BUG"
+        }
+      ]
+    },
+    {
+      "Version": "1.1.10",
+      "Data": "2017年10月28日",
+      "UpdataContent": [
+        {
+          "Label": "改进",
+          "Content": "更新引用组件"
+        }
+      ]
+    },
+    {
+      "Version": "1.1.9",
+      "Data": "2017年10月23日",
+      "UpdataContent": [
+        {
+          "Label": "修复",
+          "Content": "修正“智慧果”的食物属性“毒桦树”的生成代码"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正“噩梦燃料”的合成配方、“海上麻袋”的合成配方"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正生物的部分描述内容异常"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正“仙人掌花”的保鲜值"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正联机版“红鸟”“雪鸟”“乌鸦”的描述"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正联机版黑兔人的属性"
+        },
+        {
+          "Label": "修复",
+          "Content": "修复非食材食物属性无法显示的BUG"
+        }
+      ]
+    },
+    {
+      "Version": "1.1.8",
+      "Data": "2017年10月12日",
+      "UpdataContent": [
+        {
+          "Label": "修复",
+          "Content": "紧急修复应用商店版本图片无法显示BUG"
+        }
+      ]
+    },
+    {
+      "Version": "1.1.7",
+      "Data": "2017年10月9日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "DST(Steam/WeGame版)物品增加玻璃尖刺、玻璃城堡、可疑的大理石"
+        },
+        {
+          "Label": "新增",
+          "Content": "食谱食物增加温度属性"
+        },
+        {
+          "Label": "新增",
+          "Content": "割下的草、蛛丝可制作科技添加可靠的胶带"
+        },
+        {
+          "Label": "改进",
+          "Content": "更换DST、WeGame版的人物图片"
+        },
+        {
+          "Label": "修复",
+          "Content": "\"修复点击\"沙漠之石\"出错的bug\""
+        }
+      ]
+    },
+    {
+      "Version": "1.1.6",
+      "Data": "2017年9月17日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "TGP及QQGame选项增加WeGame"
+        },
+        {
+          "Label": "新增",
+          "Content": "DST版人物增加薇诺娜(winona)，科技增加可靠的胶带，物品增加皱巴巴的包裹(DST及TGP)"
+        },
+        {
+          "Label": "新增",
+          "Content": "现在科技里需要人物解锁的物品点击人物可以跳转"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正鼹鼠眼罩的控制台代码"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正回旋镖的合成材料"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正部分人物箴言没有引号的问题"
+        }
+      ]
+    },
+    {
+      "Version": "1.1.5",
+      "Data": "2017年8月30日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "现在复制控制台代码可以修改数量"
+        },
+        {
+          "Label": "改进",
+          "Content": "物品-装备的隔热属性分为“防寒”和“耐热”"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正“时尚西瓜帽”的英文名"
+        }
+      ]
+    },
+    {
+      "Version": "1.1.4",
+      "Data": "2017年8月28日",
+      "UpdataContent": [
+        {
+          "Label": "修复",
+          "Content": "修正熊獾的团队合作属性"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正SW版“死龙虾”贴图"
+        },
+        {
+          "Label": "修复",
+          "Content": "修复点击“潮湿黏糊物”闪退的BUG"
+        }
+      ]
+    },
+    {
+      "Version": "1.1.3",
+      "Data": "2017年8月26日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "添加未处理BUG的反馈"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正win10 RS1(14393)系统下应用闪退的BUG"
+        }
+      ]
+    },
+    {
+      "Version": "1.1.2",
+      "Data": "2017年8月20日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "发布到Win 10应用商店"
+        },
+        {
+          "Label": "改进",
+          "Content": "左侧按钮颜色随系统颜色"
+        }
+      ]
+    },
+    {
+      "Version": "1.1.1",
+      "Data": "2017年8月14日",
+      "UpdataContent": [
+        {
+          "Label": "改进",
+          "Content": "移除“服务器”，修改搜索框位置和样式，修改Hamburger Menu按钮样式"
+        }
+      ]
+    },
+    {
+      "Version": "1.1.0",
+      "Data": "2017年8月12日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "科技、生物、物品界面的对话框按钮现在可以跳转"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正物品界面的少部分错误"
+        }
+      ]
+    },
+    {
+      "Version": "1.0.12",
+      "Data": "2017年8月12日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "食物、模拟界面的对话框按钮现在可以跳转"
+        },
+        {
+          "Label": "改进",
+          "Content": "现在搜索的物品中文名后面会添加分类名(并且修复物品中部分武器、生物搜索结果跳转错误的BUG)"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正龙蝇联机版的攻击间隔"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正猪人、暗影切斯特的描述"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正驼鹿的中英文名"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正小海象的攻击力和攻击间隔"
+        }
+      ]
+    },
+    {
+      "Version": "1.0.11",
+      "Data": "2017年8月11日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "完成物品栏"
+        }
+      ]
+    },
+    {
+      "Version": "1.0.10",
+      "Data": "2017年8月10日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "增加自然栏的生物群落"
+        },
+        {
+          "Label": "改进",
+          "Content": "修改对话框的背景模糊为全应用"
+        }
+      ]
+    },
+    {
+      "Version": "1.0.9",
+      "Data": "2017年8月8日",
+      "UpdataContent": [
+        {
+          "Label": "改进",
+          "Content": "现在语音搜索支持部分搜索，并且有多个结果的时候会列出可选结果，没搜索到会弹出提示框。现在搜索、查询、查找为必说词"
+        },
+        {
+          "Label": "改进",
+          "Content": "现在语音搜索如果有多个结果不会自动打开第一个结果"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正用语音搜索打开应用会导致主题不正确的bug"
+        }
+      ]
+    },
+    {
+      "Version": "1.0.8",
+      "Data": "2017年8月7日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "增加小娜语音搜索功能\r\n例如：在饥荒百科搜索培根煎蛋\r\n目前仅支持全名搜索"
+        }
+      ]
+    },
+    {
+      "Version": "1.0.7",
+      "Data": "2017年8月6日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "更新汉化"
+        },
+        {
+          "Label": "改进",
+          "Content": "调整食物、模拟、科技、生物按钮大小"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正发条骑士、发条主教、小海象描述，更换蜘蛛女王图片"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正有两种食物属性只显示其中一种的BUG"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正肉丸不显示优先度的BUG"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正科技-食物无法显示的BUG"
+        }
+      ]
+    },
+    {
+      "Version": "1.0.6",
+      "Data": "2017年8月5日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "完成搜索框"
+        },
+        {
+          "Label": "改进",
+          "Content": "重整Food类"
+        },
+        {
+          "Label": "改进",
+          "Content": "非SW时不显示模拟界面的“烹煮锅”选项"
+        },
+        {
+          "Label": "改进",
+          "Content": "修改默认使用浅色主题/游戏版本为DST(steam饥荒联机)"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正食物保鲜“∞”显示为“1000”的BUG"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正阿比盖尔伤害、海獭伍迪树木值"
+        }
+      ]
+    },
+    {
+      "Version": "1.0.5",
+      "Data": "2017年8月4日",
+      "UpdataContent": [
+        {
+          "Label": "修复",
+          "Content": "修正一些措辞、结构"
+        },
+        {
+          "Label": "修复",
+          "Content": "修复sw的bug"
+        }
+      ]
+    },
+    {
+      "Version": "1.0.3",
+      "Data": "2017年8月3日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "完成生物栏"
+        },
+        {
+          "Label": "新增",
+          "Content": "单机版人物添加解锁方式"
+        }
+      ]
+    },
+    {
+      "Version": "1.0.2",
+      "Data": "2017年7月31日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "完成食物、模拟"
+        },
+        {
+          "Label": "改进",
+          "Content": "删除“复制、删除游戏版本”按钮"
+        }
+      ]
+    },
+    {
+      "Version": "1.0.1",
+      "Data": "2017年7月27日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "完成人物"
+        }
+      ]
+    }
+  ]
+}
