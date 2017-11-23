@@ -64,16 +64,19 @@ namespace JiHuangBaiKeForUWP.View
             var parameter = (string[])e.Parameter;
             await Deserialize();
             if (parameter == null) return;
-            //展开之前展开的Expander
-            for (var i = 3; i < parameter.Length; i++)
+            if (parameter.Length > 3)
             {
-                ((Expander)RootStackPanel.Children[i - 3]).IsExPanded = parameter[i] == "True";
-            }
-            //ScrollViewer滚动到指定位置
-            if (parameter[2] != null)
-            {
-                RootScrollViewer.UpdateLayout();
-                RootScrollViewer.ChangeView(null, double.Parse(parameter[2]), null, true);
+                //展开之前展开的Expander
+                for (var i = 3; i < parameter.Length; i++)
+                {
+                    ((Expander) RootStackPanel.Children[i - 3]).IsExPanded = parameter[i] == "True";
+                }
+                //ScrollViewer滚动到指定位置
+                if (parameter[2] != null)
+                {
+                    RootScrollViewer.UpdateLayout();
+                    RootScrollViewer.ChangeView(null, double.Parse(parameter[2]), null, true);
+                }
             }
             //导航到指定页面
             var _e = parameter[1];

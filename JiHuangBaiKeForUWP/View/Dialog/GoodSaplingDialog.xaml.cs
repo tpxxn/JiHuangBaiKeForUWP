@@ -19,8 +19,6 @@ using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls;
 using Windows.UI.Xaml.Media.Animation;
 
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
-
 namespace JiHuangBaiKeForUWP.View.Dialog
 {
     /// <summary>
@@ -95,6 +93,10 @@ namespace JiHuangBaiKeForUWP.View.Dialog
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var dataPackage = new DataPackage();
+            if (string.IsNullOrEmpty(ConsoleNum.Text) || double.Parse(ConsoleNum.Text) == 0)
+            {
+                ConsoleNum.Text = "1";
+            }
             dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
         }

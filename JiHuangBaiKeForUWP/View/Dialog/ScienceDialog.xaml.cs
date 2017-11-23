@@ -80,10 +80,15 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             }
             else
             {
-                if (c.Unlock != null)
+                if (c.Unlock != null && c.Unlock.Count > 0)
                 {
                     UnlockPicButton.Visibility = Visibility.Visible;
-                    UnlockPicButton.Source = StringProcess.GetGameResourcePath(c.Unlock);
+                    UnlockPicButton.Source = StringProcess.GetGameResourcePath(c.Unlock[0]);
+                    if (c.Unlock.Count == 2)
+                    {
+                        Unlock2PicButton.Visibility = Visibility.Visible;
+                        Unlock2PicButton.Source = StringProcess.GetGameResourcePath(c.Unlock[1]);
+                    }
                 }
                 if (c.UnlockCharcter != null)
                 {
@@ -110,6 +115,10 @@ namespace JiHuangBaiKeForUWP.View.Dialog
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var dataPackage = new DataPackage();
+            if (string.IsNullOrEmpty(ConsoleNum.Text) || double.Parse(ConsoleNum.Text) == 0)
+            {
+                ConsoleNum.Text = "1";
+            }
             dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
         }

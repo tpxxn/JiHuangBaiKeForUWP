@@ -105,18 +105,25 @@ namespace JiHuangBaiKeForUWP.Model
         /// <param name="textbox">文本框对象</param>
         public static void ConsoleNumTextCheck(TextBox textbox)
         {
-            if (!Regex.IsMatch(textbox.Text, "^\\d*\\.?\\d*$") && textbox.Text != "")
+            try
             {
-                int pos = textbox.SelectionStart - 1;
-                textbox.Text = textbox.Text.Remove(pos, 1);
-                textbox.SelectionStart = pos;
-            }
-            if (textbox.Text != "")
-            {
-                if (int.Parse(textbox.Text) > 1000)
+                if (!Regex.IsMatch(textbox.Text, "^\\d*\\.?\\d*$") && textbox.Text != "")
                 {
-                    textbox.Text = "1000";
+                    int pos = textbox.SelectionStart - 1;
+                    textbox.Text = textbox.Text.Remove(pos, 1);
+                    textbox.SelectionStart = pos;
                 }
+                if (textbox.Text != "")
+                {
+                    if (int.Parse(textbox.Text) > 1000)
+                    {
+                        textbox.Text = "1000";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                textbox.Text = "1";
             }
         }
 

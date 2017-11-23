@@ -1,6 +1,46 @@
 {
   "Release": [
     {
+      "Version": "1.2.5",
+      "Data": "2017年11月23日",
+      "UpdataContent": [
+        {
+          "Label": "新增",
+          "Content": "增加SHIPWRECKED版HOME SEA HOME更新内容"
+        },
+        {
+          "Label": "改进",
+          "Content": "改进复制控制台代码的输入数字文本框违规判断"
+        },
+        {
+          "Label": "改进",
+          "Content": "追加沃利关于吃重复食物造成负面影响的相关说明"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正象仙人掌盔甲、椰树叶图片不显示的BUG"
+        }
+      ]
+    },
+    {
+      "Version": "1.2.4",
+      "Data": "2017年11月20日",
+      "UpdataContent": [
+        {
+          "Label": "改进",
+          "Content": "设置页面的菜单按钮现在恒定置顶"
+        },
+        {
+          "Label": "改进",
+          "Content": "设置-更新日志的版本号加宽防止文字溢出"
+        },
+        {
+          "Label": "修复",
+          "Content": "修复跳转报错的BUG"
+        }
+      ]
+    },
+    {
       "Version": "1.2.3",
       "Data": "2017年11月17日",
       "UpdataContent": [

@@ -65,7 +65,7 @@ namespace JiHuangBaiKeForUWP.View.SettingChildPage
                 rootGrid.Margin = i == 0 ? new Thickness(0) : new Thickness(0, 50, 0, 0);
                 rootGrid.Children.Add(new Border
                 {
-                    Width = 55,
+                    Width = 65,
                     Background = new SolidColorBrush(Color.FromArgb(255, 111, 66, 193)),
                     CornerRadius = new CornerRadius(5),
                     Child = new TextBlock
