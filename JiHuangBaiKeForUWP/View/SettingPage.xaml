@@ -9,41 +9,44 @@
     xmlns:system="using:System"
     mc:Ignorable="d">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <ListBox x:Name="TopListBox" Grid.Row="0" SelectionMode="Single" Tapped="ListBox_Tapped">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBoxItem x:Name="SettingBoxItem" IsSelected="True" Style="{StaticResource SettingListBoxItemStyle}">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="通用" FontSize="18" VerticalAlignment="Center" Margin="20,0"/>
-                    </StackPanel>
-                </ListBoxItem>
-                <ListBoxItem x:Name="CortanaBoxItem" Style="{StaticResource SettingListBoxItemStyle}">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="语音" FontSize="18" VerticalAlignment="Center" Margin="20,0"/>
-                    </StackPanel>
-                </ListBoxItem>
-                <ListBoxItem x:Name="FeedbackBoxItem" Style="{StaticResource SettingListBoxItemStyle}">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="意见与建议" FontSize="18" VerticalAlignment="Center" Margin="20,0"/>
-                    </StackPanel>
-                </ListBoxItem>
-            </ListBox>
-            <Frame x:Name="RootFrame" Grid.Row="1" Margin="0">
-                <Frame.ContentTransitions>
-                    <TransitionCollection>
-                        <ContentThemeTransition x:Name="ContentThemeTransition" VerticalOffset="0"/>
-                    </TransitionCollection>
-                </Frame.ContentTransitions>
-            </Frame>
-        </Grid>
-    </ScrollViewer>
+    <Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ListBox x:Name="TopListBox" Grid.Row="0" SelectionMode="Single" Tapped="ListBox_Tapped">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBoxItem x:Name="SettingBoxItem" IsSelected="True" Style="{StaticResource SettingListBoxItemStyle}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="通用" FontSize="18" VerticalAlignment="Center" Margin="20,0"/>
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem x:Name="CortanaBoxItem" Style="{StaticResource SettingListBoxItemStyle}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="语音" FontSize="18" VerticalAlignment="Center" Margin="20,0"/>
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem x:Name="ReleaseBoxItem" Style="{StaticResource SettingListBoxItemStyle}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="更新日志" FontSize="18" VerticalAlignment="Center" Margin="20,0"/>
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem x:Name="FeedbackBoxItem" Style="{StaticResource SettingListBoxItemStyle}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="意见与建议" FontSize="18" VerticalAlignment="Center" Margin="20,0"/>
+                </StackPanel>
+            </ListBoxItem>
+        </ListBox>
+        <Frame x:Name="RootFrame" Grid.Row="1" Margin="0">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <ContentThemeTransition x:Name="ContentThemeTransition" VerticalOffset="0"/>
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
+    </Grid>
 </Page>

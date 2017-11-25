@@ -10,7 +10,6 @@
     xmlns:wrapPanel="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d">
 
-
     <ScrollViewer x:Name="RootScrollViewer" VerticalScrollBarVisibility="Auto" Tapped="ScrollViewer_Tapped" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid x:Name="GoodsRootGrid" MaxWidth="500" HorizontalAlignment="Center">
             <Grid.RowDefinitions>

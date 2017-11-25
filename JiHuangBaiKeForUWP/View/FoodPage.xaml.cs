@@ -20,6 +20,8 @@ using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View.Dialog;
 using Newtonsoft.Json;
 using Windows.UI.Xaml.Media.Animation;
+using AppStudio.Uwp;
+using JiHuangBaiKeForUWP.UserControls.Expander;
 
 namespace JiHuangBaiKeForUWP.View
 {
@@ -58,11 +60,26 @@ namespace JiHuangBaiKeForUWP.View
                     TintColor = Global.TinkColor,
                     TintOpacity = Global.TinkOpacity
                 };
-                FoodStackPanel.Background = dimGrayAcrylicBrush;
+                RootStackPanel.Background = dimGrayAcrylicBrush;
             }
             var parameter = (string[])e.Parameter;
             await Deserialize();
             if (parameter == null) return;
+            if (parameter.Length > 3)
+            {
+                //展开之前展开的Expander
+                for (var i = 3; i < parameter.Length; i++)
+                {
+                    ((Expander)RootStackPanel.Children[i - 3]).IsExPanded = parameter[i] == "True";
+                }
+                //ScrollViewer滚动到指定位置
+                if (parameter[2] != null)
+                {
+                    RootScrollViewer.UpdateLayout();
+                    RootScrollViewer.ChangeView(null, double.Parse(parameter[2]), null, true);
+                }
+            }
+            //导航到指定页面
             var _e = parameter[1];
             switch (parameter[0])
             {
@@ -218,6 +235,30 @@ namespace JiHuangBaiKeForUWP.View
             var item = (Food)e.ClickedItem;
             Frame.Navigate(typeof(FoodDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodDialog), Object = item });
+        }
+
+        private void Expander_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (e.OriginalSource.ToString() == "Windows.UI.Xaml.Controls.Grid")
+            {
+                var pageStackItem = Global.PageStack.Pop();
+                var pageNavigationInfo = (string[])pageStackItem.Object ?? new string[RootStackPanel.Children.Count + 3];
+                for (var i = 0; i < RootStackPanel.Children.Count; i++)
+                {
+                    pageNavigationInfo[i + 3] = ((Expander)RootStackPanel.Children[i]).IsExPanded.ToString();
+                }
+                Global.PageStack.Push(new PageStackItem { TypeName = pageStackItem.TypeName, Object = pageNavigationInfo });
+            }
+            else
+            {
+                var pageStackItemClickItem = Global.PageStack.Pop();
+                var pageStackItem = Global.PageStack.Pop();
+                var pageNavigationInfo = (string[])pageStackItem.Object ?? new string[RootStackPanel.Children.Count + 3];
+                // ReSharper disable once SpecifyACultureInStringConversionExplicitly
+                pageNavigationInfo[2] = RootScrollViewer.VerticalOffset.ToString();
+                Global.PageStack.Push(new PageStackItem { TypeName = pageStackItem.TypeName, Object = pageNavigationInfo });
+                Global.PageStack.Push(pageStackItemClickItem);
+            }
         }
     }
 }

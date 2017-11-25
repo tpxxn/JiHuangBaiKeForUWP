@@ -57,8 +57,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
         /// </summary>
         public void LoadData(Character c)
         {
-            this.InitializeComponent();
-
             CharacterImage.Source = new BitmapImage(new Uri(c.Picture));
             CharacterName.Text = c.Name;
             CharacterEnName.Text = c.EnName;

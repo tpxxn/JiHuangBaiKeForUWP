@@ -51,7 +51,7 @@ namespace JiHuangBaiKeForUWP.View.SettingChildPage
                 {
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Color = Color.FromArgb(255, 105, 105, 105),
-                    RenderTransformOrigin = new Point(0,0),
+                    RenderTransformOrigin = new Point(0, 0),
                     RenderTransform = new CompositeTransform
                     {
                         ScaleX = 0.7,
@@ -70,18 +70,22 @@ namespace JiHuangBaiKeForUWP.View.SettingChildPage
 
         private readonly int _gameVersionSelectIndex;
         private bool _acrylicOpacitySetted;
+
         #endregion
 
         #region 构造器
+
         public SettingChildPage()
         {
             _gameVersionSelectIndex = Global.GameVersion;
             this.InitializeComponent();
             ThemeToggleSwitch.IsOn = SettingSet.ThemeSettingRead();
         }
+
         #endregion
 
         #region 游戏版本
+
         /// <summary>
         /// 设置游戏版本
         /// </summary>
@@ -102,17 +106,21 @@ namespace JiHuangBaiKeForUWP.View.SettingChildPage
             Global.GameVersion = GameVersionComboBox.SelectedIndex;
             await Global.SetAutoSuggestBoxItem();
         }
+
         #endregion
 
         #region 主题
+
         /// <summary>
         /// 设置主题
         /// </summary>
         private void ThemeToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
             SettingSet.ThemeSettingSet(ThemeToggleSwitch.IsOn);
-            ((Frame)Window.Current.Content).RequestedTheme = ThemeToggleSwitch.IsOn ? ElementTheme.Dark : ElementTheme.Light;
+            ((Frame) Window.Current.Content).RequestedTheme =
+                ThemeToggleSwitch.IsOn ? ElementTheme.Dark : ElementTheme.Light;
         }
+
         #endregion
 
         #region 亚克力背景
@@ -143,8 +151,8 @@ namespace JiHuangBaiKeForUWP.View.SettingChildPage
             };
             //框架
             var rootGrid = Global.RootGrid;
-            var rootRelativePanelAcrylic = (RelativePanel)rootGrid.Children[0];
-            var rootSplit = (SplitView)rootGrid.Children[2];
+            var rootRelativePanelAcrylic = (RelativePanel) rootGrid.Children[0];
+            var rootSplit = (SplitView) rootGrid.Children[2];
             var autoSuggestGrid = Global.AutoSuggestGrid;
             var iconsListViewGameData = Global.IconsListViewGameData;
             var iconsListViewSettingAndAbout = Global.IconsListViewSettingAndAbout;
@@ -159,7 +167,7 @@ namespace JiHuangBaiKeForUWP.View.SettingChildPage
                 Global.SettingPageRootGrid.Background = dimGrayAcrylicBrush;
             RootStackPanel.Background = dimGrayAcrylicBrush;
         }
-        #endregion
 
+        #endregion
     }
 }

@@ -20,6 +20,7 @@ using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View.Dialog;
 using Newtonsoft.Json;
 using Windows.UI.Xaml.Media.Animation;
+using JiHuangBaiKeForUWP.UserControls.Expander;
 
 namespace JiHuangBaiKeForUWP.View
 {
@@ -51,27 +52,27 @@ namespace JiHuangBaiKeForUWP.View
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             Global.FrameTitle.Text = "科技";
-			if (e.NavigationMode == NavigationMode.Back)
+            if (e.NavigationMode == NavigationMode.Back)
             {
                 ToolEntranceTransition.FromVerticalOffset = 0;
                 LightEntranceTransition.FromVerticalOffset = 0;
-				NauticalEntranceTransition.FromVerticalOffset = 0;
-				SurvivalEntranceTransition.FromVerticalOffset = 0;
-				FoodEntranceTransition.FromVerticalOffset = 0;
-				TechnologyEntranceTransition.FromVerticalOffset = 0;
-				FightEntranceTransition.FromVerticalOffset = 0;
-				StructureEntranceTransition.FromVerticalOffset = 0;
-				RefineEntranceTransition.FromVerticalOffset = 0;
-				MagicEntranceTransition.FromVerticalOffset = 0;
-				DressEntranceTransition.FromVerticalOffset = 0;
-				AncientEntranceTransition.FromVerticalOffset = 0;
-				BookEntranceTransition.FromVerticalOffset = 0;
-				ShadowEntranceTransition.FromVerticalOffset = 0;
-				CritterEntranceTransition.FromVerticalOffset = 0;
-				SculptEntranceTransition.FromVerticalOffset = 0;
-				CartographyEntranceTransition.FromVerticalOffset = 0;
-				OfferingsEntranceTransition.FromVerticalOffset = 0;
-				VolcanoEntranceTransition.FromVerticalOffset = 0;
+                NauticalEntranceTransition.FromVerticalOffset = 0;
+                SurvivalEntranceTransition.FromVerticalOffset = 0;
+                FoodEntranceTransition.FromVerticalOffset = 0;
+                TechnologyEntranceTransition.FromVerticalOffset = 0;
+                FightEntranceTransition.FromVerticalOffset = 0;
+                StructureEntranceTransition.FromVerticalOffset = 0;
+                RefineEntranceTransition.FromVerticalOffset = 0;
+                MagicEntranceTransition.FromVerticalOffset = 0;
+                DressEntranceTransition.FromVerticalOffset = 0;
+                AncientEntranceTransition.FromVerticalOffset = 0;
+                BookEntranceTransition.FromVerticalOffset = 0;
+                ShadowEntranceTransition.FromVerticalOffset = 0;
+                CritterEntranceTransition.FromVerticalOffset = 0;
+                SculptEntranceTransition.FromVerticalOffset = 0;
+                CartographyEntranceTransition.FromVerticalOffset = 0;
+                OfferingsEntranceTransition.FromVerticalOffset = 0;
+                VolcanoEntranceTransition.FromVerticalOffset = 0;
             }
             if (Global.GetOsVersion() >= 16299)
             {
@@ -82,94 +83,109 @@ namespace JiHuangBaiKeForUWP.View
                     TintColor = Global.TinkColor,
                     TintOpacity = Global.TinkOpacity
                 };
-                ScienceStackPanel.Background = dimGrayAcrylicBrush;
+                RootStackPanel.Background = dimGrayAcrylicBrush;
             }
             var parameter = (string[])e.Parameter;
             await Deserialize();
             if (parameter == null) return;
+            if (parameter.Length > 3)
+            {
+                //展开之前展开的Expander
+                for (var i = 3; i < parameter.Length; i++)
+                {
+                    ((Expander)RootStackPanel.Children[i - 3]).IsExPanded = parameter[i] == "True";
+                }
+                //ScrollViewer滚动到指定位置
+                if (parameter[2] != null)
+                {
+                    RootScrollViewer.UpdateLayout();
+                    RootScrollViewer.ChangeView(null, double.Parse(parameter[2]), null, true);
+                }
+            }
+            //导航到指定页面
             var _e = parameter[1];
             switch (parameter[0])
             {
                 case "ScienceTool":
                     ToolExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceToolGridView,_scienceToolData,_e);
+                    OnNavigatedToScienceDialog(ScienceToolGridView, _scienceToolData, _e);
                     break;
                 case "ScienceLight":
                     LightExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceLightGridView,_scienceLightData,_e);
+                    OnNavigatedToScienceDialog(ScienceLightGridView, _scienceLightData, _e);
                     break;
                 case "ScienceNautical":
                     NauticalExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceNauticalGridView,_scienceNauticalData,_e);
+                    OnNavigatedToScienceDialog(ScienceNauticalGridView, _scienceNauticalData, _e);
                     break;
                 case "ScienceSurvival":
                     SurvivalExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceSurvivalGridView,_scienceSurvivalData,_e);
+                    OnNavigatedToScienceDialog(ScienceSurvivalGridView, _scienceSurvivalData, _e);
                     break;
                 case "ScienceFood":
                     FoodExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceFoodGridView,_scienceFoodData,_e);
+                    OnNavigatedToScienceDialog(ScienceFoodGridView, _scienceFoodData, _e);
                     break;
                 case "ScienceTechnology":
                     TechnologyExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceTechnologyGridView,_scienceTechnologyData,_e);
+                    OnNavigatedToScienceDialog(ScienceTechnologyGridView, _scienceTechnologyData, _e);
                     break;
                 case "ScienceFight":
                     FightExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceFightGridView,_scienceFightData,_e);
+                    OnNavigatedToScienceDialog(ScienceFightGridView, _scienceFightData, _e);
                     break;
                 case "ScienceStructure":
                     StructuresExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceStructureGridView,_scienceStructureData,_e);
+                    OnNavigatedToScienceDialog(ScienceStructureGridView, _scienceStructureData, _e);
                     break;
                 case "ScienceRefine":
                     RefineExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceRefineGridView,_scienceRefineData,_e);
+                    OnNavigatedToScienceDialog(ScienceRefineGridView, _scienceRefineData, _e);
                     break;
                 case "ScienceMagic":
                     MagicExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceMagicGridView,_scienceMagicData,_e);
+                    OnNavigatedToScienceDialog(ScienceMagicGridView, _scienceMagicData, _e);
                     break;
                 case "ScienceDress":
                     DressExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceDressGridView,_scienceDressData,_e);
+                    OnNavigatedToScienceDialog(ScienceDressGridView, _scienceDressData, _e);
                     break;
                 case "ScienceAncient":
                     AncientExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceAncientGridView,_scienceAncientData,_e);
+                    OnNavigatedToScienceDialog(ScienceAncientGridView, _scienceAncientData, _e);
                     break;
                 case "ScienceBook":
                     BooksExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceBookGridView,_scienceBookData,_e);
+                    OnNavigatedToScienceDialog(ScienceBookGridView, _scienceBookData, _e);
                     break;
                 case "ScienceShadow":
                     ShadowExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceShadowGridView,_scienceShadowData,_e);
+                    OnNavigatedToScienceDialog(ScienceShadowGridView, _scienceShadowData, _e);
                     break;
                 case "ScienceCritter":
                     CritterExpaner.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceCritterGridView,_scienceCritterData,_e);
+                    OnNavigatedToScienceDialog(ScienceCritterGridView, _scienceCritterData, _e);
                     break;
                 case "ScienceSculpt":
                     SculptExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceSculptGridView,_scienceSculptData,_e);
+                    OnNavigatedToScienceDialog(ScienceSculptGridView, _scienceSculptData, _e);
                     break;
                 case "ScienceCartography":
                     CartographyExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceCartographyGridView,_scienceCartographyData,_e);
+                    OnNavigatedToScienceDialog(ScienceCartographyGridView, _scienceCartographyData, _e);
                     break;
                 case "ScienceOfferings":
                     OfferingsExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceOfferingsGridView,_scienceOfferingsData,_e);
+                    OnNavigatedToScienceDialog(ScienceOfferingsGridView, _scienceOfferingsData, _e);
                     break;
                 case "ScienceVolcano":
                     VolcanoExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceVolcanoGridView,_scienceVolcanoData,_e);
+                    OnNavigatedToScienceDialog(ScienceVolcanoGridView, _scienceVolcanoData, _e);
                     break;
             }
         }
 
-        private void OnNavigatedToScienceDialog(GridView gridView, ObservableCollection<Science> scienceCollection,string _e)
+        private void OnNavigatedToScienceDialog(GridView gridView, ObservableCollection<Science> scienceCollection, string _e)
         {
             if (gridView.Items == null) return;
             foreach (var gridViewItem in scienceCollection)
@@ -211,6 +227,7 @@ namespace JiHuangBaiKeForUWP.View
                 OfferingsExpanderTextBolck.Text = "贡品";
             }
         }
+
         public async Task Deserialize()
         {
             _scienceToolData.Clear();
@@ -398,6 +415,30 @@ namespace JiHuangBaiKeForUWP.View
             var item = (Science)e.ClickedItem;
             Frame.Navigate(typeof(ScienceDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(ScienceDialog), Object = item });
+        }
+
+        private void Expander_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (e.OriginalSource.ToString() == "Windows.UI.Xaml.Controls.Grid")
+            {
+                var pageStackItem = Global.PageStack.Pop();
+                var pageNavigationInfo = (string[])pageStackItem.Object ?? new string[RootStackPanel.Children.Count + 3];
+                for (var i = 0; i < RootStackPanel.Children.Count; i++)
+                {
+                    pageNavigationInfo[i + 3] = ((Expander)RootStackPanel.Children[i]).IsExPanded.ToString();
+                }
+                Global.PageStack.Push(new PageStackItem { TypeName = pageStackItem.TypeName, Object = pageNavigationInfo });
+            }
+            else
+            {
+                var pageStackItemClickItem = Global.PageStack.Pop();
+                var pageStackItem = Global.PageStack.Pop();
+                var pageNavigationInfo = (string[])pageStackItem.Object ?? new string[RootStackPanel.Children.Count + 3];
+                // ReSharper disable once SpecifyACultureInStringConversionExplicitly
+                pageNavigationInfo[2] = RootScrollViewer.VerticalOffset.ToString();
+                Global.PageStack.Push(new PageStackItem { TypeName = pageStackItem.TypeName, Object = pageNavigationInfo });
+                Global.PageStack.Push(pageStackItemClickItem);
+            }
         }
     }
 }

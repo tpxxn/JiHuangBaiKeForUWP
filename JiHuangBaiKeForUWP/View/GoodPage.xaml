@@ -98,10 +98,10 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel x:Name="GoodStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <uc:Expander x:Name="MaterialExpander" VerticalAlignment="Top" FontSize="17">
+
+    <ScrollViewer x:Name="RootScrollViewer" VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="RootStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <uc:Expander x:Name="MaterialExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="材料" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -122,7 +122,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="EquipmentExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="EquipmentExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="装备" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -143,7 +143,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="SaplingExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="SaplingExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="树苗" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -164,7 +164,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="CreaturesExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="CreaturesExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="生物" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -185,7 +185,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="TrinketsExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="TrinketsExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="玩具" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -206,7 +206,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="TurfExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="TurfExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="地皮" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -227,7 +227,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="PetExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="PetExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="宠物" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -248,7 +248,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="UnlockExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="UnlockExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="解锁" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -269,7 +269,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="HallowedNightsExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="HallowedNightsExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="Hellowed Nights" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -290,7 +290,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="WintersFeastExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="WintersFeastExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="Winter's Feast" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -311,7 +311,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="YearOfTheGobblerExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="YearOfTheGobblerExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="Year of the Gobbler" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -332,7 +332,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="ComponentExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="ComponentExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="零件" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -353,7 +353,7 @@
                     </GridView.ItemContainerTransitions>
                 </GridView>
             </uc:Expander>
-            <uc:Expander x:Name="GoodOthersExpander" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="GoodOthersExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="其他" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>

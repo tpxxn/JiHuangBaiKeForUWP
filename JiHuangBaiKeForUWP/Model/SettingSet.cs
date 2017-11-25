@@ -40,7 +40,6 @@ namespace JiHuangBaiKeForUWP.Model
             }
             return 0;
         }
-
         #endregion
 
         #region 主题(黑/白)
@@ -74,8 +73,8 @@ namespace JiHuangBaiKeForUWP.Model
         }
 
         #endregion
-
-        #region 使用亚克力背景
+        
+        #region 亚克力背景透明度及颜色
 
         #region 亚克力背景透明度
         /// <summary>

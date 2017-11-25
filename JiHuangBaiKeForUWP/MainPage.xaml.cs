@@ -531,16 +531,7 @@ namespace JiHuangBaiKeForUWP
         #endregion
 
         #region 后退按钮
-        /// <summary>
-        /// 处理后退按钮是否显示
-        /// </summary>
-        private void RootFrame_Navigated(object sender, NavigationEventArgs e)
-        {
-            //RootFrame.ContentTransitions = null;
-
-            //SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = Global.PageStack.Count > 1 ?
-            //    AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
-        }
+        
 
         /// <summary>
         /// 后退按钮请求处理
@@ -614,17 +605,39 @@ namespace JiHuangBaiKeForUWP
         }
         #endregion
 
+
+
+        #region Frame加载
+        /// <summary>
+        /// Frame导航结束
+        /// </summary>
+        private void RootFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            //RootFrame.ContentTransitions = null;
+
+            //SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = Global.PageStack.Count > 1 ?
+            //    AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+            LoadingControl.IsLoading = false;
+            RootFrame.Visibility = Visibility.Visible;
+        }
+
+        /// <summary>
+        /// Frame导航中
+        /// </summary>
         private void RootFrame_Navigating(object sender, NavigatingCancelEventArgs e)
         {
-//            if (RootFrame.SourcePageType != RootFrame.CurrentSourcePageType)
-//            {
-//                var transitionCollection = new TransitionCollection { new ContentThemeTransition() };
-//                RootFrame.ContentTransitions = transitionCollection;
-//            }
-//            else
-//            {
-//                RootFrame.ContentTransitions = null;
-//            }
+            LoadingControl.IsLoading = true;
+            RootFrame.Visibility = Visibility.Collapsed;
+            //            if (RootFrame.SourcePageType != RootFrame.CurrentSourcePageType)
+            //            {
+            //                var transitionCollection = new TransitionCollection { new ContentThemeTransition() };
+            //                RootFrame.ContentTransitions = transitionCollection;
+            //            }
+            //            else
+            //            {
+            //                RootFrame.ContentTransitions = null;
+            //            }
         }
+        #endregion
     }
 }

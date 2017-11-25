@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:datatype="using:JiHuangBaiKeForUWP.Model"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -30,7 +31,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Rectangle Fill="{ThemeResource SystemControlBackgroundAccentBrush}" Visibility="{Binding Selected, Mode=TwoWay}" HorizontalAlignment="Left" Width="5" Height="28" />
-                <TextBlock Text="{Binding Icon}" Foreground="{Binding Color}" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                <TextBlock Text="{Binding Icon}" Foreground="{Binding Color}" Grid.Column="0" FontFamily="/Assets/Font/JiHuangBaiKeFont.ttf#JiHuangBaiKeIcon" FontSize="35" VerticalAlignment="Center" Margin="15,0,0,0"/>
                 <TextBlock Text="{Binding Text}" Foreground="{Binding Color}" Grid.Column="1" FontSize="18" VerticalAlignment="Center" Margin="60,0,0,0"/>
             </Grid>
         </DataTemplate>
@@ -140,13 +141,21 @@
                 </Grid>
             </SplitView.Pane>
             <SplitView.Content>
-                <Frame x:Name="RootFrame" Margin="0,1,0,0" Navigated="RootFrame_Navigated" Navigating="RootFrame_Navigating">
-                    <!--<Frame.ContentTransitions>
+                <Grid>
+                    <Frame x:Name="RootFrame" Margin="0,1,0,0" Navigated="RootFrame_Navigated" Navigating="RootFrame_Navigating">
+                        <!--<Frame.ContentTransitions>
                         <TransitionCollection>
                             <ContentThemeTransition x:Name="contentThemeTransition" VerticalOffset="0"/>
                         </TransitionCollection>
                     </Frame.ContentTransitions>-->
-                </Frame>
+                    </Frame>
+                    <controls:Loading x:Name="LoadingControl" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" Opacity="1">
+                        <StackPanel Orientation="Horizontal" Padding="12">
+                            <ProgressRing IsActive="True" Margin="0,0,12,0" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Width="50" Height="50" />
+                            <TextBlock Text="(〃'▽'〃)页面加载中..." VerticalAlignment="Center" FontSize="40" Foreground="{ThemeResource SystemControlForegroundAccentBrush}"/>
+                        </StackPanel>
+                    </controls:Loading>
+                </Grid>
             </SplitView.Content>
         </SplitView>
     </Grid>

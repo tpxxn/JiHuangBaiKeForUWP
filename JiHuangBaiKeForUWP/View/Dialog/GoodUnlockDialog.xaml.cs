@@ -95,6 +95,10 @@ namespace JiHuangBaiKeForUWP.View.Dialog
         private void Copy_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var dataPackage = new DataPackage();
+            if (string.IsNullOrEmpty(ConsoleNum.Text) || double.Parse(ConsoleNum.Text) == 0)
+            {
+                ConsoleNum.Text = "1";
+            }
             dataPackage.SetText(ConsolePre.Text + ConsoleNum.Text + ")");
             Clipboard.SetContent(dataPackage);
         }

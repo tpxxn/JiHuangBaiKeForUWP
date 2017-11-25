@@ -17,6 +17,7 @@ using JiHuangBaiKeForUWP.View;
 using Microsoft.Toolkit.Uwp.UI.Animations;
 using Newtonsoft.Json;
 using System.Reflection;
+using Windows.Foundation;
 
 namespace JiHuangBaiKeForUWP.Model
 {
@@ -33,7 +34,7 @@ namespace JiHuangBaiKeForUWP.Model
         /// 错误堆栈字符串
         /// </summary>
         public static string ErrorStackString { get; set; }
-
+        
         /// <summary>
         /// MainPage需要保存在Global里额几个控件对象
         /// </summary>
@@ -46,6 +47,10 @@ namespace JiHuangBaiKeForUWP.Model
         public static Grid SettingPageRootGrid { get; set; }
         public static Color TinkColor { get; set; }
         public static double TinkOpacity { get; set; }
+
+        /// <summary>
+        /// Content动画位移常量
+        /// </summary>
         public enum ContentThemeTransitionShift
         {
             LeftOrUpShift = -28,
@@ -56,6 +61,9 @@ namespace JiHuangBaiKeForUWP.Model
         #endregion
 
         #region 后退按钮相关
+        /// <summary>
+        /// 页面堆栈
+        /// </summary>
         public static Stack<PageStackItem> PageStack = new Stack<PageStackItem>();
 
         /// <summary>
@@ -68,6 +76,25 @@ namespace JiHuangBaiKeForUWP.Model
                 PageStack.Pop();
                 var pageStackItem = PageStack.Peek();
                 RootFrame.Navigate(pageStackItem.TypeName, pageStackItem.Object);
+            }
+        }
+        #endregion
+
+        #region 方法
+        /// <summary>
+        /// ScrollViewer滚动到指定位置
+        /// </summary>
+        /// <param name="scrollViewer">ScrollViewer的Name</param>
+        /// <param name="uiElement">UIElement的Name</param>
+        public static void ScrollToElement(ScrollViewer scrollViewer, UIElement uiElement)
+        {
+            var transform = uiElement.TransformToVisual(scrollViewer);
+            var point = transform.TransformPoint(new Point(0, 0));
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (point.Y != 0)
+            {
+                var y = point.Y + scrollViewer.VerticalOffset;
+                scrollViewer.ChangeView(null, y, null, true);
             }
         }
 
@@ -91,11 +118,9 @@ namespace JiHuangBaiKeForUWP.Model
                 FindChildren(results, current);
             }
         }
-        #endregion
 
-        #region 方法
         /// <summary>
-        /// 页面跳转
+        /// 页面跳转(处理汉堡菜单)
         /// </summary>
         /// <param name="index">页面序号</param>
         public static void PageJump(int index)

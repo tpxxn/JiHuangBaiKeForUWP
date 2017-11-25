@@ -35,8 +35,11 @@
                     <Button x:Name="UnlockCharcterButton" Width="81" Height="126" Background="{x:Null}" Visibility="Collapsed" Tapped="Science_CharacterJump_Tapped">
                         <Image x:Name="UnlockCharcterImage" Height="123" Margin="-10"/>
                     </Button>
-                    <userControls:PicButton x:Name="UnlockPicButton" Tapped="Science_Jump_Tapped" RelativePanel.RightOf="UnlockCharcterButton" RelativePanel.AlignVerticalCenterWithPanel="True" Visibility="Collapsed"/>
-                    <userControls:PicButton x:Name="UnlockBlueprintPicButton" Tapped="Science_Jump_Tapped" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.RightOf="UnlockPicButton" Visibility="Collapsed"/>
+                    <StackPanel x:Name="UnlockStackPanel" Orientation="Horizontal" HorizontalAlignment="Center" RelativePanel.RightOf="UnlockCharcterButton" RelativePanel.AlignVerticalCenterWithPanel="True" >
+                        <userControls:PicButton x:Name="UnlockPicButton" Visibility="Collapsed" HorizontalAlignment="Center" PictureSize="60" Tapped="Science_Jump_Tapped"/>
+                        <userControls:PicButton x:Name="Unlock2PicButton" Visibility="Collapsed" HorizontalAlignment="Center" PictureSize="60" Tapped="Science_Jump_Tapped"/>
+                    </StackPanel>
+                    <userControls:PicButton x:Name="UnlockBlueprintPicButton" Tapped="Science_Jump_Tapped" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.RightOf="UnlockStackPanel" Visibility="Collapsed"/>
                 </RelativePanel>
             </StackPanel>
             <TextBlock Grid.Row="5" x:Name="ScienceIntroduction" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="10" />
