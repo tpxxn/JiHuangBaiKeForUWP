@@ -1,6 +1,32 @@
 {
   "Release": [
     {
+      "Version": "1.2.6",
+      "Data": "2017年12月2日",
+      "UpdataContent": [
+        {
+          "Label": "改进",
+          "Content": "更换图标"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正生物里部分1000生命的生物生命值显示为∞的BUG"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正联机版洞穴蜘蛛的血量"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正单机版里WX-78的三围属性"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正科技-石灰石盔甲图片"
+        }
+      ]
+    },
+    {
       "Version": "1.2.5",
       "Data": "2017年11月23日",
       "UpdataContent": [

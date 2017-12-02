@@ -41,16 +41,16 @@
                 </StackPanel>
                 <StackPanel x:Name="SmulatorStackPanel" Orientation="Horizontal" RelativePanel.Below="SettingStackPanel">
                     <StackPanel x:Name="FoodButtonStackPanel" Width="256" Orientation="Horizontal" VerticalAlignment="Top">
-                        <Button x:Name="Food1Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food1Button_Tapped" BorderBrush="#FF707070">
+                        <Button x:Name="Food1Button" Width="64" Height="64" Background="{x:Null}" Tapped="DeleteFood" BorderBrush="#FF707070">
                             <Image x:Name="Food1Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
                         </Button>
-                        <Button x:Name="Food2Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food2Button_Tapped" BorderBrush="#FF707070">
+                        <Button x:Name="Food2Button" Width="64" Height="64" Background="{x:Null}" Tapped="DeleteFood" BorderBrush="#FF707070">
                             <Image x:Name="Food2Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
                         </Button>
-                        <Button x:Name="Food3Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food3Button_Tapped" BorderBrush="#FF707070">
+                        <Button x:Name="Food3Button" Width="64" Height="64" Background="{x:Null}" Tapped="DeleteFood" BorderBrush="#FF707070">
                             <Image x:Name="Food3Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
                         </Button>
-                        <Button x:Name="Food4Button" Width="64" Height="64" Background="{x:Null}" Tapped="Food4Button_Tapped" BorderBrush="#FF707070">
+                        <Button x:Name="Food4Button" Width="64" Height="64" Background="{x:Null}" Tapped="DeleteFood" BorderBrush="#FF707070">
                             <Image x:Name="Food4Image" Height="52" Width="52" Margin="-4,0,-3,0"/>
                         </Button>
                     </StackPanel>

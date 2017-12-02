@@ -1384,7 +1384,7 @@
         "Console": "armorseashell"
       },
       {
-        "Picture": "S_limestone",
+        "Picture": "S_limestone_suit",
         "Name": "石灰石盔甲",
         "EnName": "Limestone Suit",
         "Need1": "S_limestone",

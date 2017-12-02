@@ -29,9 +29,9 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
             if (e.NewValue == null) return;
             var barChart = (BarChart)d;
 
-            if ((double) e.NewValue != 0)
+            if ((double)e.NewValue != 0)
             {
-                barChart.LabelTextBlock.Width = (double) e.NewValue;
+                barChart.LabelTextBlock.Width = (double)e.NewValue;
             }
             else
             {
@@ -61,7 +61,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         }
 
         public static readonly DependencyProperty ShowIfZeroProperty =
-            DependencyProperty.Register("ShowIfZero", typeof(bool), typeof(BarChart), new PropertyMetadata(false,OnShowIfZeroChanged));
+            DependencyProperty.Register("ShowIfZero", typeof(bool), typeof(BarChart), new PropertyMetadata(false, OnShowIfZeroChanged));
 
         private static void OnShowIfZeroChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -112,7 +112,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
             {
                 barChart.ValueRectangle.Width = (double)e.NewValue / barChart.MaxValue * 300;
             }
-            if ((double) e.NewValue == 1000)
+            if ((double)e.NewValue == 10001)
             {
                 barChart.ValueTextBlock.Text = "∞";
             }
@@ -158,7 +158,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
             }
             if (e.NewValue == null) return;
             barChart.LabelTextBlock.Text = (string)e.NewValue;
-            
+
         }
 
         #endregion
