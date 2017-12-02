@@ -215,7 +215,7 @@ namespace JiHuangBaiKeForUWP.View
         /// <summary>
         /// 食物列表
         /// </summary>
-        public List<string> CrockPotList = new List<string>(); 
+        public List<string> CrockPotList = new List<string>();
         /// <summary>
         /// 食物列表下标
         /// </summary>
@@ -245,22 +245,22 @@ namespace JiHuangBaiKeForUWP.View
             if (string.IsNullOrEmpty(CsRecipe1))
             {
                 CsRecipe1 = StringProcess.GetFileName(foodName);
-                Food1Image.Source = new BitmapImage(new Uri(foodName, UriKind.Relative));
+                Food1Image.Source = new BitmapImage(new Uri(foodName));
             }
             else if (string.IsNullOrEmpty(CsRecipe2))
             {
                 CsRecipe2 = StringProcess.GetFileName(foodName);
-                Food2Image.Source = new BitmapImage(new Uri(foodName, UriKind.Relative));
+                Food2Image.Source = new BitmapImage(new Uri(foodName));
             }
             else if (string.IsNullOrEmpty(CsRecipe3))
             {
                 CsRecipe3 = StringProcess.GetFileName(foodName);
-                Food3Image.Source = new BitmapImage(new Uri(foodName, UriKind.Relative));
+                Food3Image.Source = new BitmapImage(new Uri(foodName));
             }
             else if (string.IsNullOrEmpty(CsRecipe4))
             {
                 CsRecipe4 = StringProcess.GetFileName(foodName);
-                Food4Image.Source = new BitmapImage(new Uri(foodName, UriKind.Relative));
+                Food4Image.Source = new BitmapImage(new Uri(foodName));
             }
             if (CsRecipe1 != "" && CsRecipe2 != "" && CsRecipe3 != "" && CsRecipe4 != "")
             {
@@ -781,7 +781,7 @@ namespace JiHuangBaiKeForUWP.View
                 case "F_moleworm":
                     CsFtMoleworm += 1;
                     break;
-                #endregion
+                    #endregion
             }
         }
 
