@@ -110,7 +110,7 @@ namespace JiHuangBaiKeForUWP.Model
             for (var i = 0; i < count; i++)
             {
                 var current = VisualTreeHelper.GetChild(startNode, i);
-                if (current.GetType() == typeof(T) || (current.GetType().GetTypeInfo().IsSubclassOf(typeof(T))))
+                if (current.GetType() == typeof(T) || current.GetType().GetTypeInfo().IsSubclassOf(typeof(T)))
                 {
                     var asType = (T)current;
                     results.Add(asType);

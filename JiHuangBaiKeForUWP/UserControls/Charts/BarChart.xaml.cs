@@ -112,7 +112,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
             {
                 barChart.ValueRectangle.Width = (double)e.NewValue / barChart.MaxValue * 300;
             }
-            if ((double)e.NewValue == 1000)
+            if ((double)e.NewValue == 10001)
             {
                 barChart.ValueTextBlock.Text = "∞";
             }
