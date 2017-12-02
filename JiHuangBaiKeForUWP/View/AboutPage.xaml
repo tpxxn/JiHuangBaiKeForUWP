@@ -24,13 +24,16 @@
             </StackPanel>
 
             <StackPanel x:Name="ContentStackPanel">
+                <!--评价-->
+                <TextBlock x:Name="ReviewTextBlock" Text="喜欢的话给个好评吧~" FontSize="22" Margin="20,20,0,0" />
+                <Button x:Name="ReviewButton" Content="这就去应用商店给好评！" Margin="20,5,0,0" Tapped="ReviewButton_Tapped"/>
                 <!--加群-->
-                <TextBlock x:Uid="Feedback" Text="加入QQ群" FontSize="22" Margin="20,20,0,0" />
+                <TextBlock x:Name="AddQqQunTextBlock" Text="加入QQ群" FontSize="22" Margin="20,20,0,0" />
                 <HyperlinkButton Margin="20,5,0,0" NavigateUri="http://shang.qq.com/wpa/qunwpa?idkey=c7bd1fac7312bb1afbfde97bec4095e68465b04dc1b262759518cbb876a3bae1">
                     <Image Source="/Assets/Pic/QRCode_Qun.png" Height="128" />
                 </HyperlinkButton>
                 <!--请客-->
-                <TextBlock x:Uid="DonationTextBlock" Text="请作者姐姐吃点东西~" FontSize="22" Margin="20,20,0,0"/>
+                <TextBlock x:Name="DonationTextBlock" Text="请作者姐姐吃点东西~" FontSize="22" Margin="20,20,0,0"/>
                 <StackPanel Margin="20,5,0,5" Orientation="Horizontal">
                     <RadioButton x:Name="ZfbRadioButton" Content="支付宝" Click="ZfbRadioButton_Click" IsChecked="True"/>
                     <RadioButton x:Name="WxRadioButton" Content="微信" Click="WxRadioButton_Click"/>
@@ -50,7 +53,7 @@
                     </StackPanel>
                 </StackPanel>
                 <!--反馈-->
-                <TextBlock x:Uid="Feedback" Text="发送反馈" FontSize="22" Margin="20,20,0,0" />
+                <TextBlock x:Name="Feedback" Text="发送反馈" FontSize="22" Margin="20,20,0,0" />
                 <StackPanel Orientation="Horizontal" Margin="20,5,0,0">
                     <TextBlock x:Uid="EMail" VerticalAlignment="Center">
                     <Run Text="发送邮件至："/>

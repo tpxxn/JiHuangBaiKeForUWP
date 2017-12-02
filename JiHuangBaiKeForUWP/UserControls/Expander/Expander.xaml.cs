@@ -55,7 +55,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Expander
         }
 
         public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(object), typeof(Expander), new PropertyMetadata(String.Empty));
+            DependencyProperty.Register("Header", typeof(object), typeof(Expander), new PropertyMetadata(null));
 
         #endregion
 

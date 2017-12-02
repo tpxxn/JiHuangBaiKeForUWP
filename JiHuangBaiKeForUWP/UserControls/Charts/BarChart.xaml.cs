@@ -21,7 +21,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         }
 
         public static readonly DependencyProperty LabelWidthProperty =
-            DependencyProperty.Register("LabelWidth", typeof(double), typeof(BarChart), new PropertyMetadata(false, OnLabelWidthChanged));
+            DependencyProperty.Register("LabelWidth", typeof(double), typeof(BarChart), new PropertyMetadata((double)30, OnLabelWidthChanged));
 
 
         private static void OnLabelWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -49,7 +49,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         }
 
         public static readonly DependencyProperty MaxValueProperty =
-            DependencyProperty.Register("MaxValue", typeof(double), typeof(BarChart), new PropertyMetadata(1));
+            DependencyProperty.Register("MaxValue", typeof(double), typeof(BarChart), new PropertyMetadata((double)1));
 
         #endregion
 
@@ -88,7 +88,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         }
 
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(BarChart), new PropertyMetadata(false, OnValueChanged));
+            DependencyProperty.Register("Value", typeof(double), typeof(BarChart), new PropertyMetadata((double?)0.1, OnValueChanged));
 
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -128,7 +128,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         }
 
         public static readonly DependencyProperty UnitProperty =
-            DependencyProperty.Register("Unit", typeof(string), typeof(BarChart), new PropertyMetadata(false, OnUnitChanged));
+            DependencyProperty.Register("Unit", typeof(string), typeof(BarChart), new PropertyMetadata("", OnUnitChanged));
 
         private static void OnUnitChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -147,7 +147,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         }
 
         public static readonly DependencyProperty LabelProperty =
-            DependencyProperty.Register("Label", typeof(string), typeof(BarChart), new PropertyMetadata(false, OnLabelChanged));
+            DependencyProperty.Register("Label", typeof(string), typeof(BarChart), new PropertyMetadata("", OnLabelChanged));
 
         private static void OnLabelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -172,7 +172,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Charts
         }
 
         public static readonly DependencyProperty BarColorProperty =
-            DependencyProperty.Register("BarColor", typeof(SolidColorBrush), typeof(BarChart), new PropertyMetadata(false, OnBarColorChanged));
+            DependencyProperty.Register("BarColor", typeof(SolidColorBrush), typeof(BarChart), new PropertyMetadata(null, OnBarColorChanged));
 
         private static void OnBarColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

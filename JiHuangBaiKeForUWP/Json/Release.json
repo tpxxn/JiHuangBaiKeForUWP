@@ -1,6 +1,20 @@
 {
   "Release": [
     {
+      "Version": "1.2.7",
+      "Data": "2017年12月2日",
+      "UpdataContent": [
+        {
+          "Label": "改进",
+          "Content": "尝试修正由于UserControl属性导致的各种错误"
+        },
+        {
+          "Label": "修复",
+          "Content": "修复在win10 RS1和RS2版本下点击意见与建议页面报错的BUG"
+        }
+      ]
+    },
+    {
       "Version": "1.2.6",
       "Data": "2017年12月2日",
       "UpdataContent": [
