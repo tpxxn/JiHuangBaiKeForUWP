@@ -1123,7 +1123,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 if (picturePath == suggestBoxItem.Picture)
                 {
                     var picHead = shortName.Substring(0, 1);
-                    string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
+                    var extraData = new List<string> { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
                     switch (picHead)
                     {
                         case "F":

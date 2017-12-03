@@ -100,7 +100,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
             {
                 if (picturePath != suggestBoxItem.Picture) continue;
-                string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
+                var extraData = new List<string> { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
                 frameTitle.Text = "科技";
                 Global.PageJump(3);
                 rootFrame.Navigate(typeof(SciencePage), extraData);

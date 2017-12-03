@@ -1,6 +1,20 @@
 {
   "Release": [
     {
+      "Version": "1.2.8",
+      "Data": "2017年12月3日",
+      "UpdataContent": [
+        {
+          "Label": "修复",
+          "Content": "修复有时点击后退按钮报错的BUG"
+        },
+        {
+          "Label": "修复",
+          "Content": "修正SW版科技栏合成材料中干草的贴图"
+        }
+      ]
+    },
+    {
       "Version": "1.2.7",
       "Data": "2017年12月2日",
       "UpdataContent": [
