@@ -775,7 +775,7 @@
 				"Need2Value": 4,
 				"Need3": "G_rocks",
 				"Need3Value": 4,
-				"Introduction": "靠近后为玩家解锁一级科技，制作成功后，当前科技将永久解锁。",
+				"Introduction": "靠近后将暂时解锁玩家一级科技，完成对应物品制作将永久解锁该物品科技。",
 				"Console": "researchlab"
 			}, {
 				"Picture": "S_alchemy_engine",
@@ -788,7 +788,7 @@
 				"Need3": "S_electrical_doodad",
 				"Need3Value": 2,
 				"Unlock": ["S_science_machine"],
-				"Introduction": "靠近后为玩家解锁二级科技，制作成功后，当前科技将永久解锁。",
+				"Introduction": "靠近后将暂时解锁玩家二级科技，完成对应物品制作将永久解锁该物品科技。",
 				"Console": "researchlab2"
 			}, {
 				"Picture": "S_electrical_doodad",
@@ -1018,7 +1018,7 @@
 				"EnName": "Napsack",
 				"Need1": "G_shroom_skin",
 				"Need1Value": 1,
-				"Need2": "G_canary_feather",
+				"Need2": "A_canary_volatile",
 				"Need2Value": 1,
 				"UnlockBlueprint": "G_rare_blueprint",
 				"Introduction": "抛出后会创造一片持续20s的催眠区域，生物进入就会睡着。可以用4次。",
@@ -1534,72 +1534,78 @@
 	},
 	"Refine": {
 		"Science": [
-			{
-				"Picture": "S_rope",
-				"Name": "绳子",
-				"EnName": "Rope",
-				"Need1": "G_cut_grass",
-				"Need1Value": 3,
-				"Unlock": ["S_science_machine"],
-				"Introduction": "高级素材，可进一步合成更多道具装备。",
-				"Console": "rope"
-			}, {
-				"Picture": "S_boards",
-				"Name": "木板",
-				"EnName": "Boards",
-				"Need1": "G_log",
-				"Need1Value": 4,
-				"Unlock": ["S_science_machine"],
-				"Introduction": "高级素材，可进一步合成更多道具，或者建造建筑。",
-				"Console": "boards"
-			}, {
-				"Picture": "S_cut_stone",
-				"Name": "石砖",
-				"EnName": "Cut Stone",
-				"Need1": "G_rocks",
-				"Need1Value": 3,
-				"Unlock": ["S_science_machine"],
-				"Introduction": "高级素材，一些建造需要用到石砖。",
-				"Console": "cutstone"
-			}, {
-				"Picture": "S_papyrus",
-				"Name": "莎草纸",
-				"EnName": "Papyrus",
-				"Need1": "G_cut_reeds",
-				"Need1Value": 4,
-				"Unlock": ["S_science_machine"],
-				"Introduction": "高级素材，可进一步合成其他道具。维克波顿制作书籍必备素材。",
-				"Console": "papyrus"
-			}, {
-				"Picture": "S_wax_paper",
-				"Name": "蜡纸",
-				"EnName": "Wax Paper",
-				"Need1": "S_beeswax",
-				"Need1Value": 1,
-				"Need2": "S_papyrus",
-				"Need2Value": 1,
-				"Unlock": ["S_science_machine"],
-				"Introduction": "可用作包装。",
-				"Console": "waxpaper"
-			}, {
-				"Picture": "S_beeswax",
-				"Name": "蜂蜡",
-				"EnName": "Beeswax",
-				"Need1": "F_honeycomb",
-				"Need1Value": 1,
-				"Unlock": ["S_science_machine"],
-				"Introduction": "夏天或热源附近放在地面，蜂蜡会融化并消失。",
-				"Console": "beeswax"
-			}, {
-				"Picture": "S_marble_bean",
-				"Name": "大理石豆子",
-				"EnName": "Marble Bean",
-				"Need1": "G_marble",
-				"Need1Value": 1,
-				"Unlock": ["S_alchemy_engine"],
-				"Introduction": "种大理石树。",
-				"Console": "marblebean"
-			}, {
+      {
+        "Picture": "S_rope",
+        "Name": "绳子",
+        "EnName": "Rope",
+        "Need1": "G_cut_grass",
+        "Need1Value": 3,
+        "Unlock": [ "S_science_machine" ],
+        "Introduction": "高级素材，可进一步合成更多道具装备。",
+        "Console": "rope"
+      },
+      {
+        "Picture": "S_boards",
+        "Name": "木板",
+        "EnName": "Boards",
+        "Need1": "G_log",
+        "Need1Value": 4,
+        "Unlock": [ "S_science_machine" ],
+        "Introduction": "高级素材，可进一步合成更多道具，或者建造建筑。",
+        "Console": "boards"
+      },
+      {
+        "Picture": "S_cut_stone",
+        "Name": "石砖",
+        "EnName": "Cut Stone",
+        "Need1": "G_rocks",
+        "Need1Value": 3,
+        "Unlock": [ "S_science_machine" ],
+        "Introduction": "高级素材，一些建造需要用到石砖。",
+        "Console": "cutstone"
+      },
+      {
+        "Picture": "S_papyrus",
+        "Name": "莎草纸",
+        "EnName": "Papyrus",
+        "Need1": "G_cut_reeds",
+        "Need1Value": 4,
+        "Unlock": [ "S_science_machine" ],
+        "Introduction": "高级素材，可进一步合成其他道具。维克波顿制作书籍必备素材。",
+        "Console": "papyrus"
+      },
+      {
+        "Picture": "S_wax_paper",
+        "Name": "蜡纸",
+        "EnName": "Wax Paper",
+        "Need1": "S_beeswax",
+        "Need1Value": 1,
+        "Need2": "S_papyrus",
+        "Need2Value": 1,
+        "Unlock": [ "S_science_machine" ],
+        "Introduction": "可用作包装。",
+        "Console": "waxpaper"
+      },
+      {
+        "Picture": "S_beeswax",
+        "Name": "蜂蜡",
+        "EnName": "Beeswax",
+        "Need1": "F_honeycomb",
+        "Need1Value": 1,
+        "Unlock": [ "S_science_machine" ],
+        "Introduction": "夏天或热源附近放在地面，蜂蜡会融化并消失。",
+        "Console": "beeswax"
+      },
+      {
+        "Picture": "S_marble_bean",
+        "Name": "大理石豆子",
+        "EnName": "Marble Bean",
+        "Need1": "G_marble",
+        "Need1Value": 1,
+        "Unlock": [ "S_alchemy_engine" ],
+        "Introduction": "种大理石灌木。",
+        "Console": "marblebean"
+      }, {
 				"Picture": "S_thick_fur",
 				"Name": "厚重的皮毛",
 				"EnName": "Thick Fur",
@@ -1663,7 +1669,7 @@
 				"Need3": "S_top_hat",
 				"Need3Value": 1,
 				"Unlock": ["S_science_machine"],
-				"Introduction": "靠近后为玩家解锁一级魔法，制作成功后，当前魔法将永久解锁。",
+				"Introduction": "靠近后将暂时解锁玩家一级魔法，完成对应物品制作将永久解锁该物品科技。解锁物品科技有10%的几率产生兔子，由于它们无家可归，所以很容易在夜晚捕捉。",
 				"Console": "researchlab4"
 			}, {
 				"Picture": "S_shadow_manipulator",
@@ -1676,7 +1682,7 @@
 				"Need3": "G_nightmare_fuel",
 				"Need3Value": 7,
 				"Unlock": ["S_prestihatitator"],
-				"Introduction": "靠近后为玩家解锁二级魔法，制作成功后，当前魔法将永久解锁。",
+				"Introduction": "靠近后将暂时解锁玩家二级魔法，完成对应物品制作将永久解锁该物品科技。",
 				"Console": "researchlab3"
 			}, {
 				"Picture": "S_meat_effigy",
@@ -2545,7 +2551,7 @@
 				"Need3Value": -35,
 				"Unlock": ["S_codex_umbra"],
 				"UnlockCharcter": "C_waxwell_dst",
-				"Introduction": "麦克斯韦耗费35%(即70点)的精神(上限)召唤出暗影伐斗士，跟随走动，会自动搜寻周围生物猎杀(40攻击力)。拥有100点生命值。"
+				"Introduction": "麦克斯韦耗费35%(即70点)的精神(上限)召唤出暗影伐斗士，跟随走动，会自动搜寻周围生物猎杀(40攻击力)。拥有75点生命值。"
 			}
 		]
 	},

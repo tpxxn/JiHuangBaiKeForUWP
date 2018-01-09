@@ -25,15 +25,15 @@ namespace JiHuangBaiKeForUWP.View.SettingChildPage
     {
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var dimGrayAcrylicBrush = new AcrylicBrush
-            {
-                BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
-                FallbackColor = Colors.Transparent,
-                TintColor = Global.TinkColor,
-                TintOpacity = Global.TinkOpacity
-            };
             if (Global.GetOsVersion() >= 16299)
             {
+				var dimGrayAcrylicBrush = new AcrylicBrush
+				{
+					BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+					FallbackColor = Colors.Transparent,
+					TintColor = Global.TinkColor,
+					TintOpacity = Global.TinkOpacity
+				};
                 RootGrid.Background = dimGrayAcrylicBrush;
             }
         }

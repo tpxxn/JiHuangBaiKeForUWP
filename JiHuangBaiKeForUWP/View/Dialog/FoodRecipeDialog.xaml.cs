@@ -241,12 +241,18 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             {
                 if (picturePath != suggestBoxItem.Picture) continue;
                 var picHead = shortName.Substring(0, 2);
-                var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
+                var extraData = new List<string> { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
                 switch (picHead)
                 {
                     case "F_":
                         rootFrame.Navigate(typeof(FoodPage), extraData);
                         Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
+                        var extraDataString = "";
+                        foreach (var extraDataStr in extraData)
+                        {
+                            extraDataString += extraDataStr + " ";
+                        }
+                        Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataString}\r\n";
                         break;
                     case "FC":
                         // ignore
@@ -254,7 +260,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 }
             }
         }
-
 
         private void ScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
         {

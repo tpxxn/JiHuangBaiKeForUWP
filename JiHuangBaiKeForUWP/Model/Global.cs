@@ -67,6 +67,11 @@ namespace JiHuangBaiKeForUWP.Model
         public static Stack<PageStackItem> PageStack = new Stack<PageStackItem>();
 
         /// <summary>
+        /// 页面堆栈日志
+        /// </summary>
+        public static string PageStackLog;
+
+        /// <summary>
         /// 后退按钮请求处理
         /// </summary>
         public static void App_BackRequested()
@@ -76,6 +81,7 @@ namespace JiHuangBaiKeForUWP.Model
                 PageStack.Pop();
                 var pageStackItem = PageStack.Peek();
                 RootFrame.Navigate(pageStackItem.TypeName, pageStackItem.Object);
+                PageStackLog += $"Pop：TypeName={pageStackItem.TypeName},Object={pageStackItem.Object}\r\n";
             }
         }
         #endregion

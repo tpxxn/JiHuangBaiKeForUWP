@@ -1,6 +1,8 @@
 ﻿using System;
+using Windows.System;
 using Windows.UI;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
@@ -55,6 +57,29 @@ namespace JiHuangBaiKeForUWP.View
             Donation1Image.Source = new BitmapImage(new Uri("ms-appx:///Assets/Pic/QRCode_wx1.png"));
             Donation2Image.Source = new BitmapImage(new Uri("ms-appx:///Assets/Pic/QRCode_wx2.png"));
             Donation5Image.Source = new BitmapImage(new Uri("ms-appx:///Assets/Pic/QRCode_wx5.png"));
+        }
+
+        private async void ReviewButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var uri = new Uri("ms-windows-store://review/?productid=9n91997fd3h3");
+            await Launcher.LaunchUriAsync(uri);
+        }
+
+        private void UIElement_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            var finalPageStack = "";
+            foreach (var pageStackItem in Global.PageStack)
+            {
+                if (pageStackItem.Object != null)
+                {
+                    finalPageStack += pageStackItem.TypeName + " " + pageStackItem.Object + "\r\n";
+                }
+                else
+                {
+                    finalPageStack += pageStackItem.TypeName + "\r\n";
+                }
+            }
+            //PageStackLog.Text = "页面堆栈日志：\r\n" + Global.PageStackLog + "\r\n最终页面堆栈：\r\n" + finalPageStack;
         }
     }
 }

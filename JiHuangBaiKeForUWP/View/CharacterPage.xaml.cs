@@ -50,9 +50,9 @@ namespace JiHuangBaiKeForUWP.View
                 };
                 CharacterStackPanel.Background = dimGrayAcrylicBrush;
             }
-            var parameter = (string[])e.Parameter;
+            var parameter = (List<string>)e.Parameter;
             await Deserialize();
-            if (parameter == null) return;
+            if (parameter == null || parameter.Count == 0) return;
             var _e = parameter[1];
             if (CharacterGridView.Items == null) return;
             foreach (var gridViewItem in _characterData)
@@ -94,6 +94,7 @@ namespace JiHuangBaiKeForUWP.View
             var item = (Character)e.ClickedItem;
             Frame.Navigate(typeof(CharacterDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterDialog), Object = item });
+            Global.PageStackLog += $"Push：TypeName={typeof(CharacterDialog)},Object={item.Name}\r\n";
         }
     }
 }

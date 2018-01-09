@@ -17,7 +17,7 @@ namespace JiHuangBaiKeForUWP.UserControls.Expander.ValueConvert
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            return (Visibility)value == Visibility.Visible ? true : false;
+            return (Visibility)value == Visibility.Visible;
         }
     }
 }

@@ -29,7 +29,19 @@ namespace JiHuangBaiKeForUWP.View
         {
             this.InitializeComponent();
             if (Global.RootFrame.Content != null) ViewNameTextBox.Text = Global.RootFrame.Content.ToString();
-            ErrorStackTextBox.Text = errorStack;
+            var finalPageStack = "";
+            foreach (var pageStackItem in Global.PageStack)
+            {
+                if (pageStackItem.Object != null)
+                {
+                    finalPageStack += pageStackItem.TypeName + " " + pageStackItem.Object + "\r\n";
+                }
+                else
+                {
+                    finalPageStack += pageStackItem.TypeName + "\r\n";
+                }
+            }
+            ErrorStackTextBox.Text = $"错误堆栈：\r\n{errorStack}\r\n页面堆栈日志：\r\n{Global.PageStackLog}\r\n最终页面堆栈：\r\n{finalPageStack}";
         }
 
         private async void SubmitButton_OnTapped(object sender, TappedRoutedEventArgs e)
@@ -60,7 +72,7 @@ namespace JiHuangBaiKeForUWP.View
 
             const string to = "351765204@qq.com";
             const string subject = "《饥荒百科全书 by tpxxn》应用错误报告";
-            var body = $"错误堆栈：{errorStack}  " +
+            var body = $"{errorStack}  " + //错误堆栈
                        $"(程序版本：{GetAppVersion()}, " +
                        $"所在页面：{viewName}, ";
 
@@ -68,6 +80,7 @@ namespace JiHuangBaiKeForUWP.View
             {
                 body += $", 设备名：{deviceInfo.FriendlyName}, " +
                         $"操作系统：{deviceInfo.OperatingSystem}, " +
+                        $"系统版本：{Global.GetOsVersion()}, " +
                         $"SKU：{deviceInfo.SystemSku}, " +
                         $"产品名称：{deviceInfo.SystemProductName}, " +
                         $"制造商：{deviceInfo.SystemManufacturer}, " +

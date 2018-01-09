@@ -102,7 +102,7 @@
         "Need1Value": 3,
         "Need2": "G_rocks",
         "Need2Value": 3,
-        "Need3": "G_cut_grass",
+        "Need3": "G_cut_grass_SW",
         "Need3Value": 6,
         "Introduction": "用于破坏建筑，收回50%以上的建材，一般可以去拆野外的建筑获得资源。",
         "Console": "hammer"
@@ -139,7 +139,7 @@
         "Picture": "S_campfire",
         "Name": "萤火",
         "EnName": "Campfire",
-        "Need1": "G_cut_grass",
+        "Need1": "G_cut_grass_SW",
         "Need1Value": 3,
         "Need2": "G_log",
         "Need2Value": 2,
@@ -174,7 +174,7 @@
         "Picture": "S_torch",
         "Name": "火把",
         "EnName": "Torch",
-        "Need1": "G_cut_grass",
+        "Need1": "G_cut_grass_SW",
         "Need1Value": 2,
         "Need2": "G_twigs",
         "Need2Value": 2,
@@ -196,7 +196,7 @@
         "Picture": "S_endothermic_fire",
         "Name": "吸热火堆",
         "EnName": "Endothermic Fire",
-        "Need1": "G_cut_grass",
+        "Need1": "G_cut_grass_SW",
         "Need1Value": 3,
         "Need2": "G_nitre",
         "Need2Value": 2,
@@ -345,7 +345,7 @@
         "EnName": "Log Raft",
         "Need1": "G_log",
         "Need1Value": 6,
-        "Need2": "G_cut_grass",
+        "Need2": "G_cut_grass_SW",
         "Need2Value": 4,
         "Introduction": "拥有150点耐久度的最基本的船。航行速度：4。",
         "Console": "lograft"
@@ -387,7 +387,7 @@
       },
       {
         "Picture": "S_armoured_boat",
-        "Name": "装甲的船",
+        "Name": "装甲船",
         "EnName": "Armoured Boat",
         "Need1": "S_boards",
         "Need1Value": 6,
@@ -401,7 +401,7 @@
       },
       {
         "Picture": "S_encrusted_boat",
-        "Name": "装甲船",
+        "Name": "硬壳船",
         "EnName": "Encrusted Boat",
         "Need1": "S_boards",
         "Need1Value": 6,
@@ -709,7 +709,7 @@
         "EnName": "Trap",
         "Need1": "G_twigs",
         "Need1Value": 2,
-        "Need2": "G_cut_grass",
+        "Need2": "G_cut_grass_SW",
         "Need2Value": 6,
         "Introduction": "可以用来抓些兔子什么的，材料简单，不需要科技，前期可以很方便地获得小肉。可多次使用。",
         "Console": "trap"
@@ -845,7 +845,7 @@
         "Picture": "S_backpack",
         "Name": "背包",
         "EnName": "Backpack",
-        "Need1": "G_cut_grass",
+        "Need1": "G_cut_grass_SW",
         "Need1Value": 4,
         "Need2": "G_twigs",
         "Need2Value": 4,
@@ -871,7 +871,7 @@
         "Picture": "S_straw_roll",
         "Name": "草铺卷",
         "EnName": "Straw Roll",
-        "Need1": "G_cut_grass",
+        "Need1": "G_cut_grass_SW",
         "Need1Value": 6,
         "Need2": "S_rope",
         "Need2Value": 1,
@@ -985,7 +985,7 @@
         "Picture": "S_basic_farm",
         "Name": "基础农场",
         "EnName": "Basic Farm",
-        "Need1": "G_cut_grass",
+        "Need1": "G_cut_grass_SW",
         "Need1Value": 8,
         "Need2": "G_manure",
         "Need2Value": 4,
@@ -999,7 +999,7 @@
         "Picture": "S_improved_farm",
         "Name": "改良农场",
         "EnName": "Improved Farm",
-        "Need1": "G_cut_grass",
+        "Need1": "G_cut_grass_SW",
         "Need1Value": 10,
         "Need2": "G_manure",
         "Need2Value": 6,
@@ -1119,7 +1119,7 @@
         "Need2Value": 4,
         "Need3": "G_rocks",
         "Need3Value": 4,
-        "Introduction": "靠近后为玩家解锁一级科技，制作成功后，当前科技将永久解锁。",
+        "Introduction": "靠近后将暂时解锁玩家一级科技，完成对应物品制作将永久解锁该物品科技。",
         "Console": "researchlab"
       },
       {
@@ -1133,7 +1133,7 @@
         "Need3": "S_electrical_doodad",
         "Need3Value": 2,
         "Unlock": [ "S_science_machine" ],
-        "Introduction": "靠近后为玩家解锁二级科技，制作成功后，当前科技将永久解锁。",
+        "Introduction": "靠近后将暂时解锁玩家二级科技，完成对应物品制作将永久解锁该物品科技。",
         "Console": "researchlab2"
       },
       {
@@ -1147,7 +1147,7 @@
         "Need3": "S_electrical_doodad",
         "Need3Value": 2,
         "Unlock": [ "S_science_machine" ],
-        "Introduction": "靠近后为玩家解锁二级科技，制作成功后，当前科技将永久解锁。只能在海上建造。",
+        "Introduction": "靠近后将暂时解锁玩家二级科技，完成对应物品制作将永久解锁该物品科技。只能在海上建造。",
         "Console": "researchlab5"
       },
       {
@@ -1247,7 +1247,7 @@
       },
       {
         "Picture": "S_ice_maker_3000",
-        "Name": "造冰机 3000 plus",
+        "Name": "造冰机 3000",
         "EnName": "Ice Maker 3000",
         "Need1": "S_thermal_stone",
         "Need1Value": 1,
@@ -1611,7 +1611,7 @@
         "Picture": "S_hay_wall",
         "Name": "草墙",
         "EnName": "Hay Wall",
-        "Need1": "G_cut_grass",
+        "Need1": "G_cut_grass_SW",
         "Need1Value": 4,
         "Need2": "G_twigs",
         "Need2Value": 2,
@@ -1800,7 +1800,7 @@
         "Picture": "S_rope",
         "Name": "绳圈",
         "EnName": "Rope",
-        "Need1": "G_cut_grass",
+        "Need1": "G_cut_grass_SW",
         "Need1Value": 3,
         "Unlock": [ "S_science_machine" ],
         "Introduction": "高级素材，可进一步合成更多道具装备。",
@@ -1935,7 +1935,7 @@
         "Need3": "G_pirate_hat",
         "Need3Value": 1,
         "Unlock": [ "S_science_machine" ],
-        "Introduction": "靠近后为玩家解锁一级魔法，制作成功后，当前魔法将永久解锁。",
+        "Introduction": "靠近后将暂时解锁玩家一级魔法，完成对应物品制作将永久解锁该物品科技。解锁物品科技有10%的几率产生兔子，由于它们无家可归，所以很容易在夜晚捕捉。",
         "Console": "researchlab4"
       },
       {
@@ -1949,7 +1949,7 @@
         "Need3": "G_nightmare_fuel",
         "Need3Value": 7,
         "Unlock": [ "S_prestihatitator" ],
-        "Introduction": "靠近后为玩家解锁二级魔法，制作成功后，当前魔法将永久解锁。",
+        "Introduction": "靠近后将暂时解锁玩家二级魔法，完成对应物品制作将永久解锁该物品科技。",
         "Console": "researchlab3"
       },
       {
@@ -2171,7 +2171,7 @@
         "Picture": "S_straw_hat",
         "Name": "草帽",
         "EnName": "Straw Hat",
-        "Need1": "G_cut_grass",
+        "Need1": "G_cut_grass_SW",
         "Need1Value": 12,
         "Introduction": "没什么用的帽子，带上去也不能让你变成路飞。它能用来进一步制作矿灯帽或果丛帽。",
         "Console": "strawhat"

@@ -47,9 +47,9 @@ namespace JiHuangBaiKeForUWP.View
                 };
                 NaturalStackPanel.Background = dimGrayAcrylicBrush;
             }
-            var parameter = (string[])e.Parameter;
+            var parameter = (List<string>)e.Parameter;
             await Deserialize();
-            if (parameter == null) return;
+            if (parameter == null || parameter.Count == 0) return;
             var _e = parameter[1];
             switch (parameter[0])
             {
@@ -102,6 +102,7 @@ namespace JiHuangBaiKeForUWP.View
             var item = (Nature)e.ClickedItem;
             Frame.Navigate(typeof(NaturalDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(NaturalDialog), Object = item });
+            Global.PageStackLog += $"Push：TypeName={typeof(NaturalDialog)},Object={item.Name}\r\n";
         }
     }
 }

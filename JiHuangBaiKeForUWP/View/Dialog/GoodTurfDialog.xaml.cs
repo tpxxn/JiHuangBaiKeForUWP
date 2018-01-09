@@ -68,10 +68,18 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             {
                 GoodMakePicButton.Source = StringProcess.GetGameResourcePath(c.Make);
             }
-            //草皮纹理
+            // 草皮纹理
             GoodSourceTextureWrapPanel.Source = new BitmapImage(new Uri(StringProcess.GetGameResourcePath(c.Texture)));
             GoodIntroduction.Text = c.Introduction;
-            ConsolePre.Text = $"c_give(\"{c.Console}\",";
+            // 控制台
+            if (c.Console != null)
+            {
+                ConsolePre.Text = $"c_give(\"{c.Console}\",";
+            }
+            else
+            {
+                CopyGrid.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void ConsoleNum_TextChanged(object sender, TextChangedEventArgs e)
@@ -100,11 +108,17 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
             {
                 if (picturePath != suggestBoxItem.Picture) continue;
-                string[] extraData = { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
+                var extraData = new List<string> { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
                 frameTitle.Text = "科技";
                 Global.PageJump(3);
                 rootFrame.Navigate(typeof(SciencePage), extraData);
                 Global.PageStack.Push(new PageStackItem { TypeName = typeof(SciencePage), Object = extraData });
+                var extraDataString = "";
+                foreach (var extraDataStr in extraData)
+                {
+                    extraDataString += extraDataStr + " ";
+                }
+                Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataString}\r\n";
             }
         }
 

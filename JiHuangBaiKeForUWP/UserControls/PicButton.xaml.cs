@@ -16,7 +16,7 @@ namespace JiHuangBaiKeForUWP.UserControls
         }
 
         public static readonly DependencyProperty SourceProperty =
-            DependencyProperty.Register("Source", typeof(string), typeof(PicButton), new PropertyMetadata(false, OnSourceChang));
+            DependencyProperty.Register("Source", typeof(string), typeof(PicButton), new PropertyMetadata(string.Empty, OnSourceChang));
 
         private static void OnSourceChang(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -43,7 +43,7 @@ namespace JiHuangBaiKeForUWP.UserControls
         }
 
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(PicButton), new PropertyMetadata(false, OnTextChang));
+            DependencyProperty.Register("Text", typeof(string), typeof(PicButton), new PropertyMetadata(string.Empty, OnTextChang));
 
         private static void OnTextChang(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -70,7 +70,7 @@ namespace JiHuangBaiKeForUWP.UserControls
         }
 
         public static readonly DependencyProperty PictureSizeProperty =
-            DependencyProperty.Register("PictureSize", typeof(double), typeof(PicButton), new PropertyMetadata(false, OnPictureSizeChang));
+            DependencyProperty.Register("PictureSize", typeof(double), typeof(PicButton), new PropertyMetadata((double)35, OnPictureSizeChang));
 
         private static void OnPictureSizeChang(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
