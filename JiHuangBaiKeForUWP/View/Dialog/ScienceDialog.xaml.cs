@@ -142,16 +142,34 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         Global.PageJump(1);
                         rootFrame.Navigate(typeof(FoodPage), extraData);
                         Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
+                        var extraDataStringFood = "";
+                        foreach (var extraDataStr in extraData)
+                        {
+                            extraDataStringFood += extraDataStr + " ";
+                        }
+                        Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataStringFood}\r\n";
                         break;
                     case "S":
                         rootFrame.Navigate(typeof(SciencePage), extraData);
                         Global.PageStack.Push(new PageStackItem { TypeName = typeof(SciencePage), Object = extraData });
+                        var extraDataStringScience = "";
+                        foreach (var extraDataStr in extraData)
+                        {
+                            extraDataStringScience += extraDataStr + " ";
+                        }
+                        Global.PageStackLog += $"Push：TypeName={typeof(SciencePage)},Object={extraDataStringScience}\r\n";
                         break;
                     case "G":
                         frameTitle.Text = "物品";
                         Global.PageJump(6);
                         rootFrame.Navigate(typeof(GoodPage), extraData);
                         Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPage), Object = extraData });
+                        var extraDataStringGood = "";
+                        foreach (var extraDataStr in extraData)
+                        {
+                            extraDataStringGood += extraDataStr + " ";
+                        }
+                        Global.PageStackLog += $"Push：TypeName={typeof(GoodPage)},Object={extraDataStringGood}\r\n";
                         break;
                 }
             }
@@ -171,6 +189,12 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 Global.PageJump(0);
                 rootFrame.Navigate(typeof(CharacterPage), extraData);
                 Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterPage), Object = extraData });
+                var extraDataString = "";
+                foreach (var extraDataStr in extraData)
+                {
+                    extraDataString += extraDataStr + " ";
+                }
+                Global.PageStackLog += $"Push：TypeName={typeof(CharacterPage)},Object={extraDataString}\r\n";
             }
         }
 

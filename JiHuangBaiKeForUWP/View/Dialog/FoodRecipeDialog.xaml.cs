@@ -247,6 +247,12 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     case "F_":
                         rootFrame.Navigate(typeof(FoodPage), extraData);
                         Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
+                        var extraDataString = "";
+                        foreach (var extraDataStr in extraData)
+                        {
+                            extraDataString += extraDataStr + " ";
+                        }
+                        Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataString}\r\n";
                         break;
                     case "FC":
                         // ignore
@@ -254,7 +260,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 }
             }
         }
-
 
         private void ScrollViewer_Tapped(object sender, TappedRoutedEventArgs e)
         {

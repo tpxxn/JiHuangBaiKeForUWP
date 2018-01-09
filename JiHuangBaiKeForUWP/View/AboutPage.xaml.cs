@@ -64,5 +64,22 @@ namespace JiHuangBaiKeForUWP.View
             var uri = new Uri("ms-windows-store://review/?productid=9n91997fd3h3");
             await Launcher.LaunchUriAsync(uri);
         }
+
+        private void UIElement_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            var finalPageStack = "";
+            foreach (var pageStackItem in Global.PageStack)
+            {
+                if (pageStackItem.Object != null)
+                {
+                    finalPageStack += pageStackItem.TypeName + " " + pageStackItem.Object + "\r\n";
+                }
+                else
+                {
+                    finalPageStack += pageStackItem.TypeName + "\r\n";
+                }
+            }
+            //PageStackLog.Text = "页面堆栈日志：\r\n" + Global.PageStackLog + "\r\n最终页面堆栈：\r\n" + finalPageStack;
+        }
     }
 }

@@ -25,7 +25,7 @@ using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View;
 
 // 对话框示例
-// var contentDialog = new ContentDialog()
+// var contentDialog = new ContentDialog
 // {
 //     Title = "测试",
 //     Content = "加载当前页面错误，可能需要翻墙(～￣▽￣)～",
@@ -76,6 +76,7 @@ namespace JiHuangBaiKeForUWP
             // 默认页
             RootFrame.SourcePageType = typeof(CharacterPage);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterPage) });
+            Global.PageStackLog += $"Push：TypeName={typeof(CharacterPage)},Object=\r\n";
             // 设置SearchAutoSuggestBox的ItemSource属性
             SearchAutoSuggestBox.ItemsSource = Global.AutoSuggestBoxItem;
             // 设置主题
@@ -294,6 +295,7 @@ namespace JiHuangBaiKeForUWP
             {
                 RootFrame.Navigate(hamburgerMenuItem.NavigatePage);
                 Global.PageStack.Push(new PageStackItem { TypeName = hamburgerMenuItem.NavigatePage });
+                Global.PageStackLog += $"Push：TypeName={hamburgerMenuItem.NavigatePage},Object=\r\n";
                 Global.FrameTitle.Text = hamburgerMenuItem.Text;
             }
         }
@@ -488,6 +490,11 @@ namespace JiHuangBaiKeForUWP
         /// <param name="extraData">额外数据</param>
         private void AutoSuggestNavigate(string[] extraData)
         {
+            var extraDataString = "";
+            foreach (var extraDataStr in extraData)
+            {
+                extraDataString += extraDataStr + " ";
+            }
             switch (extraData[2])
             {
                 case "人物":
@@ -495,36 +502,42 @@ namespace JiHuangBaiKeForUWP
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[0]);
                     RootFrame.Navigate(typeof(CharacterPage), extraData);
                     Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterPage), Object = extraData });
+                    Global.PageStackLog += $"Push：TypeName={typeof(CharacterPage)},Object={extraDataString}\r\n";
                     break;
                 case "食物":
                     Global.FrameTitle.Text = "食物";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[1]);
                     RootFrame.Navigate(typeof(FoodPage), extraData);
                     Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
+                    Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataString}\r\n";
                     break;
                 case "科技":
                     Global.FrameTitle.Text = "科技";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[3]);
                     RootFrame.Navigate(typeof(SciencePage), extraData);
                     Global.PageStack.Push(new PageStackItem { TypeName = typeof(SciencePage), Object = extraData });
+                    Global.PageStackLog += $"Push：TypeName={typeof(SciencePage)},Object={extraDataString}\r\n";
                     break;
                 case "生物":
                     Global.FrameTitle.Text = "生物";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[4]);
                     RootFrame.Navigate(typeof(CreaturePage), extraData);
                     Global.PageStack.Push(new PageStackItem { TypeName = typeof(CreaturePage), Object = extraData });
+                    Global.PageStackLog += $"Push：TypeName={typeof(CreaturePage)},Object={extraDataString}\r\n";
                     break;
                 case "自然":
                     Global.FrameTitle.Text = "自然";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[5]);
                     RootFrame.Navigate(typeof(NaturalPage), extraData);
                     Global.PageStack.Push(new PageStackItem { TypeName = typeof(NaturalPage), Object = extraData });
+                    Global.PageStackLog += $"Push：TypeName={typeof(NaturalPage)},Object={extraDataString}\r\n";
                     break;
                 case "物品":
                     Global.FrameTitle.Text = "物品";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[6]);
                     RootFrame.Navigate(typeof(GoodPage), extraData);
                     Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPage), Object = extraData });
+                    Global.PageStackLog += $"Push：TypeName={typeof(GoodPage)},Object={extraDataString}\r\n";
                     break;
             }
         }
@@ -540,8 +553,10 @@ namespace JiHuangBaiKeForUWP
         {
             if (Global.PageStack.Count > 1)
             {
-                Global.PageStack.Pop();
+                var pageStackItemUseless = Global.PageStack.Pop();
+                Global.PageStackLog += $"Pop：TypeName={pageStackItemUseless.TypeName},Object={pageStackItemUseless.Object}\r\n";
                 var pageStackItem = Global.PageStack.Peek();
+                Global.PageStackLog += $"Peek：TypeName={pageStackItem.TypeName},Object={pageStackItem.Object}\r\n";
                 RootFrame.Navigate(pageStackItem.TypeName, pageStackItem.Object);
                 switch (pageStackItem.TypeName.ToString())
                 {

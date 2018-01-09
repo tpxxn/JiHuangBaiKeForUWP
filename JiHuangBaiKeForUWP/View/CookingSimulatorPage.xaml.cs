@@ -642,14 +642,14 @@ namespace JiHuangBaiKeForUWP.View
                     CsFtVegetables += 1;
                     break;
                 case "F_seaweed":
-                    CsFtVegetables += 0.5;
+                    CsFtVegetables += 1;
                     CsFtSeaweed += 1;
                     break;
                 case "F_roasted_seaweed":
-                    CsFtVegetables += 0.5;
+                    CsFtVegetables += 1;
                     break;
                 case "F_dried_seaweed":
-                    CsFtVegetables += 0.5;
+                    CsFtVegetables += 1;
                     break;
                 #endregion
                 #region 水果
@@ -774,6 +774,7 @@ namespace JiHuangBaiKeForUWP.View
                     break;
                 case "F_royal_jelly":
                     CsFtRoyalJelly += 1;
+                    CsFtSweetener += 3;
                     break;
                 case "F_twigs":
                     CsFtTwigs += 1;
@@ -852,7 +853,7 @@ namespace JiHuangBaiKeForUWP.View
             // 便携式烹饪锅的四种食物
             if (Global.GameVersion == 4)
             {
-                if (CsFtVegetables == 1 && CsFtNeonQuattro == 1 && CsFtPierrotFish == 1 && CsFtPurpleGrouper == 1)
+                if (CsFtVegetables >= 0.5 && CsFtNeonQuattro == 1 && CsFtPierrotFish == 1 && CsFtPurpleGrouper == 1)
                     CS_CrockPotListAddFood("F_tropical_bouillabaisse", 40);
                 if (PortableCrockPotToggleSwitch.IsOn)
                 {
@@ -1057,7 +1058,7 @@ namespace JiHuangBaiKeForUWP.View
                 case "F_monster_tartare":
                     return "怪物鞑靼";
                 case "F_mussel_bouillabaise":
-                    return "贝类淡菜汤";
+                    return "贻贝浓汤";
                 case "F_sweet_potato_souffle":
                     return "薯蛋奶酥";
                 case "F_lobster_bisque":
@@ -1183,9 +1184,15 @@ namespace JiHuangBaiKeForUWP.View
                 if (picturePath != StringProcess.GetFileName(suggestBoxItem.Picture)) continue;
                 frameTitle.Text = "食物";
                 Global.PageJump(1);
-                var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
+                var extraData = new List<string> { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
                 rootFrame.Navigate(typeof(FoodPage), extraData);
                 Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
+                var extraDataString = "";
+                foreach (var extraDataStr in extraData)
+                {
+                    extraDataString += extraDataStr + " ";
+                }
+                Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataString}\r\n";
                 break;
             }
         }

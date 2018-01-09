@@ -222,6 +222,7 @@ namespace JiHuangBaiKeForUWP.View
             var item = (FoodRecipe2)e.ClickedItem;
             Frame.Navigate(typeof(FoodRecipeDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodRecipeDialog), Object = item });
+            Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={item.Name}\r\n";
         }
 
         private void FoodGridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -235,6 +236,7 @@ namespace JiHuangBaiKeForUWP.View
             var item = (Food)e.ClickedItem;
             Frame.Navigate(typeof(FoodDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodDialog), Object = item });
+            Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={item.Name}\r\n";
         }
 
         private void Expander_Tapped(object sender, TappedRoutedEventArgs e)
@@ -242,6 +244,7 @@ namespace JiHuangBaiKeForUWP.View
             if (e.OriginalSource.ToString() == "Windows.UI.Xaml.Controls.Grid")
             {
                 var pageStackItem = Global.PageStack.Pop();
+                Global.PageStackLog += $"Pop：TypeName={pageStackItem.TypeName},Object={pageStackItem.Object}\r\n";
                 var pageNavigationInfo = (List<string>)pageStackItem.Object ?? new List<string>();
                 if (pageNavigationInfo.Count == 0)
                     for (var i = 0; i < 3; i++)
@@ -255,6 +258,12 @@ namespace JiHuangBaiKeForUWP.View
                     }
                 pageNavigationInfo.AddRange(RootStackPanel.Children.Select(expander => ((Expander)expander).IsExPanded.ToString()));
                 Global.PageStack.Push(new PageStackItem { TypeName = pageStackItem.TypeName, Object = pageNavigationInfo });
+                var pageNavigationInfoString = "";
+                foreach (var pageNavigationInfoStr in pageNavigationInfo)
+                {
+                    pageNavigationInfoString += pageNavigationInfoStr + " ";
+                }
+                Global.PageStackLog += $"Push：TypeName={pageStackItem.TypeName},Object={pageNavigationInfoString}\r\n";
             }
             else
             {
@@ -264,7 +273,14 @@ namespace JiHuangBaiKeForUWP.View
                 if (pageNavigationInfo.Count > 0)
                     pageNavigationInfo[2] = RootScrollViewer.VerticalOffset.ToString();
                 Global.PageStack.Push(new PageStackItem { TypeName = pageStackItem.TypeName, Object = pageNavigationInfo });
+                var pageNavigationInfoString = "";
+                foreach (var pageNavigationInfoStr in pageNavigationInfo)
+                {
+                    pageNavigationInfoString += pageNavigationInfoStr + " ";
+                }
+                Global.PageStackLog += $"Push：TypeName={pageStackItem.TypeName},Object={pageNavigationInfoString}\r\n";
                 Global.PageStack.Push(pageStackItemClickItem);
+                Global.PageStackLog += $"Push：TypeName={pageStackItemClickItem.TypeName},Object={pageStackItemClickItem.Object}\r\n";
             }
         }
     }

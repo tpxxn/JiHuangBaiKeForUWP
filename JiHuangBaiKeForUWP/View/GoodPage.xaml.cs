@@ -45,18 +45,18 @@ namespace JiHuangBaiKeForUWP.View
             if (e.NavigationMode == NavigationMode.Back)
             {
                 MaterialEntranceTransition.FromVerticalOffset = 0;
-				EquipmentEntranceTransition.FromVerticalOffset = 0;
-				SaplingEntranceTransition.FromVerticalOffset = 0;
-				CreaturesEntranceTransition.FromVerticalOffset = 0;
-				TrinketsEntranceTransition.FromVerticalOffset = 0;
-				TurfEntranceTransition.FromVerticalOffset = 0;
-				PetEntranceTransition.FromVerticalOffset = 0;
-				UnlockEntranceTransition.FromVerticalOffset = 0;
-				HallowedNightsEntranceTransition.FromVerticalOffset = 0;
-				WintersFeastEntranceTransition.FromVerticalOffset = 0;
-				YearOfTheGobblerEntranceTransition.FromVerticalOffset = 0;
-				ComponentEntranceTransition.FromVerticalOffset = 0;
-				OthersEntranceTransition.FromVerticalOffset = 0;
+                EquipmentEntranceTransition.FromVerticalOffset = 0;
+                SaplingEntranceTransition.FromVerticalOffset = 0;
+                CreaturesEntranceTransition.FromVerticalOffset = 0;
+                TrinketsEntranceTransition.FromVerticalOffset = 0;
+                TurfEntranceTransition.FromVerticalOffset = 0;
+                PetEntranceTransition.FromVerticalOffset = 0;
+                UnlockEntranceTransition.FromVerticalOffset = 0;
+                HallowedNightsEntranceTransition.FromVerticalOffset = 0;
+                WintersFeastEntranceTransition.FromVerticalOffset = 0;
+                YearOfTheGobblerEntranceTransition.FromVerticalOffset = 0;
+                ComponentEntranceTransition.FromVerticalOffset = 0;
+                OthersEntranceTransition.FromVerticalOffset = 0;
             }
             if (Global.GetOsVersion() >= 16299)
             {
@@ -77,7 +77,7 @@ namespace JiHuangBaiKeForUWP.View
                 //展开之前展开的Expander
                 for (var i = 3; i < parameter.Count; i++)
                 {
-                    ((Expander) RootStackPanel.Children[i - 3]).IsExPanded = parameter[i] == "True";
+                    ((Expander)RootStackPanel.Children[i - 3]).IsExPanded = parameter[i] == "True";
                 }
                 //ScrollViewer滚动到指定位置
                 if (!string.IsNullOrEmpty(parameter[2]))
@@ -390,11 +390,12 @@ namespace JiHuangBaiKeForUWP.View
             var item = (GoodMaterial)e.ClickedItem;
             Frame.Navigate(typeof(GoodMaterialDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodMaterialDialog), Object = item });
+            Global.PageStackLog += $"Push：TypeName={typeof(GoodMaterialDialog)},Object={item.Name}\r\n";
         }
 
         private void GoodEquipmentGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-			if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
+            if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
                 var root = (FrameworkElement)container.ContentTemplateRoot;
                 var image = (UIElement)root.FindName("Image");
@@ -403,11 +404,12 @@ namespace JiHuangBaiKeForUWP.View
             var item = (GoodEquipment)e.ClickedItem;
             Frame.Navigate(typeof(GoodEquipmentDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodEquipmentDialog), Object = item });
+            Global.PageStackLog += $"Push：TypeName={typeof(GoodEquipmentDialog)},Object={item.Name}\r\n";
         }
 
         private void GoodSaplingGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-			if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
+            if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
                 var root = (FrameworkElement)container.ContentTemplateRoot;
                 var image = (UIElement)root.FindName("Image");
@@ -416,11 +418,12 @@ namespace JiHuangBaiKeForUWP.View
             var item = (GoodSapling)e.ClickedItem;
             Frame.Navigate(typeof(GoodSaplingDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodSaplingDialog), Object = item });
+            Global.PageStackLog += $"Push：TypeName={typeof(GoodSaplingDialog)},Object={item.Name}\r\n";
         }
 
         private void GoodCreaturesGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-			if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
+            if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
                 var root = (FrameworkElement)container.ContentTemplateRoot;
                 var image = (UIElement)root.FindName("Image");
@@ -429,11 +432,12 @@ namespace JiHuangBaiKeForUWP.View
             var item = (GoodCreatures)e.ClickedItem;
             Frame.Navigate(typeof(GoodCreaturesDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodCreaturesDialog), Object = item });
+            Global.PageStackLog += $"Push：TypeName={typeof(GoodCreaturesDialog)},Object={item.Name}\r\n";
         }
-        
+
         private void GoodTurfGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-			if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
+            if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
                 var root = (FrameworkElement)container.ContentTemplateRoot;
                 var image = (UIElement)root.FindName("Image");
@@ -442,11 +446,12 @@ namespace JiHuangBaiKeForUWP.View
             var item = (GoodTurf)e.ClickedItem;
             Frame.Navigate(typeof(GoodTurfDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodTurfDialog), Object = item });
+            Global.PageStackLog += $"Push：TypeName={typeof(GoodTurfDialog)},Object={item.Name}\r\n";
         }
 
         private void GoodPetGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-			if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
+            if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
                 var root = (FrameworkElement)container.ContentTemplateRoot;
                 var image = (UIElement)root.FindName("Image");
@@ -455,11 +460,12 @@ namespace JiHuangBaiKeForUWP.View
             var item = (GoodPet)e.ClickedItem;
             Frame.Navigate(typeof(GoodPetDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPetDialog), Object = item });
+            Global.PageStackLog += $"Push：TypeName={typeof(GoodPetDialog)},Object={item.Name}\r\n";
         }
 
         private void GoodUnlockGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-			if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
+            if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
                 var root = (FrameworkElement)container.ContentTemplateRoot;
                 var image = (UIElement)root.FindName("Image");
@@ -468,11 +474,12 @@ namespace JiHuangBaiKeForUWP.View
             var item = (GoodUnlock)e.ClickedItem;
             Frame.Navigate(typeof(GoodUnlockDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodUnlockDialog), Object = item });
+            Global.PageStackLog += $"Push：TypeName={typeof(GoodUnlockDialog)},Object={item.Name}\r\n";
         }
 
         private void GoodGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-			if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
+            if (((GridView)sender).ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
                 var root = (FrameworkElement)container.ContentTemplateRoot;
                 var image = (UIElement)root.FindName("Image");
@@ -481,6 +488,7 @@ namespace JiHuangBaiKeForUWP.View
             var item = (Good)e.ClickedItem;
             Frame.Navigate(typeof(GoodDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodDialog), Object = item });
+            Global.PageStackLog += $"Push：TypeName={typeof(GoodDialog)},Object={item.Name}\r\n";
         }
 
         private void Expander_Tapped(object sender, TappedRoutedEventArgs e)
@@ -488,6 +496,7 @@ namespace JiHuangBaiKeForUWP.View
             if (e.OriginalSource.ToString() == "Windows.UI.Xaml.Controls.Grid")
             {
                 var pageStackItem = Global.PageStack.Pop();
+                Global.PageStackLog += $"Pop：TypeName={pageStackItem.TypeName},Object={pageStackItem.Object}\r\n";
                 var pageNavigationInfo = (List<string>)pageStackItem.Object ?? new List<string>();
                 if (pageNavigationInfo.Count == 0)
                     for (var i = 0; i < 3; i++)
@@ -501,6 +510,12 @@ namespace JiHuangBaiKeForUWP.View
                     }
                 pageNavigationInfo.AddRange(RootStackPanel.Children.Select(expander => ((Expander)expander).IsExPanded.ToString()));
                 Global.PageStack.Push(new PageStackItem { TypeName = pageStackItem.TypeName, Object = pageNavigationInfo });
+                var pageNavigationInfoString = "";
+                foreach (var pageNavigationInfoStr in pageNavigationInfo)
+                {
+                    pageNavigationInfoString += pageNavigationInfoStr + " ";
+                }
+                Global.PageStackLog += $"Push：TypeName={pageStackItem.TypeName},Object={pageNavigationInfoString}\r\n";
             }
             else
             {
@@ -510,7 +525,14 @@ namespace JiHuangBaiKeForUWP.View
                 if (pageNavigationInfo.Count > 0)
                     pageNavigationInfo[2] = RootScrollViewer.VerticalOffset.ToString();
                 Global.PageStack.Push(new PageStackItem { TypeName = pageStackItem.TypeName, Object = pageNavigationInfo });
+                var pageNavigationInfoString = "";
+                foreach (var pageNavigationInfoStr in pageNavigationInfo)
+                {
+                    pageNavigationInfoString += pageNavigationInfoStr + " ";
+                }
+                Global.PageStackLog += $"Push：TypeName={pageStackItem.TypeName},Object={pageNavigationInfoString}\r\n";
                 Global.PageStack.Push(pageStackItemClickItem);
+                Global.PageStackLog += $"Push：TypeName={pageStackItemClickItem.TypeName},Object={pageStackItemClickItem.Object}\r\n";
             }
         }
     }

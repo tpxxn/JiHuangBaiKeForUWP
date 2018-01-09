@@ -21,7 +21,7 @@
         <TextBlock Text="饥荒百科全书 by tpxxn 错误报告" FontSize="25" TextAlignment="Center"/>
         <StackPanel Grid.Row="1" Margin="0,10,0,0">
             <TextBox x:Name="ViewNameTextBox" Header="视图名称" IsReadOnly="True" Foreground="Gray" />
-            <TextBox x:Name="ErrorStackTextBox" Header="错误堆栈" IsReadOnly="True" Foreground="Gray" Height="200" TextWrapping="Wrap"/>
+            <TextBox x:Name="ErrorStackTextBox" Header="错误信息" IsReadOnly="True" Foreground="Gray" Height="200" TextWrapping="Wrap"/>
             <CheckBox x:Name="DeviceInfoCheckBox" Content="发送我的设备信息" IsChecked="True"/>
             <TextBlock Text="* 错误报告将用你的个人邮箱直接发送给APP作者，发送前请检查是否包含敏感信息" TextWrapping="Wrap" Foreground="Gray" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,10,0">

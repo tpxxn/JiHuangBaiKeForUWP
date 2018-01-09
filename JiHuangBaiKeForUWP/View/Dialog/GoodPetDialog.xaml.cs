@@ -118,6 +118,12 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 Global.PageJump(4);
                 rootFrame.Navigate(typeof(CreaturePage), extraData);
                 Global.PageStack.Push(new PageStackItem { TypeName = typeof(CreaturePage), Object = extraData });
+                var extraDataString = "";
+                foreach (var extraDataStr in extraData)
+                {
+                    extraDataString += extraDataStr + " ";
+                }
+                Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataString}\r\n";
             }
         }
 

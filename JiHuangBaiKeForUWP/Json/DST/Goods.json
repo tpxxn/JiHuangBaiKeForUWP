@@ -198,7 +198,6 @@
           "S_drying_rack",
           "S_crock_pot",
           "S_potter's_wheel",
-          "S_divining_rod",
           "S_battle_spear",
           "S_spear",
           "S_ham_bat",
@@ -237,7 +236,7 @@
           "S_improved_farm",
           "S_grass_suit",
           "S_hay_wall",
-		  "S_trusty_tape",
+          "S_trusty_tape",
           "S_straw_hat",
           "S_rope"
         ],
@@ -574,7 +573,7 @@
           "S_siesta_lean-to",
           "S_boomerang",
           "S_spider_eggs",
-		  "S_trusty_tape",
+          "S_trusty_tape",
           "S_sewing_kit",
           "S_top_hat",
           "S_winter_hat",
@@ -968,7 +967,7 @@
         "Console": "foliage"
       },
       {
-        "Picture": "G_Succulent",
+        "Picture": "N_succulent_1",
         "Name": "肉质植物",
         "EnName": "Succulent",
         "Science": [
@@ -1245,7 +1244,7 @@
           "A_toadstool",
           "A_misery_toadstool"
         ],
-        "Introduction": "蓝图科技材料(TGP翻译作死...)",
+        "Introduction": "蓝图科技材料(WeGame翻译作死...)",
         "Console": "shroom_skin"
       },
       {
@@ -1268,7 +1267,7 @@
         "SourceCreature": [
           "A_antlion"
         ],
-		"Introduction": "制作怠惰的逃亡者的必要材料，来源于蚁狮",
+        "Introduction": "制作怠惰的逃亡者的必要材料，来源于蚁狮",
         "Console": "townportaltalisman"
       }
     ]
@@ -1695,7 +1694,7 @@
         "EnName": "Tail o' Three Cats",
         "Attack": 27.2,
         "Durability": "175次",
-        "Introduction": "驯牛神器。",
+        "Introduction": "攻击生物有可能产生小火花或大火花，如果打出大火花会平息生物对你的仇恨(例如牛)。",
         "Console": "whip"
       },
       {
@@ -2278,6 +2277,12 @@
         "Console": "Canary"
       },
       {
+        "Picture": "A_canary_volatile",
+        "Name": "金丝雀(不稳定)",
+        "EnName": "Canary(Volatile)",
+        "Console": "Canary"
+      },
+      {
         "Picture": "A_crow",
         "Name": "乌鸦",
         "EnName": "Crow",
@@ -2809,120 +2814,204 @@
         "Picture": "G_cubic_zirkonia_Ball",
         "Name": "方晶锆石球",
         "EnName": "Cubic Zirkonia Ball",
-        "Introduction": "与猪王交易，可换取8个万圣节糖果。",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
         "Console": "trinket_32"
       },
       {
         "Picture": "G_spider_ring",
         "Name": "蜘蛛戒指",
         "EnName": "Spider Ring",
-        "Introduction": "与猪王交易，可换取8个万圣节糖果。",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
         "Console": "trinket_33"
       },
       {
         "Picture": "G_monkey_paw",
         "Name": "猴爪",
         "EnName": "Monkey Paw",
-        "Introduction": "与猪王交易，可换取8个万圣节糖果。",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
         "Console": "trinket_34"
       },
       {
         "Picture": "G_empty_elixir",
         "Name": "空的炼药瓶",
         "EnName": "Empty Elixir",
-        "Introduction": "与猪王交易，可换取8个万圣节糖果。",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
         "Console": "trinket_35"
       },
       {
         "Picture": "G_faux_fangs",
         "Name": "人造獠牙",
         "EnName": "Faux Fangs",
-        "Introduction": "与猪王交易，可换取8个万圣节糖果。",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
         "Console": "trinket_36"
       },
       {
         "Picture": "G_broken_stake",
         "Name": "断桩",
         "EnName": "Broken Stake",
-        "Introduction": "与猪王交易，可换取8个万圣节糖果。",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
         "Console": "trinket_37"
+      },
+      {
+        "Picture": "G_binoculars",
+        "Name": "双筒望远镜",
+        "EnName": "Binoculars",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
+        "Console": "trinket_38"
+      },
+      {
+        "Picture": "G_lone_glove",
+        "Name": "孤独的手套",
+        "EnName": "Lone Glove",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
+        "Console": "trinket_39"
+      },
+      {
+        "Picture": "G_snail_scale",
+        "Name": "蜗牛鳞片",
+        "EnName": "Snail Scale",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
+        "Console": "trinket_40"
+      },
+      {
+        "Picture": "G_goop_canister",
+        "Name": "粘糊罐子",
+        "EnName": "Goop Canister",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
+        "Console": "trinket_41"
+      },
+      {
+        "Picture": "G_toy_cobra",
+        "Name": "玩具眼镜蛇",
+        "EnName": "Toy Cobra",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
+        "Console": "trinket_42"
+      },
+      {
+        "Picture": "G_crocodile_toy",
+        "Name": "鳄鱼玩具",
+        "EnName": "Crocodile Toy",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
+        "Console": "trinket_43"
+      },
+      {
+        "Picture": "G_broken_terrarium",
+        "Name": "破碎的玻璃球",
+        "EnName": "Broken Terrarium",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
+        "Console": "trinket_44"
+      },
+      {
+        "Picture": "G_odd_radio",
+        "Name": "古怪的收音机",
+        "EnName": "Odd Radio",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
+        "Console": "trinket_45"
+      },
+      {
+        "Picture": "G_broken_hairdryer",
+        "Name": "破碎的吹风机",
+        "EnName": "Broken Hairdryer",
+        "Introduction": "与猪王交易，可换取8个万圣节糖果和3个金子。",
+        "Console": "trinket_46"
       },
       {
         "Picture": "G_candy_apple",
         "Name": "焦糖苹果",
         "EnName": "Candy Apple",
-        "Introduction": "万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。",
+        "Introduction": "万圣节糖果。食用时可恢复生命1点，精神1点，饥饿1点。",
         "Console": "halloweencandy_1"
       },
       {
         "Picture": "G_candy_corn",
         "Name": "玉米糖",
         "EnName": "Candy Corn",
-        "Introduction": "万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。",
+        "Introduction": "万圣节糖果。食用时可恢复生命1点，精神2点，饥饿0点。",
         "Console": "halloweencandy_2"
       },
       {
         "Picture": "G_not_so_candy_corn",
         "Name": "不怎么甜的玉米",
         "EnName": "Not-So-Candy Corn",
-        "Introduction": "万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。",
+        "Introduction": "万圣节糖果。食用时可恢复生命1点，精神0点，饥饿2点。",
         "Console": "halloweencandy_3"
       },
       {
         "Picture": "G_gummy_spider",
         "Name": "粘性蜘蛛糖",
         "EnName": "Gummy Spider",
-        "Introduction": "万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。",
+        "Introduction": "万圣节糖果。食用时可恢复生命2点，精神1点，饥饿0点。",
         "Console": "halloweencandy_4"
       },
       {
         "Picture": "G_catcoon_candy",
         "Name": "浣猫糖",
         "EnName": "Catcoon Candy",
-        "Introduction": "万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。",
+        "Introduction": "万圣节糖果。食用时可恢复生命1点，精神2点，饥饿0点。",
         "Console": "halloweencandy_5"
       },
       {
         "Picture": "G_raisins_1",
         "Name": "“葡萄干”",
         "EnName": "\"Raisins\"",
-        "Introduction": "万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。",
+        "Introduction": "万圣节糖果。食用时可恢复生命2点，精神0点，饥饿1点。",
         "Console": "halloweencandy_6"
       },
       {
         "Picture": "G_raisins",
         "Name": "葡萄干",
         "EnName": "Raisins",
-        "Introduction": "万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。",
+        "Introduction": "万圣节糖果。食用时可恢复生命2点，精神1点，饥饿0点。",
         "Console": "halloweencandy_7"
       },
       {
         "Picture": "G_ghost_pop",
         "Name": "鬼魂棒棒糖",
         "EnName": "Ghost Pop",
-        "Introduction": "万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。",
+        "Introduction": "万圣节糖果。食用时可恢复生命1点，精神2点，饥饿0点。",
         "Console": "halloweencandy_8"
       },
       {
         "Picture": "G_jelly_worm",
         "Name": "蠕虫果冻",
         "EnName": "Jelly Worm",
-        "Introduction": "万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。",
+        "Introduction": "万圣节糖果。食用时可恢复生命1点，精神0点，饥饿2点。",
         "Console": "halloweencandy_9"
       },
       {
         "Picture": "G_tentacle_lolli",
         "Name": "触手棒棒糖",
         "EnName": "Tentacle Lolli",
-        "Introduction": "万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。",
+        "Introduction": "万圣节糖果。食用时可恢复生命2点，精神1点，饥饿0点。",
         "Console": "halloweencandy_10"
       },
       {
         "Picture": "G_choco_pigs",
         "Name": "猪人巧克力",
         "EnName": "Choco Pigs",
-        "Introduction": "万圣节糖果。食用时可恢复生命0-3点，精神0-3点，饥饿0-3点。",
+        "Introduction": "万圣节糖果。食用时可恢复生命1点，精神1点，饥饿1点。",
         "Console": "halloweencandy_11"
+      },
+      {
+        "Picture": "G_candy_lice",
+        "Name": "米虱糖",
+        "EnName": "Candy Lice",
+        "Introduction": "万圣节糖果。食用时可恢复生命1点，精神0点，饥饿2点。",
+        "Console": "halloweencandy_12"
+      },
+      {
+        "Picture": "G_otherworldly_jawbreaker",
+        "Name": "外世界硬糖",
+        "EnName": "Otherworldly Jawbreaker",
+        "Introduction": "万圣节糖果。食用时可恢复生命1点，精神2点，饥饿0点。",
+        "Console": "halloweencandy_13"
+      },
+      {
+        "Picture": "G_lava_pepper",
+        "Name": "岩浆胡椒",
+        "EnName": "Lava Pepper",
+        "Introduction": "万圣节糖果。食用时可恢复生命1点，精神2点，饥饿0点。",
+        "Console": "halloweencandy_14"
       }
     ]
   },
@@ -2953,7 +3042,7 @@
         "Picture": "G_eternal_fruitcake",
         "Name": "不朽的水果蛋糕",
         "EnName": "Eternal Fruitcake",
-        "Introduction": "打怪随机掉落。食用时可恢复饥饿6点，但精神、生命-2。还是留着喂猪吧……",
+        "Introduction": "打怪随机掉落。食用时可恢复饥饿6点，但精神、生命-2。玩家无法食用！还是留着喂猪吧……",
         "Console": "winter_food4"
       },
       {
@@ -3048,6 +3137,34 @@
         "Console": "winter_ornament_plain8"
       },
       {
+        "Picture": "G_festive_bauble_9",
+        "Name": "圣诞装饰品",
+        "EnName": "Festive Bauble",
+        "Introduction": "装饰圣诞树。",
+        "Console": "winter_ornament_plain9"
+      },
+      {
+        "Picture": "G_festive_bauble_10",
+        "Name": "圣诞装饰品",
+        "EnName": "Festive Bauble",
+        "Introduction": "装饰圣诞树。",
+        "Console": "winter_ornament_plain10"
+      },
+      {
+        "Picture": "G_festive_bauble_11",
+        "Name": "圣诞装饰品",
+        "EnName": "Festive Bauble",
+        "Introduction": "装饰圣诞树。",
+        "Console": "winter_ornament_plain11"
+      },
+      {
+        "Picture": "G_festive_bauble_12",
+        "Name": "圣诞装饰品",
+        "EnName": "Festive Bauble",
+        "Introduction": "装饰圣诞树。",
+        "Console": "winter_ornament_plain12"
+      },
+      {
         "Picture": "G_redyellow_festive_bauble",
         "Name": "圣诞装饰品",
         "EnName": "Red/Yellow Festive Bauble",
@@ -3074,6 +3191,34 @@
         "EnName": "Blue/Yellow Festive Bauble",
         "Introduction": "装饰圣诞树。",
         "Console": "winter_ornament_fancy4"
+      },
+      {
+        "Picture": "G_festive_bauble_fancy_5",
+        "Name": "圣诞装饰品",
+        "EnName": "Festive Bauble",
+        "Introduction": "装饰圣诞树。",
+        "Console": "winter_ornament_fancy5"
+      },
+      {
+        "Picture": "G_festive_bauble_fancy_6",
+        "Name": "圣诞装饰品",
+        "EnName": "Festive Bauble",
+        "Introduction": "装饰圣诞树。",
+        "Console": "winter_ornament_fancy6"
+      },
+      {
+        "Picture": "G_festive_bauble_fancy_7",
+        "Name": "圣诞装饰品",
+        "EnName": "Festive Bauble",
+        "Introduction": "装饰圣诞树。",
+        "Console": "winter_ornament_fancy7"
+      },
+      {
+        "Picture": "G_festive_bauble_fancy_8",
+        "Name": "圣诞装饰品",
+        "EnName": "Festive Bauble",
+        "Introduction": "装饰圣诞树。",
+        "Console": "winter_ornament_fancy8"
       },
       {
         "Picture": "G_magnificent_adornment_bearger",
@@ -3118,6 +3263,48 @@
         "Console": "winter_ornament_boss_toadstool"
       },
       {
+        "Picture": "G_magnificent_adornment_antlion",
+        "Name": "华丽的装饰品",
+        "EnName": "Magnificent Adornment Antlion",
+        "Introduction": "Boss掉落，装饰圣诞树。",
+        "Console": "winter_ornament_boss_antlion"
+      },
+      {
+        "Picture": "G_magnificent_adornment_fuelweaver",
+        "Name": "华丽的装饰品",
+        "EnName": "Magnificent Adornment Ancient Fuelweaver",
+        "Introduction": "Boss掉落，装饰圣诞树。",
+        "Console": "winter_ornament_boss_fuelweaver"
+      },
+      {
+        "Picture": "G_magnificent_adornment_klaus",
+        "Name": "华丽的装饰品",
+        "EnName": "Magnificent Adornment Klaus",
+        "Introduction": "Boss掉落，装饰圣诞树。",
+        "Console": "winter_ornament_boss_klaus"
+      },
+      {
+        "Picture": "G_magnificent_adornment_krampus",
+        "Name": "华丽的装饰品",
+        "EnName": "Magnificent Adornment Krampus",
+        "Introduction": "Boss掉落，装饰圣诞树。",
+        "Console": "winter_ornament_boss_krampus"
+      },
+      {
+        "Picture": "G_magnificent_adornment_noeyered",
+        "Name": "华丽的装饰品",
+        "EnName": "Magnificent Adornment Red Gem Deer",
+        "Introduction": "Boss掉落，装饰圣诞树。",
+        "Console": "winter_ornament_boss_noeyered"
+      },
+      {
+        "Picture": "G_magnificent_adornment_noeyeblue",
+        "Name": "华丽的装饰品",
+        "EnName": "Magnificent Adornment Blue Gem Deer",
+        "Introduction": "Boss掉落，装饰圣诞树。",
+        "Console": "winter_ornament_boss_noeyeblue"
+      },
+      {
         "Picture": "G_red_festive_light",
         "Name": "圣诞彩灯",
         "EnName": "Red Festive Light",
@@ -3144,6 +3331,34 @@
         "EnName": "White Festive Light",
         "Introduction": "装饰圣诞树或者填充蘑菇灯，矿灯帽，哈奇等发光设备。",
         "Console": "winter_ornament_light4"
+      },
+      {
+        "Picture": "G_red_festive_light_2",
+        "Name": "圣诞彩灯",
+        "EnName": "Red Festive Light",
+        "Introduction": "装饰圣诞树或者填充蘑菇灯，矿灯帽，哈奇等发光设备。",
+        "Console": "winter_ornament_light5"
+      },
+      {
+        "Picture": "G_green_festive_light_2",
+        "Name": "圣诞彩灯",
+        "EnName": "Green Festive Light",
+        "Introduction": "装饰圣诞树或者填充蘑菇灯，矿灯帽，哈奇等发光设备。",
+        "Console": "winter_ornament_light6"
+      },
+      {
+        "Picture": "G_blue_festive_light_2",
+        "Name": "圣诞彩灯",
+        "EnName": "Blue Festive Light",
+        "Introduction": "装饰圣诞树或者填充蘑菇灯，矿灯帽，哈奇等发光设备。",
+        "Console": "winter_ornament_light7"
+      },
+      {
+        "Picture": "G_white_festive_light_2",
+        "Name": "圣诞彩灯",
+        "EnName": "White Festive Light",
+        "Introduction": "装饰圣诞树或者填充蘑菇灯，矿灯帽，哈奇等发光设备。",
+        "Console": "winter_ornament_light8"
       }
     ]
   },

@@ -133,10 +133,22 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         Global.PageJump(1);
                         rootFrame.Navigate(typeof(FoodPage), extraData);
                         Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
+                        var extraDataStringFood = "";
+                        foreach (var extraDataStr in extraData)
+                        {
+                            extraDataStringFood += extraDataStr + " ";
+                        }
+                        Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataStringFood}\r\n";
                         break;
                     case "G":
                         rootFrame.Navigate(typeof(GoodPage), extraData);
                         Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPage), Object = extraData });
+                        var extraDataStringGood = "";
+                        foreach (var extraDataStr in extraData)
+                        {
+                            extraDataStringGood += extraDataStr + " ";
+                        }
+                        Global.PageStackLog += $"Push：TypeName={typeof(GoodPage)},Object={extraDataStringGood}\r\n";
                         break;
                 }
             }

@@ -1131,12 +1131,24 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                             Global.PageJump(1);
                             rootFrame.Navigate(typeof(FoodPage), extraData);
                             Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
+                            var extraDataStringFood = "";
+                            foreach (var extraDataStr in extraData)
+                            {
+                                extraDataStringFood += extraDataStr + " ";
+                            }
+                            Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataStringFood}\r\n";
                             break;
                         case "S":
                             frameTitle.Text = "科技";
                             Global.PageJump(3);
                             rootFrame.Navigate(typeof(SciencePage), extraData);
                             Global.PageStack.Push(new PageStackItem { TypeName = typeof(SciencePage), Object = extraData });
+                            var extraDataStringScience = "";
+                            foreach (var extraDataStr in extraData)
+                            {
+                                extraDataStringScience += extraDataStr + " ";
+                            }
+                            Global.PageStackLog += $"Push：TypeName={typeof(SciencePage)},Object={extraDataStringScience}\r\n";
                             break;
                         case "A":
                         case "G":
@@ -1144,6 +1156,12 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                             Global.PageJump(6);
                             rootFrame.Navigate(typeof(GoodPage), extraData);
                             Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPage), Object = extraData });
+                            var extraDataStringGood = "";
+                            foreach (var extraDataStr in extraData)
+                            {
+                                extraDataStringGood += extraDataStr + " ";
+                            }
+                            Global.PageStackLog += $"Push：TypeName={typeof(GoodPage)},Object={extraDataStringGood}\r\n";
                             break;
                     }
                 }

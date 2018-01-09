@@ -130,11 +130,11 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             {
                 try
                 {
-                    var regularExpressionsResult = System.Text.RegularExpressions.Regex.Replace(c.Durability, @"[^0-9]+", "");
-                    var doubleResult = double.Parse(regularExpressionsResult);
+                    var regularExpressionsResultValue = System.Text.RegularExpressions.Regex.Replace(c.Durability, @"[^\d.]+", "");
+                    var doubleResult = double.Parse(regularExpressionsResultValue);
                     GoodDurability.Value = doubleResult;
-                    var regularExpressionsResult2 = System.Text.RegularExpressions.Regex.Replace(c.Durability, @"[0-9]+", "");
-                    GoodDurability.Unit = regularExpressionsResult2;
+                    var regularExpressionsResultUnit = System.Text.RegularExpressions.Regex.Replace(c.Durability, @"[\d.]+", "");
+                    GoodDurability.Unit = regularExpressionsResultUnit;
                     GoodDurability.BarColor = Global.ColorBlue;
                 }
                 catch
@@ -272,6 +272,12 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 Global.PageJump(4);
                 rootFrame.Navigate(typeof(CreaturePage), extraData);
                 Global.PageStack.Push(new PageStackItem { TypeName = typeof(CreaturePage), Object = extraData });
+                var extraDataString = "";
+                foreach (var extraDataStr in extraData)
+                {
+                    extraDataString += extraDataStr + " ";
+                }
+                Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataString}\r\n";
             }
         }
 
