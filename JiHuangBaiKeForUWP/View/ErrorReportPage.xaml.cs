@@ -29,18 +29,6 @@ namespace JiHuangBaiKeForUWP.View
         {
             this.InitializeComponent();
             if (Global.RootFrame.Content != null) ViewNameTextBox.Text = Global.RootFrame.Content.ToString();
-            var finalPageStack = "";
-            foreach (var pageStackItem in Global.PageStack)
-            {
-                if (pageStackItem.Object != null)
-                {
-                    finalPageStack += pageStackItem.TypeName + " " + pageStackItem.Object + "\r\n";
-                }
-                else
-                {
-                    finalPageStack += pageStackItem.TypeName + "\r\n";
-                }
-            }
             ErrorStackTextBox.Text = $"{errorStack}";
         }
 
