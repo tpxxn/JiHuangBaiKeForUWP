@@ -894,6 +894,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             fishsWrapPanel.Children.Add(new PicButton
             {
                 Source = StringProcess.GetGameResourcePath("G_dubloons"),
+                Margin = new Thickness(5, 0, 0, 0),
                 Text = "×1"
             });
             fishsWrapPanel.Children.Add(new PicButton

@@ -58,7 +58,7 @@ namespace JiHuangBaiKeForUWP.View
 
         private async void GithubButton_OnTapped(object sender, TappedRoutedEventArgs e)
         {
-            await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/tpxxn/JiHuangBaiKeForUWP/issues"));
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/tpxxn/JiHuangBaiKeForUWP/issues/new"));
         }
 
         private async void QqButton_OnTapped(object sender, TappedRoutedEventArgs e)
