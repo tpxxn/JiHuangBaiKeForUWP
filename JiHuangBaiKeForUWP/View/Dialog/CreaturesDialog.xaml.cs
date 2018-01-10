@@ -948,6 +948,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             // 1
             var rTs1StackPanel = new StackPanel
             {
+                Margin = new Thickness(5, 0, 0, 0),
                 Orientation = Orientation.Horizontal
             };
             var recipe1PicButton = new PicButton
