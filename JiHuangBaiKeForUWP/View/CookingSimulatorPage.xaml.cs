@@ -1192,7 +1192,6 @@ namespace JiHuangBaiKeForUWP.View
                 {
                     extraDataString += extraDataStr + " ";
                 }
-                Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataString}\r\n";
                 break;
             }
         }

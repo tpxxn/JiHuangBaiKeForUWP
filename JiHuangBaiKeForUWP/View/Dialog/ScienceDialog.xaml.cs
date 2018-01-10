@@ -147,7 +147,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         {
                             extraDataStringFood += extraDataStr + " ";
                         }
-                        Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataStringFood}\r\n";
                         break;
                     case "S":
                         rootFrame.Navigate(typeof(SciencePage), extraData);
@@ -157,7 +156,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         {
                             extraDataStringScience += extraDataStr + " ";
                         }
-                        Global.PageStackLog += $"Push：TypeName={typeof(SciencePage)},Object={extraDataStringScience}\r\n";
                         break;
                     case "G":
                         frameTitle.Text = "物品";
@@ -169,7 +167,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         {
                             extraDataStringGood += extraDataStr + " ";
                         }
-                        Global.PageStackLog += $"Push：TypeName={typeof(GoodPage)},Object={extraDataStringGood}\r\n";
                         break;
                 }
             }
@@ -194,7 +191,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 {
                     extraDataString += extraDataStr + " ";
                 }
-                Global.PageStackLog += $"Push：TypeName={typeof(CharacterPage)},Object={extraDataString}\r\n";
             }
         }
 

@@ -1138,7 +1138,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                             {
                                 extraDataStringFood += extraDataStr + " ";
                             }
-                            Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataStringFood}\r\n";
                             break;
                         case "S":
                             frameTitle.Text = "科技";
@@ -1150,7 +1149,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                             {
                                 extraDataStringScience += extraDataStr + " ";
                             }
-                            Global.PageStackLog += $"Push：TypeName={typeof(SciencePage)},Object={extraDataStringScience}\r\n";
                             break;
                         case "A":
                         case "G":
@@ -1163,7 +1161,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                             {
                                 extraDataStringGood += extraDataStr + " ";
                             }
-                            Global.PageStackLog += $"Push：TypeName={typeof(GoodPage)},Object={extraDataStringGood}\r\n";
                             break;
                     }
                 }

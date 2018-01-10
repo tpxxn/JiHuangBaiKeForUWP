@@ -146,7 +146,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         {
                             extraDataStringScience += extraDataStr + " ";
                         }
-                        Global.PageStackLog += $"Push：TypeName={typeof(SciencePage)},Object={extraDataStringScience}\r\n";
                         break;
                     case "A":
                         frameTitle.Text = "生物";
@@ -158,7 +157,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         {
                             extraDataStringCreature += extraDataStr + " ";
                         }
-                        Global.PageStackLog += $"Push：TypeName={typeof(CreaturePage)},Object={extraDataStringCreature}\r\n";
                         break;
                 }
             }

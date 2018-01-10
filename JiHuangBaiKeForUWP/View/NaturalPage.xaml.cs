@@ -102,7 +102,6 @@ namespace JiHuangBaiKeForUWP.View
             var item = (Nature)e.ClickedItem;
             Frame.Navigate(typeof(NaturalDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(NaturalDialog), Object = item });
-            Global.PageStackLog += $"Push：TypeName={typeof(NaturalDialog)},Object={item.Name}\r\n";
         }
     }
 }

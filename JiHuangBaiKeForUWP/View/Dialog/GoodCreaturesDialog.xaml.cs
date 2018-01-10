@@ -138,7 +138,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         {
                             extraDataStringFood += extraDataStr + " ";
                         }
-                        Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataStringFood}\r\n";
                         break;
                     case "G":
                         rootFrame.Navigate(typeof(GoodPage), extraData);
@@ -148,7 +147,6 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         {
                             extraDataStringGood += extraDataStr + " ";
                         }
-                        Global.PageStackLog += $"Push：TypeName={typeof(GoodPage)},Object={extraDataStringGood}\r\n";
                         break;
                 }
             }

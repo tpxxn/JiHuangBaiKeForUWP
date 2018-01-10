@@ -65,12 +65,7 @@ namespace JiHuangBaiKeForUWP.Model
         /// 页面堆栈
         /// </summary>
         public static Stack<PageStackItem> PageStack = new Stack<PageStackItem>();
-
-        /// <summary>
-        /// 页面堆栈日志
-        /// </summary>
-        public static string PageStackLog;
-
+        
         /// <summary>
         /// 后退按钮请求处理
         /// </summary>
@@ -81,7 +76,6 @@ namespace JiHuangBaiKeForUWP.Model
                 PageStack.Pop();
                 var pageStackItem = PageStack.Peek();
                 RootFrame.Navigate(pageStackItem.TypeName, pageStackItem.Object);
-                PageStackLog += $"Pop：TypeName={pageStackItem.TypeName},Object={pageStackItem.Object}\r\n";
             }
         }
         #endregion
@@ -159,37 +153,6 @@ namespace JiHuangBaiKeForUWP.Model
             return version >> 16 & 0xFFFF;
         }
         #endregion
-
-        /// <summary>
-        /// DimGray色亚克力笔刷
-        /// </summary>
-        //public static AcrylicBrush DimGrayAcrylicBrush = new AcrylicBrush
-        //{
-        //    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
-        //    FallbackColor = Colors.Transparent,
-        //    TintColor = Global.TinkColor,
-        //    TintOpacity = Global.TinkOpacity
-        //};
-        //public static AcrylicBrush DarkSlateGrayAcrylicBrush = new AcrylicBrush
-        //{
-        //    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
-        //    FallbackColor = Colors.Transparent,
-        //    TintColor = Color.FromArgb(255, 47, 79, 79),
-        //    TintOpacity = 0.5
-        //};
-        //public static AcrylicBrush LightSlateGrayAcrylicBrush = new AcrylicBrush
-        //{
-        //    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
-        //    FallbackColor = Colors.Transparent,
-        //    TintColor = Color.FromArgb(255, 119, 136, 153),
-        //    TintOpacity = 0.5
-        //};
-
-        ///// <summary>
-        ///// RevealStyle
-        ///// </summary>
-        //public static Style GridViewItemRevealStyle = (Style)Application.Current.Resources["GridViewItemRevealStyle"];
-        //public static Style ButtonRevealStyle = (Style)Application.Current.Resources["ButtonRevealStyle"];
 
         #region 颜色常量
         public static Color AccentColor = (Color)Application.Current.Resources["SystemAccentColor"];
@@ -1100,3 +1063,34 @@ namespace JiHuangBaiKeForUWP.Model
         #endregion
     }
 }
+
+///// <summary>
+///// DimGray色亚克力笔刷
+///// </summary>
+//public static AcrylicBrush DimGrayAcrylicBrush = new AcrylicBrush
+//{
+//    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+//    FallbackColor = Colors.Transparent,
+//    TintColor = Global.TinkColor,
+//    TintOpacity = Global.TinkOpacity
+//};
+//public static AcrylicBrush DarkSlateGrayAcrylicBrush = new AcrylicBrush
+//{
+//    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+//    FallbackColor = Colors.Transparent,
+//    TintColor = Color.FromArgb(255, 47, 79, 79),
+//    TintOpacity = 0.5
+//};
+//public static AcrylicBrush LightSlateGrayAcrylicBrush = new AcrylicBrush
+//{
+//    BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+//    FallbackColor = Colors.Transparent,
+//    TintColor = Color.FromArgb(255, 119, 136, 153),
+//    TintOpacity = 0.5
+//};
+
+///// <summary>
+///// RevealStyle
+///// </summary>
+//public static Style GridViewItemRevealStyle = (Style)Application.Current.Resources["GridViewItemRevealStyle"];
+//public static Style ButtonRevealStyle = (Style)Application.Current.Resources["ButtonRevealStyle"];

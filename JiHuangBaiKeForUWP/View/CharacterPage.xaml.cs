@@ -94,7 +94,6 @@ namespace JiHuangBaiKeForUWP.View
             var item = (Character)e.ClickedItem;
             Frame.Navigate(typeof(CharacterDialog), item);
             Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterDialog), Object = item });
-            Global.PageStackLog += $"Push：TypeName={typeof(CharacterDialog)},Object={item.Name}\r\n";
         }
     }
 }
