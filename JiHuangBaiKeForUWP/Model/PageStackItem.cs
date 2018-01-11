@@ -8,7 +8,14 @@ namespace JiHuangBaiKeForUWP.Model
 {
     public class PageStackItem
     {
-        public Type TypeName { get; set; }
-        public object Object { get; set; }
+        /// <summary>
+        /// 页面类型
+        /// </summary>
+        public Type SourcePageType { get; set; }
+
+        /// <summary>
+        /// 页面参数
+        /// </summary>
+        public object Parameter { get; set; }
     }
 }

@@ -1184,15 +1184,9 @@ namespace JiHuangBaiKeForUWP.View
                 if (picturePath != StringProcess.GetFileName(suggestBoxItem.Picture)) continue;
                 frameTitle.Text = "食物";
                 Global.PageJump(1);
-                var extraData = new List<string> { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
-                rootFrame.Navigate(typeof(FoodPage), extraData);
-                Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
-                var extraDataString = "";
-                foreach (var extraDataStr in extraData)
-                {
-                    extraDataString += extraDataStr + " ";
-                }
-                Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataString}\r\n";
+                var viewViewExtraData = new ViewExtraData { Classify = suggestBoxItem.SourcePath, Picture = suggestBoxItem.Picture };
+                rootFrame.Navigate(typeof(FoodPage), viewViewExtraData);
+                Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(FoodPage), Parameter = viewViewExtraData });
                 break;
             }
         }

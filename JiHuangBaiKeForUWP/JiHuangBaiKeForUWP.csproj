@@ -104,6 +104,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\CallExternalContent.cs" />
+    <Compile Include="Model\ExtraData.cs" />
     <Compile Include="Model\GoodsJson.cs" />
     <Compile Include="Model\HamburgerMenuItem.cs" />
     <Compile Include="Model\NaturalJson.cs" />
@@ -284,6 +285,7 @@
     <Content Include="Assets\GameResources\Foods\F_purple_grouper.png" />
     <Content Include="Assets\GameResources\Foods\F_rainbow_jellyfish.png" />
     <Content Include="Assets\GameResources\Foods\F_roe.png" />
+    <Content Include="Assets\GameResources\Foods\F_succulent.png" />
     <Content Include="Assets\GameResources\Foods\F_tropical_bouillabaisse.png" />
     <Content Include="Assets\GameResources\Goods\G_ancient_key.png" />
     <Content Include="Assets\GameResources\Goods\G_apple_cider.png" />

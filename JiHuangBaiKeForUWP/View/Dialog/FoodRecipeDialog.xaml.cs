@@ -241,18 +241,12 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             {
                 if (picturePath != suggestBoxItem.Picture) continue;
                 var picHead = shortName.Substring(0, 2);
-                var extraData = new List<string> { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
+                var viewExtraData = new ViewExtraData { Classify = suggestBoxItem.SourcePath, Picture = suggestBoxItem.Picture };
                 switch (picHead)
                 {
                     case "F_":
-                        rootFrame.Navigate(typeof(FoodPage), extraData);
-                        Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
-                        var extraDataString = "";
-                        foreach (var extraDataStr in extraData)
-                        {
-                            extraDataString += extraDataStr + " ";
-                        }
-                        Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataString}\r\n";
+                        rootFrame.Navigate(typeof(FoodPage), viewExtraData);
+                        Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(FoodPage), Parameter = viewExtraData });
                         break;
                     case "FC":
                         // ignore

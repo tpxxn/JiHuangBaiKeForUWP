@@ -29,19 +29,7 @@ namespace JiHuangBaiKeForUWP.View
         {
             this.InitializeComponent();
             if (Global.RootFrame.Content != null) ViewNameTextBox.Text = Global.RootFrame.Content.ToString();
-            var finalPageStack = "";
-            foreach (var pageStackItem in Global.PageStack)
-            {
-                if (pageStackItem.Object != null)
-                {
-                    finalPageStack += pageStackItem.TypeName + " " + pageStackItem.Object + "\r\n";
-                }
-                else
-                {
-                    finalPageStack += pageStackItem.TypeName + "\r\n";
-                }
-            }
-            ErrorStackTextBox.Text = $"错误堆栈：\r\n{errorStack}\r\n页面堆栈日志：\r\n{Global.PageStackLog}\r\n最终页面堆栈：\r\n{finalPageStack}";
+            ErrorStackTextBox.Text = $"{errorStack}";
         }
 
         private async void SubmitButton_OnTapped(object sender, TappedRoutedEventArgs e)
@@ -58,7 +46,7 @@ namespace JiHuangBaiKeForUWP.View
 
         private async void GithubButton_OnTapped(object sender, TappedRoutedEventArgs e)
         {
-            await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/tpxxn/JiHuangBaiKeForUWP/issues"));
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/tpxxn/JiHuangBaiKeForUWP/issues/new"));
         }
 
         private async void QqButton_OnTapped(object sender, TappedRoutedEventArgs e)

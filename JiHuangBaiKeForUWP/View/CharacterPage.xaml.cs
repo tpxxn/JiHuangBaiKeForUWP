@@ -50,17 +50,22 @@ namespace JiHuangBaiKeForUWP.View
                 };
                 CharacterStackPanel.Background = dimGrayAcrylicBrush;
             }
-            var parameter = (List<string>)e.Parameter;
+            var extraData = (ViewExtraData)e.Parameter;
             await Deserialize();
-            if (parameter == null || parameter.Count == 0) return;
-            var _e = parameter[1];
-            if (CharacterGridView.Items == null) return;
-            foreach (var gridViewItem in _characterData)
+            if (extraData != null)
             {
-                var character = gridViewItem;
-                if (character == null || character.Picture != _e) continue;
-                Frame.Navigate(typeof(CharacterDialog), character);
-                break;
+                // ReSharper disable once InconsistentNaming
+                var _e = extraData.Picture;
+                if (CharacterGridView.Items != null)
+                {
+                    foreach (var gridViewItem in _characterData)
+                    {
+                        var character = gridViewItem;
+                        if (character == null || character.Picture != _e) continue;
+                        Frame.Navigate(typeof(CharacterDialog), character);
+                        break;
+                    }
+                }
             }
         }
 
@@ -93,8 +98,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             var item = (Character)e.ClickedItem;
             Frame.Navigate(typeof(CharacterDialog), item);
-            Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterDialog), Object = item });
-            Global.PageStackLog += $"Push：TypeName={typeof(CharacterDialog)},Object={item.Name}\r\n";
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(CharacterDialog), Parameter = item });
         }
     }
 }

@@ -86,103 +86,102 @@ namespace JiHuangBaiKeForUWP.View
                 };
                 RootStackPanel.Background = dimGrayAcrylicBrush;
             }
-            var parameter = (List<string>)e.Parameter;
+            var extraData = (ViewExtraData)e.Parameter;
             await Deserialize();
-            if (parameter == null || parameter.Count == 0) return;
-            if (parameter.Count > 3)
+            if (extraData != null)
             {
-                //展开之前展开的Expander
-                for (var i = 3; i < parameter.Count; i++)
+                if (extraData.ExpandedList != null)
                 {
-                    ((Expander)RootStackPanel.Children[i - 3]).IsExPanded = parameter[i] == "True";
+                    //展开之前展开的Expander
+                    for (var i = 0; i < extraData.ExpandedList.Count; i++)
+                    {
+                        ((Expander) RootStackPanel.Children[i]).IsExPanded = extraData.ExpandedList[i] == "True";
+                    }
                 }
                 //ScrollViewer滚动到指定位置
-                if (!string.IsNullOrEmpty(parameter[2]))
+                RootScrollViewer.UpdateLayout();
+                RootScrollViewer.ChangeView(null, extraData.ScrollViewerVerticalOffset, null, true);
+                //导航到指定页面
+                var _e = extraData.Picture;
+                switch (extraData.Classify)
                 {
-                    RootScrollViewer.UpdateLayout();
-                    RootScrollViewer.ChangeView(null, double.Parse(parameter[2]), null, true);
+                    case "ScienceTool":
+                        ToolExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceToolGridView, _scienceToolData, _e);
+                        break;
+                    case "ScienceLight":
+                        LightExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceLightGridView, _scienceLightData, _e);
+                        break;
+                    case "ScienceNautical":
+                        NauticalExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceNauticalGridView, _scienceNauticalData, _e);
+                        break;
+                    case "ScienceSurvival":
+                        SurvivalExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceSurvivalGridView, _scienceSurvivalData, _e);
+                        break;
+                    case "ScienceFood":
+                        FoodExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceFoodGridView, _scienceFoodData, _e);
+                        break;
+                    case "ScienceTechnology":
+                        TechnologyExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceTechnologyGridView, _scienceTechnologyData, _e);
+                        break;
+                    case "ScienceFight":
+                        FightExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceFightGridView, _scienceFightData, _e);
+                        break;
+                    case "ScienceStructure":
+                        StructuresExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceStructureGridView, _scienceStructureData, _e);
+                        break;
+                    case "ScienceRefine":
+                        RefineExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceRefineGridView, _scienceRefineData, _e);
+                        break;
+                    case "ScienceMagic":
+                        MagicExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceMagicGridView, _scienceMagicData, _e);
+                        break;
+                    case "ScienceDress":
+                        DressExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceDressGridView, _scienceDressData, _e);
+                        break;
+                    case "ScienceAncient":
+                        AncientExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceAncientGridView, _scienceAncientData, _e);
+                        break;
+                    case "ScienceBook":
+                        BooksExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceBookGridView, _scienceBookData, _e);
+                        break;
+                    case "ScienceShadow":
+                        ShadowExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceShadowGridView, _scienceShadowData, _e);
+                        break;
+                    case "ScienceCritter":
+                        CritterExpaner.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceCritterGridView, _scienceCritterData, _e);
+                        break;
+                    case "ScienceSculpt":
+                        SculptExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceSculptGridView, _scienceSculptData, _e);
+                        break;
+                    case "ScienceCartography":
+                        CartographyExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceCartographyGridView, _scienceCartographyData, _e);
+                        break;
+                    case "ScienceOfferings":
+                        OfferingsExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceOfferingsGridView, _scienceOfferingsData, _e);
+                        break;
+                    case "ScienceVolcano":
+                        VolcanoExpander.IsExPanded = true;
+                        OnNavigatedToScienceDialog(ScienceVolcanoGridView, _scienceVolcanoData, _e);
+                        break;
                 }
-            }
-            //导航到指定页面
-            var _e = parameter[1];
-            switch (parameter[0])
-            {
-                case "ScienceTool":
-                    ToolExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceToolGridView, _scienceToolData, _e);
-                    break;
-                case "ScienceLight":
-                    LightExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceLightGridView, _scienceLightData, _e);
-                    break;
-                case "ScienceNautical":
-                    NauticalExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceNauticalGridView, _scienceNauticalData, _e);
-                    break;
-                case "ScienceSurvival":
-                    SurvivalExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceSurvivalGridView, _scienceSurvivalData, _e);
-                    break;
-                case "ScienceFood":
-                    FoodExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceFoodGridView, _scienceFoodData, _e);
-                    break;
-                case "ScienceTechnology":
-                    TechnologyExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceTechnologyGridView, _scienceTechnologyData, _e);
-                    break;
-                case "ScienceFight":
-                    FightExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceFightGridView, _scienceFightData, _e);
-                    break;
-                case "ScienceStructure":
-                    StructuresExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceStructureGridView, _scienceStructureData, _e);
-                    break;
-                case "ScienceRefine":
-                    RefineExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceRefineGridView, _scienceRefineData, _e);
-                    break;
-                case "ScienceMagic":
-                    MagicExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceMagicGridView, _scienceMagicData, _e);
-                    break;
-                case "ScienceDress":
-                    DressExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceDressGridView, _scienceDressData, _e);
-                    break;
-                case "ScienceAncient":
-                    AncientExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceAncientGridView, _scienceAncientData, _e);
-                    break;
-                case "ScienceBook":
-                    BooksExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceBookGridView, _scienceBookData, _e);
-                    break;
-                case "ScienceShadow":
-                    ShadowExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceShadowGridView, _scienceShadowData, _e);
-                    break;
-                case "ScienceCritter":
-                    CritterExpaner.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceCritterGridView, _scienceCritterData, _e);
-                    break;
-                case "ScienceSculpt":
-                    SculptExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceSculptGridView, _scienceSculptData, _e);
-                    break;
-                case "ScienceCartography":
-                    CartographyExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceCartographyGridView, _scienceCartographyData, _e);
-                    break;
-                case "ScienceOfferings":
-                    OfferingsExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceOfferingsGridView, _scienceOfferingsData, _e);
-                    break;
-                case "ScienceVolcano":
-                    VolcanoExpander.IsExPanded = true;
-                    OnNavigatedToScienceDialog(ScienceVolcanoGridView, _scienceVolcanoData, _e);
-                    break;
             }
         }
 
@@ -415,8 +414,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             var item = (Science)e.ClickedItem;
             Frame.Navigate(typeof(ScienceDialog), item);
-            Global.PageStack.Push(new PageStackItem { TypeName = typeof(ScienceDialog), Object = item });
-            Global.PageStackLog += $"Push：TypeName={typeof(ScienceDialog)},Object={item.Name}\r\n";
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(ScienceDialog), Parameter = item });
         }
 
         private void Expander_Tapped(object sender, TappedRoutedEventArgs e)
@@ -424,43 +422,26 @@ namespace JiHuangBaiKeForUWP.View
             if (e.OriginalSource.ToString() == "Windows.UI.Xaml.Controls.Grid")
             {
                 var pageStackItem = Global.PageStack.Pop();
-                Global.PageStackLog += $"Pop：TypeName={pageStackItem.TypeName},Object={pageStackItem.Object}\r\n";
-                var pageNavigationInfo = (List<string>)pageStackItem.Object ?? new List<string>();
-                if (pageNavigationInfo.Count == 0)
-                    for (var i = 0; i < 3; i++)
-                    {
-                        pageNavigationInfo.Add(string.Empty);
-                    }
-                else
-                    for (var i = pageNavigationInfo.Count; i > 3; i--)
-                    {
-                        pageNavigationInfo.RemoveAt(i - 1);
-                    }
-                pageNavigationInfo.AddRange(RootStackPanel.Children.Select(expander => ((Expander)expander).IsExPanded.ToString()));
-                Global.PageStack.Push(new PageStackItem { TypeName = pageStackItem.TypeName, Object = pageNavigationInfo });
-                var pageNavigationInfoString = "";
-                foreach (var pageNavigationInfoStr in pageNavigationInfo)
+                var pageNavigationInfo = (ViewExtraData)pageStackItem.Parameter ?? new ViewExtraData();
+                if (pageNavigationInfo.ExpandedList == null)
+                    pageNavigationInfo.ExpandedList = new List<string>();
+                pageNavigationInfo.ExpandedList.Clear();
+                foreach (var expander in RootStackPanel.Children)
                 {
-                    pageNavigationInfoString += pageNavigationInfoStr + " ";
+                    pageNavigationInfo.ExpandedList.Add(((Expander)expander).IsExPanded.ToString());
                 }
-                Global.PageStackLog += $"Push：TypeName={pageStackItem.TypeName},Object={pageNavigationInfoString}\r\n";
+                pageStackItem.Parameter = pageNavigationInfo;
+                Global.PageStack.Push(pageStackItem);
             }
             else
             {
                 var pageStackItemClickItem = Global.PageStack.Pop();
                 var pageStackItem = Global.PageStack.Pop();
-                var pageNavigationInfo = (List<string>)pageStackItem.Object ?? new List<string>();
-                if (pageNavigationInfo.Count > 0)
-                    pageNavigationInfo[2] = RootScrollViewer.VerticalOffset.ToString();
-                Global.PageStack.Push(new PageStackItem { TypeName = pageStackItem.TypeName, Object = pageNavigationInfo });
-                var pageNavigationInfoString = "";
-                foreach (var pageNavigationInfoStr in pageNavigationInfo)
-                {
-                    pageNavigationInfoString += pageNavigationInfoStr + " ";
-                }
-                Global.PageStackLog += $"Push：TypeName={pageStackItem.TypeName},Object={pageNavigationInfoString}\r\n";
+                var pageNavigationInfo = (ViewExtraData)pageStackItem.Parameter ?? new ViewExtraData();
+                pageNavigationInfo.ScrollViewerVerticalOffset = RootScrollViewer.VerticalOffset;
+                pageStackItem.Parameter = pageNavigationInfo;
+                Global.PageStack.Push(pageStackItem);
                 Global.PageStack.Push(pageStackItemClickItem);
-                Global.PageStackLog += $"Push：TypeName={pageStackItemClickItem.TypeName},Object={pageStackItemClickItem.Object}\r\n";
             }
         }
     }

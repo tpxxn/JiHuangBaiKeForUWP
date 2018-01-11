@@ -1701,7 +1701,7 @@
         "Perish": 10001,
         "Attribute": "F_twigs",
         "AttributeValue": "×1",
-        "Introduce": "砍伐多枝的树、红树林或采集树苗获得。",
+        "Introduce": "砍伐多枝的树或采集树苗获得。",
         "Console": "twigs"
       },
       {

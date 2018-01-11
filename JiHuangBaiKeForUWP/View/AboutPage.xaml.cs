@@ -70,13 +70,13 @@ namespace JiHuangBaiKeForUWP.View
             var finalPageStack = "";
             foreach (var pageStackItem in Global.PageStack)
             {
-                if (pageStackItem.Object != null)
+                if (pageStackItem.Parameter != null)
                 {
-                    finalPageStack += pageStackItem.TypeName + " " + pageStackItem.Object + "\r\n";
+                    finalPageStack += pageStackItem.SourcePageType + " " + pageStackItem.Parameter + "\r\n";
                 }
                 else
                 {
-                    finalPageStack += pageStackItem.TypeName + "\r\n";
+                    finalPageStack += pageStackItem.SourcePageType + "\r\n";
                 }
             }
             //PageStackLog.Text = "页面堆栈日志：\r\n" + Global.PageStackLog + "\r\n最终页面堆栈：\r\n" + finalPageStack;

@@ -293,7 +293,7 @@
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_books.png" Width="40" Height="40" />
-                        <TextBlock Text="书" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                        <TextBlock Text="书籍" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
                     </StackPanel>
                 </uc:Expander.Header>
                 <GridView x:Name="ScienceBookGridView" 
@@ -315,7 +315,7 @@
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="ms-appx:///Assets/GameResources/Sciences/S_ico_shadow.png" Width="40" Height="40" />
-                        <TextBlock x:Name="ShadowExpanderTextBolck" Text="暗影巫术" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="ShadowExpanderTextBolck" Text="暗影" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
                     </StackPanel>
                 </uc:Expander.Header>
                 <GridView x:Name="ScienceShadowGridView" 

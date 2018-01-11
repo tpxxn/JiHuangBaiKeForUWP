@@ -1328,21 +1328,8 @@
                 "Perish": 10001,
                 "Attribute": "F_twigs",
                 "AttributeValue": "×1",
-                "Introduce": "砍伐多枝的树、红树林或采集树苗获得。",
+                "Introduce": "采集树苗获得。",
                 "Console": "twigs"
-            },
-            {
-                "Picture": "F_moleworm",
-                "Name": "鼹鼠",
-                "EnName": "Moleworm",
-                "Health": 0,
-                "Hunger": 0,
-                "Sanity": 0,
-                "Perish": 2,
-                "Attribute": "F_moleworm",
-                "AttributeValue": "×1",
-                "Introduce": "用锤子把鼹鼠敲晕获得，不可食用。",
-                "Console": "mole"
             }
         ]
     },

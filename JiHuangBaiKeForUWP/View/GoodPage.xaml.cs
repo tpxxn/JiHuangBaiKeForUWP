@@ -69,79 +69,78 @@ namespace JiHuangBaiKeForUWP.View
                 };
                 RootStackPanel.Background = dimGrayAcrylicBrush;
             }
-            var parameter = (List<string>)e.Parameter;
+            var extraData = (ViewExtraData)e.Parameter;
             await Deserialize();
-            if (parameter == null || parameter.Count == 0) return;
-            if (parameter.Count > 3)
+            if (extraData != null)
             {
-                //展开之前展开的Expander
-                for (var i = 3; i < parameter.Count; i++)
+                if (extraData.ExpandedList != null)
                 {
-                    ((Expander)RootStackPanel.Children[i - 3]).IsExPanded = parameter[i] == "True";
+                    //展开之前展开的Expander
+                    for (var i = 0; i < extraData.ExpandedList.Count; i++)
+                    {
+                        ((Expander) RootStackPanel.Children[i]).IsExPanded = extraData.ExpandedList[i] == "True";
+                    }
                 }
                 //ScrollViewer滚动到指定位置
-                if (!string.IsNullOrEmpty(parameter[2]))
+                RootScrollViewer.UpdateLayout();
+                RootScrollViewer.ChangeView(null, extraData.ScrollViewerVerticalOffset, null, true);
+                //导航到指定页面
+                var _e = extraData.Picture;
+                switch (extraData.Classify)
                 {
-                    RootScrollViewer.UpdateLayout();
-                    RootScrollViewer.ChangeView(null, double.Parse(parameter[2]), null, true);
+                    case "GoodMaterial":
+                        MaterialExpander.IsExPanded = true;
+                        OnNavigatedToGoodMaterialDialog(_e);
+                        break;
+                    case "GoodEquipment":
+                        EquipmentExpander.IsExPanded = true;
+                        OnNavigatedToGoodEquipmentDialog(_e);
+                        break;
+                    case "GoodSapling":
+                        SaplingExpander.IsExPanded = true;
+                        OnNavigatedToGoodSaplingDialog(_e);
+                        break;
+                    case "GoodCreatures":
+                        CreaturesExpander.IsExPanded = true;
+                        OnNavigatedToGoodCreaturesDialog(_e);
+                        break;
+                    case "GoodTrinkets":
+                        TrinketsExpander.IsExPanded = true;
+                        OnNavigatedToGoodDialog(GoodTrinketsGridView, _goodTrinketsData, _e);
+                        break;
+                    case "GoodTurf":
+                        TurfExpander.IsExPanded = true;
+                        OnNavigatedToGoodTurfDialog(_e);
+                        break;
+                    case "GoodPet":
+                        PetExpander.IsExPanded = true;
+                        OnNavigatedToGoodPetDialog(_e);
+                        break;
+                    case "GoodUnlock":
+                        UnlockExpander.IsExPanded = true;
+                        OnNavigatedToGoodUnlockDialog(_e);
+                        break;
+                    case "GoodHallowedNights":
+                        HallowedNightsExpander.IsExPanded = true;
+                        OnNavigatedToGoodDialog(GoodHallowedNightsGridView, _goodHallowedNightsData, _e);
+                        break;
+                    case "GoodWintersFeast":
+                        WintersFeastExpander.IsExPanded = true;
+                        OnNavigatedToGoodDialog(GoodWintersFeastGridView, _goodWintersFeastData, _e);
+                        break;
+                    case "GoodYearOfTheGobbler":
+                        YearOfTheGobblerExpander.IsExPanded = true;
+                        OnNavigatedToGoodDialog(GoodYearOfTheGobblerGridView, _goodYearOfTheGobblerData, _e);
+                        break;
+                    case "GoodComponent":
+                        ComponentExpander.IsExPanded = true;
+                        OnNavigatedToGoodDialog(GoodComponentGridView, _goodComponentData, _e);
+                        break;
+                    case "GoodOthers":
+                        GoodOthersExpander.IsExPanded = true;
+                        OnNavigatedToGoodDialog(GoodOthersGridView, _goodOthersData, _e);
+                        break;
                 }
-            }
-            //导航到指定页面
-            var _e = parameter[1];
-            switch (parameter[0])
-            {
-                case "GoodMaterial":
-                    MaterialExpander.IsExPanded = true;
-                    OnNavigatedToGoodMaterialDialog(_e);
-                    break;
-                case "GoodEquipment":
-                    EquipmentExpander.IsExPanded = true;
-                    OnNavigatedToGoodEquipmentDialog(_e);
-                    break;
-                case "GoodSapling":
-                    SaplingExpander.IsExPanded = true;
-                    OnNavigatedToGoodSaplingDialog(_e);
-                    break;
-                case "GoodCreatures":
-                    CreaturesExpander.IsExPanded = true;
-                    OnNavigatedToGoodCreaturesDialog(_e);
-                    break;
-                case "GoodTrinkets":
-                    TrinketsExpander.IsExPanded = true;
-                    OnNavigatedToGoodDialog(GoodTrinketsGridView, _goodTrinketsData, _e);
-                    break;
-                case "GoodTurf":
-                    TurfExpander.IsExPanded = true;
-                    OnNavigatedToGoodTurfDialog(_e);
-                    break;
-                case "GoodPet":
-                    PetExpander.IsExPanded = true;
-                    OnNavigatedToGoodPetDialog(_e);
-                    break;
-                case "GoodUnlock":
-                    UnlockExpander.IsExPanded = true;
-                    OnNavigatedToGoodUnlockDialog(_e);
-                    break;
-                case "GoodHallowedNights":
-                    HallowedNightsExpander.IsExPanded = true;
-                    OnNavigatedToGoodDialog(GoodHallowedNightsGridView, _goodHallowedNightsData, _e);
-                    break;
-                case "GoodWintersFeast":
-                    WintersFeastExpander.IsExPanded = true;
-                    OnNavigatedToGoodDialog(GoodWintersFeastGridView, _goodWintersFeastData, _e);
-                    break;
-                case "GoodYearOfTheGobbler":
-                    YearOfTheGobblerExpander.IsExPanded = true;
-                    OnNavigatedToGoodDialog(GoodYearOfTheGobblerGridView, _goodYearOfTheGobblerData, _e);
-                    break;
-                case "GoodComponent":
-                    ComponentExpander.IsExPanded = true;
-                    OnNavigatedToGoodDialog(GoodComponentGridView, _goodComponentData, _e);
-                    break;
-                case "GoodOthers":
-                    GoodOthersExpander.IsExPanded = true;
-                    OnNavigatedToGoodDialog(GoodOthersGridView, _goodOthersData, _e);
-                    break;
             }
         }
 
@@ -389,8 +388,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             var item = (GoodMaterial)e.ClickedItem;
             Frame.Navigate(typeof(GoodMaterialDialog), item);
-            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodMaterialDialog), Object = item });
-            Global.PageStackLog += $"Push：TypeName={typeof(GoodMaterialDialog)},Object={item.Name}\r\n";
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(GoodMaterialDialog), Parameter = item });
         }
 
         private void GoodEquipmentGridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -403,8 +401,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             var item = (GoodEquipment)e.ClickedItem;
             Frame.Navigate(typeof(GoodEquipmentDialog), item);
-            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodEquipmentDialog), Object = item });
-            Global.PageStackLog += $"Push：TypeName={typeof(GoodEquipmentDialog)},Object={item.Name}\r\n";
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(GoodEquipmentDialog), Parameter = item });
         }
 
         private void GoodSaplingGridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -417,8 +414,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             var item = (GoodSapling)e.ClickedItem;
             Frame.Navigate(typeof(GoodSaplingDialog), item);
-            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodSaplingDialog), Object = item });
-            Global.PageStackLog += $"Push：TypeName={typeof(GoodSaplingDialog)},Object={item.Name}\r\n";
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(GoodSaplingDialog), Parameter = item });
         }
 
         private void GoodCreaturesGridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -431,8 +427,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             var item = (GoodCreatures)e.ClickedItem;
             Frame.Navigate(typeof(GoodCreaturesDialog), item);
-            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodCreaturesDialog), Object = item });
-            Global.PageStackLog += $"Push：TypeName={typeof(GoodCreaturesDialog)},Object={item.Name}\r\n";
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(GoodCreaturesDialog), Parameter = item });
         }
 
         private void GoodTurfGridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -445,8 +440,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             var item = (GoodTurf)e.ClickedItem;
             Frame.Navigate(typeof(GoodTurfDialog), item);
-            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodTurfDialog), Object = item });
-            Global.PageStackLog += $"Push：TypeName={typeof(GoodTurfDialog)},Object={item.Name}\r\n";
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(GoodTurfDialog), Parameter = item });
         }
 
         private void GoodPetGridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -459,8 +453,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             var item = (GoodPet)e.ClickedItem;
             Frame.Navigate(typeof(GoodPetDialog), item);
-            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPetDialog), Object = item });
-            Global.PageStackLog += $"Push：TypeName={typeof(GoodPetDialog)},Object={item.Name}\r\n";
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(GoodPetDialog), Parameter = item });
         }
 
         private void GoodUnlockGridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -473,8 +466,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             var item = (GoodUnlock)e.ClickedItem;
             Frame.Navigate(typeof(GoodUnlockDialog), item);
-            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodUnlockDialog), Object = item });
-            Global.PageStackLog += $"Push：TypeName={typeof(GoodUnlockDialog)},Object={item.Name}\r\n";
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(GoodUnlockDialog), Parameter = item });
         }
 
         private void GoodGridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -487,8 +479,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             var item = (Good)e.ClickedItem;
             Frame.Navigate(typeof(GoodDialog), item);
-            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodDialog), Object = item });
-            Global.PageStackLog += $"Push：TypeName={typeof(GoodDialog)},Object={item.Name}\r\n";
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(GoodDialog), Parameter = item });
         }
 
         private void Expander_Tapped(object sender, TappedRoutedEventArgs e)
@@ -496,43 +487,26 @@ namespace JiHuangBaiKeForUWP.View
             if (e.OriginalSource.ToString() == "Windows.UI.Xaml.Controls.Grid")
             {
                 var pageStackItem = Global.PageStack.Pop();
-                Global.PageStackLog += $"Pop：TypeName={pageStackItem.TypeName},Object={pageStackItem.Object}\r\n";
-                var pageNavigationInfo = (List<string>)pageStackItem.Object ?? new List<string>();
-                if (pageNavigationInfo.Count == 0)
-                    for (var i = 0; i < 3; i++)
-                    {
-                        pageNavigationInfo.Add(string.Empty);
-                    }
-                else
-                    for (var i = pageNavigationInfo.Count; i > 3; i--)
-                    {
-                        pageNavigationInfo.RemoveAt(i - 1);
-                    }
-                pageNavigationInfo.AddRange(RootStackPanel.Children.Select(expander => ((Expander)expander).IsExPanded.ToString()));
-                Global.PageStack.Push(new PageStackItem { TypeName = pageStackItem.TypeName, Object = pageNavigationInfo });
-                var pageNavigationInfoString = "";
-                foreach (var pageNavigationInfoStr in pageNavigationInfo)
+                var pageNavigationInfo = (ViewExtraData)pageStackItem.Parameter ?? new ViewExtraData();
+                if (pageNavigationInfo.ExpandedList == null)
+                    pageNavigationInfo.ExpandedList = new List<string>();
+                pageNavigationInfo.ExpandedList.Clear();
+                foreach (var expander in RootStackPanel.Children)
                 {
-                    pageNavigationInfoString += pageNavigationInfoStr + " ";
+                    pageNavigationInfo.ExpandedList.Add(((Expander)expander).IsExPanded.ToString());
                 }
-                Global.PageStackLog += $"Push：TypeName={pageStackItem.TypeName},Object={pageNavigationInfoString}\r\n";
+                pageStackItem.Parameter = pageNavigationInfo;
+                Global.PageStack.Push(pageStackItem);
             }
             else
             {
                 var pageStackItemClickItem = Global.PageStack.Pop();
                 var pageStackItem = Global.PageStack.Pop();
-                var pageNavigationInfo = (List<string>)pageStackItem.Object ?? new List<string>();
-                if (pageNavigationInfo.Count > 0)
-                    pageNavigationInfo[2] = RootScrollViewer.VerticalOffset.ToString();
-                Global.PageStack.Push(new PageStackItem { TypeName = pageStackItem.TypeName, Object = pageNavigationInfo });
-                var pageNavigationInfoString = "";
-                foreach (var pageNavigationInfoStr in pageNavigationInfo)
-                {
-                    pageNavigationInfoString += pageNavigationInfoStr + " ";
-                }
-                Global.PageStackLog += $"Push：TypeName={pageStackItem.TypeName},Object={pageNavigationInfoString}\r\n";
+                var pageNavigationInfo = (ViewExtraData)pageStackItem.Parameter ?? new ViewExtraData();
+                pageNavigationInfo.ScrollViewerVerticalOffset = RootScrollViewer.VerticalOffset;
+                pageStackItem.Parameter = pageNavigationInfo;
+                Global.PageStack.Push(pageStackItem);
                 Global.PageStack.Push(pageStackItemClickItem);
-                Global.PageStackLog += $"Push：TypeName={pageStackItemClickItem.TypeName},Object={pageStackItemClickItem.Object}\r\n";
             }
         }
     }

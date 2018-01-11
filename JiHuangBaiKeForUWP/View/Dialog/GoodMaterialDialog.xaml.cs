@@ -133,32 +133,20 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             {
                 if (picturePath != suggestBoxItem.Picture) continue;
                 var picHead = shortName.Substring(0, 1);
-                var extraData = new List<string> { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
+                var viewExtraData = new ViewExtraData { Classify = suggestBoxItem.SourcePath, Picture = suggestBoxItem.Picture };
                 switch (picHead)
                 {
                     case "S":
                         frameTitle.Text = "科技";
                         Global.PageJump(3);
-                        rootFrame.Navigate(typeof(SciencePage), extraData);
-                        Global.PageStack.Push(new PageStackItem { TypeName = typeof(SciencePage), Object = extraData });
-                        var extraDataStringScience = "";
-                        foreach (var extraDataStr in extraData)
-                        {
-                            extraDataStringScience += extraDataStr + " ";
-                        }
-                        Global.PageStackLog += $"Push：TypeName={typeof(SciencePage)},Object={extraDataStringScience}\r\n";
+                        rootFrame.Navigate(typeof(SciencePage), viewExtraData);
+                        Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(SciencePage), Parameter = viewExtraData });
                         break;
                     case "A":
                         frameTitle.Text = "生物";
                         Global.PageJump(4);
-                        rootFrame.Navigate(typeof(CreaturePage), extraData);
-                        Global.PageStack.Push(new PageStackItem { TypeName = typeof(CreaturePage), Object = extraData });
-                        var extraDataStringCreature = "";
-                        foreach (var extraDataStr in extraData)
-                        {
-                            extraDataStringCreature += extraDataStr + " ";
-                        }
-                        Global.PageStackLog += $"Push：TypeName={typeof(CreaturePage)},Object={extraDataStringCreature}\r\n";
+                        rootFrame.Navigate(typeof(CreaturePage), viewExtraData);
+                        Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(CreaturePage), Parameter = viewExtraData });
                         break;
                 }
             }

@@ -19,6 +19,7 @@ using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View.Dialog;
 using Newtonsoft.Json;
 using Windows.UI.Xaml.Media.Animation;
+using JiHuangBaiKeForUWP.UserControls.Expander;
 
 namespace JiHuangBaiKeForUWP.View
 {
@@ -45,18 +46,32 @@ namespace JiHuangBaiKeForUWP.View
                     TintColor = Global.TinkColor,
                     TintOpacity = Global.TinkOpacity
                 };
-                NaturalStackPanel.Background = dimGrayAcrylicBrush;
+                RootStackPanel.Background = dimGrayAcrylicBrush;
             }
-            var parameter = (List<string>)e.Parameter;
+            var extraData = (ViewExtraData)e.Parameter;
             await Deserialize();
-            if (parameter == null || parameter.Count == 0) return;
-            var _e = parameter[1];
-            switch (parameter[0])
+            if (extraData != null)
             {
-                case "NaturalBiomes":
-                    BiomesExpander.IsExPanded = true;
-                    OnNavigatedToNaturalBiomesDialog(NaturalBiomesGridView, _naturalBiomesData, _e);
-                    break;
+                if (extraData.ExpandedList != null)
+                {
+                    //展开之前展开的Expander
+                    for (var i = 0; i < extraData.ExpandedList.Count; i++)
+                    {
+                        ((Expander) RootStackPanel.Children[i]).IsExPanded = extraData.ExpandedList[i] == "True";
+                    }
+                }
+                //ScrollViewer滚动到指定位置
+                RootScrollViewer.UpdateLayout();
+                RootScrollViewer.ChangeView(null, extraData.ScrollViewerVerticalOffset, null, true);
+                //导航到指定页面
+                var _e = extraData.Picture;
+                switch (extraData.Classify)
+                {
+                    case "NaturalBiomes":
+                        BiomesExpander.IsExPanded = true;
+                        OnNavigatedToNaturalBiomesDialog(NaturalBiomesGridView, _naturalBiomesData, _e);
+                        break;
+                }
             }
         }
 
@@ -101,8 +116,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             var item = (Nature)e.ClickedItem;
             Frame.Navigate(typeof(NaturalDialog), item);
-            Global.PageStack.Push(new PageStackItem { TypeName = typeof(NaturalDialog), Object = item });
-            Global.PageStackLog += $"Push：TypeName={typeof(NaturalDialog)},Object={item.Name}\r\n";
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(NaturalDialog), Parameter = item });
         }
     }
 }

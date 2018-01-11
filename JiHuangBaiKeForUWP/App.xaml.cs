@@ -6,10 +6,14 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.VoiceCommands;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI;
+using Windows.UI.Popups;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -149,7 +153,6 @@ namespace JiHuangBaiKeForUWP
                 // 将框架放在当前窗口中
                 Window.Current.Content = rootFrame;
             }
-
             if (e.PrelaunchActivated == false)
             {
                 if (rootFrame.Content == null)
@@ -195,7 +198,7 @@ namespace JiHuangBaiKeForUWP
             var vcargs = (VoiceCommandActivatedEventArgs)args;
             // 分析被识别的命令
             var res = vcargs.Result;
-//            var resText = vcargs.Result.Text;
+            // var resText = vcargs.Result.Text;
             // 获取被识别的命令的名字
             var cmdName = res.RulePath[0];
             Type navType = null;

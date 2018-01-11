@@ -125,30 +125,18 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             {
                 if (picturePath != suggestBoxItem.Picture) continue;
                 var picHead = shortName.Substring(0, 1);
-                var extraData = new List<string> { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
+                var viewExtraData = new ViewExtraData { Classify = suggestBoxItem.SourcePath, Picture = suggestBoxItem.Picture };
                 switch (picHead)
                 {
                     case "F":
                         frameTitle.Text = "食物";
                         Global.PageJump(1);
-                        rootFrame.Navigate(typeof(FoodPage), extraData);
-                        Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
-                        var extraDataStringFood = "";
-                        foreach (var extraDataStr in extraData)
-                        {
-                            extraDataStringFood += extraDataStr + " ";
-                        }
-                        Global.PageStackLog += $"Push：TypeName={typeof(FoodPage)},Object={extraDataStringFood}\r\n";
+                        rootFrame.Navigate(typeof(FoodPage), viewExtraData);
+                        Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(FoodPage), Parameter = viewExtraData });
                         break;
                     case "G":
-                        rootFrame.Navigate(typeof(GoodPage), extraData);
-                        Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPage), Object = extraData });
-                        var extraDataStringGood = "";
-                        foreach (var extraDataStr in extraData)
-                        {
-                            extraDataStringGood += extraDataStr + " ";
-                        }
-                        Global.PageStackLog += $"Push：TypeName={typeof(GoodPage)},Object={extraDataStringGood}\r\n";
+                        rootFrame.Navigate(typeof(GoodPage), viewExtraData);
+                        Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(GoodPage), Parameter = viewExtraData });
                         break;
                 }
             }
