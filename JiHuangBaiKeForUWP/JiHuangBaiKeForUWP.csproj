@@ -104,6 +104,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\CallExternalContent.cs" />
+    <Compile Include="Model\ExtraData.cs" />
     <Compile Include="Model\Fonts.cs" />
     <Compile Include="Model\GoodsJson.cs" />
     <Compile Include="Model\HamburgerMenuItem.cs" />

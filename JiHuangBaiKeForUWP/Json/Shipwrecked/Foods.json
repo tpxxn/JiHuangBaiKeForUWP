@@ -2159,7 +2159,7 @@
                 "Picture": "F_durian",
                 "Name": "榴莲",
                 "EnName": "Durian",
-                "Health": 3,
+                "Health": -3,
                 "Hunger": 25,
                 "Sanity": -5,
                 "Perish": 10,
@@ -2450,7 +2450,7 @@
                 "Perish": 10001,
                 "Attribute": "F_twigs",
                 "AttributeValue": "×1",
-                "Introduce": "砍伐多枝的树、红树林或采集树苗获得。",
+                "Introduce": "砍伐多枝的树、红树或采集树苗获得。",
                 "Console": "twigs"
             }
         ]

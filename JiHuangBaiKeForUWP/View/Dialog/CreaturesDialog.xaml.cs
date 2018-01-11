@@ -1125,42 +1125,27 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 if (picturePath == suggestBoxItem.Picture)
                 {
                     var picHead = shortName.Substring(0, 1);
-                    var extraData = new List<string> { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
+                    var viewExtraData = new ViewExtraData { Classify = suggestBoxItem.SourcePath, Picture = suggestBoxItem.Picture };
                     switch (picHead)
                     {
                         case "F":
                             frameTitle.Text = "食物";
                             Global.PageJump(1);
-                            rootFrame.Navigate(typeof(FoodPage), extraData);
-                            Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
-                            var extraDataStringFood = "";
-                            foreach (var extraDataStr in extraData)
-                            {
-                                extraDataStringFood += extraDataStr + " ";
-                            }
+                            rootFrame.Navigate(typeof(FoodPage), viewExtraData);
+                            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(FoodPage), Parameter = viewExtraData });
                             break;
                         case "S":
                             frameTitle.Text = "科技";
                             Global.PageJump(3);
-                            rootFrame.Navigate(typeof(SciencePage), extraData);
-                            Global.PageStack.Push(new PageStackItem { TypeName = typeof(SciencePage), Object = extraData });
-                            var extraDataStringScience = "";
-                            foreach (var extraDataStr in extraData)
-                            {
-                                extraDataStringScience += extraDataStr + " ";
-                            }
+                            rootFrame.Navigate(typeof(SciencePage), viewExtraData);
+                            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(SciencePage), Parameter = viewExtraData });
                             break;
                         case "A":
                         case "G":
                             frameTitle.Text = "物品";
                             Global.PageJump(6);
-                            rootFrame.Navigate(typeof(GoodPage), extraData);
-                            Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPage), Object = extraData });
-                            var extraDataStringGood = "";
-                            foreach (var extraDataStr in extraData)
-                            {
-                                extraDataStringGood += extraDataStr + " ";
-                            }
+                            rootFrame.Navigate(typeof(GoodPage), viewExtraData);
+                            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(GoodPage), Parameter = viewExtraData });
                             break;
                     }
                 }

@@ -62,55 +62,55 @@ namespace JiHuangBaiKeForUWP.View
                 };
                 RootStackPanel.Background = dimGrayAcrylicBrush;
             }
-            var parameter = (List<string>)e.Parameter;
+            var extraData = (ViewExtraData)e.Parameter;
             await Deserialize();
-            if (parameter == null || parameter.Count == 0) return;
-            if (parameter.Count > 3)
+            if (extraData != null)
             {
-                //展开之前展开的Expander
-                for (var i = 3; i < parameter.Count; i++)
-                {
-                    ((Expander)RootStackPanel.Children[i - 3]).IsExPanded = parameter[i] == "True";
-                }
                 //ScrollViewer滚动到指定位置
-                if (!string.IsNullOrEmpty(parameter[2]))
+                RootScrollViewer.UpdateLayout();
+                RootScrollViewer.ChangeView(null, extraData.ScrollViewerVerticalOffset, null, true);
+                if (extraData.ExpandedList != null)
                 {
-                    RootScrollViewer.UpdateLayout();
-                    RootScrollViewer.ChangeView(null, double.Parse(parameter[2]), null, true);
+                    //展开之前展开的Expander
+                    for (var i = 0; i < extraData.ExpandedList.Count; i++)
+                    {
+                        ((Expander)RootStackPanel.Children[i]).IsExPanded = extraData.ExpandedList[i] == "True";
+                    }
+                    
                 }
-            }
-            //导航到指定页面
-            var _e = parameter[1];
-            switch (parameter[0])
-            {
-                case "FoodRecipe":
-                    RecipesExpander.IsExPanded = true;
-                    OnNavigatedToFoodRecipeDialog(_e);
-                    break;
-                case "FoodMeats":
-                    MeatsExpander.IsExPanded = true;
-                    OnNavigatedToFoodDialog(FoodMeatGridView, _foodMeatData, _e);
-                    break;
-                case "FoodVegetables":
-                    VegetablesExpander.IsExPanded = true;
-                    OnNavigatedToFoodDialog(FoodVegetableGridView, _foodVegetableData, _e);
-                    break;
-                case "FoodFruits":
-                    FruitsExpander.IsExPanded = true;
-                    OnNavigatedToFoodDialog(FoodFruitGridView, _foodFruitData, _e);
-                    break;
-                case "FoodEggs":
-                    EggsExpander.IsExPanded = true;
-                    OnNavigatedToFoodDialog(FoodEggGridView, _foodEggData, _e);
-                    break;
-                case "FoodOthers":
-                    OtherExpander.IsExPanded = true;
-                    OnNavigatedToFoodDialog(FoodOtherGridView, _foodOtherData, _e);
-                    break;
-                case "FoodNoFc":
-                    NoFcExpander.IsExPanded = true;
-                    OnNavigatedToFoodDialog(FoodNoFcGridView, _foodNoFcData, _e);
-                    break;
+                //导航到指定页面
+                var _e = extraData.Picture;
+                switch (extraData.Classify)
+                {
+                    case "FoodRecipe":
+                        RecipesExpander.IsExPanded = true;
+                        OnNavigatedToFoodRecipeDialog(_e);
+                        break;
+                    case "FoodMeats":
+                        MeatsExpander.IsExPanded = true;
+                        OnNavigatedToFoodDialog(FoodMeatGridView, _foodMeatData, _e);
+                        break;
+                    case "FoodVegetables":
+                        VegetablesExpander.IsExPanded = true;
+                        OnNavigatedToFoodDialog(FoodVegetableGridView, _foodVegetableData, _e);
+                        break;
+                    case "FoodFruits":
+                        FruitsExpander.IsExPanded = true;
+                        OnNavigatedToFoodDialog(FoodFruitGridView, _foodFruitData, _e);
+                        break;
+                    case "FoodEggs":
+                        EggsExpander.IsExPanded = true;
+                        OnNavigatedToFoodDialog(FoodEggGridView, _foodEggData, _e);
+                        break;
+                    case "FoodOthers":
+                        OtherExpander.IsExPanded = true;
+                        OnNavigatedToFoodDialog(FoodOtherGridView, _foodOtherData, _e);
+                        break;
+                    case "FoodNoFc":
+                        NoFcExpander.IsExPanded = true;
+                        OnNavigatedToFoodDialog(FoodNoFcGridView, _foodNoFcData, _e);
+                        break;
+                }
             }
         }
 
@@ -221,7 +221,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             var item = (FoodRecipe2)e.ClickedItem;
             Frame.Navigate(typeof(FoodRecipeDialog), item);
-            Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodRecipeDialog), Object = item });
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(FoodRecipeDialog), Parameter = item });
         }
 
         private void FoodGridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -234,7 +234,7 @@ namespace JiHuangBaiKeForUWP.View
             }
             var item = (Food)e.ClickedItem;
             Frame.Navigate(typeof(FoodDialog), item);
-            Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodDialog), Object = item });
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(FoodDialog), Parameter = item });
         }
 
         private void Expander_Tapped(object sender, TappedRoutedEventArgs e)
@@ -242,38 +242,21 @@ namespace JiHuangBaiKeForUWP.View
             if (e.OriginalSource.ToString() == "Windows.UI.Xaml.Controls.Grid")
             {
                 var pageStackItem = Global.PageStack.Pop();
-                var pageNavigationInfo = (List<string>)pageStackItem.Object ?? new List<string>();
-                if (pageNavigationInfo.Count == 0)
-                    for (var i = 0; i < 3; i++)
-                    {
-                        pageNavigationInfo.Add(string.Empty);
-                    }
-                else
-                    for (var i = pageNavigationInfo.Count; i > 3; i--)
-                    {
-                        pageNavigationInfo.RemoveAt(i - 1);
-                    }
-                pageNavigationInfo.AddRange(RootStackPanel.Children.Select(expander => ((Expander)expander).IsExPanded.ToString()));
-                Global.PageStack.Push(new PageStackItem { TypeName = pageStackItem.TypeName, Object = pageNavigationInfo });
-                var pageNavigationInfoString = "";
-                foreach (var pageNavigationInfoStr in pageNavigationInfo)
+                var pageNavigationInfo = (ViewExtraData)pageStackItem.Parameter ?? new ViewExtraData();
+                pageNavigationInfo.ExpandedList?.Clear();
+                foreach (var expander in RootStackPanel.Children)
                 {
-                    pageNavigationInfoString += pageNavigationInfoStr + " ";
+                    pageNavigationInfo.ExpandedList?.Add(((Expander)expander).IsExPanded.ToString());
                 }
+                Global.PageStack.Push(pageStackItem);
             }
             else
             {
                 var pageStackItemClickItem = Global.PageStack.Pop();
                 var pageStackItem = Global.PageStack.Pop();
-                var pageNavigationInfo = (List<string>)pageStackItem.Object ?? new List<string>();
-                if (pageNavigationInfo.Count > 0)
-                    pageNavigationInfo[2] = RootScrollViewer.VerticalOffset.ToString();
-                Global.PageStack.Push(new PageStackItem { TypeName = pageStackItem.TypeName, Object = pageNavigationInfo });
-                var pageNavigationInfoString = "";
-                foreach (var pageNavigationInfoStr in pageNavigationInfo)
-                {
-                    pageNavigationInfoString += pageNavigationInfoStr + " ";
-                }
+                var pageNavigationInfo = (ViewExtraData)pageStackItem.Parameter ?? new ViewExtraData();
+                pageNavigationInfo.ScrollViewerVerticalOffset = RootScrollViewer.VerticalOffset;
+                Global.PageStack.Push(pageStackItem);
                 Global.PageStack.Push(pageStackItemClickItem);
             }
         }

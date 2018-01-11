@@ -22,8 +22,8 @@
         </DataTemplate>
     </Page.Resources>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel x:Name="NaturalStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <ScrollViewer x:Name="RootScrollViewer" VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="RootStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <uc:Expander x:Name="BiomesExpander" IsExPanded="True" VerticalAlignment="Top" FontSize="17">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">

@@ -267,16 +267,11 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
             {
                 if (picturePath != suggestBoxItem.Picture) continue;
-                var extraData = new List<string> { suggestBoxItem.SourcePath, suggestBoxItem.Picture };
+                var viewExtraData = new ViewExtraData { Classify = suggestBoxItem.SourcePath, Picture = suggestBoxItem.Picture };
                 frameTitle.Text = "生物";
                 Global.PageJump(4);
-                rootFrame.Navigate(typeof(CreaturePage), extraData);
-                Global.PageStack.Push(new PageStackItem { TypeName = typeof(CreaturePage), Object = extraData });
-                var extraDataString = "";
-                foreach (var extraDataStr in extraData)
-                {
-                    extraDataString += extraDataStr + " ";
-                }
+                rootFrame.Navigate(typeof(CreaturePage), viewExtraData);
+                Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(CreaturePage), Parameter = viewExtraData });
             }
         }
 

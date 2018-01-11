@@ -24,16 +24,6 @@ using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.View;
 
-// 对话框示例
-// var contentDialog = new ContentDialog
-// {
-//     Title = "测试",
-//     Content = "加载当前页面错误，可能需要翻墙(～￣▽￣)～",
-//     PrimaryButtonText = "确定",
-//     FullSizeDesired = false,
-// };
-// Global.ShowDialog(contentDialog);
-
 namespace JiHuangBaiKeForUWP
 {
     /// <summary>
@@ -75,7 +65,7 @@ namespace JiHuangBaiKeForUWP
             Global.TinkColor = StringProcess.StringToColor(SettingSet.AcrylicColorSettingRead());
             // 默认页
             RootFrame.SourcePageType = typeof(CharacterPage);
-            Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterPage) });
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(CharacterPage) });
             // 设置SearchAutoSuggestBox的ItemSource属性
             SearchAutoSuggestBox.ItemsSource = Global.AutoSuggestBoxItem;
             // 设置主题
@@ -293,7 +283,7 @@ namespace JiHuangBaiKeForUWP
             if (hamburgerMenuItem.NavigatePage != null)
             {
                 RootFrame.Navigate(hamburgerMenuItem.NavigatePage);
-                Global.PageStack.Push(new PageStackItem { TypeName = hamburgerMenuItem.NavigatePage });
+                Global.PageStack.Push(new PageStackItem { SourcePageType = hamburgerMenuItem.NavigatePage });
                 Global.FrameTitle.Text = hamburgerMenuItem.Text;
             }
         }
@@ -417,11 +407,17 @@ namespace JiHuangBaiKeForUWP
                 }
                 else
                 {
-                    var suggestBoxItem = sender.Items[0] as SuggestBoxItem;
-                    if (suggestBoxItem == null) return;
-                    var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture, suggestBoxItem.Category };
-                    AutoSuggestNavigate(extraData);
-                    SearchAutoSuggestBox.Text = suggestBoxItem.Name;
+                    var suggestBoxItem = (SuggestBoxItem)sender.Items[0];
+                    if (suggestBoxItem != null)
+                    {
+                        AutoSuggestNavigate(new SearchExtraData
+                        {
+                            SourcePath = suggestBoxItem.SourcePath,
+                            Picture = suggestBoxItem.Picture,
+                            Category = suggestBoxItem.Category
+                        });
+                        SearchAutoSuggestBox.Text = suggestBoxItem.Name;
+                    }
                 }
             }
         }
@@ -431,11 +427,17 @@ namespace JiHuangBaiKeForUWP
         /// </summary>
         private void SearchAutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-            var suggestBoxItem = args.SelectedItem as SuggestBoxItem;
-            if (suggestBoxItem == null) return;
-            var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture, suggestBoxItem.Category };
-            AutoSuggestNavigate(extraData);
-            SearchAutoSuggestBox.Text = "";
+            var suggestBoxItem = (SuggestBoxItem)args.SelectedItem;
+            if (suggestBoxItem != null)
+            {
+                AutoSuggestNavigate(new SearchExtraData
+                {
+                    SourcePath = suggestBoxItem.SourcePath,
+                    Picture = suggestBoxItem.Picture,
+                    Category = suggestBoxItem.Category
+                });
+                SearchAutoSuggestBox.Text = "";
+            }
         }
 
         /// <summary>
@@ -458,12 +460,12 @@ namespace JiHuangBaiKeForUWP
             if (Global.AutoSuggestBoxItem.Count == 0)
             {
                 SearchAutoSuggestBox.Text = "";
-                var dialog = new ContentDialog()
+                var dialog = new ContentDialog
                 {
                     Title = "搜索错误！",
                     Content = "未找到“" + searchItem + "”",
                     PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
+                    FullSizeDesired = false
                 };
                 Global.ShowDialog(dialog);
             }
@@ -477,66 +479,69 @@ namespace JiHuangBaiKeForUWP
                 SearchAutoSuggestBox.Text = searchItem;
                 SearchAutoSuggestBox.Focus(FocusState.Programmatic);
             }
-            if (suggestBoxItem == null) return;
-            var extraData = new[] { suggestBoxItem.SourcePath, suggestBoxItem.Picture, suggestBoxItem.Category };
-            AutoSuggestNavigate(extraData);
+            // 搜索结果唯一时suggestBoxItem获得数据
+            if (suggestBoxItem != null)
+            {
+                AutoSuggestNavigate(new SearchExtraData
+                {
+                    SourcePath = suggestBoxItem.SourcePath,
+                    Picture = suggestBoxItem.Picture,
+                    Category = suggestBoxItem.Category
+                });
+            }
         }
 
         /// <summary>
         /// 自动搜索框导航
         /// </summary>
         /// <param name="extraData">额外数据</param>
-        private void AutoSuggestNavigate(string[] extraData)
+        private void AutoSuggestNavigate(SearchExtraData extraData)
         {
-            var extraDataString = "";
-            foreach (var extraDataStr in extraData)
-            {
-                extraDataString += extraDataStr + " ";
-            }
-            switch (extraData[2])
+            var viewExtraData = new ViewExtraData { Classify = extraData.SourcePath, Picture = extraData.Picture };
+            switch (extraData.Category)
             {
                 case "人物":
                     Global.FrameTitle.Text = "人物";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[0]);
-                    RootFrame.Navigate(typeof(CharacterPage), extraData);
-                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(CharacterPage), Object = extraData });
+                    RootFrame.Navigate(typeof(CharacterPage), viewExtraData);
+                    Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(CharacterPage), Parameter = viewExtraData });
                     break;
                 case "食物":
                     Global.FrameTitle.Text = "食物";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[1]);
-                    RootFrame.Navigate(typeof(FoodPage), extraData);
-                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(FoodPage), Object = extraData });
+                    RootFrame.Navigate(typeof(FoodPage), viewExtraData);
+                    Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(FoodPage), Parameter = viewExtraData });
                     break;
                 case "科技":
                     Global.FrameTitle.Text = "科技";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[3]);
-                    RootFrame.Navigate(typeof(SciencePage), extraData);
-                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(SciencePage), Object = extraData });
+                    RootFrame.Navigate(typeof(SciencePage), viewExtraData);
+                    Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(SciencePage), Parameter = viewExtraData });
                     break;
                 case "生物":
                     Global.FrameTitle.Text = "生物";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[4]);
-                    RootFrame.Navigate(typeof(CreaturePage), extraData);
-                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(CreaturePage), Object = extraData });
+                    RootFrame.Navigate(typeof(CreaturePage), viewExtraData);
+                    Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(CreaturePage), Parameter = viewExtraData });
                     break;
                 case "自然":
                     Global.FrameTitle.Text = "自然";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[5]);
-                    RootFrame.Navigate(typeof(NaturalPage), extraData);
-                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(NaturalPage), Object = extraData });
+                    RootFrame.Navigate(typeof(NaturalPage), viewExtraData);
+                    Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(NaturalPage), Parameter = viewExtraData });
                     break;
                 case "物品":
                     Global.FrameTitle.Text = "物品";
                     HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[6]);
-                    RootFrame.Navigate(typeof(GoodPage), extraData);
-                    Global.PageStack.Push(new PageStackItem { TypeName = typeof(GoodPage), Object = extraData });
+                    RootFrame.Navigate(typeof(GoodPage), viewExtraData);
+                    Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(GoodPage), Parameter = viewExtraData });
                     break;
             }
         }
         #endregion
 
         #region 后退按钮
-        
+
 
         /// <summary>
         /// 后退按钮请求处理
@@ -547,8 +552,8 @@ namespace JiHuangBaiKeForUWP
             {
                 var pageStackItemUseless = Global.PageStack.Pop();
                 var pageStackItem = Global.PageStack.Peek();
-                RootFrame.Navigate(pageStackItem.TypeName, pageStackItem.Object);
-                switch (pageStackItem.TypeName.ToString())
+                RootFrame.Navigate(pageStackItem.SourcePageType, pageStackItem.Parameter);
+                switch (pageStackItem.SourcePageType.ToString())
                 {
                     case "JiHuangBaiKeForUWP.View.CharacterPage":
                         HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[0]);
@@ -633,15 +638,7 @@ namespace JiHuangBaiKeForUWP
         {
             LoadingControl.IsLoading = true;
             RootFrame.Visibility = Visibility.Collapsed;
-            //            if (RootFrame.SourcePageType != RootFrame.CurrentSourcePageType)
-            //            {
-            //                var transitionCollection = new TransitionCollection { new ContentThemeTransition() };
-            //                RootFrame.ContentTransitions = transitionCollection;
-            //            }
-            //            else
-            //            {
-            //                RootFrame.ContentTransitions = null;
-            //            }
+
         }
         #endregion
     }
