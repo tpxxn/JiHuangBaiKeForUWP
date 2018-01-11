@@ -166,16 +166,11 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             foreach (var suggestBoxItem in Global.AutoSuggestBoxItemSource)
             {
                 if (picturePath != suggestBoxItem.Picture) continue;
-                var extraData = new List<string> { suggestBoxItem.SourcePath, suggestBoxItem.Picture }; ;
+                var viewExtraData = new ViewExtraData { Classify = suggestBoxItem.SourcePath, Picture = suggestBoxItem.Picture };
                 frameTitle.Text = "人物";
                 Global.PageJump(0);
-                rootFrame.Navigate(typeof(CharacterPage), extraData);
-                Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(CharacterPage), Parameter = extraData });
-                var extraDataString = "";
-                foreach (var extraDataStr in extraData)
-                {
-                    extraDataString += extraDataStr + " ";
-                }
+                rootFrame.Navigate(typeof(CharacterPage), viewExtraData);
+                Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(CharacterPage), Parameter = viewExtraData });
             }
         }
 

@@ -66,9 +66,6 @@ namespace JiHuangBaiKeForUWP.View
             await Deserialize();
             if (extraData != null)
             {
-                //ScrollViewer滚动到指定位置
-                RootScrollViewer.UpdateLayout();
-                RootScrollViewer.ChangeView(null, extraData.ScrollViewerVerticalOffset, null, true);
                 if (extraData.ExpandedList != null)
                 {
                     //展开之前展开的Expander
@@ -76,8 +73,10 @@ namespace JiHuangBaiKeForUWP.View
                     {
                         ((Expander)RootStackPanel.Children[i]).IsExPanded = extraData.ExpandedList[i] == "True";
                     }
-                    
                 }
+                //ScrollViewer滚动到指定位置
+                RootScrollViewer.UpdateLayout();
+                RootScrollViewer.ChangeView(null, extraData.ScrollViewerVerticalOffset, null, true);
                 //导航到指定页面
                 var _e = extraData.Picture;
                 switch (extraData.Classify)
@@ -243,11 +242,14 @@ namespace JiHuangBaiKeForUWP.View
             {
                 var pageStackItem = Global.PageStack.Pop();
                 var pageNavigationInfo = (ViewExtraData)pageStackItem.Parameter ?? new ViewExtraData();
-                pageNavigationInfo.ExpandedList?.Clear();
+                if(pageNavigationInfo.ExpandedList == null)
+                    pageNavigationInfo.ExpandedList = new List<string>();
+                pageNavigationInfo.ExpandedList.Clear();
                 foreach (var expander in RootStackPanel.Children)
                 {
-                    pageNavigationInfo.ExpandedList?.Add(((Expander)expander).IsExPanded.ToString());
+                    pageNavigationInfo.ExpandedList.Add(((Expander)expander).IsExPanded.ToString());
                 }
+                pageStackItem.Parameter = pageNavigationInfo;
                 Global.PageStack.Push(pageStackItem);
             }
             else
@@ -256,6 +258,7 @@ namespace JiHuangBaiKeForUWP.View
                 var pageStackItem = Global.PageStack.Pop();
                 var pageNavigationInfo = (ViewExtraData)pageStackItem.Parameter ?? new ViewExtraData();
                 pageNavigationInfo.ScrollViewerVerticalOffset = RootScrollViewer.VerticalOffset;
+                pageStackItem.Parameter = pageNavigationInfo;
                 Global.PageStack.Push(pageStackItem);
                 Global.PageStack.Push(pageStackItemClickItem);
             }

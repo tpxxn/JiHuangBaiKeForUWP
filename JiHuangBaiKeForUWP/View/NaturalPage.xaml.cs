@@ -52,9 +52,6 @@ namespace JiHuangBaiKeForUWP.View
             await Deserialize();
             if (extraData != null)
             {
-                //ScrollViewer滚动到指定位置
-                RootScrollViewer.UpdateLayout();
-                RootScrollViewer.ChangeView(null, extraData.ScrollViewerVerticalOffset, null, true);
                 if (extraData.ExpandedList != null)
                 {
                     //展开之前展开的Expander
@@ -62,8 +59,10 @@ namespace JiHuangBaiKeForUWP.View
                     {
                         ((Expander) RootStackPanel.Children[i]).IsExPanded = extraData.ExpandedList[i] == "True";
                     }
-
                 }
+                //ScrollViewer滚动到指定位置
+                RootScrollViewer.UpdateLayout();
+                RootScrollViewer.ChangeView(null, extraData.ScrollViewerVerticalOffset, null, true);
                 //导航到指定页面
                 var _e = extraData.Picture;
                 switch (extraData.Classify)
