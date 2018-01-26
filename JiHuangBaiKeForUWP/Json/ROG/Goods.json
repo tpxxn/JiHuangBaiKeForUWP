@@ -1055,6 +1055,7 @@
         "EnName": "Walking Cane",
         "Attack": 17,
         "Durability": "10001",
+        "Speed": 25,
         "Introduction": "除了用作工具还能用来打怪。",
         "Console": "cane"
       },
@@ -1402,6 +1403,97 @@
         "Console": "icestaff"
       },
       {
+        "Picture": "S_telelocator_staff",
+        "Name": "传送法杖",
+        "EnName": "Telelocator Staff",
+        "Durability": "5次",
+        "Sanity": -50,
+        "Introduction": "装备后右键即可传送，会到达随机位置，如果有已激活的传送点则传送到传送点。",
+        "Console": "telestaff"
+      },
+      {
+        "Picture": "S_the_lazy_explorer",
+        "Name": "懒惰的探索者",
+        "EnName": "The Lazy Explorer",
+        "Durability": "15次",
+        "Sanity": -20,
+        "Introduction": "使用后会向目标瞬移，平常只会增加25%的移动速度，但是被怪物包围，或者被河道或者障碍阻挡道路，就好用了。",
+        "Console": "orangestaff"
+      },
+      {
+        "Picture": "S_star_caller's_staff",
+        "Name": "唤星者法杖",
+        "EnName": "Star Caller's Staff",
+        "Durability": "20次",
+        "Sanity": -20,
+        "Introduction": "向目标位置发射光球，持续照明一段时间，可以用来烹调食物。其实不太实用，施展需要吟唱时间，光球也无法移动。在矮人之星附近每分钟恢复25点精神(薇洛可以恢复35点)。",
+        "Console": "yellowstaff"
+      },
+      {
+        "Picture": "S_deconstruction_staff",
+        "Name": "分解法杖",
+        "EnName": "Deconstruction Staff",
+        "Durability": "5次",
+        "Sanity": -20,
+        "Introduction": "可以分解道具和建筑，但不会分解出宝石，如果被分解对象有折损，就无法获得100%原素材。",
+        "Console": "greenstaff"
+      },
+      {
+        "Picture": "S_life_giving_amulet",
+        "Name": "再生护符",
+        "EnName": "Life Giving Amulet",
+        "Durability": "1次",
+        "Sanity": 2,
+        "Introduction": "它除了死后复活之外也能让玩家缓慢地把饥饿转化为生命，同时精神也能缓慢恢复。",
+        "Console": "amulet"
+      },
+      {
+        "Picture": "S_chilled_amulet",
+        "Name": "冰冷护符",
+        "EnName": "Chilled Amulet",
+        "Durability": "33次",
+        "Sanity": 2,
+        "Introduction": "持续恢复少量精神，任何试图攻击你的生物都会受到冰冻效果，同时你自己也会被其寒气所影响。",
+        "Console": "blueamulet"
+      },
+      {
+        "Picture": "S_nightmare_amulet",
+        "Name": "噩梦护符",
+        "EnName": "Nightmare Amulet",
+        "Durability": "192秒",
+        "Sanity": -3.33,
+        "Introduction": "穿上后会立刻陷入噩梦状态(精神为0)，每分钟掉3.33精神，取下后会恢复到实际精神值。过方尖碑变得很容易。",
+        "Console": "purpleamulet"
+      },
+      {
+        "Picture": "S_the_lazy_forager",
+        "Name": "懒惰的搜寻者",
+        "EnName": "The Lazy Forager",
+        "Durability": "225次",
+        "Sanity": 2,
+        "Introduction": "自动拾取地上的物品，并不是瞬间拾取，有一点点间隔，由于有使用次数，一般情况就别用了。",
+        "Console": "orangeamulet"
+      },
+      {
+        "Picture": "S_magiluminescence",
+        "Name": "光明护符",
+        "EnName": "Magiluminescence",
+        "Durability": "1天",
+        "Sanity": 2,
+        "Speed": 20,
+        "Introduction": "装备后会发光，类似矿灯帽，解放双手和帽子。",
+        "Console": "yellowamulet"
+      },
+      {
+        "Picture": "S_construction_amulet",
+        "Name": "建设护符",
+        "EnName": "Construction Amulet",
+        "Durability": "5次",
+        "Sanity": 2,
+        "Introduction": "装装备后建设和制作需要的材料会减半，只能使用5次，自己斟酌着使用。",
+        "Console": "greenamulet"
+      },
+      {
         "Picture": "S_belt_of_hunger",
         "Name": "饱食腰带",
         "EnName": "Belt of Hunger",
@@ -1644,7 +1736,7 @@
           "N_grass",
           "N_grass_diseased"
         ],
-        "Introduction": "挖取草或患病的草获得。",
+        "Introduction": "挖取草获得。",
         "Console": "dug_grass"
       },
       {
@@ -1655,7 +1747,7 @@
           "N_sapling",
           "N_sapling_diseased"
         ],
-        "Introduction": "挖取小树苗根或患病的小树苗根获得。",
+        "Introduction": "挖取小树苗根获得。",
         "Console": "dug_sapling"
       },
       {
@@ -1666,7 +1758,7 @@
           "N_berry_bush_1",
           "N_berry_bush_diseased"
         ],
-        "Introduction": "挖取浆果灌木丛或患病的浆果灌木丛获得。",
+        "Introduction": "挖取浆果灌木丛获得。",
         "Console": "dug_berrybush"
       },
       {
@@ -2194,7 +2286,9 @@
           "A_cave_spider",
           "A_dangling_depth_dweller",
           "A_spider_queen",
-          "N_spider_den",
+          "N_spider_den_1",
+          "N_spider_den_2",
+          "N_spider_den_3",
           "N_spilagmite"
         ],
         "UnlockCharacter": "C_webber",
@@ -2271,6 +2365,13 @@
         "EnName": "Blueprint",
         "Introduction": "蓝图通常可以在风滚草和X标记点找到，冒险模式的开始也可以找到一些。使用蓝图将会恢复15点精神，并且解锁某个科技，旧钟科技只能通过蓝图解锁。(以上规律不适用于远古科技)",
         "Console": "(prefab name)_blueprint"
+      },
+      {
+        "Picture": "G_spider_eggs",
+        "Name": "蜘蛛卵",
+        "EnName": "Spider Eggs",
+        "Introduction": "破坏三级蜘蛛巢获取，可以种植一个一级蜘蛛巢。韦伯可以制作。",
+        "Console": "spidereggsack"
       }
     ]
   }

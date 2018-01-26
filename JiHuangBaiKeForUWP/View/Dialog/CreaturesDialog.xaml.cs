@@ -184,6 +184,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                         var textBlock = new TextBlock
                         {
                             HorizontalAlignment = HorizontalAlignment.Left,
+                            VerticalAlignment = VerticalAlignment.Center,
                             Margin = thickness,
                             Text = goodText
                         };

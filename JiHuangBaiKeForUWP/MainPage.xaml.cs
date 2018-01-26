@@ -50,6 +50,7 @@ namespace JiHuangBaiKeForUWP
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
             //Global类里的一些设定
+            Global._gameDataHamburgerMenuItem = _gameDataHamburgerMenuItem;
             Global.RootGrid = RootGrid;
             Global.FrameTitle = Global.GetOsVersion() >= 16299 ? FrameTitleAcrylic : FrameTitle;
             Global.AutoSuggestGrid = AutoSuggestGrid;
@@ -163,7 +164,7 @@ namespace JiHuangBaiKeForUWP
         private readonly ObservableCollection<HamburgerMenuItem> _gameDataHamburgerMenuItem = new ObservableCollection<HamburgerMenuItem>(
             new[]
             {
-                new HamburgerMenuItem()
+                new HamburgerMenuItem
                 {
                     Icon = "\x4E0C",
                     Text = "人物",
@@ -171,7 +172,7 @@ namespace JiHuangBaiKeForUWP
                     Selected = Visibility.Visible,
                     NavigatePage = typeof(CharacterPage)
                 },
-                new HamburgerMenuItem()
+                new HamburgerMenuItem
                 {
                     Icon = "\x4E01",
                     Text = "食物",
@@ -179,7 +180,7 @@ namespace JiHuangBaiKeForUWP
                     Selected = Visibility.Collapsed,
                     NavigatePage = typeof(FoodPage)
                 },
-                new HamburgerMenuItem()
+                new HamburgerMenuItem
                 {
                     Icon = "\x4E02",
                     Text = "模拟",
@@ -187,7 +188,7 @@ namespace JiHuangBaiKeForUWP
                     Selected = Visibility.Collapsed,
                     NavigatePage = typeof(CookingSimulatorPage)
                 },
-                new HamburgerMenuItem()
+                new HamburgerMenuItem
                 {
                     Icon = "\x4E03",
                     Text = "科技",
@@ -195,7 +196,7 @@ namespace JiHuangBaiKeForUWP
                     Selected = Visibility.Collapsed,
                     NavigatePage = typeof(SciencePage)
                 },
-                new HamburgerMenuItem()
+                new HamburgerMenuItem
                 {
                     Icon = "\x4E04",
                     Text = "生物",
@@ -203,7 +204,7 @@ namespace JiHuangBaiKeForUWP
                     Selected = Visibility.Collapsed,
                     NavigatePage = typeof(CreaturePage)
                 },
-                new HamburgerMenuItem()
+                new HamburgerMenuItem
                 {
                     Icon = "\x4E05",
                     Text = "自然",
@@ -211,20 +212,28 @@ namespace JiHuangBaiKeForUWP
                     Selected = Visibility.Collapsed,
                     NavigatePage = typeof(NaturalPage)
                 },
-                new HamburgerMenuItem()
+                new HamburgerMenuItem
                 {
                     Icon = "\x4E06",
                     Text = "物品",
                     Color = new SolidColorBrush(Colors.White),
                     Selected = Visibility.Collapsed,
                     NavigatePage = typeof(GoodPage)
+                },
+                new HamburgerMenuItem
+                {
+                    Icon = "\x4E0E",
+                    Text = "皮肤",
+                    Color = new SolidColorBrush(Colors.White),
+                    Selected = Visibility.Collapsed,
+                    NavigatePage = typeof(SkinsPage)
                 }
             });
 
         private readonly ObservableCollection<HamburgerMenuItem> _settingAndAboutHamburgerMenuItem = new ObservableCollection<HamburgerMenuItem>(
             new[]
             {
-                new HamburgerMenuItem()
+                new HamburgerMenuItem
                 {
                     Icon = "\x4E0A",
                     Text = "设置",
@@ -232,7 +241,7 @@ namespace JiHuangBaiKeForUWP
                     Selected = Visibility.Collapsed,
                     NavigatePage = typeof(SettingPage)
                 },
-                new HamburgerMenuItem()
+                new HamburgerMenuItem
                 {
                     Icon = "\x4E0B",
                     Text = "关于",
@@ -536,6 +545,12 @@ namespace JiHuangBaiKeForUWP
                     RootFrame.Navigate(typeof(GoodPage), viewExtraData);
                     Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(GoodPage), Parameter = viewExtraData });
                     break;
+                case "皮肤":
+                    Global.FrameTitle.Text = "皮肤";
+                    HamburgerMenu_ItemSelect(_gameDataHamburgerMenuItem[7]);
+                    RootFrame.Navigate(typeof(SkinsPage), viewExtraData);
+                    Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(SkinsPage), Parameter = viewExtraData });
+                    break;
             }
         }
         #endregion
@@ -575,6 +590,9 @@ namespace JiHuangBaiKeForUWP
                         break;
                     case "JiHuangBaiKeForUWP.View.GoodPage":
                         HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[6]);
+                        break;
+                    case "JiHuangBaiKeForUWP.View.SkinsPage":
+                        HamburgerMenu_ItemSelect_NoPush(_gameDataHamburgerMenuItem[7]);
                         break;
                     case "JiHuangBaiKeForUWP.View.SettingPage":
                         HamburgerMenu_ItemSelect_NoPush(_settingAndAboutHamburgerMenuItem[0]);

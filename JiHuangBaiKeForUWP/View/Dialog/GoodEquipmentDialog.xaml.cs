@@ -60,7 +60,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             GoodName.Text = c.Name;
             GoodEnName.Text = c.EnName;
             if (c.Attack == 0 && c.MinAttack == 0 && c.MaxAttack == 0 && string.IsNullOrEmpty(c.AttackString) && c.AttackOnBoat == 0 &&
-                c.AttackWet == 0 && string.IsNullOrEmpty(c.Durability) && c.Wet == 0 && c.ColdResistance == 0 && c.HeatResistance == 0 && c.Sanity == 0 && c.Hunger == 0 && c.Defense == 0)
+                c.AttackWet == 0 && string.IsNullOrEmpty(c.Durability) && c.Wet == 0 && c.ColdResistance == 0 && c.HeatResistance == 0 && c.Sanity == 0 && c.Hunger == 0 && c.Defense == 0 && c.Speed == 0)
             {
                 BarChartGrid.Visibility = Visibility.Collapsed;
             }
@@ -73,7 +73,7 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                     BarChartStackPanel2.HorizontalAlignment = HorizontalAlignment.Center;
                     BarChartGridColumn1.Width = new GridLength(0);
                 }
-                if (c.Wet == 0 && c.ColdResistance == 0 && c.HeatResistance == 0 && c.Sanity == 0 && c.Hunger == 0 && c.Defense == 0)
+                if (c.Wet == 0 && c.ColdResistance == 0 && c.HeatResistance == 0 && c.Sanity == 0 && c.Hunger == 0 && c.Defense == 0 && c.Speed == 0)
                 {
                     BarChartStackPanel2.Visibility = Visibility.Collapsed;
                     BarChartStackPanel1.HorizontalAlignment = HorizontalAlignment.Center;
@@ -199,6 +199,15 @@ namespace JiHuangBaiKeForUWP.View.Dialog
             else
             {
                 GoodDefense.Visibility = Visibility.Collapsed;
+            }
+            if (c.Speed != 0)
+            {
+                GoodSpeed.Value = c.Speed;
+                GoodSpeed.BarColor = Global.ColorBorderCyan;
+            }
+            else
+            {
+                GoodSpeed.Visibility = Visibility.Collapsed;
             }
             // 特殊能力
             if (c.Ability.Count == 0)

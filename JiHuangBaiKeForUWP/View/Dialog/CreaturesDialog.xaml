@@ -43,7 +43,7 @@
                 <StackPanel x:Name="BarChartStackPanel2" Grid.Column="1" Width="200" HorizontalAlignment="Left">
                     <charts:BarChart x:Name="CreatureMoveSpeed" Label="移动速度" MaxValue="20" LabelWidth="60"/>
                     <charts:BarChart x:Name="CreatureRunSpeed" Label="奔跑速度" MaxValue="10" LabelWidth="60"/>
-                    <charts:BarChart x:Name="CreatureDangerous" Label="危险程度" MaxValue="60" LabelWidth="60"/>
+                    <charts:BarChart x:Name="CreatureDangerous" Label="危险程度" MaxValue="10" LabelWidth="60"/>
                     <charts:BarChart x:Name="CreatureSanityEffect" Label="精神影响" MaxValue="400" LabelWidth="60"/>
                 </StackPanel>
             </Grid>

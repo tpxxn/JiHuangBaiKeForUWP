@@ -103,7 +103,11 @@ namespace JiHuangBaiKeForUWP.View.Dialog
                 }
             }
             ScienceIntroduction.Text = c.Introduction;
-            ConsolePre.Text = $"c_give(\"{c.Console}\",";
+            // 控制台
+            if (string.IsNullOrEmpty(c.ConsoleCommand))
+                ConsolePre.Text = $"c_give(\"{c.Console}\",";
+            else
+                ConsolePre.Text = c.ConsoleCommand + $"(\"{c.Console}\",";
         }
 
         private void ConsoleNum_TextChanged(object sender, TextChangedEventArgs e)

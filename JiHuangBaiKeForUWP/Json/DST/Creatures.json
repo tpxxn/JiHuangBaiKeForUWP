@@ -1116,7 +1116,7 @@
         "Ability": [
           "可以躲在壳里抵挡75%伤害。"
         ],
-        "Introduction": "洞穴蜘蛛生活在G_silk岩，它拥有一个贝壳状的甲壳，缩起来可以抵挡75%的伤害，而普通状态下是极其脆弱的。",
+        "Introduction": "洞穴蜘蛛生活在蛛网岩，它拥有一个贝壳状的甲壳，缩起来可以抵挡75%的伤害，而普通状态下是极其脆弱的。",
         "Console": "spider_hider"
       },
       {
@@ -1138,7 +1138,7 @@
           "G_silk|×1（25%）",
           "G_spider_gland|×1（25%）"
         ],
-        "Introduction": "喷吐蜘蛛同样生活在G_silk岩，它会喷出远程的G_silk攻击，尽量不要靠近它，除非只有一只喷吐蜘蛛。",
+        "Introduction": "喷吐蜘蛛同样生活在蛛网岩，它会喷出远程的蛛网攻击，尽量不要靠近它，除非只有一只喷吐蜘蛛。",
         "Console": "spider_spitter"
       },
       {
@@ -2466,7 +2466,7 @@
         "AttackInterval": 3,
         "AttackScope": 2.4,
         "MoveSpeed": 4.2,
-        "Dangerous": 8,
+        "Dangerous": 10,
         "SanityEffect": -400,
         "IsActiveAttack": true,
         "IsTeamWork": true,
@@ -2530,6 +2530,7 @@
         "AttackInterval": 3.5,
         "AttackScope": 7,
         "MoveSpeed": 0.6,
+        "Dangerous": 9,
         "IsActiveAttack": true,
         "IsTeamWork": false,
         "Goods": [
@@ -2572,6 +2573,7 @@
         "AttackInterval": 3.5,
         "AttackScope": 7,
         "MoveSpeed": 0.6,
+        "Dangerous": 10,
         "IsActiveAttack": true,
         "IsTeamWork": false,
         "Goods": [
@@ -2703,7 +2705,7 @@
           "G_rare_blueprint|×1（懒惰的背弃者）"
         ],
         "Introduction": "蚁狮会在每年的夏天在沙漠出现。用除了沙桶套装之外的玩具可以换到沙之石，用沙桶套装可以换到懒惰的背弃者稀有蓝图。如果不常常进贡玩具则会在地表产生地陷或在洞穴中掉落巨砾。如果喂食白色、黄色或橙色的热能石，蚁狮会生气进入战斗形态。战斗形态的蚁狮会使用沙堡和沙锥（并非船难版的沙堡和沙锥）围成一个战斗场范围来困住玩家。在战斗过程中，蚁狮会不断地猛击地面，从地面产生尖刺的沙锥（至少有一个沙锥会从玩家脚下生成），对击中的玩家造成伤害。若玩家太久没有攻击蚁狮，_会把自己私藏的石头拿起来吃，每吃一次回复 200 点生命。沙堡和沙锥可以用一般攻击来摧毁，或者可以透过燃烧（用火把点燃等等）来制成玻璃城堡和玻璃尖锥。沙堡不会对玩家造成伤害，有 250 点生命，持续存在 15-16 秒，每 20 秒生成一圈；沙锥有三种大小，分别有 25、65、100 点生命，对玩家造成 50、75、100 点伤害，持续 6-7、7-8、8-10 秒。",
-        "Console": "toadstool"
+        "Console": "antlion"
       }
     ]
   }

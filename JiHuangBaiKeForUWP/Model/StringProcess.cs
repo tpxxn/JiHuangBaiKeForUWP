@@ -65,6 +65,20 @@ namespace JiHuangBaiKeForUWP.Model
         }
 
         /// <summary>
+        /// 返回Json文本
+        /// </summary>
+        /// <returns>string类型文本</returns>
+        public static async Task<string> GetJsonStringSkins()
+        {
+            //            var folderExists = await ApplicationFolder.TryGetItemAsync(BuiltInGameVersionJsonFolder[GameVersion]);
+            //            var uri = folderExists == null ? new Uri("ms-appx:///Json/" + BuiltInGameVersionJsonFolder[GameVersion] + "/" + fileName) : new Uri(ApplicationFolder.Path + "/" + BuiltInGameVersionJsonFolder[GameVersion] + "/" + fileName);
+            var uri = new Uri("ms-appx:///Json/Skins.json");
+            var storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
+            var str = await FileIO.ReadTextAsync(storageFile);
+            return str;
+        }
+
+        /// <summary>
         /// 获取游戏图片位置
         /// </summary>
         /// <param name="str">图片名称</param>
@@ -94,6 +108,9 @@ namespace JiHuangBaiKeForUWP.Model
                     break;
                 case "T":
                     str = $"ms-appx:///Assets/GameResources/Goods/{str}.png";
+                    break;
+                case "P":
+                    str = $"ms-appx:///Assets/GameResources/Skins/{str}.png";
                     break;
             }
             return str;

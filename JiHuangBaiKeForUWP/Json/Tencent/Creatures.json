@@ -1113,7 +1113,7 @@
 				"Ability": [
 					"可以躲在壳里抵挡75%伤害。"
 				],
-				"Introduction": "洞穴蜘蛛生活在G_silk岩，它拥有一个贝壳状的甲壳，缩起来可以抵挡75%的伤害，而普通状态下是极其脆弱的。",
+				"Introduction": "洞穴蜘蛛生活在蛛网岩，它拥有一个贝壳状的甲壳，缩起来可以抵挡75%的伤害，而普通状态下是极其脆弱的。",
 				"Console": "spider_hider"
 			},
 			{
@@ -1135,7 +1135,7 @@
 					"G_silk|×1（25%）",
 					"G_spider_gland|×1（25%）"
 				],
-				"Introduction": "喷吐蜘蛛同样生活在G_silk岩，它会喷出远程的G_silk攻击，尽量不要靠近它，除非只有一只喷吐蜘蛛。",
+				"Introduction": "喷吐蜘蛛同样生活在蛛网岩，它会喷出远程的蛛网攻击，尽量不要靠近它，除非只有一只喷吐蜘蛛。",
 				"Console": "spider_spitter"
 			},
 			{
@@ -2463,7 +2463,7 @@
 				"AttackInterval": 3,
 				"AttackScope": 2.4,
 				"MoveSpeed": 4.2,
-				"Dangerous": 8,
+				"Dangerous": 10,
 				"SanityEffect": -400,
 				"IsActiveAttack": true,
 				"IsTeamWork": true,
@@ -2518,91 +2518,93 @@
 				"Introduction": "由远古燃料编织魔生成，远古燃料编织魔吃一个回复400生命。",
 				"Console": "stalker_minion2"
 			},
-			{
-				"Picture": "A_toadstool",
-				"Name": "毒菇",
-				"EnName": "Toadstool",
-				"Health": 52500,
-				"Attack": 100,
-				"AttackInterval": 3.5,
-				"AttackScope": 7,
-				"MoveSpeed": 0.6,
-				"IsActiveAttack": true,
-				"IsTeamWork": false,
-				"Goods": [
-					"F_frog_legs|×1",
-					"F_meat|×3",
-					"F_meat|×1（50%）",
-					"F_meat|×1（25%）",
-					"F_blue_cap|×1",
-					"F_blue_cap|×1（33%）",
-					"F_blue_cap|×1（33%）",
-					"F_green_cap|×1",
-					"F_green_cap|×1（33%）",
-					"F_green_cap|×1（33%）",
-					"F_red_cap|×1",
-					"F_red_cap|×1（33%）",
-					"F_red_cap|×1（33%）",
-					"G_shroom_skin|×1",
-					"G_rare_blueprint|×1（蓝色乐趣帽子蘑菇、绿色乐趣帽子蘑菇和红色乐趣帽子蘑菇之一）",
-					"G_rare_blueprint|×1（蘑菇灯（66%）或发光器（33%））",
-					"A_blue_spore|×2",
-					"A_blue_spore|×1（50%）",
-					"A_green_spore|×2",
-					"A_green_spore|×1（50%）",
-					"A_red_spore|×2",
-					"A_red_spore|×1（50%）"
-				],
-				"Ability": [
-					"孢子炸弹",
-					"种植蘑菇树"
-				],
-				"Introduction": "毒菇会对附近玩家寄生一个孢子炸弹，炸弹会提供一点点光源直到变成孢子云。孢子云会在地面上持续一段时间并提供光源，在孢子云内的玩家会受到伤害，此外任何具新鲜度的物品也会因接触孢子云而加速腐败速度，其中也包含了火腿棍。当蟾蜍王血量到达40%以下时，会开始有震地攻击(类似于熊獾的拍地板攻击)，并且开始会丢出四个或更多的蘑菇炸弹。进入战斗时，蟾蜍王会停止放出香菇炸弹而开始全身抖动产生蘑菇树。这些蘑菇树还会帮蟾蜍王补血。根据蘑菇树的数量，特别设定蟾蜍王会依蘑菇树的数量，改变蟾蜍王的攻击速度、伤害、攻击时间、伤害吸收、命中恢复(“命中玩家”动画之间的秒数)和香菇炸弹数量增长。蘑菇树可以用具有斧头功能的工具砍掉。",
-				"Console": "toadstool"
-			},
-			{
-				"Picture": "A_misery_toadstool",
-				"Name": "毒菇",
-				"EnName": "Toadstool",
-				"Health": 99999,
-				"Attack": 150,
-				"AttackInterval": 3.5,
-				"AttackScope": 7,
-				"MoveSpeed": 0.6,
-				"IsActiveAttack": true,
-				"IsTeamWork": false,
-				"Goods": [
-					"F_frog_legs|×1",
-					"F_meat|×3",
-					"F_meat|×1（50%）",
-					"F_meat|×1（25%）",
-					"F_blue_cap|×1",
-					"F_blue_cap|×1（33%）",
-					"F_blue_cap|×1（33%）",
-					"F_green_cap|×1",
-					"F_green_cap|×1（33%）",
-					"F_green_cap|×1（33%）",
-					"F_red_cap|×1",
-					"F_red_cap|×1（33%）",
-					"F_red_cap|×1（33%）",
-					"G_shroom_skin|×2",
-					"G_rare_blueprint|×2（蓝色乐趣帽子蘑菇、绿色乐趣帽子蘑菇和红色乐趣帽子蘑菇之一）",
-					"G_rare_blueprint|×1（蘑菇灯（66%）或发光器（33%））",
-					"G_rare_blueprint|×1（睡包）",
-					"A_blue_spore|×2",
-					"A_blue_spore|×1（50%）",
-					"A_green_spore|×2",
-					"A_green_spore|×1（50%）",
-					"A_red_spore|×2",
-					"A_red_spore|×1（50%）"
-				],
-				"Ability": [
-					"孢子炸弹",
-					"种植蘑菇树"
-				],
-				"Introduction": "将金色雀关在洞穴的鸟笼里会变成中毒的金丝雀，拿出放在毒菇巢上毒菇就会被染成黄色，砍伐后产生黄色毒菇。各项属性均有增长。",
-				"Console": "toadstool_dark"
-			},
+      {
+        "Picture": "A_toadstool",
+        "Name": "毒菇",
+        "EnName": "Toadstool",
+        "Health": 52500,
+        "Attack": 100,
+        "AttackInterval": 3.5,
+        "AttackScope": 7,
+        "MoveSpeed": 0.6,
+        "Dangerous": 9,
+        "IsActiveAttack": true,
+        "IsTeamWork": false,
+        "Goods": [
+          "F_frog_legs|×1",
+          "F_meat|×3",
+          "F_meat|×1（50%）",
+          "F_meat|×1（25%）",
+          "F_blue_cap|×1",
+          "F_blue_cap|×1（33%）",
+          "F_blue_cap|×1（33%）",
+          "F_green_cap|×1",
+          "F_green_cap|×1（33%）",
+          "F_green_cap|×1（33%）",
+          "F_red_cap|×1",
+          "F_red_cap|×1（33%）",
+          "F_red_cap|×1（33%）",
+          "G_shroom_skin|×1",
+          "G_rare_blueprint|×1（蓝色乐趣帽子蘑菇、绿色乐趣帽子蘑菇和红色乐趣帽子蘑菇之一）",
+          "G_rare_blueprint|×1（蘑菇灯（66%）或发光器（33%））",
+          "A_blue_spore|×2",
+          "A_blue_spore|×1（50%）",
+          "A_green_spore|×2",
+          "A_green_spore|×1（50%）",
+          "A_red_spore|×2",
+          "A_red_spore|×1（50%）"
+        ],
+        "Ability": [
+          "孢子炸弹",
+          "种植蘑菇树"
+        ],
+        "Introduction": "毒菇会对附近玩家寄生一个孢子炸弹，炸弹会提供一点点光源直到变成孢子云。孢子云会在地面上持续一段时间并提供光源，在孢子云内的玩家会受到伤害，此外任何具新鲜度的物品也会因接触孢子云而加速腐败速度，其中也包含了火腿棍。当蟾蜍王血量到达40%以下时，会开始有震地攻击(类似于熊獾的拍地板攻击)，并且开始会丢出四个或更多的蘑菇炸弹。进入战斗时，蟾蜍王会停止放出香菇炸弹而开始全身抖动产生蘑菇树。这些蘑菇树还会帮蟾蜍王补血。根据蘑菇树的数量，特别设定蟾蜍王会依蘑菇树的数量，改变蟾蜍王的攻击速度、伤害、攻击时间、伤害吸收、命中恢复(“命中玩家”动画之间的秒数)和香菇炸弹数量增长。蘑菇树可以用具有斧头功能的工具砍掉。",
+        "Console": "toadstool"
+      },
+      {
+        "Picture": "A_misery_toadstool",
+        "Name": "毒菇",
+        "EnName": "Toadstool",
+        "Health": 99999,
+        "Attack": 150,
+        "AttackInterval": 3.5,
+        "AttackScope": 7,
+        "MoveSpeed": 0.6,
+        "Dangerous": 10,
+        "IsActiveAttack": true,
+        "IsTeamWork": false,
+        "Goods": [
+          "F_frog_legs|×1",
+          "F_meat|×3",
+          "F_meat|×1（50%）",
+          "F_meat|×1（25%）",
+          "F_blue_cap|×1",
+          "F_blue_cap|×1（33%）",
+          "F_blue_cap|×1（33%）",
+          "F_green_cap|×1",
+          "F_green_cap|×1（33%）",
+          "F_green_cap|×1（33%）",
+          "F_red_cap|×1",
+          "F_red_cap|×1（33%）",
+          "F_red_cap|×1（33%）",
+          "G_shroom_skin|×2",
+          "G_rare_blueprint|×2（蓝色乐趣帽子蘑菇、绿色乐趣帽子蘑菇和红色乐趣帽子蘑菇之一）",
+          "G_rare_blueprint|×1（蘑菇灯（66%）或发光器（33%））",
+          "G_rare_blueprint|×1（睡包）",
+          "A_blue_spore|×2",
+          "A_blue_spore|×1（50%）",
+          "A_green_spore|×2",
+          "A_green_spore|×1（50%）",
+          "A_red_spore|×2",
+          "A_red_spore|×1（50%）"
+        ],
+        "Ability": [
+          "孢子炸弹",
+          "种植蘑菇树"
+        ],
+        "Introduction": "将金色雀关在洞穴的鸟笼里会变成中毒的金丝雀，拿出放在毒菇巢上毒菇就会被染成黄色，砍伐后产生黄色毒菇。各项属性均有增长。",
+        "Console": "toadstool_dark"
+      },
 			{
 				"Picture": "A_klaus",
 				"Name": "克劳斯第一形态",
@@ -2681,27 +2683,27 @@
 				"Introduction": "尝试用鹿角打开战利品贮藏时会同克劳斯一同出现，杀死它们会增加克劳斯的实力。如果克劳斯死后它们还没死就会变成普通的无眼鹿并掉落下宝石。",
 				"Console": "deer_blue"
 			},
-			{
-				"Picture": "A_antlion",
-				"Name": "蚁狮",
-				"EnName": "Antlion",
-				"Health": 6000,
-				"Attack": 100,
-				"AttackInterval": 4,
-				"AttackScope": 15,
-				"SanityEffect": -40,
-				"IsActiveAttack": true,
-				"IsTeamWork": true,
-				"Goods": [
-					"G_desert_stone|×6~8",
-					"F_meat|×4",
-					"G_rocks|×2~4",
-					"G_trinkets|",
-					"G_rare_blueprint|×1（懒惰的背弃者）"
-				],
-				"Introduction": "蚁狮会在每年的夏天在沙漠出现。用除了沙桶套装之外的玩具可以换到沙之石，用沙桶套装可以换到懒惰的背弃者稀有蓝图。如果不常常进贡玩具则会在地表产生地陷或在洞穴中掉落巨砾。如果喂食白色、黄色或橙色的热能石，蚁狮会生气进入战斗形态。战斗形态的蚁狮会使用沙堡和沙锥（并非船难版的沙堡和沙锥）围成一个战斗场范围来困住玩家。在战斗过程中，蚁狮会不断地猛击地面，从地面产生尖刺的沙锥（至少有一个沙锥会从玩家脚下生成），对击中的玩家造成伤害。若玩家太久没有攻击蚁狮，_会把自己私藏的石头拿起来吃，每吃一次回复 200 点生命。沙堡和沙锥可以用一般攻击来摧毁，或者可以透过燃烧（用火把点燃等等）来制成玻璃城堡和玻璃尖锥。沙堡不会对玩家造成伤害，有 250 点生命，持续存在 15-16 秒，每 20 秒生成一圈；沙锥有三种大小，分别有 25、65、100 点生命，对玩家造成 50、75、100 点伤害，持续 6-7、7-8、8-10 秒。",
-				"Console": "toadstool"
-			}
+      {
+        "Picture": "A_antlion",
+        "Name": "蚁狮",
+        "EnName": "Antlion",
+        "Health": 6000,
+        "Attack": 100,
+        "AttackInterval": 4,
+        "AttackScope": 15,
+        "SanityEffect": -40,
+        "IsActiveAttack": true,
+        "IsTeamWork": true,
+        "Goods": [
+          "G_desert_stone|×6~8",
+          "F_meat|×4",
+          "G_rocks|×2~4",
+          "G_trinkets|",
+          "G_rare_blueprint|×1（懒惰的背弃者）"
+        ],
+        "Introduction": "蚁狮会在每年的夏天在沙漠出现。用除了沙桶套装之外的玩具可以换到沙之石，用沙桶套装可以换到懒惰的背弃者稀有蓝图。如果不常常进贡玩具则会在地表产生地陷或在洞穴中掉落巨砾。如果喂食白色、黄色或橙色的热能石，蚁狮会生气进入战斗形态。战斗形态的蚁狮会使用沙堡和沙锥（并非船难版的沙堡和沙锥）围成一个战斗场范围来困住玩家。在战斗过程中，蚁狮会不断地猛击地面，从地面产生尖刺的沙锥（至少有一个沙锥会从玩家脚下生成），对击中的玩家造成伤害。若玩家太久没有攻击蚁狮，_会把自己私藏的石头拿起来吃，每吃一次回复 200 点生命。沙堡和沙锥可以用一般攻击来摧毁，或者可以透过燃烧（用火把点燃等等）来制成玻璃城堡和玻璃尖锥。沙堡不会对玩家造成伤害，有 250 点生命，持续存在 15-16 秒，每 20 秒生成一圈；沙锥有三种大小，分别有 25、65、100 点生命，对玩家造成 50、75、100 点伤害，持续 6-7、7-8、8-10 秒。",
+        "Console": "antlion"
+      }
 		]
 	}
 }

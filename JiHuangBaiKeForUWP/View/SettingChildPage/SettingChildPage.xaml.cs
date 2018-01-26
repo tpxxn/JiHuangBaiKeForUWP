@@ -20,6 +20,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using JiHuangBaiKeForUWP.Model;
 using JiHuangBaiKeForUWP.UserControls.SettingPage;
+using Microsoft.Toolkit.Uwp.UI.Extensions;
 using Microsoft.Win32.SafeHandles;
 
 namespace JiHuangBaiKeForUWP.View.SettingChildPage
@@ -104,6 +105,33 @@ namespace JiHuangBaiKeForUWP.View.SettingChildPage
         {
             SettingSet.GameVersionSettingSet(GameVersionComboBox.SelectedIndex);
             Global.GameVersion = GameVersionComboBox.SelectedIndex;
+            if (Global.GameVersion == 0 || Global.GameVersion == 1)
+            {
+                var skinFlag = false;
+                foreach (var gameDataHamburgerMenuItem in Global._gameDataHamburgerMenuItem)
+                {
+                    if (gameDataHamburgerMenuItem.Text == "皮肤")
+                    {
+                        skinFlag = true;
+                        break;
+                    }
+                }
+                if (skinFlag == false)
+                {
+                    Global._gameDataHamburgerMenuItem.Add(Global.SkinHamburgerMenuItem);
+                }
+            }
+            else
+            {
+                foreach (var gameDataHamburgerMenuItem in Global._gameDataHamburgerMenuItem)
+                {
+                    if (gameDataHamburgerMenuItem.Text == "皮肤")
+                    {
+                        Global._gameDataHamburgerMenuItem.Remove(gameDataHamburgerMenuItem);
+                        break;
+                    }
+                }
+            }
             await Global.SetAutoSuggestBoxItem();
         }
 

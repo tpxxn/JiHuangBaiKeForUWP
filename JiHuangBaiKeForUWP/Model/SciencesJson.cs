@@ -22,6 +22,7 @@ namespace JiHuangBaiKeForUWP.Model
         public string UnlockCharcter { get; set; }
         public string UnlockBlueprint { get; set; }
         public string Introduction { get; set; }
+        public string ConsoleCommand { get; set; }
         public string Console { get; set; }
     }
 

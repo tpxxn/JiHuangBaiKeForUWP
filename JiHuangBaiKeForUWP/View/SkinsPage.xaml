@@ -1,0 +1,345 @@
+﻿<Page
+    x:Class="JiHuangBaiKeForUWP.View.SkinsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JiHuangBaiKeForUWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="using:JiHuangBaiKeForUWP.UserControls.Expander"
+    xmlns:datetype="using:JiHuangBaiKeForUWP.Model"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="SkinsDataTemplate" x:DataType="datetype:Skin">
+            <Grid Margin="5" Width="90" Height="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="13" Foreground="{Binding Color}" FontWeight="Bold" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <ScrollViewer x:Name="RootScrollViewer" VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="RootStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <uc:Expander x:Name="BodyExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="身体 Body" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsBodyGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsBodyData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="BodyEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="HandsExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="手部 Hands" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsHandsGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsHandsData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="HandsEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="LegsExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="腿部 Legs" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsLegsGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsLegsData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="LegsEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="FeetExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="脚部 Feet" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsFeetGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsFeetData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="FeetEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="CharactersExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="人物 Characters" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsCharactersGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsCharactersData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="CharactersEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="ItemsExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="物品 Items" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsItemsGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsItemsData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="ItemsEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="StructuresExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="建筑 Structures" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsStructuresGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsStructuresData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="StructuresEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="CrittersExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="宠物 Critters" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsCrittersGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsCrittersData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="CrittersEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="SpecialExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="特殊 Special" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsSpecialGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsSpecialData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="SpecialEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="HallowedNightsSkinsExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="Hallowed Nights 皮肤" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsHallowedNightsSkinsGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsHallowedNightsSkinsData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="HallowedNightsSkinsEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="WintersFeastSkinsExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="Winters Feast 皮肤" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsWintersFeastSkinsGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsWintersFeastSkinsData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="WintersFeastSkinsEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="YearOfTheGobblerSkinsExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="Year Of The Gobbler 皮肤" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsYearOfTheGobblerSkinsGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsYearOfTheGobblerSkinsData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="YearOfTheGobblerSkinsEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="TheForgeExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="熔炉 The Forge" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsTheForgeGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsTheForgeData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="TheForgeEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="EmotesExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="表情 Emotes" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsEmotesGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsEmotesData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="EmotesEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="OutfitSetsExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="套装 OutfitSets" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="SkinsOutfitSetsGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _SkinsOutfitSetsData}" 
+                          ItemTemplate="{StaticResource SkinsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="SkinsGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="OutfitSetsEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

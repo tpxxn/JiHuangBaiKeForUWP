@@ -48,6 +48,7 @@
                     <charts:BarChart x:Name="GoodSanity" Label="精神" MaxValue="90" LabelWidth="90"/>
                     <charts:BarChart x:Name="GoodHunger" Label="饥饿" MaxValue="90" LabelWidth="90"/>
                     <charts:BarChart x:Name="GoodDefense" Label="防御" MaxValue="400" LabelWidth="90"/>
+                    <charts:BarChart x:Name="GoodSpeed" Label="速度" MaxValue="25" LabelWidth="90"/>
                 </StackPanel>
             </Grid>
             <TextBlock x:Name="AbilityTextBlock" Grid.Row="4" Text="特殊能力：" Margin="0,10"/>

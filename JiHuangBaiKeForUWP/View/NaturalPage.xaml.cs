@@ -28,7 +28,7 @@ namespace JiHuangBaiKeForUWP.View
     /// </summary>
     public sealed partial class NaturalPage : Page
     {
-        private readonly ObservableCollection<Nature> _naturalBiomesData = new ObservableCollection<Nature>();
+        private readonly ObservableCollection<NatureBiomes> _naturalBiomesData = new ObservableCollection<NatureBiomes>();
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -75,14 +75,14 @@ namespace JiHuangBaiKeForUWP.View
             }
         }
 
-        private void OnNavigatedToNaturalBiomesDialog(GridView gridView, ObservableCollection<Nature> naturalCollection, string _e)
+        private void OnNavigatedToNaturalBiomesDialog(GridView gridView, ObservableCollection<NatureBiomes> naturalCollection, string _e)
         {
             if (gridView.Items == null) return;
             foreach (var gridViewItem in naturalCollection)
             {
                 var natural = gridViewItem;
                 if (natural == null || natural.Picture != _e) continue;
-                Frame.Navigate(typeof(NaturalDialog), natural);
+                Frame.Navigate(typeof(NaturalBiomesDialog), natural);
                 break;
             }
         }
@@ -96,7 +96,7 @@ namespace JiHuangBaiKeForUWP.View
         {
             _naturalBiomesData.Clear();
             var natural = JsonConvert.DeserializeObject<NaturalRootObject>(await StringProcess.GetJsonString("Natural.json"));
-            foreach (var natureBiomesItems in natural.Biomes.Nature)
+            foreach (var natureBiomesItems in natural.Biomes.NatureBiomes)
             {
                 _naturalBiomesData.Add(natureBiomesItems);
             }
@@ -114,9 +114,9 @@ namespace JiHuangBaiKeForUWP.View
                 var image = (UIElement)root.FindName("Image");
                 ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("Image", image);
             }
-            var item = (Nature)e.ClickedItem;
-            Frame.Navigate(typeof(NaturalDialog), item);
-            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(NaturalDialog), Parameter = item });
+            var item = (NatureBiomes)e.ClickedItem;
+            Frame.Navigate(typeof(NaturalBiomesDialog), item);
+            Global.PageStack.Push(new PageStackItem { SourcePageType = typeof(NaturalBiomesDialog), Parameter = item });
         }
     }
 }

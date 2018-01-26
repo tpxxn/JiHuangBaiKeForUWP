@@ -9,6 +9,7 @@
     xmlns:datetype="using:JiHuangBaiKeForUWP.Model"
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     xmlns:charts="using:JiHuangBaiKeForUWP.UserControls.Charts"
+    xmlns:userControls="using:JiHuangBaiKeForUWP.UserControls"
     mc:Ignorable="d">
 
     <Page.Resources>

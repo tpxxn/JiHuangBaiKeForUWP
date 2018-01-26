@@ -10,7 +10,7 @@
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     mc:Ignorable="d">
     <Page.Resources>
-        <DataTemplate x:Key="NaturalDataTemplate" x:DataType="datetype:Nature">
+        <DataTemplate x:Key="NaturalDataTemplate" x:DataType="datetype:NatureBiomes">
             <Grid Margin="5" Width="120" Height="120">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
