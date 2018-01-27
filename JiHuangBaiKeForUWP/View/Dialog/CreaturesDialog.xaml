@@ -48,8 +48,8 @@
                 </StackPanel>
             </Grid>
             <StackPanel x:Name="ActiveAttackAndTeamWorkStackPanel" Grid.Row="4" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,10,0,0">
-                <CheckBox Name="ActiveAttackCheckBox" Content="主动攻击" IsEnabled="False" Style="{StaticResource ReadonlyCheckBoxStyle}" Margin="75,0,0,0" />
-                <CheckBox Name="TeamWorkCheckBox" Content="团队合作" IsEnabled="False" Style="{StaticResource ReadonlyCheckBoxStyle}" Margin="50,0,0,0" />
+                <CheckBox Name="ActiveAttackCheckBox" Content="主动攻击" IsEnabled="False" Style="{StaticResource ReadonlyCheckBoxStyle}" Margin="75,0,0,0"/>
+                <CheckBox Name="TeamWorkCheckBox" Content="团队合作" IsEnabled="False" Style="{StaticResource ReadonlyCheckBoxStyle}" Margin="50,0,0,0"/>
             </StackPanel>
             <TextBlock Grid.Row="5" x:Name="GoodsTextBlock" Text="战利品：" Margin="0,10"/>
             <wrapPanel:WrapPanel Grid.Row="6" x:Name="GoodsWrapPanel" Orientation="Horizontal"/>

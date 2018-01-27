@@ -10,7 +10,37 @@
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     mc:Ignorable="d">
     <Page.Resources>
-        <DataTemplate x:Key="NaturalDataTemplate" x:DataType="datetype:NatureBiomes">
+        <DataTemplate x:Key="NaturalBiomesDataTemplate" x:DataType="datetype:NatureBiomes">
+            <Grid Margin="5" Width="120" Height="120">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="14" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="NaturalSmallPlantsDataTemplate" x:DataType="datetype:NatureSmallPlant">
+            <Grid Margin="5" Width="120" Height="120">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="14" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="NaturalTreesDataTemplate" x:DataType="datetype:NatureTree">
+            <Grid Margin="5" Width="120" Height="120">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image x:Name="Image" Source="{x:Bind Picture}" Stretch="Uniform" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Name}" FontSize="14" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="NaturalCreatureNestDataTemplate" x:DataType="datetype:NatureCreatureNest">
             <Grid Margin="5" Width="120" Height="120">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -24,7 +54,7 @@
 
     <ScrollViewer x:Name="RootScrollViewer" VerticalScrollBarVisibility="Auto">
         <StackPanel x:Name="RootStackPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <uc:Expander x:Name="BiomesExpander" IsExPanded="True" VerticalAlignment="Top" FontSize="17">
+            <uc:Expander x:Name="BiomesExpander" IsExPanded="True" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
                 <uc:Expander.Header>
                     <StackPanel Orientation="Horizontal" Height="47">
                         <TextBlock Text="生物群落" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
@@ -33,14 +63,77 @@
                 <GridView Name="NaturalBiomesGridView" 
                           Margin="10"
                           ItemsSource="{x:Bind _naturalBiomesData}" 
-                          ItemTemplate="{StaticResource NaturalDataTemplate}" 
+                          ItemTemplate="{StaticResource NaturalBiomesDataTemplate}" 
                           SelectionMode="None" 
                           IsItemClickEnabled="True" 
-                          ItemClick="NaturalGridView_ItemClick" 
+                          ItemClick="NaturalBiomesGridView_ItemClick" 
                           animations:ReorderGridAnimation.Duration="250">
                     <GridView.ItemContainerTransitions>
                         <TransitionCollection>
                             <EntranceThemeTransition x:Name="BiomesEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="SmallPlantExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="小型植物" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="NaturalSmallPlantGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _naturalSmallPlantData}" 
+                          ItemTemplate="{StaticResource NaturalSmallPlantsDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="NaturalSmallPlantGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="SmallPlantEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="TreesExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="树" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="NaturalTreesGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _naturalTreesData}" 
+                          ItemTemplate="{StaticResource NaturalTreesDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="NaturalTreeGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="TreesEntranceTransition" />
+                        </TransitionCollection>
+                    </GridView.ItemContainerTransitions>
+                </GridView>
+            </uc:Expander>
+            <uc:Expander x:Name="CreatureNestExpander" VerticalAlignment="Top" FontSize="17" Tapped="Expander_Tapped">
+                <uc:Expander.Header>
+                    <StackPanel Orientation="Horizontal" Height="47">
+                        <TextBlock Text="生物巢穴" Margin="10,0,0,0" FontSize="17" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </uc:Expander.Header>
+                <GridView Name="NaturalCreatureNestGridView" 
+                          Margin="10"
+                          ItemsSource="{x:Bind _naturalCreatureNestData}" 
+                          ItemTemplate="{StaticResource NaturalCreatureNestDataTemplate}" 
+                          SelectionMode="None" 
+                          IsItemClickEnabled="True" 
+                          ItemClick="NaturalCreatureNestGridView_ItemClick" 
+                          animations:ReorderGridAnimation.Duration="250">
+                    <GridView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition x:Name="CreatureNestEntranceTransition" />
                         </TransitionCollection>
                     </GridView.ItemContainerTransitions>
                 </GridView>

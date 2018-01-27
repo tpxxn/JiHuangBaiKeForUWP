@@ -51,6 +51,33 @@ namespace JiHuangBaiKeForUWP
             SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
             //Global类里的一些设定
             Global._gameDataHamburgerMenuItem = _gameDataHamburgerMenuItem;
+            if (Global.GameVersion == 0 || Global.GameVersion == 1)
+            {
+                var skinFlag = false;
+                foreach (var gameDataHamburgerMenuItem in Global._gameDataHamburgerMenuItem)
+                {
+                    if (gameDataHamburgerMenuItem.Text == "皮肤")
+                    {
+                        skinFlag = true;
+                        break;
+                    }
+                }
+                if (skinFlag == false)
+                {
+                    Global._gameDataHamburgerMenuItem.Add(Global.SkinHamburgerMenuItem);
+                }
+            }
+            else
+            {
+                foreach (var gameDataHamburgerMenuItem in Global._gameDataHamburgerMenuItem)
+                {
+                    if (gameDataHamburgerMenuItem.Text == "皮肤")
+                    {
+                        Global._gameDataHamburgerMenuItem.Remove(gameDataHamburgerMenuItem);
+                        break;
+                    }
+                }
+            }
             Global.RootGrid = RootGrid;
             Global.FrameTitle = Global.GetOsVersion() >= 16299 ? FrameTitleAcrylic : FrameTitle;
             Global.AutoSuggestGrid = AutoSuggestGrid;

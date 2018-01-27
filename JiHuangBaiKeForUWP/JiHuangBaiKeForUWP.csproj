@@ -187,6 +187,15 @@
     <Compile Include="View\Dialog\NaturalBiomesDialog.xaml.cs">
       <DependentUpon>NaturalBiomesDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Dialog\NaturalCreatureNestDialog.xaml.cs">
+      <DependentUpon>NaturalCreatureNestDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\NaturalSmallPlantDialog.xaml.cs">
+      <DependentUpon>NaturalSmallPlantDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\NaturalTreesDialog.xaml.cs">
+      <DependentUpon>NaturalTreesDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialog\ScienceDialog.xaml.cs">
       <DependentUpon>ScienceDialog.xaml</DependentUpon>
     </Compile>
@@ -435,6 +444,7 @@
     <Content Include="Assets\GameResources\Natures\N_ancient_statue_atrium.png" />
     <Content Include="Assets\GameResources\Natures\N_ancient_statue_atrium_nightmare.png" />
     <Content Include="Assets\GameResources\Natures\N_atrium.png" />
+    <Content Include="Assets\GameResources\Natures\N_ballphin_palace.png" />
     <Content Include="Assets\GameResources\Natures\N_depths_worm_lure.png" />
     <Content Include="Assets\GameResources\Natures\N_gigantic_beehive.png" />
     <Content Include="Assets\GameResources\Natures\N_hollow_stump_dead.png" />
@@ -456,6 +466,7 @@
     <Content Include="Assets\GameResources\Natures\N_moonrock.png" />
     <Content Include="Assets\GameResources\Natures\N_moon_rubble_build.png" />
     <Content Include="Assets\GameResources\Natures\N_moon_stone.png" />
+    <Content Include="Assets\GameResources\Natures\N_mussel_bed.png" />
     <Content Include="Assets\GameResources\Natures\N_mysterious_plant.png" />
     <Content Include="Assets\GameResources\Natures\N_oasis_cactus.png" />
     <Content Include="Assets\GameResources\Natures\N_oasis_cactus_empty.png" />
@@ -476,6 +487,7 @@
     <Content Include="Assets\GameResources\Natures\N_succulent_3.png" />
     <Content Include="Assets\GameResources\Natures\N_succulent_4.png" />
     <Content Include="Assets\GameResources\Natures\N_succulent_5.png" />
+    <Content Include="Assets\GameResources\Natures\N_tar_trap.png" />
     <Content Include="Assets\GameResources\Natures\N_walrus_camp_dead.png" />
     <Content Include="Assets\GameResources\Sciences\N_ballphin_palace.png" />
     <Content Include="Assets\GameResources\Sciences\N_tar_trap.png" />
@@ -2616,6 +2628,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Dialog\NaturalBiomesDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\NaturalCreatureNestDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\NaturalSmallPlantDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog\NaturalTreesDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
